@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>University of Central Punjab - Bahawalpur Campus</title>
+    <meta name="description" content="Official website of the University of Central Punjab (UCP) Bahawalpur Campus, featuring comprehensive academics, faculties, online admissions, student portal, campus life, research, and facilities." />
+    <meta property="og:title" content="University of Central Punjab - Bahawalpur Campus" />
+    <meta property="og:description" content="Official website of the University of Central Punjab (UCP) Bahawalpur Campus, featuring comprehensive academics, faculties, online admissions, student portal, campus life, research, and facilities." />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="icon" type="image/png" href="./assets/ucp-official-logo.png" />
+    <script>
+      // Cleanly filter harmless Vite HMR WebSocket connection logs in sandbox iframe environment
+      (function() {
+        if (typeof window === 'undefined') return;
+
+        function isWsMsg(item) {
+          if (!item) return false;
+          var str = '';
+          if (typeof item === 'string') {
+            str = item;
+          } else if (item instanceof Error) {
+            str = (item.message || '') + ' ' + (item.stack || '');
+          } else if (typeof item === 'object') {
+            try {
+              str = (item.message || '') + ' ' + (item.reason || '') + ' ' + JSON.stringify(item);
+            } catch (e) {
+              str = String(item);
+            }
+          } else {
+            str = String(item);
+          }
+          return str.indexOf('WebSocket') !== -1 || 
+                 str.indexOf('closed without opened') !== -1 || 
+                 str.indexOf('[vite] connecting') !== -1 ||
+                 str.indexOf('[vite] failed to connect') !== -1 ||
+                 str.indexOf('vite:ws') !== -1;
+        }
+
+        window.addEventListener('unhandledrejection', function(event) {
+          if (isWsMsg(event.reason)) {
+            event.preventDefault();
+            if (typeof event.stopImmediatePropagation === 'function') {
+              event.stopImmediatePropagation();
+            }
+          }
+        }, true);
+
+        window.addEventListener('error', function(event) {
+          if (isWsMsg(event.message || event.error)) {
+            event.preventDefault();
+            if (typeof event.stopImmediatePropagation === 'function') {
+              event.stopImmediatePropagation();
+            }
+          }
+        }, true);
+
+        var filterMethod = function(origFn) {
+          if (!origFn) return function() {};
+          return function() {
+            for (var i = 0; i < arguments.length; i++) {
+              if (isWsMsg(arguments[i])) return;
+            }
+            return origFn.apply(console, arguments);
+          };
+        };
+
+        console.log = filterMethod(console.log);
+        console.info = filterMethod(console.info);
+        console.warn = filterMethod(console.warn);
+        console.error = filterMethod(console.error);
+        console.debug = filterMethod(console.debug);
+      })();
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Serif+Pro:ital,wght@0,400;0,600;0,700;0,800;0,900;1,400;1,600;1,700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;0,8..60,800&family=Source+Sans+3:ital,wght@0,300;0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700;800&family=Montserrat:wght@700;800;900&family=Poppins:wght@700;800&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,600&display=swap" rel="stylesheet">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "CollegeOrUniversity",
+      "name": "University of Central Punjab - Bahawalpur Campus",
+      "alternateName": "UCP Bahawalpur",
+      "url": "https://ucp.edu.pk",
+      "logo": "/assets/ucp-official-logo.png",
+      "description": "Official portal of the University of Central Punjab (UCP) Bahawalpur Campus, featuring academic faculties, degree programs, campus life, research, and institutional facilities.",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Bahawalpur",
+        "addressRegion": "Punjab",
+        "addressCountry": "PK"
+      }
+    }
+    </script>
+  </head>
+  <body>
+    <div id="root">
+      <div style="min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; background: #0A1931; color: #FFFFFF; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;">
+        <div style="text-align: center; max-width: 380px; padding: 24px;">
+          <div style="width: 52px; height: 52px; border: 3px solid rgba(255,255,255,0.15); border-top-color: #C8102E; border-radius: 50%; margin: 0 auto 20px; animation: ucp-spin 0.85s linear infinite;"></div>
+          <div style="font-size: 11px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: #E5A823; margin-bottom: 6px;">University of Central Punjab</div>
+          <div style="font-size: 18px; font-weight: 700; letter-spacing: -0.01em; margin-bottom: 4px;">Bahawalpur Campus</div>
+          <div id="ucp-loading-status" style="font-size: 12px; color: rgba(255,255,255,0.65);">Loading campus portal...</div>
+        </div>
+      </div>
+      <style>
+        @keyframes ucp-spin { to { transform: rotate(360deg); } }
+      </style>
+    </div>
+    <script type="module" src="/src/main.tsx"></script>
+    <script>
+      // Graceful fallback detector if opened statically on GitHub Pages without running Vite build
+      setTimeout(function() {
+        var statusEl = document.getElementById('ucp-loading-status');
+        if (statusEl && document.getElementById('root') && document.getElementById('root').contains(statusEl)) {
+          if (window.location.hostname.indexOf('github.io') !== -1) {
+            statusEl.innerHTML = '<span style="color:#FCA5A5;font-weight:600;">GitHub Pages Setup Notice:</span><br/><span style="font-size:11px;color:#E2E8F0;line-height:1.5;display:block;margin-top:6px;">To view this React app on GitHub Pages, go to repository <b>Settings &rarr; Pages &rarr; Build and deployment &rarr; Source</b> and select <b>GitHub Actions</b>.</span>';
+          }
+        }
+      }, 3500);
+    </script>
+  </body>
+</html>
+

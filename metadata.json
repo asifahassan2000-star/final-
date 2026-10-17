@@ -1,0 +1,8 @@
+{
+  "name": "University of Central Punjab - Bahawalpur Campus",
+  "description": "Official website of the University of Central Punjab (UCP) Bahawalpur Campus, featuring comprehensive academics, faculties, online admissions, student portal, campus life, research, and facilities.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
