@@ -280,6 +280,27 @@ export const BeyondTheClassroomSection: React.FC<BeyondTheClassroomProps> = ({
               caption: 'Collegiate Cinema & Melodic Evenings: Students enjoying cinematic screenings, acoustic musical vibes, and memorable evening camaraderie.',
               tag: 'FILM & RECREATION',
             },
+            {
+              src: '/assets/campus-life/shogran-valley-tour-1.jpg',
+              fallback: 'https://i.ibb.co/0j944vNC/image-8.jpg',
+              alt: 'Shogran Valley excursion tour with UCP Bahawalpur scholars',
+              caption: 'Shogran Valley Northern Tour: UCP Bahawalpur students and faculty exploring the scenic pine trails, alpine heights, and natural vistas of Shogran.',
+              tag: 'SHOGRAN VALLEY TOUR',
+            },
+            {
+              src: '/assets/campus-life/campus-life-culture-1.jpg',
+              fallback: 'https://i.ibb.co/q3FMgJQ6/Whats-App-Image-2026-10-18-at-1-23-07-AM.jpg',
+              alt: 'Campus Life cultural celebrations and student gathering at UCP Bahawalpur',
+              caption: 'Campus Life & Cultural Celebration: Dynamic student festivities, cultural representation, and communal camaraderie across faculties.',
+              tag: 'CAMPUS LIFE CELEBRATION',
+            },
+            {
+              src: '/assets/campus-life/campus-life-culture-2.jpg',
+              fallback: 'https://i.ibb.co/7tL25pD8/Whats-App-Image-2026-10-18-at-1-24-42-AM.jpg',
+              alt: 'Student cultural excursion and collegiate memories at UCP Bahawalpur',
+              caption: 'Collegiate Cultural Milestones: Memorable student outdoor events, interactive gatherings, and peer excursions fostering lasting bonds.',
+              tag: 'CULTURAL EXCURSION',
+            },
           ]}
         />
 

@@ -67,6 +67,13 @@ export const FACULTY_GALLERY_IMAGES = [
     alt: 'Scholarly Assembly & Campus Research Colloquium',
     originalUrl: 'https://ibb.co/LDHWN1CS',
   },
+  {
+    id: 10,
+    src: '/assets/faculty/faculty-in-action-presentation.jpg',
+    fallback: 'https://i.ibb.co/mWK32rn/Whats-App-Image-2026-10-11-at-11-13-40-PM.jpg',
+    alt: 'Faculty Academic Presentation & Pedagogical Delivery in Action',
+    originalUrl: 'https://ibb.co/xTbNBKn',
+  },
 ];
 
 export const FacultyStickyGallery: React.FC = () => {

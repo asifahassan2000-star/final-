@@ -81,8 +81,29 @@ export const CampusLife: React.FC<CampusLifeProps> = ({ onOpenCampusLifePage }) 
     setStackLightboxOpen(true);
   };
 
-  const corridorList = [cholistanHaveliSingingImg, rhythmCampusLifeImg, concertImg, corridorImg, courtyardImg, nightCampusImg, hallwayImg, lawnImg];
-  const courtyardList = [courtyardImg, concertImg, corridorImg, hallwayImg, lawnImg, redCarpetImg];
+  const corridorList = [
+    '/assets/campus-life/shogran-valley-tour-1.jpg',
+    '/assets/campus-life/campus-life-culture-1.jpg',
+    '/assets/campus-life/campus-life-culture-2.jpg',
+    cholistanHaveliSingingImg,
+    rhythmCampusLifeImg,
+    concertImg,
+    corridorImg,
+    courtyardImg,
+    nightCampusImg,
+    hallwayImg,
+    lawnImg,
+  ];
+  const courtyardList = [
+    courtyardImg,
+    '/assets/campus-life/shogran-valley-tour-1.jpg',
+    '/assets/campus-life/campus-life-culture-1.jpg',
+    concertImg,
+    corridorImg,
+    hallwayImg,
+    lawnImg,
+    redCarpetImg,
+  ];
   const concertList = [concertImg, cholistanHaveliSingingImg, rhythmCampusLifeImg, courtyardImg, nightCampusImg, closingDramaticImg];
   const nightCampusList = [nightCampusImg, concertImg, corridorImg, courtyardImg, closingDramaticImg, hallwayImg];
 
@@ -285,12 +306,6 @@ export const CampusLife: React.FC<CampusLifeProps> = ({ onOpenCampusLifePage }) 
             {/* Editorial Narrative Block */}
             <div className="space-y-6">
               <div className="space-y-3">
-                <div className="flex items-center gap-2.5">
-                  <span className="h-2 w-2 rounded-full bg-[#A51C30]" />
-                  <span className="font-mono text-xs uppercase tracking-[0.22em] text-[#A51C30] font-bold">
-                    COMMUNITY & LEADERSHIP
-                  </span>
-                </div>
                 <h3 
                   className="text-2xl sm:text-3xl lg:text-4xl font-serif font-bold text-[#0A1931] leading-tight"
                   style={{ fontFamily: "'Cormorant Garamond', 'Libre Baskerville', Georgia, serif" }}
@@ -346,8 +361,8 @@ export const CampusLife: React.FC<CampusLifeProps> = ({ onOpenCampusLifePage }) 
             Proper big size frame matching natural photo dimensions with lightbox
             ==================================================================== */}
         <div className="mb-28 sm:mb-36">
-          <div className="bg-white rounded-[24px] sm:rounded-[32px] border border-slate-200/90 overflow-hidden shadow-[0_20px_50px_rgba(10,25,49,0.06)] p-6 sm:p-10 lg:p-12">
-            <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8 pb-6 border-b border-slate-100">
+          <div className="overflow-hidden p-0 sm:p-2 border-0 shadow-none">
+            <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8">
               <div className="space-y-2">
                 <div className="flex items-center gap-2.5">
                   <span className="h-2 w-2 rounded-full bg-[#A51C30]" />
@@ -371,25 +386,21 @@ export const CampusLife: React.FC<CampusLifeProps> = ({ onOpenCampusLifePage }) 
               </div>
             </div>
 
-            {/* Proper Big Visible Size Image Display (Natural 4:3 Proportions 1280x960) */}
+            {/* Proper Big Visible Size Image Display without black line border and no border behind it */}
             <div 
               onClick={() => openStackLightbox(['/assets/campus-life/mou-signing-ceremony.jpg', cholistanHaveliSingingImg, '/assets/campus/campus-evening-view.jpg'], 'MOU Signing Ceremony: UCP x Haveli Cholistan')}
-              className="relative w-full aspect-[4/3] max-h-[720px] rounded-2xl overflow-hidden bg-slate-900 border border-[#0A1931]/10 shadow-[0_16px_40px_rgba(10,25,49,0.08)] cursor-pointer group hover:brightness-105 transition-all duration-300"
+              className="relative w-full aspect-[4/3] max-h-[720px] rounded-2xl overflow-hidden bg-transparent border-0 shadow-none cursor-pointer group hover:brightness-105 transition-all duration-300"
             >
               <img
                 src="/assets/campus-life/mou-signing-ceremony.jpg"
                 alt="MOU SIGNING CEREMONY UCP X HAVELI CHOLISTAN"
                 loading="eager"
-                className="w-full h-full object-cover object-center transition-all duration-700 ease-out group-hover:scale-[1.02] block"
+                className="w-full h-full object-cover object-center transition-all duration-700 ease-out group-hover:scale-[1.02] block border-0"
                 onError={(e) => {
                   (e.target as HTMLImageElement).src = 'https://i.ibb.co/chjWx2NR/Whats-App-Image-2026-10-13-at-1-06-35-AM.jpg';
                 }}
               />
               <div className="absolute inset-0 bg-black/0 group-hover:bg-black/15 transition-colors pointer-events-none" />
-              <div className="absolute top-4 right-4 bg-[#0A1931]/90 text-white backdrop-blur-md px-3.5 py-1.5 rounded-full text-[11px] font-mono tracking-wider flex items-center gap-1.5 shadow-md">
-                <Maximize2 size={13} className="text-amber-400" />
-                <span>EXPAND HIGH-RES</span>
-              </div>
             </div>
           </div>
         </div>
@@ -399,13 +410,6 @@ export const CampusLife: React.FC<CampusLifeProps> = ({ onOpenCampusLifePage }) 
             Both images displayed in prominent, large visible frames matching their natural aspect ratios
             ==================================================================== */}
         <div className="mb-28 sm:mb-36">
-          <div className="flex items-center gap-2.5 mb-6">
-            <span className="h-2 w-2 rounded-full bg-[#A51C30]" />
-            <span className="font-mono text-xs uppercase tracking-[0.22em] text-[#A51C30] font-bold">
-              CAMPUS LAWNS & STUDENT GATHERING GROUNDS
-            </span>
-          </div>
-
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 items-start">
             {/* Student Gathering Grounds 1 — Big & Clearly Visible (Landscape 2560x1706) */}
             <div className="space-y-3">
@@ -423,15 +427,6 @@ export const CampusLife: React.FC<CampusLifeProps> = ({ onOpenCampusLifePage }) 
                     target.src = 'https://i.ibb.co/DDZgf551/Whats-App-Image-2026-10-05-at-2-38-56-AM.jpg';
                   }}
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#0A1931]/75 via-transparent to-transparent pointer-events-none" />
-                <div className="absolute bottom-4 left-5 right-5 text-white pointer-events-none">
-                  <span className="text-[10px] font-mono uppercase tracking-wider text-[#C5A880] block font-semibold">
-                    CAMPUS COMMONS
-                  </span>
-                  <span className="font-serif text-base sm:text-lg font-bold text-white block">
-                    Student Gathering Grounds & Open Quads
-                  </span>
-                </div>
               </div>
             </div>
 
@@ -451,15 +446,6 @@ export const CampusLife: React.FC<CampusLifeProps> = ({ onOpenCampusLifePage }) 
                     target.src = 'https://i.ibb.co/wrhXzy8s/Whats-App-Image-2026-10-05-at-2-39-15-AM.jpg';
                   }}
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#0A1931]/75 via-transparent to-transparent pointer-events-none" />
-                <div className="absolute bottom-4 left-5 right-5 text-white pointer-events-none">
-                  <span className="text-[10px] font-mono uppercase tracking-wider text-[#C5A880] block font-semibold">
-                    CAMPUS COURTYARDS
-                  </span>
-                  <span className="font-serif text-base sm:text-lg font-bold text-white block">
-                    Central Courtyard & Social Grounds
-                  </span>
-                </div>
               </div>
             </div>
           </div>

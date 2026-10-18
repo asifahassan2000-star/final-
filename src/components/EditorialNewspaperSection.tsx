@@ -92,43 +92,31 @@ export const EditorialNewspaperSection: React.FC = () => {
     },
   ];
 
-  // 2. INTERNATIONAL SYMPOSIUM ON AI (3 authentic photographs — Featured Center)
+  // 2. INTERNATIONAL SYMPOSIUM ON AI & SECURE SYSTEMS (Both together, Big Size, Less Wording)
   const symposiumPhotos: GalleryPhoto[] = [
     {
-      id: 'symp-keynote-main',
-      title: 'International Symposium on Artificial Intelligence & Emerging Technologies',
-      subtitle: 'Keynote Deliberations on Generative Models, Autonomous Systems & Ethical Horizons',
-      imageSrc: '/assets/events/international-symposium-ai.jpg',
-      fallbackImage: 'https://i.ibb.co/0jMhSdP1/Whats-App-Image-2026-10-11-at-11-14-54-PM.jpg',
-      alt: 'International Symposium on Artificial Intelligence Keynote Session at UCP Bahawalpur',
-      caption: 'Global computational researchers, faculty chairs, and corporate AI leaders convened in the Grand Auditorium to debate algorithmic frontiers and ethical intelligence.',
+      id: 'symp-ai-secure-1',
+      title: 'International Symposium on AI and Secure Systems',
+      subtitle: 'Keynote Deliberations & Technical Plenary Sessions',
+      imageSrc: '/assets/events/symposium-ai-secure-systems-1.jpg',
+      fallbackImage: 'https://i.ibb.co/Z6LzQgNC/Whats-App-Image-2026-10-12-at-3-50-32-AM.jpg',
+      alt: 'International Symposium on AI and Secure Systems Keynote Session at UCP Bahawalpur',
+      caption: 'International researchers and computational scientists convening in the Executive Auditorium for keynote deliberations on AI, neural systems, and secure architectures.',
       dateline: 'FLAGSHIP SYMPOSIUM · GRAND AUDITORIUM',
       category: 'INTERNATIONAL SYMPOSIUM',
       badge: 'KEYNOTE STAGE',
     },
     {
-      id: 'symp-delegates',
-      title: 'International AI Delegates & Research Assembly',
-      subtitle: 'International Scholars Presenting Breakthroughs in Deep Learning & Neural Models',
-      imageSrc: '/assets/events/international-symposium-ai-2.jpg',
+      id: 'symp-ai-secure-2',
+      title: 'International Symposium on AI and Secure Systems',
+      subtitle: 'International Research Delegates & Academic Colloquium',
+      imageSrc: '/assets/events/symposium-ai-secure-systems-2.jpg',
       fallbackImage: 'https://i.ibb.co/ymcGpgCf/Whats-App-Image-2026-10-12-at-3-51-10-AM.jpg',
-      alt: 'Distinguished international delegates attending AI symposium at UCP Bahawalpur',
-      caption: 'Visiting researchers and department heads sharing peer-reviewed publications on computer vision, autonomous robotics, and natural language computing.',
+      alt: 'Distinguished international delegates attending AI and Secure Systems symposium at UCP Bahawalpur',
+      caption: 'Distinguished international scholars and department faculty reviewing breakthroughs in machine learning, cryptographic protocols, and automated secure computing.',
       dateline: 'RESEARCH COUNCIL FORUM · PLENARY',
       category: 'INTERNATIONAL SYMPOSIUM',
       badge: 'DELEGATES ASSEMBLY',
-    },
-    {
-      id: 'symp-panel-discussion',
-      title: 'Symposium Executive Panel & Technical Colloquium',
-      subtitle: 'Cross-Disciplinary Industry Perspectives on Responsible Machine Learning',
-      imageSrc: '/assets/events/international-symposium-ai-3.jpg',
-      fallbackImage: 'https://i.ibb.co/YBtCwzHg/Whats-App-Image-2026-10-11-at-11-22-38-PM.jpg',
-      alt: 'AI Symposium executive panel discussion with distinguished guests and scholars',
-      caption: 'Senior experts debating industrial AI adoption, high-performance computing infrastructure, and academic-industry collaborative research.',
-      dateline: 'EXECUTIVE COLLOQUIUM · MAIN STAGE',
-      category: 'INTERNATIONAL SYMPOSIUM',
-      badge: 'EXECUTIVE PANEL',
     },
   ];
 
@@ -331,10 +319,10 @@ export const EditorialNewspaperSection: React.FC = () => {
             {/* Minimal Header */}
             <div className="flex items-center justify-between gap-2 mb-3">
               <span className="text-xs font-mono font-semibold tracking-[0.22em] text-[#991B1B] uppercase">
-                {activeSympPhoto.category}
+                INTERNATIONAL SYMPOSIUM
               </span>
               <span className="text-[11px] font-mono text-slate-500 uppercase tracking-widest">
-                SESSION {activeSympIdx + 1} OF 3
+                AI & SECURE SYSTEMS
               </span>
             </div>
 
@@ -343,88 +331,78 @@ export const EditorialNewspaperSection: React.FC = () => {
               className="text-xl sm:text-2xl lg:text-[26px] font-serif font-bold text-[#0F2C61] leading-[1.22] tracking-tight mb-2 group-hover:text-[#991B1B] transition-colors duration-200"
               style={{ fontFamily: "'Playfair Display', 'Cormorant Garamond', Georgia, serif" }}
             >
-              {activeSympPhoto.title}
+              International Symposium on AI and Secure Systems
             </h3>
 
             {/* Standfirst */}
             <p className="text-xs sm:text-sm text-slate-600 font-serif italic mb-4 leading-relaxed">
-              {activeSympPhoto.subtitle}
+              Keynote Deliberations, Plenary Discourse & Technical Colloquium
             </p>
 
-            {/* Big Prominent Photo Frame */}
-            <div 
-              className="relative w-full aspect-[16/10] rounded-lg overflow-hidden border border-[#0F2C61]/10 bg-slate-100 cursor-pointer mb-3 shadow-xs"
-              onClick={() => openLightbox(activeSympPhoto.id)}
-              title="Click to view full photograph"
-            >
-              <img
-                key={activeSympPhoto.imageSrc}
-                src={activeSympPhoto.imageSrc}
-                alt={activeSympPhoto.alt}
-                loading="lazy"
-                decoding="async"
-                className="w-full h-full object-cover object-center transition-transform duration-700 ease-out group-hover:scale-103"
-                onError={(e) => {
-                  (e.target as HTMLImageElement).src = activeSympPhoto.fallbackImage;
-                }}
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-between p-3">
-                <span className="text-white text-xs font-mono tracking-wider flex items-center gap-1.5 bg-black/60 px-2.5 py-1 rounded backdrop-blur-xs">
-                  <Maximize2 size={12} /> Inspect Photo
-                </span>
-                <span className="text-white/90 text-[10px] font-mono bg-[#991B1B]/80 px-2 py-0.5 rounded">
-                  {activeSympPhoto.badge}
-                </span>
+            {/* Dual Big Size Images - Both Displayed Together */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-3">
+              <div 
+                className="relative w-full aspect-[4/3] rounded-lg overflow-hidden border border-[#0F2C61]/10 bg-slate-100 cursor-pointer shadow-xs group/img"
+                onClick={() => openLightbox('symp-ai-secure-1')}
+                title="Click to inspect keynote stage"
+              >
+                <img
+                  src="/assets/events/symposium-ai-secure-systems-1.jpg"
+                  alt="International Symposium on AI and Secure Systems Keynote Stage"
+                  loading="lazy"
+                  decoding="async"
+                  className="w-full h-full object-cover object-center transition-transform duration-700 ease-out group-hover/img:scale-103"
+                  onError={(e) => {
+                    (e.target as HTMLImageElement).src = 'https://i.ibb.co/Z6LzQgNC/Whats-App-Image-2026-10-12-at-3-50-32-AM.jpg';
+                  }}
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-transparent to-transparent opacity-0 group-hover/img:opacity-100 transition-opacity duration-300 flex items-end justify-between p-2.5">
+                  <span className="text-white text-[11px] font-mono tracking-wider flex items-center gap-1 bg-black/60 px-2 py-0.5 rounded backdrop-blur-xs">
+                    <Maximize2 size={11} /> Expand
+                  </span>
+                  <span className="text-white/90 text-[10px] font-mono bg-[#991B1B]/80 px-2 py-0.5 rounded">
+                    Keynote Stage
+                  </span>
+                </div>
+              </div>
+
+              <div 
+                className="relative w-full aspect-[4/3] rounded-lg overflow-hidden border border-[#0F2C61]/10 bg-slate-100 cursor-pointer shadow-xs group/img"
+                onClick={() => openLightbox('symp-ai-secure-2')}
+                title="Click to inspect delegates assembly"
+              >
+                <img
+                  src="/assets/events/symposium-ai-secure-systems-2.jpg"
+                  alt="International Symposium on AI and Secure Systems Research Delegates"
+                  loading="lazy"
+                  decoding="async"
+                  className="w-full h-full object-cover object-center transition-transform duration-700 ease-out group-hover/img:scale-103"
+                  onError={(e) => {
+                    (e.target as HTMLImageElement).src = 'https://i.ibb.co/ymcGpgCf/Whats-App-Image-2026-10-12-at-3-51-10-AM.jpg';
+                  }}
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-transparent to-transparent opacity-0 group-hover/img:opacity-100 transition-opacity duration-300 flex items-end justify-between p-2.5">
+                  <span className="text-white text-[11px] font-mono tracking-wider flex items-center gap-1 bg-black/60 px-2 py-0.5 rounded backdrop-blur-xs">
+                    <Maximize2 size={11} /> Expand
+                  </span>
+                  <span className="text-white/90 text-[10px] font-mono bg-[#991B1B]/80 px-2 py-0.5 rounded">
+                    Delegates Assembly
+                  </span>
+                </div>
               </div>
             </div>
 
-            {/* Minimal Photo Selector Tabs (3 Photos) */}
-            <div className="grid grid-cols-3 gap-2 mb-4">
-              {symposiumPhotos.map((item, idx) => {
-                const isSelected = idx === activeSympIdx;
-                return (
-                  <button
-                    key={item.id}
-                    type="button"
-                    onClick={() => setActiveSympIdx(idx)}
-                    className={`flex items-center gap-2 p-1.5 rounded-md border text-left transition-all duration-200 cursor-pointer ${
-                      isSelected
-                        ? 'border-[#991B1B]/60 bg-[#991B1B]/5 shadow-2xs'
-                        : 'border-slate-200/80 bg-slate-50 hover:bg-white hover:border-[#0F2C61]/30'
-                    }`}
-                  >
-                    <div className="w-10 h-7 rounded overflow-hidden flex-shrink-0 bg-slate-200 border border-slate-300/80">
-                      <img
-                        src={item.imageSrc}
-                        alt={item.alt}
-                        className="w-full h-full object-cover"
-                        onError={(e) => {
-                          (e.target as HTMLImageElement).src = item.fallbackImage;
-                        }}
-                      />
-                    </div>
-                    <div className="min-w-0">
-                      <span className={`block text-[10px] font-mono font-medium truncate uppercase ${isSelected ? 'text-[#991B1B]' : 'text-[#0F2C61]'}`}>
-                        {idx === 0 ? 'Keynote' : idx === 1 ? 'Delegates' : 'Colloquium'}
-                      </span>
-                    </div>
-                  </button>
-                );
-              })}
-            </div>
-
-            {/* Dateline & Narrative */}
+            {/* Dateline & Narrative — Less Wording */}
             <p className="text-[10px] font-mono text-slate-500 uppercase tracking-wider mb-2">
-              {activeSympPhoto.dateline}
+              EXECUTIVE AUDITORIUM · SESSIONS DOCUMENTED
             </p>
             <p className="text-xs sm:text-[13px] text-slate-700 font-sans leading-relaxed text-justify">
-              {activeSympPhoto.caption}
+              International researchers and computational scientists gathered at UCP Bahawalpur for the International Symposium on AI and Secure Systems, deliberating on deep learning breakthroughs, cryptographic resilience, and secure automated computing.
             </p>
           </div>
 
           <div className="mt-5 pt-3 border-t border-[#0F2C61]/10 flex items-center justify-between text-[11px] font-mono text-slate-600">
             <span>FACULTY OF INFORMATION TECHNOLOGY</span>
-            <span className="text-[#991B1B] font-medium">3 SESSIONS DOCUMENTED</span>
           </div>
         </motion.article>
 
@@ -532,7 +510,6 @@ export const EditorialNewspaperSection: React.FC = () => {
 
           <div className="mt-5 pt-3 border-t border-[#0F2C61]/10 flex items-center justify-between text-[11px] font-mono text-slate-600">
             <span>EXECUTIVE DISCOURSE SUITE</span>
-            <span className="text-[#991B1B] font-medium">6 SESSIONS DOCUMENTED</span>
           </div>
         </motion.article>
 

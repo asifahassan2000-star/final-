@@ -419,11 +419,6 @@ export const WhatWeOfferAccordion: React.FC<WhatWeOfferAccordionProps> = ({
         
         {/* Section Header with Official Distinction */}
         <div className="mb-10 md:mb-12 text-left">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#0F2C52]/8 border border-[#0F2C52]/15 text-[#0F2C52] text-xs font-semibold tracking-wider uppercase mb-3">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#A51C30] animate-pulse" />
-            <span>Campus Life, Co-Curricular Excellence &amp; Leadership</span>
-          </div>
-          
           <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
             <div>
               <h2

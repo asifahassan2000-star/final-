@@ -52,6 +52,15 @@ export const AboutCampusSection: React.FC<AboutCampusSectionProps> = ({
       caption: 'Faculty workshops where professors deliver presentations on subject methodologies, classroom pedagogy, and adapting teaching techniques to meet modern generational requirements.',
       tag: 'TEACHER TRAINING',
     },
+    {
+      id: 'workshop-endnote-4',
+      title: 'Workshop on EndNote',
+      subtitle: 'Dr. Shahid Amin · Advanced Bibliographic Tooling & Citation',
+      src: '/assets/events/workshop-endnote-shahid-amin.jpg',
+      fallback: 'https://i.ibb.co/R42Z7TWx/Whats-App-Image-2026-10-17-at-3-44-52-AM.jpg',
+      caption: 'Hands-on academic workshop on EndNote bibliographic software, citation indexation, and scholarly referencing conducted by Dr. Shahid Amin for faculty and researchers.',
+      tag: 'ENDNOTE WORKSHOP',
+    },
   ];
 
   const easeCurve = [0.22, 1, 0.36, 1] as const;
@@ -274,8 +283,8 @@ export const AboutCampusSection: React.FC<AboutCampusSectionProps> = ({
             </p>
           </div>
 
-          {/* 3-Card Minimal Classroom Showcase Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
+          {/* 4-Card Minimal Classroom & Academic Workshop Showcase Grid */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {classroomPhotos.map((item, idx) => (
               <motion.div
                 key={item.id}

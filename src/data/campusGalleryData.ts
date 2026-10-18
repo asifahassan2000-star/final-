@@ -7,6 +7,24 @@ export interface CampusGalleryImage {
 
 export const CAMPUS_GALLERY_IMAGES: CampusGalleryImage[] = [
   {
+    "id": 301,
+    "localSrc": "/assets/campus-life/shogran-valley-tour-1.jpg",
+    "fallbackSrc": "https://i.ibb.co/0j944vNC/image-8.jpg",
+    "alt": "Shogran Valley alpine excursion tour with UCP Bahawalpur students and faculty"
+  },
+  {
+    "id": 302,
+    "localSrc": "/assets/campus-life/campus-life-culture-1.jpg",
+    "fallbackSrc": "https://i.ibb.co/q3FMgJQ6/Whats-App-Image-2026-10-18-at-1-23-07-AM.jpg",
+    "alt": "Campus Life cultural celebration and dynamic student camaraderie at UCP Bahawalpur"
+  },
+  {
+    "id": 303,
+    "localSrc": "/assets/campus-life/campus-life-culture-2.jpg",
+    "fallbackSrc": "https://i.ibb.co/7tL25pD8/Whats-App-Image-2026-10-18-at-1-24-42-AM.jpg",
+    "alt": "Collegiate cultural milestones and interactive student gatherings at UCP Bahawalpur"
+  },
+  {
     "id": 200,
     "localSrc": "/assets/campus/haveli_cholistan_student_singing.jpg",
     "fallbackSrc": "https://i.ibb.co/7dwzJ7HH/Whats-App-Image-2026-10-11-at-11-12-56-PM.jpg",

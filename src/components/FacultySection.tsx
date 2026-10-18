@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 import { FacultyProfileModal } from './FacultyProfileModal';
 import { FacultyStickyGallery } from './FacultyStickyGallery';
-import { ALL_FACULTY_MEMBERS, FacultyMemberData } from '../data/facultyData';
+import { ALL_FACULTY_MEMBERS, ADMINISTRATION_MEMBERS, FacultyMemberData } from '../data/facultyData';
 
 export type FacultyMember = FacultyMemberData;
 export const FACULTY_MEMBERS = ALL_FACULTY_MEMBERS;
@@ -119,12 +119,15 @@ const MobileFacultyCarousel: React.FC<{
 export const FacultySection: React.FC<FacultySectionProps> = ({
   onViewAllFaculty
 }) => {
+  const [activeTab, setActiveTab] = useState<'faculty' | 'administration'>('faculty');
   const [selectedFaculty, setSelectedFaculty] = useState<FacultyMemberData | null>(null);
 
   // Featured faculty members in strict rank sequence for desktop
   const featuredFaculty: FacultyMemberData[] = FEATURED_FACULTY_HOMEPAGE_IDS.map(id => 
     ALL_FACULTY_MEMBERS.find(f => f.id === id)
   ).filter((f): f is FacultyMemberData => !!f);
+
+  const displayedMembers = activeTab === 'faculty' ? featuredFaculty : (ADMINISTRATION_MEMBERS || []);
 
   return (
     <section 
@@ -139,83 +142,116 @@ export const FacultySection: React.FC<FacultySectionProps> = ({
             <div className="flex items-center gap-2 mb-1.5">
               <span className="w-5 h-[2px] bg-[#C5A059]" />
               <span className="text-[10px] sm:text-[11px] font-bold uppercase tracking-[0.2em] text-[#C5A059]">
-                Distinguished Faculty
+                Academic & Administrative Excellence
               </span>
             </div>
             
             <h2 className="font-['Playfair_Display',serif] text-2xl sm:text-3xl lg:text-4xl font-normal text-[#0F2C61] tracking-tight">
-              Our Faculty
+              Our Faculty & Leadership
             </h2>
           </div>
 
-          {onViewAllFaculty && (
-            <button
-              onClick={() => onViewAllFaculty('all')}
-              className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-semibold text-[#0F2C61] hover:text-[#a30f16] group transition-colors cursor-pointer self-start sm:self-end shrink-0"
-            >
-              <span>View All Faculty</span>
-              <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
-            </button>
-          )}
+          <div className="flex items-center gap-3 flex-wrap self-start sm:self-end">
+            {/* Filter Toggle: Faculty vs Administration */}
+            <div className="inline-flex p-1 bg-slate-100 rounded-xl border border-slate-200 text-xs font-semibold">
+              <button
+                type="button"
+                onClick={() => setActiveTab('faculty')}
+                className={`px-3 py-1.5 rounded-lg transition-all ${
+                  activeTab === 'faculty'
+                    ? 'bg-[#0F2C61] text-white shadow-xs'
+                    : 'text-slate-600 hover:text-[#0F2C61]'
+                }`}
+              >
+                Distinguished Faculty
+              </button>
+              <button
+                type="button"
+                onClick={() => setActiveTab('administration')}
+                className={`px-3 py-1.5 rounded-lg transition-all ${
+                  activeTab === 'administration'
+                    ? 'bg-[#0F2C61] text-white shadow-xs'
+                    : 'text-slate-600 hover:text-[#0F2C61]'
+                }`}
+              >
+                Campus Administration
+              </button>
+            </div>
+
+            {onViewAllFaculty && (
+              <button
+                onClick={() => onViewAllFaculty(activeTab === 'administration' ? 'administration' : 'all')}
+                className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-semibold text-[#0F2C61] hover:text-[#a30f16] group transition-colors cursor-pointer shrink-0"
+              >
+                <span>View Full Directory</span>
+                <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
+              </button>
+            )}
+          </div>
         </div>
 
-        {/* Mobile: Horizontal Moving Line (3 small images at once that move and continue moving others) */}
+        {/* Mobile: Horizontal Moving Line */}
         <MobileFacultyCarousel onSelect={(faculty) => setSelectedFaculty(faculty)} />
 
         {/* 
-          Desktop: 4 Top Professors with original prominent card & portrait aspect ratio (aspect-[4/5])
-          100% same desktop layout
+          Desktop: 4-Column Grid with STRICT EQUAL SIZING FOR BOTH FACULTY & ADMINISTRATION
+          Both use aspect-[4/5] portrait frames, equal padding, equal dimensions
         */}
         <div className="hidden md:grid md:grid-cols-4 gap-4 sm:gap-6 lg:gap-8">
-          {featuredFaculty.map((faculty, index) => {
-            const isProfessor = faculty.designation.toLowerCase().includes('professor') && !faculty.designation.toLowerCase().includes('associate') && !faculty.designation.toLowerCase().includes('assistant');
-            const isAssociate = faculty.designation.toLowerCase().includes('associate');
-            const isAssistant = faculty.designation.toLowerCase().includes('assistant');
-            const isLecturer = faculty.designation.toLowerCase().includes('lecturer');
-            const rankLabel = isProfessor ? 'Professor' : isAssociate ? 'Associate Professor' : isAssistant ? 'Assistant Professor' : isLecturer ? 'Lecturer' : faculty.designation;
+          {displayedMembers.map((member, index) => {
+            const isProfessor = member.designation.toLowerCase().includes('professor') && !member.designation.toLowerCase().includes('associate') && !member.designation.toLowerCase().includes('assistant');
+            const isAssociate = member.designation.toLowerCase().includes('associate');
+            const isAssistant = member.designation.toLowerCase().includes('assistant');
+            const isLecturer = member.designation.toLowerCase().includes('lecturer');
+            const rankLabel = isProfessor ? 'Professor' : isAssociate ? 'Associate Professor' : isAssistant ? 'Assistant Professor' : isLecturer ? 'Lecturer' : member.designation;
 
             return (
               <motion.div
-                key={faculty.id}
+                key={member.id}
                 initial={{ opacity: 0, y: 16 }}
-                whileInView={{ opacity: 1, y: 0 }}
+                animate={{ opacity: 1, y: 0 }}
                 transition={{
-                  duration: 0.5,
+                  duration: 0.4,
                   delay: index * 0.08,
                   ease: [0.22, 1, 0.36, 1],
                 }}
-                viewport={{ once: true, amount: 0.2 }}
-                onClick={() => setSelectedFaculty(faculty)}
-                className="group flex flex-col items-center text-center cursor-pointer"
+                onClick={() => setSelectedFaculty(member)}
+                className="group flex flex-col items-center text-center cursor-pointer p-2 sm:p-2.5 rounded-2xl bg-white hover:bg-slate-50/70 border border-slate-100 hover:border-slate-300 shadow-2xs hover:shadow-md transition-all duration-300 justify-between"
               >
-                {/* Prominent, Crisp Portrait Frame (aspect-[4/5]) */}
-                <div className="w-full aspect-[4/5] rounded-xl sm:rounded-2xl overflow-hidden bg-slate-100 border border-slate-200/90 shadow-2xs group-hover:shadow-md group-hover:border-[#C5A059] transition-all duration-300 relative">
-                  <img
-                    src={faculty.photoUrl}
-                    alt={faculty.name}
-                    className={`w-full h-full object-cover ${faculty.objectPosition || 'object-top'} transition-transform duration-500 ease-out group-hover:scale-105`}
-                    loading="lazy"
-                    decoding="async"
-                    onError={(e) => {
-                      (e.target as HTMLImageElement).src = faculty.fallbackPhotoUrl;
-                    }}
-                  />
-                  <div className="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
+                <div className="w-full">
+                  {/* Strict Equal Aspect-[4/5] Portrait Frame */}
+                  <div className="w-full aspect-[4/5] rounded-xl sm:rounded-2xl overflow-hidden bg-slate-100 border border-slate-200/90 shadow-2xs group-hover:shadow-md group-hover:border-[#C5A059] transition-all duration-300 relative">
+                    <img
+                      src={member.photoUrl}
+                      alt={member.name}
+                      className={`w-full h-full object-cover ${member.objectPosition || 'object-top'} transition-transform duration-500 ease-out group-hover:scale-105`}
+                      loading="lazy"
+                      decoding="async"
+                      onError={(e) => {
+                        (e.target as HTMLImageElement).src = member.fallbackPhotoUrl;
+                      }}
+                    />
+                    <div className="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
+                  </div>
+
+                  {/* Rank Tag, Name & Designation */}
+                  <div className="mt-3 px-1 w-full text-center">
+                    <div className="mb-1">
+                      <span className="inline-block text-[10px] font-bold uppercase tracking-wider text-[#C5A059] font-sans">
+                        {activeTab === 'administration' ? 'Administration' : rankLabel}
+                      </span>
+                    </div>
+                    <h3 className="font-['Playfair_Display',serif] text-sm sm:text-base lg:text-lg font-bold text-[#0F2C61] group-hover:text-[#a30f16] transition-colors leading-snug">
+                      {member.name}
+                    </h3>
+                    <p className="text-[11px] sm:text-xs text-slate-500 font-sans mt-0.5 font-medium line-clamp-1">
+                      {member.designation}
+                    </p>
+                  </div>
                 </div>
 
-                {/* Rank Tag, Name & Designation */}
-                <div className="mt-3 px-1 w-full text-center">
-                  <div className="mb-1">
-                    <span className="inline-block text-[10px] font-bold uppercase tracking-wider text-[#C5A059] font-sans">
-                      {rankLabel}
-                    </span>
-                  </div>
-                  <h3 className="font-['Playfair_Display',serif] text-sm sm:text-base lg:text-lg font-bold text-[#0F2C61] group-hover:text-[#a30f16] transition-colors leading-snug">
-                    {faculty.name}
-                  </h3>
-                  <p className="text-[11px] sm:text-xs text-slate-500 font-sans mt-0.5 font-medium">
-                    {faculty.designation}
-                  </p>
+                <div className="mt-2 text-[10px] font-mono font-semibold text-[#0F2C61] group-hover:text-[#a30f16] uppercase tracking-wider">
+                  View Dossier →
                 </div>
               </motion.div>
             );

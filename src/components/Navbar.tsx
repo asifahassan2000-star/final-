@@ -474,14 +474,6 @@ export const Navbar: React.FC<NavbarProps> = ({
 
                     <button
                       type="button"
-                      onClick={() => { setActiveDropdown(null); onOpenInfo('sustainability'); }}
-                      className="w-full text-left py-[8px] px-[14px] rounded-[6px] hover:bg-[#F5F5F5] text-[#333333] flex items-center justify-between cursor-pointer"
-                    >
-                      <span>Sustainability Initiatives</span>
-                    </button>
-
-                    <button
-                      type="button"
                       onClick={() => { setActiveDropdown(null); onOpenInfo('harassment-policy'); }}
                       className="w-full text-left py-[8px] px-[14px] rounded-[6px] hover:bg-[#F5F5F5] text-[#333333] flex items-center justify-between cursor-pointer"
                     >

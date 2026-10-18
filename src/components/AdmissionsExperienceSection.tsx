@@ -76,20 +76,6 @@ export const AdmissionsExperienceSection: React.FC<AdmissionsExperienceSectionPr
                   loading="eager"
                   className="w-full h-full object-cover object-center scale-100 group-hover:scale-105 transition-transform duration-700 ease-out"
                 />
-                
-                <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-transparent to-transparent pointer-events-none" />
-
-                <div className="absolute bottom-6 left-6 right-6 text-white pointer-events-none">
-                  <span className="text-[11px] font-sans uppercase tracking-[0.2em] text-[#FEF08A] font-semibold block mb-0.5">
-                    Campus Arrival & Welcome
-                  </span>
-                  <h3 className="font-['Playfair_Display',serif] text-xl sm:text-2xl font-bold">
-                    The Grand Campus Entrance
-                  </h3>
-                  <p className="text-xs sm:text-sm text-slate-100 font-sans mt-0.5">
-                    Experience the dignity, hospitality, and academic prestige of UCP Bahawalpur.
-                  </p>
-                </div>
               </div>
             </div>
           </div>

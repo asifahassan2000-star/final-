@@ -29,6 +29,7 @@ import { FacultySection } from './components/FacultySection';
 import { AboutCampusSection } from './components/AboutCampusSection';
 import { FacilitiesSection } from './components/FacilitiesSection';
 import { OurLeadershipSection } from './components/OurLeadershipSection';
+import { LeadershipImpactSection } from './components/LeadershipImpactSection';
 import { CampusLife } from './components/CampusLife';
 import { BeyondTheClassroomSection } from './components/BeyondTheClassroomSection';
 import { NewsAndEvents } from './components/NewsAndEvents';
@@ -463,10 +464,17 @@ export default function App() {
               />
             </div>
 
-            {/* 3. INSTITUTIONAL LEADERSHIP — Vision, Governance & Executive Guidance (Repositioned before Academic Programmes) */}
+            {/* 3. INSTITUTIONAL LEADERSHIP — Vision, Governance & Executive Guidance */}
             <div className="w-full">
               <OurLeadershipSection 
                 onOpenApply={() => handleOpenApply()}
+                onScrollTo={handleScrollTo}
+              />
+            </div>
+
+            {/* INSTITUTIONAL GOVERNANCE, UN SDGs & FACULTY LEADERSHIP */}
+            <div className="w-full">
+              <LeadershipImpactSection 
                 onScrollTo={handleScrollTo}
               />
             </div>

@@ -200,7 +200,7 @@ export const FacultyPage: React.FC<FacultyPageProps> = ({
                 <p className="text-sm text-slate-600">No administration members matching "{searchQuery}"</p>
               </div>
             ) : (
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-7 items-stretch">
+              <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-5 sm:gap-6 lg:gap-8 items-stretch">
                 {filteredAdmins.map((admin, idx) => (
                   <motion.div
                     key={admin.id}
@@ -213,44 +213,43 @@ export const FacultyPage: React.FC<FacultyPageProps> = ({
                     }}
                     viewport={{ once: true, amount: 0.15 }}
                     onClick={() => setSelectedFaculty(admin)}
-                    className="group bg-white rounded-2xl border border-slate-200/90 hover:border-slate-400/80 shadow-2xs hover:shadow-lg transition-all duration-300 flex flex-col justify-between overflow-hidden cursor-pointer p-3 sm:p-3.5"
+                    className="group flex flex-col items-center text-center cursor-pointer p-2 sm:p-2.5 rounded-2xl bg-white hover:bg-slate-50/70 border border-slate-100 hover:border-slate-300 shadow-2xs hover:shadow-md transition-all duration-300 justify-between"
                   >
-                    <div>
-                      {/* Photo Container: STRICT SAME 4:5 IMAGE RATIO AS FACULTY */}
-                      <div className="w-full aspect-[4/5] rounded-xl overflow-hidden bg-slate-100 border border-slate-200 shadow-2xs relative group-hover:border-[#092242]/30 transition-all">
+                    <div className="w-full">
+                      {/* Photo Container: EXACT SAME 4:5 IMAGE RATIO & SIZING AS FACULTY */}
+                      <div className="w-full aspect-[4/5] rounded-xl sm:rounded-2xl overflow-hidden bg-slate-100 border border-slate-200/90 shadow-2xs group-hover:shadow-xs group-hover:border-[#C5A059]/60 transition-all duration-300 relative">
                         <img
                           src={admin.photoUrl}
                           alt={admin.name}
                           loading="lazy"
                           decoding="async"
-                          className="w-full h-full object-cover object-center transition-transform duration-700 ease-out group-hover:scale-104"
+                          className="w-full h-full object-cover object-center transition-transform duration-500 ease-out group-hover:scale-105"
                           onError={(e) => {
                             (e.target as HTMLImageElement).src = admin.fallbackPhotoUrl;
                           }}
                         />
                         {/* Subtle elegant gradient overlay */}
-                        <div className="absolute inset-0 bg-gradient-to-t from-slate-950/30 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/25 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
                       </div>
 
                       {/* Name & Designation only (clean, to-the-point) */}
-                      <div className="mt-3.5 px-1 text-center w-full">
+                      <div className="mt-3 px-1 text-center w-full">
                         <h3 
-                          className="text-base sm:text-lg font-serif font-bold text-[#092242] group-hover:text-[#a30f16] transition-colors leading-snug"
-                          style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
+                          className="font-['Playfair_Display',serif] text-sm sm:text-base lg:text-lg font-bold text-[#0F2C61] group-hover:text-[#b8121a] transition-colors leading-snug"
                         >
                           {admin.name}
                         </h3>
                         <p className="text-xs font-semibold text-[#a30f16] uppercase tracking-wider mt-0.5 font-mono">
                           {admin.designation}
                         </p>
-                        <p className="text-[11px] text-slate-500 font-sans mt-0.5">
+                        <p className="text-[11px] text-slate-500 font-sans mt-0.5 font-medium">
                           {admin.department}
                         </p>
                       </div>
                     </div>
 
                     {/* View Dossier Action Bar */}
-                    <div className="mt-3 pt-2.5 border-t border-slate-100 flex items-center justify-center gap-1.5 text-xs font-semibold text-[#092242] group-hover:text-[#a30f16] transition-colors">
+                    <div className="mt-3 pt-2 w-full border-t border-slate-100 flex items-center justify-center gap-1.5 text-xs font-semibold text-[#092242] group-hover:text-[#a30f16] transition-colors">
                       <span className="text-[11px] font-mono uppercase tracking-wider">View Dossier</span>
                       <ChevronRight size={13} className="group-hover:translate-x-1 transition-transform" />
                     </div>
