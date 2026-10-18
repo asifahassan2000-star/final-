@@ -109,7 +109,7 @@ export const HERO_SLIDES: HeroSlide[] = [
     subtitle: 'At UCP Bahawalpur, we honor our faculty, students and memories that make us a family.',
     tag: 'Campus Culture & Family',
     image: '/assets/hero/culture-celebrates-journey.jpg',
-    fallbackImage: 'https://i.ibb.co/TDKGL6NJ/Whats-App-Image-2026-10-13-at-12-53-34-AM.jpg',
+    fallbackImage: 'https://i.ibb.co/7dZF2YkQ/Whats-App-Image-2026-10-13-at-1-12-45-AM.jpg',
     primaryCta: { label: 'Explore Life at UCP', action: 'campus-life' },
   },
   {

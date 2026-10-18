@@ -1,6 +1,7 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect } from 'react';
+import { SCROLL_ANIMATION } from '../utils/scrollAnimation';
 
-export type RevealVariant = 'heading' | 'text' | 'image' | 'card' | 'fade-up';
+export type RevealVariant = 'heading' | 'paragraph' | 'text' | 'image' | 'card' | 'fade-up' | 'label';
 
 export interface ScrollRevealProps extends React.HTMLAttributes<HTMLElement> {
   as?: React.ElementType;
@@ -14,23 +15,28 @@ export interface ScrollRevealProps extends React.HTMLAttributes<HTMLElement> {
 
 /**
  * ScrollRevealManager:
- * A lightweight, high-performance observer singleton that activates
- * scroll-reveal animations across all [data-reveal] elements on the page.
+ * A lightweight, high-performance IntersectionObserver singleton that activates
+ * smooth scroll-reveal animations across all [data-reveal] elements on the page.
  * 
- * - Single shared IntersectionObserver instance (GPU compositor friendly)
- * - Triggers at 15% viewport entrance
- * - Runs strictly ONCE per element (unobserves immediately upon reveal)
- * - Safe progressive enhancement (elements remain 100% visible if JS fails)
- * - Strict compliance with prefers-reduced-motion
- * - Auto-detects newly mounted items (page transitions, tab switches) via MutationObserver
+ * Animation Specifications:
+ * - Movement: 28–36px upward (32px standard)
+ * - Duration: 700–850ms (780ms standard)
+ * - Easing: Smooth cubic-bezier(0.22, 1, 0.36, 1)
+ * - Opacity: Fade from 0 to 1 alongside movement
+ * - Trigger: Start when element enters ~85% of viewport height (rootMargin: '0px 0px -15% 0px')
+ * - Stagger: 100–140ms (120ms standard) between separate headings, paragraphs, or content blocks
+ * - Text grouping: Animate each complete heading or paragraph as one unit, never line by line
+ * - Repeat: Strictly play ONCE per page visit (unobserves immediately upon reveal)
+ * - Performance: GPU-accelerated transform and opacity; no layout shifts
+ * - Reduced motion: Complete respect for prefers-reduced-motion
+ * - Universal: Smooth and glitch-free across desktop and mobile
  */
 export const ScrollRevealManager: React.FC = () => {
   useEffect(() => {
-    // 1. Accessibility & Mobile Check: If touch/mobile or prefers reduced motion, reveal everything immediately
+    // 1. Accessibility Check: If user prefers reduced motion, reveal everything immediately
     const motionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
-    const isTouch = typeof window !== 'undefined' && ('ontouchstart' in window || navigator.maxTouchPoints > 0 || window.innerWidth < 1024);
     
-    if (motionQuery.matches || isTouch) {
+    if (motionQuery.matches) {
       document.querySelectorAll<HTMLElement>('[data-reveal]').forEach((el) => {
         el.classList.add('is-revealed');
         el.setAttribute('data-revealed', 'true');
@@ -41,7 +47,7 @@ export const ScrollRevealManager: React.FC = () => {
     // 2. Mark document ready for progressive enhancement
     document.documentElement.classList.add('reveal-ready');
 
-    // 3. Create single shared IntersectionObserver with proactive trigger
+    // 3. Create IntersectionObserver triggering when element enters ~85% of viewport height
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -49,31 +55,28 @@ export const ScrollRevealManager: React.FC = () => {
             const target = entry.target as HTMLElement;
             target.classList.add('is-revealed');
             target.setAttribute('data-revealed', 'true');
-            // Strict rule: Animate only once
+            // Strict rule: Animate only once per page visit
             observer.unobserve(target);
           }
         });
       },
       {
-        threshold: 0.01, // Triggers immediately as element enters proximity
-        rootMargin: '160px 0px 80px 0px', // Pre-triggers ahead of viewport so content is already present
+        root: null,
+        // -15% at bottom ensures trigger activates when element enters ~85% of viewport height
+        rootMargin: SCROLL_ANIMATION.viewport.margin,
+        threshold: 0,
       }
     );
 
     // 4. Function to scan and observe all unrevealed elements
     const observeAll = () => {
+      const viewportTriggerLine = window.innerHeight * 0.85;
       const elements = document.querySelectorAll<HTMLElement>('[data-reveal]:not(.is-revealed)');
+      
       elements.forEach((el) => {
-        // Any image or element in proximity reveals immediately without waiting
-        if (el.getAttribute('data-reveal') === 'image') {
-          el.classList.add('is-revealed');
-          el.setAttribute('data-revealed', 'true');
-          return;
-        }
-
         const rect = el.getBoundingClientRect();
-        if (rect.top <= window.innerHeight * 1.15) {
-          // In immediate or proximate viewport
+        // If element is already above or within 85% viewport (e.g. initial view above fold)
+        if (rect.top <= viewportTriggerLine) {
           el.classList.add('is-revealed');
           el.setAttribute('data-revealed', 'true');
         } else {
@@ -82,10 +85,10 @@ export const ScrollRevealManager: React.FC = () => {
       });
     };
 
-    // Initial scan
+    // Initial scan on mount
     observeAll();
 
-    // 5. Lightweight debounced MutationObserver for dynamic page switches / tabs
+    // 5. Lightweight debounced MutationObserver for dynamic page transitions & tab changes
     let timeoutId: number | null = null;
     const mutationObserver = new MutationObserver(() => {
       if (timeoutId) cancelAnimationFrame(timeoutId);
@@ -99,7 +102,7 @@ export const ScrollRevealManager: React.FC = () => {
       subtree: true,
     });
 
-    // 6. Cleanup
+    // 6. Cleanup on unmount
     return () => {
       observer.disconnect();
       mutationObserver.disconnect();
@@ -112,7 +115,6 @@ export const ScrollRevealManager: React.FC = () => {
 
 /**
  * Reusable ScrollReveal wrapper component
- * Can be used as a JSX wrapper or direct data attributes.
  */
 export const ScrollReveal: React.FC<ScrollRevealProps> = ({
   as: Component = 'div',
@@ -120,13 +122,13 @@ export const ScrollReveal: React.FC<ScrollRevealProps> = ({
   delay,
   staggerIndex,
   staggerBase = 0,
-  staggerInterval = 30,
+  staggerInterval = SCROLL_ANIMATION.staggerMs,
   className = '',
   style,
   children,
   ...rest
 }) => {
-  // Compute delay: if staggerIndex is supplied, calculate sequential stagger
+  // Compute delay: if staggerIndex is supplied, calculate sequential stagger (120ms intervals)
   let computedDelay = delay;
   if (computedDelay === undefined && staggerIndex !== undefined) {
     computedDelay = staggerBase + staggerIndex * staggerInterval;

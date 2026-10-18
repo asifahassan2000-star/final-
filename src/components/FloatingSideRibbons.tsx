@@ -63,7 +63,7 @@ export const FloatingSideRibbons: React.FC<FloatingSideRibbonsProps> = ({
           href="https://admissions.ucpcolleges.pgc.edu/login?returnUrl=%2Flogin%3FreturnUrl%3D%252F"
           target="_blank"
           rel="noopener noreferrer"
-          className="group relative bg-[#a30f16] hover:bg-[#860c12] active:bg-[#860c12] text-white border-l border-t border-b border-rose-900/60 rounded-l-[4px] transition-all duration-200 hover:pr-1 shadow-md focus:outline-none block cursor-pointer"
+          className="group relative bg-[#a30f16] hover:bg-[#860c12] active:bg-[#860c12] text-white border-l border-t border-b border-rose-900/60 rounded-l-[4px] transition-all duration-200 hover:pr-1 shadow-md focus:outline-none hidden sm:block cursor-pointer"
           style={{ writingMode: 'vertical-rl', transform: 'rotate(180deg)' }}
           title="Apply Online for Fall 2026 Admissions"
         >
@@ -132,7 +132,7 @@ export const FloatingSideRibbons: React.FC<FloatingSideRibbonsProps> = ({
       <div className="fixed bottom-22 sm:bottom-24 right-5 sm:right-6 z-40 flex items-center">
         {showWhatsAppTooltip && (
           <div className="hidden sm:block mr-2.5 bg-white text-slate-800 text-xs px-3 py-1.5 rounded-xl shadow-xl border border-slate-200 font-semibold animate-in fade-in slide-in-from-right-2">
-            Chat with UCP Admissions Helpdesk
+            Official Campus Contact: 062-2202030 / 062-2202050
           </div>
         )}
         <button
@@ -141,8 +141,8 @@ export const FloatingSideRibbons: React.FC<FloatingSideRibbonsProps> = ({
           onMouseEnter={() => setShowWhatsAppTooltip(true)}
           onMouseLeave={() => setShowWhatsAppTooltip(false)}
           className="w-12 h-12 sm:w-13 sm:h-13 rounded-full bg-[#25D366] hover:bg-[#20ba5a] text-white flex items-center justify-center shadow-xl hover:scale-108 active:scale-95 transition-all duration-200 group focus:outline-none relative"
-          aria-label="Chat on WhatsApp with UCP"
-          title="Chat on WhatsApp (+92-800-00827)"
+          aria-label="Official Campus Contacts: 062-2202030 / 062-2202050"
+          title="Official Campus Contacts: 062-2202030 / 062-2202050"
         >
           {/* Subtle pulse ring */}
           <span className="absolute -inset-1 rounded-full bg-[#25D366] opacity-30 group-hover:animate-ping" />

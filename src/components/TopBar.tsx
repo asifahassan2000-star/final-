@@ -53,9 +53,24 @@ export const TopBar: React.FC<TopBarProps> = ({ onOpenPortal, onOpenFee, onOpenA
 
           {/* Quick links & contact info */}
           <div className="flex items-center flex-wrap justify-end gap-x-4 gap-y-1 text-[11px] shrink-0">
-            <div className="hidden lg:flex items-center gap-1 text-slate-300 hover:text-white transition-colors">
+            <div className="hidden lg:flex items-center gap-1.5 text-slate-300">
               <Phone size={12} className="text-[#b8121a]" />
-              <span>Phone: <strong className="text-white">{UCP_CONTACT.phone}</strong></span>
+              <span>Phone:</span>
+              <a 
+                href="tel:0622202030" 
+                className="text-white hover:text-amber-300 transition-colors font-bold cursor-pointer"
+                title="Call 062-2202030"
+              >
+                062-2202030
+              </a>
+              <span className="text-slate-500">/</span>
+              <a 
+                href="tel:0622202050" 
+                className="text-white hover:text-amber-300 transition-colors font-bold cursor-pointer"
+                title="Call 062-2202050"
+              >
+                062-2202050
+              </a>
             </div>
 
             <button 

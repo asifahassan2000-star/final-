@@ -74,7 +74,11 @@ export const FacultiesGrid: React.FC<FacultiesGridProps> = ({
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header: Minimal & Compact WordPress Style */}
-        <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-7 sm:mb-8 pb-4 border-b border-slate-200/80 gap-3">
+        <div 
+          data-reveal="heading"
+          data-reveal-delay="0"
+          className="flex flex-col sm:flex-row sm:items-end justify-between mb-7 sm:mb-8 pb-4 border-b border-slate-200/80 gap-3"
+        >
           <div>
             <div className="inline-flex items-center gap-1.5 mb-1">
               <span className="w-2 h-2 rounded-full bg-[#a30f16]" />
@@ -117,12 +121,12 @@ export const FacultiesGrid: React.FC<FacultiesGridProps> = ({
               <motion.div
                 key={fac.id}
                 id={`faculty-card-${fac.id}`}
-                initial={{ opacity: 0, y: 16 }}
+                initial={{ opacity: 0, y: 32 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.2 }}
+                viewport={{ once: true, margin: '0px 0px -15% 0px' }}
                 transition={{
-                  duration: 0.45,
-                  delay: index * 0.06,
+                  duration: 0.78,
+                  delay: index * 0.12,
                   ease: [0.22, 1, 0.36, 1],
                 }}
                 whileHover={{ y: -4, transition: { duration: 0.2 } }}

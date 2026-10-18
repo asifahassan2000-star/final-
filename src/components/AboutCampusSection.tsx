@@ -88,10 +88,10 @@ export const AboutCampusSection: React.FC<AboutCampusSectionProps> = ({
         {/* Header with Framer Motion Reveal */}
         <motion.div 
           className="max-w-3xl mb-12 sm:mb-16"
-          initial={{ opacity: 0, y: 25 }}
+          initial={{ opacity: 0, y: 32 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: easeCurve }}
-          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.78, ease: easeCurve }}
+          viewport={{ once: true, margin: '0px 0px -15% 0px' }}
         >
           <div className="flex items-center gap-3 mb-3">
             <span className="text-xs font-bold uppercase tracking-[0.22em] text-[#a30f16]">
@@ -121,10 +121,10 @@ export const AboutCampusSection: React.FC<AboutCampusSectionProps> = ({
           {/* Left Column: Architectural Exterior */}
           <motion.div 
             className="lg:col-span-7 flex flex-col space-y-6"
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 32 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: easeCurve }}
-            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.78, delay: 0.12, ease: easeCurve }}
+            viewport={{ once: true, margin: '0px 0px -15% 0px' }}
           >
             {/* Architectural Exterior Photograph (Minimal, No Extra Border) */}
             <div className="group relative overflow-hidden rounded-xl bg-slate-100 shadow-xs w-full aspect-[16/9]">
@@ -187,10 +187,10 @@ export const AboutCampusSection: React.FC<AboutCampusSectionProps> = ({
           {/* Right Column: Campus Grounds Visual & Specs */}
           <motion.div 
             className="lg:col-span-5 flex flex-col space-y-6"
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 32 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.1, ease: easeCurve }}
-            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.78, delay: 0.24, ease: easeCurve }}
+            viewport={{ once: true, margin: '0px 0px -15% 0px' }}
           >
             <div className="bg-[#FAF8F5] rounded-xl p-6 sm:p-7 shadow-xs space-y-5">
               <div className="flex items-center justify-between flex-wrap gap-2">

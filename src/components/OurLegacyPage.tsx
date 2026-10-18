@@ -8,11 +8,7 @@ import {
 } from 'lucide-react';
 import { UCP_CONTACT } from '../data/ucpData';
 
-// Real high-quality campus photographs
-const computingLabImg = '/assets/facilities/comp-lab-1.jpg';
-const businessSeminarImg = '/assets/campus/11_academics_classroom.jpg';
-const scienceLabImg = '/assets/facilities/comp-lab-2.jpg';
-const libraryImg = '/assets/facilities/library-main-large.jpg';
+
 
 // Authentic historical portrait of the Nawab of Bahawalpur (Abbasi Dynasty)
 import nawabFullLengthImg from '../assets/images/nawab_of_bahawalpur.jpg';
@@ -124,15 +120,6 @@ interface MilestoneItem {
   icon: string;
 }
 
-interface CampusBeautyPhoto {
-  id: string;
-  title: string;
-  category: 'Campus Architecture' | 'Laboratories' | 'Academic Spaces' | 'Student Environment';
-  caption: string;
-  image: string;
-  fallbackImage?: string;
-}
-
 export const OurLegacyPage: React.FC<OurLegacyPageProps> = ({
   onBackToHome,
   onOpenApply,
@@ -141,8 +128,6 @@ export const OurLegacyPage: React.FC<OurLegacyPageProps> = ({
 }) => {
   const [selectedGalleryItem, setSelectedGalleryItem] = useState<HeritageItem | null>(null);
   const [activeMilestoneTab, setActiveMilestoneTab] = useState<number>(0);
-  const [beautyFilter, setBeautyFilter] = useState<string>('All');
-  const [selectedBeautyPhoto, setSelectedBeautyPhoto] = useState<CampusBeautyPhoto | null>(null);
   const [selectedBwpBuildingIdx, setSelectedBwpBuildingIdx] = useState<number>(0);
 
   const scrollToSection = (id: string) => {
@@ -292,88 +277,7 @@ export const OurLegacyPage: React.FC<OurLegacyPageProps> = ({
     }
   ];
 
-  // 4. Campus Beauty Real Photographs Data
-  const campusBeautyPhotos: CampusBeautyPhoto[] = [
-    {
-      id: 'bwp-main-campus',
-      title: 'UCP Bahawalpur Main Campus Facade',
-      category: 'Campus Architecture',
-      caption: 'Direct exterior view of the UCP Bahawalpur campus building facade, featuring contemporary academic architecture and grand institutional entrance.',
-      image: UCP_BWP_BUILDING_4,
-      fallbackImage: UCP_BWP_BUILDING_4_FALLBACK
-    },
-    {
-      id: 'bwp-computing-lab',
-      title: 'High-Tech Computing & AI Laboratories',
-      category: 'Laboratories',
-      caption: 'State-of-the-art computer science workstations configured with gigabit networking, modern development software, and machine learning toolkits.',
-      image: computingLabImg
-    },
-    {
-      id: 'bwp-grounds-complex',
-      title: 'UCP Bahawalpur Campus Grounds & Lawns',
-      category: 'Campus Architecture',
-      caption: 'Spacious campus grounds and modern structural blocks of UCP Bahawalpur providing an inspiring educational setting.',
-      image: UCP_BWP_BUILDING_1,
-      fallbackImage: UCP_BWP_BUILDING_1_FALLBACK
-    },
-    {
-      id: 'bwp-library',
-      title: 'Central Academic Library & Study Commons',
-      category: 'Academic Spaces',
-      caption: 'Quiet reading zones, digital research portals, and thousands of catalogued textbooks and academic monographs for student study.',
-      image: libraryImg
-    },
-    {
-      id: 'bwp-central-wing',
-      title: 'UCP Bahawalpur Central Academic Wing',
-      category: 'Campus Architecture',
-      caption: 'Contemporary architectural wing housing lecture halls, administrative offices, and student support services.',
-      image: UCP_BWP_BUILDING_2,
-      fallbackImage: UCP_BWP_BUILDING_2_FALLBACK
-    },
-    {
-      id: 'bwp-business-seminar',
-      title: 'Executive Lecture Theatres & Seminar Halls',
-      category: 'Academic Spaces',
-      caption: 'Acoustically treated tiered lecture halls equipped with modern multimedia presentation displays and interactive podiums.',
-      image: businessSeminarImg
-    },
-    {
-      id: 'bwp-science-lab',
-      title: 'Natural & Applied Sciences Laboratories',
-      category: 'Laboratories',
-      caption: 'Equipped with calibrated precision instruments and safety standards supporting chemistry, physics, and life sciences curricula.',
-      image: scienceLabImg
-    },
-    {
-      id: 'bwp-entrance-tower',
-      title: 'UCP Bahawalpur Institutional Entrance Tower',
-      category: 'Campus Architecture',
-      caption: 'Iconic architectural tower marking the modern entrance to the University of Central Punjab Bahawalpur Campus.',
-      image: UCP_BWP_BUILDING_3,
-      fallbackImage: UCP_BWP_BUILDING_3_FALLBACK
-    },
-    {
-      id: 'bwp-campus-vista',
-      title: 'UCP Bahawalpur Campus Panoramic Vista',
-      category: 'Campus Architecture',
-      caption: 'Widescreen architectural vista of the UCP Bahawalpur campus building and perimeter, illustrating the scale and modern academic infrastructure.',
-      image: UCP_BWP_BUILDING_5,
-      fallbackImage: UCP_BWP_BUILDING_5_FALLBACK
-    },
-    {
-      id: 'bwp-student-life',
-      title: 'Student Commons & Collaborative Courtyards',
-      category: 'Student Environment',
-      caption: 'Landscaped grounds and open social areas fostering peer collaboration, intellectual debates, and student club activities.',
-      image: 'https://ucp.edu.pk/wp-content/uploads/2025/06/02.webp'
-    }
-  ];
 
-  const filteredPhotos = beautyFilter === 'All'
-    ? campusBeautyPhotos
-    : campusBeautyPhotos.filter(p => p.category === beautyFilter);
 
   return (
     <div id="legacy-page-root" className="min-h-screen bg-[#fafbfc] text-slate-900 font-sans selection:bg-[#a30f16] selection:text-white">
@@ -1073,7 +977,7 @@ export const OurLegacyPage: React.FC<OurLegacyPageProps> = ({
 
             </motion.div>
 
-            {/* Large Visual Transition: Dual-Image Comparison from Right */}
+            {/* Visual Transition: Equal-Sized Square Images Side-by-Side (No outer frame) */}
             <motion.div 
               className="lg:col-span-6"
               initial={{ opacity: 0, x: 60 }}
@@ -1081,56 +985,45 @@ export const OurLegacyPage: React.FC<OurLegacyPageProps> = ({
               transition={{ duration: 1, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
               viewport={{ once: false, amount: 0.25 }}
             >
-              <div 
-                className="relative rounded-3xl overflow-hidden shadow-2xl border border-white/10 bg-slate-900"
-              >
-                {/* Two stacked or split panels representing the transition */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 h-[420px] sm:h-[460px]">
-                  
-                  {/* Left: Historic Architecture */}
-                  <div className="relative h-full overflow-hidden group">
-                    <img 
-                      src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b9/Darbar_Mahal_%28Palace%29%2C_Bahawalpur.jpg/1280px-Darbar_Mahal_%28Palace%29%2C_Bahawalpur.jpg" 
-                      alt="Darbar Mahal Historical Architecture" 
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                      onError={(e) => {
-                        (e.target as HTMLImageElement).src = 'https://images.unsplash.com/photo-1548013146-72479768bada?auto=format&fit=crop&w=800&q=80';
-                      }}
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
-                    <div className="absolute bottom-4 left-4 right-4">
-                      <span className="text-[10px] uppercase font-bold tracking-wider text-amber-300 bg-black/60 px-2 py-0.5 rounded">
-                        Historic Legacy
-                      </span>
-                      <p className="text-sm font-bold text-white mt-1">Royal Bahawalpur Architecture</p>
-                    </div>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
+                
+                {/* Image 1: Historic Architecture (Square, equal size) */}
+                <div className="relative aspect-square w-full rounded-2xl overflow-hidden shadow-xl group bg-slate-900 border border-white/10">
+                  <img 
+                    src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b9/Darbar_Mahal_%28Palace%29%2C_Bahawalpur.jpg/1280px-Darbar_Mahal_%28Palace%29%2C_Bahawalpur.jpg" 
+                    alt="Darbar Mahal Historical Architecture" 
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                    onError={(e) => {
+                      (e.target as HTMLImageElement).src = 'https://images.unsplash.com/photo-1548013146-72479768bada?auto=format&fit=crop&w=800&q=80';
+                    }}
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent pointer-events-none" />
+                  <div className="absolute bottom-3.5 left-3.5 right-3.5">
+                    <span className="text-[10px] uppercase font-bold tracking-wider text-amber-300 bg-black/60 px-2 py-0.5 rounded backdrop-blur-xs">
+                      Historic Legacy
+                    </span>
+                    <p className="text-sm font-bold text-white mt-1 leading-snug">Royal Bahawalpur Architecture</p>
                   </div>
-
-                  {/* Right: Modern UCP Bahawalpur Campus */}
-                  <div className="relative h-full overflow-hidden group border-t sm:border-t-0 sm:border-l border-white/15">
-                    <img 
-                      src={UCP_BWP_BUILDING_1} 
-                      alt="UCP Bahawalpur Campus Building" 
-                      referrerPolicy="no-referrer"
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                      onError={(e) => {
-                        (e.target as HTMLImageElement).src = UCP_BWP_BUILDING_1_FALLBACK;
-                      }}
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
-                    <div className="absolute bottom-4 left-4 right-4">
-                      <span className="text-[10px] uppercase font-bold tracking-wider text-emerald-300 bg-[#a30f16] px-2 py-0.5 rounded">
-                        Modern Opportunity
-                      </span>
-                      <p className="text-sm font-bold text-white mt-1">UCP Bahawalpur Campus</p>
-                    </div>
-                  </div>
-
                 </div>
 
-                {/* Center Badge */}
-                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-[#a30f16] text-white p-3 rounded-full shadow-2xl border-2 border-white hidden sm:flex items-center justify-center">
-                  <ArrowRight size={18} />
+                {/* Image 2: Modern UCP Bahawalpur Campus (Square, equal size) */}
+                <div className="relative aspect-square w-full rounded-2xl overflow-hidden shadow-xl group bg-slate-900 border border-white/10">
+                  <img 
+                    src={UCP_BWP_BUILDING_1} 
+                    alt="UCP Bahawalpur Campus Building" 
+                    referrerPolicy="no-referrer"
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                    onError={(e) => {
+                      (e.target as HTMLImageElement).src = UCP_BWP_BUILDING_1_FALLBACK;
+                    }}
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent pointer-events-none" />
+                  <div className="absolute bottom-3.5 left-3.5 right-3.5">
+                    <span className="text-[10px] uppercase font-bold tracking-wider text-emerald-300 bg-[#a30f16] px-2 py-0.5 rounded backdrop-blur-xs">
+                      Modern Opportunity
+                    </span>
+                    <p className="text-sm font-bold text-white mt-1 leading-snug">UCP Bahawalpur Campus</p>
+                  </div>
                 </div>
 
               </div>
@@ -1664,245 +1557,7 @@ export const OurLegacyPage: React.FC<OurLegacyPageProps> = ({
         </div>
       </section>
 
-      {/* =========================================================================
-          10. THE BEAUTY OF UCP BAHAWALPUR
-          Premium visual gallery using REAL campus photographs
-          ========================================================================= */}
-      <section id="campus-beauty" className="py-20 lg:py-24 bg-slate-50 border-b border-slate-200">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          
-          <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4">
-            <div className="max-w-2xl">
-              <span 
-                data-reveal="heading" 
-                data-reveal-delay="0"
-                className="text-xs font-bold text-[#a30f16] tracking-wider uppercase flex items-center gap-1.5"
-              >
-                <Eye size={14} /> Real Campus Visuals
-              </span>
-              <h2 
-                data-reveal="heading" 
-                data-reveal-delay="80"
-                className="text-3xl sm:text-4xl font-extrabold text-[#092242] tracking-tight mt-1"
-              >
-                A Campus Designed for Learning
-              </h2>
-              <p 
-                data-reveal="paragraph" 
-                data-reveal-delay="120"
-                className="text-slate-600 text-sm sm:text-base mt-2"
-              >
-                Explore real photographs of the educational environments, modern laboratories, academic libraries, and student spaces at UCP Bahawalpur.
-              </p>
-            </div>
 
-            {/* Filter Pills */}
-            <div 
-              data-reveal="card" 
-              data-reveal-delay="200"
-              className="flex flex-wrap items-center gap-1.5 bg-white p-1 rounded-xl border border-slate-200 shadow-xs"
-            >
-              {['All', 'Campus Architecture', 'Laboratories', 'Academic Spaces', 'Student Environment'].map((f) => (
-                <button
-                  key={f}
-                  onClick={() => setBeautyFilter(f)}
-                  className={`text-xs px-3 py-1.5 rounded-lg font-semibold transition-colors cursor-pointer ${
-                    beautyFilter === f 
-                      ? 'bg-[#092242] text-white shadow-xs' 
-                      : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100'
-                  }`}
-                >
-                  {f}
-                </button>
-              ))}
-            </div>
-          </div>
-
-          {/* Real Campus Photos Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
-            {filteredPhotos.map((photo, idx) => (
-              <div
-                key={photo.id}
-                data-reveal="card"
-                data-reveal-delay={100 + idx * 80}
-                onClick={() => setSelectedBeautyPhoto(photo)}
-                className="group bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl border border-slate-200 transition-all duration-300 flex flex-col cursor-pointer"
-              >
-                <div className="relative h-60 w-full overflow-hidden bg-slate-900">
-                  <img 
-                    src={photo.image} 
-                    alt={photo.title} 
-                    referrerPolicy="no-referrer"
-                    className="w-full h-full object-cover object-center group-hover:scale-106 transition-transform duration-700 ease-out"
-                    onError={(e) => {
-                      if (photo.fallbackImage) {
-                        (e.target as HTMLImageElement).src = photo.fallbackImage;
-                      }
-                    }}
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-black/20" />
-                  
-                  {/* Category Pill on Image */}
-                  <div className="absolute top-3 left-3 bg-[#092242]/90 backdrop-blur-md text-amber-300 text-[10px] font-bold px-2.5 py-0.5 rounded border border-amber-400/30">
-                    {photo.category}
-                  </div>
-
-                  <div className="absolute top-3 right-3 bg-black/50 text-white text-[10px] font-semibold px-2 py-0.5 rounded flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
-                    <ZoomIn size={11} /> Expand
-                  </div>
-                </div>
-
-                <div className="p-5 flex-1 flex flex-col justify-between">
-                  <div>
-                    <h3 className="text-base font-bold text-[#092242] group-hover:text-[#a30f16] transition-colors">
-                      {photo.title}
-                    </h3>
-                    <p className="text-xs text-slate-600 leading-relaxed mt-2">
-                      {photo.caption}
-                    </p>
-                  </div>
-
-                  <div className="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-[11px] text-slate-400">
-                    <span>UCP Bahawalpur Facility</span>
-                    <span className="text-[#a30f16] font-semibold group-hover:translate-x-1 transition-transform inline-flex items-center gap-1">
-                      View full photo →
-                    </span>
-                  </div>
-                </div>
-
-              </div>
-            ))}
-          </div>
-
-        </div>
-      </section>
-
-      {/* =========================================================================
-          11. CAMPUS EXPERIENCE
-          Four elegant sections/cards with factual descriptions
-          ========================================================================= */}
-      <section id="campus-experience" className="py-20 lg:py-24 bg-white border-b border-slate-200">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          
-          <div className="text-center max-w-2xl mx-auto mb-16">
-            <span 
-              data-reveal="heading" 
-              data-reveal-delay="0"
-              className="text-xs font-bold text-[#a30f16] tracking-wider uppercase flex items-center justify-center gap-1.5"
-            >
-              <Users size={14} /> Four Pillars
-            </span>
-            <h2 
-              data-reveal="heading" 
-              data-reveal-delay="80"
-              className="text-3xl sm:text-4xl font-extrabold text-[#092242] tracking-tight mt-1"
-            >
-              Campus Experience
-            </h2>
-            <p 
-              data-reveal="paragraph" 
-              data-reveal-delay="120"
-              className="text-slate-600 text-sm sm:text-base mt-2"
-            >
-              The structural environments shaping daily student life and learning at UCP Bahawalpur.
-            </p>
-          </div>
-
-          {/* Four Elegant Cards */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            
-            {/* Card 1: ACADEMIC ENVIRONMENT */}
-            <div 
-              data-reveal="card" 
-              data-reveal-delay="100"
-              className="bg-slate-50 hover:bg-white rounded-2xl p-6 border border-slate-200 hover:border-slate-300 shadow-xs hover:shadow-lg transition-all group flex flex-col justify-between"
-            >
-              <div>
-                <div className="w-12 h-12 rounded-xl bg-[#092242] text-amber-300 flex items-center justify-center mb-4 shadow">
-                  <BookOpen size={22} />
-                </div>
-                <h3 className="text-sm font-extrabold text-[#092242] tracking-wider uppercase group-hover:text-[#a30f16] transition-colors">
-                  Academic Environment
-                </h3>
-                <p className="text-xs text-slate-700 leading-relaxed mt-3">
-                  Modern spaces designed to support learning. Tiered lecture rooms, digital library commons, and interactive presentation facilities tailored to undergraduate and associate degree curricula.
-                </p>
-              </div>
-              <div className="mt-6 pt-3 border-t border-slate-200/80 text-[11px] font-bold text-[#092242]">
-                Learning Spaces
-              </div>
-            </div>
-
-            {/* Card 2: STUDENT LIFE */}
-            <div 
-              data-reveal="card" 
-              data-reveal-delay="220"
-              className="bg-slate-50 hover:bg-white rounded-2xl p-6 border border-slate-200 hover:border-slate-300 shadow-xs hover:shadow-lg transition-all group flex flex-col justify-between"
-            >
-              <div>
-                <div className="w-12 h-12 rounded-xl bg-[#a30f16] text-white flex items-center justify-center mb-4 shadow">
-                  <Users size={22} />
-                </div>
-                <h3 className="text-sm font-extrabold text-[#092242] tracking-wider uppercase group-hover:text-[#a30f16] transition-colors">
-                  Student Life
-                </h3>
-                <p className="text-xs text-slate-700 leading-relaxed mt-3">
-                  A campus environment where students learn, connect and participate. Co-curricular societies, academic symposiums, debating forums, and collaborative student initiatives.
-                </p>
-              </div>
-              <div className="mt-6 pt-3 border-t border-slate-200/80 text-[11px] font-bold text-[#a30f16]">
-                Engagement & Participation
-              </div>
-            </div>
-
-            {/* Card 3: CAMPUS BEAUTY */}
-            <div 
-              data-reveal="card" 
-              data-reveal-delay="340"
-              className="bg-slate-50 hover:bg-white rounded-2xl p-6 border border-slate-200 hover:border-slate-300 shadow-xs hover:shadow-lg transition-all group flex flex-col justify-between"
-            >
-              <div>
-                <div className="w-12 h-12 rounded-xl bg-amber-600 text-white flex items-center justify-center mb-4 shadow">
-                  <Landmark size={22} />
-                </div>
-                <h3 className="text-sm font-extrabold text-[#092242] tracking-wider uppercase group-hover:text-[#a30f16] transition-colors">
-                  Campus Beauty
-                </h3>
-                <p className="text-xs text-slate-700 leading-relaxed mt-3">
-                  Architecture, landscaping and welcoming spaces. A purpose-built layout providing clean courtyards, natural ventilation, quiet study corners, and institutional aesthetic clarity.
-                </p>
-              </div>
-              <div className="mt-6 pt-3 border-t border-slate-200/80 text-[11px] font-bold text-amber-700">
-                Architectural Clarity
-              </div>
-            </div>
-
-            {/* Card 4: COMMUNITY */}
-            <div 
-              data-reveal="card" 
-              data-reveal-delay="460"
-              className="bg-slate-50 hover:bg-white rounded-2xl p-6 border border-slate-200 hover:border-slate-300 shadow-xs hover:shadow-lg transition-all group flex flex-col justify-between"
-            >
-              <div>
-                <div className="w-12 h-12 rounded-xl bg-emerald-700 text-white flex items-center justify-center mb-4 shadow">
-                  <Globe size={22} />
-                </div>
-                <h3 className="text-sm font-extrabold text-[#092242] tracking-wider uppercase group-hover:text-[#a30f16] transition-colors">
-                  Community
-                </h3>
-                <p className="text-xs text-slate-700 leading-relaxed mt-3">
-                  A university environment connected with the wider Bahawalpur community. Fostering civic responsibility, regional talent development, and strong ties with local industries.
-                </p>
-              </div>
-              <div className="mt-6 pt-3 border-t border-slate-200/80 text-[11px] font-bold text-emerald-800">
-                Civic Linkage
-              </div>
-            </div>
-
-          </div>
-
-        </div>
-      </section>
 
       {/* =========================================================================
           12. HERITAGE MEETS EDUCATION
@@ -2290,62 +1945,7 @@ export const OurLegacyPage: React.FC<OurLegacyPageProps> = ({
         </div>
       )}
 
-      {/* =========================================================================
-          MODAL: Campus Beauty Photo Lightbox
-          ========================================================================= */}
-      {selectedBeautyPhoto && (
-        <div 
-          className="fixed inset-0 z-50 bg-black/85 backdrop-blur-md flex items-center justify-center p-4 sm:p-6 animate-in fade-in duration-200"
-          onClick={() => setSelectedBeautyPhoto(null)}
-        >
-          <div 
-            className="bg-white rounded-3xl max-w-4xl w-full overflow-hidden shadow-2xl border border-slate-300 relative text-slate-900"
-            onClick={(e) => e.stopPropagation()}
-          >
-            <button
-              onClick={() => setSelectedBeautyPhoto(null)}
-              className="absolute top-4 right-4 z-10 w-9 h-9 rounded-full bg-black/60 hover:bg-black text-white flex items-center justify-center transition-colors cursor-pointer"
-              aria-label="Close dialog"
-            >
-              <X size={18} />
-            </button>
 
-            <div className="relative h-80 sm:h-[420px] w-full overflow-hidden bg-slate-900">
-              <img 
-                src={selectedBeautyPhoto.image} 
-                alt={selectedBeautyPhoto.title} 
-                referrerPolicy="no-referrer"
-                className="w-full h-full object-cover"
-                onError={(e) => {
-                  if (selectedBeautyPhoto.fallbackImage) {
-                    (e.target as HTMLImageElement).src = selectedBeautyPhoto.fallbackImage;
-                  }
-                }}
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
-              <div className="absolute bottom-4 left-5 right-5 text-white">
-                <span className="text-[10px] font-bold uppercase tracking-wider text-amber-300 bg-black/60 px-2 py-0.5 rounded">
-                  {selectedBeautyPhoto.category}
-                </span>
-                <h3 className="text-2xl font-extrabold mt-1">{selectedBeautyPhoto.title}</h3>
-              </div>
-            </div>
-
-            <div className="p-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
-              <p className="text-sm text-slate-700 leading-relaxed max-w-2xl">
-                {selectedBeautyPhoto.caption}
-              </p>
-              <button
-                onClick={() => setSelectedBeautyPhoto(null)}
-                className="bg-[#092242] text-white hover:bg-[#a30f16] px-5 py-2 rounded-xl text-xs font-bold transition-colors shrink-0 cursor-pointer"
-              >
-                Close View
-              </button>
-            </div>
-
-          </div>
-        </div>
-      )}
 
     </div>
   );

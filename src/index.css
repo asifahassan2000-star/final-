@@ -328,59 +328,66 @@ video, canvas, svg {
 }
 
 /* ==========================================================================
-   Fast Institutional Scroll-Reveal Animation System
-   Instant image presence, snappy 240-280ms reveals, zero loading lag
+   Smooth Institutional Scroll-Reveal Animation System
+   Exact Specifications:
+   - Movement: 32px upward (28–36px specification)
+   - Duration: 780ms (700–850ms specification)
+   - Easing: cubic-bezier(0.22, 1, 0.36, 1)
+   - Opacity: Fade from 0 to 1 alongside movement
+   - Trigger: ~85% of viewport height
+   - Stagger: 100–140ms between units (120ms standard)
+   - Repeat: Once per page visit
+   - Text grouping: Animate whole heading or paragraph as one unit
+   - Performance: transform and opacity only, no layout shifts
+   - Universal: Smooth on desktop and mobile
    ========================================================================== */
 
-/* 1. Progressive Enhancement Default:
-   All elements and images remain 100% visible */
+/* 1. Progressive Enhancement Default: All elements visible before script initialization */
 [data-reveal] {
   opacity: 1;
   transform: none;
 }
 
-/* Images and all content are ALWAYS 100% visible - zero blank screens or hidden sections */
-img,
-[data-reveal],
-[data-reveal="image"],
-.img-fast-presence {
-  opacity: 1 !important;
-  visibility: visible !important;
+/* 2. Unrevealed State: Shifted 32px down with 0 opacity */
+html.reveal-ready [data-reveal]:not(.is-revealed) {
+  opacity: 0;
+  transform: translateY(32px);
+  will-change: transform, opacity;
+  transition: opacity 780ms cubic-bezier(0.22, 1, 0.36, 1),
+              transform 780ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-/* 2. Gentle enhancement for desktop viewports without hiding content */
-@media (min-width: 1025px) and (hover: hover) {
-  html.reveal-ready [data-reveal="heading"] {
-    transition: transform 240ms cubic-bezier(0.16, 1, 0.3, 1);
-  }
-  html.reveal-ready [data-reveal="text"],
-  html.reveal-ready [data-reveal="fade-up"],
-  html.reveal-ready [data-reveal="card"] {
-    transition: transform 220ms cubic-bezier(0.16, 1, 0.3, 1);
-  }
-}
-
-/* 7. Revealed State: Snaps smoothly to natural layout position */
-[data-reveal].is-revealed,
-[data-reveal][data-revealed="true"] {
+/* 3. Revealed State: Smooth arrival at original position */
+html.reveal-ready [data-reveal].is-revealed,
+html.reveal-ready [data-reveal][data-revealed="true"] {
   opacity: 1 !important;
-  transform: translateY(0) scale(1) !important;
+  transform: translateY(0) !important;
   will-change: auto;
 }
 
-/* 8. Mobile & Touch: Guarantee immediate full visibility and zero delay on mobile and touch */
-@media (max-width: 1024px), (pointer: coarse) {
-  [data-reveal] {
-    opacity: 1 !important;
-    transform: none !important;
-    transition: none !important;
-    will-change: auto !important;
-  }
-}
+/* 4. Sequential Stagger Delays (100–140ms intervals, 120ms standard) */
+[data-reveal-delay="0"], [data-reveal-delay="0ms"] { transition-delay: 0ms !important; }
+[data-reveal-delay="80"], [data-reveal-delay="80ms"] { transition-delay: 80ms !important; }
+[data-reveal-delay="100"], [data-reveal-delay="100ms"] { transition-delay: 100ms !important; }
+[data-reveal-delay="120"], [data-reveal-delay="120ms"] { transition-delay: 120ms !important; }
+[data-reveal-delay="140"], [data-reveal-delay="140ms"] { transition-delay: 140ms !important; }
+[data-reveal-delay="200"], [data-reveal-delay="200ms"] { transition-delay: 200ms !important; }
+[data-reveal-delay="240"], [data-reveal-delay="240ms"] { transition-delay: 240ms !important; }
+[data-reveal-delay="280"], [data-reveal-delay="280ms"] { transition-delay: 280ms !important; }
+[data-reveal-delay="300"], [data-reveal-delay="300ms"] { transition-delay: 300ms !important; }
+[data-reveal-delay="360"], [data-reveal-delay="360ms"] { transition-delay: 360ms !important; }
+[data-reveal-delay="400"], [data-reveal-delay="400ms"] { transition-delay: 400ms !important; }
+[data-reveal-delay="480"], [data-reveal-delay="480ms"] { transition-delay: 480ms !important; }
+[data-reveal-delay="500"], [data-reveal-delay="500ms"] { transition-delay: 500ms !important; }
+[data-reveal-delay="600"], [data-reveal-delay="600ms"] { transition-delay: 600ms !important; }
+[data-reveal-delay="700"], [data-reveal-delay="700ms"] { transition-delay: 700ms !important; }
+[data-reveal-delay="720"], [data-reveal-delay="720ms"] { transition-delay: 720ms !important; }
 
-/* 9. Accessibility: Full respect for prefers-reduced-motion */
+/* 5. Accessibility: Full respect for prefers-reduced-motion */
 @media (prefers-reduced-motion: reduce) {
-  html.reveal-ready [data-reveal] {
+  [data-reveal],
+  html.reveal-ready [data-reveal]:not(.is-revealed),
+  html.reveal-ready [data-reveal].is-revealed {
     opacity: 1 !important;
     transform: none !important;
     transition: none !important;

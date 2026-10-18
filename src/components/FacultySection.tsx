@@ -137,7 +137,11 @@ export const FacultySection: React.FC<FacultySectionProps> = ({
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Header */}
-        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-8 sm:mb-10">
+        <div 
+          data-reveal="heading"
+          data-reveal-delay="0"
+          className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-8 sm:mb-10"
+        >
           <div>
             <div className="flex items-center gap-2 mb-1.5">
               <span className="w-5 h-[2px] bg-[#C5A059]" />
@@ -191,7 +195,9 @@ export const FacultySection: React.FC<FacultySectionProps> = ({
         </div>
 
         {/* Mobile: Horizontal Moving Line */}
-        <MobileFacultyCarousel onSelect={(faculty) => setSelectedFaculty(faculty)} />
+        <div data-reveal="card" data-reveal-delay="120" className="md:hidden w-full">
+          <MobileFacultyCarousel onSelect={(faculty) => setSelectedFaculty(faculty)} />
+        </div>
 
         {/* 
           Desktop: 4-Column Grid with STRICT EQUAL SIZING FOR BOTH FACULTY & ADMINISTRATION
@@ -208,11 +214,12 @@ export const FacultySection: React.FC<FacultySectionProps> = ({
             return (
               <motion.div
                 key={member.id}
-                initial={{ opacity: 0, y: 16 }}
-                animate={{ opacity: 1, y: 0 }}
+                initial={{ opacity: 0, y: 32 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: '0px 0px -15% 0px' }}
                 transition={{
-                  duration: 0.4,
-                  delay: index * 0.08,
+                  duration: 0.78,
+                  delay: index * 0.12,
                   ease: [0.22, 1, 0.36, 1],
                 }}
                 onClick={() => setSelectedFaculty(member)}

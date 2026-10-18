@@ -595,15 +595,6 @@ export const Navbar: React.FC<NavbarProps> = ({
             <button
               onClick={() => {
                 setMobileMenuOpen(false);
-                onOpenApply();
-              }}
-              className="col-span-2 bg-[#a30f16] text-white py-2.5 px-3 rounded-lg font-bold text-center text-xs uppercase tracking-wider shadow flex items-center justify-center gap-1.5 hover:bg-[#880d12] transition-colors cursor-pointer"
-            >
-              <span>Apply Online — Fall 2026</span>
-            </button>
-            <button
-              onClick={() => {
-                setMobileMenuOpen(false);
                 if (onOpenCampusLifePage) {
                   onOpenCampusLifePage();
                 } else {
@@ -641,7 +632,6 @@ export const Navbar: React.FC<NavbarProps> = ({
                 <Home size={15} />
                 Home
               </span>
-              {currentPage === 'home' && <span className="text-xs text-amber-300 font-bold">Current</span>}
             </button>
             <button
               onClick={() => {
@@ -655,7 +645,6 @@ export const Navbar: React.FC<NavbarProps> = ({
               className="w-full text-left py-2 font-semibold text-white flex items-center justify-between"
             >
               <span>Academic Programmes</span>
-              <span className="text-xs text-amber-300">Fall 2026</span>
             </button>
             <button
               onClick={() => {
@@ -669,7 +658,6 @@ export const Navbar: React.FC<NavbarProps> = ({
               className="w-full text-left py-2 font-semibold text-white flex items-center justify-between"
             >
               <span>Our Faculty</span>
-              <span className="text-xs text-amber-300">20 Profiles</span>
             </button>
             <button
               onClick={() => {
@@ -680,7 +668,6 @@ export const Navbar: React.FC<NavbarProps> = ({
               className="w-full text-left py-2 font-semibold text-white flex items-center justify-between"
             >
               <span>Academics & Programmes</span>
-              <span className="text-xs text-amber-300">25 Degrees</span>
             </button>
             <button
               onClick={() => {
@@ -690,7 +677,6 @@ export const Navbar: React.FC<NavbarProps> = ({
               className="w-full text-left py-1 text-slate-300 hover:text-white text-xs pl-2 flex items-center justify-between"
             >
               <span>• BS Programmes (12 Degrees)</span>
-              <span className="text-amber-300/80">4-Year</span>
             </button>
             <button
               onClick={() => {
@@ -700,7 +686,6 @@ export const Navbar: React.FC<NavbarProps> = ({
               className="w-full text-left py-1 text-slate-300 hover:text-white text-xs pl-2 flex items-center justify-between"
             >
               <span>• ADP / ADS Programmes (13 Degrees)</span>
-              <span className="text-amber-300/80">2-Year</span>
             </button>
             <button
               onClick={() => {
@@ -768,36 +753,6 @@ export const Navbar: React.FC<NavbarProps> = ({
             >
               <span>Academic Calendar (Official)</span>
             </button>
-            <a
-              href="https://ucp.edu.pk/jobs/career-opportunities/"
-              target="_blank"
-              rel="noopener noreferrer"
-              onClick={() => setMobileMenuOpen(false)}
-              className="w-full text-left py-1.5 text-slate-200 hover:text-white flex items-center justify-between"
-            >
-              <span>Jobs & Careers (Official)</span>
-              <span className="text-xs text-amber-300">↗</span>
-            </a>
-            <a
-              href="https://horizon.ucp.edu.pk/verify?_gl=1*1jdpsum*_gcl_au*MTgzMjA3ODQ4MC4xNzkwMDEyMzQ5*_ga*MTk1MTM4Njg4MS4xNzkwMDEyMzQ5*_ga_9BBZL6TFYQ*czE3OTAxNzk2OTYkbzYkZzEkdDE3OTAxODAxMjQkajU5JGwwJGg0NzM0NDM5MzA."
-              target="_blank"
-              rel="noopener noreferrer"
-              onClick={() => setMobileMenuOpen(false)}
-              className="w-full text-left py-1.5 text-slate-200 hover:text-white flex items-center justify-between"
-            >
-              <span>Verify Student Record</span>
-              <span className="text-xs text-amber-300">↗</span>
-            </a>
-            <a
-              href="https://ucp.edu.pk/faqs/"
-              target="_blank"
-              rel="noopener noreferrer"
-              onClick={() => setMobileMenuOpen(false)}
-              className="w-full text-left py-1.5 text-slate-200 hover:text-white flex items-center justify-between"
-            >
-              <span>UCP FAQs (Official)</span>
-              <span className="text-xs text-amber-300">↗</span>
-            </a>
             <button
               onClick={() => { setMobileMenuOpen(false); handleNavClick('location-section'); }}
               className="w-full text-left py-1.5 text-slate-200 hover:text-white flex items-center justify-between"
@@ -806,7 +761,6 @@ export const Navbar: React.FC<NavbarProps> = ({
                 <MapPin size={13} className="text-[#a30f16]" />
                 <span className="text-white font-medium">Our Location</span>
               </span>
-              <span className="text-xs text-amber-300">Map & Directions ↗</span>
             </button>
             <button
               onClick={() => handleNavClick('leadership-section')}
@@ -822,7 +776,6 @@ export const Navbar: React.FC<NavbarProps> = ({
               className="w-full text-left py-1.5 text-slate-200 hover:text-amber-300 flex items-center justify-between"
             >
               <span>Our Legacy</span>
-              <span className="text-xs text-amber-300 font-bold">Royal Heritage</span>
             </button>
             <button
               onClick={() => { 
@@ -836,7 +789,6 @@ export const Navbar: React.FC<NavbarProps> = ({
               className="w-full text-left py-1.5 text-slate-200 hover:text-white flex items-center justify-between"
             >
               <span>CNN Academy at UCP</span>
-              <span className="text-xs text-amber-300 font-bold">Official</span>
             </button>
             <button
               onClick={() => { setMobileMenuOpen(false); onOpenInfo('ucp-online'); }}
@@ -844,30 +796,6 @@ export const Navbar: React.FC<NavbarProps> = ({
             >
               UCP Online (Distance Education)
             </button>
-            <a
-              href="https://oric.ucp.edu.pk/?_gl=1%2A1038nq8%2A_gcl_au%2AMTgzMjA3ODQ4MC4xNzkwMDEyMzQ5Li0uLS4xNzkwMTgwNDM0LjY0MTA5MDAyNi4xNzkwMTgwNDM0LjE3OTAxODA0MzQ.%2A_ga%2AMTk1MTM4Njg4MS4xNzkwMDEyMzQ5%2A_ga_9BBZL6TFYQ%2AczE3OTAxNzk2OTYkbzYkZzEkdDE3OTAxODA1MTUkajQyJGwwJGg0NzM0NDM5MzA."
-              target="_blank"
-              rel="noopener noreferrer"
-              onClick={() => setMobileMenuOpen(false)}
-              className="w-full text-left py-1.5 text-slate-200 hover:text-white flex items-center justify-between"
-            >
-              <span>ORIC (Research & Tech)</span>
-              <span className="text-xs text-amber-300">↗</span>
-            </a>
-            <a
-              href="https://ucp.edu.pk/blog/?_gl=1*g7icau*_gcl_au*mtgzmja3odq4mc4xnzkwmdeymzq5li0uls4xnzkwmtgwndm0ljy0mta5mdayni4xnzkwmtgwndm0lje3otaxoda0mzq.*_ga*mtk1mtm4njg4ms4xnzkwmdeymzq5*_ga_9bbzl6tfyq*cze3otaxnzk2otykbzykzzekdde3otaxoda0otckajywjgwwjgg0nzm0ndm5mza."
-              target="_blank"
-              rel="noopener noreferrer"
-              onClick={() => setMobileMenuOpen(false)}
-              className="w-full text-left py-1.5 text-slate-200 hover:text-white flex items-center justify-between"
-            >
-              <span>UCP Blog & Campus Stories</span>
-              <span className="text-xs text-amber-300">↗</span>
-            </a>
-          </div>
-
-          <div className="pt-2 text-xs text-slate-400 border-t border-slate-700/60">
-            <p>1 - Khayaban-e-Jinnah Road, Johar Town, Lahore • Helpline: {UCP_CONTACT.tollFree}</p>
           </div>
         </div>
       )}

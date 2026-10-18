@@ -422,19 +422,27 @@ export const WhatWeOfferAccordion: React.FC<WhatWeOfferAccordionProps> = ({
           <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
             <div>
               <h2
+                data-reveal="heading"
+                data-reveal-delay="0"
                 className="text-3xl sm:text-4xl lg:text-[42px] font-bold text-[#091E3A] tracking-tight leading-tight"
                 style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
               >
                 Campus Life, Co-Curricular Activities &amp; Leadership Experience
               </h2>
               
-              <p className="text-sm sm:text-base text-slate-600 mt-2.5 max-w-3xl leading-relaxed font-sans font-light">
+              <p 
+                data-reveal="paragraph"
+                data-reveal-delay="120"
+                className="text-sm sm:text-base text-slate-600 mt-2.5 max-w-3xl leading-relaxed font-sans font-light"
+              >
                 Immerse yourself in a transformative university experience enriched with prestigious leadership seminars, academic symposia, vibrant student societies, competitive sports tournaments, and co-curricular pursuits that inspire character and cultivate future leaders.
               </p>
             </div>
 
             <button
               type="button"
+              data-reveal="card"
+              data-reveal-delay="200"
               onClick={() => {
                 if (onOpenCampusLifePage) {
                   onOpenCampusLifePage();
@@ -451,7 +459,11 @@ export const WhatWeOfferAccordion: React.FC<WhatWeOfferAccordionProps> = ({
         </div>
 
         {/* Main Expanding Accordion Gallery with Graphic Designer Vector Backgrounds */}
-        <div className="w-full">
+        <div 
+          data-reveal="card"
+          data-reveal-delay="240"
+          className="w-full"
+        >
           <div
             className="flex flex-col md:flex-row gap-3 sm:gap-3.5 w-full md:h-[450px]"
             role="region"

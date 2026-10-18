@@ -32,7 +32,11 @@ export const FacilitiesSection: React.FC<FacilitiesSectionProps> = ({
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Header */}
-        <header className="max-w-3xl mb-8 sm:mb-10">
+        <header 
+          data-reveal="heading"
+          data-reveal-delay="0"
+          className="max-w-3xl mb-8 sm:mb-10"
+        >
           <span className="text-xs font-medium uppercase tracking-wider text-slate-500 block mb-2">
             Campus Facilities
           </span>

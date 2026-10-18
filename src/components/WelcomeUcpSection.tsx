@@ -137,32 +137,13 @@ export const WelcomeUcpSection: React.FC<WelcomeUcpSectionProps> = ({
 
       // Desktop & Tablet (768px+)
       mm.add('(min-width: 768px)', () => {
-        // 1. Subtle upward movement for the Welcome heading and message
-        if (leftCol) {
-          gsap.fromTo(
-            leftCol,
-            { y: 25 },
-            {
-              y: -25,
-              ease: 'none',
-              scrollTrigger: {
-                trigger: welcomeSection,
-                start: 'top 85%',
-                end: 'bottom 15%',
-                scrub: 1.2,
-                invalidateOnRefresh: true,
-              },
-            }
-          );
-        }
-
-        // 2. Blueprint moves at a slower rate than the portrait (optical depth)
+        // Welcome section reveals with clean entrance; background blueprint retains subtle depth
         if (blueprint) {
           gsap.fromTo(
             blueprint,
             { y: -10, scale: 0.98 },
             {
-              y: 25,
+              y: 20,
               scale: 1.02,
               ease: 'none',
               scrollTrigger: {
@@ -170,25 +151,6 @@ export const WelcomeUcpSection: React.FC<WelcomeUcpSectionProps> = ({
                 start: 'top 85%',
                 end: 'bottom 15%',
                 scrub: 1.6,
-                invalidateOnRefresh: true,
-              },
-            }
-          );
-        }
-
-        // 3. Director portrait moves at an independent, restrained parallax rate
-        if (portraitCircle) {
-          gsap.fromTo(
-            portraitCircle,
-            { y: 35 },
-            {
-              y: -35,
-              ease: 'none',
-              scrollTrigger: {
-                trigger: welcomeSection,
-                start: 'top 85%',
-                end: 'bottom 15%',
-                scrub: 1.1,
                 invalidateOnRefresh: true,
               },
             }
@@ -264,7 +226,11 @@ export const WelcomeUcpSection: React.FC<WelcomeUcpSectionProps> = ({
             className="lg:col-span-7 flex flex-col justify-center will-change-transform z-10"
           >
             {/* Small uppercase category label with restrained red bar */}
-            <div className="flex items-center gap-3 mb-4">
+            <div 
+              data-reveal="label"
+              data-reveal-delay="0"
+              className="flex items-center gap-3 mb-4"
+            >
               <span className="text-[11px] sm:text-xs font-bold tracking-[0.22em] uppercase text-[#0A1931] font-sans">
                 WELCOME TO UCP BAHAWALPUR
               </span>
@@ -272,12 +238,20 @@ export const WelcomeUcpSection: React.FC<WelcomeUcpSectionProps> = ({
             </div>
 
             {/* Main Heading: A Warm Welcome to UCPians */}
-            <h2 className="font-['Source_Serif_4','Source_Serif_Pro','Georgia',serif] text-3xl sm:text-4xl lg:text-[45px] font-bold text-[#0A1931] tracking-tight leading-[1.18] mb-6 sm:mb-8 text-balance">
+            <h2 
+              data-reveal="heading"
+              data-reveal-delay="120"
+              className="font-['Source_Serif_4','Source_Serif_Pro','Georgia',serif] text-3xl sm:text-4xl lg:text-[45px] font-bold text-[#0A1931] tracking-tight leading-[1.18] mb-6 sm:mb-8 text-balance"
+            >
               A Warm Welcome to <span className="text-[#0A1931]">UCPians</span>
             </h2>
 
-            {/* Welcome Message: Styled as an elegant editorial quotation */}
-            <div className="relative mb-8 max-w-2xl">
+            {/* Welcome Message: Styled as an elegant editorial quotation (Single unit) */}
+            <div 
+              data-reveal="paragraph"
+              data-reveal-delay="240"
+              className="relative mb-8 max-w-2xl"
+            >
               {/* Sophisticated oversized opening quotation mark */}
               <span 
                 className="font-serif text-5xl sm:text-6xl text-[#C8102E]/80 leading-none select-none float-left mr-3 -mt-1"
@@ -295,7 +269,11 @@ export const WelcomeUcpSection: React.FC<WelcomeUcpSectionProps> = ({
             </div>
 
             {/* Learn More → text link: opens Vision & Mission section on click */}
-            <div className="pt-1 mb-8">
+            <div 
+              data-reveal="paragraph"
+              data-reveal-delay="360"
+              className="pt-1 mb-8"
+            >
               <a
                 href="#vision-mission-section"
                 onClick={handleLearnMoreClick}
@@ -315,7 +293,11 @@ export const WelcomeUcpSection: React.FC<WelcomeUcpSectionProps> = ({
             </div>
 
             {/* Subdued institutional trust markers (Clean unboxed metadata) */}
-            <div className="flex flex-wrap items-center gap-y-2 gap-x-6 pt-5 border-t border-slate-200/80 text-xs sm:text-sm text-slate-600 font-sans">
+            <div 
+              data-reveal="card"
+              data-reveal-delay="480"
+              className="flex flex-wrap items-center gap-y-2 gap-x-6 pt-5 border-t border-slate-200/80 text-xs sm:text-sm text-slate-600 font-sans"
+            >
               <div className="flex items-center gap-2">
                 <ShieldCheck className="w-4 h-4 text-[#C8102E]" />
                 <span className="font-semibold text-slate-800">HEC Recognized</span>
@@ -336,6 +318,8 @@ export const WelcomeUcpSection: React.FC<WelcomeUcpSectionProps> = ({
               ------------------------------------------------------------------- */}
           <div
             ref={portraitColRef}
+            data-reveal="card"
+            data-reveal-delay="200"
             className="lg:col-span-5 relative flex flex-col items-center justify-center will-change-transform z-10"
           >
             {/* Subtle Architectural Blueprint Background Effect */}
