@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { MessageCircle, Mail, FileText, Send, Globe, Sparkles } from 'lucide-react';
+import { Phone, PhoneCall, X } from 'lucide-react';
 import { InfoModalType } from './UcpInfoModal';
 
 interface FloatingSideRibbonsProps {
@@ -21,14 +21,11 @@ export const FloatingSideRibbons: React.FC<FloatingSideRibbonsProps> = ({
   onOpenScholarshipsPage,
   onOpenFeeStructurePage,
 }) => {
-  const [showWhatsAppTooltip, setShowWhatsAppTooltip] = useState(false);
+  const [showCallTooltip, setShowCallTooltip] = useState(false);
+  const [isCallMenuOpen, setIsCallMenuOpen] = useState(false);
 
-  const handleWhatsAppClick = () => {
-    // Open WhatsApp helpline
-    const whatsappUrl = `https://wa.me/923000800827?text=${encodeURIComponent(
-      'Hello University of Central Punjab Admissions Office! I would like to inquire regarding admissions.'
-    )}`;
-    window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
+  const handleContactClick = () => {
+    setIsCallMenuOpen((prev) => !prev);
   };
 
   return (
@@ -128,32 +125,76 @@ export const FloatingSideRibbons: React.FC<FloatingSideRibbonsProps> = ({
         </button>
       </aside>
 
-      {/* Floating WhatsApp Action Button on Bottom-Right (Positioned comfortably above enlarged UCP Assistant) */}
+      {/* Floating Official Campus Contact Call Button on Bottom-Right */}
       <div className="fixed bottom-[108px] sm:bottom-[122px] lg:bottom-[128px] right-5 sm:right-6 z-40 flex items-center">
-        {showWhatsAppTooltip && (
+        {showCallTooltip && !isCallMenuOpen && (
           <div className="hidden sm:block mr-2.5 bg-white text-slate-800 text-xs px-3 py-1.5 rounded-xl shadow-xl border border-slate-200 font-semibold animate-in fade-in slide-in-from-right-2">
-            Official Campus Contact: 062-2202030 / 062-2202050
+            Call Campus: 062-2202030 / 062-2202050
           </div>
         )}
+
+        {/* Quick Call Popover Menu */}
+        {isCallMenuOpen && (
+          <div className="absolute bottom-16 right-0 w-64 bg-white rounded-xl shadow-[0_16px_40px_rgba(10,25,49,0.22)] border border-slate-200 p-3.5 animate-in fade-in slide-in-from-bottom-2 z-50 text-slate-800">
+            <div className="flex items-center justify-between pb-2 border-b border-slate-100 mb-2.5">
+              <div className="flex items-center gap-1.5 font-bold text-xs text-[#0A1931]">
+                <PhoneCall size={14} className="text-[#C8102E]" />
+                <span>Call UCP Bahawalpur</span>
+              </div>
+              <button 
+                type="button"
+                onClick={() => setIsCallMenuOpen(false)}
+                className="text-slate-400 hover:text-slate-600 p-0.5 rounded cursor-pointer transition-colors"
+                aria-label="Close call options"
+              >
+                <X size={14} />
+              </button>
+            </div>
+            <p className="text-[11px] text-slate-500 mb-2.5 font-sans leading-tight">
+              Select an official campus phone number to call directly:
+            </p>
+            <div className="space-y-2">
+              <a
+                href="tel:0622202030"
+                className="flex items-center justify-between px-3 py-2 bg-[#0A1931] hover:bg-[#C8102E] text-white rounded-lg text-xs font-semibold transition-colors shadow-xs"
+                title="Call 062-2202030"
+              >
+                <span className="flex items-center gap-2">
+                  <Phone size={13} className="text-amber-400" />
+                  <span>062-2202030</span>
+                </span>
+                <span className="text-[10px] text-slate-300 font-normal">Line 1 ↗</span>
+              </a>
+              <a
+                href="tel:0622202050"
+                className="flex items-center justify-between px-3 py-2 bg-slate-100 hover:bg-[#0A1931] text-slate-800 hover:text-white rounded-lg text-xs font-semibold transition-colors border border-slate-200"
+                title="Call 062-2202050"
+              >
+                <span className="flex items-center gap-2">
+                  <Phone size={13} className="text-[#C8102E]" />
+                  <span>062-2202050</span>
+                </span>
+                <span className="text-[10px] text-slate-500 hover:text-slate-300 font-normal">Line 2 ↗</span>
+              </a>
+            </div>
+          </div>
+        )}
+
         <button
-          id="ucp-whatsapp-floating-btn"
-          onClick={handleWhatsAppClick}
-          onMouseEnter={() => setShowWhatsAppTooltip(true)}
-          onMouseLeave={() => setShowWhatsAppTooltip(false)}
-          className="w-12 h-12 sm:w-13 sm:h-13 rounded-full bg-[#25D366] hover:bg-[#20ba5a] text-white flex items-center justify-center shadow-xl hover:scale-108 active:scale-95 transition-all duration-200 group focus:outline-none relative"
+          id="ucp-contact-floating-btn"
+          type="button"
+          onClick={handleContactClick}
+          onMouseEnter={() => setShowCallTooltip(true)}
+          onMouseLeave={() => setShowCallTooltip(false)}
+          className="w-12 h-12 sm:w-13 sm:h-13 rounded-full bg-[#0A1931] hover:bg-[#C8102E] text-white flex items-center justify-center shadow-xl hover:scale-108 active:scale-95 transition-all duration-200 group focus:outline-none relative border-2 border-slate-600/70 cursor-pointer"
           aria-label="Official Campus Contacts: 062-2202030 / 062-2202050"
           title="Official Campus Contacts: 062-2202030 / 062-2202050"
         >
           {/* Subtle pulse ring */}
-          <span className="absolute -inset-1 rounded-full bg-[#25D366] opacity-30 group-hover:animate-ping" />
+          <span className="absolute -inset-1 rounded-full bg-[#C8102E] opacity-30 group-hover:animate-ping" />
           
-          {/* WhatsApp SVG Icon */}
-          <svg 
-            className="w-6 h-6 sm:w-7 sm:h-7 fill-current relative z-10" 
-            viewBox="0 0 24 24"
-          >
-            <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86.173.086.275.072.376-.044.101-.116.433-.506.549-.68.116-.173.231-.145.39-.087s1.011.477 1.184.564.289.13.332.202c.043.073.043.419-.101.824zm-3.423-14.416c-6.627 0-12 5.373-12 12 0 2.158.572 4.183 1.572 5.932l-1.572 5.744 5.922-1.554c1.704.939 3.659 1.478 5.741 1.478 6.627 0 12-5.373 12-12s-5.373-12-12-12z" />
-          </svg>
+          {/* Phone Call Icon */}
+          <PhoneCall className="w-5 h-5 sm:w-6 sm:h-6 text-white relative z-10 transition-transform group-hover:rotate-12" />
         </button>
       </div>
     </>

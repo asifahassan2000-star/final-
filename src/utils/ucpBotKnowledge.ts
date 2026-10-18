@@ -114,7 +114,7 @@ export function getInstantBotResponse(userQuery: string): BotResponse {
   // 13. Contact numbers / Phone / WhatsApp / Email
   if (/contact|phone|number|mobile|telephone|call|email|whatsapp|helpline|support/i.test(q)) {
     return {
-      reply: "📞 **Official UCP Contact Channels**:\n• **Campus Phone**: 062-2202030 / 062-2202050\n• **Toll-Free Helpline**: 0800-00827 (9:00 AM - 5:00 PM)\n• **Facebook**: UNIVERSITY OF CENTRAL PUNJAB BAHAWALPUR CAMPUS\n• **Website Portal**: bit.ly/ucpbahawalpur\n• **Email**: info@ucp.edu.pk\n• **Office Hours**: Monday to Friday, 9:00 AM - 5:00 PM ⏰!",
+      reply: "📞 **Official UCP Contact Channels**:\n• **Campus Phone**: 062-2202030 / 062-2202050\n• **Facebook**: UNIVERSITY OF CENTRAL PUNJAB BAHAWALPUR CAMPUS (facebook.com/profile.php?id=61583228356324)\n• **Website Portal**: bit.ly/ucpbahawalpur\n• **Email**: info@ucp.edu.pk\n• **Office Hours**: Monday to Friday, 9:00 AM - 5:00 PM ⏰!",
       suggestions: ["Admissions Office 🏫", "Program Guide 📚", "Fee Breakdown 💰"]
     };
   }

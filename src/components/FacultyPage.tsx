@@ -62,7 +62,7 @@ export const FacultyPage: React.FC<FacultyPageProps> = ({
     });
 
   return (
-    <div className="bg-white min-h-screen text-slate-800">
+    <div className="bg-white dark:bg-[#080f1d] min-h-screen text-slate-800 dark:text-[#f8fafc]">
       
       {/* 1. Sub-Header Banner & Institutional Breadcrumb */}
       <div className="bg-[#092242] text-white border-b border-[#14325a] py-6 sm:py-8">

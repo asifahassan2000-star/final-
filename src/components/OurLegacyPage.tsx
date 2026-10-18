@@ -280,7 +280,7 @@ export const OurLegacyPage: React.FC<OurLegacyPageProps> = ({
 
 
   return (
-    <div id="legacy-page-root" className="min-h-screen bg-[#fafbfc] text-slate-900 font-sans selection:bg-[#a30f16] selection:text-white">
+    <div id="legacy-page-root" className="min-h-screen bg-[#fafbfc] dark:bg-[#080f1d] text-slate-900 dark:text-[#f8fafc] font-sans selection:bg-[#a30f16] selection:text-white">
       
       {/* Top Breadcrumb & Return Bar */}
       <div className="bg-[#07192f] border-b border-slate-800 text-xs py-2.5 px-4 sm:px-6 lg:px-8">

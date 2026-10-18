@@ -235,7 +235,7 @@ Eligibility requirements are subject to the official UCP admission criteria for 
 Please confirm current requirements with the admissions office.
 
 Admissions Portal: https://admissions.ucpcolleges.pgc.edu/login?returnUrl=%2Flogin%3FreturnUrl%3D%252F
-Helpline: 0800-00-827 / +92-62-111-827-827
+Campus Phone: 062-2202030 / 062-2202050
 `;
 
     const blob = new Blob([documentText], { type: 'text/plain;charset=utf-8' });
@@ -261,7 +261,7 @@ Helpline: 0800-00-827 / +92-62-111-827-827
   if (activeProgramme) {
     const prog = activeProgramme;
     return (
-      <div className="bg-[#fcfbf9] text-stone-900 min-h-screen">
+      <div className="bg-[#fcfbf9] text-stone-900 dark:bg-[#080f1d] dark:text-[#f8fafc] min-h-screen">
         {/* Navigation Breadcrumb & Back Bar */}
         <div className="bg-white border-b border-stone-200 sticky top-16 z-30 shadow-xs">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3.5 flex items-center justify-between">
@@ -283,8 +283,8 @@ Helpline: 0800-00-827 / +92-62-111-827-827
           </div>
         </div>
 
-        {/* 1. PROGRAMME HERO (Light, radiant academic blue background, fading smoothly toward the right) */}
-        <section className="relative bg-[#1d4ed8] text-white overflow-hidden border-b border-blue-300/30">
+        {/* 1. PROGRAMME HERO (Natural photographic background with deep neutral contrast overlay) */}
+        <section className="relative bg-[#0A1931] text-white overflow-hidden border-b border-slate-800">
           {/* Full-width continuous background image with Ken-Burns animation, anchored right for clear visibility */}
           <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none select-none">
             <img
@@ -295,15 +295,15 @@ Helpline: 0800-00-827 / +92-62-111-827-827
                 const target = e.target as HTMLImageElement;
                 target.src = getProgrammeFallbackImage(prog.id, prog.image);
               }}
-              className={`w-full h-full object-cover object-center md:object-right animate-hero-kenburns brightness-[1.14] contrast-[1.04] ${
+              className={`w-full h-full object-cover object-center md:object-right animate-hero-kenburns brightness-[1.1] contrast-[1.05] ${
                 prog.id === 'adp-business-administration' ? 'object-[center_35%]' : ''
               }`}
             />
           </div>
 
-          {/* Smooth seamless blend: lighter royal blue wash on left for text legibility, fading to transparent on the right */}
-          <div className="absolute inset-0 z-10 bg-gradient-to-r from-[#153e75]/75 from-0% via-[#1e4d8e]/40 via-40% to-transparent to-75% pointer-events-none" />
-          <div className="absolute inset-0 z-10 bg-gradient-to-t from-[#153e75]/35 via-transparent to-transparent pointer-events-none" />
+          {/* Clean dark neutral scrims for maximum text contrast without blue tinting */}
+          <div className="absolute inset-0 z-10 bg-gradient-to-r from-[#0A1931]/95 from-0% via-[#0A1931]/75 via-45% to-transparent to-85% pointer-events-none" />
+          <div className="absolute inset-0 z-10 bg-gradient-to-t from-[#0A1931]/50 via-transparent to-transparent pointer-events-none" />
 
           {/* Foreground Hero Content: Clean, spacious text & actions on the left */}
           <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24">
@@ -649,23 +649,23 @@ Helpline: 0800-00-827 / +92-62-111-827-827
   // RENDER: MAIN ACADEMIC PROGRAMMES DIRECTORY PAGE
   // =========================================================================
   return (
-    <div id="academic-programmes-section" className="bg-[#fcfbf9] text-stone-900 min-h-screen">
+    <div id="academic-programmes-section" className="bg-[#fcfbf9] text-stone-900 dark:bg-[#080f1d] dark:text-[#f8fafc] min-h-screen">
       
-      {/* Editorial University Header (Light, radiant academic blue background, fading smoothly toward right) */}
-      <section className="relative bg-[#1d4ed8] text-white border-b border-blue-300/30 py-16 sm:py-24 overflow-hidden">
+      {/* Editorial University Header (Deep neutral campus quadrangle hero with natural photographic tones) */}
+      <section className="relative bg-[#0A1931] text-white border-b border-slate-800 py-16 sm:py-24 overflow-hidden">
         {/* Full-width continuous background image with Ken-Burns animation, anchored right */}
         <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none select-none">
           <img
             src="/assets/campus/13_hero_sunset_campus.jpg"
             alt="UCP Bahawalpur Campus Quadrangle"
             referrerPolicy="no-referrer"
-            className="w-full h-full object-cover object-center md:object-right animate-hero-kenburns brightness-[1.14] contrast-[1.04]"
+            className="w-full h-full object-cover object-center md:object-right animate-hero-kenburns brightness-[1.08] contrast-[1.04]"
           />
         </div>
 
-        {/* Lighter, translucent gradient: royal blue wash on left, fading smoothly out toward the right */}
-        <div className="absolute inset-0 z-10 bg-gradient-to-r from-[#153e75]/75 from-0% via-[#1e4d8e]/40 via-40% to-transparent to-75% pointer-events-none" />
-        <div className="absolute inset-0 z-10 bg-gradient-to-t from-[#153e75]/35 via-transparent to-transparent pointer-events-none" />
+        {/* Clean dark neutral scrim for natural photography without blue color cast */}
+        <div className="absolute inset-0 z-10 bg-gradient-to-r from-[#0A1931]/95 from-0% via-[#0A1931]/75 via-45% to-transparent to-85% pointer-events-none" />
+        <div className="absolute inset-0 z-10 bg-gradient-to-t from-[#0A1931]/50 via-transparent to-transparent pointer-events-none" />
 
         <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-2xl space-y-4">

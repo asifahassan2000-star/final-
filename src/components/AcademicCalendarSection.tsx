@@ -1,12 +1,7 @@
 import React, { useState } from 'react';
 import { 
-  Download, 
   Calendar as CalendarIcon, 
   Info, 
-  Building2, 
-  Phone, 
-  Mail, 
-  Globe, 
   ChevronDown,
   LayoutGrid,
   Table as TableIcon
@@ -44,8 +39,8 @@ export const AcademicCalendarSection: React.FC<AcademicCalendarSectionProps> = (
   return (
     <section
       id={id}
-      className={`relative w-full bg-[#FFFFFF] text-[#0A1931] scroll-mt-20 ${
-        isStandalone ? 'pt-8 pb-24' : 'py-16 sm:py-20 lg:py-24 border-t border-slate-200'
+      className={`relative w-full bg-[#FFFFFF] dark:bg-[#080f1d] text-[#0A1931] dark:text-[#f8fafc] scroll-mt-20 ${
+        isStandalone ? 'pt-8 pb-24' : 'py-16 sm:py-20 lg:py-24 border-t border-slate-200 dark:border-slate-800'
       }`}
       aria-labelledby="academic-calendar-heading"
     >
@@ -95,19 +90,6 @@ export const AcademicCalendarSection: React.FC<AcademicCalendarSectionProps> = (
                   {cal.term} <span className="font-normal text-slate-600">({cal.academicYear})</span>
                 </p>
               </div>
-            </div>
-
-            {/* Official Action Controls */}
-            <div className="flex flex-wrap items-center gap-2.5 sm:gap-3 shrink-0">
-              <a
-                href="./assets/academic-calendar-fall-2026.pdf"
-                download="UCP-Academic-Calendar-Fall-2026.pdf"
-                className="inline-flex items-center gap-2 bg-[#0A1931] hover:bg-[#C8102E] text-white text-xs sm:text-sm font-semibold px-4 py-2.5 rounded-none border border-[#0A1931] hover:border-[#C8102E] transition-colors shadow-xs cursor-pointer font-sans"
-                aria-label="Download Official Academic Calendar PDF"
-              >
-                <Download size={15} />
-                <span>Download Official Academic Calendar (PDF)</span>
-              </a>
             </div>
           </div>
         </div>
@@ -513,44 +495,6 @@ export const AcademicCalendarSection: React.FC<AcademicCalendarSectionProps> = (
             </div>
           </div>
         </div>
-
-
-
-        {/* ===================================================================
-            7. INSTITUTIONAL CONTACT BAR FROM OFFICIAL PDF FOOTER
-            =================================================================== */}
-        <div className="mt-12 pt-6 border-t border-slate-200 flex flex-col md:flex-row items-start md:items-center justify-between gap-4 text-xs text-slate-600 font-sans">
-          <div className="flex items-center gap-2">
-            <Building2 size={14} className="text-slate-400 shrink-0" />
-            <span>{cal.contactInfo.address}</span>
-          </div>
-          <div className="flex flex-wrap items-center gap-x-5 gap-y-2">
-            <a 
-              href={`tel:${cal.contactInfo.phone}`} 
-              className="hover:text-[#C8102E] transition-colors flex items-center gap-1.5"
-            >
-              <Phone size={13} className="text-slate-400" />
-              <span>Tel: {cal.contactInfo.phone}</span>
-            </a>
-            <a 
-              href={`mailto:${cal.contactInfo.email}`} 
-              className="hover:text-[#C8102E] transition-colors flex items-center gap-1.5"
-            >
-              <Mail size={13} className="text-slate-400" />
-              <span>{cal.contactInfo.email}</span>
-            </a>
-            <a 
-              href={`https://${cal.contactInfo.website}`} 
-              target="_blank" 
-              rel="noopener noreferrer" 
-              className="hover:text-[#C8102E] transition-colors flex items-center gap-1.5 font-semibold text-[#0A1931]"
-            >
-              <Globe size={13} className="text-slate-400" />
-              <span>{cal.contactInfo.website}</span>
-            </a>
-          </div>
-        </div>
-
       </div>
     </section>
   );

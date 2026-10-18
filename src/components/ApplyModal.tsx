@@ -384,7 +384,7 @@ export const ApplyModal: React.FC<ApplyModalProps> = ({
               </div>
 
               <p className="text-[11px] text-slate-500 max-w-md mx-auto">
-                A confirmation SMS and email with your test schedule and voucher have been dispatched. For queries, contact <strong>0800-00-827</strong>.
+                A confirmation SMS and email with your test schedule and voucher have been dispatched. For queries, contact <strong>062-2202030 / 062-2202050</strong>.
               </p>
 
               <button

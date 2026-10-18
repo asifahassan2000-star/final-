@@ -90,7 +90,7 @@ export const Footer: React.FC<FooterProps> = ({
             {/* Official Facebook Link (Clean Text Style, No Box) */}
             <div className="pt-1">
               <a 
-                href="https://facebook.com/UCPofficial" 
+                href="https://www.facebook.com/profile.php?id=61583228356324" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 text-xs text-slate-200 hover:text-white transition-colors"
@@ -238,13 +238,6 @@ export const Footer: React.FC<FooterProps> = ({
                 </div>
               </div>
 
-              {/* Toll-Free */}
-              <div className="flex items-center gap-3">
-                <Phone size={16} className="text-slate-300 shrink-0" />
-                <a href="tel:080000827" className="text-white font-medium hover:underline">
-                  0800-00827 (9:00 AM – 5:00 PM)
-                </a>
-              </div>
 
               {/* Website Link */}
               <div className="flex items-center gap-3">

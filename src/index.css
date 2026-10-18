@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
 @import url('https://fonts.googleapis.com/css2?family=UnifrakturMaguntia&family=MedievalSharp&display=swap');
 
 /* WordPress-Standard Professional University Typography Scale */
@@ -788,5 +789,298 @@ html:not(.reveal-ready) .quote-premium-scroll .quote-accent-bar {
   }
 }
 
+/* =========================================================================
+   OFFICIAL UNIVERSITY LIGHT & DARK MODE DESIGN SYSTEM
+   Distinguished Academic Midnight Slate & Deep Sapphire Architecture
+   - Non-AI aesthetic: Dignified Oxford/Stanford institutional dark mode
+   - 100% crystal-clear readability across all pages, modals, tables & cards
+   - Accessible contrast ratio: WCAG AAA on all headings and body copy
+   ========================================================================= */
 
+html.dark {
+  color-scheme: dark;
+  background-color: #080f1d;
+  color: #f1f5f9;
+}
 
+html.dark body {
+  background-color: #080f1d;
+  color: #f1f5f9;
+}
+
+html.dark #root {
+  background-color: #080f1d;
+}
+
+/* 1. Universal Page & Main Section Background Elevation */
+html.dark main,
+html.dark section,
+html.dark div#top,
+html.dark [id$="-section"],
+html.dark [id$="-page-root"],
+html.dark .min-h-screen {
+  background-color: transparent;
+}
+
+/* 2. Light Container Mappings in Dark Mode */
+html.dark .bg-white,
+html.dark .bg-\[\#FFFFFF\],
+html.dark .bg-\[\#ffffff\],
+html.dark .bg-\[\#fafbfc\],
+html.dark .bg-\[\#fcfbf9\],
+html.dark .bg-\[\#F9FAFB\],
+html.dark .bg-\[\#f8fafc\],
+html.dark .bg-\[\#FAFBFD\],
+html.dark .bg-\[\#F5F5F5\] {
+  background-color: #0f1b2f !important;
+}
+
+/* Slightly elevated surfaces for hover/accent/sub-cards */
+html.dark .bg-slate-50,
+html.dark .bg-slate-100,
+html.dark .bg-gray-50,
+html.dark .bg-gray-100,
+html.dark .bg-stone-50,
+html.dark .bg-stone-100,
+html.dark .bg-\[\#F8FAFC\],
+html.dark .bg-\[\#F1F5F9\],
+html.dark .bg-\[\#EFF6FF\],
+html.dark .bg-\[\#F3F4F6\] {
+  background-color: #14233e !important;
+}
+
+html.dark .hover\:bg-slate-50:hover,
+html.dark .hover\:bg-slate-100:hover,
+html.dark .hover\:bg-gray-50:hover,
+html.dark .hover\:bg-gray-100:hover,
+html.dark .hover\:bg-\[\#F8FAFC\]:hover {
+  background-color: #182a4a !important;
+}
+
+/* 3. Hairline Academic Borders in Dark Mode */
+html.dark .border-slate-100,
+html.dark .border-slate-200,
+html.dark .border-slate-300,
+html.dark .border-gray-100,
+html.dark .border-gray-200,
+html.dark .border-gray-300,
+html.dark .border-stone-100,
+html.dark .border-stone-200,
+html.dark .border-stone-300,
+html.dark .border-\[\#E5E7EB\],
+html.dark .border-\[\#CBD5E1\],
+html.dark .border-\[\#D1D5DB\],
+html.dark .border-\[\#E2E8F0\] {
+  border-color: #1e3256 !important;
+}
+
+html.dark .divide-slate-100 > :not([hidden]) ~ :not([hidden]),
+html.dark .divide-slate-200 > :not([hidden]) ~ :not([hidden]),
+html.dark .divide-gray-100 > :not([hidden]) ~ :not([hidden]),
+html.dark .divide-gray-200 > :not([hidden]) ~ :not([hidden]) {
+  border-color: #1e3256 !important;
+}
+
+/* 4. High-Contrast Typography in Dark Mode */
+/* Headings & High-Emphasis Labels */
+html.dark h1,
+html.dark h2,
+html.dark h3,
+html.dark h4,
+html.dark h5,
+html.dark h6 {
+  color: #f8fafc !important;
+}
+
+html.dark .text-slate-900,
+html.dark .text-slate-800,
+html.dark .text-stone-900,
+html.dark .text-stone-800,
+html.dark .text-gray-900,
+html.dark .text-gray-800,
+html.dark .text-\[\#0A1931\],
+html.dark .text-\[\#0F2C61\],
+html.dark .text-\[\#0F2C52\],
+html.dark .text-\[\#111827\],
+html.dark .text-\[\#1F2937\],
+html.dark .text-\[\#333333\] {
+  color: #f8fafc !important;
+}
+
+/* Standard Reading Body Text */
+html.dark p,
+html.dark .text-slate-700,
+html.dark .text-slate-600,
+html.dark .text-stone-700,
+html.dark .text-stone-600,
+html.dark .text-gray-700,
+html.dark .text-gray-600,
+html.dark .text-\[\#334155\],
+html.dark .text-\[\#374151\],
+html.dark .text-\[\#4B5563\] {
+  color: #cbd5e1 !important;
+}
+
+/* Secondary & Muted Helper Text */
+html.dark .text-slate-500,
+html.dark .text-slate-400,
+html.dark .text-gray-500,
+html.dark .text-gray-400,
+html.dark .text-stone-500,
+html.dark .text-stone-400,
+html.dark .text-\[\#666666\],
+html.dark .text-\[\#6B7280\] {
+  color: #94a3b8 !important;
+}
+
+/* 5. Inputs, Selects, Search & Form Controls */
+html.dark input:not([type="checkbox"]):not([type="radio"]),
+html.dark select,
+html.dark textarea {
+  background-color: #0c1729 !important;
+  color: #f8fafc !important;
+  border-color: #223c66 !important;
+}
+
+html.dark input::placeholder,
+html.dark textarea::placeholder {
+  color: #64748b !important;
+}
+
+/* 6. Official Institutional Tables (Curriculum, Fees, Calendars) */
+html.dark table {
+  background-color: #0f1b2f !important;
+  border-color: #1e3256 !important;
+}
+
+html.dark thead,
+html.dark thead tr,
+html.dark th {
+  background-color: #14243e !important;
+  color: #f8fafc !important;
+  border-color: #1e3256 !important;
+}
+
+html.dark td {
+  color: #cbd5e1 !important;
+  border-color: #1a2e4f !important;
+}
+
+html.dark tbody tr:nth-child(even) {
+  background-color: #0c1729 !important;
+}
+
+html.dark tbody tr:hover {
+  background-color: #14243e !important;
+}
+
+/* 7. Modals & Dialog System */
+html.dark [role="dialog"],
+html.dark .modal-container,
+html.dark [aria-modal="true"] {
+  background-color: #0e1a2f !important;
+  border-color: #223c66 !important;
+  color: #f8fafc !important;
+}
+
+/* 8. Global Search Overlay */
+html.dark #main-nav-header [role="dialog"] {
+  background-color: #0e1a2f !important;
+  border-color: #223c66 !important;
+  box-shadow: 0 25px 70px rgba(0, 0, 0, 0.7) !important;
+}
+
+html.dark #main-nav-header [role="dialog"] .bg-slate-50\/90,
+html.dark #main-nav-header [role="dialog"] .bg-slate-50 {
+  background-color: #14233e !important;
+}
+
+/* 9. UCP Assistant (Chatbot & Speech Bubble) in Dark Mode */
+html.dark #ucp-chatbot-window,
+html.dark [aria-label="UCP Interactive Assistant Chatbot"] {
+  background-color: #0e1a2f !important;
+  border-color: #223c66 !important;
+}
+
+html.dark #ucp-chatbot-window .bg-\[\#FAFBFD\],
+html.dark #ucp-chatbot-window .bg-slate-50 {
+  background-color: #0a1322 !important;
+}
+
+html.dark #ucp-chatbot-window input {
+  background-color: #0c1729 !important;
+  border-color: #223c66 !important;
+  color: #f8fafc !important;
+}
+
+/* Chatbot speech bubble pointer */
+html.dark .ucp-speech-bubble-enter > div,
+html.dark .ucp-speech-bubble-exit > div {
+  background-color: #0f1b2f !important;
+  border-color: #223c66 !important;
+  color: #f8fafc !important;
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.6) !important;
+}
+
+html.dark .ucp-speech-bubble-enter > div > div:first-child,
+html.dark .ucp-speech-bubble-exit > div > div:first-child {
+  background-color: #0f1b2f !important;
+  border-color: #223c66 !important;
+}
+
+/* 10. Dedicated Subpages Dark Mode Finishes */
+/* Academic Calendar Section */
+html.dark #academic-calendar-section {
+  background-color: #080f1d !important;
+  color: #f8fafc !important;
+}
+
+html.dark #academic-calendar-section .bg-white {
+  background-color: #0f1b2f !important;
+  border-color: #1e3256 !important;
+}
+
+/* Academic Programmes Page */
+html.dark #academic-programmes-section {
+  background-color: #080f1d !important;
+  color: #f8fafc !important;
+}
+
+html.dark #academic-programmes-section .bg-white {
+  background-color: #0f1b2f !important;
+}
+
+/* Our Legacy Page */
+html.dark #legacy-page-root {
+  background-color: #080f1d !important;
+  color: #f8fafc !important;
+}
+
+/* Faculty Directory Page */
+html.dark .faculty-card,
+html.dark [id^="faculty-"] {
+  background-color: #0f1b2f;
+  border-color: #1e3256;
+}
+
+/* Badges and Gold Accents in Dark Mode */
+html.dark .text-amber-600,
+html.dark .text-amber-700,
+html.dark .text-amber-800 {
+  color: #fbbf24 !important;
+}
+
+html.dark .bg-amber-50,
+html.dark .bg-amber-100 {
+  background-color: rgba(245, 158, 11, 0.15) !important;
+  border-color: rgba(245, 158, 11, 0.3) !important;
+}
+
+/* Smooth Transition between themes */
+html {
+  transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+body, main, section, [id$="-section"] {
+  transition: background-color 0.25s ease, border-color 0.25s ease;
+}

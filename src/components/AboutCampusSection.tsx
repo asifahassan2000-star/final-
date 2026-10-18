@@ -49,17 +49,8 @@ export const AboutCampusSection: React.FC<AboutCampusSectionProps> = ({
       subtitle: 'Subject Delivery, Generational Mindset & Modern Pedagogy',
       src: '/assets/campus/teacher-training-presentation.jpg',
       fallback: 'https://i.ibb.co/PGh5DQqD/Whats-App-Image-2026-10-11-at-11-35-45-PM.jpg',
-      caption: 'Faculty workshops where professors deliver presentations on subject methodologies, classroom pedagogy, and adapting teaching techniques to meet modern generational requirements.',
+      caption: 'Faculty development sessions where professors deliver presentations on subject methodologies, classroom pedagogy, and adapting teaching techniques to meet modern generational requirements.',
       tag: 'TEACHER TRAINING',
-    },
-    {
-      id: 'workshop-endnote-4',
-      title: 'Workshop on EndNote',
-      subtitle: 'Dr. Shahid Amin · Advanced Bibliographic Tooling & Citation',
-      src: '/assets/events/workshop-endnote-shahid-amin.jpg',
-      fallback: 'https://i.ibb.co/R42Z7TWx/Whats-App-Image-2026-10-17-at-3-44-52-AM.jpg',
-      caption: 'Hands-on academic workshop on EndNote bibliographic software, citation indexation, and scholarly referencing conducted by Dr. Shahid Amin for faculty and researchers.',
-      tag: 'ENDNOTE WORKSHOP',
     },
   ];
 
@@ -279,12 +270,12 @@ export const AboutCampusSection: React.FC<AboutCampusSectionProps> = ({
               </h3>
             </div>
             <p className="text-xs sm:text-sm text-slate-600 max-w-md font-sans">
-              Equipped with smart digital podiums and collaborative acoustics, our lecture halls foster confident student case presentations and high-impact faculty pedagogical workshops.
+              Equipped with smart digital podiums and collaborative acoustics, our lecture halls foster confident student case presentations and engaging pedagogical sessions.
             </p>
           </div>
 
-          {/* 4-Card Minimal Classroom & Academic Workshop Showcase Grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          {/* 3-Card Minimal Classroom & Student Sessions Showcase Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
             {classroomPhotos.map((item, idx) => (
               <motion.div
                 key={item.id}

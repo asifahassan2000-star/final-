@@ -1,7 +1,8 @@
 import React, { useState, useRef, useEffect, useCallback } from 'react';
 import { 
   X, Send, RefreshCw, Bot, 
-  ExternalLink, Zap, Sparkles
+  ExternalLink, Zap, Sparkles,
+  Maximize2, Minimize2
 } from 'lucide-react';
 import { getInstantBotResponse } from '../utils/ucpBotKnowledge';
 import { UcpRobotMascot } from './UcpRobotMascot';
@@ -16,22 +17,7 @@ interface Message {
   isStreaming?: boolean;
 }
 
-const INITIAL_MESSAGES: Message[] = [
-  {
-    id: 'welcome-1',
-    sender: 'bot',
-    text: "👋 Assalam-o-Alaikum! I'm **UCP Assistant**, your official AI guide for **UCP Bahawalpur Campus** 🎓.\n\nAsk me anything about our 27 degree programs, fee plans, admissions, eligibility, or scholarships — I respond instantly with verified campus information!",
-    time: 'Just now',
-    suggestions: [
-      "Degree Programs 🎓",
-      "ADP Artificial Intelligence 🤖",
-      "Fee Structure 💰",
-      "Scholarships 🏆",
-      "Admission Eligibility 📋",
-      "Contact & Location 📍"
-    ]
-  }
-];
+const INITIAL_MESSAGES: Message[] = [];
 
 // Typewriter / Typing animation component for smooth text reveal
 const TypingMessageText: React.FC<{
@@ -94,6 +80,7 @@ const TypingMessageText: React.FC<{
 
 export const UcpChatbot: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [isExpanded, setIsExpanded] = useState(false);
   const [messages, setMessages] = useState<Message[]>(INITIAL_MESSAGES);
   const [inputValue, setInputValue] = useState('');
   const [isLoading, setIsLoading] = useState(false);
@@ -336,11 +323,15 @@ export const UcpChatbot: React.FC = () => {
   return (
     <>
       {/* =========================================================================
-          1. CHAT WINDOW MODAL (Clean, neat rectangle ChatGPT-style, official colors)
+          1. CHAT WINDOW MODAL (Spacious, modern ChatGPT-style, big enough to view all text comfortably)
           ========================================================================= */}
       {isOpen && (
         <div 
-          className="fixed bottom-[96px] sm:bottom-[110px] right-3 sm:right-6 z-50 w-[94vw] sm:w-[420px] h-[560px] max-h-[80vh] bg-white rounded-2xl shadow-[0_24px_64px_rgba(10,25,49,0.28)] border border-slate-300 flex flex-col overflow-hidden animate-in fade-in slide-in-from-bottom-4 duration-200 select-text"
+          className={`fixed z-50 bg-white rounded-2xl shadow-[0_24px_64px_rgba(10,25,49,0.32)] border border-slate-300 flex flex-col overflow-hidden animate-in fade-in slide-in-from-bottom-4 duration-200 select-text transition-all ${
+            isExpanded
+              ? 'inset-2 sm:inset-4 md:inset-8 w-auto h-auto max-h-none'
+              : 'bottom-[96px] sm:bottom-[110px] right-2 sm:right-6 w-[96vw] sm:w-[620px] md:w-[740px] lg:w-[840px] h-[700px] sm:h-[750px] max-h-[88vh]'
+          }`}
           role="dialog"
           aria-label="UCP Assistant Chat Window"
         >
@@ -360,13 +351,15 @@ export const UcpChatbot: React.FC = () => {
 
               <div>
                 <div className="flex items-center gap-2">
-                  <h3 className="text-sm font-bold text-white tracking-tight">UCP Assistant</h3>
+                  <h3 className="font-['Inter',system-ui,-apple-system,sans-serif] text-[15px] font-bold text-white tracking-tight leading-none m-0 p-0">
+                    UCP Assistant
+                  </h3>
                   <span className="inline-flex items-center gap-1 px-1.5 py-0.5 bg-emerald-500/15 text-emerald-400 text-[10px] font-mono rounded font-medium">
                     <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
                     Online
                   </span>
                 </div>
-                <p className="text-[11px] text-slate-300 font-sans">
+                <p className="text-[11px] text-slate-300 font-sans mt-0.5">
                   Official Bahawalpur Campus AI
                 </p>
               </div>
@@ -375,6 +368,17 @@ export const UcpChatbot: React.FC = () => {
             {/* Header Actions */}
             <div className="flex items-center gap-1">
               <button
+                type="button"
+                onClick={() => setIsExpanded(!isExpanded)}
+                className="p-1.5 rounded-lg text-slate-300 hover:text-white hover:bg-white/10 transition-colors cursor-pointer"
+                title={isExpanded ? "Collapse to standard size" : "Maximize screen size"}
+                aria-label={isExpanded ? "Collapse chat" : "Maximize chat"}
+              >
+                {isExpanded ? <Minimize2 size={16} /> : <Maximize2 size={16} />}
+              </button>
+
+              <button
+                type="button"
                 onClick={handleClearChat}
                 className="p-1.5 rounded-lg text-slate-300 hover:text-white hover:bg-white/10 transition-colors cursor-pointer"
                 title="Restart chat"
@@ -384,6 +388,7 @@ export const UcpChatbot: React.FC = () => {
               </button>
 
               <button
+                type="button"
                 onClick={() => setIsOpen(false)}
                 className="p-1.5 rounded-lg text-slate-300 hover:text-white hover:bg-white/10 transition-colors cursor-pointer ml-0.5"
                 title="Close chat"
@@ -394,76 +399,144 @@ export const UcpChatbot: React.FC = () => {
             </div>
           </div>
 
-          {/* Messages Thread */}
-          <div className="flex-1 overflow-y-auto p-4 space-y-3.5 bg-[#FAFBFD] text-xs">
-            {messages.map((msg, index) => {
-              const isLatestBot = msg.sender === 'bot' && index === messages.length - 1 && msg.isStreaming;
-
-              return (
-                <div
-                  key={msg.id}
-                  className={`flex flex-col ${msg.sender === 'user' ? 'items-end' : 'items-start'} space-y-1`}
-                >
-                  {/* Sender & Timestamp */}
-                  <div className="flex items-center gap-1.5 text-[10px] text-slate-400 px-1 font-sans">
-                    <span className="font-semibold text-slate-500">
-                      {msg.sender === 'bot' ? 'UCP Assistant' : 'You'}
-                    </span>
-                    <span>•</span>
-                    <span>{msg.time}</span>
+          {/* Messages Thread / Center ChatGPT Start Screen */}
+          <div className="flex-1 overflow-y-auto p-4 space-y-3.5 bg-[#FAFBFD] text-xs flex flex-col">
+            {messages.length === 0 ? (
+              <div className="flex-1 flex flex-col items-center justify-center p-3 text-center my-auto animate-in fade-in zoom-in-95 duration-200">
+                {/* Robot Icon / Mascot */}
+                <div className="relative w-15 h-15 rounded-2xl bg-gradient-to-b from-[#0F223F] to-[#0A1931] border border-slate-700/60 shadow-lg flex items-center justify-center mb-3.5 p-1">
+                  <UcpRobotMascot 
+                    size={48} 
+                    isBlinking={isBlinking} 
+                    isHappy={isHappy} 
+                    showTorso={false} 
+                  />
+                  <div className="absolute -top-1 -right-1 px-1.5 py-0.5 bg-[#C8102E] text-white text-[9px] font-mono font-bold rounded-full border border-white/60">
+                    AI
                   </div>
+                </div>
 
-                  {/* Message Bubble - Neat Rectangle ChatGPT-style */}
-                  <div
-                    className={`max-w-[88%] rounded-xl px-3.5 py-2.5 leading-relaxed whitespace-pre-wrap break-words text-[13px] ${
-                      msg.sender === 'user'
-                        ? 'bg-[#0A1931] text-white font-sans shadow-xs'
-                        : 'bg-white text-slate-800 border border-slate-200 shadow-xs font-sans'
-                    }`}
+                {/* Big One Center Message like ChatGPT */}
+                <h2 className="font-['Inter',system-ui,-apple-system,sans-serif] text-xl sm:text-2xl font-bold text-[#0A1931] tracking-tight leading-tight m-0">
+                  Hi, how can I help you today?
+                </h2>
+                <p className="font-sans text-xs text-slate-500 mt-2 max-w-[310px] leading-relaxed">
+                  Ask me anything about 27 degree programs, admissions, fee structure, scholarships, or campus facilities at UCP Bahawalpur.
+                </p>
+
+                {/* ChatGPT-style Quick Prompt Cards (Responsive 4 columns on large modal) */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2.5 w-full mt-6 text-left font-sans">
+                  <button
+                    type="button"
+                    onClick={() => handleSendMessage("What degree programs are offered?")}
+                    className="p-2.5 bg-white hover:bg-slate-50 border border-slate-200 hover:border-[#0A1931] rounded-xl text-left transition-all shadow-2xs group cursor-pointer"
                   >
-                    {msg.sender === 'bot' && isLatestBot ? (
-                      <TypingMessageText 
-                        fullText={msg.text} 
-                        isAnimated={true}
-                        onDone={() => {
-                          msg.isStreaming = false;
-                        }} 
-                      />
-                    ) : (
-                      msg.text
-                    )}
+                    <span className="block text-sm mb-0.5">🎓</span>
+                    <span className="font-semibold text-xs text-slate-800 block group-hover:text-[#0A1931] leading-tight">Degree Programs</span>
+                    <span className="text-[10px] text-slate-400 block mt-0.5">BS &amp; ADP options</span>
+                  </button>
 
-                    {/* Action link */}
-                    {msg.actionLink && (
-                      <div className="mt-2.5 pt-2 border-t border-slate-100">
-                        <a
-                          href={msg.actionLink.url}
-                          onClick={() => setIsOpen(false)}
-                          className="inline-flex items-center gap-1 text-[11px] font-semibold text-[#C8102E] hover:underline"
-                        >
-                          {msg.actionLink.label} <ExternalLink size={12} />
-                        </a>
+                  <button
+                    type="button"
+                    onClick={() => handleSendMessage("Tell me about ADP Artificial Intelligence")}
+                    className="p-2.5 bg-white hover:bg-slate-50 border border-slate-200 hover:border-[#0A1931] rounded-xl text-left transition-all shadow-2xs group cursor-pointer"
+                  >
+                    <span className="block text-sm mb-0.5">🤖</span>
+                    <span className="font-semibold text-xs text-slate-800 block group-hover:text-[#0A1931] leading-tight">ADP AI</span>
+                    <span className="text-[10px] text-slate-400 block mt-0.5">75 CH AI curriculum</span>
+                  </button>
+
+                  <button
+                    type="button"
+                    onClick={() => handleSendMessage("What is the fee structure and installments?")}
+                    className="p-2.5 bg-white hover:bg-slate-50 border border-slate-200 hover:border-[#0A1931] rounded-xl text-left transition-all shadow-2xs group cursor-pointer"
+                  >
+                    <span className="block text-sm mb-0.5">💰</span>
+                    <span className="font-semibold text-xs text-slate-800 block group-hover:text-[#0A1931] leading-tight">Fee Structure</span>
+                    <span className="text-[10px] text-slate-400 block mt-0.5">Installment breakdown</span>
+                  </button>
+
+                  <button
+                    type="button"
+                    onClick={() => handleSendMessage("What scholarships are available?")}
+                    className="p-2.5 bg-white hover:bg-slate-50 border border-slate-200 hover:border-[#0A1931] rounded-xl text-left transition-all shadow-2xs group cursor-pointer"
+                  >
+                    <span className="block text-sm mb-0.5">🏆</span>
+                    <span className="font-semibold text-xs text-slate-800 block group-hover:text-[#0A1931] leading-tight">Scholarships</span>
+                    <span className="text-[10px] text-slate-400 block mt-0.5">Up to 100% merit</span>
+                  </button>
+                </div>
+              </div>
+            ) : (
+              messages.map((msg, index) => {
+                const isLatestBot = msg.sender === 'bot' && index === messages.length - 1 && msg.isStreaming;
+
+                return (
+                  <div
+                    key={msg.id}
+                    className={`flex flex-col ${msg.sender === 'user' ? 'items-end' : 'items-start'} space-y-1`}
+                  >
+                    {/* Sender & Timestamp */}
+                    <div className="flex items-center gap-1.5 text-[10px] text-slate-400 px-1 font-sans">
+                      <span className="font-semibold text-slate-500">
+                        {msg.sender === 'bot' ? 'UCP Assistant' : 'You'}
+                      </span>
+                      <span>•</span>
+                      <span>{msg.time}</span>
+                    </div>
+
+                    {/* Message Bubble - Neat Rectangle ChatGPT-style (Wide and comfortable) */}
+                    <div
+                      className={`max-w-[95%] sm:max-w-[92%] rounded-xl px-4 py-3 leading-relaxed whitespace-pre-wrap break-words text-[13.5px] sm:text-[14px] ${
+                        msg.sender === 'user'
+                          ? 'bg-[#0A1931] text-white font-sans shadow-xs'
+                          : 'bg-white text-slate-800 border border-slate-200 shadow-xs font-sans'
+                      }`}
+                    >
+                      {msg.sender === 'bot' && isLatestBot ? (
+                        <TypingMessageText 
+                          fullText={msg.text} 
+                          isAnimated={true}
+                          onDone={() => {
+                            msg.isStreaming = false;
+                          }} 
+                        />
+                      ) : (
+                        msg.text
+                      )}
+
+                      {/* Action link */}
+                      {msg.actionLink && (
+                        <div className="mt-2.5 pt-2 border-t border-slate-100">
+                          <a
+                            href={msg.actionLink.url}
+                            onClick={() => setIsOpen(false)}
+                            className="inline-flex items-center gap-1 text-[11px] font-semibold text-[#C8102E] hover:underline"
+                          >
+                            {msg.actionLink.label} <ExternalLink size={12} />
+                          </a>
+                        </div>
+                      )}
+                    </div>
+
+                    {/* Suggestions Chips */}
+                    {msg.suggestions && msg.suggestions.length > 0 && (
+                      <div className="flex flex-wrap gap-1.5 pt-1 max-w-[92%]">
+                        {msg.suggestions.map((sug, idx) => (
+                          <button
+                            key={idx}
+                            onClick={() => handleSendMessage(sug.replace(/[^\w\s&]/gi, '').trim())}
+                            className="px-2.5 py-1 bg-white hover:bg-slate-100 text-slate-700 border border-slate-300 rounded-lg text-[11px] font-medium transition-colors cursor-pointer flex items-center gap-1 shadow-2xs hover:border-[#C8102E]"
+                          >
+                            <span>{sug}</span>
+                          </button>
+                        ))}
                       </div>
                     )}
                   </div>
-
-                  {/* Suggestions Chips */}
-                  {msg.suggestions && msg.suggestions.length > 0 && (
-                    <div className="flex flex-wrap gap-1.5 pt-1 max-w-[92%]">
-                      {msg.suggestions.map((sug, idx) => (
-                        <button
-                          key={idx}
-                          onClick={() => handleSendMessage(sug.replace(/[^\w\s&]/gi, '').trim())}
-                          className="px-2.5 py-1 bg-white hover:bg-slate-100 text-slate-700 border border-slate-300 rounded-lg text-[11px] font-medium transition-colors cursor-pointer flex items-center gap-1 shadow-2xs hover:border-[#C8102E]"
-                        >
-                          <span>{sug}</span>
-                        </button>
-                      ))}
-                    </div>
-                  )}
-                </div>
-              );
-            })}
+                );
+              })
+            )}
 
             {/* Fast loading indicator with thinking robot */}
             {isLoading && (

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Phone, Mail, Calendar, FileText, UserCheck, AlertCircle, ChevronRight } from 'lucide-react';
 import { UCP_CONTACT } from '../data/ucpData';
+import { ThemeToggle } from './ThemeToggle';
 
 interface TopBarProps {
   onOpenPortal: () => void;
@@ -90,6 +91,8 @@ export const TopBar: React.FC<TopBarProps> = ({ onOpenPortal, onOpenFee, onOpenA
             >
               <UserCheck size={12} className="text-emerald-400" /> Student Portal
             </a>
+
+            <ThemeToggle variant="topbar" />
 
             <a
               id="topbar-apply-fast-btn"

@@ -5,7 +5,7 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 import fs from 'fs';
 import dotenv from 'dotenv';
-import { GoogleGenAI } from '@google/genai';
+import { GoogleGenAI, ThinkingLevel } from '@google/genai';
 
 dotenv.config();
 
@@ -37,7 +37,7 @@ CAMPUS KNOWLEDGE:
 - Admissions: Open for Fall/Spring sessions. Eligibility: Minimum 50% in Intermediate / HSSC / ICS / A-Levels / FA.
 - Scholarships: Up to 100% Merit Scholarships, 25%-50% PGC Alumni Fee Concession, Kinship waiver (25%), Sports & Need-Based concessions.
 - Facilities: Modern computing labs, AI research centers, science laboratories, digital library, air-conditioned buses across Bahawalpur, sports complexes, cafeteria.
-- Contacts: Constituent College, UCP Campus, Airport Road, Bahawalpur. Phone: 062-2202030 / 062-2202050, Toll-Free: 0800-00827, Email: info@ucp.edu.pk, Website: bit.ly/ucpbahawalpur, Office Hours: Mon-Fri 9:00 AM - 5:00 PM.
+- Contacts: Constituent College, UCP Campus, Airport Road, Bahawalpur. Phone: 062-2202030 / 062-2202050, Email: info@ucp.edu.pk, Website: bit.ly/ucpbahawalpur, Facebook: https://www.facebook.com/profile.php?id=61583228356324, Office Hours: Mon-Fri 9:00 AM - 5:00 PM.
 - Leadership: Founder & Chairman Mian Amir Mahmood, Campus Director Prof. Hamid Iqbal and Principal Prof. Dr. Aurangzaib Virk.
 
 If asked general questions or topics outside UCP, answer nicely, concisely, and accurately with emojis, while warmly offering to help with UCP admissions or degree queries.`;
@@ -69,7 +69,14 @@ app.post('/api/chat', async (req, res) => {
       });
     }
 
-    const ai = new GoogleGenAI({ apiKey });
+    const ai = new GoogleGenAI({ 
+      apiKey,
+      httpOptions: {
+        headers: {
+          'User-Agent': 'aistudio-build',
+        }
+      }
+    });
 
     // Format multi-turn conversation contents
     const contents: Array<{ role: 'user' | 'model'; parts: Array<{ text: string }> }> = [];
@@ -109,9 +116,9 @@ app.post('/api/chat', async (req, res) => {
         config: {
           systemInstruction: SYSTEM_INSTRUCTION,
           temperature: 0.7,
-          maxOutputTokens: 800
+          thinkingConfig: { thinkingLevel: ThinkingLevel.LOW },
         }
-      }), 4000);
+      }), 15000);
     } catch (primaryErr: any) {
       console.warn('Primary model error, attempting fast fallback gemini-3.1-flash-lite:', primaryErr.message);
       try {
@@ -121,9 +128,9 @@ app.post('/api/chat', async (req, res) => {
           config: {
             systemInstruction: SYSTEM_INSTRUCTION,
             temperature: 0.7,
-            maxOutputTokens: 800
+            thinkingConfig: { thinkingLevel: ThinkingLevel.MINIMAL },
           }
-        }), 2500);
+        }), 10000);
       } catch (fallbackErr: any) {
         console.warn('Fallback error, providing instant campus assistant response:', fallbackErr.message);
         return res.json({

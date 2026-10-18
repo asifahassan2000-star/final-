@@ -56,7 +56,7 @@ export const CnnAcademyPage: React.FC<CnnAcademyPageProps> = ({
   ];
 
   return (
-    <div className="min-h-screen bg-[#F9FAFB] text-[#1E293B] font-sans">
+    <div className="min-h-screen bg-[#F9FAFB] dark:bg-[#080f1d] text-[#1E293B] dark:text-[#f8fafc] font-sans">
       
       {/* 1. Official Top Institutional Breadcrumb Strip (Classic WordPress / Academic Header) */}
       <div className="bg-[#FFFFFF] border-b border-[#E2E8F0] py-3 px-4 sm:px-6 lg:px-8">

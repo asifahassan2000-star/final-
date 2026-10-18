@@ -205,7 +205,7 @@ export const ScholarshipsPage: React.FC<ScholarshipsPageProps> = ({
   const calculatedResult = computeEstimatedScholarship();
 
   return (
-    <div className="min-h-screen bg-[#FFFFFF] text-[#1F2937] font-['Inter',sans-serif] selection:bg-[#0F2C52] selection:text-white">
+    <div className="min-h-screen bg-[#FFFFFF] dark:bg-[#080f1d] text-[#1F2937] dark:text-[#f8fafc] font-['Inter',sans-serif] selection:bg-[#0F2C52] selection:text-white">
       
       {/* =========================================================================
           1. HERO HEADER SECTION — CLEAN INSTITUTIONAL STYLE (NO RED BORDERS)

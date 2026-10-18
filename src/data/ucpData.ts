@@ -16,7 +16,7 @@ export const UCP_CONTACT = {
   email: 'info@ucp.edu.pk',
   admissionsEmail: 'admissions.bwp@ucp.edu.pk',
   fax: '+92-62-35954892',
-  facebook: 'https://facebook.com/UCPofficial',
+  facebook: 'https://www.facebook.com/profile.php?id=61583228356324',
   facebookName: 'UNIVERSITY OF CENTRAL PUNJAB BAHAWALPUR CAMPUS',
   website: 'https://bit.ly/ucpbahawalpur',
   websiteDisplay: 'bit.ly/ucpbahawalpur',

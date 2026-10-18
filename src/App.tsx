@@ -334,7 +334,7 @@ export default function App() {
   };
 
   return (
-    <div id="top" className="min-h-screen bg-white text-slate-900 font-sans selection:bg-[#a30f16] selection:text-white">
+    <div id="top" className="min-h-screen bg-white text-slate-900 dark:bg-[#080f1d] dark:text-[#f8fafc] font-sans selection:bg-[#a30f16] selection:text-white transition-colors duration-200">
       {/* Interactive Click Glow & Highlight Manager for all text and images */}
       <ClickGlowManager />
       

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
   Menu, X, ChevronDown, Search, GraduationCap, Building2, 
@@ -8,6 +8,7 @@ import {
   Home, MapPin
 } from 'lucide-react';
 import { UcpLogo } from './UcpLogo';
+import { ThemeToggle } from './ThemeToggle';
 import { FACULTIES, UCP_CONTACT } from '../data/ucpData';
 import { OFFICIAL_BAHAWALPUR_PROGRAMMES } from '../data/bahawalpurProgrammesData';
 import { InfoModalType } from './UcpInfoModal';
@@ -51,11 +52,43 @@ export const Navbar: React.FC<NavbarProps> = ({
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
 
+  // Global Site Search States
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
+  const [searchQuery, setSearchQuery] = useState('');
+  const [searchFilter, setSearchFilter] = useState<'all' | 'programs' | 'pages'>('all');
+  const searchInputRef = useRef<HTMLInputElement>(null);
+
   type NavItemId = 'home' | 'about' | 'programs' | 'campus-life' | 'facilities' | 'admissions' | 'contact';
   const [activeNav, setActiveNav] = useState<NavItemId>('home');
 
   const bsProgrammes = OFFICIAL_BAHAWALPUR_PROGRAMMES.filter((p) => p.level === 'Undergraduate');
   const adpProgrammes = OFFICIAL_BAHAWALPUR_PROGRAMMES.filter((p) => p.level === 'Associate Degree');
+
+  // Search input auto-focus
+  useEffect(() => {
+    if (isSearchOpen) {
+      const timer = setTimeout(() => {
+        searchInputRef.current?.focus();
+      }, 70);
+      return () => clearTimeout(timer);
+    } else {
+      setSearchQuery('');
+    }
+  }, [isSearchOpen]);
+
+  // Global Ctrl+K / Cmd+K Search Shortcut
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k') {
+        e.preventDefault();
+        setIsSearchOpen((prev) => !prev);
+      } else if (e.key === 'Escape' && isSearchOpen) {
+        setIsSearchOpen(false);
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [isSearchOpen]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -160,6 +193,140 @@ export const Navbar: React.FC<NavbarProps> = ({
     setMobileMenuOpen(false);
     onScrollTo(sectionId);
   };
+
+  const campusPages = useMemo(() => [
+    {
+      id: 'page-programmes',
+      title: 'Academic Programmes (27 Degrees)',
+      category: 'Pages',
+      description: 'Explore all 27 undergraduate BS and Associate ADP degree programmes with verified credit hours',
+      icon: GraduationCap,
+      action: () => {
+        setIsSearchOpen(false);
+        if (onOpenProgrammesPage) onOpenProgrammesPage();
+        else handleNavClick('academic-programmes-section');
+      }
+    },
+    {
+      id: 'page-fees',
+      title: 'Fee Structure & Schedules',
+      category: 'Pages',
+      description: 'Official Fall 2026 tuition fee breakdown, admission dues, and semester installment schedules',
+      icon: FileText,
+      action: () => {
+        setIsSearchOpen(false);
+        onOpenFee();
+      }
+    },
+    {
+      id: 'page-scholarships',
+      title: 'Scholarships & Concessions',
+      category: 'Pages',
+      description: 'Up to 100% Merit Scholarships, 25-50% PGC Alumni and Kinship fee concessions',
+      icon: Award,
+      action: () => {
+        setIsSearchOpen(false);
+        if (onOpenScholarshipsPage) onOpenScholarshipsPage();
+        else if (onOpenLegacyPage) onOpenLegacyPage();
+      }
+    },
+    {
+      id: 'page-calendar',
+      title: 'Academic Calendar (Fall 2026)',
+      category: 'Pages',
+      description: 'Teaching days, mid/final exams, registration deadlines, and semester timetable',
+      icon: Calendar,
+      action: () => {
+        setIsSearchOpen(false);
+        if (onOpenCalendar) onOpenCalendar();
+        else onOpenInfo('academic-calendar');
+      }
+    },
+    {
+      id: 'page-admissions',
+      title: 'Apply Online (Admissions Portal)',
+      category: 'Pages',
+      description: 'Official UCP & PGC online application portal for Fall 2026 admissions',
+      icon: ExternalLink,
+      action: () => {
+        setIsSearchOpen(false);
+        onOpenApply();
+      }
+    },
+    {
+      id: 'page-campus-life',
+      title: 'Campus Life & Facilities',
+      category: 'Pages',
+      description: 'Advanced computer & AI labs, library stacks, air-conditioned buses, and sports complex',
+      icon: Compass,
+      action: () => {
+        setIsSearchOpen(false);
+        if (onOpenCampusLifePage) onOpenCampusLifePage();
+        else handleNavClick('beyond-the-classroom-section');
+      }
+    },
+    {
+      id: 'page-faculty',
+      title: 'Faculty Directory',
+      category: 'Pages',
+      description: 'Distinguished professors, PhD researchers, and experienced academic department heads',
+      icon: Building2,
+      action: () => {
+        setIsSearchOpen(false);
+        if (onOpenFacultyPage) onOpenFacultyPage();
+        else handleNavClick('faculty-section');
+      }
+    },
+    {
+      id: 'page-portal',
+      title: 'Student Portal Login',
+      category: 'Pages',
+      description: 'Login to official student portal (mcom.pgc.edu.pk) for grades, attendance, and dues',
+      icon: User,
+      action: () => {
+        setIsSearchOpen(false);
+        window.open('https://mcom.pgc.edu.pk/Student/StdLogin.jsp', '_blank', 'noopener,noreferrer');
+      }
+    },
+    {
+      id: 'page-contact',
+      title: 'Campus Contacts & Location',
+      category: 'Pages',
+      description: 'Constituent College, Airport Road, Bahawalpur · Phone: 062-2202030 / 062-2202050',
+      icon: PhoneCall,
+      action: () => {
+        setIsSearchOpen(false);
+        handleNavClick('footer-section');
+      }
+    }
+  ], [onOpenProgrammesPage, onOpenFee, onOpenScholarshipsPage, onOpenLegacyPage, onOpenCalendar, onOpenInfo, onOpenApply, onOpenCampusLifePage, onOpenFacultyPage]);
+
+  const searchResults = useMemo(() => {
+    const q = searchQuery.trim().toLowerCase();
+    if (!q) return { programmes: [], pages: [] };
+
+    const matchingProgrammes = OFFICIAL_BAHAWALPUR_PROGRAMMES.filter((p) => {
+      return (
+        p.name.toLowerCase().includes(q) ||
+        p.degree.toLowerCase().includes(q) ||
+        p.level.toLowerCase().includes(q) ||
+        p.category.toLowerCase().includes(q) ||
+        p.about.toLowerCase().includes(q)
+      );
+    });
+
+    const matchingPages = campusPages.filter((page) => {
+      return (
+        page.title.toLowerCase().includes(q) ||
+        page.description.toLowerCase().includes(q)
+      );
+    });
+
+    return {
+      programmes: matchingProgrammes,
+      pages: matchingPages,
+    };
+  }, [searchQuery, campusPages]);
 
   return (
     <header 
@@ -551,17 +718,21 @@ export const Navbar: React.FC<NavbarProps> = ({
 
           </nav>
 
-          {/* Right Header Area: Search & Mobile Menu Toggle */}
+          {/* Right Header Area: Search, Theme Toggle & Mobile Menu Toggle */}
           <div className="flex items-center space-x-2 shrink-0">
             <button
               id="header-search-btn"
-              onClick={() => handleNavClick('finder-section')}
-              className="p-2 text-slate-200 hover:text-white hover:bg-white/10 rounded-full transition-colors hidden sm:flex items-center justify-center focus:outline-none cursor-pointer"
-              title="Search Courses & Degrees"
-              aria-label="Search"
+              type="button"
+              onClick={() => setIsSearchOpen(true)}
+              className="p-2 text-slate-200 hover:text-white hover:bg-white/10 rounded-full transition-colors flex items-center justify-center focus:outline-none cursor-pointer"
+              title="Search Courses, Fees, & Degrees (Ctrl+K)"
+              aria-label="Search Website"
             >
               <Search size={18} />
             </button>
+
+            {/* Official University Light / Dark Mode Toggle */}
+            <ThemeToggle variant="header" />
 
             {/* Mobile menu toggle button — Clean official university style */}
             <button
@@ -591,6 +762,22 @@ export const Navbar: React.FC<NavbarProps> = ({
       {/* Mobile Drawer Navigation */}
       {mobileMenuOpen && (
         <div className="lg:hidden bg-[#071b34] border-t border-slate-700/70 px-5 pt-4 pb-6 text-sm text-slate-100 space-y-3.5 shadow-2xl animate-in slide-in-from-top-3">
+          {/* Mobile Quick Search Bar */}
+          <button
+            type="button"
+            onClick={() => {
+              setMobileMenuOpen(false);
+              setIsSearchOpen(true);
+            }}
+            className="w-full flex items-center justify-between px-3.5 py-2.5 bg-white/10 hover:bg-white/15 border border-white/20 rounded-xl text-xs text-slate-200 transition-colors cursor-pointer mb-2"
+          >
+            <span className="flex items-center gap-2">
+              <Search size={14} className="text-amber-300" />
+              <span>Search degrees, fees, scholarships...</span>
+            </span>
+            <span className="text-[10px] bg-white/10 px-2 py-0.5 rounded font-mono text-slate-300">Search</span>
+          </button>
+
           <div className="grid grid-cols-2 gap-2 mb-2">
             <button
               onClick={() => {
@@ -796,6 +983,288 @@ export const Navbar: React.FC<NavbarProps> = ({
             >
               UCP Online (Distance Education)
             </button>
+
+            {/* Official Mobile Appearance Mode Toggle */}
+            <ThemeToggle variant="drawer" />
+          </div>
+        </div>
+      )}
+
+      {/* =========================================================================
+          GLOBAL SEARCH MODAL (Spotlight / Command Palette style)
+          ========================================================================= */}
+      {isSearchOpen && (
+        <div 
+          className="fixed inset-0 z-50 bg-black/70 backdrop-blur-xs flex items-start justify-center pt-12 sm:pt-20 px-3 sm:px-6 animate-in fade-in duration-150"
+          onClick={() => setIsSearchOpen(false)}
+        >
+          <div 
+            className="w-full max-w-2xl bg-white rounded-2xl shadow-[0_25px_70px_rgba(0,0,0,0.35)] border border-slate-200 overflow-hidden flex flex-col max-h-[82vh] animate-in zoom-in-95 duration-150"
+            onClick={(e) => e.stopPropagation()}
+            role="dialog"
+            aria-modal="true"
+            aria-label="Site Search Dialog"
+          >
+            {/* Search Input Bar */}
+            <div className="flex items-center gap-3 px-4 sm:px-5 py-3.5 border-b border-slate-200 bg-slate-50/90">
+              <Search size={20} className="text-[#C8102E] shrink-0" />
+              <input
+                ref={searchInputRef}
+                type="text"
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                placeholder="Search 27 degree programmes, fees, admissions, scholarships, calendar..."
+                className="w-full text-sm sm:text-base text-slate-900 placeholder-slate-400 bg-transparent focus:outline-none font-sans"
+              />
+              {searchQuery && (
+                <button
+                  type="button"
+                  onClick={() => setSearchQuery('')}
+                  className="p-1 text-slate-400 hover:text-slate-600 rounded-full transition-colors cursor-pointer"
+                  aria-label="Clear search query"
+                >
+                  <X size={16} />
+                </button>
+              )}
+              <kbd className="hidden sm:inline-block text-[10px] font-mono font-semibold px-2 py-0.5 bg-white border border-slate-300 rounded shadow-2xs text-slate-500">
+                ESC
+              </kbd>
+            </div>
+
+            {/* Category Filter Pills (if query typed) */}
+            {searchQuery.trim() && (
+              <div className="flex items-center gap-1.5 px-4 sm:px-5 py-2 border-b border-slate-100 bg-white text-xs font-sans">
+                <span className="text-slate-400 text-[11px] font-medium mr-1">Filter:</span>
+                <button
+                  type="button"
+                  onClick={() => setSearchFilter('all')}
+                  className={`px-2.5 py-1 rounded-full text-[11px] font-semibold transition-colors cursor-pointer ${
+                    searchFilter === 'all'
+                      ? 'bg-[#0A1931] text-white'
+                      : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
+                  }`}
+                >
+                  All ({searchResults.programmes.length + searchResults.pages.length})
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setSearchFilter('programs')}
+                  className={`px-2.5 py-1 rounded-full text-[11px] font-semibold transition-colors cursor-pointer ${
+                    searchFilter === 'programs'
+                      ? 'bg-[#0A1931] text-white'
+                      : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
+                  }`}
+                >
+                  Degrees ({searchResults.programmes.length})
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setSearchFilter('pages')}
+                  className={`px-2.5 py-1 rounded-full text-[11px] font-semibold transition-colors cursor-pointer ${
+                    searchFilter === 'pages'
+                      ? 'bg-[#0A1931] text-white'
+                      : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
+                  }`}
+                >
+                  Pages &amp; Portals ({searchResults.pages.length})
+                </button>
+              </div>
+            )}
+
+            {/* Results Content Area */}
+            <div className="flex-1 overflow-y-auto p-4 sm:p-5 space-y-4 max-h-[60vh]">
+              {/* When query is empty: Trending & Quick Access */}
+              {!searchQuery.trim() ? (
+                <div className="space-y-5">
+                  <div>
+                    <span className="text-[11px] font-bold uppercase tracking-wider text-slate-400 block mb-2.5 font-sans">
+                      Popular Searches
+                    </span>
+                    <div className="flex flex-wrap gap-2">
+                      {[
+                        'Artificial Intelligence',
+                        'Computer Science',
+                        'Software Engineering',
+                        'Cyber Security',
+                        'Business Analytics',
+                        'Fee Structure',
+                        'Scholarships',
+                        'Psychology',
+                        'Biotechnology',
+                        'Academic Calendar',
+                        'Admissions Fall 2026',
+                        'Campus Contact'
+                      ].map((term) => (
+                        <button
+                          key={term}
+                          type="button"
+                          onClick={() => setSearchQuery(term)}
+                          className="px-3 py-1.5 bg-slate-100 hover:bg-[#0A1931] text-slate-700 hover:text-white rounded-lg text-xs font-medium transition-colors cursor-pointer border border-slate-200/80 font-sans"
+                        >
+                          {term}
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+
+                  <div>
+                    <span className="text-[11px] font-bold uppercase tracking-wider text-slate-400 block mb-2.5 font-sans">
+                      Quick Portals &amp; Tools
+                    </span>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                      {campusPages.slice(0, 6).map((page) => {
+                        const Icon = page.icon;
+                        return (
+                          <button
+                            key={page.id}
+                            type="button"
+                            onClick={page.action}
+                            className="flex items-start gap-3 p-3 rounded-xl border border-slate-200 hover:border-[#C8102E] hover:bg-slate-50 transition-all text-left cursor-pointer group"
+                          >
+                            <div className="p-2 rounded-lg bg-[#0A1931] text-white group-hover:bg-[#C8102E] transition-colors shrink-0 mt-0.5">
+                              <Icon size={16} />
+                            </div>
+                            <div className="min-w-0">
+                              <div className="font-semibold text-xs text-slate-800 group-hover:text-[#0A1931]">
+                                {page.title}
+                              </div>
+                              <div className="text-[11px] text-slate-500 line-clamp-1 mt-0.5">
+                                {page.description}
+                              </div>
+                            </div>
+                          </button>
+                        );
+                      })}
+                    </div>
+                  </div>
+                </div>
+              ) : (
+                /* Filtered Search Results */
+                <div className="space-y-4">
+                  {/* Matching Programmes */}
+                  {(searchFilter === 'all' || searchFilter === 'programs') && searchResults.programmes.length > 0 && (
+                    <div>
+                      <div className="flex items-center justify-between mb-2">
+                        <span className="text-[11px] font-bold uppercase tracking-wider text-[#C8102E] font-sans">
+                          Academic Degree Programmes ({searchResults.programmes.length})
+                        </span>
+                      </div>
+                      <div className="space-y-2">
+                        {searchResults.programmes.map((prog) => (
+                          <div
+                            key={prog.id}
+                            onClick={() => {
+                              setIsSearchOpen(false);
+                              if (onOpenProgrammesPage) onOpenProgrammesPage(prog.id);
+                              else handleNavClick('academic-programmes-section');
+                            }}
+                            className="p-3 bg-white hover:bg-slate-50 border border-slate-200 hover:border-[#0A1931] rounded-xl transition-all cursor-pointer group flex items-center justify-between gap-3 shadow-2xs"
+                          >
+                            <div className="min-w-0">
+                              <div className="flex items-center gap-2 mb-1">
+                                <span className={`text-[10px] uppercase font-bold px-2 py-0.5 rounded ${
+                                  prog.level === 'Undergraduate'
+                                    ? 'bg-[#0A1931] text-white'
+                                    : 'bg-[#C8102E] text-white'
+                                }`}>
+                                  {prog.degree}
+                                </span>
+                                <span className="text-[11px] text-slate-500 font-medium font-sans">
+                                  {prog.category}
+                                </span>
+                              </div>
+                              <h4 className="font-bold text-sm text-slate-800 group-hover:text-[#0A1931] leading-tight font-sans">
+                                {prog.name}
+                              </h4>
+                              <p className="text-[11px] text-slate-500 line-clamp-1 mt-1 font-sans">
+                                {prog.about}
+                              </p>
+                            </div>
+                            <div className="text-right shrink-0">
+                              <span className="text-xs font-mono font-bold text-[#0A1931] block">
+                                {prog.creditHours} CH
+                              </span>
+                              <span className="text-[10px] text-slate-400 font-sans block mt-0.5">
+                                View details →
+                              </span>
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+
+                  {/* Matching Pages */}
+                  {(searchFilter === 'all' || searchFilter === 'pages') && searchResults.pages.length > 0 && (
+                    <div>
+                      <div className="flex items-center justify-between mb-2">
+                        <span className="text-[11px] font-bold uppercase tracking-wider text-slate-500 font-sans">
+                          Campus Portals &amp; Sections ({searchResults.pages.length})
+                        </span>
+                      </div>
+                      <div className="space-y-2">
+                        {searchResults.pages.map((page) => {
+                          const Icon = page.icon;
+                          return (
+                            <div
+                              key={page.id}
+                              onClick={page.action}
+                              className="p-3 bg-white hover:bg-slate-50 border border-slate-200 hover:border-[#C8102E] rounded-xl transition-all cursor-pointer group flex items-center justify-between gap-3 shadow-2xs"
+                            >
+                              <div className="flex items-center gap-3 min-w-0">
+                                <div className="p-2 rounded-lg bg-[#0A1931] text-white group-hover:bg-[#C8102E] transition-colors shrink-0">
+                                  <Icon size={16} />
+                                </div>
+                                <div className="min-w-0">
+                                  <h4 className="font-bold text-xs sm:text-sm text-slate-800 group-hover:text-[#0A1931] font-sans">
+                                    {page.title}
+                                  </h4>
+                                  <p className="text-[11px] text-slate-500 line-clamp-1 mt-0.5 font-sans">
+                                    {page.description}
+                                  </p>
+                                </div>
+                              </div>
+                              <ArrowRight size={15} className="text-slate-400 group-hover:text-[#C8102E] group-hover:translate-x-0.5 transition-all shrink-0" />
+                            </div>
+                          );
+                        })}
+                      </div>
+                    </div>
+                  )}
+
+                  {/* No Results Fallback */}
+                  {searchResults.programmes.length === 0 && searchResults.pages.length === 0 && (
+                    <div className="py-12 text-center">
+                      <div className="w-12 h-12 rounded-full bg-slate-100 flex items-center justify-center mx-auto mb-3 text-slate-400">
+                        <Search size={22} />
+                      </div>
+                      <h4 className="font-bold text-slate-800 text-sm font-sans">
+                        No results found for &ldquo;{searchQuery}&rdquo;
+                      </h4>
+                      <p className="text-xs text-slate-500 mt-1 max-w-sm mx-auto font-sans">
+                        Try searching for keywords like &ldquo;Computer Science&rdquo;, &ldquo;Fee Structure&rdquo;, &ldquo;AI&rdquo;, or &ldquo;Scholarships&rdquo;.
+                      </p>
+                      <button
+                        type="button"
+                        onClick={() => {
+                          setIsSearchOpen(false);
+                          if (onOpenProgrammesPage) onOpenProgrammesPage();
+                        }}
+                        className="mt-4 px-4 py-2 bg-[#0A1931] hover:bg-[#C8102E] text-white text-xs font-semibold rounded-lg transition-colors cursor-pointer"
+                      >
+                        Browse All 27 Degree Programmes
+                      </button>
+                    </div>
+                  )}
+                </div>
+              )}
+            </div>
+
+            {/* Footer with keyboard navigation hint */}
+            <div className="px-5 py-2.5 bg-slate-100 border-t border-slate-200 flex items-center justify-between text-[11px] text-slate-500 font-sans">
+              <span>Press <kbd className="px-1 py-0.5 bg-white border border-slate-300 rounded text-[10px] font-mono">ESC</kbd> to close</span>
+              <span>UCP Bahawalpur Campus Search</span>
+            </div>
           </div>
         </div>
       )}
