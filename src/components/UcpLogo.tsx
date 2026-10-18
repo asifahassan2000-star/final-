@@ -60,15 +60,14 @@ export const UcpLogo: React.FC<UcpLogoProps> = ({ variant = 'header', className 
       {!isCompact && (
         <div className="flex flex-col justify-center select-none">
           <span 
-            className={`text-white font-bold leading-tight tracking-[0.06em] sm:tracking-[0.08em] lg:tracking-[0.09em] uppercase transition-colors duration-200 group-hover:text-amber-200 ${
+            className={`text-white leading-tight tracking-[0.03em] transition-colors duration-200 group-hover:text-amber-200 ${
               isFooter
-                ? 'text-lg sm:text-xl lg:text-2xl'
-                : 'text-[13px] sm:text-[15px] md:text-[16px] lg:text-[17px] xl:text-[18.5px]'
+                ? 'text-xl sm:text-2xl lg:text-3xl font-normal'
+                : 'text-[17px] sm:text-[19px] md:text-[21px] lg:text-[22px] xl:text-[24px] font-normal'
             }`}
             style={{
-              fontFamily: "'Cinzel', 'Playfair Display', Georgia, 'Times New Roman', serif",
-              letterSpacing: '0.07em',
-              fontWeight: 700,
+              fontFamily: "'UnifrakturMaguntia', 'MedievalSharp', 'Old English Text MT', 'Cloister Black', 'Engravers Old English BT', serif",
+              letterSpacing: '0.04em',
             }}
           >
             University of Central Punjab

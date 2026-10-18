@@ -2,23 +2,16 @@ import React, { useState } from 'react';
 import { 
   Download, 
   Calendar as CalendarIcon, 
-  Printer, 
-  FileText, 
-  CheckCircle2, 
-  AlertCircle, 
   Info, 
   Building2, 
   Phone, 
   Mail, 
   Globe, 
-  Eye, 
-  EyeOff, 
-  ExternalLink,
   ChevronDown,
   LayoutGrid,
   Table as TableIcon
 } from 'lucide-react';
-import { UCP_ACADEMIC_CALENDAR, CalendarEvent } from '../data/academicCalendarData';
+import { UCP_ACADEMIC_CALENDAR } from '../data/academicCalendarData';
 
 interface AcademicCalendarSectionProps {
   id?: string;
@@ -34,7 +27,6 @@ export const AcademicCalendarSection: React.FC<AcademicCalendarSectionProps> = (
   const cal = UCP_ACADEMIC_CALENDAR;
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
   const [mobileViewMode, setMobileViewMode] = useState<'table' | 'cards'>('table');
-  const [showPdfPreview, setShowPdfPreview] = useState<boolean>(false);
 
   const categories = [
     { id: 'all', label: 'All Activities (14)' },
@@ -48,10 +40,6 @@ export const AcademicCalendarSection: React.FC<AcademicCalendarSectionProps> = (
   const filteredEvents = selectedCategory === 'all'
     ? cal.events
     : cal.events.filter((e) => e.category === selectedCategory);
-
-  const handlePrint = () => {
-    window.print();
-  };
 
   return (
     <section
@@ -120,65 +108,9 @@ export const AcademicCalendarSection: React.FC<AcademicCalendarSectionProps> = (
                 <Download size={15} />
                 <span>Download Official Academic Calendar (PDF)</span>
               </a>
-
-              <button
-                type="button"
-                onClick={() => setShowPdfPreview(!showPdfPreview)}
-                className="inline-flex items-center gap-1.5 bg-white hover:bg-slate-50 text-[#0A1931] text-xs sm:text-sm font-semibold px-3.5 py-2.5 rounded-none border border-slate-300 transition-colors cursor-pointer font-sans"
-                aria-expanded={showPdfPreview}
-                aria-label={showPdfPreview ? "Hide PDF document preview" : "Preview PDF document"}
-              >
-                {showPdfPreview ? <EyeOff size={15} className="text-[#C8102E]" /> : <Eye size={15} />}
-                <span>{showPdfPreview ? 'Close PDF' : 'Preview Document'}</span>
-              </button>
-
-              <button
-                type="button"
-                onClick={handlePrint}
-                className="inline-flex items-center gap-1.5 bg-white hover:bg-slate-50 text-slate-700 text-xs sm:text-sm font-semibold px-3 py-2.5 rounded-none border border-slate-300 transition-colors cursor-pointer font-sans"
-                title="Print Calendar Schedule"
-                aria-label="Print Calendar Schedule"
-              >
-                <Printer size={15} />
-                <span className="hidden sm:inline">Print</span>
-              </button>
             </div>
           </div>
         </div>
-
-        {/* Collapsible PDF Viewer Preview */}
-        {showPdfPreview && (
-          <div className="mb-10 p-4 sm:p-6 bg-slate-50 border border-slate-300 transition-all">
-            <div className="flex items-center justify-between pb-3 mb-3 border-b border-slate-200">
-              <div className="flex items-center gap-2">
-                <FileText size={16} className="text-[#C8102E]" />
-                <span className="text-xs sm:text-sm font-bold text-[#0A1931] font-sans">
-                  Official Document Viewer: Center for Professional Studies Academic Calendar
-                </span>
-              </div>
-              <a
-                href="./assets/academic-calendar-fall-2026.pdf"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-1 text-xs font-semibold text-[#0A1931] hover:text-[#C8102E] transition-colors font-sans"
-              >
-                <span>Open in Tab</span>
-                <ExternalLink size={12} />
-              </a>
-            </div>
-
-            <div className="w-full h-[520px] bg-slate-200 border border-slate-300 overflow-hidden relative">
-              <iframe
-                src="./assets/academic-calendar-fall-2026.pdf#toolbar=1"
-                title="Official Academic Calendar PDF Preview"
-                className="w-full h-full border-0"
-              />
-            </div>
-            <p className="mt-2.5 text-[11px] text-slate-500 font-sans">
-              Notice: If your browser does not render inline PDFs, please use the &ldquo;Download Official Academic Calendar (PDF)&rdquo; button above.
-            </p>
-          </div>
-        )}
 
         {/* ===================================================================
             2. EXECUTIVE SUMMARY STRIP (Institutional Key Metrics)
@@ -582,58 +514,7 @@ export const AcademicCalendarSection: React.FC<AcademicCalendarSectionProps> = (
           </div>
         </div>
 
-        {/* ===================================================================
-            6. ATTENDANCE & EXAMINATION RULES
-            =================================================================== */}
-        <div className="mt-10 sm:mt-12 grid grid-cols-1 md:grid-cols-2 gap-6">
-          {/* Attendance Rule */}
-          <div className="p-6 bg-white border border-slate-200 border-l-4 border-l-[#0A1931] shadow-2xs">
-            <div className="flex items-center gap-2.5 mb-3">
-              <CheckCircle2 size={18} className="text-[#0A1931]" />
-              <h3 className="font-['Source_Serif_4','Source_Serif_Pro','Georgia',serif] text-base sm:text-lg font-bold text-[#0A1931]">
-                Attendance Rule
-              </h3>
-            </div>
-            <ol className="space-y-2 text-xs sm:text-sm text-slate-700 leading-relaxed font-sans">
-              {cal.attendanceRules.map((rule, idx) => (
-                <li key={idx} className="flex items-start gap-2">
-                  <span className="font-mono text-xs font-bold text-slate-400 shrink-0">
-                    {idx === 0 ? 'i.' : 'ii.'}
-                  </span>
-                  <span>{rule}</span>
-                </li>
-              ))}
-            </ol>
-          </div>
 
-          {/* Make Up Exams */}
-          <div className="p-6 bg-white border border-slate-200 border-l-4 border-l-[#C8102E] shadow-2xs">
-            <div className="flex items-center gap-2.5 mb-3">
-              <AlertCircle size={18} className="text-[#C8102E]" />
-              <h3 className="font-['Source_Serif_4','Source_Serif_Pro','Georgia',serif] text-base sm:text-lg font-bold text-[#0A1931]">
-                Make Up Exams
-              </h3>
-            </div>
-            <ul className="space-y-2 text-xs sm:text-sm text-slate-700 leading-relaxed font-sans">
-              {cal.makeUpExamRules.map((rule, idx) => (
-                <li key={idx} className="flex items-start gap-2">
-                  <span className="text-[#C8102E] font-bold shrink-0">•</span>
-                  <span>{rule}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Official Administrative NOTE Directive (Full Width) */}
-          <div className="md:col-span-2 p-5 sm:p-6 bg-slate-50 border border-slate-300 text-xs sm:text-sm text-slate-800 leading-relaxed font-sans">
-            <span className="font-bold uppercase tracking-wider text-[#0A1931] block mb-1">
-              NOTE:
-            </span>
-            <p className="text-slate-700">
-              {cal.administrativeNotice.replace('NOTE: - ', '')}
-            </p>
-          </div>
-        </div>
 
         {/* ===================================================================
             7. INSTITUTIONAL CONTACT BAR FROM OFFICIAL PDF FOOTER

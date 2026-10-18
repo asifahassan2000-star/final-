@@ -374,7 +374,7 @@ export const HeroSlider: React.FC<HeroSliderProps> = ({
             style={{ background: 'none' }}
           >
             <h4 
-              className="font-['Poppins',sans-serif] text-[12px] font-bold text-white leading-[1.2] mb-[3px] tracking-normal transition-colors group-hover:text-amber-200 whitespace-nowrap"
+              className="font-['Poppins',sans-serif] text-[14px] font-bold text-white leading-[1.2] mb-[3px] tracking-normal transition-colors group-hover:text-amber-200 whitespace-nowrap"
               style={{ textShadow: '0 1px 4px rgba(0,0,0,0.7)' }}
             >
               Career-Focused Education
@@ -394,7 +394,7 @@ export const HeroSlider: React.FC<HeroSliderProps> = ({
             style={{ background: 'none' }}
           >
             <h4 
-              className="font-['Poppins',sans-serif] text-[12px] font-bold text-white leading-[1.2] mb-[3px] tracking-normal transition-colors group-hover:text-amber-200 whitespace-nowrap"
+              className="font-['Poppins',sans-serif] text-[14px] font-bold text-white leading-[1.2] mb-[3px] tracking-normal transition-colors group-hover:text-amber-200 whitespace-nowrap"
               style={{ textShadow: '0 1px 4px rgba(0,0,0,0.7)' }}
             >
               Purpose-Built Campus
@@ -414,7 +414,7 @@ export const HeroSlider: React.FC<HeroSliderProps> = ({
             style={{ background: 'none' }}
           >
             <h4 
-              className="font-['Poppins',sans-serif] text-[12px] font-bold text-white leading-[1.2] mb-[3px] tracking-normal transition-colors group-hover:text-amber-200 whitespace-nowrap"
+              className="font-['Poppins',sans-serif] text-[14px] font-bold text-white leading-[1.2] mb-[3px] tracking-normal transition-colors group-hover:text-amber-200 whitespace-nowrap"
               style={{ textShadow: '0 1px 4px rgba(0,0,0,0.7)' }}
             >
               HEC Recognized Degrees
@@ -434,7 +434,7 @@ export const HeroSlider: React.FC<HeroSliderProps> = ({
             style={{ background: 'none' }}
           >
             <h4 
-              className="font-['Poppins',sans-serif] text-[12px] font-bold text-white leading-[1.2] mb-[3px] tracking-normal transition-colors group-hover:text-amber-200 whitespace-nowrap"
+              className="font-['Poppins',sans-serif] text-[14px] font-bold text-white leading-[1.2] mb-[3px] tracking-normal transition-colors group-hover:text-amber-200 whitespace-nowrap"
               style={{ textShadow: '0 1px 4px rgba(0,0,0,0.7)' }}
             >
               Punjab Group Legacy

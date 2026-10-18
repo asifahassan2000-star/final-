@@ -1,9 +1,10 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef, useEffect, useCallback } from 'react';
 import { 
   X, Send, RefreshCw, Bot, 
-  ExternalLink, Zap, ChevronRight
+  ExternalLink, Zap, Sparkles
 } from 'lucide-react';
 import { getInstantBotResponse } from '../utils/ucpBotKnowledge';
+import { UcpRobotMascot } from './UcpRobotMascot';
 
 interface Message {
   id: string;
@@ -19,7 +20,7 @@ const INITIAL_MESSAGES: Message[] = [
   {
     id: 'welcome-1',
     sender: 'bot',
-    text: "👋 Assalam-o-Alaikum! I'm **UCP Bot**, your official assistant for **UCP Bahawalpur Campus** 🎓.\n\nAsk me anything about our 27 degree programs, fee plans, admissions, eligibility, or scholarships — I respond instantly with verified campus information!",
+    text: "👋 Assalam-o-Alaikum! I'm **UCP Assistant**, your official AI guide for **UCP Bahawalpur Campus** 🎓.\n\nAsk me anything about our 27 degree programs, fee plans, admissions, eligibility, or scholarships — I respond instantly with verified campus information!",
     time: 'Just now',
     suggestions: [
       "Degree Programs 🎓",
@@ -32,7 +33,7 @@ const INITIAL_MESSAGES: Message[] = [
   }
 ];
 
-// Typewriter / Typing animation component for smooth, visible text reveal
+// Typewriter / Typing animation component for smooth text reveal
 const TypingMessageText: React.FC<{
   fullText: string;
   isAnimated?: boolean;
@@ -51,7 +52,7 @@ const TypingMessageText: React.FC<{
     setDisplayedLength(0);
     setIsFinished(false);
 
-    // Fast typing speed: 3-5 chars every 14ms for brisk, responsive ChatGPT-like feel
+    // Fast typing speed: 3-5 chars every 14ms for crisp ChatGPT-like feel
     const stepSize = Math.max(3, Math.ceil(fullText.length / 50));
     const interval = setInterval(() => {
       setDisplayedLength((prev) => {
@@ -96,41 +97,146 @@ export const UcpChatbot: React.FC = () => {
   const [messages, setMessages] = useState<Message[]>(INITIAL_MESSAGES);
   const [inputValue, setInputValue] = useState('');
   const [isLoading, setIsLoading] = useState(false);
-  const [hasPromptTooltip, setHasPromptTooltip] = useState(true);
+
+  // Mascot interactive animation states
+  const [isWaving, setIsWaving] = useState(false);
+  const [isBlinking, setIsBlinking] = useState(false);
+  const [isHappy, setIsHappy] = useState(false);
+  const [isBouncing, setIsBouncing] = useState(false);
+  const [greetingState, setGreetingState] = useState<'hidden' | 'entering' | 'visible' | 'exiting'>('hidden');
+  const [hasDismissedGreeting, setHasDismissedGreeting] = useState(false);
 
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
+  const greetingTimerRef = useRef<NodeJS.Timeout | null>(null);
 
-  // Auto-scroll to bottom of conversation
+  // 1. Natural blinking loop (every 3.6 to 5 seconds)
+  useEffect(() => {
+    let blinkTimeout: NodeJS.Timeout;
+    const interval = setInterval(() => {
+      // 180ms blink
+      setIsBlinking(true);
+      blinkTimeout = setTimeout(() => {
+        setIsBlinking(false);
+      }, 180);
+    }, 4200);
+
+    return () => {
+      clearInterval(interval);
+      clearTimeout(blinkTimeout);
+    };
+  }, []);
+
+  // 2. Intelligent, Snapchat-style greeting sequence on initial entrance
+  useEffect(() => {
+    // Only run if not previously dismissed in session
+    const sessionDismissed = typeof window !== 'undefined' && sessionStorage.getItem('ucp_greeting_seen');
+    if (sessionDismissed) {
+      return;
+    }
+
+    // Step 1: Mascot rises into view after initial page mount (800ms)
+    const timer1 = setTimeout(() => {
+      setGreetingState('entering');
+    }, 850);
+
+    // Step 2 & 3: Speech bubble pops in and Robot waves energetically (1200ms)
+    const timer2 = setTimeout(() => {
+      setGreetingState('visible');
+      setIsWaving(true);
+      setIsBouncing(true);
+      setTimeout(() => setIsBouncing(false), 500);
+    }, 1250);
+
+    // Step 4: Settle wave after 2.4s of friendly waving
+    const timer3 = setTimeout(() => {
+      setIsWaving(false);
+    }, 3800);
+
+    // Step 5 & 6: Gentle bounce and smooth exit after user has had time to read (6.8s)
+    const timer4 = setTimeout(() => {
+      setIsBouncing(true);
+      setGreetingState('exiting');
+      setTimeout(() => setIsBouncing(false), 450);
+    }, 7600);
+
+    // Step 7: Settle into hidden idle
+    const timer5 = setTimeout(() => {
+      setGreetingState('hidden');
+      if (typeof window !== 'undefined') {
+        sessionStorage.setItem('ucp_greeting_seen', 'true');
+      }
+    }, 8100);
+
+    return () => {
+      clearTimeout(timer1);
+      clearTimeout(timer2);
+      clearTimeout(timer3);
+      clearTimeout(timer4);
+      clearTimeout(timer5);
+    };
+  }, []);
+
+  // 3. Auto-scroll to bottom of conversation
   useEffect(() => {
     if (isOpen) {
       messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
     }
   }, [messages, isOpen, isLoading]);
 
-  // Auto-dismiss tooltip after 8 seconds
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setHasPromptTooltip(false);
-    }, 8000);
-    return () => clearTimeout(timer);
-  }, []);
-
-  // Focus input when chat opens
+  // 4. Focus input when chat opens & dismiss greeting
   useEffect(() => {
     if (isOpen) {
-      setTimeout(() => {
+      setGreetingState('hidden');
+      setIsWaving(false);
+      setIsHappy(true);
+      const happyTimer = setTimeout(() => setIsHappy(false), 1400);
+      const focusTimer = setTimeout(() => {
         inputRef.current?.focus();
       }, 150);
+      return () => {
+        clearTimeout(happyTimer);
+        clearTimeout(focusTimer);
+      };
     }
   }, [isOpen]);
+
+  // Handle manual dismissal of greeting
+  const handleDismissGreeting = useCallback((e: React.MouseEvent) => {
+    e.stopPropagation();
+    setHasDismissedGreeting(true);
+    setGreetingState('exiting');
+    setIsWaving(false);
+    if (greetingTimerRef.current) clearTimeout(greetingTimerRef.current);
+    setTimeout(() => {
+      setGreetingState('hidden');
+      if (typeof window !== 'undefined') {
+        sessionStorage.setItem('ucp_greeting_seen', 'true');
+      }
+    }, 350);
+  }, []);
+
+  // Handle clicking speech bubble or launcher
+  const handleToggleChat = () => {
+    setIsOpen((prev) => !prev);
+    setGreetingState('hidden');
+    setIsWaving(false);
+    if (typeof window !== 'undefined') {
+      sessionStorage.setItem('ucp_greeting_seen', 'true');
+    }
+  };
 
   const handleSendMessage = async (textToSend?: string) => {
     const query = (textToSend || inputValue).trim();
     if (!query || isLoading) return;
 
     setInputValue('');
-    setHasPromptTooltip(false);
+    setGreetingState('hidden');
+    setIsWaving(false);
+
+    // Mascot acknowledgement bounce when user sends a message
+    setIsBouncing(true);
+    setTimeout(() => setIsBouncing(false), 400);
 
     const userMsgId = `user-${Date.now()}`;
     const currentTime = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
@@ -156,7 +262,7 @@ export const UcpChatbot: React.FC = () => {
     let actionLink: { label: string; url: string } | undefined;
     let suggestions: string[] | undefined;
 
-    // Fast call with 2.8 second timeout fallback so user NEVER waits
+    // Fast server-side call with 2.8s abort timeout and instant campus knowledge engine fallback
     try {
       const controller = new AbortController();
       const timeoutId = setTimeout(() => controller.abort(), 2800);
@@ -204,6 +310,14 @@ export const UcpChatbot: React.FC = () => {
       }
     ]);
     setIsLoading(false);
+
+    // Mascot responds happily upon receiving answer: happy eyes & joyful bounce
+    setIsHappy(true);
+    setIsBouncing(true);
+    setTimeout(() => {
+      setIsHappy(false);
+      setIsBouncing(false);
+    }, 1800);
   };
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
@@ -215,6 +329,8 @@ export const UcpChatbot: React.FC = () => {
 
   const handleClearChat = () => {
     setMessages(INITIAL_MESSAGES);
+    setIsHappy(true);
+    setTimeout(() => setIsHappy(false), 1200);
   };
 
   return (
@@ -224,28 +340,34 @@ export const UcpChatbot: React.FC = () => {
           ========================================================================= */}
       {isOpen && (
         <div 
-          className="fixed bottom-22 right-4 sm:right-6 z-50 w-[94vw] sm:w-[410px] h-[550px] max-h-[82vh] bg-white rounded-2xl shadow-[0_20px_60px_rgba(10,25,49,0.22)] border border-slate-300/80 flex flex-col overflow-hidden animate-in fade-in slide-in-from-bottom-4 duration-200 select-text"
+          className="fixed bottom-[96px] sm:bottom-[110px] right-3 sm:right-6 z-50 w-[94vw] sm:w-[420px] h-[560px] max-h-[80vh] bg-white rounded-2xl shadow-[0_24px_64px_rgba(10,25,49,0.28)] border border-slate-300 flex flex-col overflow-hidden animate-in fade-in slide-in-from-bottom-4 duration-200 select-text"
           role="dialog"
-          aria-label="UCP Bot Assistant"
+          aria-label="UCP Assistant Chat Window"
         >
-          {/* Header - Official UCP Navy, minimal and decent */}
-          <div className="bg-[#0A1931] text-white px-4 py-3.5 flex items-center justify-between border-b border-[#A51C30]/40">
-            <div className="flex items-center gap-2.5">
-              {/* Minimal Bot Icon */}
-              <div className="w-8 h-8 rounded-lg bg-[#142C4E] border border-slate-700/60 flex items-center justify-center text-[#C5A880]">
-                <Bot size={18} />
+          {/* Header - Official UCP Navy with Live Robot Mascot Header Icon */}
+          <div className="bg-[#0A1931] text-white px-4 py-3 flex items-center justify-between border-b border-[#C8102E]/60 shadow-xs">
+            <div className="flex items-center gap-3">
+              {/* Animated Mini Mascot inside Header */}
+              <div className="relative w-10 h-10 rounded-xl bg-[#071326] border border-[#1E3A66] flex items-center justify-center p-0.5 overflow-hidden shrink-0 shadow-inner">
+                <UcpRobotMascot 
+                  size={36} 
+                  isBlinking={isBlinking} 
+                  isThinking={isLoading} 
+                  isHappy={isHappy} 
+                  showTorso={false} 
+                />
               </div>
 
               <div>
                 <div className="flex items-center gap-2">
-                  <h3 className="text-sm font-semibold text-white tracking-tight">UCP Bot</h3>
-                  <span className="inline-flex items-center gap-1 px-1.5 py-0.5 bg-emerald-500/15 text-emerald-400 text-[10px] font-mono rounded">
-                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
+                  <h3 className="text-sm font-bold text-white tracking-tight">UCP Assistant</h3>
+                  <span className="inline-flex items-center gap-1 px-1.5 py-0.5 bg-emerald-500/15 text-emerald-400 text-[10px] font-mono rounded font-medium">
+                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
                     Online
                   </span>
                 </div>
                 <p className="text-[11px] text-slate-300 font-sans">
-                  Official Bahawalpur Campus Assistant
+                  Official Bahawalpur Campus AI
                 </p>
               </div>
             </div>
@@ -254,7 +376,7 @@ export const UcpChatbot: React.FC = () => {
             <div className="flex items-center gap-1">
               <button
                 onClick={handleClearChat}
-                className="p-1.5 rounded-md text-slate-300 hover:text-white hover:bg-white/10 transition-colors cursor-pointer"
+                className="p-1.5 rounded-lg text-slate-300 hover:text-white hover:bg-white/10 transition-colors cursor-pointer"
                 title="Restart chat"
                 aria-label="Restart conversation"
               >
@@ -263,11 +385,11 @@ export const UcpChatbot: React.FC = () => {
 
               <button
                 onClick={() => setIsOpen(false)}
-                className="p-1.5 rounded-md text-slate-300 hover:text-white hover:bg-white/10 transition-colors cursor-pointer ml-0.5"
+                className="p-1.5 rounded-lg text-slate-300 hover:text-white hover:bg-white/10 transition-colors cursor-pointer ml-0.5"
                 title="Close chat"
                 aria-label="Close Chat"
               >
-                <X size={17} />
+                <X size={18} />
               </button>
             </div>
           </div>
@@ -284,8 +406,8 @@ export const UcpChatbot: React.FC = () => {
                 >
                   {/* Sender & Timestamp */}
                   <div className="flex items-center gap-1.5 text-[10px] text-slate-400 px-1 font-sans">
-                    <span className="font-medium text-slate-500">
-                      {msg.sender === 'bot' ? 'UCP Bot' : 'You'}
+                    <span className="font-semibold text-slate-500">
+                      {msg.sender === 'bot' ? 'UCP Assistant' : 'You'}
                     </span>
                     <span>•</span>
                     <span>{msg.time}</span>
@@ -317,7 +439,7 @@ export const UcpChatbot: React.FC = () => {
                         <a
                           href={msg.actionLink.url}
                           onClick={() => setIsOpen(false)}
-                          className="inline-flex items-center gap-1 text-[11px] font-semibold text-[#A51C30] hover:underline"
+                          className="inline-flex items-center gap-1 text-[11px] font-semibold text-[#C8102E] hover:underline"
                         >
                           {msg.actionLink.label} <ExternalLink size={12} />
                         </a>
@@ -332,7 +454,7 @@ export const UcpChatbot: React.FC = () => {
                         <button
                           key={idx}
                           onClick={() => handleSendMessage(sug.replace(/[^\w\s&]/gi, '').trim())}
-                          className="px-2.5 py-1 bg-white hover:bg-slate-100 text-slate-700 border border-slate-300 rounded-lg text-[11px] font-medium transition-colors cursor-pointer flex items-center gap-1 shadow-2xs"
+                          className="px-2.5 py-1 bg-white hover:bg-slate-100 text-slate-700 border border-slate-300 rounded-lg text-[11px] font-medium transition-colors cursor-pointer flex items-center gap-1 shadow-2xs hover:border-[#C8102E]"
                         >
                           <span>{sug}</span>
                         </button>
@@ -343,15 +465,20 @@ export const UcpChatbot: React.FC = () => {
               );
             })}
 
-            {/* Fast loading indicator */}
+            {/* Fast loading indicator with thinking robot */}
             {isLoading && (
-              <div className="flex items-center gap-2 text-slate-500 text-xs px-2 py-1">
-                <div className="w-5 h-5 rounded-md bg-[#0A1931] flex items-center justify-center text-white">
-                  <Bot size={13} className="animate-spin" />
+              <div className="flex items-center gap-2.5 text-slate-500 text-xs px-2 py-1">
+                <div className="w-6 h-6 rounded-md bg-[#0A1931] flex items-center justify-center text-white shrink-0">
+                  <UcpRobotMascot size={22} isThinking={true} showTorso={false} />
                 </div>
-                <span className="font-sans text-[11px] text-slate-500">
-                  UCP Bot is typing...
-                </span>
+                <div className="flex items-center gap-1.5 font-sans text-[11px] text-slate-500">
+                  <span>UCP Assistant is typing</span>
+                  <span className="inline-flex gap-0.5">
+                    <span className="w-1 h-1 rounded-full bg-[#C8102E] animate-bounce" style={{ animationDelay: '0ms' }} />
+                    <span className="w-1 h-1 rounded-full bg-[#0A1931] animate-bounce" style={{ animationDelay: '150ms' }} />
+                    <span className="w-1 h-1 rounded-full bg-[#38BDF8] animate-bounce" style={{ animationDelay: '300ms' }} />
+                  </span>
+                </div>
               </div>
             )}
 
@@ -359,37 +486,37 @@ export const UcpChatbot: React.FC = () => {
           </div>
 
           {/* Quick Pill Strip */}
-          <div className="px-3 py-1.5 bg-slate-50 border-t border-slate-200/80 flex items-center gap-1.5 overflow-x-auto text-[11px] scrollbar-none">
-            <span className="text-slate-400 flex items-center gap-1 flex-shrink-0 text-[10px] font-mono">
-              <Zap size={11} className="text-[#C5A880]" /> Quick:
+          <div className="px-3 py-1.5 bg-slate-50 border-t border-slate-200 flex items-center gap-1.5 overflow-x-auto text-[11px] scrollbar-none">
+            <span className="text-slate-400 flex items-center gap-1 shrink-0 text-[10px] font-mono font-semibold">
+              <Zap size={11} className="text-[#C8102E]" /> Quick:
             </span>
             <button
               onClick={() => handleSendMessage("What degree programs are offered?")}
-              className="px-2 py-0.5 bg-white border border-slate-200 text-slate-700 rounded-md whitespace-nowrap hover:bg-slate-100 cursor-pointer font-sans"
+              className="px-2 py-0.5 bg-white border border-slate-200 text-slate-700 rounded-md whitespace-nowrap hover:bg-slate-100 hover:border-[#0A1931] cursor-pointer font-sans"
             >
               Programs
             </button>
             <button
               onClick={() => handleSendMessage("Tell me about ADP Artificial Intelligence")}
-              className="px-2 py-0.5 bg-white border border-slate-200 text-slate-700 rounded-md whitespace-nowrap hover:bg-slate-100 cursor-pointer font-sans"
+              className="px-2 py-0.5 bg-white border border-slate-200 text-slate-700 rounded-md whitespace-nowrap hover:bg-slate-100 hover:border-[#0A1931] cursor-pointer font-sans"
             >
               ADP AI
             </button>
             <button
               onClick={() => handleSendMessage("What is the fee structure?")}
-              className="px-2 py-0.5 bg-white border border-slate-200 text-slate-700 rounded-md whitespace-nowrap hover:bg-slate-100 cursor-pointer font-sans"
+              className="px-2 py-0.5 bg-white border border-slate-200 text-slate-700 rounded-md whitespace-nowrap hover:bg-slate-100 hover:border-[#0A1931] cursor-pointer font-sans"
             >
               Fees
             </button>
             <button
               onClick={() => handleSendMessage("How much scholarship can I get?")}
-              className="px-2 py-0.5 bg-white border border-slate-200 text-slate-700 rounded-md whitespace-nowrap hover:bg-slate-100 cursor-pointer font-sans"
+              className="px-2 py-0.5 bg-white border border-slate-200 text-slate-700 rounded-md whitespace-nowrap hover:bg-slate-100 hover:border-[#0A1931] cursor-pointer font-sans"
             >
               Scholarships
             </button>
             <button
               onClick={() => handleSendMessage("What is the admission eligibility?")}
-              className="px-2 py-0.5 bg-white border border-slate-200 text-slate-700 rounded-md whitespace-nowrap hover:bg-slate-100 cursor-pointer font-sans"
+              className="px-2 py-0.5 bg-white border border-slate-200 text-slate-700 rounded-md whitespace-nowrap hover:bg-slate-100 hover:border-[#0A1931] cursor-pointer font-sans"
             >
               Eligibility
             </button>
@@ -404,14 +531,14 @@ export const UcpChatbot: React.FC = () => {
                 value={inputValue}
                 onChange={(e) => setInputValue(e.target.value)}
                 onKeyDown={handleKeyDown}
-                placeholder="Message UCP Bot..."
+                placeholder="Message UCP Assistant..."
                 disabled={isLoading}
                 className="flex-1 px-3.5 py-2 text-xs bg-slate-50 border border-slate-300 rounded-xl focus:outline-none focus:border-[#0A1931] focus:bg-white text-slate-800 placeholder-slate-400 font-sans transition-all"
               />
               <button
                 onClick={() => handleSendMessage()}
                 disabled={!inputValue.trim() || isLoading}
-                className="w-9 h-9 rounded-xl bg-[#0A1931] hover:bg-[#142C4E] disabled:opacity-40 text-white flex items-center justify-center transition-all cursor-pointer shadow-xs disabled:cursor-not-allowed flex-shrink-0 active:scale-95"
+                className="w-9 h-9 rounded-xl bg-[#0A1931] hover:bg-[#C8102E] disabled:opacity-40 text-white flex items-center justify-center transition-all cursor-pointer shadow-xs disabled:cursor-not-allowed shrink-0 active:scale-95"
                 aria-label="Send Message"
               >
                 <Send size={15} />
@@ -426,51 +553,109 @@ export const UcpChatbot: React.FC = () => {
       )}
 
       {/* =========================================================================
-          2. FLOATING BOT LAUNCHER BUTTON (Bottom-Right, Under Contact/WhatsApp Icon)
+          2. FLOATING ROBOT LAUNCHER & SNAPCHAT-STYLE ANIMATED GREETING BUBBLE
           ========================================================================= */}
-      <div className="fixed bottom-5 right-5 sm:right-6 z-50 flex items-center">
-        {/* Tooltip on First Visit */}
-        {hasPromptTooltip && !isOpen && (
-          <div className="mr-3 bg-[#0A1931] text-white text-xs px-3.5 py-2 rounded-xl shadow-xl border border-slate-700 font-medium flex items-center gap-2 animate-in fade-in slide-in-from-right-3 duration-200">
-            <span className="text-sm">👋</span>
-            <div>
-              <p className="font-semibold text-white text-[11px] leading-tight">UCP Bot</p>
-              <p className="text-[10px] text-slate-300">Ask about programs & admissions</p>
+      <div 
+        className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 lg:bottom-7 lg:right-7 z-45 flex items-center pointer-events-auto"
+        style={{
+          paddingBottom: 'env(safe-area-inset-bottom, 0px)',
+          paddingRight: 'env(safe-area-inset-right, 0px)',
+        }}
+      >
+        {/* Snapchat-Style Floating Animated Greeting Bubble */}
+        {!isOpen && !hasDismissedGreeting && (greetingState === 'entering' || greetingState === 'visible' || greetingState === 'exiting') && (
+          <div
+            onClick={handleToggleChat}
+            className={`relative mr-3 sm:mr-4 cursor-pointer select-none ${
+              greetingState === 'exiting' ? 'ucp-speech-bubble-exit' : 'ucp-speech-bubble-enter'
+            }`}
+            title="Click to chat with UCP Assistant"
+            role="alert"
+          >
+            {/* Speech Bubble Container */}
+            <div className="bg-white text-[#0A1931] px-4 py-3 rounded-2xl shadow-[0_12px_36px_rgba(10,25,49,0.22)] border-2 border-slate-200/90 hover:border-[#C8102E] transition-all duration-200 max-w-[230px] sm:max-w-[270px] relative group">
+              
+              {/* Triangular Speech Pointer Tail pointing into Robot */}
+              <div 
+                className="absolute -right-2 top-1/2 -translate-y-1/2 w-3.5 h-3.5 bg-white border-t-2 border-r-2 border-slate-200/90 rotate-45 group-hover:border-[#C8102E] transition-colors"
+                aria-hidden="true"
+              />
+
+              {/* Close Button */}
+              <button
+                type="button"
+                onClick={handleDismissGreeting}
+                className="absolute -top-2 -left-2 w-5 h-5 rounded-full bg-slate-100 hover:bg-[#C8102E] text-slate-500 hover:text-white border border-slate-300 flex items-center justify-center transition-colors cursor-pointer shadow-xs"
+                title="Dismiss greeting"
+                aria-label="Dismiss greeting message"
+              >
+                <X size={10} />
+              </button>
+
+              {/* Greeting Content */}
+              <div className="space-y-0.5">
+                <div className="flex items-center gap-1.5 font-bold text-xs sm:text-[13px] text-[#0A1931] leading-tight">
+                  <span>Hi there! 👋</span>
+                </div>
+                <p className="font-bold text-xs sm:text-[13px] text-[#0A1931] leading-snug">
+                  I&apos;m your UCP Assistant!
+                </p>
+                <p className="text-[10.5px] sm:text-[11.5px] font-medium text-slate-500 pt-0.5 leading-tight flex items-center gap-1">
+                  <Sparkles size={11} className="text-[#C8102E] shrink-0" />
+                  <span>Need help exploring UCP?</span>
+                </p>
+              </div>
+
+              {/* Click prompt indicator */}
+              <div className="mt-1.5 pt-1 border-t border-slate-100 text-[9.5px] font-semibold text-[#C8102E] flex items-center justify-between">
+                <span>Tap to start chat</span>
+                <span className="font-bold">→</span>
+              </div>
             </div>
-            <button
-              onClick={(e) => {
-                e.stopPropagation();
-                setHasPromptTooltip(false);
-              }}
-              className="text-slate-400 hover:text-white p-0.5 ml-1 cursor-pointer"
-            >
-              <X size={12} />
-            </button>
           </div>
         )}
 
-        {/* Small beautiful cute button: neat, decent, official color */}
+        {/* =========================================================================
+            PROMINENT ENLARGED FLOATING ROBOT LAUNCHER BUTTON
+            Desktop: ~84-88px diameter | Mobile: ~72-76px diameter
+            ========================================================================= */}
         <button
-          onClick={() => {
-            setIsOpen(!isOpen);
-            setHasPromptTooltip(false);
-          }}
-          className={`group relative w-12 h-12 sm:w-13 sm:h-13 rounded-2xl flex items-center justify-center shadow-[0_6px_24px_rgba(10,25,49,0.3)] transition-all duration-200 cursor-pointer focus:outline-none ${
-            isOpen 
-              ? 'bg-[#A51C30] text-white rotate-90 scale-95' 
-              : 'bg-[#0A1931] hover:bg-[#142C4E] text-[#C5A880] hover:scale-105 active:scale-95 border border-[#C5A880]/60'
-          }`}
-          aria-label="Open UCP Bot Chat"
-          title="UCP Bot — Campus Assistant"
+          id="ucp-assistant-floating-launcher"
+          onClick={handleToggleChat}
+          className={`group relative rounded-full flex items-center justify-center transition-all duration-300 cursor-pointer focus:outline-none focus:ring-4 focus:ring-[#C8102E]/30 select-none ${
+            isOpen
+              ? 'w-14 h-14 sm:w-16 sm:h-16 bg-[#C8102E] hover:bg-[#A51C30] text-white shadow-[0_10px_30px_rgba(200,16,46,0.4)] rotate-90 scale-95'
+              : 'w-[72px] h-[72px] sm:w-[82px] sm:h-[82px] lg:w-[88px] lg:h-[88px] bg-gradient-to-b from-[#0F223F] via-[#0A1931] to-[#061121] text-white hover:scale-105 active:scale-95 border-2 border-slate-600/80 hover:border-[#C8102E] shadow-[0_12px_40px_rgba(10,25,49,0.5)] ucp-robot-halo'
+          } ${!isOpen && !isWaving ? 'ucp-robot-float' : ''} ${isBouncing ? 'ucp-robot-bounce' : ''}`}
+          aria-label={isOpen ? "Close UCP Assistant" : "Open UCP Assistant — Campus AI Chatbot"}
+          title={isOpen ? "Close UCP Assistant" : "Chat with UCP Assistant"}
         >
           {isOpen ? (
-            <X size={20} className="relative z-10" />
+            /* Clean Close Cross */
+            <X size={26} className="text-white drop-shadow-md" />
           ) : (
-            <div className="relative z-10 flex items-center justify-center">
-              <Bot size={22} className="text-[#C5A880]" />
-              <span className="absolute -top-2 -right-2 px-1 py-0.2 bg-[#A51C30] text-white text-[8px] font-bold rounded font-mono shadow-xs">
-                BOT
-              </span>
+            /* Large Visible Cute Robot Mascot */
+            <div className={`relative w-full h-full flex items-center justify-center p-1.5 ${!isWaving ? 'ucp-robot-tilt' : ''}`}>
+              
+              {/* Mascot Vector Illustration peeking inside circular badge */}
+              <UcpRobotMascot 
+                size={74}
+                className="w-[66px] h-[66px] sm:w-[74px] sm:h-[74px] lg:w-[80px] lg:h-[80px] transition-transform duration-200 group-hover:scale-105"
+                isWaving={isWaving}
+                isBlinking={isBlinking}
+                isThinking={isLoading}
+                isHappy={isHappy}
+                showTorso={true}
+              />
+
+              {/* UCP Crimson AI Badge Pin on Top Right */}
+              <div 
+                className="absolute -top-1 -right-1 sm:top-0 sm:right-0 px-2 py-0.5 bg-[#C8102E] text-white font-mono font-bold text-[9px] rounded-full border border-white/70 shadow-md flex items-center gap-0.5"
+                aria-hidden="true"
+              >
+                <span className="w-1.5 h-1.5 rounded-full bg-emerald-300 animate-pulse" />
+                <span>AI</span>
+              </div>
             </div>
           )}
         </button>

@@ -128,8 +128,8 @@ export const FloatingSideRibbons: React.FC<FloatingSideRibbonsProps> = ({
         </button>
       </aside>
 
-      {/* Floating WhatsApp Action Button on Bottom-Right (Positioned above UCP Bot) */}
-      <div className="fixed bottom-22 sm:bottom-24 right-5 sm:right-6 z-40 flex items-center">
+      {/* Floating WhatsApp Action Button on Bottom-Right (Positioned comfortably above enlarged UCP Assistant) */}
+      <div className="fixed bottom-[108px] sm:bottom-[122px] lg:bottom-[128px] right-5 sm:right-6 z-40 flex items-center">
         {showWhatsAppTooltip && (
           <div className="hidden sm:block mr-2.5 bg-white text-slate-800 text-xs px-3 py-1.5 rounded-xl shadow-xl border border-slate-200 font-semibold animate-in fade-in slide-in-from-right-2">
             Official Campus Contact: 062-2202030 / 062-2202050

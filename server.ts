@@ -13,7 +13,9 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const app = express();
-const PORT = process.env.PORT ? parseInt(process.env.PORT, 10) : 3000;
+const PORT = process.env.NODE_ENV === 'production' && process.env.PORT
+  ? parseInt(process.env.PORT, 10)
+  : 3000;
 const isProd = process.env.NODE_ENV === 'production';
 
 app.use(express.json());
@@ -89,9 +91,19 @@ app.post('/api/chat', async (req, res) => {
       parts: [{ text: message }]
     });
 
+    const withTimeout = (promise: Promise<any>, ms: number) => {
+      let timeoutId: NodeJS.Timeout;
+      return Promise.race([
+        promise,
+        new Promise((_, reject) => {
+          timeoutId = setTimeout(() => reject(new Error('AI response timed out')), ms);
+        })
+      ]).finally(() => clearTimeout(timeoutId));
+    };
+
     let response;
     try {
-      response = await ai.models.generateContent({
+      response = await withTimeout(ai.models.generateContent({
         model: 'gemini-3.8-flash',
         contents,
         config: {
@@ -99,18 +111,26 @@ app.post('/api/chat', async (req, res) => {
           temperature: 0.7,
           maxOutputTokens: 800
         }
-      });
+      }), 4000);
     } catch (primaryErr: any) {
       console.warn('Primary model error, attempting fast fallback gemini-3.1-flash-lite:', primaryErr.message);
-      response = await ai.models.generateContent({
-        model: 'gemini-3.1-flash-lite',
-        contents,
-        config: {
-          systemInstruction: SYSTEM_INSTRUCTION,
-          temperature: 0.7,
-          maxOutputTokens: 800
-        }
-      });
+      try {
+        response = await withTimeout(ai.models.generateContent({
+          model: 'gemini-3.1-flash-lite',
+          contents,
+          config: {
+            systemInstruction: SYSTEM_INSTRUCTION,
+            temperature: 0.7,
+            maxOutputTokens: 800
+          }
+        }), 2500);
+      } catch (fallbackErr: any) {
+        console.warn('Fallback error, providing instant campus assistant response:', fallbackErr.message);
+        return res.json({
+          success: true,
+          reply: "Welcome to University of Central Punjab (UCP) Bahawalpur Campus! 🎓 We offer 27 industry-driven degree programs across Computing, Business, Sciences, and Social Sciences. Feel free to explore our fee calculator, academic calendar, or online admission portal!"
+        });
+      }
     }
 
     const replyText = response.text || "I'm here to assist you with UCP Bahawalpur! 🎓";
