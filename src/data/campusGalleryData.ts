@@ -314,9 +314,15 @@ export const CAMPUS_GALLERY_IMAGES: CampusGalleryImage[] = [
   },
   {
     "id": 38,
-    "localSrc": "https://i.ibb.co/6JH4rbCJ/Whats-App-Image-2026-10-05-at-2-39-00-AM-1.jpg",
-    "fallbackSrc": "https://i.ibb.co/6JH4rbCJ/Whats-App-Image-2026-10-05-at-2-39-00-AM-1.jpg",
-    "alt": "UCP Bahawalpur Campus Life 38"
+    "localSrc": "/assets/campus-life/campus-life-event-fixed.jpg",
+    "fallbackSrc": "https://i.ibb.co/1Y1Q7MxY/Whats-App-Image-2026-10-11-at-11-12-31-PM.jpg",
+    "alt": "UCP Bahawalpur Campus Life Celebration and Student Gathering"
+  },
+  {
+    "id": 300,
+    "localSrc": "/assets/campus-life/mou-signing-ceremony.jpg",
+    "fallbackSrc": "https://i.ibb.co/chjWx2NR/Whats-App-Image-2026-10-13-at-1-06-35-AM.jpg",
+    "alt": "MOU SIGNING CEREMONY UCP X HAVELI CHOLISTAN - Strategic Collaboration for Student Excursions and Cultural Heritage"
   },
   {
     "id": 39,

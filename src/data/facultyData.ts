@@ -467,7 +467,7 @@ export const ALL_FACULTY_MEMBERS: FacultyMemberData[] = [
     specialization: 'Computing, Information Technology, Artificial Intelligence & Programming',
     intro: 'Dedicated Computer Science / IT Lecturer with 7+ years of teaching experience in higher education. Experienced in Computing, Information Technology, Artificial Intelligence, Programming, and emerging technologies, with strong expertise in student mentoring, research, and interactive practical learning.',
     photoUrl: '/assets/faculty/prof-aliya-batool.jpg',
-    fallbackPhotoUrl: 'https://i.ibb.co/KjdKHnpk/Whats-App-Image-2026-10-14-at-8-12-27-AM.jpg',
+    fallbackPhotoUrl: 'https://i.ibb.co/zVHGmSrW/Whats-App-Image-2026-10-05-at-2-39-09-AM-2.jpg',
     objectPosition: 'object-top',
     qualifications: [
       'Ph.D. Scholar in Computer Science / Information Technology',
@@ -688,3 +688,134 @@ export const ALL_FACULTY_MEMBERS: FacultyMemberData[] = [
     ]
   }
 ];
+
+/**
+ * UCP Bahawalpur Campus Administration Officers
+ * Dedicated administrative leadership team managing academic follow-up, student portal, and creative design.
+ */
+export const ADMINISTRATION_MEMBERS: FacultyMemberData[] = [
+  {
+    id: 'admin-faheem-fazal-qureshi',
+    numericId: 101,
+    name: 'Faheem Fazal Qureshi',
+    designation: 'Academic Followup Incharge',
+    department: 'Campus Administration & Academic Affairs',
+    highestDegree: 'MBA & M.Sc (Hons) Agriculture',
+    experienceYears: '13 Years',
+    specialization: 'Academic Followup, Financial Operations & Institutional Coordination',
+    intro: 'Experienced administrative leader with 11 years banking experience as OG-1 and 2 years at PGC Main Cluster Office, Bahawalpur. Holds MBA and M.Sc (Hons) in Agriculture.',
+    photoUrl: '/assets/admin/faheem-fazal-qureshi.jpg',
+    fallbackPhotoUrl: 'https://i.ibb.co/7JVX7DYr/Whats-App-Image-2026-10-15-at-10-32-37-PM.jpg',
+    objectPosition: 'object-center',
+    qualifications: [
+      'MBA (Master of Business Administration)',
+      'M.Sc (Hons) Agriculture',
+      'Professional Banking & Administrative Certifications'
+    ],
+    experienceDetails: [
+      'Academic Followup Incharge – UCP Bahawalpur Campus',
+      '11 Years Professional Banking Experience as Officer Grade 1 (OG-1)',
+      '2 Years Administrative Experience at Punjab Group of Colleges (PGC) Main Cluster Office, Bahawalpur',
+      'Institutional operations, academic monitoring & student coordination'
+    ],
+    coreTechnicalSkills: [
+      'Academic Followup & Progress Monitoring',
+      'Banking & Financial Compliance (OG-1)',
+      'Cluster Office Administration',
+      'Student Academic Guidance & Records',
+      'Inter-Departmental Coordination'
+    ],
+    managementLeadershipSkills: [
+      'Institutional Operations Management',
+      'Academic Followup & Student Advisory',
+      'Executive Reporting & Cluster Communication',
+      'Conflict Resolution & Problem Solving'
+    ]
+  },
+  {
+    id: 'admin-miss-alisha-tariq',
+    numericId: 102,
+    name: 'Miss Alisha Tariq',
+    designation: 'Graphic Designer',
+    department: 'Media, Creative Branding & Design Operations',
+    highestDegree: 'Masters in Computer Science (MCS)',
+    experienceYears: '5 Years',
+    specialization: 'Graphic Design, Visual Branding, Digital Media & UI/UX Design',
+    intro: 'Creative design professional holding a Masters in Computer Science with 5 years of rich experience in visual branding, digital assets, multimedia presentations, and campus marketing collateral.',
+    photoUrl: '/assets/admin/miss-alisha-tariq.jpg',
+    fallbackPhotoUrl: 'https://i.ibb.co/vvTJ4GPy/Whats-App-Image-2026-10-17-at-3-27-42-AM.jpg',
+    objectPosition: 'object-center',
+    qualifications: [
+      'Masters in Computer Science (MCS)',
+      'Advanced Visual Communication & Graphic Arts',
+      'Digital Media & UI/UX Principles'
+    ],
+    experienceDetails: [
+      '5 Years Professional Experience in Graphic Design & Media',
+      'Graphic Designer – University of Central Punjab (UCP) Bahawalpur',
+      'Creative visual identity, event branding & official marketing campaigns',
+      'Digital social media graphics, print publications & academic brochures'
+    ],
+    coreTechnicalSkills: [
+      'Adobe Creative Suite (Photoshop, Illustrator, InDesign)',
+      'Brand Identity & Logo Architecture',
+      'Social Media Media Kits & Event Posters',
+      'UI/UX Prototyping & Visual Layouts',
+      'Computer Science Principles & Digital Media'
+    ],
+    managementLeadershipSkills: [
+      'Creative Direction & Concept Development',
+      'Multi-Project Design Delivery & Deadlines',
+      'Cross-Functional Collaboration with Academic Faculties',
+      'Print Production & Quality Assurance'
+    ]
+  },
+  {
+    id: 'admin-mr-hafiz-nadeem',
+    numericId: 103,
+    name: 'Mr. Hafiz Nadeem',
+    designation: 'Portal Manager',
+    department: 'Student Information Systems & Portal Management',
+    highestDegree: 'B.Sc Sciences',
+    experienceYears: '10 Years',
+    specialization: 'Student Portal Management, Academic Database Administration & IT Support',
+    intro: 'Senior systems and portal administrator with 10 years of proven experience managing student information systems, academic credentials, online portal services, and student technical assistance.',
+    photoUrl: '/assets/admin/mr-hafiz-nadeem.jpg',
+    fallbackPhotoUrl: 'https://i.ibb.co/MkL1TDt1/Whats-App-Image-2026-10-15-at-10-47-27-PM.jpg',
+    objectPosition: 'object-center',
+    qualifications: [
+      'B.Sc Sciences',
+      'Database Management & Portal Administration',
+      'Student Information Systems (SIS) Certification'
+    ],
+    experienceDetails: [
+      '10 Years Professional Experience in Portal & Systems Management',
+      'Portal Manager – University of Central Punjab (UCP) Bahawalpur',
+      'Supervision of Student Portal (mcom.pgc.edu.pk / UCP Portal)',
+      'Academic results processing, attendance tracking & fee status verification'
+    ],
+    coreTechnicalSkills: [
+      'Student Portal (SIS) Administration',
+      'Student Login Credential Management',
+      'Academic Records & Transcript Verification',
+      'Portal Troubleshooting & Student Helpdesk',
+      'Database Ingestion & Attendance Systems'
+    ],
+    managementLeadershipSkills: [
+      'Portal Systems Operations & Technical Support',
+      'Student Services & Inquiry Resolution',
+      'Data Privacy & Record Confidentiality',
+      'System Audit & Regular Maintenance'
+    ]
+  }
+];
+
+export const ADMINISTRATION_CONTACT = {
+  title: 'Campus Administration Office',
+  phone1: '062-2202030',
+  phone2: '062-2202050',
+  location: 'Constituent College, UCP Campus, Airport Road, Bahawalpur',
+  officeHours: 'Monday – Friday: 9:00 AM – 5:00 PM',
+  portalUrl: 'https://mcom.pgc.edu.pk/Student/StdLogin.jsp'
+};
+

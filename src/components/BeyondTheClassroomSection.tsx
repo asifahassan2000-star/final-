@@ -41,6 +41,8 @@ const innovistaCinemaSinging = '/assets/campus-life/innovista-cholistan-movie-si
 const innovistaCinemaSingingFallback = 'https://i.ibb.co/F4M5mF0r/Whats-App-Image-2026-10-11-at-11-23-40-PM.jpg';
 const movieDayAddition = '/assets/campus-life/movie-day-addition.jpg';
 const movieDayAdditionFallback = 'https://i.ibb.co/pjpRGkzG/Whats-App-Image-2026-10-11-at-11-24-05-PM.jpg';
+const mouSigning = '/assets/campus-life/mou-signing-ceremony.jpg';
+const mouSigningFallback = 'https://i.ibb.co/chjWx2NR/Whats-App-Image-2026-10-13-at-1-06-35-AM.jpg';
 
 // 3. Tutorial Lectures & Recreational Gaming / Skills Assets
 const studentSinging = '/assets/campus-life/student-singing-vocal-performance.jpg';

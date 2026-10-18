@@ -55,7 +55,7 @@ export const TopBar: React.FC<TopBarProps> = ({ onOpenPortal, onOpenFee, onOpenA
           <div className="flex items-center flex-wrap justify-end gap-x-4 gap-y-1 text-[11px] shrink-0">
             <div className="hidden lg:flex items-center gap-1 text-slate-300 hover:text-white transition-colors">
               <Phone size={12} className="text-[#b8121a]" />
-              <span>Phone: <strong className="text-white">{UCP_CONTACT.phone}</strong> | Toll-Free: <strong className="text-white">{UCP_CONTACT.tollFree}</strong></span>
+              <span>Phone: <strong className="text-white">{UCP_CONTACT.phone}</strong></span>
             </div>
 
             <button 

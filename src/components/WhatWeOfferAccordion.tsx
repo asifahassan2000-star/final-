@@ -10,7 +10,8 @@ import {
   ExternalLink, 
   ShieldCheck, 
   CheckCircle2,
-  GraduationCap
+  GraduationCap,
+  Users
 } from 'lucide-react';
 
 interface OfferCard {
@@ -24,7 +25,7 @@ interface OfferCard {
   actionText: string;
   externalLink?: string;
   targetId?: string;
-  actionType: 'scholarships' | 'programmes' | 'legacy' | 'facilities' | 'international' | 'apply';
+  actionType: 'scholarships' | 'programmes' | 'legacy' | 'facilities' | 'international' | 'apply' | 'campus-life';
   // Graphic designer palette & vectors
   theme: {
     bgGradient: string;
@@ -52,6 +53,7 @@ const INTERNATIONAL_OFFICE_URL =
 export const WhatWeOfferAccordion: React.FC<WhatWeOfferAccordionProps> = ({
   onOpenApply,
   onOpenProgrammesPage,
+  onOpenCampusLifePage,
   onOpenScholarshipsPage,
   onOpenLegacyPage,
   onOpenFacultyPage,
@@ -158,26 +160,25 @@ export const WhatWeOfferAccordion: React.FC<WhatWeOfferAccordionProps> = ({
     },
     {
       id: 5,
-      title: 'International Office & Global Linkages',
-      collapsedTitle: 'International Linkages',
-      badge: 'Worldwide University MoUs',
-      icon: Globe,
+      title: 'Campus Life & Co-Curricular Leadership',
+      collapsedTitle: 'Campus Life & Activities',
+      badge: 'Seminars • Leadership • Societies',
+      icon: Users,
       description:
-        'Connecting students to premier international partner universities across the globe. Benefit from global student exchange programs, overseas master’s pathways, cross-border research symposia, and global corporate internships.',
+        'Step into an invigorating collegiate journey filled with national leadership seminars, research symposia, student-led societies, competitive sports championships, and vibrant cultural galas that cultivate vision, confidence, and character.',
       highlights: [
-        'Global Student Exchange & Credit Transfers',
-        'Foreign Masters & Overseas Scholarships Advisory',
-        'Cross-Border Research Symposia & Conferences',
+        'Executive Leadership Seminars & National Symposia',
+        'Active Student Societies: Tech, Debate, Media & Arts',
+        'Annual Sports Tournaments, Desert Jeep Rallies & Tours',
       ],
-      actionText: 'Visit International Office',
-      externalLink: INTERNATIONAL_OFFICE_URL,
-      actionType: 'international',
+      actionText: 'Explore Campus Life Section',
+      actionType: 'campus-life',
       theme: {
         bgGradient: 'from-[#0A1B3F] via-[#152E6A] to-[#06122C]',
-        accentColor: '#FBBF24',
-        borderGlow: 'rgba(251, 191, 36, 0.4)',
-        chipBg: 'bg-[#FBBF24]/15 border-[#FBBF24]/35 text-[#FDE68A]',
-        numberColor: 'text-[#FBBF24]/40',
+        accentColor: '#38BDF8',
+        borderGlow: 'rgba(56, 189, 248, 0.45)',
+        chipBg: 'bg-[#38BDF8]/15 border-[#38BDF8]/35 text-[#BAE6FD]',
+        numberColor: 'text-[#38BDF8]/40',
         svgPattern: 'globe',
       },
     },
@@ -188,6 +189,15 @@ export const WhatWeOfferAccordion: React.FC<WhatWeOfferAccordionProps> = ({
 
     if (card.externalLink) {
       window.open(card.externalLink, '_blank', 'noopener,noreferrer');
+      return;
+    }
+
+    if (card.actionType === 'campus-life') {
+      if (onOpenCampusLifePage) {
+        onOpenCampusLifePage();
+      } else if (onScrollTo) {
+        onScrollTo('campus-life-section');
+      }
       return;
     }
 
@@ -411,19 +421,38 @@ export const WhatWeOfferAccordion: React.FC<WhatWeOfferAccordionProps> = ({
         <div className="mb-10 md:mb-12 text-left">
           <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#0F2C52]/8 border border-[#0F2C52]/15 text-[#0F2C52] text-xs font-semibold tracking-wider uppercase mb-3">
             <span className="w-1.5 h-1.5 rounded-full bg-[#A51C30] animate-pulse" />
-            <span>Institutional Pillars & Student Advantages</span>
+            <span>Campus Life, Co-Curricular Excellence &amp; Leadership</span>
           </div>
           
-          <h2
-            className="text-3xl sm:text-4xl lg:text-[42px] font-bold text-[#091E3A] tracking-tight leading-tight"
-            style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
-          >
-            What we offer for you
-          </h2>
-          
-          <p className="text-sm sm:text-base text-slate-600 mt-2.5 max-w-3xl leading-relaxed font-sans font-light">
-            Empowering students through nationally accredited academic prestige, generous financial scholarship assistance, versatile multidisciplinary degree pathways, and world-class laboratory infrastructure.
-          </p>
+          <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
+            <div>
+              <h2
+                className="text-3xl sm:text-4xl lg:text-[42px] font-bold text-[#091E3A] tracking-tight leading-tight"
+                style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
+              >
+                Campus Life, Co-Curricular Activities &amp; Leadership Experience
+              </h2>
+              
+              <p className="text-sm sm:text-base text-slate-600 mt-2.5 max-w-3xl leading-relaxed font-sans font-light">
+                Immerse yourself in a transformative university experience enriched with prestigious leadership seminars, academic symposia, vibrant student societies, competitive sports tournaments, and co-curricular pursuits that inspire character and cultivate future leaders.
+              </p>
+            </div>
+
+            <button
+              type="button"
+              onClick={() => {
+                if (onOpenCampusLifePage) {
+                  onOpenCampusLifePage();
+                } else if (onScrollTo) {
+                  onScrollTo('campus-life-section');
+                }
+              }}
+              className="inline-flex items-center gap-2 px-4 py-2.5 rounded-lg bg-[#0F2C52] hover:bg-[#A51C30] text-white text-xs font-semibold uppercase tracking-wider transition-all duration-200 shadow-xs hover:shadow-md cursor-pointer self-start sm:self-auto shrink-0 group"
+            >
+              <span>Explore Campus Life</span>
+              <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
+            </button>
+          </div>
         </div>
 
         {/* Main Expanding Accordion Gallery with Graphic Designer Vector Backgrounds */}

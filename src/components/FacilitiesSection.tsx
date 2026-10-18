@@ -107,43 +107,53 @@ export const FacilitiesSection: React.FC<FacilitiesSectionProps> = ({
               </div>
             </div>
 
-            {/* 2 Grid Cards: Lobby and Hallways (Full Bleed 16:9, Edge-to-Edge) */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div className="bg-white rounded-xl border border-slate-200 overflow-hidden shadow-xs">
-                <div className="relative w-full aspect-[16/9] overflow-hidden bg-slate-900">
+            {/* 2 Grid Cards: Campus Reception Hall and Vertical Corridor (Full Size Visible) */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-start">
+              {/* Reception Hall Card (Clean image, wording removed, full size visible) */}
+              <div 
+                className="bg-white rounded-xl border border-slate-200 overflow-hidden shadow-xs hover:shadow-md transition-shadow cursor-pointer group"
+                onClick={() => setSelectedImage({
+                  src: '/assets/campus/campus-reception-hall.jpg',
+                  fallback: 'https://i.ibb.co/Z9LT1K2/image-34.jpg',
+                  title: 'Campus Reception & Central Hall'
+                })}
+              >
+                <div className="relative w-full aspect-[880/1189] overflow-hidden bg-slate-950">
                   <img
-                    src="/assets/campus/5_facilities_interior_lobby.jpg"
-                    alt="Academic Lobby and Reception"
+                    src="/assets/campus/campus-reception-hall.jpg"
+                    alt="Campus Reception & Central Hall"
                     loading="lazy"
-                    className="w-full h-full object-cover object-center block"
+                    className="w-full h-full object-cover object-center block group-hover:scale-102 transition-transform duration-500"
+                    onError={(e) => {
+                      const target = e.target as HTMLImageElement;
+                      target.src = 'https://i.ibb.co/Z9LT1K2/image-34.jpg';
+                    }}
                   />
-                </div>
-                <div className="p-4 border-t border-slate-100">
-                  <h4 className="text-sm sm:text-base font-semibold text-slate-900">
-                    Academic Lobby & Reception
-                  </h4>
-                  <p className="mt-1 text-xs sm:text-sm text-slate-500 leading-relaxed font-sans">
-                    Spacious reception hall connecting administrative offices and student access corridors.
-                  </p>
+                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors pointer-events-none" />
                 </div>
               </div>
 
-              <div className="bg-white rounded-xl border border-slate-200 overflow-hidden shadow-xs">
-                <div className="relative w-full aspect-[16/9] overflow-hidden bg-slate-900">
+              {/* Corridor Card: Frame adjusted to natural ~9:16 vertical image size, Full Size Visible */}
+              <div 
+                className="bg-white rounded-xl border border-slate-200 overflow-hidden shadow-xs hover:shadow-md transition-shadow cursor-pointer group"
+                onClick={() => setSelectedImage({
+                  src: '/assets/campus/corridor-portrait-9-16.jpg',
+                  fallback: 'https://i.ibb.co/0jL07ssr/image-33.jpg',
+                  title: 'Sunlit Campus Corridors & Walkways'
+                })}
+              >
+                <div className="relative w-full aspect-[848/1258] overflow-hidden bg-slate-950">
                   <img
-                    src="/assets/campus/10_campus_sunlit_hallway.jpg"
+                    src="/assets/campus/corridor-portrait-9-16.jpg"
                     alt="Campus Corridors and Walkways"
                     loading="lazy"
-                    className="w-full h-full object-cover object-center block"
+                    className="w-full h-full object-cover object-center block group-hover:scale-102 transition-transform duration-500"
+                    onError={(e) => {
+                      const target = e.target as HTMLImageElement;
+                      target.src = 'https://i.ibb.co/0jL07ssr/image-33.jpg';
+                    }}
                   />
-                </div>
-                <div className="p-4 border-t border-slate-100">
-                  <h4 className="text-sm sm:text-base font-semibold text-slate-900">
-                    Campus Walkways & Corridors
-                  </h4>
-                  <p className="mt-1 text-xs sm:text-sm text-slate-500 leading-relaxed font-sans">
-                    Naturally lit corridors providing smooth movement between lecture rooms and study areas.
-                  </p>
+                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors pointer-events-none" />
                 </div>
               </div>
             </div>
@@ -377,6 +387,34 @@ export const FacilitiesSection: React.FC<FacilitiesSectionProps> = ({
                   <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-sans">
                     High-density workstation laboratory dedicated to object-oriented programming, data structures, enterprise application development, and database architecture with gigabit campus networking.
                   </p>
+
+                  {/* Additional Lab Photo: Student Workstation Suite */}
+                  <div className="pt-3.5 mt-3.5 border-t border-slate-100">
+                    <div 
+                      className="relative w-full aspect-[4/3] rounded-lg overflow-hidden bg-slate-900 border border-slate-200 shadow-2xs group cursor-pointer"
+                      onClick={() => setSelectedImage({
+                        src: '/assets/facilities/comp-lab-3.jpg',
+                        fallback: 'https://i.ibb.co/PZ48d5XF/Whats-App-Image-2026-10-17-at-3-35-03-AM.jpg',
+                        title: 'Computer Laboratory & Student Workstation Suite',
+                        caption: 'High-density computational workstations equipped for advanced programming, software development, and machine learning.'
+                      })}
+                    >
+                      <img
+                        src="/assets/facilities/comp-lab-3.jpg"
+                        alt="High-Performance Computing Lab Workstations"
+                        loading="lazy"
+                        className="w-full h-full object-cover object-center block group-hover:scale-102 transition-transform duration-500"
+                        onError={(e) => {
+                          (e.target as HTMLImageElement).src = 'https://i.ibb.co/PZ48d5XF/Whats-App-Image-2026-10-17-at-3-35-03-AM.jpg';
+                        }}
+                      />
+                      <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors pointer-events-none" />
+                    </div>
+                    <div className="mt-2 flex items-center justify-between text-[11px] font-mono text-slate-500">
+                      <span>COMPUTING SUITE</span>
+                      <span className="text-[#a30f16] font-medium">STUDENT WORKSTATIONS</span>
+                    </div>
+                  </div>
                 </div>
               </div>
 

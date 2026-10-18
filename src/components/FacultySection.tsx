@@ -153,7 +153,7 @@ export const FacultySection: React.FC<FacultySectionProps> = ({
               onClick={() => onViewAllFaculty('all')}
               className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-semibold text-[#0F2C61] hover:text-[#a30f16] group transition-colors cursor-pointer self-start sm:self-end shrink-0"
             >
-              <span>View All {ALL_FACULTY_MEMBERS.length} Faculty Profiles</span>
+              <span>View All Faculty</span>
               <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
             </button>
           )}

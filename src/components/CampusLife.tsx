@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { 
   ArrowRight, Users, Sparkles, Calendar, MapPin, 
-  Compass, Award, BookOpen, Music, Flag
+  Compass, Award, BookOpen, Music, Flag, Maximize2
 } from 'lucide-react';
 import { FadingStackLightbox } from './FadingStackLightbox';
 import { UcpEliteNetworkSection } from './UcpEliteNetworkSection';
@@ -280,68 +280,10 @@ export const CampusLife: React.FC<CampusLifeProps> = ({ onOpenCampusLifePage }) 
             </div>
           </div>
 
-          {/* Right Column: Arched Courtyard & Annual Live Concert Photography & Editorial Narrative */}
-          <div className="lg:col-span-6 flex flex-col space-y-7">
-            
-            {/* Visual Showcase: Central Courtyards & Annual Live Concert */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              {/* Arched Courtyard Image */}
-              <div 
-                onClick={() => openStackLightbox([courtyardImg, corridorImg, hallwayImg, lawnImg, redCarpetImg], 'Student Gathering Grounds')}
-                className="relative group overflow-hidden rounded-t-[50px] rounded-b-2xl border border-[#0A1931]/10 bg-slate-100 shadow-[0_12px_30px_rgba(10,25,49,0.06)] aspect-[4/3] w-full cursor-pointer hover:brightness-105 transition-all duration-300"
-              >
-                <img
-                  key={currentCourtyardImg}
-                  src={currentCourtyardImg}
-                  alt="Central Courtyards and Student Gathering Grounds at UCP Bahawalpur"
-                  loading="eager"
-                  className="w-full h-full object-cover object-center transition-all duration-1000 ease-out group-hover:scale-[1.03] animate-in fade-in"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#0A1931]/80 via-transparent to-transparent pointer-events-none" />
-                <div className="absolute bottom-3 left-4 right-4 text-white pointer-events-none">
-                  <span className="text-[10px] font-mono uppercase tracking-wider text-[#C5A880] block font-semibold">
-                    COURTYARD
-                  </span>
-                  <span className="font-serif text-sm sm:text-base font-bold text-white block">
-                    Student Gathering Grounds
-                  </span>
-                </div>
-              </div>
-
-              {/* Annual Live Concert Image */}
-              <div 
-                onClick={() => openStackLightbox(concertList, 'Annual Live Concert & Musical Performance')}
-                className="relative group overflow-hidden rounded-2xl rounded-tr-[50px] border border-[#0A1931]/10 bg-slate-900 shadow-[0_12px_30px_rgba(10,25,49,0.06)] aspect-[4/3] w-full cursor-pointer hover:brightness-105 transition-all duration-300"
-              >
-                <img
-                  src={concertImg}
-                  alt="Annual Live Concert and Musical Performance at UCP Bahawalpur"
-                  loading="eager"
-                  className="w-full h-full object-cover object-center transition-all duration-1000 ease-out group-hover:scale-[1.03] animate-in fade-in"
-                  onError={(e) => {
-                    const target = e.target as HTMLImageElement;
-                    target.src = concertFallback;
-                  }}
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#0A1931]/85 via-transparent to-transparent pointer-events-none" />
-                <div className="absolute bottom-3 left-4 right-4 text-white pointer-events-none">
-                  <span className="text-[10px] font-mono uppercase tracking-wider text-[#C5A880] block font-semibold">
-                    ANNUAL CONCERT
-                  </span>
-                  <span className="font-serif text-sm sm:text-base font-bold text-white block">
-                    Live Campus Performance
-                  </span>
-                </div>
-                {/* Live Badge */}
-                <div className="absolute top-3 right-3 flex items-center gap-1.5 bg-[#A51C30]/90 text-white text-[9px] font-mono uppercase tracking-widest px-2.5 py-0.5 rounded-full shadow-sm backdrop-blur-xs">
-                  <span className="w-1.5 h-1.5 rounded-full bg-white animate-pulse" />
-                  <span>Live Concert</span>
-                </div>
-              </div>
-            </div>
-
+          {/* Right Column: Editorial Narrative & Community Leadership */}
+          <div className="lg:col-span-6 flex flex-col justify-center space-y-7">
             {/* Editorial Narrative Block */}
-            <div className="space-y-6 pt-1">
+            <div className="space-y-6">
               <div className="space-y-3">
                 <div className="flex items-center gap-2.5">
                   <span className="h-2 w-2 rounded-full bg-[#A51C30]" />
@@ -350,7 +292,7 @@ export const CampusLife: React.FC<CampusLifeProps> = ({ onOpenCampusLifePage }) 
                   </span>
                 </div>
                 <h3 
-                  className="text-2xl sm:text-3xl font-serif font-bold text-[#0A1931] leading-tight"
+                  className="text-2xl sm:text-3xl lg:text-4xl font-serif font-bold text-[#0A1931] leading-tight"
                   style={{ fontFamily: "'Cormorant Garamond', 'Libre Baskerville', Georgia, serif" }}
                 >
                   A Vibrant Ecosystem of Student Engagement
@@ -360,14 +302,14 @@ export const CampusLife: React.FC<CampusLifeProps> = ({ onOpenCampusLifePage }) 
                 </p>
               </div>
 
-              {/* Sophisticated Distinctive Columns (No childish cards or heavy borders) */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 pt-2 border-t border-[#0A1931]/10">
+              {/* Distinctive Feature Columns */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 pt-3 border-t border-[#0A1931]/10">
                 <div className="space-y-1.5">
                   <div className="flex items-center gap-2 text-xs font-mono text-[#0A1931] font-bold uppercase tracking-wider">
                     <Users size={14} className="text-[#C5A880]" />
                     <span>Active Student Activities & Clubs</span>
                   </div>
-                  <p className="text-xs text-slate-600 leading-relaxed">
+                  <p className="text-xs text-slate-600 leading-relaxed font-sans">
                     Student-led engagement forums spanning Tech, Media, Arts, Discussions, and Creative Pursuits.
                   </p>
                 </div>
@@ -377,7 +319,7 @@ export const CampusLife: React.FC<CampusLifeProps> = ({ onOpenCampusLifePage }) 
                     <Music size={14} className="text-[#C5A880]" />
                     <span>Live Concerts & Traditions</span>
                   </div>
-                  <p className="text-xs text-slate-600 leading-relaxed">
+                  <p className="text-xs text-slate-600 leading-relaxed font-sans">
                     Annual musical concerts, cultural galas, celebratory corridors, and regional excursions across Pakistan.
                   </p>
                 </div>
@@ -396,13 +338,136 @@ export const CampusLife: React.FC<CampusLifeProps> = ({ onOpenCampusLifePage }) 
                 </div>
               )}
             </div>
-
           </div>
         </div>
 
         {/* ====================================================================
-            3. CINEMATIC WIDE ARCHITECTURAL PANORAMA — "CAMPUS AFTER HOURS"
-            Large, immersive photograph with rounded curvature and refined typography
+            2A. OFFICIAL STRATEGIC COLLABORATION: MOU SIGNING CEREMONY UCP X HAVELI CHOLISTAN
+            Proper big size frame matching natural photo dimensions with lightbox
+            ==================================================================== */}
+        <div className="mb-28 sm:mb-36">
+          <div className="bg-white rounded-[24px] sm:rounded-[32px] border border-slate-200/90 overflow-hidden shadow-[0_20px_50px_rgba(10,25,49,0.06)] p-6 sm:p-10 lg:p-12">
+            <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8 pb-6 border-b border-slate-100">
+              <div className="space-y-2">
+                <div className="flex items-center gap-2.5">
+                  <span className="h-2 w-2 rounded-full bg-[#A51C30]" />
+                  <span className="font-mono text-xs uppercase tracking-[0.22em] text-[#A51C30] font-bold">
+                    OFFICIAL STRATEGIC COLLABORATION
+                  </span>
+                </div>
+                <h3 
+                  className="text-2xl sm:text-3xl lg:text-4xl font-serif font-bold text-[#0A1931] tracking-tight leading-tight"
+                  style={{ fontFamily: "'Cormorant Garamond', 'Libre Baskerville', Georgia, serif" }}
+                >
+                  MOU SIGNING CEREMONY: UCP X HAVELI CHOLISTAN
+                </h3>
+                <p className="text-slate-600 text-xs sm:text-sm md:text-base leading-relaxed font-sans max-w-3xl">
+                  Formalizing an institutional partnership between the University of Central Punjab and Haveli Cholistan — creating dedicated avenues for collegiate excursions, leadership camps, cultural retreats, desert heritage fieldwork, and collaborative student activities.
+                </p>
+              </div>
+              <div className="shrink-0 flex items-center gap-2 text-xs font-mono font-semibold text-[#0A1931] bg-slate-50 px-3.5 py-2 rounded-xl border border-slate-200">
+                <Award size={15} className="text-[#C5A880]" />
+                <span>INSTITUTIONAL ALLIANCE</span>
+              </div>
+            </div>
+
+            {/* Proper Big Visible Size Image Display (Natural 4:3 Proportions 1280x960) */}
+            <div 
+              onClick={() => openStackLightbox(['/assets/campus-life/mou-signing-ceremony.jpg', cholistanHaveliSingingImg, '/assets/campus/campus-evening-view.jpg'], 'MOU Signing Ceremony: UCP x Haveli Cholistan')}
+              className="relative w-full aspect-[4/3] max-h-[720px] rounded-2xl overflow-hidden bg-slate-900 border border-[#0A1931]/10 shadow-[0_16px_40px_rgba(10,25,49,0.08)] cursor-pointer group hover:brightness-105 transition-all duration-300"
+            >
+              <img
+                src="/assets/campus-life/mou-signing-ceremony.jpg"
+                alt="MOU SIGNING CEREMONY UCP X HAVELI CHOLISTAN"
+                loading="eager"
+                className="w-full h-full object-cover object-center transition-all duration-700 ease-out group-hover:scale-[1.02] block"
+                onError={(e) => {
+                  (e.target as HTMLImageElement).src = 'https://i.ibb.co/chjWx2NR/Whats-App-Image-2026-10-13-at-1-06-35-AM.jpg';
+                }}
+              />
+              <div className="absolute inset-0 bg-black/0 group-hover:bg-black/15 transition-colors pointer-events-none" />
+              <div className="absolute top-4 right-4 bg-[#0A1931]/90 text-white backdrop-blur-md px-3.5 py-1.5 rounded-full text-[11px] font-mono tracking-wider flex items-center gap-1.5 shadow-md">
+                <Maximize2 size={13} className="text-amber-400" />
+                <span>EXPAND HIGH-RES</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* ====================================================================
+            2B. STUDENT GATHERING GROUNDS & CENTRAL COURTYARDS — PROPER BIG VISIBLE SIZE
+            Both images displayed in prominent, large visible frames matching their natural aspect ratios
+            ==================================================================== */}
+        <div className="mb-28 sm:mb-36">
+          <div className="flex items-center gap-2.5 mb-6">
+            <span className="h-2 w-2 rounded-full bg-[#A51C30]" />
+            <span className="font-mono text-xs uppercase tracking-[0.22em] text-[#A51C30] font-bold">
+              CAMPUS LAWNS & STUDENT GATHERING GROUNDS
+            </span>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 items-start">
+            {/* Student Gathering Grounds 1 — Big & Clearly Visible (Landscape 2560x1706) */}
+            <div className="space-y-3">
+              <div 
+                onClick={() => openStackLightbox(['/assets/campus/student-gathering-ground-1.jpg', '/assets/campus/student-gathering-ground-2.jpg', courtyardImg, corridorImg, hallwayImg, lawnImg], 'Student Gathering Grounds')}
+                className="relative group overflow-hidden rounded-2xl border border-[#0A1931]/10 bg-slate-900 shadow-[0_16px_40px_rgba(10,25,49,0.08)] aspect-[2560/1706] w-full cursor-pointer hover:brightness-105 transition-all duration-300"
+              >
+                <img
+                  src="/assets/campus/student-gathering-ground-1.jpg"
+                  alt="Student Gathering Grounds at UCP Bahawalpur"
+                  loading="eager"
+                  className="w-full h-full object-cover object-center transition-all duration-700 ease-out group-hover:scale-[1.02] animate-in fade-in"
+                  onError={(e) => {
+                    const target = e.target as HTMLImageElement;
+                    target.src = 'https://i.ibb.co/DDZgf551/Whats-App-Image-2026-10-05-at-2-38-56-AM.jpg';
+                  }}
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#0A1931]/75 via-transparent to-transparent pointer-events-none" />
+                <div className="absolute bottom-4 left-5 right-5 text-white pointer-events-none">
+                  <span className="text-[10px] font-mono uppercase tracking-wider text-[#C5A880] block font-semibold">
+                    CAMPUS COMMONS
+                  </span>
+                  <span className="font-serif text-base sm:text-lg font-bold text-white block">
+                    Student Gathering Grounds & Open Quads
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            {/* Student Gathering Grounds 2 — Proper Big Visible Size (Portrait 1920x2560) */}
+            <div className="space-y-3">
+              <div 
+                onClick={() => openStackLightbox(['/assets/campus/student-gathering-ground-2.jpg', '/assets/campus/student-gathering-ground-1.jpg', concertImg, courtyardImg], 'Central Courtyard & Social Grounds')}
+                className="relative group overflow-hidden rounded-2xl border border-[#0A1931]/10 bg-slate-900 shadow-[0_16px_40px_rgba(10,25,49,0.08)] aspect-[1920/2560] max-h-[640px] w-full cursor-pointer hover:brightness-105 transition-all duration-300"
+              >
+                <img
+                  src="/assets/campus/student-gathering-ground-2.jpg"
+                  alt="Central Gathering Grounds and Courtyard at UCP Bahawalpur"
+                  loading="eager"
+                  className="w-full h-full object-cover object-center transition-all duration-700 ease-out group-hover:scale-[1.02] animate-in fade-in"
+                  onError={(e) => {
+                    const target = e.target as HTMLImageElement;
+                    target.src = 'https://i.ibb.co/wrhXzy8s/Whats-App-Image-2026-10-05-at-2-39-15-AM.jpg';
+                  }}
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#0A1931]/75 via-transparent to-transparent pointer-events-none" />
+                <div className="absolute bottom-4 left-5 right-5 text-white pointer-events-none">
+                  <span className="text-[10px] font-mono uppercase tracking-wider text-[#C5A880] block font-semibold">
+                    CAMPUS COURTYARDS
+                  </span>
+                  <span className="font-serif text-base sm:text-lg font-bold text-white block">
+                    Central Courtyard & Social Grounds
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* ====================================================================
+            3. CINEMATIC ARCHITECTURAL VIEW — "CAMPUS EVENING VIEW"
+            Proper image visible in full frame without text overlay
             ==================================================================== */}
         <div 
           ref={nightSpreadRef}
@@ -411,55 +476,19 @@ export const CampusLife: React.FC<CampusLifeProps> = ({ onOpenCampusLifePage }) 
           }`}
         >
           <div 
-            onClick={() => openStackLightbox([nightCampusImg, corridorImg, courtyardImg, closingDramaticImg, hallwayImg], 'Campus After Hours')}
-            className="relative group overflow-hidden rounded-[28px] sm:rounded-[40px] border border-[#0A1931]/10 bg-[#07192F] shadow-[0_20px_50px_rgba(10,25,49,0.08)] cursor-pointer hover:brightness-105 transition-all duration-300"
+            onClick={() => openStackLightbox(['/assets/campus/campus-evening-view.jpg', nightCampusImg, corridorImg, courtyardImg, closingDramaticImg], 'Campus Evening Architectural View')}
+            className="relative group overflow-hidden rounded-[24px] sm:rounded-[36px] border border-[#0A1931]/10 bg-[#07192F] shadow-[0_20px_50px_rgba(10,25,49,0.08)] cursor-pointer hover:brightness-105 transition-all duration-300"
           >
-            <div className="relative aspect-[16/10] sm:aspect-[21/9] w-full overflow-hidden">
+            <div className="relative aspect-[4/3] sm:aspect-[16/10] max-h-[700px] w-full overflow-hidden">
               <img
-                key={currentNightCampusImg}
-                src={currentNightCampusImg}
-                alt="Campus After Hours - Illuminated Architectural View of UCP Bahawalpur"
+                src="/assets/campus/campus-evening-view.jpg"
+                alt="UCP Bahawalpur Campus Evening Architectural View"
                 loading="eager"
-                className="w-full h-full object-cover object-center transition-all duration-1000 ease-out group-hover:scale-[1.025] animate-in fade-in"
+                className="w-full h-full object-cover object-center transition-all duration-1000 ease-out group-hover:scale-[1.02] animate-in fade-in"
+                onError={(e) => {
+                  (e.target as HTMLImageElement).src = 'https://i.ibb.co/jZ9yKdMk/Whats-App-Image-2026-10-11-at-11-11-08-PM.jpg';
+                }}
               />
-
-              {/* Scrim for rich evening atmosphere */}
-              <div className="absolute inset-0 bg-gradient-to-t from-[#07192F]/90 via-[#07192F]/30 to-transparent pointer-events-none" />
-
-              <div className="absolute bottom-6 left-6 right-6 sm:bottom-12 sm:left-12 sm:right-12 flex flex-col md:flex-row md:items-end justify-between gap-6 text-white pointer-events-none">
-                <div className="max-w-2xl">
-                  <div className="flex items-center gap-3 mb-2">
-                    <span className="text-[11px] font-mono uppercase tracking-[0.26em] text-[#C5A880] font-bold">
-                      CAMPUS AFTER HOURS
-                    </span>
-                    <span className="h-px w-8 bg-[#C5A880]/50" />
-                  </div>
-
-                  <h3 
-                    className="font-serif text-2xl sm:text-3xl lg:text-4xl font-bold leading-tight text-white drop-shadow-md mb-2 sm:mb-3"
-                    style={{ fontFamily: "'Cormorant Garamond', 'Libre Baskerville', Georgia, serif" }}
-                  >
-                    Where Academic Passion Extends into the Evening
-                  </h3>
-
-                  <p className="text-xs sm:text-sm text-slate-200 font-sans leading-relaxed max-w-xl">
-                    As twilight settles over the Cholistan horizon, the campus architecture illuminates, welcoming evening symposiums, hackathons, robotics labs, and collaborative team research that carry forward student curiosity.
-                  </p>
-                </div>
-
-                <div className="pointer-events-auto flex-shrink-0">
-                  {onOpenCampusLifePage && (
-                    <button
-                      onClick={onOpenCampusLifePage}
-                      className="inline-flex items-center gap-2.5 px-6 py-3 rounded-full bg-white/10 hover:bg-white/20 text-white border border-white/30 text-xs font-mono uppercase tracking-widest backdrop-blur-md transition-all duration-300 shadow-sm hover:shadow-lg active:scale-95 cursor-pointer group"
-                    >
-                      <span>Explore Experiences</span>
-                      <ArrowRight size={14} className="transition-transform duration-300 group-hover:translate-x-1 text-[#C5A880]" />
-                    </button>
-                  )}
-                </div>
-              </div>
-
             </div>
           </div>
         </div>

@@ -62,8 +62,8 @@ export const ELITE_NETWORK_IMAGES: EliteNetworkImage[] = [
   },
   {
     "id": 10,
-    "localSrc": "https://i.ibb.co/qLzLz0ss/Whats-App-Image-2026-10-08-at-12-44-20-AM.jpg",
-    "fallbackSrc": "https://i.ibb.co/qLzLz0ss/Whats-App-Image-2026-10-08-at-12-44-20-AM.jpg",
+    "localSrc": "/assets/toppers/elite-student-fixed.jpg",
+    "fallbackSrc": "https://i.ibb.co/Z1FQMmdv/Whats-App-Image-2026-10-05-at-11-55-32-PM.jpg",
     "alt": "UCP Elite Volunteer 10"
   },
   {

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ArrowRight, Building2, Trees, CheckCircle2, Presentation, Maximize2, X, Sparkles } from 'lucide-react';
+import { ArrowRight, Building2, Trees, CheckCircle2, Presentation, Maximize2, X } from 'lucide-react';
 
 interface ClassroomPhoto {
   id: string;
@@ -325,7 +325,7 @@ export const AboutCampusSection: React.FC<AboutCampusSectionProps> = ({
                   >
                     {item.title}
                   </h4>
-                  <p className="text-[11px] font-mono text-[#a30f16] uppercase tracking-wider mb-2">
+                  <p className="text-xs text-slate-500 font-medium tracking-wide mb-2">
                     {item.subtitle}
                   </p>
 
@@ -333,13 +333,6 @@ export const AboutCampusSection: React.FC<AboutCampusSectionProps> = ({
                   <p className="text-xs text-slate-600 font-sans leading-relaxed text-justify">
                     {item.caption}
                   </p>
-                </div>
-
-                <div className="mt-4 pt-2.5 border-t border-slate-200/60 flex items-center justify-between text-[11px] font-mono text-slate-500">
-                  <span>MODERN LECTURE THEATRE</span>
-                  <span className="text-[#a30f16] font-medium flex items-center gap-1">
-                    <Sparkles size={11} /> PRIME ENVIRONMENT
-                  </span>
                 </div>
               </motion.div>
             ))}
