@@ -210,7 +210,7 @@ export const ScholarshipsPage: React.FC<ScholarshipsPageProps> = ({
       {/* =========================================================================
           1. HERO HEADER SECTION — CLEAN INSTITUTIONAL STYLE (NO RED BORDERS)
           ========================================================================= */}
-      <section className="bg-[#FFFFFF] py-14 sm:py-18 border-b border-[#E5E7EB]">
+      <section className="bg-[#FFFFFF] dark:bg-[#080f1d] py-14 sm:py-18 border-b border-[#E5E7EB] dark:border-white/10 transition-colors duration-200">
         <div className="w-full max-w-[1240px] mx-auto px-4 sm:px-6 lg:px-8">
           
           {/* Breadcrumb & Navigation */}

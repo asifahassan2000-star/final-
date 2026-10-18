@@ -92,7 +92,7 @@ export const FeeStructurePage: React.FC<FeeStructurePageProps> = ({
       {/* =========================================================================
           1. HEADER & BREADCRUMBS SECTION
           ========================================================================= */}
-      <section className="bg-[#FFFFFF] pt-12 pb-10 border-b border-[#E5E7EB]">
+      <section className="bg-[#FFFFFF] dark:bg-[#080f1d] pt-12 pb-10 border-b border-[#E5E7EB] dark:border-white/10 transition-colors duration-200">
         <div className="max-w-[1240px] mx-auto px-4 sm:px-6 lg:px-8">
           
           {/* Breadcrumb Navigation */}
@@ -189,7 +189,7 @@ export const FeeStructurePage: React.FC<FeeStructurePageProps> = ({
       {/* =========================================================================
           2. FILTER & SEARCH TOOLBAR
           ========================================================================= */}
-      <section className="bg-[#FFFFFF] py-6 border-b border-[#E5E7EB] sticky top-0 z-20 shadow-xs">
+      <section className="bg-[#FFFFFF] dark:bg-[#0d1e38] py-6 border-b border-[#E5E7EB] dark:border-white/10 sticky top-0 z-20 shadow-xs transition-colors duration-200">
         <div className="max-w-[1240px] mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row items-stretch md:items-center justify-between gap-4">
             

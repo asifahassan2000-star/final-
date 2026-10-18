@@ -824,15 +824,29 @@ html.dark .min-h-screen {
 
 /* 2. Light Container Mappings in Dark Mode */
 html.dark .bg-white,
-html.dark .bg-\[\#FFFFFF\],
-html.dark .bg-\[\#ffffff\],
-html.dark .bg-\[\#fafbfc\],
-html.dark .bg-\[\#fcfbf9\],
-html.dark .bg-\[\#F9FAFB\],
-html.dark .bg-\[\#f8fafc\],
-html.dark .bg-\[\#FAFBFD\],
-html.dark .bg-\[\#F5F5F5\] {
-  background-color: #0f1b2f !important;
+html.dark [class*="bg-white" i],
+html.dark [class*="bg-[#FFFFFF]" i],
+html.dark [class*="bg-[#ffffff]" i],
+html.dark [class*="bg-[#fafbfc]" i],
+html.dark [class*="bg-[#fcfbf9]" i],
+html.dark [class*="bg-[#F9FAFB]" i],
+html.dark [class*="bg-[#f8fafc]" i],
+html.dark [class*="bg-[#FAFBFD]" i],
+html.dark [class*="bg-[#FAF8F5]" i],
+html.dark [class*="bg-[#FAFAF8]" i],
+html.dark [class*="bg-[#FDFBF7]" i],
+html.dark [class*="bg-[#F4F1EA]" i],
+html.dark [class*="bg-[#F8F6F0]" i],
+html.dark [class*="bg-[#FDF8F0]" i],
+html.dark [class*="bg-[#FAF7EE]" i],
+html.dark [class*="bg-[#FAF9F6]" i],
+html.dark [class*="bg-[#FDFBF8]" i],
+html.dark [class*="bg-[#FCF9F2]" i],
+html.dark [class*="bg-[#F5F5F5]" i],
+html.dark [class*="bg-[#FFF7ED]" i],
+html.dark [class*="bg-[#FCFBF8]" i],
+html.dark [class*="bg-[#FAFAFA]" i] {
+  background-color: #0d1e38 !important;
 }
 
 /* Slightly elevated surfaces for hover/accent/sub-cards */
@@ -842,24 +856,58 @@ html.dark .bg-gray-50,
 html.dark .bg-gray-100,
 html.dark .bg-stone-50,
 html.dark .bg-stone-100,
-html.dark .bg-\[\#F8FAFC\],
-html.dark .bg-\[\#F1F5F9\],
-html.dark .bg-\[\#EFF6FF\],
-html.dark .bg-\[\#F3F4F6\] {
-  background-color: #14233e !important;
+html.dark [class*="bg-slate-50" i],
+html.dark [class*="bg-slate-100" i],
+html.dark [class*="bg-stone-50" i],
+html.dark [class*="bg-stone-100" i],
+html.dark [class*="bg-gray-50" i],
+html.dark [class*="bg-gray-100" i],
+html.dark [class*="bg-[#F2F3F5]" i],
+html.dark [class*="bg-[#F1F5F9]" i],
+html.dark [class*="bg-[#EFF6FF]" i],
+html.dark [class*="bg-[#F0F7FF]" i],
+html.dark [class*="bg-[#EBF3FC]" i],
+html.dark [class*="bg-[#E0EFFE]" i],
+html.dark [class*="bg-[#D7E8F9]" i],
+html.dark [class*="bg-[#F3F4F6]" i] {
+  background-color: #12284c !important;
+}
+
+/* Specific high-visibility dark styling for Total Degree Fee & Action Details in tables */
+html.dark th[class*="bg-[#EFF6FF]" i],
+html.dark td[class*="bg-[#F0F7FF]" i],
+html.dark [class*="bg-[#F0F7FF]" i] {
+  background-color: #0c2340 !important;
+  color: #38bdf8 !important;
+}
+
+html.dark button[class*="bg-[#EBF3FC]" i],
+html.dark [class*="bg-[#EBF3FC]" i] {
+  background-color: #1a3868 !important;
+  color: #ffffff !important;
+  border-color: #2b5294 !important;
+}
+
+html.dark [class*="bg-[#FFF1F2]" i] {
+  background-color: #35131b !important;
+  color: #fca5a5 !important;
 }
 
 html.dark .hover\:bg-slate-50:hover,
+html.dark .hover\:bg-slate-50\/70:hover,
 html.dark .hover\:bg-slate-100:hover,
 html.dark .hover\:bg-gray-50:hover,
 html.dark .hover\:bg-gray-100:hover,
 html.dark .hover\:bg-\[\#F8FAFC\]:hover {
-  background-color: #182a4a !important;
+  background-color: #183360 !important;
 }
 
 /* 3. Hairline Academic Borders in Dark Mode */
 html.dark .border-slate-100,
 html.dark .border-slate-200,
+html.dark .border-slate-200\/70,
+html.dark .border-slate-200\/80,
+html.dark .border-slate-200\/90,
 html.dark .border-slate-300,
 html.dark .border-gray-100,
 html.dark .border-gray-200,
@@ -867,10 +915,21 @@ html.dark .border-gray-300,
 html.dark .border-stone-100,
 html.dark .border-stone-200,
 html.dark .border-stone-300,
-html.dark .border-\[\#E5E7EB\],
-html.dark .border-\[\#CBD5E1\],
-html.dark .border-\[\#D1D5DB\],
-html.dark .border-\[\#E2E8F0\] {
+html.dark [class*="border-slate-100" i],
+html.dark [class*="border-slate-200" i],
+html.dark [class*="border-slate-300" i],
+html.dark [class*="border-gray-100" i],
+html.dark [class*="border-gray-200" i],
+html.dark [class*="border-gray-300" i],
+html.dark [class*="border-stone-100" i],
+html.dark [class*="border-stone-200" i],
+html.dark [class*="border-stone-300" i],
+html.dark [class*="border-[#E5E7EB]" i],
+html.dark [class*="border-[#CBD5E1]" i],
+html.dark [class*="border-[#D1D5DB]" i],
+html.dark [class*="border-[#E2E8F0]" i],
+html.dark [class*="border-[#0F2C61]" i],
+html.dark [class*="border-[#0A1931]" i] {
   border-color: #1e3256 !important;
 }
 
@@ -898,12 +957,23 @@ html.dark .text-stone-900,
 html.dark .text-stone-800,
 html.dark .text-gray-900,
 html.dark .text-gray-800,
-html.dark .text-\[\#0A1931\],
-html.dark .text-\[\#0F2C61\],
-html.dark .text-\[\#0F2C52\],
-html.dark .text-\[\#111827\],
-html.dark .text-\[\#1F2937\],
-html.dark .text-\[\#333333\] {
+html.dark [class*="text-[#092242]" i],
+html.dark [class*="text-[#0A1931]" i],
+html.dark [class*="text-[#0F2C61]" i],
+html.dark [class*="text-[#0F2C52]" i],
+html.dark [class*="text-[#091E3A]" i],
+html.dark [class*="text-[#0a1f44]" i],
+html.dark [class*="text-[#1E293B]" i],
+html.dark [class*="text-[#111827]" i],
+html.dark [class*="text-[#1F2937]" i],
+html.dark [class*="text-[#333333]" i],
+html.dark [class*="text-[#222222]" i],
+html.dark [class*="text-slate-900" i],
+html.dark [class*="text-slate-800" i],
+html.dark [class*="text-stone-900" i],
+html.dark [class*="text-stone-800" i],
+html.dark [class*="text-gray-900" i],
+html.dark [class*="text-gray-800" i] {
   color: #f8fafc !important;
 }
 
@@ -915,9 +985,15 @@ html.dark .text-stone-700,
 html.dark .text-stone-600,
 html.dark .text-gray-700,
 html.dark .text-gray-600,
-html.dark .text-\[\#334155\],
-html.dark .text-\[\#374151\],
-html.dark .text-\[\#4B5563\] {
+html.dark [class*="text-slate-700" i],
+html.dark [class*="text-slate-600" i],
+html.dark [class*="text-stone-700" i],
+html.dark [class*="text-stone-600" i],
+html.dark [class*="text-gray-700" i],
+html.dark [class*="text-gray-600" i],
+html.dark [class*="text-[#334155]" i],
+html.dark [class*="text-[#374151]" i],
+html.dark [class*="text-[#4B5563]" i] {
   color: #cbd5e1 !important;
 }
 
@@ -928,9 +1004,27 @@ html.dark .text-gray-500,
 html.dark .text-gray-400,
 html.dark .text-stone-500,
 html.dark .text-stone-400,
-html.dark .text-\[\#666666\],
-html.dark .text-\[\#6B7280\] {
+html.dark [class*="text-slate-500" i],
+html.dark [class*="text-slate-400" i],
+html.dark [class*="text-gray-500" i],
+html.dark [class*="text-gray-400" i],
+html.dark [class*="text-stone-500" i],
+html.dark [class*="text-stone-400" i],
+html.dark [class*="text-[#666666]" i],
+html.dark [class*="text-[#6B7280]" i] {
   color: #94a3b8 !important;
+}
+
+/* Gold, Amber & Official Accents in Dark Mode */
+html.dark .text-\[\#C5A059\],
+html.dark .text-\[\#C5A880\],
+html.dark .text-\[\#d4af37\],
+html.dark .text-\[\#8C6D23\],
+html.dark [class*="text-[#C5A059]" i],
+html.dark [class*="text-[#C5A880]" i],
+html.dark [class*="text-[#d4af37]" i],
+html.dark [class*="text-[#8C6D23]" i] {
+  color: #fbbf24 !important;
 }
 
 /* 5. Inputs, Selects, Search & Form Controls */
@@ -1074,6 +1168,36 @@ html.dark .bg-amber-50,
 html.dark .bg-amber-100 {
   background-color: rgba(245, 158, 11, 0.15) !important;
   border-color: rgba(245, 158, 11, 0.3) !important;
+}
+
+/* 11. Homepage Core Sections Solid Dark Elevation */
+html.dark #stats-section {
+  background-color: #080f1d !important;
+  color: #f8fafc !important;
+}
+
+html.dark #welcome-ucp-section {
+  background-color: #080f1d !important;
+}
+
+html.dark #our-campus-section {
+  background-color: #080f1d !important;
+}
+
+html.dark #facilities-section {
+  background-color: #080f1d !important;
+}
+
+html.dark #beyond-the-classroom-section {
+  background-color: #080f1d !important;
+}
+
+html.dark #admissions-section {
+  background-color: #080f1d !important;
+}
+
+html.dark #location-section {
+  background-color: transparent !important;
 }
 
 /* Smooth Transition between themes */

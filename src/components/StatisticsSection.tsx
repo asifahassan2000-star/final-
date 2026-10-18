@@ -30,7 +30,7 @@ export const StatisticsSection: React.FC<StatisticsSectionProps> = ({ onOpenScho
   return (
     <section 
       id="stats-section" 
-      className="py-8 sm:py-10 bg-[#FAF8F5] text-[#0A1931] relative"
+      className="py-8 sm:py-10 bg-[#FAF8F5] dark:bg-[#080f1d] text-[#0A1931] dark:text-[#f8fafc] border-b border-transparent dark:border-white/10 relative transition-colors duration-200"
       aria-label="Institutional Key Facts and Statistics"
     >
       <div className="w-full">
@@ -40,7 +40,7 @@ export const StatisticsSection: React.FC<StatisticsSectionProps> = ({ onOpenScho
             Animation: Infinite Seamless Horizontal Marquee - Ticker Tape (35s linear infinite)
             Pause on hover, auto-resume on mouse leave */}
         <div 
-          className="w-full h-[42px] bg-[#F2F3F5] border-y border-[#E5E7EB] overflow-hidden flex items-center relative select-none ticker-wrap"
+          className="w-full h-[42px] bg-[#F2F3F5] dark:bg-[#0c182c] border-y border-[#E5E7EB] dark:border-[#1e3256] overflow-hidden flex items-center relative select-none ticker-wrap"
           onMouseEnter={() => setIsPaused(true)}
           onMouseLeave={() => setIsPaused(false)}
           role="region"
@@ -58,10 +58,10 @@ export const StatisticsSection: React.FC<StatisticsSectionProps> = ({ onOpenScho
             {tickerItems.map((item, idx) => (
               <span 
                 key={`track1-${idx}`} 
-                className="text-[13px] font-medium text-[#4B5563] tracking-[0.2px] whitespace-nowrap font-['Inter',sans-serif] flex items-center gap-1.5"
+                className="text-[13px] font-medium text-[#4B5563] dark:text-slate-300 tracking-[0.2px] whitespace-nowrap font-['Inter',sans-serif] flex items-center gap-1.5"
               >
-                <span className="font-semibold text-[#1F2937]">{item.value}</span>
-                <span>{item.label}</span>
+                <span className="font-semibold text-[#1F2937] dark:text-amber-400">{item.value}</span>
+                <span className="text-[#4B5563] dark:text-slate-300">{item.label}</span>
               </span>
             ))}
           </div>
@@ -79,10 +79,10 @@ export const StatisticsSection: React.FC<StatisticsSectionProps> = ({ onOpenScho
             {tickerItems.map((item, idx) => (
               <span 
                 key={`track2-${idx}`} 
-                className="text-[13px] font-medium text-[#4B5563] tracking-[0.2px] whitespace-nowrap font-['Inter',sans-serif] flex items-center gap-1.5"
+                className="text-[13px] font-medium text-[#4B5563] dark:text-slate-300 tracking-[0.2px] whitespace-nowrap font-['Inter',sans-serif] flex items-center gap-1.5"
               >
-                <span className="font-semibold text-[#1F2937]">{item.value}</span>
-                <span>{item.label}</span>
+                <span className="font-semibold text-[#1F2937] dark:text-amber-400">{item.value}</span>
+                <span className="text-[#4B5563] dark:text-slate-300">{item.label}</span>
               </span>
             ))}
           </div>

@@ -206,7 +206,7 @@ export const WelcomeUcpSection: React.FC<WelcomeUcpSectionProps> = ({
   }, []);
 
   return (
-    <div ref={rootRef} className="relative w-full overflow-hidden bg-white selection:bg-[#0A1931] selection:text-white">
+    <div ref={rootRef} className="relative w-full overflow-hidden bg-white dark:bg-[#080f1d] selection:bg-[#0A1931] selection:text-white transition-colors duration-200">
       {/* =======================================================================
           SECTION 1: A WARM WELCOME TO UCPIANS
           Clean editorial presentation inspired by Oxford, Harvard, and NUST.
@@ -214,7 +214,7 @@ export const WelcomeUcpSection: React.FC<WelcomeUcpSectionProps> = ({
       <section
         ref={welcomeSectionRef}
         id="welcome-ucp-section"
-        className="relative w-full min-h-[580px] lg:min-h-[660px] flex items-center justify-center py-16 sm:py-20 lg:py-24 bg-white"
+        className="relative w-full min-h-[580px] lg:min-h-[660px] flex items-center justify-center py-16 sm:py-20 lg:py-24 bg-white dark:bg-[#080f1d] transition-colors duration-200"
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
           
@@ -231,7 +231,7 @@ export const WelcomeUcpSection: React.FC<WelcomeUcpSectionProps> = ({
               data-reveal-delay="0"
               className="flex items-center gap-3 mb-4"
             >
-              <span className="text-[11px] sm:text-xs font-bold tracking-[0.22em] uppercase text-[#0A1931] font-sans">
+              <span className="text-[11px] sm:text-xs font-bold tracking-[0.22em] uppercase text-[#0A1931] dark:text-amber-400 font-sans">
                 WELCOME TO UCP BAHAWALPUR
               </span>
               <div className="h-[2px] w-10 sm:w-14 bg-[#C8102E]" aria-hidden="true" />
@@ -241,9 +241,9 @@ export const WelcomeUcpSection: React.FC<WelcomeUcpSectionProps> = ({
             <h2 
               data-reveal="heading"
               data-reveal-delay="120"
-              className="font-['Source_Serif_4','Source_Serif_Pro','Georgia',serif] text-3xl sm:text-4xl lg:text-[45px] font-bold text-[#0A1931] tracking-tight leading-[1.18] mb-6 sm:mb-8 text-balance"
+              className="font-['Source_Serif_4','Source_Serif_Pro','Georgia',serif] text-3xl sm:text-4xl lg:text-[45px] font-bold text-[#0A1931] dark:text-white tracking-tight leading-[1.18] mb-6 sm:mb-8 text-balance"
             >
-              A Warm Welcome to <span className="text-[#0A1931]">UCPians</span>
+              A Warm Welcome to <span className="text-[#0A1931] dark:text-amber-400">UCPians</span>
             </h2>
 
             {/* Welcome Message: Styled as an elegant editorial quotation (Single unit) */}
@@ -254,12 +254,12 @@ export const WelcomeUcpSection: React.FC<WelcomeUcpSectionProps> = ({
             >
               {/* Sophisticated oversized opening quotation mark */}
               <span 
-                className="font-serif text-5xl sm:text-6xl text-[#C8102E]/80 leading-none select-none float-left mr-3 -mt-1"
+                className="font-serif text-5xl sm:text-6xl text-[#C8102E]/80 dark:text-[#F87171]/80 leading-none select-none float-left mr-3 -mt-1"
                 aria-hidden="true"
               >
                 “
               </span>
-              <p className="font-['Source_Serif_4','Source_Serif_Pro','Georgia',serif] text-base sm:text-lg lg:text-[20px] font-normal text-[#1E293B] leading-[1.78] italic">
+              <p className="font-['Source_Serif_4','Source_Serif_Pro','Georgia',serif] text-base sm:text-lg lg:text-[20px] font-normal text-[#1E293B] dark:text-slate-200 leading-[1.78] italic">
                 Welcome to UCP Bahawalpur, where we are committed to academic excellence, 
                 personal growth, and preparing our students for a rapidly changing world. 
                 As Campus Director, I am proud to lead our mission of empowering student potential through 
@@ -277,16 +277,16 @@ export const WelcomeUcpSection: React.FC<WelcomeUcpSectionProps> = ({
               <a
                 href="#vision-mission-section"
                 onClick={handleLearnMoreClick}
-                className="group inline-flex items-center gap-2 text-sm sm:text-base font-semibold text-[#0A1931] hover:text-[#C8102E] transition-colors py-1 cursor-pointer font-sans"
+                className="group inline-flex items-center gap-2 text-sm sm:text-base font-semibold text-[#0A1931] dark:text-amber-400 hover:text-[#C8102E] dark:hover:text-amber-300 transition-colors py-1 cursor-pointer font-sans"
                 aria-label={isVisionMissionOpen ? "Hide Vision, Mission, and Core Values" : "Learn More about Our Vision, Mission, and Core Values"}
                 aria-expanded={isVisionMissionOpen}
                 aria-controls="vision-mission-section"
               >
                 <span className="relative pb-0.5">
                   {isVisionMissionOpen ? 'Hide Vision & Mission' : 'Learn More'}
-                  <span className="absolute left-0 bottom-0 w-0 h-[1.5px] bg-[#C8102E] transition-all duration-300 group-hover:w-full" />
+                  <span className="absolute left-0 bottom-0 w-0 h-[1.5px] bg-[#C8102E] dark:bg-amber-400 transition-all duration-300 group-hover:w-full" />
                 </span>
-                <span className="text-[#C8102E] font-bold transition-transform duration-200 group-hover:translate-x-1.5" aria-hidden="true">
+                <span className="text-[#C8102E] dark:text-amber-400 font-bold transition-transform duration-200 group-hover:translate-x-1.5" aria-hidden="true">
                   {isVisionMissionOpen ? '↑' : '→'}
                 </span>
               </a>
@@ -296,17 +296,17 @@ export const WelcomeUcpSection: React.FC<WelcomeUcpSectionProps> = ({
             <div 
               data-reveal="card"
               data-reveal-delay="480"
-              className="flex flex-wrap items-center gap-y-2 gap-x-6 pt-5 border-t border-slate-200/80 text-xs sm:text-sm text-slate-600 font-sans"
+              className="flex flex-wrap items-center gap-y-2 gap-x-6 pt-5 border-t border-slate-200/80 dark:border-white/10 text-xs sm:text-sm text-slate-600 dark:text-slate-300 font-sans"
             >
               <div className="flex items-center gap-2">
-                <ShieldCheck className="w-4 h-4 text-[#C8102E]" />
-                <span className="font-semibold text-slate-800">HEC Recognized</span>
+                <ShieldCheck className="w-4 h-4 text-[#C8102E] dark:text-amber-400" />
+                <span className="font-semibold text-slate-800 dark:text-white">HEC Recognized</span>
                 <span className="text-slate-400">·</span>
                 <span>W4 Highest Category</span>
               </div>
               <div className="flex items-center gap-2">
-                <Award className="w-4 h-4 text-[#C8102E]" />
-                <span className="font-semibold text-slate-800">Punjab Group Legacy</span>
+                <Award className="w-4 h-4 text-[#C8102E] dark:text-amber-400" />
+                <span className="font-semibold text-slate-800 dark:text-white">Punjab Group Legacy</span>
                 <span className="text-slate-400">·</span>
                 <span>40+ Years of Excellence</span>
               </div>
@@ -333,7 +333,7 @@ export const WelcomeUcpSection: React.FC<WelcomeUcpSectionProps> = ({
                 <img
                   src="/assets/welcome/ucp_blueprint_lines_clean.png"
                   alt=""
-                  className="w-full h-full object-contain opacity-[0.22] mix-blend-multiply"
+                  className="w-full h-full object-contain opacity-[0.22] dark:opacity-[0.10] mix-blend-multiply dark:invert"
                   onError={(e) => {
                     (e.currentTarget as HTMLImageElement).src =
                       '/assets/welcome/ucp_building_blueprint_lines.png';
@@ -341,8 +341,8 @@ export const WelcomeUcpSection: React.FC<WelcomeUcpSectionProps> = ({
                 />
 
                 {/* Gentle fade gradient toward the left text column */}
-                <div className="absolute inset-0 bg-gradient-to-r from-white via-transparent to-transparent" />
-                <div className="absolute inset-0 bg-gradient-to-t from-white/70 via-transparent to-white/70" />
+                <div className="absolute inset-0 bg-gradient-to-r from-white dark:from-[#080f1d] via-transparent to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-white/70 dark:from-[#080f1d]/70 via-transparent to-white/70 dark:to-[#080f1d]/70" />
               </div>
             </div>
 
@@ -352,8 +352,8 @@ export const WelcomeUcpSection: React.FC<WelcomeUcpSectionProps> = ({
               className="relative z-10 flex flex-col items-center will-change-transform"
             >
               {/* Delicate concentric framing: thin secondary border + crisp navy outline */}
-              <div className="relative p-2.5 sm:p-3 rounded-full border border-slate-200/90 bg-white/70 shadow-sm backdrop-blur-[2px]">
-                <div className="w-56 h-56 sm:w-68 sm:h-68 lg:w-76 lg:h-76 rounded-full overflow-hidden border-2 border-[#0A1931] shadow-2xl bg-[#0A1931] ring-4 ring-white">
+              <div className="relative p-2.5 sm:p-3 rounded-full border border-slate-200/90 dark:border-white/10 bg-white/70 dark:bg-[#0d1e38]/70 shadow-sm backdrop-blur-[2px]">
+                <div className="w-56 h-56 sm:w-68 sm:h-68 lg:w-76 lg:h-76 rounded-full overflow-hidden border-2 border-[#0A1931] dark:border-amber-400 shadow-2xl bg-[#0A1931] ring-4 ring-white dark:ring-[#14284c]">
                   <img
                     src="/assets/welcome/director-welcome.jpg"
                     alt="Prof. Dr. Hamid Iqbal, Director UCP Bahawalpur Campus"
@@ -369,10 +369,10 @@ export const WelcomeUcpSection: React.FC<WelcomeUcpSectionProps> = ({
 
               {/* Name and Designation underneath in elegant typography */}
               <div className="text-center mt-5 sm:mt-6">
-                <h3 className="font-['Source_Serif_4','Source_Serif_Pro','Georgia',serif] text-xl sm:text-2xl font-bold text-[#0A1931] tracking-tight">
+                <h3 className="font-['Source_Serif_4','Source_Serif_Pro','Georgia',serif] text-xl sm:text-2xl font-bold text-[#0A1931] dark:text-white tracking-tight">
                   Prof. Dr. Hamid Iqbal
                 </h3>
-                <p className="text-xs sm:text-sm font-semibold text-slate-600 tracking-[0.14em] uppercase font-sans mt-1">
+                <p className="text-xs sm:text-sm font-semibold text-slate-600 dark:text-slate-300 tracking-[0.14em] uppercase font-sans mt-1">
                   Director, UCP Bahawalpur Campus
                 </p>
               </div>

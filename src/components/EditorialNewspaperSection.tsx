@@ -279,37 +279,37 @@ export const EditorialNewspaperSection: React.FC = () => {
       {/* ====================================================================
           MINIMAL OFFICIAL MASTHEAD STRIP (Clean, Decent, Literary)
           ==================================================================== */}
-      <div className="border-b border-[#0F2C61]/15 pb-4 mb-8 sm:mb-12">
-        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 text-[#0F2C61]">
+      <div className="border-b border-[#0F2C61]/15 dark:border-white/10 pb-4 mb-8 sm:mb-12">
+        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 text-[#0F2C61] dark:text-slate-200">
           <div className="flex items-center gap-3">
-            <span className="font-mono text-xs uppercase tracking-[0.24em] font-semibold text-[#0F2C61]/90">
+            <span className="font-mono text-xs uppercase tracking-[0.24em] font-semibold text-[#0F2C61]/90 dark:text-amber-400">
               COLLEGIATE ARCHIVE · OFFICIAL DISPATCHES
             </span>
-            <span className="h-3 w-px bg-[#0F2C61]/20 hidden sm:inline-block" />
-            <span className="text-xs font-serif italic text-slate-600 hidden sm:inline-block">
+            <span className="h-3 w-px bg-[#0F2C61]/20 dark:bg-white/20 hidden sm:inline-block" />
+            <span className="text-xs font-serif italic text-slate-600 dark:text-slate-400 hidden sm:inline-block">
               University of Central Punjab Bahawalpur Campus
             </span>
           </div>
 
-          <div className="flex items-center gap-2 text-[11px] font-mono text-slate-500 uppercase tracking-wider">
+          <div className="flex items-center gap-2 text-[11px] font-mono text-slate-500 dark:text-slate-400 uppercase tracking-wider">
             <span>OFFICIAL CAMPUS RECORDS</span>
-            <span className="w-1.5 h-1.5 rounded-full bg-[#991B1B]" />
+            <span className="w-1.5 h-1.5 rounded-full bg-[#991B1B] dark:bg-amber-400" />
           </div>
         </div>
       </div>
 
       {/* ====================================================================
           PRIMARY TWO-FEATURE MAGAZINE GRID (EQUAL GRAND VISUAL WEIGHT)
-          Column A: International Symposium on AI
-          Column B: Seminar Section (Big Not Small — 6 Sessions)
+          Column A: International Symposium on AI (CSS Selectors 11, 13)
+          Column B: Seminar Section (CSS Selectors 12, 19)
           ==================================================================== */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-10 mb-12">
         
         {/* ------------------------------------------------------------------
-            FEATURE 1: INTERNATIONAL SYMPOSIUM ON AI (CENTERPIECE)
+            FEATURE 1: INTERNATIONAL SYMPOSIUM ON AI (CENTERPIECE) (CSS Selectors 11, 13)
             ------------------------------------------------------------------ */}
         <motion.article 
-          className="bg-white/80 rounded-xl p-5 sm:p-7 border border-[#0F2C61]/10 shadow-xs hover:shadow-md transition-all duration-300 flex flex-col justify-between group"
+          className="bg-white dark:bg-[#0d1e38] rounded-xl p-5 sm:p-7 border border-slate-200 dark:border-[#1e3256] shadow-xs hover:shadow-md transition-all duration-300 flex flex-col justify-between group"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: easeCurve }}
@@ -318,31 +318,31 @@ export const EditorialNewspaperSection: React.FC = () => {
           <div>
             {/* Minimal Header */}
             <div className="flex items-center justify-between gap-2 mb-3">
-              <span className="text-xs font-mono font-semibold tracking-[0.22em] text-[#991B1B] uppercase">
+              <span className="text-xs font-mono font-semibold tracking-[0.22em] text-[#991B1B] dark:text-amber-400 uppercase">
                 INTERNATIONAL SYMPOSIUM
               </span>
-              <span className="text-[11px] font-mono text-slate-500 uppercase tracking-widest">
+              <span className="text-[11px] font-mono text-slate-500 dark:text-slate-400 uppercase tracking-widest">
                 AI & SECURE SYSTEMS
               </span>
             </div>
 
             {/* Serif Headline */}
             <h3 
-              className="text-xl sm:text-2xl lg:text-[26px] font-serif font-bold text-[#0F2C61] leading-[1.22] tracking-tight mb-2 group-hover:text-[#991B1B] transition-colors duration-200"
+              className="text-xl sm:text-2xl lg:text-[26px] font-serif font-bold text-[#0F2C61] dark:text-white leading-[1.22] tracking-tight mb-2 group-hover:text-[#991B1B] dark:group-hover:text-amber-400 transition-colors duration-200"
               style={{ fontFamily: "'Playfair Display', 'Cormorant Garamond', Georgia, serif" }}
             >
               International Symposium on AI and Secure Systems
             </h3>
 
             {/* Standfirst */}
-            <p className="text-xs sm:text-sm text-slate-600 font-serif italic mb-4 leading-relaxed">
+            <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 font-serif italic mb-4 leading-relaxed">
               Keynote Deliberations, Plenary Discourse & Technical Colloquium
             </p>
 
             {/* Dual Big Size Images - Both Displayed Together */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-3">
               <div 
-                className="relative w-full aspect-[4/3] rounded-lg overflow-hidden border border-[#0F2C61]/10 bg-slate-100 cursor-pointer shadow-xs group/img"
+                className="relative w-full aspect-[4/3] rounded-lg overflow-hidden border border-[#0F2C61]/10 dark:border-[#1e3256] bg-slate-100 dark:bg-slate-900 cursor-pointer shadow-xs group/img"
                 onClick={() => openLightbox('symp-ai-secure-1')}
                 title="Click to inspect keynote stage"
               >
@@ -367,7 +367,7 @@ export const EditorialNewspaperSection: React.FC = () => {
               </div>
 
               <div 
-                className="relative w-full aspect-[4/3] rounded-lg overflow-hidden border border-[#0F2C61]/10 bg-slate-100 cursor-pointer shadow-xs group/img"
+                className="relative w-full aspect-[4/3] rounded-lg overflow-hidden border border-[#0F2C61]/10 dark:border-[#1e3256] bg-slate-100 dark:bg-slate-900 cursor-pointer shadow-xs group/img"
                 onClick={() => openLightbox('symp-ai-secure-2')}
                 title="Click to inspect delegates assembly"
               >
@@ -393,24 +393,24 @@ export const EditorialNewspaperSection: React.FC = () => {
             </div>
 
             {/* Dateline & Narrative — Less Wording */}
-            <p className="text-[10px] font-mono text-slate-500 uppercase tracking-wider mb-2">
+            <p className="text-[10px] font-mono text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-2">
               EXECUTIVE AUDITORIUM · SESSIONS DOCUMENTED
             </p>
-            <p className="text-xs sm:text-[13px] text-slate-700 font-sans leading-relaxed text-justify">
+            <p className="text-xs sm:text-[13px] text-slate-700 dark:text-slate-300 font-sans leading-relaxed text-justify">
               International researchers and computational scientists gathered at UCP Bahawalpur for the International Symposium on AI and Secure Systems, deliberating on deep learning breakthroughs, cryptographic resilience, and secure automated computing.
             </p>
           </div>
 
-          <div className="mt-5 pt-3 border-t border-[#0F2C61]/10 flex items-center justify-between text-[11px] font-mono text-slate-600">
+          <div className="mt-5 pt-3 border-t border-slate-200 dark:border-white/10 flex items-center justify-between text-[11px] font-mono text-slate-600 dark:text-slate-400">
             <span>FACULTY OF INFORMATION TECHNOLOGY</span>
           </div>
         </motion.article>
 
         {/* ------------------------------------------------------------------
-            FEATURE 2: SEMINAR SECTION (BIG NOT SMALL — 6 SESSIONS)
+            FEATURE 2: SEMINAR SECTION (BIG NOT SMALL — 6 SESSIONS) (CSS Selectors 12, 19)
             ------------------------------------------------------------------ */}
         <motion.article 
-          className="bg-white/80 rounded-xl p-5 sm:p-7 border border-[#0F2C61]/10 shadow-xs hover:shadow-md transition-all duration-300 flex flex-col justify-between group"
+          className="bg-white dark:bg-[#0d1e38] rounded-xl p-5 sm:p-7 border border-slate-200 dark:border-[#1e3256] shadow-xs hover:shadow-md transition-all duration-300 flex flex-col justify-between group"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.12, ease: easeCurve }}
@@ -419,30 +419,30 @@ export const EditorialNewspaperSection: React.FC = () => {
           <div>
             {/* Minimal Header */}
             <div className="flex items-center justify-between gap-2 mb-3">
-              <span className="text-xs font-mono font-semibold tracking-[0.22em] text-[#991B1B] uppercase">
+              <span className="text-xs font-mono font-semibold tracking-[0.22em] text-[#991B1B] dark:text-amber-400 uppercase">
                 {activeCommPhoto.category}
               </span>
-              <span className="text-[11px] font-mono text-slate-500 uppercase tracking-widest">
+              <span className="text-[11px] font-mono text-slate-500 dark:text-slate-400 uppercase tracking-widest">
                 SESSION {activeCommIdx + 1} OF 6
               </span>
             </div>
 
-            {/* Serif Headline */}
+            {/* Serif Headline (CSS Selector 19) */}
             <h3 
-              className="text-xl sm:text-2xl lg:text-[26px] font-serif font-bold text-[#0F2C61] leading-[1.22] tracking-tight mb-2 group-hover:text-[#991B1B] transition-colors duration-200"
+              className="text-xl sm:text-2xl lg:text-[26px] font-serif font-bold text-[#0F2C61] dark:text-white leading-[1.22] tracking-tight mb-2 group-hover:text-[#991B1B] dark:group-hover:text-amber-400 transition-colors duration-200"
               style={{ fontFamily: "'Playfair Display', 'Cormorant Garamond', Georgia, serif" }}
             >
               {activeCommPhoto.title}
             </h3>
 
             {/* Standfirst */}
-            <p className="text-xs sm:text-sm text-slate-600 font-serif italic mb-4 leading-relaxed">
+            <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 font-serif italic mb-4 leading-relaxed">
               {activeCommPhoto.subtitle}
             </p>
 
             {/* Big Prominent Photo Frame (Big Not Small — matching symposium size) */}
             <div 
-              className="relative w-full aspect-[16/10] rounded-lg overflow-hidden border border-[#0F2C61]/10 bg-slate-100 cursor-pointer mb-3 shadow-xs"
+              className="relative w-full aspect-[16/10] rounded-lg overflow-hidden border border-[#0F2C61]/10 dark:border-[#1e3256] bg-slate-100 dark:bg-slate-900 cursor-pointer mb-3 shadow-xs"
               onClick={() => openLightbox(activeCommPhoto.id)}
               title="Click to view full photograph"
             >
@@ -478,8 +478,8 @@ export const EditorialNewspaperSection: React.FC = () => {
                     onClick={() => setActiveCommIdx(idx)}
                     className={`relative aspect-[4/3] rounded-md overflow-hidden border transition-all duration-200 cursor-pointer ${
                       isSelected
-                        ? 'border-[#991B1B] ring-2 ring-[#991B1B]/40 scale-102 z-10'
-                        : 'border-slate-200/80 opacity-70 hover:opacity-100 hover:border-[#0F2C61]/40'
+                        ? 'border-[#991B1B] dark:border-amber-400 ring-2 ring-[#991B1B]/40 dark:ring-amber-400/40 scale-102 z-10'
+                        : 'border-slate-200/80 dark:border-white/10 opacity-70 hover:opacity-100 hover:border-[#0F2C61]/40'
                     }`}
                     title={item.badge || `Session ${idx + 1}`}
                   >
@@ -500,15 +500,15 @@ export const EditorialNewspaperSection: React.FC = () => {
             </div>
 
             {/* Dateline & Narrative */}
-            <p className="text-[10px] font-mono text-slate-500 uppercase tracking-wider mb-2">
+            <p className="text-[10px] font-mono text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-2">
               {activeCommPhoto.dateline}
             </p>
-            <p className="text-xs sm:text-[13px] text-slate-700 font-sans leading-relaxed text-justify">
+            <p className="text-xs sm:text-[13px] text-slate-700 dark:text-slate-300 font-sans leading-relaxed text-justify">
               {activeCommPhoto.caption}
             </p>
           </div>
 
-          <div className="mt-5 pt-3 border-t border-[#0F2C61]/10 flex items-center justify-between text-[11px] font-mono text-slate-600">
+          <div className="mt-5 pt-3 border-t border-[#0F2C61]/10 dark:border-white/10 flex items-center justify-between text-[11px] font-mono text-slate-600 dark:text-slate-400">
             <span>EXECUTIVE DISCOURSE SUITE</span>
           </div>
         </motion.article>
@@ -517,10 +517,9 @@ export const EditorialNewspaperSection: React.FC = () => {
 
       {/* ====================================================================
           FEATURE 3: ANNUAL STUDENT PROJECT & INNOVATION EXHIBITION
-          With https://ibb.co/S4mSWfnT on top of exhibition section!
           ==================================================================== */}
       <motion.article 
-        className="bg-white/80 rounded-xl p-5 sm:p-8 border border-[#0F2C61]/10 shadow-xs hover:shadow-md transition-all duration-300"
+        className="bg-white dark:bg-[#0d1e38] rounded-xl p-5 sm:p-8 border border-slate-200 dark:border-[#1e3256] shadow-xs hover:shadow-md transition-all duration-300"
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, delay: 0.2, ease: easeCurve }}
@@ -532,42 +531,42 @@ export const EditorialNewspaperSection: React.FC = () => {
           <div className="lg:col-span-5 flex flex-col justify-between">
             <div>
               <div className="flex items-center gap-2 mb-2.5">
-                <span className="text-xs font-mono font-semibold tracking-[0.22em] text-[#991B1B] uppercase">
+                <span className="text-xs font-mono font-semibold tracking-[0.22em] text-[#991B1B] dark:text-amber-400 uppercase">
                   {activeProjPhoto.category}
                 </span>
-                <span className="h-3 w-px bg-slate-300" />
-                <span className="text-[11px] font-mono text-slate-500 uppercase tracking-wider">
+                <span className="h-3 w-px bg-slate-300 dark:bg-white/20" />
+                <span className="text-[11px] font-mono text-slate-500 dark:text-slate-400 uppercase tracking-wider">
                   VIEW {activeProjIdx + 1} OF 8
                 </span>
               </div>
 
               <h3 
-                className="text-xl sm:text-2xl font-serif font-bold text-[#0F2C61] leading-[1.24] mb-2"
+                className="text-xl sm:text-2xl font-serif font-bold text-[#0F2C61] dark:text-white leading-[1.24] mb-2"
                 style={{ fontFamily: "'Playfair Display', 'Cormorant Garamond', Georgia, serif" }}
               >
                 {activeProjPhoto.title}
               </h3>
 
-              <p className="text-xs sm:text-sm text-slate-600 font-serif italic mb-3.5">
+              <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 font-serif italic mb-3.5">
                 {activeProjPhoto.subtitle}
               </p>
 
-              <p className="text-xs sm:text-[13px] text-slate-700 font-sans leading-relaxed text-justify mb-4">
+              <p className="text-xs sm:text-[13px] text-slate-700 dark:text-slate-200 font-sans leading-relaxed text-justify mb-4">
                 {activeProjPhoto.caption}
               </p>
 
-              <p className="text-[10px] font-mono text-slate-500 uppercase tracking-wider mb-4">
+              <p className="text-[10px] font-mono text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-4">
                 {activeProjPhoto.dateline}
               </p>
             </div>
 
             {/* Curatorial Quote */}
-            <div className="p-3.5 rounded-lg bg-[#F8F6F0] border border-[#0F2C61]/10 text-slate-700">
-              <span className="block text-[10px] font-mono font-semibold tracking-wider text-[#991B1B] uppercase mb-1">
+            <div className="p-3.5 rounded-lg bg-[#F8F6F0] dark:bg-[#12284c] border border-[#0F2C61]/10 dark:border-[#1e3256] text-slate-700 dark:text-slate-200">
+              <span className="block text-[10px] font-mono font-semibold tracking-wider text-[#991B1B] dark:text-amber-400 uppercase mb-1">
                 EVALUATION COMMITTEE
               </span>
               <p 
-                className="text-xs font-serif italic leading-relaxed text-slate-600"
+                className="text-xs font-serif italic leading-relaxed text-slate-600 dark:text-slate-300"
                 style={{ fontFamily: "'Playfair Display', 'Cormorant Garamond', Georgia, serif" }}
               >
                 “Projects reflect undergraduate mastery across firmware, artificial intelligence, and applied commercial feasibility.”
@@ -579,7 +578,7 @@ export const EditorialNewspaperSection: React.FC = () => {
           <div className="lg:col-span-7 flex flex-col">
             {/* Active Exhibition Photo Frame — Lead Image Default on Top */}
             <div 
-              className="relative w-full aspect-[16/10] sm:aspect-[16/9.5] rounded-lg overflow-hidden border border-[#0F2C61]/10 bg-slate-100 cursor-pointer mb-3 shadow-xs group"
+              className="relative w-full aspect-[16/10] sm:aspect-[16/9.5] rounded-lg overflow-hidden border border-[#0F2C61]/10 dark:border-[#1e3256] bg-slate-100 dark:bg-slate-900 cursor-pointer mb-3 shadow-xs group"
               onClick={() => openLightbox(activeProjPhoto.id)}
               title="Click to expand this exhibition photo"
             >
@@ -615,8 +614,8 @@ export const EditorialNewspaperSection: React.FC = () => {
                     onClick={() => setActiveProjIdx(pIdx)}
                     className={`relative aspect-[4/3] rounded-md overflow-hidden border transition-all duration-200 cursor-pointer ${
                       isSelected
-                        ? 'border-[#991B1B] ring-2 ring-[#991B1B]/40 scale-102 z-10'
-                        : 'border-slate-200 opacity-70 hover:opacity-100 hover:border-[#0F2C61]/40'
+                        ? 'border-[#991B1B] dark:border-amber-400 ring-2 ring-[#991B1B]/40 dark:ring-amber-400/40 scale-102 z-10'
+                        : 'border-slate-200 dark:border-white/10 opacity-70 hover:opacity-100 hover:border-[#0F2C61]/40'
                     }`}
                     title={`View ${photo.badge || `Exhibition View ${pIdx + 1}`}`}
                   >
@@ -653,26 +652,26 @@ export const EditorialNewspaperSection: React.FC = () => {
             onClick={() => setLightboxIndex(null)}
           >
             <motion.div 
-              className="relative max-w-4xl w-full bg-[#FDFBF7] text-[#0F2C61] rounded-xl overflow-hidden shadow-2xl border border-white/20 flex flex-col max-h-[92vh]"
+              className="relative max-w-4xl w-full bg-white dark:bg-[#0d1e38] text-[#0F2C61] dark:text-white rounded-xl overflow-hidden shadow-2xl border border-white/20 dark:border-[#1e3256] flex flex-col max-h-[92vh]"
               initial={{ scale: 0.94, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.94, opacity: 0 }}
               onClick={(e) => e.stopPropagation()}
             >
               {/* Header Bar */}
-              <div className="flex items-center justify-between px-5 py-3 border-b border-[#0F2C61]/15 bg-[#F4F1EA]">
+              <div className="flex items-center justify-between px-5 py-3 border-b border-slate-200 dark:border-white/10 bg-slate-50 dark:bg-[#12284c]">
                 <div className="flex items-center gap-2">
-                  <span className="text-[11px] font-mono font-bold text-[#991B1B] uppercase tracking-wider">
+                  <span className="text-[11px] font-mono font-bold text-[#991B1B] dark:text-amber-400 uppercase tracking-wider">
                     {allPhotos[lightboxIndex].category}
                   </span>
-                  <span className="text-slate-400">·</span>
-                  <span className="text-xs font-mono text-slate-600 uppercase">
+                  <span className="text-slate-400 dark:text-slate-500">·</span>
+                  <span className="text-xs font-mono text-slate-600 dark:text-slate-300 uppercase">
                     ARCHIVE RECORD ({lightboxIndex + 1} OF {allPhotos.length})
                   </span>
                 </div>
                 <button
                   onClick={() => setLightboxIndex(null)}
-                  className="p-1 rounded-full hover:bg-black/10 transition-colors text-slate-600 hover:text-black cursor-pointer"
+                  className="p-1 rounded-full hover:bg-black/10 dark:hover:bg-white/10 transition-colors text-slate-600 dark:text-slate-300 hover:text-black dark:hover:text-white cursor-pointer"
                   aria-label="Close photo preview"
                 >
                   <X size={20} />
@@ -713,24 +712,24 @@ export const EditorialNewspaperSection: React.FC = () => {
               </div>
 
               {/* Caption & Metadata Bar */}
-              <div className="p-4 sm:p-5 bg-[#FDFBF7] border-t border-[#0F2C61]/10 overflow-y-auto">
+              <div className="p-4 sm:p-5 bg-white dark:bg-[#0d1e38] border-t border-slate-200 dark:border-white/10 overflow-y-auto">
                 <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1 mb-1">
                   <h4 
-                    className="text-base sm:text-lg font-serif font-bold text-[#0F2C61]"
+                    className="text-base sm:text-lg font-serif font-bold text-[#0F2C61] dark:text-white"
                     style={{ fontFamily: "'Playfair Display', 'Cormorant Garamond', Georgia, serif" }}
                   >
                     {allPhotos[lightboxIndex].title}
                   </h4>
-                  <span className="text-[10px] font-mono text-[#991B1B] uppercase tracking-wider">
+                  <span className="text-[10px] font-mono text-[#991B1B] dark:text-amber-400 uppercase tracking-wider">
                     {allPhotos[lightboxIndex].dateline}
                   </span>
                 </div>
-                <p className="text-xs sm:text-[13px] text-slate-700 font-sans leading-relaxed">
+                <p className="text-xs sm:text-[13px] text-slate-700 dark:text-slate-300 font-sans leading-relaxed">
                   {allPhotos[lightboxIndex].caption}
                 </p>
 
                 {/* Quick thumbnail strip inside lightbox */}
-                <div className="mt-3 pt-2.5 border-t border-slate-200 flex items-center gap-1.5 overflow-x-auto pb-1">
+                <div className="mt-3 pt-2.5 border-t border-slate-200 dark:border-white/10 flex items-center gap-1.5 overflow-x-auto pb-1">
                   {allPhotos.map((p, pIdx) => (
                     <button
                       key={p.id}
@@ -738,8 +737,8 @@ export const EditorialNewspaperSection: React.FC = () => {
                       onClick={() => setLightboxIndex(pIdx)}
                       className={`relative w-11 h-8 rounded overflow-hidden flex-shrink-0 border transition-all cursor-pointer ${
                         pIdx === lightboxIndex
-                          ? 'border-[#991B1B] ring-2 ring-[#991B1B]/40 scale-105'
-                          : 'border-slate-300 opacity-60 hover:opacity-100'
+                          ? 'border-[#991B1B] dark:border-amber-400 ring-2 ring-[#991B1B]/40 dark:ring-amber-400/40 scale-105'
+                          : 'border-slate-300 dark:border-white/20 opacity-60 hover:opacity-100'
                       }`}
                     >
                       <img

@@ -87,12 +87,12 @@ export const BeyondTheClassroomSection: React.FC<BeyondTheClassroomProps> = ({
   return (
     <section 
       id="beyond-the-classroom-section"
-      className="relative py-[90px] sm:py-[110px] bg-[#FDFBF7] text-[#0F2C61] border-b border-[#0F2C61]/10 select-none selection:bg-[#0F2C61] selection:text-white"
+      className="relative py-[90px] sm:py-[110px] bg-[#FDFBF7] dark:bg-[#080f1d] text-[#0F2C61] dark:text-[#f8fafc] border-b border-[#0F2C61]/10 dark:border-white/10 select-none selection:bg-[#0F2C61] selection:text-white transition-colors duration-200"
       aria-labelledby="beyond-classroom-heading"
     >
       {/* Subtle Academic Grid Texture */}
       <div 
-        className="absolute inset-0 pointer-events-none opacity-[0.03]"
+        className="absolute inset-0 pointer-events-none opacity-[0.03] dark:opacity-[0.06]"
         style={{
           backgroundImage: 'radial-gradient(#0F2C61 1px, transparent 1px)',
           backgroundSize: '36px 36px',
@@ -107,29 +107,29 @@ export const BeyondTheClassroomSection: React.FC<BeyondTheClassroomProps> = ({
             ==================================================================== */}
         <header className="max-w-3xl mb-16 sm:mb-24">
           <div className="flex items-center gap-3 mb-4">
-            <span className="text-xs font-mono font-bold uppercase tracking-[0.28em] text-[#0F2C61]/80">
+            <span className="text-xs font-mono font-bold uppercase tracking-[0.28em] text-[#0F2C61]/80 dark:text-amber-400">
               EDITORIAL ARCHIVE · STUDENT EXPERIENCES
             </span>
-            <span className="h-px w-10 bg-[#0F2C61]/30" aria-hidden="true" />
+            <span className="h-px w-10 bg-[#0F2C61]/30 dark:bg-amber-400/30" aria-hidden="true" />
           </div>
 
           <h2
             id="beyond-classroom-heading"
-            className="text-3xl sm:text-5xl lg:text-[56px] font-serif font-bold text-[#0F2C61] tracking-tight leading-[1.12] mb-6"
+            className="text-3xl sm:text-5xl lg:text-[56px] font-serif font-bold text-[#0F2C61] dark:text-white tracking-tight leading-[1.12] mb-6"
             style={{ fontFamily: "'Playfair Display', 'Cormorant Garamond', Georgia, serif" }}
           >
             BEYOND THE CLASSROOM
           </h2>
 
           <p 
-            className="text-lg sm:text-xl text-slate-700 font-serif italic leading-relaxed border-l-2 border-[#0F2C61]/40 pl-4 sm:pl-5 mb-4"
+            className="text-lg sm:text-xl text-slate-700 dark:text-slate-200 font-serif italic leading-relaxed border-l-2 border-[#0F2C61]/40 dark:border-amber-400/40 pl-4 sm:pl-5 mb-4"
             style={{ fontFamily: "'Playfair Display', 'Cormorant Garamond', Georgia, serif" }}
           >
             Experiences that shape student life beyond academics.
           </p>
 
           <p 
-            className="text-sm sm:text-base text-slate-600 leading-relaxed font-sans max-w-2xl"
+            className="text-sm sm:text-base text-slate-600 dark:text-slate-300 leading-relaxed font-sans max-w-2xl"
             style={{ fontFamily: "'Inter', 'Source Sans 3', system-ui, sans-serif" }}
           >
             A curated photographic retrospective celebrating the dynamic collegiate journey at UCP Bahawalpur — from documentary film competitions and academic symposiums to cultural excursions, village heritage tours, and campus community life.
@@ -363,27 +363,27 @@ export const BeyondTheClassroomSection: React.FC<BeyondTheClassroomProps> = ({
         {/* ====================================================================
             EDITORIAL CONCLUSION & CTA
             ==================================================================== */}
-        <div className="pt-20 sm:pt-28 border-t border-[#0F2C61]/10 text-center max-w-2xl mx-auto space-y-6">
-          <div className="w-1.5 h-1.5 rounded-full bg-[#0F2C61] mx-auto" aria-hidden="true" />
+        <div className="pt-20 sm:pt-28 border-t border-[#0F2C61]/10 dark:border-white/10 text-center max-w-2xl mx-auto space-y-6">
+          <div className="w-1.5 h-1.5 rounded-full bg-[#0F2C61] dark:bg-amber-400 mx-auto" aria-hidden="true" />
           
           <p 
-            className="text-2xl sm:text-3xl lg:text-4xl text-[#0F2C61] font-serif font-bold italic leading-tight"
+            className="text-2xl sm:text-3xl lg:text-4xl text-[#0F2C61] dark:text-white font-serif font-bold italic leading-tight"
             style={{ fontFamily: "'Playfair Display', 'Cormorant Garamond', Georgia, serif" }}
           >
             “Every experience becomes part of the UCP story.”
           </p>
 
-          <span className="block text-xs uppercase tracking-[0.26em] text-slate-500 font-mono">
+          <span className="block text-xs uppercase tracking-[0.26em] text-slate-500 dark:text-slate-400 font-mono">
             University of Central Punjab · Bahawalpur Campus
           </span>
 
           <div className="pt-4">
             <button
               onClick={handleExploreCampusLife}
-              className="inline-flex items-center gap-2.5 px-7 py-3.5 rounded-full bg-[#0F2C61] hover:bg-[#0A1D42] text-white font-mono text-xs uppercase tracking-widest transition-all duration-300 shadow-md hover:shadow-xl active:scale-95 cursor-pointer group"
+              className="inline-flex items-center gap-2.5 px-7 py-3.5 rounded-full bg-[#0F2C61] dark:bg-amber-400 dark:text-slate-950 font-bold hover:bg-[#0A1D42] dark:hover:bg-amber-300 text-white font-mono text-xs uppercase tracking-widest transition-all duration-300 shadow-md hover:shadow-xl active:scale-95 cursor-pointer group"
             >
               <span>Explore Campus Life</span>
-              <ArrowRight size={14} className="transition-transform duration-300 group-hover:translate-x-1 text-slate-300" />
+              <ArrowRight size={14} className="transition-transform duration-300 group-hover:translate-x-1 text-slate-300 dark:text-slate-950" />
             </button>
           </div>
         </div>

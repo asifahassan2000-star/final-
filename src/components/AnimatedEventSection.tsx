@@ -90,10 +90,10 @@ export const AnimatedEventSection: React.FC<AnimatedEventSectionProps> = ({
           transition={{ duration: 0.9, ease: easeCurve }}
           viewport={{ once: true, amount: 0.2 }}
         >
-          {/* Main Full-Size Display Card */}
-          <div className="bg-white/80 rounded-2xl p-3 sm:p-4 border border-[#0F2C61]/10 shadow-xs hover:shadow-md transition-all duration-300">
+          {/* Main Full-Size Display Card (CSS Selector 10) */}
+          <div className="bg-white dark:bg-[#0d1e38] rounded-2xl p-3 sm:p-4 border border-slate-200 dark:border-[#1e3256] shadow-xs hover:shadow-md transition-all duration-300">
             <div 
-              className="relative w-full aspect-[16/10] sm:aspect-[16/9.5] rounded-xl overflow-hidden border border-[#0F2C61]/10 bg-slate-100 cursor-pointer group shadow-2xs"
+              className="relative w-full aspect-[16/10] sm:aspect-[16/9.5] rounded-xl overflow-hidden border border-[#0F2C61]/10 dark:border-[#1e3256] bg-slate-100 dark:bg-slate-900 cursor-pointer group shadow-2xs"
               onClick={() => setIsLightboxOpen(true)}
               title="Click to view full photograph"
             >
@@ -124,7 +124,7 @@ export const AnimatedEventSection: React.FC<AnimatedEventSectionProps> = ({
               {/* Tag / Caption on Card */}
               {activeImage.tag && (
                 <div className="absolute top-3.5 left-3.5 pointer-events-none">
-                  <span className="text-[10px] font-mono tracking-widest uppercase text-white bg-[#0F2C61]/80 px-2.5 py-1 rounded backdrop-blur-xs shadow-xs">
+                  <span className="text-[10px] font-mono tracking-widest uppercase text-white bg-[#0F2C61]/90 dark:bg-[#0F2C61] px-2.5 py-1 rounded backdrop-blur-xs shadow-xs">
                     {activeImage.tag}
                   </span>
                 </div>
@@ -133,7 +133,7 @@ export const AnimatedEventSection: React.FC<AnimatedEventSectionProps> = ({
 
             {/* Photo Caption */}
             {activeImage.caption && (
-              <div className="mt-3 px-1 text-slate-700">
+              <div className="mt-3 px-1 text-slate-700 dark:text-slate-200">
                 <p className="text-xs sm:text-[13px] font-sans leading-relaxed text-justify">
                   {activeImage.caption}
                 </p>
@@ -142,10 +142,10 @@ export const AnimatedEventSection: React.FC<AnimatedEventSectionProps> = ({
 
             {/* Minimal Thumbnail Selector Grid if Multiple Photos Exist */}
             {normalizedImages.length > 1 && (
-              <div className="mt-3.5 pt-3 border-t border-[#0F2C61]/10">
-                <div className="flex items-center justify-between text-[10px] font-mono text-slate-500 uppercase tracking-wider mb-2">
+              <div className="mt-3.5 pt-3 border-t border-[#0F2C61]/10 dark:border-white/10">
+                <div className="flex items-center justify-between text-[10px] font-mono text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-2">
                   <span>Photo Views ({normalizedImages.length})</span>
-                  <span className="text-[#991B1B] font-bold">Selected: View {activeIdx + 1}</span>
+                  <span className="text-[#991B1B] dark:text-amber-400 font-bold">Selected: View {activeIdx + 1}</span>
                 </div>
                 <div className="flex flex-wrap items-center gap-2">
                   {normalizedImages.map((img, idx) => {
@@ -157,8 +157,8 @@ export const AnimatedEventSection: React.FC<AnimatedEventSectionProps> = ({
                         onClick={() => setActiveIdx(idx)}
                         className={`relative w-14 sm:w-18 aspect-[16/10] rounded-md overflow-hidden border transition-all duration-200 cursor-pointer flex-shrink-0 ${
                           isSelected
-                            ? 'border-[#991B1B] ring-2 ring-[#991B1B]/40 scale-102 z-10'
-                            : 'border-slate-200 opacity-70 hover:opacity-100 hover:border-[#0F2C61]/40'
+                            ? 'border-[#991B1B] dark:border-amber-400 ring-2 ring-[#991B1B]/40 dark:ring-amber-400/40 scale-102 z-10'
+                            : 'border-slate-200 dark:border-white/10 opacity-70 hover:opacity-100 hover:border-[#0F2C61]/40'
                         }`}
                         title={img.caption || `View ${idx + 1}`}
                       >
@@ -196,16 +196,16 @@ export const AnimatedEventSection: React.FC<AnimatedEventSectionProps> = ({
         >
           {/* Label / Numbering */}
           <div className="flex items-center gap-3">
-            <span className="font-mono text-xs uppercase tracking-[0.25em] text-[#991B1B] font-bold">
+            <span className="font-mono text-xs uppercase tracking-[0.25em] text-[#991B1B] dark:text-amber-400 font-bold">
               {categoryNumber || (reverse ? 'COMMUNITY' : 'CAMPUS LIFE')}
               {categoryLabel && ` / ${categoryLabel.toUpperCase()}`}
             </span>
-            <span className="h-px w-10 bg-[#0F2C61]/20" aria-hidden="true" />
+            <span className="h-px w-10 bg-[#0F2C61]/20 dark:bg-amber-400/30" aria-hidden="true" />
           </div>
 
           {/* Heading in Playfair Display / Serif */}
           <h3
-            className="text-2xl sm:text-3xl lg:text-[38px] font-serif font-bold text-[#0F2C61] tracking-tight leading-[1.18]"
+            className="text-2xl sm:text-3xl lg:text-[38px] font-serif font-bold text-[#0F2C61] dark:text-white tracking-tight leading-[1.18]"
             style={{ fontFamily: "'Playfair Display', 'Cormorant Garamond', Georgia, serif" }}
           >
             {title}
@@ -213,7 +213,7 @@ export const AnimatedEventSection: React.FC<AnimatedEventSectionProps> = ({
 
           {/* Description in Inter / Sans */}
           <p
-            className="text-slate-600 text-base sm:text-[17px] leading-relaxed font-sans text-justify"
+            className="text-slate-600 dark:text-slate-300 text-base sm:text-[17px] leading-relaxed font-sans text-justify"
             style={{ fontFamily: "'Inter', 'Source Sans 3', system-ui, sans-serif" }}
           >
             {description}
@@ -221,13 +221,13 @@ export const AnimatedEventSection: React.FC<AnimatedEventSectionProps> = ({
 
           {/* Highlights */}
           {highlights.length > 0 && (
-            <div className="pt-2 flex flex-wrap items-center gap-2.5 text-xs font-mono text-slate-600">
+            <div className="pt-2 flex flex-wrap items-center gap-2.5 text-xs font-mono text-slate-600 dark:text-slate-300">
               {highlights.map((highlight, idx) => (
                 <div
                   key={idx}
-                  className="flex items-center gap-2 px-3 py-1.5 rounded-md bg-white border border-[#0F2C61]/10 text-[#0F2C61] font-medium shadow-2xs"
+                  className="flex items-center gap-2 px-3 py-1.5 rounded-md bg-white dark:bg-[#12284c] border border-slate-200 dark:border-[#1e3256] text-[#0F2C61] dark:text-slate-200 font-medium shadow-2xs"
                 >
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#991B1B]" />
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#991B1B] dark:bg-amber-400" />
                   <span>{highlight}</span>
                 </div>
               ))}
@@ -250,26 +250,26 @@ export const AnimatedEventSection: React.FC<AnimatedEventSectionProps> = ({
             onClick={() => setIsLightboxOpen(false)}
           >
             <motion.div 
-              className="relative max-w-4xl w-full bg-[#FDFBF7] text-[#0F2C61] rounded-xl overflow-hidden shadow-2xl border border-white/20 flex flex-col max-h-[92vh]"
+              className="relative max-w-4xl w-full bg-white dark:bg-[#0d1e38] text-[#0F2C61] dark:text-white rounded-xl overflow-hidden shadow-2xl border border-white/20 dark:border-[#1e3256] flex flex-col max-h-[92vh]"
               initial={{ scale: 0.94, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.94, opacity: 0 }}
               onClick={(e) => e.stopPropagation()}
             >
               {/* Header Bar */}
-              <div className="flex items-center justify-between px-5 py-3 border-b border-[#0F2C61]/15 bg-[#F4F1EA]">
+              <div className="flex items-center justify-between px-5 py-3 border-b border-slate-200 dark:border-white/10 bg-slate-50 dark:bg-[#12284c]">
                 <div className="flex items-center gap-2">
-                  <span className="text-[11px] font-mono font-bold text-[#991B1B] uppercase tracking-wider">
+                  <span className="text-[11px] font-mono font-bold text-[#991B1B] dark:text-amber-400 uppercase tracking-wider">
                     {categoryLabel || 'CAMPUS LIFE'}
                   </span>
-                  <span className="text-slate-400">·</span>
-                  <span className="text-xs font-mono text-slate-600 uppercase">
+                  <span className="text-slate-400 dark:text-slate-500">·</span>
+                  <span className="text-xs font-mono text-slate-600 dark:text-slate-300 uppercase">
                     PHOTO {activeIdx + 1} OF {normalizedImages.length}
                   </span>
                 </div>
                 <button
                   onClick={() => setIsLightboxOpen(false)}
-                  className="p-1 rounded-full hover:bg-black/10 transition-colors text-slate-600 hover:text-black cursor-pointer"
+                  className="p-1 rounded-full hover:bg-black/10 dark:hover:bg-white/10 transition-colors text-slate-600 dark:text-slate-300 hover:text-black dark:hover:text-white cursor-pointer"
                   aria-label="Close photo preview"
                 >
                   <X size={20} />
@@ -314,15 +314,15 @@ export const AnimatedEventSection: React.FC<AnimatedEventSectionProps> = ({
               </div>
 
               {/* Caption Bar */}
-              <div className="p-4 sm:p-5 bg-[#FDFBF7] border-t border-[#0F2C61]/10">
+              <div className="p-4 sm:p-5 bg-white dark:bg-[#0d1e38] border-t border-slate-200 dark:border-white/10">
                 <h4 
-                  className="text-base sm:text-lg font-serif font-bold text-[#0F2C61] mb-1"
+                  className="text-base sm:text-lg font-serif font-bold text-[#0F2C61] dark:text-white mb-1"
                   style={{ fontFamily: "'Playfair Display', 'Cormorant Garamond', Georgia, serif" }}
                 >
                   {title}
                 </h4>
                 {activeImage.caption && (
-                  <p className="text-xs sm:text-[13px] text-slate-700 font-sans leading-relaxed">
+                  <p className="text-xs sm:text-[13px] text-slate-700 dark:text-slate-300 font-sans leading-relaxed">
                     {activeImage.caption}
                   </p>
                 )}
