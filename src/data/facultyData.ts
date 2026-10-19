@@ -92,79 +92,33 @@ export const ALL_FACULTY_MEMBERS: FacultyMemberData[] = [
   },
 
   // =========================================================================
-  // 2. ASSOCIATE PROFESSORS
+  // 2. ASSOCIATE / ASSISTANT PROFESSORS
   // =========================================================================
   {
     id: 'dr-abbas-haider',
     numericId: 5,
     name: 'Prof. Dr. Abbas Haider',
-    designation: 'Associate Professor',
-    department: 'Department of Computer Science & Artificial Intelligence',
-    highestDegree: 'Ph.D. in Artificial Intelligence (AI) — Lincoln University Malaysia, 2022',
-    experienceYears: '18 Years',
-    specialization: 'Artificial Intelligence, Healthcare IoT Systems, Explainable AI (XAI) & Embedded Intelligent Systems',
-    intro: 'Accomplished AI researcher and Associate Professor with 18 years of university teaching, research, and department management experience. Holds a Ph.D. in Artificial Intelligence from Lincoln University Malaysia (CGPA 3.73).',
+    designation: 'Assistant Professor',
+    department: 'Department of History & Humanities',
+    highestDegree: 'Ph.D. in History',
+    experienceYears: '10 Years',
+    specialization: 'Historical Research, South Asian History & Historiography',
+    intro: 'Assistant Professor with 10 years of university teaching and scholarly research in history and humanities.',
     photoUrl: '/assets/faculty/dr-abbas-haider.jpg',
     fallbackPhotoUrl: 'https://i.ibb.co/MDRVG6JB/image-25.jpg',
     objectPosition: 'object-top',
     qualifications: [
-      'Ph.D. in Artificial Intelligence (AI) — Lincoln University Malaysia, 2022 (CGPA: 3.73)',
-      'MS in Computer Science — University of Sargodha, 2014–2016 (CGPA: 3.68)',
-      'B.Ed. — University of Sindh, 2009–2011 (Grade: B)',
-      'BS in Computer Engineering — COMSATS University, 2004–2008 (CGPA: 3.34)',
-      'HSSC (Pre-Engineering) — MTB Sadiqabad, 2002–2004 (Percentage: 68%)',
-      'SSC (Science) — FFC Model School, 2000–2002 (Percentage: 78%)'
-    ],
-    achievements: [
-      'Gold Medal in 2nd Semester, COMSATS University',
-      'Served as President of the IEEE Committee at COMSATS University',
-      'Participated in an IEEE Conference in Islamabad',
-      'Participated in a Microsoft Conference at PC Karachi',
-      'Served as Captain of the Cricket Team at COMSATS University',
-      'Served as Wing Proctor of Boys Hostel (M.A. Jinnah Hall), COMSATS University',
-      'Served as Mess In-Charge of M.A. Jinnah Hall, managing hostel operations for ~300 students',
-      'Served as an Executive Member of the Cultural and Dramatic Society at COMSATS University'
-    ],
-    coreTechnicalSkills: [
-      'Artificial Intelligence (AI)',
-      'Computer Science & IT',
-      'Healthcare IoT Systems',
-      'System Architecture',
-      'Explainable AI (XAI)',
-      'Embedded Intelligent Systems',
-      'Real-Time Data Processing',
-      'Wearable Computing & Smart Sensors',
-      'Multi-Modal Sensor Fusion',
-      'Cloud & Edge Computing'
-    ],
-    programmingSkills: [
-      'Python',
-      'C / C++',
-      'Java',
-      'Assembly',
-      'SQL',
-      'PHP',
-      'WordPress',
-      'TensorFlow Lite'
-    ],
-    managementLeadershipSkills: [
-      'University-Level Teaching & Pedagogy',
-      'Academic Program Management & Department Leadership',
-      'Student Academic Advising & Career Guidance',
-      'Student Support & University Access Programs',
-      'Seminar & Workshop Organization',
-      'Examination Management & Faculty Portal Administration',
-      'Event Organization & Academic Administration'
-    ],
-    networkingSecuritySkills: [
-      'Computer Networking & CCNA Protocols',
-      'Cyber Security & Threat Analysis',
-      'Raspberry Pi, Arduino & ESP32 Microcontrollers',
-      'IoT Sensor Interfacing & Hardware Automation'
+      'Ph.D. in History',
+      'M.Phil in History',
+      'Master of Arts (M.A.) in History'
     ],
     experienceDetails: [
-      '18 Years of Higher Education Teaching, Research, and Academic Governance',
-      'Supervision of Senior Capstone Engineering and Deep Learning Systems Projects'
+      '10 Years of University Teaching and Historical Research'
+    ],
+    coreTechnicalSkills: [
+      'Historical Research & Historiography',
+      'South Asian & Regional History',
+      'Archival Analysis & Academic Writing'
     ]
   },
 
@@ -317,29 +271,29 @@ export const ALL_FACULTY_MEMBERS: FacultyMemberData[] = [
   {
     id: 'dr-m-tahir',
     numericId: 8,
-    name: 'Dr. M Tahir Akbar',
+    name: 'Dr. Muhammad Tahir Akbar',
     designation: 'Assistant Professor',
-    department: 'Department of Information Technology',
-    highestDegree: 'Ph.D. in Information Technology',
-    experienceYears: '12+ Years',
-    specialization: 'Enterprise Networks, Cyber Security & Distributed Data',
-    intro: 'Specializes in modern infrastructure architecture, network security protocols, and student development in enterprise IT systems.',
-    photoUrl: '/assets/faculty/dr-m-tahir.jpg',
-    fallbackPhotoUrl: 'https://i.ibb.co/XrYH652S/Whats-App-Image-2026-10-14-at-8-13-14-AM.jpg',
+    department: 'Department of Islamic Studies',
+    highestDegree: 'Ph.D. in Islamic Studies (Specialization: Quran & Tafseer)',
+    experienceYears: '12 Years in Teaching (06 Years BS Classes)',
+    specialization: 'Quran & Tafseer, Islamic Jurisprudence & Contemporary Islamic Thought',
+    intro: 'Assistant Professor of Islamic Studies with 12 years of university teaching experience, including 6 years leading BS classes. Specialized in Quran & Tafseer.',
+    photoUrl: '/assets/faculty/dr-muhammad-tahir-akbar.jpg',
+    fallbackPhotoUrl: 'https://i.ibb.co/pT1Mdp1/image-39.jpg',
     objectPosition: 'object-top',
     qualifications: [
-      'Ph.D. in Information Technology',
-      'MS in Information Technology',
-      'BS in Computer Science'
+      'Ph.D. in Islamic Studies with Specialization in Quran & Tafseer',
+      'M.Phil in Islamic Studies',
+      'Master of Arts (M.A.) in Islamic Studies'
     ],
     experienceDetails: [
-      '12+ Years of University Teaching and Infrastructure Research',
-      'Instruction in Cloud Networking, Information Security, and Distributed Storage'
+      '12 Years in Teaching (06 Years BS Classes)',
+      'University Teaching and Curricular Instruction in Quran & Tafseer'
     ],
     coreTechnicalSkills: [
-      'Enterprise Network Architectures',
-      'Cyber Threat Mitigation & Security Compliance',
-      'Distributed Computing & Scalable Cloud Solutions'
+      'Quran & Tafseer Exegesis',
+      'Islamic Research Methodologies',
+      'Academic Teaching & Mentorship'
     ]
   },
   {
@@ -390,28 +344,81 @@ export const ALL_FACULTY_MEMBERS: FacultyMemberData[] = [
   {
     id: 'prof-ali-shan',
     numericId: 10,
-    name: 'Prof. Ali Shan',
+    name: 'Prof. Rao Ali Shan',
     designation: 'Assistant Professor',
-    department: 'Department of Software Engineering',
-    highestDegree: 'MS in Software Engineering',
-    experienceYears: '10+ Years',
-    specialization: 'Full-Stack Architectures, Agile Methodologies & DevOps Pipelines',
-    intro: 'Focuses on industry-grade software lifecycles, project management, and cutting-edge software construction principles.',
+    department: 'Department of Computer Science & Artificial Intelligence',
+    highestDegree: 'Ph.D. in Artificial Intelligence (AI) — Lincoln University Malaysia, 2022 (CGPA: 3.73)',
+    experienceYears: '18 Years',
+    specialization: 'Artificial Intelligence, Healthcare IoT Systems, Explainable AI (XAI) & Embedded Intelligent Systems',
+    intro: 'Accomplished AI researcher and Assistant Professor with 18 years of university teaching, research, and department management experience. Holds a Ph.D. in Artificial Intelligence from Lincoln University Malaysia (CGPA 3.73).',
     photoUrl: '/assets/faculty/prof-ali-shan.jpg',
     fallbackPhotoUrl: 'https://i.ibb.co/Hf1sx73S/Whats-App-Image-2026-10-14-at-8-12-50-AM.jpg',
     objectPosition: 'object-top',
     qualifications: [
-      'MS in Software Engineering',
-      'BS in Software Engineering'
+      'Ph.D. in Artificial Intelligence (AI) — Lincoln University Malaysia, 2022 (CGPA: 3.73)',
+      'MS in Computer Science — University of Sargodha, 2014–2016 (CGPA: 3.68)',
+      'B.Ed. — University of Sindh, 2009–2011 (Grade: B)',
+      'BS in Computer Engineering — COMSATS University, 2004–2008 (CGPA: 3.34)',
+      'HSSC (Pre-Engineering) — MTB Sadiqabad, 2002–2004 (Percentage: 68%)',
+      'SSC (Science) — FFC Model School, 2000–2002 (Percentage: 78%)'
     ],
-    experienceDetails: [
-      '10+ Years of University Software Engineering Instruction',
-      'Supervision of Industry-Partnered Capstone Engineering Software Systems'
+    achievements: [
+      'Gold Medal in 2nd Semester COMSATS',
+      'Served as President of the IEEE Committee at COMSATS University',
+      'Participated in an IEEE Conference in Islamabad',
+      'Participated in a Microsoft Conference at PC Karachi',
+      'Served as Captain of the Cricket Team at COMSATS University',
+      'Served as Wing Proctor of Boys Hostel (M.A. Jinnah Hall), COMSATS',
+      'Served as Mess In-Charge of M.A. Jinnah Hall, managing hostel mess operations for approximately 300 students',
+      'Served as an Executive Member of the Cultural and Dramatic Society at COMSATS University'
     ],
     coreTechnicalSkills: [
-      'Agile Software Construction & Scrum Frameworks',
-      'DevOps CI/CD Pipelines & Cloud Deployment',
-      'Object-Oriented Design Patterns & Microservices'
+      'Artificial Intelligence (AI)',
+      'Computer Science & IT',
+      'Healthcare IoT Systems',
+      'System Architecture',
+      'Explainable AI (XAI)',
+      'Embedded Intelligent Systems',
+      'Real-Time Data Processing',
+      'Wearable Computing & Smart Sensors',
+      'Multi-Modal Sensor Fusion',
+      'Cloud & Edge Computing'
+    ],
+    programmingSkills: [
+      'Python',
+      'C/C++',
+      'Java',
+      'Assembly',
+      'SQL',
+      'PHP',
+      'WordPress',
+      'TensorFlow Lite'
+    ],
+    managementLeadershipSkills: [
+      'University-Level Teaching',
+      'Academic Program Management',
+      'Department Leadership',
+      'Student Academic Advising',
+      'Career Guidance',
+      'Student Support & University Access Programs',
+      'Seminar & Workshop Organization',
+      'Examination Management',
+      'Faculty/Teacher Portal Management',
+      'Event Organization',
+      'Academic Administration'
+    ],
+    networkingSecuritySkills: [
+      'Computer Networking',
+      'CCNA',
+      'Cyber Security',
+      'Raspberry Pi',
+      'Arduino',
+      'ESP32',
+      'IoT Sensors'
+    ],
+    experienceDetails: [
+      '18 Years of Higher Education Teaching, Research, and Department Leadership',
+      'Supervision of Senior Capstone Engineering and Deep Learning Systems Projects'
     ]
   },
 
@@ -595,28 +602,30 @@ export const ALL_FACULTY_MEMBERS: FacultyMemberData[] = [
   {
     id: 'prof-marriam-gill',
     numericId: 13,
-    name: 'Prof. Marriam Gill',
-    designation: 'Lecturer',
-    department: 'Department of Psychology & Behavioral Sciences',
-    highestDegree: 'MS in Clinical Psychology',
-    experienceYears: '10+ Years',
-    specialization: 'Cognitive Psychology, Psychometrics & Counseling',
-    intro: 'Oversees psychometric assessment labs, qualitative clinical inquiries, and holistic student mental health initiatives.',
+    name: 'Mam Marium Gill',
+    designation: 'Lecturer in Computer Science Department',
+    department: 'Department of Computer Science',
+    highestDegree: 'MSCS (Computer Science) • Ph.D. Scholar (Islamia University Bahawalpur)',
+    experienceYears: '3 Years (IUB, UE & CTI)',
+    specialization: 'Web Technologies (HTML/CSS), Project Management, Complex Problem Solving & E-Commerce',
+    intro: 'Lecturer in Computer Science Department at UCP Bahawalpur. Holds an MSCS in Computer Science and is pursuing Ph.D. at The Islamia University of Bahawalpur. Academic experience across IUB, University of Education, and CTI.',
     photoUrl: '/assets/faculty/prof-marriam-gill.jpg',
     fallbackPhotoUrl: 'https://i.ibb.co/JRFr4LLF/image-31.jpg',
     objectPosition: 'object-top',
     qualifications: [
-      'MS in Clinical Psychology',
-      'BS in Behavioral Sciences'
+      'MSCS — Computer Science',
+      'Ph.D. Scholar (in progress) — The Islamia University of Bahawalpur (IUB)'
     ],
     experienceDetails: [
-      '10+ Years of Academic and Psychological Counseling Practice',
-      'Directing Psychometric Evaluation Laboratories and Behavioral Research'
+      '1 Year Experience in Islamia University Bahawalpur (IUB)',
+      '1 Year Experience in University of Education (UE)',
+      'Experience as a College Teacher Intern (CTI)'
     ],
     coreTechnicalSkills: [
-      'Psychometric Testing & Evaluation',
-      'Cognitive Behavioral Frameworks',
-      'Clinical Interviewing & Counseling'
+      'Familiar with HTML / CSS',
+      'Project Management',
+      'Complex Problem Solver',
+      'E-Commerce'
     ]
   },
   {

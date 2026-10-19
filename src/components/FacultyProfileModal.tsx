@@ -180,23 +180,28 @@ export const FacultyProfileModal: React.FC<FacultyProfileModalProps> = ({
                 <div className="flex items-center gap-1.5 pb-1 border-b border-slate-200/60">
                   <Briefcase size={13} className="text-[#0F2C61]" />
                   <h4 className="text-[10.5px] font-bold tracking-wider uppercase text-slate-500 font-mono">
-                    Tenure & Focus
+                    Experience & Department
                   </h4>
                 </div>
 
                 <ul className="space-y-2.5 font-sans text-xs text-slate-600 leading-snug">
                   <li className="flex items-start gap-2">
                     <span className="w-1.5 h-1.5 rounded-full bg-[#0F2C61] shrink-0 mt-1" />
-                    <span className="font-semibold text-[#0F2C61]">{expString}</span>
+                    <span className="font-semibold text-[#0F2C61]">{faculty.experienceYears || 'Higher Education Teaching'}</span>
                   </li>
-                  <li className="flex items-start gap-2">
-                    <span className="w-1.5 h-1.5 rounded-full bg-[#0F2C61] shrink-0 mt-1" />
-                    <span>Higher Education Pedagogy & Research</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="w-1.5 h-1.5 rounded-full bg-[#0F2C61] shrink-0 mt-1" />
-                    <span>Scholarly Inquiry & Student Mentorship</span>
-                  </li>
+                  {faculty.experienceDetails && faculty.experienceDetails.length > 0 ? (
+                    faculty.experienceDetails.slice(0, 2).map((exp, idx) => (
+                      <li key={idx} className="flex items-start gap-2">
+                        <span className="w-1.5 h-1.5 rounded-full bg-[#0F2C61] shrink-0 mt-1" />
+                        <span className="line-clamp-2">{exp}</span>
+                      </li>
+                    ))
+                  ) : (
+                    <li className="flex items-start gap-2">
+                      <span className="w-1.5 h-1.5 rounded-full bg-[#0F2C61] shrink-0 mt-1" />
+                      <span className="line-clamp-2">{faculty.department}</span>
+                    </li>
+                  )}
                 </ul>
               </div>
 

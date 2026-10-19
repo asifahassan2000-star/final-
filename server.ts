@@ -179,12 +179,15 @@ function getInstantBotResponse(userQuery: string): BotResponse {
 }
 
 const app = express();
-const PORT = process.env.NODE_ENV === 'production' && process.env.PORT
-  ? parseInt(process.env.PORT, 10)
-  : 3000;
-const isProd = process.env.NODE_ENV === 'production';
+// Port 3000 is required by the environment; Nginx reverse proxy listens on 8080 and forwards to 3000
+const PORT = 3000;
+const isProd = process.env.NODE_ENV === 'production' || (!process.env.NODE_ENV && fs.existsSync(path.resolve(__dirname, 'dist', 'index.html')));
 
 app.use(express.json());
+
+// Healthcheck endpoints for Cloud Run & container orchestrators
+app.get('/healthz', (_req, res) => res.status(200).send('OK'));
+app.get('/api/health', (_req, res) => res.status(200).json({ status: 'ok', time: new Date().toISOString() }));
 
 const SYSTEM_INSTRUCTION = `You are 'UCP Assistant', the official, friendly, and knowledgeable AI assistant for University of Central Punjab (UCP) Bahawalpur Campus.
 

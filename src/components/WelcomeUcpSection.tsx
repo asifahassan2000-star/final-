@@ -250,7 +250,7 @@ export const WelcomeUcpSection: React.FC<WelcomeUcpSectionProps> = ({
             <div 
               data-reveal="paragraph"
               data-reveal-delay="240"
-              className="relative mb-8 max-w-2xl"
+              className="relative mb-6 max-w-2xl"
             >
               {/* Sophisticated oversized opening quotation mark */}
               <span 
@@ -259,13 +259,20 @@ export const WelcomeUcpSection: React.FC<WelcomeUcpSectionProps> = ({
               >
                 “
               </span>
-              <p className="font-['Source_Serif_4','Source_Serif_Pro','Georgia',serif] text-base sm:text-lg lg:text-[20px] font-normal text-[#1E293B] dark:text-slate-200 leading-[1.78] italic">
-                Welcome to UCP Bahawalpur, where we are committed to academic excellence, 
-                personal growth, and preparing our students for a rapidly changing world. 
-                As Campus Director, I am proud to lead our mission of empowering student potential through 
-                industry-aligned degree programs, cutting-edge laboratories, and world-class faculty. 
-                At UCP Bahawalpur, your ambition meets boundless opportunity.
+              <p className="font-['Source_Serif_4','Source_Serif_Pro','Georgia',serif] text-base sm:text-lg lg:text-[19px] font-normal text-[#1E293B] dark:text-slate-200 leading-[1.78] italic">
+                We are truly humbled by the trust of millions and take pride in uplifting our social fabric by educating the youth and mentoring them for a better future. Our journey of over 38 years is nothing but a reflection of our commitment and passion towards creating a better tomorrow for our society. With our wide network of schools, colleges and universities, we believe in continuously improving the standards and quality of education in Pakistan.
               </p>
+
+              {/* Attribution By the Chairman UCP/PGC */}
+              <div className="mt-4 pt-3 flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-2.5 text-xs sm:text-sm font-sans border-t border-slate-200/60 dark:border-white/10">
+                <span className="font-bold text-[#C8102E] dark:text-amber-400 uppercase tracking-wider text-[11px] sm:text-xs">
+                  By the Chairman UCP/PGC
+                </span>
+                <span className="hidden sm:inline text-slate-300 dark:text-slate-600">·</span>
+                <span className="font-serif font-bold text-[#0A1931] dark:text-white uppercase tracking-wider">
+                  MIAN AMER MAHMOOD
+                </span>
+              </div>
             </div>
 
             {/* Learn More → text link: opens Vision & Mission section on click */}
@@ -308,13 +315,13 @@ export const WelcomeUcpSection: React.FC<WelcomeUcpSectionProps> = ({
                 <Award className="w-4 h-4 text-[#C8102E] dark:text-amber-400" />
                 <span className="font-semibold text-slate-800 dark:text-white">Punjab Group Legacy</span>
                 <span className="text-slate-400">·</span>
-                <span>40+ Years of Excellence</span>
+                <span>38+ Years of Excellence</span>
               </div>
             </div>
           </div>
 
           {/* -------------------------------------------------------------------
-              RIGHT COLUMN — DIRECTOR PORTRAIT & ARCHITECTURAL BLUEPRINT
+              RIGHT COLUMN — CHAIRMAN PORTRAIT & ARCHITECTURAL BLUEPRINT
               ------------------------------------------------------------------- */}
           <div
             ref={portraitColRef}
@@ -346,7 +353,7 @@ export const WelcomeUcpSection: React.FC<WelcomeUcpSectionProps> = ({
               </div>
             </div>
 
-            {/* Director Portrait Container */}
+            {/* Chairman Portrait Container */}
             <div
               ref={portraitCircleRef}
               className="relative z-10 flex flex-col items-center will-change-transform"
@@ -355,13 +362,13 @@ export const WelcomeUcpSection: React.FC<WelcomeUcpSectionProps> = ({
               <div className="relative p-2.5 sm:p-3 rounded-full border border-slate-200/90 dark:border-white/10 bg-white/70 dark:bg-[#0d1e38]/70 shadow-sm backdrop-blur-[2px]">
                 <div className="w-56 h-56 sm:w-68 sm:h-68 lg:w-76 lg:h-76 rounded-full overflow-hidden border-2 border-[#0A1931] dark:border-amber-400 shadow-2xl bg-[#0A1931] ring-4 ring-white dark:ring-[#14284c]">
                   <img
-                    src="/assets/welcome/director-welcome.jpg"
-                    alt="Prof. Dr. Hamid Iqbal, Director UCP Bahawalpur Campus"
+                    src="/assets/welcome/mian-amer-mahmood.png"
+                    alt="Mian Amer Mahmood, Chairman UCP / PGC"
                     className="w-full h-full object-cover object-[center_top] select-none block"
                     loading="eager"
                     onError={(e) => {
                       (e.currentTarget as HTMLImageElement).src =
-                        'https://i.ibb.co/5hzSMywr/IMG-3544.png';
+                        'https://i.ibb.co/99s2Cmqj/mian-ameer.png';
                     }}
                   />
                 </div>
@@ -369,11 +376,14 @@ export const WelcomeUcpSection: React.FC<WelcomeUcpSectionProps> = ({
 
               {/* Name and Designation underneath in elegant typography */}
               <div className="text-center mt-5 sm:mt-6">
-                <h3 className="font-['Source_Serif_4','Source_Serif_Pro','Georgia',serif] text-xl sm:text-2xl font-bold text-[#0A1931] dark:text-white tracking-tight">
-                  Prof. Dr. Hamid Iqbal
+                <p className="text-[11px] sm:text-xs font-bold tracking-[0.18em] uppercase text-[#C8102E] dark:text-amber-400 font-sans mb-1">
+                  By the Chairman UCP/PGC
+                </p>
+                <h3 className="font-['Source_Serif_4','Source_Serif_Pro','Georgia',serif] text-xl sm:text-2xl font-bold text-[#0A1931] dark:text-white tracking-tight uppercase">
+                  MIAN AMER MAHMOOD
                 </h3>
                 <p className="text-xs sm:text-sm font-semibold text-slate-600 dark:text-slate-300 tracking-[0.14em] uppercase font-sans mt-1">
-                  Director, UCP Bahawalpur Campus
+                  Chairman, Punjab Group of Colleges & UCP
                 </p>
               </div>
             </div>

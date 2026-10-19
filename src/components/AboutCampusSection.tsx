@@ -49,7 +49,7 @@ export const AboutCampusSection: React.FC<AboutCampusSectionProps> = ({
       subtitle: 'Subject Delivery, Generational Mindset & Modern Pedagogy',
       src: '/assets/campus/teacher-training-presentation.jpg',
       fallback: 'https://i.ibb.co/PGh5DQqD/Whats-App-Image-2026-10-11-at-11-35-45-PM.jpg',
-      caption: 'Faculty development sessions where professors deliver presentations on subject methodologies, classroom pedagogy, and adapting teaching techniques to meet modern generational requirements.',
+      caption: 'Faculty development sessions where professors deliver presentations on subject methodologies, classroom pedagogy, and modern teaching techniques.',
       tag: 'TEACHER TRAINING',
     },
   ];
@@ -241,10 +241,9 @@ export const AboutCampusSection: React.FC<AboutCampusSectionProps> = ({
 
         {/* =========================================================================
             2. STUDENT CLASSROOM PRESENTATIONS & BEST STUDY ENVIRONMENT
-            Minimal style, no extra border, all images visible properly & click-to-zoom
             ========================================================================= */}
         <motion.div
-          className="pt-4 border-t border-slate-200/80 dark:border-white/10"
+          className="pt-6 border-t border-slate-200/80 dark:border-white/10"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: easeCurve }}
@@ -274,21 +273,21 @@ export const AboutCampusSection: React.FC<AboutCampusSectionProps> = ({
             </p>
           </div>
 
-          {/* 3-Card Minimal Classroom & Student Sessions Showcase Grid (CSS Selectors 4, 5, 6) */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
+          {/* 3-Card Minimal Classroom & Student Sessions Showcase Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {classroomPhotos.map((item, idx) => (
               <motion.div
                 key={item.id}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: idx * 0.1, ease: easeCurve }}
+                transition={{ duration: 0.6, delay: idx * 0.08, ease: easeCurve }}
                 viewport={{ once: true, amount: 0.2 }}
                 className="bg-[#FAF8F5] dark:bg-[#0d1e38] rounded-xl p-4 sm:p-5 flex flex-col justify-between shadow-2xs hover:shadow-md transition-all duration-300 group cursor-pointer border border-transparent dark:border-[#1e3256]"
                 onClick={() => setActivePhoto(item)}
               >
                 <div>
-                  {/* Photo Frame (Full Size Visible, No Extra Border) */}
-                  <div className="relative w-full aspect-[16/10] sm:aspect-[4/3] rounded-lg overflow-hidden bg-slate-100 dark:bg-slate-900 mb-3.5 shadow-2xs">
+                  {/* Photo Frame */}
+                  <div className="relative w-full aspect-[16/10] rounded-lg overflow-hidden bg-slate-100 dark:bg-slate-900 mb-3.5 shadow-2xs border-0">
                     <img
                       src={item.src}
                       alt={item.title}
@@ -325,12 +324,12 @@ export const AboutCampusSection: React.FC<AboutCampusSectionProps> = ({
                   >
                     {item.title}
                   </h4>
-                  <p className="text-xs text-slate-500 dark:text-slate-400 font-medium tracking-wide mb-2">
+                  <p className="text-xs text-slate-500 dark:text-slate-400 font-medium tracking-wide mb-2 line-clamp-1">
                     {item.subtitle}
                   </p>
 
                   {/* Caption */}
-                  <p className="text-xs text-slate-600 dark:text-slate-300 font-sans leading-relaxed text-justify">
+                  <p className="text-xs text-slate-600 dark:text-slate-300 font-sans leading-relaxed text-justify line-clamp-3">
                     {item.caption}
                   </p>
                 </div>

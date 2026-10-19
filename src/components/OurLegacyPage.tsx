@@ -977,7 +977,7 @@ export const OurLegacyPage: React.FC<OurLegacyPageProps> = ({
 
             </motion.div>
 
-            {/* Visual Transition: Equal-Sized Square Images Side-by-Side (No outer frame) */}
+            {/* Visual Transition: Equal-Sized Square Images Side-by-Side (Frame strictly equal to square image) */}
             <motion.div 
               className="lg:col-span-6"
               initial={{ opacity: 0, x: 60 }}
@@ -985,19 +985,19 @@ export const OurLegacyPage: React.FC<OurLegacyPageProps> = ({
               transition={{ duration: 1, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
               viewport={{ once: false, amount: 0.25 }}
             >
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 items-stretch">
                 
-                {/* Image 1: Historic Architecture (Square, equal size) */}
-                <div className="relative aspect-square w-full rounded-2xl overflow-hidden shadow-xl group bg-slate-900 border border-white/10">
+                {/* Image 1: Historic Architecture (Strict 1:1 Square, frame matches image exactly) */}
+                <div className="relative aspect-square w-full rounded-2xl overflow-hidden shadow-xl group border-0 bg-transparent">
                   <img 
                     src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b9/Darbar_Mahal_%28Palace%29%2C_Bahawalpur.jpg/1280px-Darbar_Mahal_%28Palace%29%2C_Bahawalpur.jpg" 
                     alt="Darbar Mahal Historical Architecture" 
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                    className="w-full h-full aspect-square object-cover object-center group-hover:scale-105 transition-transform duration-700 block"
                     onError={(e) => {
                       (e.target as HTMLImageElement).src = 'https://images.unsplash.com/photo-1548013146-72479768bada?auto=format&fit=crop&w=800&q=80';
                     }}
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent pointer-events-none" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/15 to-transparent pointer-events-none" />
                   <div className="absolute bottom-3.5 left-3.5 right-3.5">
                     <span className="text-[10px] uppercase font-bold tracking-wider text-amber-300 bg-black/60 px-2 py-0.5 rounded backdrop-blur-xs">
                       Historic Legacy
@@ -1006,18 +1006,18 @@ export const OurLegacyPage: React.FC<OurLegacyPageProps> = ({
                   </div>
                 </div>
 
-                {/* Image 2: Modern UCP Bahawalpur Campus (Square, equal size) */}
-                <div className="relative aspect-square w-full rounded-2xl overflow-hidden shadow-xl group bg-slate-900 border border-white/10">
+                {/* Image 2: Modern UCP Bahawalpur Campus (Strict 1:1 Square, frame matches image exactly) */}
+                <div className="relative aspect-square w-full rounded-2xl overflow-hidden shadow-xl group border-0 bg-transparent">
                   <img 
                     src={UCP_BWP_BUILDING_1} 
                     alt="UCP Bahawalpur Campus Building" 
                     referrerPolicy="no-referrer"
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                    className="w-full h-full aspect-square object-cover object-center group-hover:scale-105 transition-transform duration-700 block"
                     onError={(e) => {
                       (e.target as HTMLImageElement).src = UCP_BWP_BUILDING_1_FALLBACK;
                     }}
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent pointer-events-none" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/15 to-transparent pointer-events-none" />
                   <div className="absolute bottom-3.5 left-3.5 right-3.5">
                     <span className="text-[10px] uppercase font-bold tracking-wider text-emerald-300 bg-[#a30f16] px-2 py-0.5 rounded backdrop-blur-xs">
                       Modern Opportunity
@@ -1560,182 +1560,35 @@ export const OurLegacyPage: React.FC<OurLegacyPageProps> = ({
 
 
       {/* =========================================================================
-          12. HERITAGE MEETS EDUCATION
-          Visually dramatic full-width section with split image & gold typography
+          12. FINAL QUOTE-STYLE STATEMENT
+          Beautiful centered institutional statement with direct actions
           ========================================================================= */}
-      <section id="heritage-meets-education" className="relative py-24 lg:py-28 bg-[#092242] text-white overflow-hidden">
-        
-        {/* Split Image Background (Left: Historic Architecture / Right: UCP Bahawalpur) */}
-        <div className="absolute inset-0 z-0 grid grid-cols-1 md:grid-cols-2 opacity-25 pointer-events-none">
-          {/* Left Split: Historic Architecture */}
-          <div className="relative h-full overflow-hidden">
-            <img 
-              src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/40/Front_Elevation_of_Noor_Mahal.jpg/1280px-Front_Elevation_of_Noor_Mahal.jpg" 
-              alt="Historic Bahawalpur Architecture" 
-              className="w-full h-full object-cover"
-              onError={(e) => {
-                (e.target as HTMLImageElement).src = 'https://images.unsplash.com/photo-1548013146-72479768bada?auto=format&fit=crop&w=1200&q=80';
-              }}
-            />
-          </div>
-          {/* Right Split: UCP Bahawalpur Campus */}
-          <div className="relative h-full overflow-hidden">
-            <img 
-              src={UCP_BWP_BUILDING_5} 
-              alt="UCP Bahawalpur Modern Campus Panoramic Vista" 
-              referrerPolicy="no-referrer"
-              className="w-full h-full object-cover"
-              onError={(e) => {
-                (e.target as HTMLImageElement).src = UCP_BWP_BUILDING_5_FALLBACK;
-              }}
-            />
-          </div>
-        </div>
-
-        {/* Navy Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-t from-[#092242] via-[#092242]/90 to-[#092242] z-0" />
-
-        <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center flex flex-col items-center">
+      <section id="legacy-final-statement" className="py-20 lg:py-24 bg-[#051121] text-white border-t border-[#0e274a]">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center flex flex-col items-center">
           
+          {/* Subtle Top Gold Emblem */}
+          <div className="w-12 h-1 bg-gradient-to-r from-transparent via-amber-400 to-transparent mb-8" />
+
+          {/* Three-Line Centered Statement */}
           <div 
             data-reveal="heading" 
             data-reveal-delay="0"
-            className="inline-flex items-center text-white text-xs font-semibold tracking-[0.22em] uppercase mb-4"
+            className="space-y-2 text-2xl sm:text-4xl lg:text-5xl font-serif font-extrabold tracking-tight text-white leading-snug sm:leading-tight"
           >
-            <span>The Harmonious Synthesis</span>
+            <div className="text-slate-100">Honouring our heritage.</div>
+            <div className="text-amber-300">Building knowledge.</div>
+            <div className="text-white">Inspiring the future.</div>
           </div>
 
-          <h2 
-            data-reveal="heading" 
-            data-reveal-delay="80"
-            className="text-3xl sm:text-5xl lg:text-6xl font-serif font-extrabold text-white tracking-tight leading-[1.15]"
-          >
-            Where Heritage Meets Education
-          </h2>
+          <div className="w-12 h-1 bg-gradient-to-r from-transparent via-amber-400 to-transparent mt-8 mb-6" />
 
-          {/* Exact Styled Text as Requested with elegant gold typography */}
-          <p 
-            data-reveal="paragraph" 
-            data-reveal-delay="140"
-            className="mt-6 text-lg sm:text-xl lg:text-2xl text-amber-200/95 font-serif leading-relaxed max-w-3xl drop-shadow"
-          >
-            “Bahawalpur carries the memory of its past while continuing to build its future. UCP Bahawalpur becomes part of that continuing journey — connecting a city of heritage with contemporary higher education.”
+          {/* Website Section Tagline Notice */}
+          <p className="text-xs text-slate-400 uppercase tracking-widest font-mono font-medium mb-10">
+            University of Central Punjab • Bahawalpur Campus
           </p>
-
-          {/* Institutional Divider */}
-          <div className="w-24 h-0.5 bg-gradient-to-r from-transparent via-amber-400 to-transparent mt-8 mb-6" />
-
-        </div>
-      </section>
-
-      {/* =========================================================================
-          13. OUR LEGACY CONTINUES
-          Dark navy background with beautiful evening photograph of UCP Bahawalpur
-          ========================================================================= */}
-      <section id="our-legacy-continues" className="relative py-24 lg:py-32 bg-[#07192f] text-white overflow-hidden border-t border-[#14325a]">
-        
-        {/* Evening Campus Photograph Background */}
-        <div className="absolute inset-0 z-0">
-          <img 
-            src={UCP_BWP_BUILDING_4} 
-            alt="UCP Bahawalpur Evening Campus" 
-            referrerPolicy="no-referrer"
-            className="w-full h-full object-cover object-center scale-105 opacity-60 filter brightness-95 contrast-110"
-            onError={(e) => {
-              (e.target as HTMLImageElement).src = UCP_BWP_BUILDING_4_FALLBACK;
-            }}
-          />
-          {/* Slightly less dark blue overlay so the campus background image is visible */}
-          <div className="absolute inset-0 bg-gradient-to-b from-[#07192f]/85 via-[#07192f]/50 to-[#07192f]/85" />
-          <div className="absolute inset-0 bg-[radial-gradient(#d4af3715_1px,transparent_1px)] [background-size:28px_28px] pointer-events-none" />
-        </div>
-
-        <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center flex flex-col items-center">
-          
-          {/* Small Clean Kicker */}
-          <div 
-            data-reveal="heading" 
-            data-reveal-delay="0"
-            className="inline-flex items-center text-white text-xs font-semibold tracking-[0.22em] uppercase mb-4"
-          >
-            <span>Looking Forward</span>
-          </div>
-
-          {/* Heading: Our Legacy Continues */}
-          <h2 
-            data-reveal="heading" 
-            data-reveal-delay="80"
-            className="text-3xl sm:text-5xl lg:text-6xl font-serif font-extrabold text-white tracking-tight leading-[1.15]"
-          >
-            Our Legacy Continues
-          </h2>
-
-          {/* First Text Line */}
-          <p 
-            data-reveal="paragraph" 
-            data-reveal-delay="140"
-            className="mt-6 text-lg sm:text-2xl text-amber-300 font-serif font-medium tracking-wide drop-shadow"
-          >
-            “Rooted in heritage. Inspired by knowledge. Looking toward the future.”
-          </p>
-
-          {/* Institutional Narrative */}
-          <p 
-            data-reveal="paragraph" 
-            data-reveal-delay="200"
-            className="mt-6 text-base sm:text-lg text-slate-300 leading-relaxed font-normal max-w-3xl"
-          >
-            “From the educational journey of the Punjab Group of Colleges to the development of the University of Central Punjab and its presence in Bahawalpur, the story continues through the students, educators and communities shaping tomorrow.”
-          </p>
-
-          {/* Visual Sequence: HERITAGE → EDUCATION → PGC → UCP → BAHAWALPUR → FUTURE */}
-          <div 
-            data-reveal="card" 
-            data-reveal-delay="280"
-            className="mt-12 w-full max-w-4xl bg-white/5 border border-amber-400/30 rounded-2xl p-5 sm:p-6 backdrop-blur-md shadow-2xl"
-          >
-            <div className="text-[11px] font-mono uppercase text-amber-400 font-bold tracking-widest mb-3">
-              The Continuing Sequence
-            </div>
-            
-            <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-4 text-xs sm:text-sm font-bold">
-              <span className="px-3 py-1.5 rounded-lg bg-white/10 text-slate-200 border border-white/10 uppercase tracking-wider">
-                HERITAGE
-              </span>
-              <span className="text-amber-400 font-black">→</span>
-              
-              <span className="px-3 py-1.5 rounded-lg bg-white/10 text-slate-200 border border-white/10 uppercase tracking-wider">
-                EDUCATION
-              </span>
-              <span className="text-amber-400 font-black">→</span>
-              
-              <span className="px-3 py-1.5 rounded-lg bg-white/10 text-slate-200 border border-white/10 uppercase tracking-wider">
-                PGC
-              </span>
-              <span className="text-amber-400 font-black">→</span>
-              
-              <span className="px-3 py-1.5 rounded-lg bg-white/10 text-slate-200 border border-white/10 uppercase tracking-wider">
-                UCP
-              </span>
-              <span className="text-amber-400 font-black">→</span>
-              
-              <span className="px-3.5 py-1.5 rounded-lg bg-[#a30f16] text-white border border-rose-500/50 shadow-md uppercase tracking-wider">
-                BAHAWALPUR
-              </span>
-              <span className="text-amber-400 font-black">→</span>
-              
-              <span className="px-3 py-1.5 rounded-lg bg-emerald-500/20 text-emerald-300 border border-emerald-400/40 uppercase tracking-wider">
-                FUTURE
-              </span>
-            </div>
-          </div>
 
           {/* Action Call to Explore Programmes or Apply */}
-          <div 
-            data-reveal="card" 
-            data-reveal-delay="360"
-            className="mt-10 flex flex-wrap items-center justify-center gap-4"
-          >
+          <div className="flex flex-wrap items-center justify-center gap-4">
             {onOpenProgrammesPage && (
               <button
                 onClick={onOpenProgrammesPage}
@@ -1763,37 +1616,6 @@ export const OurLegacyPage: React.FC<OurLegacyPageProps> = ({
               Return to Campus Home
             </button>
           </div>
-
-        </div>
-      </section>
-
-      {/* =========================================================================
-          14. FINAL QUOTE-STYLE STATEMENT
-          Beautiful centered institutional statement (No personal attribution)
-          ========================================================================= */}
-      <section id="legacy-final-statement" className="py-20 lg:py-24 bg-[#051121] text-white border-t border-[#0e274a]">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center flex flex-col items-center">
-          
-          {/* Subtle Top Gold Emblem */}
-          <div className="w-12 h-1 bg-gradient-to-r from-transparent via-amber-400 to-transparent mb-8" />
-
-          {/* Three-Line Centered Statement */}
-          <div 
-            data-reveal="heading" 
-            data-reveal-delay="0"
-            className="space-y-2 text-2xl sm:text-4xl lg:text-5xl font-serif font-extrabold tracking-tight text-white leading-snug sm:leading-tight"
-          >
-            <div className="text-slate-100">Honouring our heritage.</div>
-            <div className="text-amber-300">Building knowledge.</div>
-            <div className="text-white">Inspiring the future.</div>
-          </div>
-
-          <div className="w-12 h-1 bg-gradient-to-r from-transparent via-amber-400 to-transparent mt-8 mb-6" />
-
-          {/* Website Section Tagline Notice */}
-          <p className="text-xs text-slate-400 uppercase tracking-widest font-mono font-medium">
-            University of Central Punjab • Bahawalpur Campus
-          </p>
 
         </div>
       </section>
