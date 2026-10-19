@@ -449,7 +449,7 @@ export const ProgramFinder: React.FC<ProgramFinderProps> = ({
                     Explore All Academic Programmes
                   </h3>
                   <p className="text-xs sm:text-sm text-slate-500 font-sans mt-1">
-                    Official catalog of 25 accredited undergraduate BS, BBA, and Associate degree programs.
+                    Official catalog of accredited undergraduate BS, BBA, and Associate degree programs.
                   </p>
                 </div>
 

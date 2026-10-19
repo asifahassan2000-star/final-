@@ -108,7 +108,7 @@ export const FacultiesGrid: React.FC<FacultiesGridProps> = ({
               onClick={() => onOpenProgrammesPage ? onOpenProgrammesPage() : onExploreFacultyPrograms('all')}
               className="group inline-flex items-center gap-2 text-xs sm:text-sm font-semibold text-[#a30f16] hover:text-[#0F2C61] transition-colors cursor-pointer self-start sm:self-auto py-1.5"
             >
-              <span>View all 25+ programmes</span>
+              <span>View all degree programmes</span>
               <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
             </button>
           </div>

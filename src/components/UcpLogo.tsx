@@ -32,7 +32,7 @@ export const UcpLogo: React.FC<UcpLogoProps> = ({ variant = 'header', className 
                 ? 'w-16 h-16 sm:w-20 sm:h-20 lg:w-24 lg:h-24' 
                 : isCompact
                 ? 'w-10 h-10'
-                : 'w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 lg:w-20 lg:h-20 xl:w-[84px] xl:h-[84px]'
+                : 'w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 lg:w-18 lg:h-18 xl:w-[80px] xl:h-[80px]'
             }`}
             style={{ 
               objectFit: 'contain',
@@ -58,38 +58,38 @@ export const UcpLogo: React.FC<UcpLogoProps> = ({ variant = 'header', className 
 
       {/* Typography: Official, Balanced Academic Wordmark */}
       {!isCompact && (
-        <div className="flex flex-col justify-center select-none">
+        <div className="flex flex-col justify-center select-none min-w-0">
           <span 
-            className={`text-white leading-tight tracking-[0.03em] transition-colors duration-200 group-hover:text-amber-200 ${
+            className={`text-white leading-tight tracking-[0.02em] transition-colors duration-200 group-hover:text-amber-200 truncate ${
               isFooter
                 ? 'text-xl sm:text-2xl lg:text-3xl font-normal'
-                : 'text-[17px] sm:text-[19px] md:text-[21px] lg:text-[22px] xl:text-[24px] font-normal'
+                : 'text-[15px] sm:text-[18px] md:text-[20px] lg:text-[22px] xl:text-[24px] font-normal'
             }`}
             style={{
               fontFamily: "'UnifrakturMaguntia', 'MedievalSharp', 'Old English Text MT', 'Cloister Black', 'Engravers Old English BT', serif",
-              letterSpacing: '0.04em',
+              letterSpacing: '0.03em',
             }}
           >
             University of Central Punjab
           </span>
 
           <div className="flex items-center gap-1.5 sm:gap-2 pt-0.5 sm:pt-1">
-            <span className="h-[1px] w-3 sm:w-5 bg-gradient-to-r from-transparent to-amber-400/80" />
+            <span className="h-[1px] w-2.5 sm:w-5 bg-gradient-to-r from-transparent to-amber-400/80" />
             <span 
-              className={`text-amber-400 font-semibold tracking-[0.24em] sm:tracking-[0.28em] uppercase transition-colors duration-200 group-hover:text-amber-300 ${
+              className={`text-amber-400 font-semibold tracking-[0.2em] sm:tracking-[0.26em] uppercase transition-colors duration-200 group-hover:text-amber-300 ${
                 isFooter 
                   ? 'text-xs sm:text-sm' 
-                  : 'text-[9px] sm:text-[10px] lg:text-[10.5px] xl:text-[11px]'
+                  : 'text-[8.5px] sm:text-[10px] lg:text-[10.5px] xl:text-[11px]'
               }`}
               style={{
                 fontFamily: "'Cinzel', 'Poppins', -apple-system, sans-serif",
-                letterSpacing: '0.26em',
+                letterSpacing: '0.22em',
                 fontWeight: 600,
               }}
             >
               Bahawalpur Campus
             </span>
-            <span className="h-[1px] w-3 sm:w-5 bg-gradient-to-l from-transparent to-amber-400/80" />
+            <span className="h-[1px] w-2.5 sm:w-5 bg-gradient-to-l from-transparent to-amber-400/80" />
           </div>
         </div>
       )}

@@ -249,10 +249,10 @@ export const UcpChatbot: React.FC = () => {
     let actionLink: { label: string; url: string } | undefined;
     let suggestions: string[] | undefined;
 
-    // Fast server-side call with 2.8s abort timeout and instant campus knowledge engine fallback
+    // Fast server-side call with 6s timeout and instant verified campus knowledge engine fallback
     try {
       const controller = new AbortController();
-      const timeoutId = setTimeout(() => controller.abort(), 2800);
+      const timeoutId = setTimeout(() => controller.abort(), 6000);
 
       const response = await fetch('/api/chat', {
         method: 'POST',
@@ -421,7 +421,7 @@ export const UcpChatbot: React.FC = () => {
                   Hi, how can I help you today?
                 </h2>
                 <p className="font-sans text-xs text-slate-500 mt-2 max-w-[310px] leading-relaxed">
-                  Ask me anything about 27 degree programs, admissions, fee structure, scholarships, or campus facilities at UCP Bahawalpur.
+                  Ask me anything about degree programs, admissions, fee structure, scholarships, or campus facilities at UCP Bahawalpur.
                 </p>
 
                 {/* ChatGPT-style Quick Prompt Cards (Responsive 4 columns on large modal) */}

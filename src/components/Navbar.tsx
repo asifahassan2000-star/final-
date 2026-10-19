@@ -197,9 +197,9 @@ export const Navbar: React.FC<NavbarProps> = ({
   const campusPages = useMemo(() => [
     {
       id: 'page-programmes',
-      title: 'Academic Programmes (27 Degrees)',
+      title: 'Academic Programmes',
       category: 'Pages',
-      description: 'Explore all 27 undergraduate BS and Associate ADP degree programmes with verified credit hours',
+      description: 'Explore undergraduate BS and Associate ADP degree programmes with verified credit hours',
       icon: GraduationCap,
       action: () => {
         setIsSearchOpen(false);
@@ -716,10 +716,22 @@ export const Navbar: React.FC<NavbarProps> = ({
               <span>Portal Login</span>
             </a>
 
+            {/* Minor Search Trigger in Navigation Menu (very minor, not too highlighted) */}
+            <button
+              id="nav-search-minor-btn"
+              type="button"
+              onClick={() => setIsSearchOpen(true)}
+              className="ml-1 px-2.5 py-1.5 rounded-lg text-slate-300 hover:text-white hover:bg-white/10 transition-colors flex items-center gap-1.5 text-xs font-normal cursor-pointer opacity-80 hover:opacity-100 border border-white/15"
+              title="Search degree programmes, fees, admissions (Ctrl+K)"
+            >
+              <Search size={13} className="text-slate-300" />
+              <span>Search</span>
+            </button>
+
           </nav>
 
           {/* Right Header Area: Search, Theme Toggle & Mobile Menu Toggle */}
-          <div className="flex items-center space-x-2 shrink-0">
+          <div className="flex items-center gap-1.5 sm:gap-2 shrink-0">
             <button
               id="header-search-btn"
               type="button"
@@ -734,23 +746,27 @@ export const Navbar: React.FC<NavbarProps> = ({
             {/* Official University Light / Dark Mode Toggle */}
             <ThemeToggle variant="header" />
 
-            {/* Mobile menu toggle button — Clean official university style */}
+            {/* Mobile menu toggle button — Prominently visible, high contrast, clean */}
             <button
               id="mobile-menu-toggle-btn"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="lg:hidden flex items-center gap-1.5 px-3 py-1.5 rounded-[6px] bg-white/10 hover:bg-white/15 active:bg-white/20 text-white border border-white/20 transition-all duration-200 focus:outline-none cursor-pointer shadow-xs"
+              className={`lg:hidden flex items-center gap-1.5 px-3 py-1.5 rounded-lg font-bold text-xs transition-all duration-200 focus:outline-none cursor-pointer shadow-md shrink-0 border z-10 ${
+                mobileMenuOpen
+                  ? 'bg-[#C8102E] text-white border-white/50 shadow-rose-950/40'
+                  : 'bg-white text-[#0A1931] border-slate-200 hover:bg-slate-100 shadow-md'
+              }`}
               aria-label="Toggle Navigation Menu"
               aria-expanded={mobileMenuOpen}
             >
               {mobileMenuOpen ? (
                 <>
-                  <X size={16} className="text-amber-300" />
-                  <span className="text-[11px] font-semibold tracking-wider uppercase font-sans">Close</span>
+                  <X size={16} className="text-white" />
+                  <span className="tracking-wide uppercase font-sans text-xs">Close</span>
                 </>
               ) : (
                 <>
-                  <Menu size={16} className="text-white" />
-                  <span className="text-[11px] font-semibold tracking-wider uppercase font-sans">Menu</span>
+                  <Menu size={16} className="text-[#0A1931]" />
+                  <span className="tracking-wide uppercase font-sans text-xs">Menu</span>
                 </>
               )}
             </button>
@@ -762,20 +778,18 @@ export const Navbar: React.FC<NavbarProps> = ({
       {/* Mobile Drawer Navigation */}
       {mobileMenuOpen && (
         <div className="lg:hidden bg-[#071b34] border-t border-slate-700/70 px-5 pt-4 pb-6 text-sm text-slate-100 space-y-3.5 shadow-2xl animate-in slide-in-from-top-3">
-          {/* Mobile Quick Search Bar */}
+          {/* Very minor, subtle search button in mobile menu (not too highlighted) */}
           <button
             type="button"
             onClick={() => {
               setMobileMenuOpen(false);
               setIsSearchOpen(true);
             }}
-            className="w-full flex items-center justify-between px-3.5 py-2.5 bg-white/10 hover:bg-white/15 border border-white/20 rounded-xl text-xs text-slate-200 transition-colors cursor-pointer mb-2"
+            className="w-full flex items-center gap-2 px-3 py-2 bg-white/[0.04] hover:bg-white/[0.08] border border-white/10 rounded-lg text-xs text-slate-400 hover:text-slate-200 transition-colors cursor-pointer mb-2"
+            title="Search UCP Bahawalpur"
           >
-            <span className="flex items-center gap-2">
-              <Search size={14} className="text-amber-300" />
-              <span>Search degrees, fees, scholarships...</span>
-            </span>
-            <span className="text-[10px] bg-white/10 px-2 py-0.5 rounded font-mono text-slate-300">Search</span>
+            <Search size={13} className="text-slate-400 shrink-0" />
+            <span className="text-slate-400 text-xs font-normal">Search programmes, fees, admissions...</span>
           </button>
 
           <div className="grid grid-cols-2 gap-2 mb-2">
@@ -863,7 +877,7 @@ export const Navbar: React.FC<NavbarProps> = ({
               }}
               className="w-full text-left py-1 text-slate-300 hover:text-white text-xs pl-2 flex items-center justify-between"
             >
-              <span>• BS Programmes (12 Degrees)</span>
+              <span>• BS Programmes</span>
             </button>
             <button
               onClick={() => {
@@ -872,7 +886,7 @@ export const Navbar: React.FC<NavbarProps> = ({
               }}
               className="w-full text-left py-1 text-slate-300 hover:text-white text-xs pl-2 flex items-center justify-between"
             >
-              <span>• ADP / ADS Programmes (13 Degrees)</span>
+              <span>• ADP / ADS Programmes</span>
             </button>
             <button
               onClick={() => {
@@ -1013,7 +1027,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                 type="text"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                placeholder="Search 27 degree programmes, fees, admissions, scholarships, calendar..."
+                placeholder="Search degree programmes, fees, admissions, scholarships, calendar..."
                 className="w-full text-sm sm:text-base text-slate-900 placeholder-slate-400 bg-transparent focus:outline-none font-sans"
               />
               {searchQuery && (
@@ -1252,7 +1266,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                         }}
                         className="mt-4 px-4 py-2 bg-[#0A1931] hover:bg-[#C8102E] text-white text-xs font-semibold rounded-lg transition-colors cursor-pointer"
                       >
-                        Browse All 27 Degree Programmes
+                        Browse All Degree Programmes
                       </button>
                     </div>
                   )}

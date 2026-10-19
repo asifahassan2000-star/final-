@@ -1516,7 +1516,7 @@ export const OurLegacyPage: React.FC<OurLegacyPageProps> = ({
 
                   <div className="p-3 bg-white rounded-xl border border-slate-200">
                     <span className="text-slate-500 font-semibold block text-[10px] uppercase">Academic Offerings</span>
-                    <strong className="text-slate-900 text-xs">25 Degree Programmes (BS & ADP)</strong>
+                    <strong className="text-slate-900 text-xs">Degree Programmes (BS & ADP)</strong>
                   </div>
 
                   <div className="p-3 bg-white rounded-xl border border-slate-200">

@@ -34,7 +34,7 @@ export const HERO_SLIDES: HeroSlide[] = [
     theme: 'Bahawalpur Campus',
     preheader: 'UNIVERSITY OF CENTRAL PUNJAB • BAHAWALPUR',
     title: 'Where Ambition Meets Academic Distinction',
-    subtitle: 'Step into a world-class educational ecosystem with 25+ accredited programmes, cutting-edge laboratories, and visionary faculty dedicated to your future.',
+    subtitle: 'Step into a world-class educational ecosystem with accredited degree programmes, cutting-edge laboratories, and visionary faculty dedicated to your future.',
     tag: 'Bahawalpur Campus',
     image: '/assets/campus/hero_campus_night_flagship.png',
     fallbackImage: 'https://i.ibb.co/wmw3sjb/UCP-Bahawalpur-Campus-at-Night.png',
