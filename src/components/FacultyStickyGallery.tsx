@@ -163,8 +163,7 @@ export const FacultyStickyGallery: React.FC = () => {
               }}
               className="absolute inset-0 w-full h-full"
             >
-              <img
-                src={currentImage.src}
+              <img src={currentImage.src}
                 alt={currentImage.alt}
                 loading="eager"
                 decoding="async"

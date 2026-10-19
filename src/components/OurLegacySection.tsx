@@ -69,17 +69,17 @@ const LEGACY_MILESTONES: LegacyMilestone[] = [
     figureCaption: 'Fig. 4 — Chartered autonomy, conferring degree-awarding authority across multidisciplinary faculties.',
   },
   {
-    id: 'milestone-present',
-    year: 'Present',
+    id: 'milestone-2012',
+    year: '2012',
     label: 'Bahawalpur Campus',
     chapter: '05',
-    title: 'A Purpose-Built Campus for Southern Punjab',
+    title: 'Establishment of UCP Bahawalpur Campus',
     institution: 'University of Central Punjab · Bahawalpur Campus',
-    narrative: 'UCP Bahawalpur represents the permanent local presence of the University of Central Punjab, bringing 39 years of academic heritage to a city historically renowned for its princely scholarly patronage. Set across expansive grounds, the campus provides world-class undergraduate and associate degree programs, dedicated faculty, and modern research laboratories.',
-    significance: 'Extending premier accredited higher education and research infrastructure to the students of Bahawalpur.',
+    narrative: 'Established in 2012 on Airport Road, UCP Bahawalpur represents the permanent local presence of the University of Central Punjab, bringing over a decade of higher academic distinction to Southern Punjab. Set across expansive grounds, the campus provides accredited undergraduate (BS) and associate degree (ADP) programs, distinguished faculties, and state-of-the-art technological laboratories.',
+    significance: 'Extending premier accredited higher education and research infrastructure to the students of Bahawalpur since 2012.',
     imageUrl: '/assets/campus/8_campus_life_courtyard.jpg',
     imageAlt: 'Purpose-built campus architecture and courtyard at UCP Bahawalpur',
-    figureCaption: 'Fig. 5 — The purpose-built academic complex and courtyard at UCP Bahawalpur.',
+    figureCaption: 'Fig. 5 — Established in 2012: The purpose-built academic complex and courtyard at UCP Bahawalpur.',
   },
 ];
 

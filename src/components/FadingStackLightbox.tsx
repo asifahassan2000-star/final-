@@ -184,8 +184,7 @@ export const FadingStackLightbox: React.FC<FadingStackLightboxProps> = ({
                   `}
                 >
                   {/* Clean Picture with NO counting badge and NO text overlaid */}
-                  <img
-                    src={item.src}
+                  <img loading="lazy" decoding="async" src={item.src}
                     alt={item.title || `Campus Life ${idx + 1}`}
                     className="w-full h-full object-cover object-center select-none pointer-events-none"
                   />

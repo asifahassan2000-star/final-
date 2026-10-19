@@ -346,8 +346,7 @@ export const EditorialNewspaperSection: React.FC = () => {
                 onClick={() => openLightbox('symp-ai-secure-1')}
                 title="Click to inspect keynote stage"
               >
-                <img
-                  src="/assets/events/symposium-ai-secure-systems-1.jpg"
+                <img src="/assets/events/symposium-ai-secure-systems-1.jpg"
                   alt="International Symposium on AI and Secure Systems Keynote Stage"
                   loading="lazy"
                   decoding="async"
@@ -371,8 +370,7 @@ export const EditorialNewspaperSection: React.FC = () => {
                 onClick={() => openLightbox('symp-ai-secure-2')}
                 title="Click to inspect delegates assembly"
               >
-                <img
-                  src="/assets/events/symposium-ai-secure-systems-2.jpg"
+                <img src="/assets/events/symposium-ai-secure-systems-2.jpg"
                   alt="International Symposium on AI and Secure Systems Research Delegates"
                   loading="lazy"
                   decoding="async"
@@ -446,8 +444,7 @@ export const EditorialNewspaperSection: React.FC = () => {
               onClick={() => openLightbox(activeCommPhoto.id)}
               title="Click to view full photograph"
             >
-              <img
-                key={activeCommPhoto.imageSrc}
+              <img key={activeCommPhoto.imageSrc}
                 src={activeCommPhoto.imageSrc}
                 alt={activeCommPhoto.alt}
                 loading="lazy"
@@ -483,8 +480,7 @@ export const EditorialNewspaperSection: React.FC = () => {
                     }`}
                     title={item.badge || `Session ${idx + 1}`}
                   >
-                    <img
-                      src={item.imageSrc}
+                    <img loading="lazy" decoding="async" src={item.imageSrc}
                       alt={item.alt}
                       className="w-full h-full object-cover"
                       onError={(e) => {
@@ -582,8 +578,7 @@ export const EditorialNewspaperSection: React.FC = () => {
               onClick={() => openLightbox(activeProjPhoto.id)}
               title="Click to expand this exhibition photo"
             >
-              <img
-                key={activeProjPhoto.imageSrc}
+              <img key={activeProjPhoto.imageSrc}
                 src={activeProjPhoto.imageSrc}
                 alt={activeProjPhoto.alt}
                 loading="lazy"
@@ -619,8 +614,7 @@ export const EditorialNewspaperSection: React.FC = () => {
                     }`}
                     title={`View ${photo.badge || `Exhibition View ${pIdx + 1}`}`}
                   >
-                    <img
-                      src={photo.imageSrc}
+                    <img loading="lazy" decoding="async" src={photo.imageSrc}
                       alt={photo.alt}
                       className="w-full h-full object-cover"
                       onError={(e) => {
@@ -680,8 +674,7 @@ export const EditorialNewspaperSection: React.FC = () => {
 
               {/* Photo Display with Navigation Arrows */}
               <div className="relative bg-slate-950 flex-1 min-h-[300px] max-h-[62vh] flex items-center justify-center overflow-hidden">
-                <img
-                  key={allPhotos[lightboxIndex].imageSrc}
+                <img loading="lazy" decoding="async" key={allPhotos[lightboxIndex].imageSrc}
                   src={allPhotos[lightboxIndex].imageSrc}
                   alt={allPhotos[lightboxIndex].alt}
                   className="max-h-[62vh] w-auto max-w-full object-contain mx-auto transition-all duration-300"
@@ -741,8 +734,7 @@ export const EditorialNewspaperSection: React.FC = () => {
                           : 'border-slate-300 dark:border-white/20 opacity-60 hover:opacity-100'
                       }`}
                     >
-                      <img
-                        src={p.imageSrc}
+                      <img loading="lazy" decoding="async" src={p.imageSrc}
                         alt={p.alt}
                         className="w-full h-full object-cover"
                         onError={(e) => {

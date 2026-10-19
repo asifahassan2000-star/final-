@@ -4,41 +4,38 @@
  */
 
 import React, { useState, useEffect, useRef, Suspense } from 'react';
-import Lenis from 'lenis';
-import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { motion } from 'framer-motion';
 
-// Register GSAP ScrollTrigger plugin globally
-gsap.registerPlugin(ScrollTrigger);
-import { TopBar } from './components/TopBar';
+// Core Above-The-Fold Components for Instant LCP & First Paint
 import { Navbar } from './components/Navbar';
 import { HeroSlider } from './components/HeroSlider';
 import { StatisticsSection } from './components/StatisticsSection';
-import { WelcomeUcpSection } from './components/WelcomeUcpSection';
-import { FacultiesGrid } from './components/FacultiesGrid';
 import { ClickGlowManager } from './components/ClickGlowManager';
 import { ScrollRevealManager } from './components/ScrollReveal';
 import type { InfoModalType } from './components/UcpInfoModal';
 import { Program, NewsEventItem } from './types';
 import { FACULTIES, UCP_CONTACT } from './data/ucpData';
 
-// Direct static imports for instant initial paint and zero loading waterfall
-import { WhatWeOfferAccordion } from './components/WhatWeOfferAccordion';
-import { FacultySection } from './components/FacultySection';
-import { AboutCampusSection } from './components/AboutCampusSection';
-import { FacilitiesSection } from './components/FacilitiesSection';
-import { OurLeadershipSection } from './components/OurLeadershipSection';
-import { LeadershipImpactSection } from './components/LeadershipImpactSection';
-import { CampusLife } from './components/CampusLife';
-import { BeyondTheClassroomSection } from './components/BeyondTheClassroomSection';
-import { NewsAndEvents } from './components/NewsAndEvents';
-import { AdmissionsExperienceSection } from './components/AdmissionsExperienceSection';
-import { ClosingDramaticSection } from './components/ClosingDramaticSection';
-import { Footer } from './components/Footer';
-import { FloatingSideRibbons } from './components/FloatingSideRibbons';
+// Lazy-loaded Header Strip
+const TopBar = React.lazy(() => import('./components/TopBar').then(m => ({ default: m.TopBar })));
 
-// Lazy-loaded Subpages for instant page loading and fast compilation
+// Lazy-loaded Below-the-Fold Homepage Sections
+const WelcomeUcpSection = React.lazy(() => import('./components/WelcomeUcpSection').then(m => ({ default: m.WelcomeUcpSection })));
+const FacultiesGrid = React.lazy(() => import('./components/FacultiesGrid').then(m => ({ default: m.FacultiesGrid })));
+const WhatWeOfferAccordion = React.lazy(() => import('./components/WhatWeOfferAccordion').then(m => ({ default: m.WhatWeOfferAccordion })));
+const FacultySection = React.lazy(() => import('./components/FacultySection').then(m => ({ default: m.FacultySection })));
+const AboutCampusSection = React.lazy(() => import('./components/AboutCampusSection').then(m => ({ default: m.AboutCampusSection })));
+const FacilitiesSection = React.lazy(() => import('./components/FacilitiesSection').then(m => ({ default: m.FacilitiesSection })));
+const OurLeadershipSection = React.lazy(() => import('./components/OurLeadershipSection').then(m => ({ default: m.OurLeadershipSection })));
+const LeadershipImpactSection = React.lazy(() => import('./components/LeadershipImpactSection').then(m => ({ default: m.LeadershipImpactSection })));
+const CampusLife = React.lazy(() => import('./components/CampusLife').then(m => ({ default: m.CampusLife })));
+const BeyondTheClassroomSection = React.lazy(() => import('./components/BeyondTheClassroomSection').then(m => ({ default: m.BeyondTheClassroomSection })));
+const NewsAndEvents = React.lazy(() => import('./components/NewsAndEvents').then(m => ({ default: m.NewsAndEvents })));
+const AdmissionsExperienceSection = React.lazy(() => import('./components/AdmissionsExperienceSection').then(m => ({ default: m.AdmissionsExperienceSection })));
+const ClosingDramaticSection = React.lazy(() => import('./components/ClosingDramaticSection').then(m => ({ default: m.ClosingDramaticSection })));
+const Footer = React.lazy(() => import('./components/Footer').then(m => ({ default: m.Footer })));
+const FloatingSideRibbons = React.lazy(() => import('./components/FloatingSideRibbons').then(m => ({ default: m.FloatingSideRibbons })));
+
+// Lazy-loaded Subpages for instant page transitions
 const FacultyPage = React.lazy(() => import('./components/FacultyPage').then(m => ({ default: m.FacultyPage })));
 const AcademicProgrammesPage = React.lazy(() => import('./components/AcademicProgrammesPage').then(m => ({ default: m.AcademicProgrammesPage })));
 const OurLegacyPage = React.lazy(() => import('./components/OurLegacyPage').then(m => ({ default: m.OurLegacyPage })));
@@ -72,44 +69,65 @@ export default function App() {
   const [selectedProgram, setSelectedProgram] = useState<Program | null>(null);
   const [selectedArticle, setSelectedArticle] = useState<NewsEventItem | null>(null);
   const [preselectedProgramName, setPreselectedProgramName] = useState<string>('');
+  const [mountChat, setMountChat] = useState(false);
+
+  // Defer chatbot mount to keep critical first paint completely free
+  useEffect(() => {
+    const timer = setTimeout(() => setMountChat(true), 1500);
+    return () => clearTimeout(timer);
+  }, []);
 
   // Lenis ref to programmatically control smooth scrolling during route transitions
-  const lenisRef = useRef<Lenis | null>(null);
+  const lenisRef = useRef<any>(null);
 
-  // 1. Lenis Smooth Scroll Initialization (Desktop mouse wheel only, native fast scrolling on mobile)
+  // 1. Lenis Smooth Scroll Initialization (Dynamic import, desktop mouse wheel only)
   useEffect(() => {
     const isTouch = typeof window !== 'undefined' && ('ontouchstart' in window || navigator.maxTouchPoints > 0 || window.innerWidth < 1024);
     if (isTouch) {
       return;
     }
 
-    const lenis = new Lenis({
-      duration: 1.1,
-      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-      orientation: 'vertical',
-      gestureOrientation: 'vertical',
-      smoothWheel: true,
+    let isMounted = true;
+    let rafId: number;
+
+    Promise.all([
+      import('lenis'),
+      import('gsap'),
+      import('gsap/ScrollTrigger')
+    ]).then(([{ default: Lenis }, { default: gsap }, { ScrollTrigger }]) => {
+      if (!isMounted) return;
+      gsap.registerPlugin(ScrollTrigger);
+
+      const lenis = new Lenis({
+        duration: 1.1,
+        easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+        orientation: 'vertical',
+        gestureOrientation: 'vertical',
+        smoothWheel: true,
+      });
+
+      lenisRef.current = lenis;
+      (window as any).__appLenis = lenis;
+
+      lenis.on('scroll', () => {
+        ScrollTrigger.update();
+      });
+
+      function raf(time: number) {
+        lenis.raf(time);
+        rafId = requestAnimationFrame(raf);
+      }
+
+      rafId = requestAnimationFrame(raf);
     });
-
-    lenisRef.current = lenis;
-    (window as any).__appLenis = lenis;
-
-    // Synchronize Lenis scroll with GSAP ScrollTrigger globally
-    lenis.on('scroll', () => {
-      ScrollTrigger.update();
-    });
-
-    function raf(time: number) {
-      lenis.raf(time);
-      requestAnimationFrame(raf);
-    }
-
-    const rafId = requestAnimationFrame(raf);
 
     return () => {
-      cancelAnimationFrame(rafId);
-      lenis.destroy();
-      lenisRef.current = null;
+      isMounted = false;
+      if (rafId) cancelAnimationFrame(rafId);
+      if (lenisRef.current) {
+        lenisRef.current.destroy();
+        lenisRef.current = null;
+      }
       delete (window as any).__appLenis;
     };
   }, []);
@@ -342,12 +360,14 @@ export default function App() {
       <ScrollRevealManager />
       
       {/* 1. Official Top Emergency Ticker & Contact Strip */}
-      <TopBar 
-        onOpenPortal={() => setIsPortalOpen(true)}
-        onOpenFee={handleOpenFee}
-        onOpenApply={() => handleOpenApply()}
-        onOpenCnnAcademyPage={handleOpenCnnAcademyPage}
-      />
+      <Suspense fallback={<div className="bg-[#0b1c33] h-8 border-b border-slate-800/80" />}>
+        <TopBar 
+          onOpenPortal={() => setIsPortalOpen(true)}
+          onOpenFee={handleOpenFee}
+          onOpenApply={() => handleOpenApply()}
+          onOpenCnnAcademyPage={handleOpenCnnAcademyPage}
+        />
+      </Suspense>
 
       {/* 2. Main Navigation Bar */}
       <Navbar
@@ -570,30 +590,32 @@ export default function App() {
       </main>
 
       {/* 10. Official Comprehensive Footer & Floating Ribbons */}
-      <Footer
-        onOpenApply={() => handleOpenApply()}
-        onOpenFee={handleOpenFee}
-        onOpenPortal={() => setIsPortalOpen(true)}
-        onOpenInfo={handleOpenInfo}
-        onScrollTo={handleScrollTo}
-        onSelectFaculty={handleSelectFaculty}
-        onOpenLegacyPage={handleOpenLegacyPage}
-      />
+      <Suspense fallback={null}>
+        <Footer
+          onOpenApply={() => handleOpenApply()}
+          onOpenFee={handleOpenFee}
+          onOpenPortal={() => setIsPortalOpen(true)}
+          onOpenInfo={handleOpenInfo}
+          onScrollTo={handleScrollTo}
+          onSelectFaculty={handleSelectFaculty}
+          onOpenLegacyPage={handleOpenLegacyPage}
+        />
 
-      {/* Right Edge Floating Ribbons & WhatsApp Button */}
-      <FloatingSideRibbons
-        onOpenApply={() => handleOpenApply()}
-        onOpenInfo={handleOpenInfo}
-        onOpenLegacyPage={handleOpenLegacyPage}
-        onOpenCampusLifePage={handleOpenCampusLifePage}
-        onOpenProgrammesPage={() => handleOpenProgrammesPage()}
-        onOpenScholarshipsPage={handleOpenScholarshipsPage}
-        onOpenFeeStructurePage={handleOpenFeeStructurePage}
-      />
+        {/* Right Edge Floating Ribbons & WhatsApp Button */}
+        <FloatingSideRibbons
+          onOpenApply={() => handleOpenApply()}
+          onOpenInfo={handleOpenInfo}
+          onOpenLegacyPage={handleOpenLegacyPage}
+          onOpenCampusLifePage={handleOpenCampusLifePage}
+          onOpenProgrammesPage={() => handleOpenProgrammesPage()}
+          onOpenScholarshipsPage={handleOpenScholarshipsPage}
+          onOpenFeeStructurePage={handleOpenFeeStructurePage}
+        />
+      </Suspense>
 
       {/* Official 24/7 UCP Bot (Instant Knowledge + Gemini AI) & Modals */}
       <Suspense fallback={null}>
-        <UcpChatbot />
+        {mountChat && <UcpChatbot />}
 
         {/* Modal Dialogs */}
         <ApplyModal

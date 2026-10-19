@@ -274,6 +274,14 @@ export const OurLegacyPage: React.FC<OurLegacyPageProps> = ({
       description: 'The University of Central Punjab officially received its statutory charter from the Government of the Punjab through an Act of the Provincial Assembly (Punjab Act IX of 2002), conferring full degree-awarding authority.',
       significance: 'Formally inaugurated UCP as an autonomous, recognized degree-granting institution of higher learning in Pakistan.',
       icon: 'ShieldCheck'
+    },
+    {
+      year: '2012',
+      title: 'Establishment of UCP Bahawalpur Campus',
+      institution: 'Constituent College UCP Campus Bahawalpur',
+      description: 'In 2012, the University of Central Punjab established its constituent campus in Bahawalpur on Airport Road, bringing recognized undergraduate and associate degree programs, purpose-built academic architecture, and world-class higher education to Southern Punjab.',
+      significance: 'Brought UCP academic distinction, qualified faculties, and modern research laboratories directly to the historic region of Bahawalpur.',
+      icon: 'Building2'
     }
   ];
 
@@ -1492,7 +1500,7 @@ export const OurLegacyPage: React.FC<OurLegacyPageProps> = ({
               <p 
                 className="text-slate-600 text-sm sm:text-base leading-relaxed"
               >
-                Established to extend world-class university curricula and modern campus facilities to students across Southern Punjab, UCP Bahawalpur offers accredited undergraduate and associate degree programmes. Students study under established academic guidelines, qualified faculties, and state-of-the-art technological laboratories.
+                Established in <strong className="text-[#092242] font-bold">2012</strong> to extend world-class university curricula and modern campus facilities to students across Southern Punjab, UCP Bahawalpur has delivered over a decade of higher educational excellence. Offering accredited undergraduate (BS) and associate degree (ADP) programmes, students study under established academic guidelines, qualified faculties, and state-of-the-art technological laboratories on Airport Road.
               </p>
 
               {/* Verified Campus Facts Box */}
@@ -1506,17 +1514,17 @@ export const OurLegacyPage: React.FC<OurLegacyPageProps> = ({
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
                   <div className="p-3 bg-white rounded-xl border border-slate-200">
                     <span className="text-slate-500 font-semibold block text-[10px] uppercase">Campus Location</span>
-                    <strong className="text-slate-900 text-xs">Bahawalpur, Punjab, Pakistan</strong>
+                    <strong className="text-slate-900 text-xs">Airport Road, Bahawalpur</strong>
                   </div>
 
                   <div className="p-3 bg-white rounded-xl border border-slate-200">
                     <span className="text-slate-500 font-semibold block text-[10px] uppercase">Official Helpline</span>
-                    <strong className="text-slate-900 text-xs font-mono">{UCP_CONTACT.tollFree}</strong>
+                    <strong className="text-slate-900 text-xs font-mono">{UCP_CONTACT.phone1} / {UCP_CONTACT.phone2}</strong>
                   </div>
 
                   <div className="p-3 bg-white rounded-xl border border-slate-200">
-                    <span className="text-slate-500 font-semibold block text-[10px] uppercase">Academic Offerings</span>
-                    <strong className="text-slate-900 text-xs">Degree Programmes (BS & ADP)</strong>
+                    <span className="text-slate-500 font-semibold block text-[10px] uppercase">Established in Bahawalpur</span>
+                    <strong className="text-[#a30f16] text-xs font-bold">2012 (Constituent College Campus)</strong>
                   </div>
 
                   <div className="p-3 bg-white rounded-xl border border-slate-200">

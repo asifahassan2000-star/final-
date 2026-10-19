@@ -1,5 +1,4 @@
 import React, { useState, useRef, useEffect, useCallback } from 'react';
-import { motion } from 'framer-motion';
 import { 
   X, Send, RefreshCw, Bot, 
   ExternalLink, Zap, Sparkles,

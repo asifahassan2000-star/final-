@@ -26,24 +26,39 @@ export default defineConfig(() => {
       target: 'es2020',
       minify: 'esbuild',
       cssMinify: true,
-      chunkSizeWarningLimit: 1200,
+      chunkSizeWarningLimit: 800,
       cssCodeSplit: true,
       assetsInlineLimit: 4096,
+      sourcemap: false,
+      reportCompressedSize: false,
       rollupOptions: {
+        treeshake: true,
         output: {
           manualChunks(id) {
             if (id.includes('node_modules')) {
-              if (id.includes('react') || id.includes('react-dom')) {
+              // Priority 1: Lucide Icons (must precede generic react check)
+              if (id.includes('lucide-react')) {
+                return 'vendor-icons';
+              }
+              // Priority 2: React runtime
+              if (
+                id.includes('/node_modules/react/') ||
+                id.includes('/node_modules/react-dom/') ||
+                id.includes('/node_modules/scheduler/')
+              ) {
                 return 'vendor-react';
               }
-              if (id.includes('framer-motion') || id.includes('motion')) {
+              // Priority 3: Framer Motion
+              if (id.includes('framer-motion')) {
                 return 'vendor-motion';
               }
+              // Priority 4: GSAP & Lenis smooth scroll
               if (id.includes('gsap') || id.includes('lenis')) {
                 return 'vendor-anim';
               }
-              if (id.includes('lucide-react')) {
-                return 'vendor-icons';
+              // Priority 5: AI SDK
+              if (id.includes('@google/genai')) {
+                return 'vendor-genai';
               }
               return 'vendor';
             }

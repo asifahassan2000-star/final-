@@ -287,8 +287,7 @@ Campus Phone: 062-2202030 / 062-2202050
         <section className="relative bg-[#0A1931] text-white overflow-hidden border-b border-slate-800">
           {/* Full-width continuous background image with Ken-Burns animation, anchored right for clear visibility */}
           <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none select-none">
-            <img
-              src={prog.image}
+            <img loading="lazy" decoding="async" src={prog.image}
               alt={prog.name}
               referrerPolicy="no-referrer"
               onError={(e) => {
@@ -655,8 +654,7 @@ Campus Phone: 062-2202030 / 062-2202050
       <section className="relative bg-[#0A1931] text-white border-b border-slate-800 py-16 sm:py-24 overflow-hidden">
         {/* Full-width continuous background image with Ken-Burns animation, anchored right */}
         <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none select-none">
-          <img
-            src="/assets/campus/13_hero_sunset_campus.jpg"
+          <img loading="lazy" decoding="async" src="/assets/campus/13_hero_sunset_campus.jpg"
             alt="UCP Bahawalpur Campus Quadrangle"
             referrerPolicy="no-referrer"
             className="w-full h-full object-cover object-center md:object-right animate-hero-kenburns brightness-[1.08] contrast-[1.04]"
@@ -881,8 +879,7 @@ Campus Phone: 062-2202030 / 062-2202050
                 >
                   {/* Card Image */}
                   <div className="relative aspect-16/10 bg-stone-100 overflow-hidden">
-                    <img
-                      src={prog.image}
+                    <img src={prog.image}
                       alt={prog.name}
                       loading="lazy"
                       decoding="async"
@@ -1018,8 +1015,7 @@ Campus Phone: 062-2202030 / 062-2202050
                 >
                   {/* Card Image */}
                   <div className="relative aspect-16/10 bg-stone-100 overflow-hidden">
-                    <img
-                      src={prog.image}
+                    <img src={prog.image}
                       alt={prog.name}
                       loading="lazy"
                       decoding="async"

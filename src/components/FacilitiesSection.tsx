@@ -90,8 +90,7 @@ export const FacilitiesSection: React.FC<FacilitiesSectionProps> = ({
             {/* Main Grand Staircase Card (Full Bleed 16:9, Edge-to-Edge) */}
             <div className="bg-white dark:bg-[#0d1e38] rounded-xl border border-slate-200 dark:border-[#1e3256] overflow-hidden mb-6 shadow-xs transition-colors">
               <div className="relative w-full aspect-[16/9] overflow-hidden bg-slate-900">
-                <img
-                  src="/assets/facilities/grand_staircase_central_atrium.jpg"
+                <img decoding="async" src="/assets/facilities/grand_staircase_central_atrium.jpg"
                   alt="Campus Grand Staircase and Central Atrium"
                   loading="lazy"
                   className="w-full h-full object-cover object-center block"
@@ -123,8 +122,7 @@ export const FacilitiesSection: React.FC<FacilitiesSectionProps> = ({
                 })}
               >
                 <div className="relative w-full aspect-[880/1189] overflow-hidden bg-slate-950">
-                  <img
-                    src="/assets/campus/campus-reception-hall.jpg"
+                  <img decoding="async" src="/assets/campus/campus-reception-hall.jpg"
                     alt="Campus Reception & Central Hall"
                     loading="lazy"
                     className="w-full h-full object-cover object-center block group-hover:scale-102 transition-transform duration-500"
@@ -147,8 +145,7 @@ export const FacilitiesSection: React.FC<FacilitiesSectionProps> = ({
                 })}
               >
                 <div className="relative w-full aspect-[848/1258] overflow-hidden bg-slate-950">
-                  <img
-                    src="/assets/campus/corridor-portrait-9-16.jpg"
+                  <img decoding="async" src="/assets/campus/corridor-portrait-9-16.jpg"
                     alt="Campus Corridors and Walkways"
                     loading="lazy"
                     className="w-full h-full object-cover object-center block group-hover:scale-102 transition-transform duration-500"
@@ -212,8 +209,7 @@ export const FacilitiesSection: React.FC<FacilitiesSectionProps> = ({
                   caption: 'Spacious quiet reading hall equipped with dedicated study tables and reference materials.'
                 })}
               >
-                <img
-                  src="/assets/facilities/library-main-large-new.jpg"
+                <img decoding="async" src="/assets/facilities/library-main-large-new.jpg"
                   alt="Central Library Main Reading Hall"
                   loading="lazy"
                   className="w-full h-full object-cover object-center block transition-transform duration-500 ease-out group-hover:scale-102"
@@ -253,8 +249,7 @@ export const FacilitiesSection: React.FC<FacilitiesSectionProps> = ({
                     caption: 'Quiet seating arrangements for individual reading, exam revision, and research work.'
                   })}
                 >
-                  <img
-                    src="/assets/facilities/library-reading-2.jpg"
+                  <img decoding="async" src="/assets/facilities/library-reading-2.jpg"
                     alt="Quiet Study Desks"
                     loading="lazy"
                     className="w-full h-full object-cover object-center block transition-transform duration-500 ease-out group-hover:scale-102"
@@ -292,8 +287,7 @@ export const FacilitiesSection: React.FC<FacilitiesSectionProps> = ({
                     caption: 'Organized shelves with curriculum textbooks, reference guides, and journals.'
                   })}
                 >
-                  <img
-                    src="/assets/facilities/library-stacks-new-2.jpg"
+                  <img decoding="async" src="/assets/facilities/library-stacks-new-2.jpg"
                     alt="Central Library Reference Section and Book Collections"
                     loading="lazy"
                     className="w-full h-full object-cover object-center block transition-transform duration-500 ease-out group-hover:scale-102"
@@ -365,8 +359,7 @@ export const FacilitiesSection: React.FC<FacilitiesSectionProps> = ({
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-start">
               <div className="bg-white dark:bg-[#0d1e38] rounded-xl border border-slate-200 dark:border-[#1e3256] overflow-hidden shadow-xs hover:shadow-md transition-shadow">
                 <div className="relative w-full aspect-[16/9] overflow-hidden bg-slate-900">
-                  <img
-                    src="/assets/facilities/comp-lab-1.jpg"
+                  <img decoding="async" src="/assets/facilities/comp-lab-1.jpg"
                     alt="Computer Laboratory Workstations"
                     loading="lazy"
                     className="w-full h-full object-cover object-center block"
@@ -403,8 +396,7 @@ export const FacilitiesSection: React.FC<FacilitiesSectionProps> = ({
                         caption: 'High-density computational workstations equipped for advanced programming, software development, and machine learning.'
                       })}
                     >
-                      <img
-                        src="/assets/facilities/comp-lab-3.jpg"
+                      <img decoding="async" src="/assets/facilities/comp-lab-3.jpg"
                         alt="High-Performance Computing Lab Workstations"
                         loading="lazy"
                         className="w-full h-full object-cover object-center block group-hover:scale-102 transition-transform duration-500"
@@ -424,8 +416,7 @@ export const FacilitiesSection: React.FC<FacilitiesSectionProps> = ({
 
               <div className="bg-white dark:bg-[#0d1e38] rounded-xl border border-slate-200 dark:border-[#1e3256] overflow-hidden shadow-xs hover:shadow-md transition-shadow">
                 <div className="relative w-full aspect-[9/16] overflow-hidden bg-slate-900">
-                  <img
-                    src="/assets/facilities/comp-lab-2.jpg"
+                  <img decoding="async" src="/assets/facilities/comp-lab-2.jpg"
                     alt="IT and Computing Lab"
                     loading="lazy"
                     className="w-full h-full object-cover object-center block"
@@ -497,8 +488,7 @@ export const FacilitiesSection: React.FC<FacilitiesSectionProps> = ({
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 items-start">
               <div className="bg-white dark:bg-[#0d1e38] rounded-xl border border-slate-200 dark:border-[#1e3256] overflow-hidden shadow-xs hover:shadow-md transition-shadow">
                 <div className="relative w-full aspect-[1408/1279] overflow-hidden bg-slate-950">
-                  <img
-                    src="/assets/facilities/science_lab_1.jpg"
+                  <img decoding="async" src="/assets/facilities/science_lab_1.jpg"
                     alt="Advanced Experimental Chemistry and Physical Science Laboratory"
                     loading="lazy"
                     className="w-full h-full object-cover object-center block"
@@ -528,8 +518,7 @@ export const FacilitiesSection: React.FC<FacilitiesSectionProps> = ({
 
               <div className="bg-white dark:bg-[#0d1e38] rounded-xl border border-slate-200 dark:border-[#1e3256] overflow-hidden shadow-xs hover:shadow-md transition-shadow">
                 <div className="relative w-full aspect-[1600/892] overflow-hidden bg-slate-950">
-                  <img
-                    src="/assets/facilities/science_lab_2.jpg"
+                  <img decoding="async" src="/assets/facilities/science_lab_2.jpg"
                     alt="Life Sciences, Biotechnology and Molecular Biology Research Laboratory"
                     loading="lazy"
                     className="w-full h-full object-cover object-center block"
@@ -610,8 +599,7 @@ export const FacilitiesSection: React.FC<FacilitiesSectionProps> = ({
             </div>
 
             <div className="relative bg-slate-950 max-h-[70vh] flex items-center justify-center overflow-hidden">
-              <img
-                src={selectedImage.src}
+              <img loading="lazy" decoding="async" src={selectedImage.src}
                 alt={selectedImage.title}
                 className="max-h-[70vh] w-auto max-w-full object-contain mx-auto"
                 onError={(e) => {

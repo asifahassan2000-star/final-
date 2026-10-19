@@ -84,8 +84,7 @@ export const CampusLifePage: React.FC<CampusLifePageProps> = ({
         onClick={() => openLightbox(slot.index)}
         className={`relative w-full ${aspectClass} overflow-hidden bg-slate-900 cursor-pointer group`}
       >
-        <img
-          src={slot.image.localSrc}
+        <img src={slot.image.localSrc}
           alt={slot.alt || slot.image.alt}
           loading="lazy"
           decoding="async"
@@ -165,8 +164,7 @@ export const CampusLifePage: React.FC<CampusLifePageProps> = ({
                 onClick={() => openLightbox(FEATURED_TOP_SLOT.index)}
                 className="relative w-full aspect-[2.35/1] max-h-[420px] overflow-hidden bg-slate-900 cursor-pointer group"
               >
-                <img
-                  src={FEATURED_TOP_SLOT.image.localSrc}
+                <img src={FEATURED_TOP_SLOT.image.localSrc}
                   alt={FEATURED_TOP_SLOT.alt}
                   loading="eager"
                   decoding="async"
@@ -221,8 +219,7 @@ export const CampusLifePage: React.FC<CampusLifePageProps> = ({
                   </span>
 
                   <div className="flex items-center justify-center my-1 sm:my-2">
-                    <img
-                      src="/assets/ucp-official-logo.png"
+                    <img loading="lazy" decoding="async" src="/assets/ucp-official-logo.png"
                       alt="University of Central Punjab"
                       className="w-12 h-12 sm:w-16 sm:h-16 object-contain filter drop-shadow-md"
                     />
@@ -258,8 +255,7 @@ export const CampusLifePage: React.FC<CampusLifePageProps> = ({
                   Campus life
                 </span>
                 <div className="flex items-center justify-center my-1.5">
-                  <img
-                    src="/assets/ucp-official-logo.png"
+                  <img loading="lazy" decoding="async" src="/assets/ucp-official-logo.png"
                     alt="UCP"
                     className="w-12 h-12 object-contain filter drop-shadow"
                   />
@@ -277,8 +273,7 @@ export const CampusLifePage: React.FC<CampusLifePageProps> = ({
                 onClick={() => openLightbox(FEATURED_TOP_SLOT.index)}
                 className="w-full aspect-[16/10] overflow-hidden bg-slate-900 cursor-pointer relative group rounded-sm"
               >
-                <img
-                  src={FEATURED_TOP_SLOT.image.localSrc}
+                <img src={FEATURED_TOP_SLOT.image.localSrc}
                   alt={FEATURED_TOP_SLOT.alt}
                   loading="eager"
                   decoding="async"
@@ -300,8 +295,7 @@ export const CampusLifePage: React.FC<CampusLifePageProps> = ({
                       onClick={() => openLightbox(slot.index)}
                       className="break-inside-avoid mb-2 relative overflow-hidden bg-slate-900 cursor-pointer rounded-sm group"
                     >
-                      <img
-                        src={slot.image.localSrc}
+                      <img src={slot.image.localSrc}
                         alt={slot.alt || slot.image.alt}
                         loading="lazy"
                         decoding="async"
@@ -346,8 +340,7 @@ export const CampusLifePage: React.FC<CampusLifePageProps> = ({
                   onClick={() => openLightbox(idx)}
                   className="break-inside-avoid mb-3 sm:mb-4 relative rounded-xl overflow-hidden bg-[#0a1e3b] border border-white/15 shadow-md group cursor-pointer transition-all duration-300 hover:border-amber-400/60 hover:shadow-xl hover:-translate-y-0.5"
                 >
-                  <img
-                    src={img.localSrc}
+                  <img src={img.localSrc}
                     alt={img.alt}
                     loading="lazy"
                     decoding="async"
@@ -415,8 +408,7 @@ export const CampusLifePage: React.FC<CampusLifePageProps> = ({
               onClick={(e) => e.stopPropagation()}
               className="relative max-w-5xl max-h-[88vh] w-full flex items-center justify-center"
             >
-              <img
-                src={CAMPUS_GALLERY_IMAGES[lightboxIndex]?.localSrc}
+              <img loading="lazy" decoding="async" src={CAMPUS_GALLERY_IMAGES[lightboxIndex]?.localSrc}
                 alt={CAMPUS_GALLERY_IMAGES[lightboxIndex]?.alt}
                 className="max-w-full max-h-[88vh] w-auto h-auto object-contain rounded-md shadow-2xl border border-white/20"
                 onError={(e) => {

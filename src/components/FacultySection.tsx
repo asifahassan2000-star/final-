@@ -62,8 +62,7 @@ const MobileFacultyCarousel: React.FC<{
             className="group flex flex-col items-center text-center cursor-pointer transition-transform duration-300"
           >
             <div className="w-full aspect-[3/4] rounded-lg overflow-hidden bg-slate-100 border border-slate-200/90 shadow-2xs relative">
-              <img
-                src={faculty.photoUrl}
+              <img decoding="async" src={faculty.photoUrl}
                 alt={faculty.name}
                 className={`w-full h-full object-cover ${faculty.objectPosition || 'object-top'}`}
                 loading="lazy"
@@ -228,8 +227,7 @@ export const FacultySection: React.FC<FacultySectionProps> = ({
                 <div className="w-full">
                   {/* Strict Equal Aspect-[4/5] Portrait Frame */}
                   <div className="w-full aspect-[4/5] rounded-xl sm:rounded-2xl overflow-hidden bg-slate-100 border border-slate-200/90 shadow-2xs group-hover:shadow-md group-hover:border-[#C5A059] transition-all duration-300 relative">
-                    <img
-                      src={member.photoUrl}
+                    <img src={member.photoUrl}
                       alt={member.name}
                       className={`w-full h-full object-cover ${member.objectPosition || 'object-top'} transition-transform duration-500 ease-out group-hover:scale-105`}
                       loading="lazy"

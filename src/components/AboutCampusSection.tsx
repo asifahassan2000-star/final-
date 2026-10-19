@@ -119,8 +119,7 @@ export const AboutCampusSection: React.FC<AboutCampusSectionProps> = ({
           >
             {/* Architectural Exterior Photograph (Minimal, No Extra Border) */}
             <div className="group relative overflow-hidden rounded-xl bg-slate-100 dark:bg-slate-900 shadow-xs w-full aspect-[16/9]">
-              <img
-                src="/assets/campus/12_about_architecture_exterior.jpg"
+              <img src="/assets/campus/12_about_architecture_exterior.jpg"
                 alt="UCP Bahawalpur Architectural Exterior and Modern Campus Facade"
                 loading="lazy"
                 decoding="async"
@@ -196,8 +195,7 @@ export const AboutCampusSection: React.FC<AboutCampusSectionProps> = ({
 
               {/* Full-Bleed 16:9 Edge-to-Edge Image (Minimal, No Extra Border) */}
               <div className="group relative overflow-hidden rounded-xl bg-slate-100 dark:bg-slate-900 shadow-xs w-full aspect-[16/9]">
-                <img
-                  src="/assets/campus/central_lawn_academic_complex.jpg"
+                <img src="/assets/campus/central_lawn_academic_complex.jpg"
                   alt="University of Central Punjab Bahawalpur Campus Central Lawns and Academic Complex"
                   loading="lazy"
                   decoding="async"
@@ -288,8 +286,7 @@ export const AboutCampusSection: React.FC<AboutCampusSectionProps> = ({
                 <div>
                   {/* Photo Frame */}
                   <div className="relative w-full aspect-[16/10] rounded-lg overflow-hidden bg-slate-100 dark:bg-slate-900 mb-3.5 shadow-2xs border-0">
-                    <img
-                      src={item.src}
+                    <img src={item.src}
                       alt={item.title}
                       loading="lazy"
                       decoding="async"
@@ -379,8 +376,7 @@ export const AboutCampusSection: React.FC<AboutCampusSectionProps> = ({
               </div>
 
               <div className="relative bg-slate-950 max-h-[70vh] flex items-center justify-center overflow-hidden">
-                <img
-                  src={activePhoto.src}
+                <img loading="lazy" decoding="async" src={activePhoto.src}
                   alt={activePhoto.title}
                   className="max-h-[70vh] w-auto max-w-full object-contain mx-auto"
                   onError={(e) => {

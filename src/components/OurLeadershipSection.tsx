@@ -14,7 +14,7 @@ import {
   Award,
   ExternalLink
 } from 'lucide-react';
-import { motion, AnimatePresence, useReducedMotion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 
 export interface LeadershipPortfolioItem {
   role: string;

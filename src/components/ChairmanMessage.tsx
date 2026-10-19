@@ -23,8 +23,7 @@ export const ChairmanMessage: React.FC<ChairmanMessageProps> = ({ onOpenApply, o
               <div className="absolute -inset-2 bg-gradient-to-r from-[#112c4f] to-[#a30f16] rounded-3xl opacity-20 group-hover:opacity-35 blur-sm transition-all" />
               
               <div className="relative rounded-2xl overflow-hidden shadow-2xl border-4 border-white bg-slate-100 max-w-sm">
-                <img
-                  src="https://ucp.edu.pk/wp-content/uploads/2023/01/home_chiarmain.webp"
+                <img src="https://ucp.edu.pk/wp-content/uploads/2023/01/home_chiarmain.webp"
                   alt="Mian Amer Mahmood - Chairman UCP"
                   data-parallax-img
                   loading="lazy"

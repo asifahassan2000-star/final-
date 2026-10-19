@@ -97,8 +97,7 @@ export const AnimatedEventSection: React.FC<AnimatedEventSectionProps> = ({
               onClick={() => setIsLightboxOpen(true)}
               title="Click to view full photograph"
             >
-              <img
-                key={activeImage.src}
+              <img key={activeImage.src}
                 src={activeImage.src}
                 alt={activeImage.alt}
                 loading="lazy"
@@ -162,8 +161,7 @@ export const AnimatedEventSection: React.FC<AnimatedEventSectionProps> = ({
                         }`}
                         title={img.caption || `View ${idx + 1}`}
                       >
-                        <img
-                          src={img.src}
+                        <img loading="lazy" decoding="async" src={img.src}
                           alt={img.alt}
                           className="w-full h-full object-cover"
                           onError={(e) => {
@@ -278,8 +276,7 @@ export const AnimatedEventSection: React.FC<AnimatedEventSectionProps> = ({
 
               {/* Photo Display with Navigation Arrows */}
               <div className="relative bg-slate-950 flex-1 min-h-[300px] max-h-[64vh] flex items-center justify-center overflow-hidden">
-                <img
-                  key={activeImage.src}
+                <img loading="lazy" decoding="async" key={activeImage.src}
                   src={activeImage.src}
                   alt={activeImage.alt}
                   className="max-h-[64vh] w-auto max-w-full object-contain mx-auto transition-all duration-300"

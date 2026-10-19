@@ -135,8 +135,7 @@ export const FacultiesGrid: React.FC<FacultiesGridProps> = ({
               >
                 {/* 1. Sleek Graphic Design Artwork Header */}
                 <div className="relative h-32 sm:h-34 w-full overflow-hidden bg-slate-900 shrink-0">
-                  <img
-                    src={fac.graphicImage}
+                  <img src={fac.graphicImage}
                     alt={fac.name}
                     loading="lazy"
                     decoding="async"

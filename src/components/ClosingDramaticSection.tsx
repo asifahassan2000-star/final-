@@ -22,8 +22,7 @@ export const ClosingDramaticSection: React.FC<ClosingDramaticSectionProps> = ({
     >
       {/* IMAGE 14: Dramatic Architectural Image without dark mud overlay */}
       <div className="absolute inset-0 overflow-hidden">
-        <img
-          src="/assets/campus/14_closing_dramatic_campus.jpg"
+        <img src="/assets/campus/14_closing_dramatic_campus.jpg"
           alt="Dramatic Architectural Perspective of University of Central Punjab Bahawalpur"
           loading="lazy"
           decoding="async"

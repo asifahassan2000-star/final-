@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+        http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+
+  <!-- Home / Admissions Portal (UCP Bahawalpur) -->
+  <url>
+    <loc>https://ucp.edu.pk/</loc>
+    <lastmod>2026-10-19</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+  <!-- Academic Programmes (BS & ADP) -->
+  <url>
+    <loc>https://ucp.edu.pk/?page=programmes</loc>
+    <lastmod>2026-10-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.95</priority>
+  </url>
+
+  <!-- Distinguished Faculty & Academic Departments -->
+  <url>
+    <loc>https://ucp.edu.pk/?page=faculty</loc>
+    <lastmod>2026-10-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.90</priority>
+  </url>
+
+  <!-- Official Fee Structure & Tuition Schedules -->
+  <url>
+    <loc>https://ucp.edu.pk/?page=fee-structure</loc>
+    <lastmod>2026-10-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.90</priority>
+  </url>
+
+  <!-- Scholarships & Merit Concessions -->
+  <url>
+    <loc>https://ucp.edu.pk/?page=scholarships</loc>
+    <lastmod>2026-10-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+  <!-- Campus Life & Student Societies -->
+  <url>
+    <loc>https://ucp.edu.pk/?page=campus-life</loc>
+    <lastmod>2026-10-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+  <!-- Institutional Legacy & Heritage -->
+  <url>
+    <loc>https://ucp.edu.pk/?page=legacy</loc>
+    <lastmod>2026-10-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.80</priority>
+  </url>
+
+  <!-- CNN Academy Strategic Partnership -->
+  <url>
+    <loc>https://ucp.edu.pk/?page=cnn-academy</loc>
+    <lastmod>2026-10-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+  </url>
+
+  <!-- Academic Calendar -->
+  <url>
+    <loc>https://ucp.edu.pk/?page=calendar</loc>
+    <lastmod>2026-10-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+  </url>
+
+</urlset>

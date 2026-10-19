@@ -96,7 +96,7 @@ export const HeroSlider: React.FC<HeroSliderProps> = ({
       return slide.image;
     }
     if (slide.id === 'bahawalpur-excellence') {
-      return slide.image || '/assets/campus/hero_campus_night_flagship.png';
+      return slide.image || '/assets/campus/hero_campus_night_flagship.webp';
     }
     if (slide.id === 'campus-tomorrow') {
       return ucpBuildingBlueprintImg;
@@ -187,8 +187,10 @@ export const HeroSlider: React.FC<HeroSliderProps> = ({
                   className="w-full h-full object-cover object-center"
                   onError={(e) => {
                     const target = e.target as HTMLImageElement;
-                    if (slide.fallbackImage) {
+                    if (slide.fallbackImage && target.src !== slide.fallbackImage) {
                       target.src = slide.fallbackImage;
+                    } else if (target.src.endsWith('.webp')) {
+                      target.src = target.src.replace('.webp', '.jpg');
                     } else if (slide.id === 'bahawalpur-excellence') {
                       target.src = 'https://i.ibb.co/wmw3sjb/UCP-Bahawalpur-Campus-at-Night.png';
                     }
@@ -227,6 +229,9 @@ export const HeroSlider: React.FC<HeroSliderProps> = ({
                       }}
                       className="font-['Playfair_Display',serif] text-2xl sm:text-4xl lg:text-6xl font-bold text-white tracking-tight leading-[1.18] sm:leading-[1.14] drop-shadow-lg text-balance max-w-2xl"
                     >
+                      <span className="block text-amber-300 font-sans text-xs sm:text-sm lg:text-base font-bold tracking-[0.16em] uppercase mb-1 sm:mb-2 drop-shadow-md">
+                        UCP Bahawalpur · University of Central Punjab
+                      </span>
                       {slide.title}
                     </h1>
                   </div>

@@ -16,8 +16,7 @@ export const ArticleModal: React.FC<ArticleModalProps> = ({ article, onClose }) 
         
         {/* Cover Image */}
         <div className="relative h-64 sm:h-72 w-full overflow-hidden bg-slate-900">
-          <img
-            src={article.image}
+          <img loading="lazy" decoding="async" src={article.image}
             alt={article.title}
             className="w-full h-full object-cover"
             onError={(e) => {

@@ -264,8 +264,7 @@ export const CampusLife: React.FC<CampusLifeProps> = ({ onOpenCampusLifePage }) 
                 onClick={() => openStackLightbox(corridorList, 'Cholistan Haveli Evening Musical Session')}
                 className="relative w-full aspect-[3/2] overflow-hidden rounded-[28px_16px_36px_16px] border border-[#0A1931]/10 bg-slate-900 shadow-[0_16px_40px_rgba(10,25,49,0.07)] cursor-pointer hover:brightness-105 transition-all duration-300"
               >
-                <img
-                  key={currentCorridorImg}
+                <img decoding="async" key={currentCorridorImg}
                   src={currentCorridorImg}
                   alt="Student Life - Best vibes of students singing at Cholistan Haveli during evening session at UCP Bahawalpur"
                   loading="eager"
@@ -391,8 +390,7 @@ export const CampusLife: React.FC<CampusLifeProps> = ({ onOpenCampusLifePage }) 
               onClick={() => openStackLightbox(['/assets/campus-life/mou-signing-ceremony.jpg', cholistanHaveliSingingImg, '/assets/campus/campus-evening-view.jpg'], 'MOU Signing Ceremony: UCP x Haveli Cholistan')}
               className="relative w-full aspect-[4/3] max-h-[720px] rounded-2xl overflow-hidden bg-transparent border-0 shadow-none cursor-pointer group hover:brightness-105 transition-all duration-300"
             >
-              <img
-                src="/assets/campus-life/mou-signing-ceremony.jpg"
+              <img decoding="async" src="/assets/campus-life/mou-signing-ceremony.jpg"
                 alt="MOU SIGNING CEREMONY UCP X HAVELI CHOLISTAN"
                 loading="eager"
                 className="w-full h-full object-cover object-center transition-all duration-700 ease-out group-hover:scale-[1.02] block border-0"
@@ -417,8 +415,7 @@ export const CampusLife: React.FC<CampusLifeProps> = ({ onOpenCampusLifePage }) 
                 onClick={() => openStackLightbox(['/assets/campus-life/campus-activity-1.jpg', '/assets/campus-life/campus-activity-2.jpg', '/assets/campus-life/mou-signing-ceremony.jpg'], 'Constituent College UCP Campus Bahawalpur')}
                 className="relative w-full overflow-hidden border-0 shadow-none bg-transparent cursor-pointer group"
               >
-                <img
-                  src="/assets/campus-life/campus-activity-1.jpg"
+                <img decoding="async" src="/assets/campus-life/campus-activity-1.jpg"
                   alt="Constituent College UCP Campus Bahawalpur Leadership Assembly"
                   loading="eager"
                   className="w-full h-auto object-contain block border-0 shadow-none transition-transform duration-500 ease-out group-hover:scale-[1.01]"
@@ -436,8 +433,7 @@ export const CampusLife: React.FC<CampusLifeProps> = ({ onOpenCampusLifePage }) 
                 onClick={() => openStackLightbox(['/assets/campus-life/campus-activity-2.jpg', '/assets/campus-life/campus-activity-1.jpg', '/assets/campus-life/mou-signing-ceremony.jpg'], 'UCP x Haveli Cholistan Collaboration')}
                 className="relative w-full overflow-hidden border-0 shadow-none bg-transparent cursor-pointer group"
               >
-                <img
-                  src="/assets/campus-life/campus-activity-2.jpg"
+                <img decoding="async" src="/assets/campus-life/campus-activity-2.jpg"
                   alt="UCP Bahawalpur x Haveli Cholistan Collaboration"
                   loading="eager"
                   className="w-full h-auto object-contain block border-0 shadow-none transition-transform duration-500 ease-out group-hover:scale-[1.01]"
@@ -466,8 +462,7 @@ export const CampusLife: React.FC<CampusLifeProps> = ({ onOpenCampusLifePage }) 
             className="relative group overflow-hidden rounded-[24px] sm:rounded-[36px] border border-[#0A1931]/10 bg-[#07192F] shadow-[0_20px_50px_rgba(10,25,49,0.08)] cursor-pointer hover:brightness-105 transition-all duration-300"
           >
             <div className="relative aspect-[4/3] sm:aspect-[16/10] max-h-[700px] w-full overflow-hidden">
-              <img
-                src="/assets/campus/campus-evening-view.jpg"
+              <img decoding="async" src="/assets/campus/campus-evening-view.jpg"
                 alt="UCP Bahawalpur Campus Evening Architectural View"
                 loading="eager"
                 className="w-full h-full object-cover object-center transition-all duration-1000 ease-out group-hover:scale-[1.02] animate-in fade-in"
@@ -543,8 +538,7 @@ export const CampusLife: React.FC<CampusLifeProps> = ({ onOpenCampusLifePage }) 
                       openStackLightbox(surrounding, tag);
                     }}
                   >
-                    <img
-                      src={item.localSrc}
+                    <img src={item.localSrc}
                       alt={item.alt}
                       loading="lazy"
                       decoding="async"
@@ -599,8 +593,7 @@ export const CampusLife: React.FC<CampusLifeProps> = ({ onOpenCampusLifePage }) 
                     }}
                     aria-hidden="true"
                   >
-                    <img
-                      src={item.localSrc}
+                    <img src={item.localSrc}
                       alt={item.alt}
                       loading="lazy"
                       decoding="async"
