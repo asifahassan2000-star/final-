@@ -406,44 +406,44 @@ export const CampusLife: React.FC<CampusLifeProps> = ({ onOpenCampusLifePage }) 
         </div>
 
         {/* ====================================================================
-            2B. STUDENT GATHERING GROUNDS & CENTRAL COURTYARDS — PROPER BIG VISIBLE SIZE
-            Both images displayed in prominent, large visible frames matching their natural aspect ratios
+            2B. CAMPUS LIFE COLLABORATION & LEADERSHIP ASSEMBLIES
+            Full size borderless display showing complete, uncut images
             ==================================================================== */}
         <div className="mb-28 sm:mb-36">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 items-start">
-            {/* Student Gathering Grounds 1 — Big & Clearly Visible (Landscape 2560x1706) */}
-            <div className="space-y-3">
+            {/* Image 1: Boardroom Dialogue UCP Campus Bahawalpur (Visible Full Size, No Border) */}
+            <div className="w-full">
               <div 
-                onClick={() => openStackLightbox(['/assets/campus/student-gathering-ground-1.jpg', '/assets/campus/student-gathering-ground-2.jpg', courtyardImg, corridorImg, hallwayImg, lawnImg], 'Student Gathering Grounds')}
-                className="relative group overflow-hidden rounded-2xl border border-[#0A1931]/10 bg-slate-900 shadow-[0_16px_40px_rgba(10,25,49,0.08)] aspect-[2560/1706] w-full cursor-pointer hover:brightness-105 transition-all duration-300"
+                onClick={() => openStackLightbox(['/assets/campus-life/campus-activity-1.jpg', '/assets/campus-life/campus-activity-2.jpg', '/assets/campus-life/mou-signing-ceremony.jpg'], 'Constituent College UCP Campus Bahawalpur')}
+                className="relative w-full overflow-hidden border-0 shadow-none bg-transparent cursor-pointer group"
               >
                 <img
-                  src="/assets/campus/student-gathering-ground-1.jpg"
-                  alt="Student Gathering Grounds at UCP Bahawalpur"
+                  src="/assets/campus-life/campus-activity-1.jpg"
+                  alt="Constituent College UCP Campus Bahawalpur Leadership Assembly"
                   loading="eager"
-                  className="w-full h-full object-cover object-center transition-all duration-700 ease-out group-hover:scale-[1.02] animate-in fade-in"
+                  className="w-full h-auto object-contain block border-0 shadow-none transition-transform duration-500 ease-out group-hover:scale-[1.01]"
                   onError={(e) => {
                     const target = e.target as HTMLImageElement;
-                    target.src = 'https://i.ibb.co/DDZgf551/Whats-App-Image-2026-10-05-at-2-38-56-AM.jpg';
+                    target.src = 'https://i.ibb.co/LXhsjL46/Whats-App-Image-2026-10-11-at-11-28-36-PM.jpg';
                   }}
                 />
               </div>
             </div>
 
-            {/* Student Gathering Grounds 2 — Proper Big Visible Size (Portrait 1920x2560) */}
-            <div className="space-y-3">
+            {/* Image 2: UCP x Haveli Cholistan Collaboration (Visible Full Size, No Border) */}
+            <div className="w-full">
               <div 
-                onClick={() => openStackLightbox(['/assets/campus/student-gathering-ground-2.jpg', '/assets/campus/student-gathering-ground-1.jpg', concertImg, courtyardImg], 'Central Courtyard & Social Grounds')}
-                className="relative group overflow-hidden rounded-2xl border border-[#0A1931]/10 bg-slate-900 shadow-[0_16px_40px_rgba(10,25,49,0.08)] aspect-[1920/2560] max-h-[640px] w-full cursor-pointer hover:brightness-105 transition-all duration-300"
+                onClick={() => openStackLightbox(['/assets/campus-life/campus-activity-2.jpg', '/assets/campus-life/campus-activity-1.jpg', '/assets/campus-life/mou-signing-ceremony.jpg'], 'UCP x Haveli Cholistan Collaboration')}
+                className="relative w-full overflow-hidden border-0 shadow-none bg-transparent cursor-pointer group"
               >
                 <img
-                  src="/assets/campus/student-gathering-ground-2.jpg"
-                  alt="Central Gathering Grounds and Courtyard at UCP Bahawalpur"
+                  src="/assets/campus-life/campus-activity-2.jpg"
+                  alt="UCP Bahawalpur x Haveli Cholistan Collaboration"
                   loading="eager"
-                  className="w-full h-full object-cover object-center transition-all duration-700 ease-out group-hover:scale-[1.02] animate-in fade-in"
+                  className="w-full h-auto object-contain block border-0 shadow-none transition-transform duration-500 ease-out group-hover:scale-[1.01]"
                   onError={(e) => {
                     const target = e.target as HTMLImageElement;
-                    target.src = 'https://i.ibb.co/wrhXzy8s/Whats-App-Image-2026-10-05-at-2-39-15-AM.jpg';
+                    target.src = 'https://i.ibb.co/WYSTnBb/Whats-App-Image-2026-10-19-at-2-08-09-AM.jpg';
                   }}
                 />
               </div>

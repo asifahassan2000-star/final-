@@ -1,10 +1,31 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Quote, X, ArrowUpRight, GraduationCap, Building2, BookMarked, Check, ShieldCheck } from 'lucide-react';
+import { 
+  Quote, 
+  X, 
+  ArrowUpRight, 
+  GraduationCap, 
+  Building2, 
+  BookMarked, 
+  Check, 
+  ShieldCheck,
+  Mail,
+  Globe,
+  Tag,
+  Award,
+  ExternalLink
+} from 'lucide-react';
 import { motion, AnimatePresence, useReducedMotion } from 'framer-motion';
 
 export interface LeadershipPortfolioItem {
   role: string;
   organizations: string[];
+}
+
+export interface LeaderContactInfo {
+  email?: string;
+  website?: string;
+  categories?: string[];
+  phone?: string;
 }
 
 export interface LeaderBiography {
@@ -16,6 +37,7 @@ export interface LeaderBiography {
   researchExpertise?: string;
   highlights: string[];
   awards?: string[];
+  contactInfo?: LeaderContactInfo;
 }
 
 export interface LeaderProfile {
@@ -30,64 +52,82 @@ export interface LeaderProfile {
   fullMessage: string[];
   portfolio?: LeadershipPortfolioItem[];
   biography?: LeaderBiography;
+  contactInfo?: LeaderContactInfo;
 }
 
 const LEADERSHIP_PROFILES: LeaderProfile[] = [
   {
-    id: 'mian-amer-mahmood',
-    name: 'Mian Amer Mahmood',
-    designation: 'Chairman, Board of Governors',
-    secondaryDesignation: 'Founder & Patron-in-Chief, Punjab Group of Colleges (PGC)',
-    officialRole: 'Chairman, University of Central Punjab',
-    portraitUrl: '/assets/campus/mian_amer_mahmood.png',
-    fallbackUrl: 'https://i.ibb.co/99s2Cmqj/mian-ameer.png',
-    messageTitle: 'Chairman’s Message',
+    id: 'sohail-afzal',
+    name: 'Prof. Sohail Afzal',
+    designation: 'Executive Director PGC (UCP)',
+    secondaryDesignation: 'Executive Director, Educational Excellence Limited · Member BoG, UCP & MAJU',
+    officialRole: 'Executive Director PGC (UCP) & Member Board of Governors, UCP',
+    portraitUrl: '/assets/leadership/sohail_afzal.jpg',
+    fallbackUrl: 'https://i.ibb.co/1Y5dt8PZ/Whats-App-Image-2026-10-19-at-7-52-27-AM.jpg',
+    messageTitle: 'Executive Director’s Message',
     fullMessage: [
-      'Welcome to the University of Central Punjab (UCP), a nationally recognized university for academic excellence, and a vibrant community of scholars and learners committed to serve the nation and humanity across the world. You are becoming a member of a student community which will charm you by its cultural, demographic, and economic diversity.',
-      'UCP puts strong emphasis on multi-disciplinary teaching and research across disciplines. You will have the opportunity to pursue and choose from a number of courses from bachelors to doctoral degrees according to your area of interest. Whether you want to be an entrepreneur or a professional manager, our faculty will ensure that you are prepared for a successful career in industry, public sector, or the business world.',
-      'Take advantage of the opportunities provided to you. If you take the initiative for planning your own life, there will be many professionals to help and advise. Let your quest for knowledge be limitless; we will do our best to make your educational experience rich, transformative, and memorable.'
+      '“At UCP we are not just means to education but a family that cares, grooms and helps unlock the true potential of our students. We are in a constant relentless pursuit to help provide a better future to our youth and build a society that is wise, intelligent and educated. Your trust in us motivates and inspires us to continue doing more so that you can shine in every aspect of your life.”',
+      'By the Executive Director PGC (UCP)\nPROF. SOHAIL AFZAL'
     ],
+    contactInfo: {
+      email: 'sohail@pgc.edu',
+      website: 'http://pgc.edu/',
+      categories: ['Entrepreneur', 'Executive Director', 'Educational Excellence Limited']
+    },
     portfolio: [
       {
-        role: 'Chairman, Board of Governors',
-        organizations: ['University of Central Punjab (UCP)']
+        role: 'Executive Director',
+        organizations: [
+          'Punjab Group of Colleges (PGC)',
+          'Educational Excellence Limited'
+        ]
       },
       {
-        role: 'Chancellor',
+        role: 'Member, Board of Governors',
         organizations: [
+          'University of Central Punjab (UCP)',
           'Mohammad Ali Jinnah University (MAJU)',
           'Capital University of Science & Technology (CUST)'
         ]
       },
       {
-        role: 'Chairman',
+        role: 'Executive Governance & Operations',
         organizations: [
-          'Punjab Colleges',
-          'Resource Academia',
-          'Allied Schools',
-          'EFA Schools'
+          'Punjab Colleges Network (100+ Cities Nationwide)',
+          'Academic Workforce (3,000+ Educators & Teachers)'
         ]
       },
       {
-        role: 'Chief Executive',
+        role: 'Educational Entrepreneurship & Strategic Leadership',
         organizations: [
-          'Dunya News Network',
-          'Lahore News'
+          'Allied Schools & EFA System',
+          'Association of Private Sector Universities of Pakistan (APSUP)'
         ]
       }
     ],
     biography: {
-      summary: 'Mian Amer Mahmood is a celebrated Pakistani educationalist, visionary entrepreneur, and nation-builder. As the founder and Chairman of the Punjab Group of Colleges (PGC) and University of Central Punjab (UCP), he created Pakistan’s largest educational conglomerate spanning top chartered universities, colleges, and over 1,500 schools.',
+      executiveProfile: 'Mr. Sohail Afzal is a highly accomplished professional with a diverse background in education, technology, media, and community involvement. Currently serving as the Executive Director of Punjab Group, he oversees operations in over 100 cities and leads a team of over 3000 teachers. In addition to his role at Punjab Group, Mr. Sohail Afzal holds key positions as a Member of the Board of Governors at Muhammad Ali Jinnah University and the University of Central Punjab, as well as Executive Director of Educational Excellence Limited.',
+      visionQuote: '“At UCP we are not just means to education but a family that cares, grooms and helps unlock the true potential of our students.”',
+      motto: 'CARE · GROOMING · UNLOCKING STUDENT POTENTIAL',
+      summary: 'Prof. Sohail Afzal, Executive Director of Punjab Group (UCP), has received the Academic Excellence Award from the Association of Private Sector Universities of Pakistan (APSUP) for his outstanding achievements and significant contributions to Pakistani academia. His efforts have enhanced educational standards at UCP and have had a lasting influence on Pakistan\'s academic environment.',
+      qualification: 'Executive Leadership & Higher Education Governance',
       highlights: [
-        'Founder of Pakistan’s largest educational network comprising 3 chartered universities, 400+ college campuses, and 1,500+ schools.',
-        'Chief Executive of Dunya Media Group, advancing quality journalism through Dunya News HD, Lahore News, and Roznama Dunya.',
-        'Spearheaded historic merit scholarship disbursements exceeding 1.3 Billion PKR annually for deserving scholars across Pakistan.',
-        'Formed international strategic alliances including CNN Academy and leading research institutions across Europe and North America.'
+        'Executive Director of Punjab Group, overseeing educational operations spanning over 100 cities across Pakistan.',
+        'Leads and inspires an academic workforce and team of over 3,000 teachers and faculty members.',
+        'Member of the Board of Governors at the University of Central Punjab (UCP) and Mohammad Ali Jinnah University (MAJU).',
+        'Executive Director of Educational Excellence Limited, directing nationwide quality benchmarks and pedagogy.',
+        'Conferred the prestigious Academic Excellence Award by the Association of Private Sector Universities of Pakistan (APSUP) for outstanding achievements in Pakistani academia.',
+        'Pioneered educational technologies, digitized student learning systems, and merit-based youth empowerment programs.'
       ],
       awards: [
-        'Conferred Hilal-e-Imtiaz (Crescent of Excellence) by the President of Pakistan for exemplary public service and educational leadership.',
-        'Served as the elected City District Nazim (Mayor) of Lahore from 2001 to 2009, overseeing monumental civic, educational, and healthcare transformations.'
-      ]
+        'Academic Excellence Award — Conferred by the Association of Private Sector Universities of Pakistan (APSUP) for outstanding achievements and significant contributions to Pakistani academia and enhancing educational standards at UCP.',
+        'Distinguished Executive Leadership Recognition — Punjab Group of Colleges (PGC) for institutional development and academic excellence across 100+ cities.'
+      ],
+      contactInfo: {
+        email: 'sohail@pgc.edu',
+        website: 'http://pgc.edu/',
+        categories: ['Entrepreneur', 'Executive Director', 'Educational Excellence Limited']
+      }
     }
   },
   {
@@ -119,12 +159,12 @@ const LEADERSHIP_PROFILES: LeaderProfile[] = [
   {
     id: 'prof-dr-aurangzaib-virk',
     name: 'Prof. Dr. Aurangzaib Virk',
-    designation: 'Head UCP Bahawalpur Campus',
-    secondaryDesignation: 'Principal, University of Central Punjab (UCP) Bahawalpur',
-    officialRole: 'Head of Campus & Principal, UCP Bahawalpur',
+    designation: 'Principal, UCP Bahawalpur',
+    secondaryDesignation: 'Campus Governance & Academic Administration',
+    officialRole: 'Principal, University of Central Punjab Bahawalpur',
     portraitUrl: '/assets/campus/prof_aurangzaib_virk.png',
     fallbackUrl: 'https://i.ibb.co/hRDYDCRp/IMG-3542.png',
-    messageTitle: 'Head of Campus & Principal’s Message',
+    messageTitle: 'Principal’s Message',
     fullMessage: [
       'The University of Central Punjab warmly welcomes students and parents to an institution committed to academic excellence, integrity, and transformative education.',
       'UCP provides a rigorous and supportive learning environment that develops adaptable, skilled, and value-driven graduates prepared to meet future challenges.',
@@ -162,11 +202,15 @@ const MobileLeaderCard: React.FC<{
     <div className="lg:hidden bg-white rounded-none sm:rounded-sm border border-slate-300 p-4 sm:p-5 shadow-xs">
       <div className="flex gap-4 items-start">
         {/* Square rectangular portrait frame */}
-        <div className="w-24 h-28 sm:w-28 sm:h-32 rounded-none overflow-hidden shrink-0 border border-slate-300 bg-slate-100">
+        <div className="w-24 h-28 sm:w-28 sm:h-32 rounded-none overflow-hidden shrink-0 border border-slate-300 bg-[#0A1931]">
           <img
             src={leader.portraitUrl}
             alt={leader.name}
-            className="w-full h-full object-cover object-top"
+            className={`w-full h-full ${
+              leader.id === 'sohail-afzal'
+                ? 'object-cover object-top scale-[1.32]'
+                : 'object-cover object-center'
+            }`}
             onError={(e) => {
               const target = e.target as HTMLImageElement;
               if (target.src !== leader.fallbackUrl) {
@@ -203,10 +247,47 @@ const MobileLeaderCard: React.FC<{
               {leader.secondaryDesignation}
             </p>
           )}
+
+          {leader.contactInfo && (
+            <div className="p-3 bg-slate-50 border border-slate-200 space-y-2 text-xs text-slate-700">
+              {leader.contactInfo.email && (
+                <div className="flex items-center gap-2">
+                  <Mail size={13} className="text-[#C8102E] shrink-0" />
+                  <span className="text-slate-500 text-[11px]">Email:</span>
+                  <a href={`mailto:${leader.contactInfo.email}`} className="text-[#0A1931] hover:underline font-semibold">
+                    {leader.contactInfo.email}
+                  </a>
+                </div>
+              )}
+              {leader.contactInfo.website && (
+                <div className="flex items-center gap-2">
+                  <Globe size={13} className="text-[#0A1931] shrink-0" />
+                  <span className="text-slate-500 text-[11px]">Website:</span>
+                  <a href={leader.contactInfo.website} target="_blank" rel="noopener noreferrer" className="text-[#0A1931] hover:underline font-semibold">
+                    {leader.contactInfo.website}
+                  </a>
+                </div>
+              )}
+            </div>
+          )}
+
           {leader.fullMessage.map((paragraph, pIdx) => (
-            <p key={pIdx} className="leading-relaxed">
-              {paragraph}
-            </p>
+            <div key={pIdx}>
+              {paragraph.includes('\n') ? (
+                <div className="font-bold text-[#0A1931] text-xs uppercase tracking-wider pt-2">
+                  {paragraph.split('\n').map((line, lIdx) => (
+                    <span 
+                      key={lIdx} 
+                      className={lIdx === 1 ? "block text-sm font-extrabold text-[#C8102E] mt-0.5 tracking-wider font-serif" : "block text-slate-600 font-bold text-xs tracking-wider"}
+                    >
+                      {line}
+                    </span>
+                  ))}
+                </div>
+              ) : (
+                <p className="leading-relaxed">{paragraph}</p>
+              )}
+            </div>
           ))}
           <div className="pt-2">
             <button
@@ -356,13 +437,17 @@ export const OurLeadershipSection: React.FC<OurLeadershipSectionProps> = () => {
                     PORTRAIT CONTAINER — Sharp Square / Rectangular Framing (300px x 400px aspect-3/4)
                     =================================================================== */}
                 <div className="w-full lg:w-[320px] shrink-0 flex flex-col items-center">
-                  <div className="relative w-[260px] sm:w-[290px] lg:w-[310px] aspect-[3/4] bg-slate-100 border-2 border-slate-300 rounded-none overflow-hidden shadow-xs group">
+                  <div className="relative w-[260px] sm:w-[290px] lg:w-[310px] aspect-[3/4] bg-[#0A1931] border-2 border-slate-300 rounded-none overflow-hidden shadow-xs group">
                     <img
                       src={leader.portraitUrl}
                       alt={`${leader.name} - ${leader.designation}`}
                       loading={index === 0 ? 'eager' : 'lazy'}
                       decoding="async"
-                      className="w-full h-full object-cover object-top transition-transform duration-500 ease-out group-hover:scale-[1.02]"
+                      className={`w-full h-full ${
+                        leader.id === 'sohail-afzal'
+                          ? 'object-cover object-top scale-[1.32] translate-y-1'
+                          : 'object-cover object-center'
+                      } transition-transform duration-500 ease-out group-hover:scale-[1.36]`}
                       onError={(e) => {
                         const target = e.target as HTMLImageElement;
                         if (target.src !== leader.fallbackUrl) {
@@ -408,15 +493,30 @@ export const OurLeadershipSection: React.FC<OurLeadershipSectionProps> = () => {
 
                     <div className="space-y-2.5 text-[14px] sm:text-[15px] text-slate-700 leading-relaxed font-sans">
                       {leader.fullMessage.map((paragraph, pIdx) => (
-                        <p key={pIdx}>
-                          {paragraph}
-                        </p>
+                        <div key={pIdx}>
+                          {paragraph.includes('\n') ? (
+                            <div className="font-bold text-[#0A1931] text-xs sm:text-sm tracking-wide uppercase pt-2">
+                              {paragraph.split('\n').map((line, lIdx) => (
+                                <span 
+                                  key={lIdx} 
+                                  className={lIdx === 1 ? "block text-sm sm:text-base font-extrabold text-[#C8102E] mt-0.5 tracking-wider font-serif" : "block text-slate-600 font-bold text-xs tracking-wider"}
+                                >
+                                  {line}
+                                </span>
+                              ))}
+                            </div>
+                          ) : (
+                            <p className="font-normal leading-relaxed text-slate-800">
+                              {paragraph}
+                            </p>
+                          )}
+                        </div>
                       ))}
                     </div>
                   </div>
 
-                  {/* 3. Interactive Profile Button with Clean Rectangular Border */}
-                  <div className="pt-2">
+                  {/* 3. Interactive Profile Button & Quick Contact */}
+                  <div className="pt-2 flex flex-wrap items-center gap-3">
                     <button
                       onClick={() => setSelectedLeader(leader)}
                       className="inline-flex items-center gap-2 text-xs sm:text-sm font-semibold text-[#0A1931] hover:text-white bg-slate-50 hover:bg-[#0A1931] px-4 py-2.5 rounded-none border border-slate-300 hover:border-[#0A1931] transition-all duration-200 cursor-pointer group shadow-2xs font-sans"
@@ -425,6 +525,29 @@ export const OurLeadershipSection: React.FC<OurLeadershipSectionProps> = () => {
                       <span>View Profile & Credentials</span>
                       <ArrowUpRight size={14} className="text-[#C8102E] group-hover:text-white transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                     </button>
+
+                    {leader.contactInfo?.email && (
+                      <a
+                        href={`mailto:${leader.contactInfo.email}`}
+                        className="inline-flex items-center gap-1.5 text-xs font-semibold text-slate-700 hover:text-[#C8102E] bg-white px-3 py-2 border border-slate-300 hover:border-[#C8102E] transition-colors shadow-2xs font-sans"
+                      >
+                        <Mail size={13} className="text-[#C8102E]" />
+                        <span>{leader.contactInfo.email}</span>
+                      </a>
+                    )}
+
+                    {leader.contactInfo?.website && (
+                      <a
+                        href={leader.contactInfo.website}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-1.5 text-xs font-semibold text-slate-700 hover:text-[#0A1931] bg-white px-3 py-2 border border-slate-300 hover:border-[#0A1931] transition-colors shadow-2xs font-sans"
+                      >
+                        <Globe size={13} className="text-[#0A1931]" />
+                        <span>{leader.contactInfo.website}</span>
+                        <ExternalLink size={11} className="text-slate-400" />
+                      </a>
+                    )}
                   </div>
 
                 </div>
@@ -492,11 +615,15 @@ export const OurLeadershipSection: React.FC<OurLeadershipSectionProps> = () => {
                 
                 {/* Profile Hero Section */}
                 <div className="flex flex-col sm:flex-row items-center sm:items-start gap-6 pb-6 border-b border-slate-200">
-                  <div className="w-32 sm:w-40 aspect-[3/4] shrink-0 border-2 border-slate-300 rounded-none overflow-hidden bg-slate-50 shadow-xs relative">
+                  <div className="w-32 sm:w-40 aspect-[3/4] shrink-0 border-2 border-slate-300 rounded-none overflow-hidden bg-[#0A1931] shadow-xs relative">
                     <img
                       src={selectedLeader.portraitUrl}
                       alt={selectedLeader.name}
-                      className="w-full h-full object-cover object-top"
+                      className={`w-full h-full ${
+                        selectedLeader.id === 'sohail-afzal'
+                          ? 'object-cover object-top scale-[1.32]'
+                          : 'object-cover object-center'
+                      }`}
                       onError={(e) => {
                         (e.target as HTMLImageElement).src = selectedLeader.fallbackUrl;
                       }}
@@ -522,6 +649,77 @@ export const OurLeadershipSection: React.FC<OurLeadershipSectionProps> = () => {
                     )}
                   </div>
                 </div>
+
+                {/* Official Contact Info & Executive Portfolio */}
+                {selectedLeader.contactInfo && (
+                  <div className="bg-slate-50 border border-slate-300 p-4 sm:p-5 rounded-none space-y-3.5 shadow-2xs">
+                    <div className="flex items-center justify-between border-b border-slate-200 pb-2.5">
+                      <div className="flex items-center gap-2">
+                        <ShieldCheck size={16} className="text-[#C8102E]" />
+                        <h4 className="text-xs font-bold uppercase tracking-wider text-[#0A1931]">
+                          Contact Information &amp; Official Links
+                        </h4>
+                      </div>
+                      <span className="text-[10px] font-mono uppercase tracking-wider text-slate-500 font-semibold">
+                        Verified Executive Record
+                      </span>
+                    </div>
+
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                      {selectedLeader.contactInfo.email && (
+                        <div className="bg-white p-3 border border-slate-200 space-y-1">
+                          <span className="text-[10px] uppercase font-bold tracking-wider text-slate-500 block">
+                            Email Address
+                          </span>
+                          <a
+                            href={`mailto:${selectedLeader.contactInfo.email}`}
+                            className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-semibold text-[#0A1931] hover:text-[#C8102E] transition-colors"
+                          >
+                            <Mail size={14} className="text-[#C8102E] shrink-0" />
+                            <span>{selectedLeader.contactInfo.email}</span>
+                          </a>
+                        </div>
+                      )}
+
+                      {selectedLeader.contactInfo.website && (
+                        <div className="bg-white p-3 border border-slate-200 space-y-1">
+                          <span className="text-[10px] uppercase font-bold tracking-wider text-slate-500 block">
+                            Websites &amp; Social Links
+                          </span>
+                          <a
+                            href={selectedLeader.contactInfo.website}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-semibold text-[#0A1931] hover:text-[#C8102E] transition-colors"
+                          >
+                            <Globe size={14} className="text-[#0A1931] shrink-0" />
+                            <span>{selectedLeader.contactInfo.website}</span>
+                            <ExternalLink size={12} className="text-slate-400 ml-auto" />
+                          </a>
+                        </div>
+                      )}
+                    </div>
+
+                    {selectedLeader.contactInfo.categories && selectedLeader.contactInfo.categories.length > 0 && (
+                      <div className="pt-2 border-t border-slate-200">
+                        <span className="text-[10px] uppercase font-bold tracking-wider text-slate-500 block mb-1.5">
+                          Categories &amp; Strategic Roles
+                        </span>
+                        <div className="flex flex-wrap gap-1.5">
+                          {selectedLeader.contactInfo.categories.map((category, catIdx) => (
+                            <span
+                              key={catIdx}
+                              className="inline-flex items-center gap-1.5 px-2.5 py-1 bg-white border border-slate-300 text-xs font-semibold text-[#0A1931] tracking-wide"
+                            >
+                              <Tag size={11} className="text-[#C8102E]" />
+                              {category}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                )}
 
                 {/* Prof. Dr. Aurangzaib Virk Special Executive Vision & Motto */}
                 {selectedLeader.biography?.visionQuote && (
@@ -561,7 +759,22 @@ export const OurLeadershipSection: React.FC<OurLeadershipSectionProps> = () => {
 
                   <div className="space-y-3 text-sm leading-relaxed text-slate-700 bg-slate-50 p-4 sm:p-5 rounded-none border border-slate-200">
                     {selectedLeader.fullMessage.map((para, pIdx) => (
-                      <p key={pIdx}>{para}</p>
+                      <div key={pIdx}>
+                        {para.includes('\n') ? (
+                          <div className="font-bold text-[#0A1931] text-xs sm:text-sm tracking-wide uppercase pt-2">
+                            {para.split('\n').map((line, lIdx) => (
+                              <span 
+                                key={lIdx} 
+                                className={lIdx === 1 ? "block text-sm sm:text-base font-extrabold text-[#C8102E] mt-0.5 tracking-wider font-serif" : "block text-slate-600 font-bold text-xs tracking-wider"}
+                              >
+                                {line}
+                              </span>
+                            ))}
+                          </div>
+                        ) : (
+                          <p>{para}</p>
+                        )}
+                      </div>
                     ))}
                   </div>
                 </div>

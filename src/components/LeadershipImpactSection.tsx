@@ -99,14 +99,14 @@ export const LeadershipImpactSection: React.FC<LeadershipImpactSectionProps> = (
 
             <div className="max-w-4xl pt-0.5">
               <p className="text-sm text-slate-700 leading-relaxed font-sans">
-                Director Prof. Hamid Iqbal recognizing and commending faculty members for meritorious academic service, research contributions, and leadership at UCP Bahawalpur.
+                Director Prof. Hamid Iqbal recognizing and commending faculty members for meritorious academic service, research contributions, and leadership at UCP Bahawalpur. Official institutional assemblies, faculty convocations, and executive recognition ceremonies celebrating academic culture and institutional excellence.
               </p>
             </div>
           </motion.div>
 
           {/* 3. Combined Side-by-Side: Selected Image on Left, New Awards/Ceremony Image on Right */}
           <motion.div
-            className="pt-6 border-t border-slate-200/80 space-y-3"
+            className="pt-6 border-t border-slate-200/80"
             initial={{ opacity: 0, y: 18 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, ease: easeCurve }}
@@ -140,12 +140,6 @@ export const LeadershipImpactSection: React.FC<LeadershipImpactSectionProps> = (
                   }}
                 />
               </div>
-            </div>
-
-            <div className="max-w-4xl pt-0.5">
-              <p className="text-xs sm:text-sm text-slate-600 font-sans leading-relaxed">
-                Official institutional assemblies, faculty convocations, and executive recognition ceremonies at UCP Bahawalpur celebrating academic culture and institutional excellence.
-              </p>
             </div>
           </motion.div>
 

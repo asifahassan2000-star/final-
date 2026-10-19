@@ -704,17 +704,17 @@ export const Navbar: React.FC<NavbarProps> = ({
               </AnimatePresence>
             </div>
 
-            {/* 4. Student Login Portal (mcom.pgc.edu.pk) */}
-            <a
+            {/* 4. Leadership Section Navigation */}
+            <button
               id="nav-myucp-btn"
-              href="https://mcom.pgc.edu.pk/Student/StdLogin.jsp"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="px-3.5 py-2 rounded-lg hover:text-amber-300 hover:bg-white/5 transition-colors focus:outline-none font-medium flex items-center gap-1.5 text-white"
+              type="button"
+              onClick={() => handleNavClick('leadership-section')}
+              className="px-3.5 py-2 rounded-lg hover:text-amber-300 hover:bg-white/5 transition-colors focus:outline-none font-medium flex items-center gap-1.5 text-white cursor-pointer"
+              title="Official Institutional Leadership"
             >
-              <User size={14} className="text-emerald-400" />
-              <span>Portal Login</span>
-            </a>
+              <Award size={14} className="text-amber-400" />
+              <span>Leadership</span>
+            </button>
 
             {/* Minor Search Trigger in Navigation Menu (very minor, not too highlighted) */}
             <button

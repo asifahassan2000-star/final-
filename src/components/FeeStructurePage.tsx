@@ -772,11 +772,12 @@ export const FeeStructurePage: React.FC<FeeStructurePageProps> = ({
 
             <div className="flex flex-wrap items-center gap-3">
               <a
-                href={`tel:${UCP_CONTACT.tollFree}`}
+                href="tel:0622202030"
                 className="inline-flex items-center gap-2 px-4 py-2 bg-[#0F2C52] hover:bg-[#07172b] text-white text-xs font-semibold rounded-[4px] transition-colors"
+                title="Call UCP Bahawalpur: 062-2202030 / 062-2202050"
               >
                 <PhoneCall size={14} />
-                <span>UAN: {UCP_CONTACT.tollFree}</span>
+                <span>062-2202030 / 062-2202050</span>
               </a>
 
               <button
