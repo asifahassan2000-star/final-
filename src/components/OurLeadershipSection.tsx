@@ -63,7 +63,7 @@ const LEADERSHIP_PROFILES: LeaderProfile[] = [
     secondaryDesignation: 'Executive Director, Educational Excellence Limited · Member BoG, UCP & MAJU',
     officialRole: 'Executive Director PGC (UCP) & Member Board of Governors, UCP',
     portraitUrl: '/assets/leadership/sohail_afzal.jpg',
-    fallbackUrl: 'https://i.ibb.co/1Y5dt8PZ/Whats-App-Image-2026-10-19-at-7-52-27-AM.jpg',
+    fallbackUrl: 'https://i.ibb.co/HffRMp9g/Whats-App-Image-2026-10-20-at-2-07-37-AM.jpg',
     messageTitle: 'Executive Director’s Message',
     fullMessage: [
       '“At UCP we are not just means to education but a family that cares, grooms and helps unlock the true potential of our students. We are in a constant relentless pursuit to help provide a better future to our youth and build a society that is wise, intelligent and educated. Your trust in us motivates and inspires us to continue doing more so that you can shine in every aspect of your life.”',
@@ -208,7 +208,7 @@ const MobileLeaderCard: React.FC<{
             alt={leader.name}
             className={`w-full h-full ${
               leader.id === 'sohail-afzal'
-                ? 'object-cover object-top scale-[1.32]'
+                ? 'object-cover object-top'
                 : 'object-cover object-center'
             }`}
             onError={(e) => {
@@ -445,9 +445,9 @@ export const OurLeadershipSection: React.FC<OurLeadershipSectionProps> = () => {
                       decoding="async"
                       className={`w-full h-full ${
                         leader.id === 'sohail-afzal'
-                          ? 'object-cover object-top scale-[1.32] translate-y-1'
+                          ? 'object-cover object-top'
                           : 'object-cover object-center'
-                      } transition-transform duration-500 ease-out group-hover:scale-[1.36]`}
+                      } transition-transform duration-500 ease-out group-hover:scale-105`}
                       onError={(e) => {
                         const target = e.target as HTMLImageElement;
                         if (target.src !== leader.fallbackUrl) {
@@ -621,7 +621,7 @@ export const OurLeadershipSection: React.FC<OurLeadershipSectionProps> = () => {
                       alt={selectedLeader.name}
                       className={`w-full h-full ${
                         selectedLeader.id === 'sohail-afzal'
-                          ? 'object-cover object-top scale-[1.32]'
+                          ? 'object-cover object-top'
                           : 'object-cover object-center'
                       }`}
                       onError={(e) => {

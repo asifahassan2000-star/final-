@@ -90,6 +90,13 @@ export const Navbar: React.FC<NavbarProps> = ({
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [isSearchOpen]);
 
+  // Listen to open-ucp-search custom event dispatched from minimal corner buttons
+  useEffect(() => {
+    const handleOpenSearch = () => setIsSearchOpen(true);
+    window.addEventListener('open-ucp-search', handleOpenSearch);
+    return () => window.removeEventListener('open-ucp-search', handleOpenSearch);
+  }, []);
+
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
@@ -353,7 +360,7 @@ export const Navbar: React.FC<NavbarProps> = ({
           />
 
           {/* Desktop Navigation Links - Official, clean, balanced and spacious */}
-          <nav className="hidden lg:flex items-center space-x-1.5 xl:space-x-3 text-[14px] font-medium text-white">
+          <nav className="hidden lg:flex items-center space-x-2 xl:space-x-4 text-[14px] font-medium text-white whitespace-nowrap shrink-0">
             
             {/* 1. Home Button */}
             <button
@@ -365,12 +372,12 @@ export const Navbar: React.FC<NavbarProps> = ({
                   handleNavClick('top');
                 }
               }}
-              className={`px-3.5 py-2 rounded-lg transition-colors flex items-center gap-1.5 hover:text-white hover:bg-white/10 focus:outline-none cursor-pointer ${
-                currentPage === 'home' ? 'text-white bg-white/15 font-bold shadow-xs' : 'text-white font-medium'
+              className={`px-2.5 py-1.5 transition-colors flex items-center gap-1.5 text-white hover:text-white/80 focus:outline-none focus:ring-0 border-0 bg-transparent shadow-none cursor-pointer whitespace-nowrap shrink-0 ${
+                currentPage === 'home' ? 'font-bold' : 'font-medium'
               }`}
             >
               <Home size={15} className="text-white shrink-0" />
-              <span className="text-white">Home</span>
+              <span className="text-white whitespace-nowrap">Home</span>
             </button>
 
             {/* 2. Academics Button — Directly opens Programs section */}
@@ -383,17 +390,17 @@ export const Navbar: React.FC<NavbarProps> = ({
                   handleNavClick('finder-section');
                 }
               }}
-              className={`px-3.5 py-2 rounded-lg transition-colors flex items-center gap-1.5 hover:text-white hover:bg-white/10 focus:outline-none cursor-pointer ${
-                currentPage === 'programmes' ? 'text-white bg-white/15 font-bold shadow-xs' : 'text-white font-medium'
+              className={`px-2.5 py-1.5 transition-colors flex items-center gap-1.5 text-white hover:text-white/80 focus:outline-none focus:ring-0 border-0 bg-transparent shadow-none cursor-pointer whitespace-nowrap shrink-0 ${
+                currentPage === 'programmes' ? 'font-bold' : 'font-medium'
               }`}
             >
               <GraduationCap size={15} className="text-white shrink-0" />
-              <span className="text-white">Academics</span>
+              <span className="text-white whitespace-nowrap">Academics</span>
             </button>
 
             {/* 2. Admissions Dropdown */}
             <div 
-              className="relative"
+              className="relative shrink-0"
               onMouseEnter={() => setActiveDropdown('admissions')}
               onMouseLeave={() => setActiveDropdown(null)}
             >
@@ -402,11 +409,11 @@ export const Navbar: React.FC<NavbarProps> = ({
                 onClick={() => {
                   setActiveDropdown(activeDropdown === 'admissions' ? null : 'admissions');
                 }}
-                className={`px-3.5 py-2 rounded-lg transition-colors flex items-center gap-1.5 hover:text-white hover:bg-white/10 focus:outline-none cursor-pointer ${
-                  activeDropdown === 'admissions' ? 'text-white bg-white/15 font-bold shadow-xs' : 'text-white font-medium'
+                className={`px-2.5 py-1.5 transition-colors flex items-center gap-1.5 text-white hover:text-white/80 focus:outline-none focus:ring-0 border-0 bg-transparent shadow-none cursor-pointer whitespace-nowrap shrink-0 ${
+                  activeDropdown === 'admissions' ? 'font-bold' : 'font-medium'
                 }`}
               >
-                <span>Admissions</span>
+                <span className="text-white whitespace-nowrap">Admissions</span>
                 <ChevronDown size={14} className={`transition-transform duration-200 text-white/80 ${activeDropdown === 'admissions' ? 'rotate-180' : ''}`} />
               </button>
 
@@ -442,17 +449,6 @@ export const Navbar: React.FC<NavbarProps> = ({
                       <span>Fee Structure & Programs</span>
                       <span className="text-[11px] text-[#666666]">→</span>
                     </button>
-
-                    <a
-                      href="https://ucp.edu.pk/rules-regulations/"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      onClick={() => setActiveDropdown(null)}
-                      className="w-full text-left py-[8px] px-[14px] rounded-[6px] hover:bg-[#F5F5F5] flex items-center justify-between text-[#333333]"
-                    >
-                      <span>Rules & Regulations</span>
-                      <span className="text-[11px] text-[#666666]">↗</span>
-                    </a>
 
                     <button
                       type="button"
@@ -502,17 +498,6 @@ export const Navbar: React.FC<NavbarProps> = ({
                     >
                       <span>Eligibility & Criteria</span>
                     </button>
-
-                    <a
-                      href="https://ucp.edu.pk/faqs/"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      onClick={() => setActiveDropdown(null)}
-                      className="w-full text-left py-[8px] px-[14px] rounded-[6px] hover:bg-[#F5F5F5] flex items-center justify-between text-[#333333]"
-                    >
-                      <span>Admissions & Campus FAQs</span>
-                      <span className="text-[11px] text-[#666666]">↗</span>
-                    </a>
                   </motion.div>
                 )}
               </AnimatePresence>
@@ -528,11 +513,11 @@ export const Navbar: React.FC<NavbarProps> = ({
                   handleNavClick('faculty-section');
                 }
               }}
-              className={`px-3.5 py-2 rounded-lg transition-colors flex items-center gap-1.5 hover:text-white hover:bg-white/10 focus:outline-none font-medium cursor-pointer ${
-                currentPage === 'faculty' ? 'text-white bg-white/15 font-bold shadow-xs' : 'text-white'
+              className={`px-2.5 py-1.5 transition-colors flex items-center gap-1.5 text-white hover:text-white/80 focus:outline-none focus:ring-0 border-0 bg-transparent shadow-none cursor-pointer whitespace-nowrap shrink-0 ${
+                currentPage === 'faculty' ? 'font-bold' : 'font-medium'
               }`}
             >
-              <span>Our Faculty</span>
+              <span className="text-white whitespace-nowrap inline-block">Our Faculty</span>
             </button>
 
             {/* 3b. Our Legacy (UCP Bahawalpur) - Dedicated Page */}
@@ -543,16 +528,16 @@ export const Navbar: React.FC<NavbarProps> = ({
                   onOpenLegacyPage();
                 }
               }}
-              className={`px-3.5 py-2 rounded-lg transition-colors flex items-center gap-1.5 hover:text-white hover:bg-white/10 focus:outline-none font-medium cursor-pointer ${
-                currentPage === 'legacy' ? 'text-white bg-white/15 font-bold shadow-xs' : 'text-white'
+              className={`px-2.5 py-1.5 transition-colors flex items-center gap-1.5 text-white hover:text-white/80 focus:outline-none focus:ring-0 border-0 bg-transparent shadow-none cursor-pointer whitespace-nowrap shrink-0 ${
+                currentPage === 'legacy' ? 'font-bold' : 'font-medium'
               }`}
             >
-              <span>Our Legacy</span>
+              <span className="text-white whitespace-nowrap inline-block">Our Legacy</span>
             </button>
 
             {/* 4. About Dropdown (All items organized in this folder) */}
             <div 
-              className="relative"
+              className="relative shrink-0"
               onMouseEnter={() => setActiveDropdown('about')}
               onMouseLeave={() => setActiveDropdown(null)}
             >
@@ -561,11 +546,11 @@ export const Navbar: React.FC<NavbarProps> = ({
                 onClick={() => {
                   setActiveDropdown(activeDropdown === 'about' ? null : 'about');
                 }}
-                className={`px-3.5 py-2 rounded-lg transition-colors flex items-center gap-1.5 hover:text-white hover:bg-white/10 focus:outline-none cursor-pointer ${
-                  activeDropdown === 'about' ? 'text-white bg-white/15 font-bold shadow-xs' : 'text-white font-medium'
+                className={`px-2.5 py-1.5 transition-colors flex items-center gap-1.5 text-white hover:text-white/80 focus:outline-none focus:ring-0 border-0 bg-transparent shadow-none cursor-pointer whitespace-nowrap shrink-0 ${
+                  activeDropdown === 'about' ? 'font-bold' : 'font-medium'
                 }`}
               >
-                <span>About</span>
+                <span className="text-white whitespace-nowrap">About</span>
                 <ChevronDown size={14} className={`transition-transform duration-200 text-white/80 ${activeDropdown === 'about' ? 'rotate-180' : ''}`} />
               </button>
 
@@ -709,43 +694,17 @@ export const Navbar: React.FC<NavbarProps> = ({
               id="nav-myucp-btn"
               type="button"
               onClick={() => handleNavClick('leadership-section')}
-              className="px-3.5 py-2 rounded-lg hover:text-amber-300 hover:bg-white/5 transition-colors focus:outline-none font-medium flex items-center gap-1.5 text-white cursor-pointer"
+              className="px-2.5 py-1.5 transition-colors flex items-center gap-1.5 text-white hover:text-white/80 focus:outline-none focus:ring-0 border-0 bg-transparent shadow-none cursor-pointer whitespace-nowrap shrink-0 font-medium"
               title="Official Institutional Leadership"
             >
-              <Award size={14} className="text-amber-400" />
-              <span>Leadership</span>
-            </button>
-
-            {/* Minor Search Trigger in Navigation Menu (very minor, not too highlighted) */}
-            <button
-              id="nav-search-minor-btn"
-              type="button"
-              onClick={() => setIsSearchOpen(true)}
-              className="ml-1 px-2.5 py-1.5 rounded-lg text-slate-300 hover:text-white hover:bg-white/10 transition-colors flex items-center gap-1.5 text-xs font-normal cursor-pointer opacity-80 hover:opacity-100 border border-white/15"
-              title="Search degree programmes, fees, admissions (Ctrl+K)"
-            >
-              <Search size={13} className="text-slate-300" />
-              <span>Search</span>
+              <Award size={14} className="text-amber-400 shrink-0" />
+              <span className="text-white whitespace-nowrap">Leadership</span>
             </button>
 
           </nav>
 
-          {/* Right Header Area: Search, Theme Toggle & Mobile Menu Toggle */}
+          {/* Right Header Area: Mobile Menu Toggle only (Clean, neat, uncluttered) */}
           <div className="flex items-center gap-1.5 sm:gap-2 shrink-0">
-            <button
-              id="header-search-btn"
-              type="button"
-              onClick={() => setIsSearchOpen(true)}
-              className="p-2 text-slate-200 hover:text-white hover:bg-white/10 rounded-full transition-colors flex items-center justify-center focus:outline-none cursor-pointer"
-              title="Search Courses, Fees, & Degrees (Ctrl+K)"
-              aria-label="Search Website"
-            >
-              <Search size={18} />
-            </button>
-
-            {/* Official University Light / Dark Mode Toggle */}
-            <ThemeToggle variant="header" />
-
             {/* Mobile menu toggle button — Prominently visible, high contrast, clean */}
             <button
               id="mobile-menu-toggle-btn"
@@ -899,16 +858,6 @@ export const Navbar: React.FC<NavbarProps> = ({
               <span>• Curriculum & Program Roadmaps</span>
               <span className="text-amber-300">↗</span>
             </button>
-            <a
-              href="https://ucp.edu.pk/rules-regulations/"
-              target="_blank"
-              rel="noopener noreferrer"
-              onClick={() => setMobileMenuOpen(false)}
-              className="w-full text-left py-1 text-slate-300 hover:text-white text-xs pl-2 flex items-center justify-between"
-            >
-              <span>• Rules & Regulations</span>
-              <span className="text-amber-300">↗</span>
-            </a>
             <button
               onClick={() => {
                 setMobileMenuOpen(false);

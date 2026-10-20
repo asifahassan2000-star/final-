@@ -99,11 +99,11 @@ export const ALL_FACULTY_MEMBERS: FacultyMemberData[] = [
     numericId: 5,
     name: 'Prof. Dr. Abbas Haider',
     designation: 'Assistant Professor',
-    department: 'Department of History & Humanities',
+    department: 'Department of Social Sciences',
     highestDegree: 'Ph.D. in History',
-    experienceYears: '10 Years',
-    specialization: 'Historical Research, South Asian History & Historiography',
-    intro: 'Assistant Professor with 10 years of university teaching and scholarly research in history and humanities.',
+    experienceYears: 'Eight Years',
+    specialization: 'Historical Research, South Asian History & Social Sciences',
+    intro: 'Assistant Professor in Social Sciences with 8 years of university teaching and scholarly research in history.',
     photoUrl: '/assets/faculty/dr-abbas-haider.jpg',
     fallbackPhotoUrl: 'https://i.ibb.co/MDRVG6JB/image-25.jpg',
     objectPosition: 'object-top',
@@ -113,12 +113,12 @@ export const ALL_FACULTY_MEMBERS: FacultyMemberData[] = [
       'Master of Arts (M.A.) in History'
     ],
     experienceDetails: [
-      '10 Years of University Teaching and Historical Research'
+      'Eight Years of University Teaching and Social Sciences Research'
     ],
     coreTechnicalSkills: [
       'Historical Research & Historiography',
-      'South Asian & Regional History',
-      'Archival Analysis & Academic Writing'
+      'Social Sciences & Regional History',
+      'Archival Analysis & Academic Pedagogy'
     ]
   },
 
@@ -135,8 +135,8 @@ export const ALL_FACULTY_MEMBERS: FacultyMemberData[] = [
     experienceYears: '18+ Years',
     specialization: 'Post-Colonial Literature, Applied Linguistics & Critical Discourse',
     intro: 'Assistant Professor specializing in literary theory, research methodologies, and humanities curriculum design with extensive postgraduate mentorship.',
-    photoUrl: '/assets/faculty/prof-uzma-zulqurnai.jpg',
-    fallbackPhotoUrl: 'https://i.ibb.co/ds5v7H7c/image-32.jpg',
+    photoUrl: '/assets/faculty/prof_uzma_zulqurnain.webp',
+    fallbackPhotoUrl: 'https://i.ibb.co/20rgrjKf/image-40.jpg',
     objectPosition: 'object-top',
     qualifications: [
       'Ph.D. in English Literature',
@@ -429,7 +429,7 @@ export const ALL_FACULTY_MEMBERS: FacultyMemberData[] = [
     id: 'prof-malik-allah-rakha',
     numericId: 18,
     name: 'Prof. Malik Allah Rakha',
-    designation: 'Lecturer Mathematics',
+    designation: 'Lecturer',
     department: 'Faculty of Science & Technology • Department of Mathematics',
     highestDegree: 'M.Phil in Mathematics',
     experienceYears: '10 Years',
@@ -575,35 +575,37 @@ export const ALL_FACULTY_MEMBERS: FacultyMemberData[] = [
   {
     id: 'prof-usman-kazmi',
     numericId: 11,
-    name: 'Prof. Usman Kazmi',
+    name: 'Prof. Syed M. Usman Ali Kazmi',
     designation: 'Lecturer',
-    department: 'Department of Business & Media Studies',
-    highestDegree: 'MS in Strategic Communication',
-    experienceYears: '11+ Years',
-    specialization: 'Media Strategy, Public Relations & Digital Branding',
-    intro: 'Bridges corporate communication theory and hands-on media production workshops for business and media scholars.',
+    department: 'Department of Computer Science & Information Technology',
+    highestDegree: 'MSCS (Master of Science in Computer Science)',
+    experienceYears: '12+ Years',
+    specialization: 'Computer Science, Systems Operations, CMS Leadership & Project Management',
+    intro: 'Lecturer holding an MSCS with comprehensive academic teaching, institutional project management, and campus CMS administrative leadership across premier educational institutions.',
     photoUrl: '/assets/faculty/prof-usman-kazmi.jpg',
     fallbackPhotoUrl: 'https://i.ibb.co/NRMsLPh/image-28.jpg',
     objectPosition: 'object-top',
     qualifications: [
-      'MS in Strategic Communication',
-      'BS in Mass Communication & Media Studies'
+      'MSCS — Master of Science in Computer Science (Last Degree)',
+      'BS in Computer Science / Information Technology'
     ],
     experienceDetails: [
-      '11+ Years of Media Production and Corporate Communication Teaching',
-      'Directing University Media Production Labs and Digital Publishing Initiatives'
+      '2014 to Present: Punjab Group of Colleges (PGC) — CMS Officer & Lecturer (2014–2020 as CMS Officer & Lecturer; 2020 to Present as Lecturer)',
+      '2 Years Experience as Project Manager at "Govt. Degree College for Women" Dubai Mahal Road, Bahawalpur',
+      '2 Years Experience as Lecturer at Dera Nawab Degree College'
     ],
     coreTechnicalSkills: [
-      'Digital Media Strategies & Public Relations',
-      'Brand Storytelling & Broadcast Journalism',
-      'Corporate Reputation Management'
+      'Computer Science Pedagogy & Practical Labs',
+      'CMS (Campus Management System) Administration',
+      'Academic Project Management & Institutional Coordination',
+      'Student Mentorship & Information Technology Leadership'
     ]
   },
   {
     id: 'prof-marriam-gill',
     numericId: 13,
-    name: 'Mam Marium Gill',
-    designation: 'Lecturer in Computer Science Department',
+    name: 'Prof. Marriam Gill',
+    designation: 'Lecturer',
     department: 'Department of Computer Science',
     highestDegree: 'MSCS (Computer Science) • Ph.D. Scholar (Islamia University Bahawalpur)',
     experienceYears: '3 Years (IUB, UE & CTI)',
@@ -673,7 +675,7 @@ export const ALL_FACULTY_MEMBERS: FacultyMemberData[] = [
     id: 'prof-huzaira-akram',
     numericId: 17,
     name: 'Prof. Huzaira Akram',
-    designation: 'English Lecturer in UCP',
+    designation: 'Lecturer',
     department: 'Department of English & Humanities',
     highestDegree: 'M. Phil English',
     experienceYears: '3 Years',

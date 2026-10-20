@@ -29,6 +29,10 @@ export const ClickGlowManager: React.FC = () => {
       const closestText = isTextElement ? target : target.closest('p, h1, h2, h3, h4, h5, h6, blockquote, li, span');
 
       if (closestText) {
+        // Never apply glow or highlight boxes to header navigation elements
+        if (closestText.closest('#main-nav-header, header, nav')) {
+          return;
+        }
         const elem = closestText as HTMLElement;
         elem.classList.remove('text-click-glow');
         void elem.offsetWidth;

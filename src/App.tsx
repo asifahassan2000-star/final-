@@ -8,15 +8,12 @@ import React, { useState, useEffect, useRef, Suspense } from 'react';
 // Core Above-The-Fold Components for Instant LCP & First Paint
 import { Navbar } from './components/Navbar';
 import { HeroSlider } from './components/HeroSlider';
-import { StatisticsSection } from './components/StatisticsSection';
+import { ThemeToggle } from './components/ThemeToggle';
 import { ClickGlowManager } from './components/ClickGlowManager';
 import { ScrollRevealManager } from './components/ScrollReveal';
 import type { InfoModalType } from './components/UcpInfoModal';
 import { Program, NewsEventItem } from './types';
 import { FACULTIES, UCP_CONTACT } from './data/ucpData';
-
-// Lazy-loaded Header Strip
-const TopBar = React.lazy(() => import('./components/TopBar').then(m => ({ default: m.TopBar })));
 
 // Lazy-loaded Below-the-Fold Homepage Sections
 const WelcomeUcpSection = React.lazy(() => import('./components/WelcomeUcpSection').then(m => ({ default: m.WelcomeUcpSection })));
@@ -359,15 +356,8 @@ export default function App() {
       {/* High-Performance Institutional Scroll Reveal Animation Manager */}
       <ScrollRevealManager />
       
-      {/* 1. Official Top Emergency Ticker & Contact Strip */}
-      <Suspense fallback={<div className="bg-[#0b1c33] h-8 border-b border-slate-800/80" />}>
-        <TopBar 
-          onOpenPortal={() => setIsPortalOpen(true)}
-          onOpenFee={handleOpenFee}
-          onOpenApply={() => handleOpenApply()}
-          onOpenCnnAcademyPage={handleOpenCnnAcademyPage}
-        />
-      </Suspense>
+      {/* Official University Light / Dark Mode Toggle on Website Lower Left Corner */}
+      <ThemeToggle variant="floating" />
 
       {/* 2. Main Navigation Bar */}
       <Navbar
@@ -468,12 +458,8 @@ export default function App() {
               onOpenProgrammesPage={handleOpenProgrammesPage}
               onOpenLegacyPage={handleOpenLegacyPage}
               onOpenCampusLifePage={handleOpenCampusLifePage}
+              onOpenPortal={() => setIsPortalOpen(true)}
             />
-
-            {/* 2. INSTITUTIONAL METRICS & ACCREDITATIONS — Immediate Proof & Quantitative Authority */}
-            <div className="w-full">
-              <StatisticsSection onOpenScholarshipsPage={handleOpenScholarshipsPage} />
-            </div>
 
             {/* WELCOME UCP — Executive Welcome Section with GSAP Sticky Stacking Cards & Official Blue Background */}
             <div className="w-full">

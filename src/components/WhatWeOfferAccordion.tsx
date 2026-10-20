@@ -90,14 +90,14 @@ export const WhatWeOfferAccordion: React.FC<WhatWeOfferAccordionProps> = ({
       id: 2,
       title: 'Multiple Scholarships',
       collapsedTitle: 'Multiple Scholarships',
-      badge: 'Up to 100% Tuition Assistance',
+      badge: 'Up to 50% Tuition Assistance',
       icon: Sparkles,
       description:
-        'We believe financial circumstances should never obstruct merit. UCP Bahawalpur awards generous merit scholarships, PGC alumni tuition concessions, kinship allowances, sports fellowships, and special need-based financial aid.',
+        'We believe financial circumstances should never obstruct merit. UCP Bahawalpur awards merit scholarships up to 50%, PGC alumni tuition concessions up to 50%, and 25% kinship concessions for siblings.',
       highlights: [
-        'Merit Scholarships up to 100% Tuition Waiver',
+        'Merit Scholarships up to 50% Tuition Waiver',
         '25% – 50% Concession for PGC Alumni Students',
-        'Kinship, Sports & Special Talent Grants',
+        '25% Kinship Concession (Siblings in UCP / PGC)',
       ],
       actionText: 'Calculate & View Scholarships',
       actionType: 'scholarships',

@@ -1207,3 +1207,14 @@ html {
 body, main, section, [id$="-section"] {
   transition: background-color 0.25s ease, border-color 0.25s ease;
 }
+
+/* Header navigation clean white text - zero blue borders, pills or focus outlines */
+#main-nav-header nav button,
+#main-nav-header nav button:focus,
+#main-nav-header nav button:focus-visible,
+#main-nav-header nav button:active {
+  outline: none !important;
+  box-shadow: none !important;
+  border: 0 !important;
+  text-decoration: none !important;
+}

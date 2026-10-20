@@ -76,16 +76,17 @@ export const ThemeToggle: React.FC<ThemeToggleProps> = ({ variant = 'header', cl
   if (variant === 'floating') {
     return (
       <button
+        id="floating-theme-toggle-btn"
         type="button"
         onClick={toggleTheme}
-        className={`fixed bottom-6 left-6 z-40 p-3 rounded-full bg-[#0a192f] text-slate-100 dark:bg-[#152542] dark:text-amber-300 border border-slate-700 dark:border-amber-400/40 shadow-2xl shadow-black/50 hover:scale-110 active:scale-95 transition-all duration-200 cursor-pointer flex items-center justify-center group ${className}`}
-        title={`Click to switch to ${isDark ? 'Light' : 'Dark'} Mode`}
+        className={`fixed bottom-5 left-5 z-50 w-11 h-11 rounded-full bg-[#0F2C61] text-white dark:bg-[#172554] dark:text-amber-300 border-2 border-white/20 dark:border-amber-400/40 shadow-xl shadow-slate-950/40 hover:scale-110 active:scale-95 transition-all duration-200 cursor-pointer flex items-center justify-center group ${className}`}
+        title={`Switch to ${isDark ? 'Light' : 'Dark'} Mode`}
         aria-label={`Toggle Theme (${theme})`}
       >
         {isDark ? (
-          <Sun size={18} className="text-amber-400 group-hover:rotate-45 transition-transform duration-300" />
+          <Sun size={20} className="text-amber-400 group-hover:rotate-45 transition-transform duration-300" />
         ) : (
-          <Moon size={18} className="text-sky-300 group-hover:-rotate-12 transition-transform duration-300" />
+          <Moon size={19} className="text-sky-300 group-hover:-rotate-12 transition-transform duration-300" />
         )}
       </button>
     );

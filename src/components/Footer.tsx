@@ -193,17 +193,6 @@ export const Footer: React.FC<FooterProps> = ({
                 </li>
               )}
 
-              <li>
-                <a 
-                  href="https://ucp.edu.pk/rules-regulations/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group w-full text-left transition-colors duration-200 flex items-center gap-2 hover:text-white cursor-pointer"
-                >
-                  <span className="text-slate-400 font-bold group-hover:text-white transition-colors">›</span>
-                  <span className="group-hover:underline">Rules &amp; Regulations</span>
-                </a>
-              </li>
             </ul>
           </div>
 

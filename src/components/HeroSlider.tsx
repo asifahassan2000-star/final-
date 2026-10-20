@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { 
-  ChevronLeft, ChevronRight, ArrowRight
+  ChevronLeft, ChevronRight, ArrowRight, Search, User
 } from 'lucide-react';
 import { HERO_SLIDES } from '../data/ucpData';
 import ucpBwpBuilding5Local from '../assets/images/ucp_bwp_building_5.jpg';
@@ -15,6 +15,7 @@ interface HeroSliderProps {
   onOpenProgrammesPage?: () => void;
   onOpenLegacyPage?: () => void;
   onOpenCampusLifePage?: () => void;
+  onOpenPortal?: () => void;
 }
 
 // 3.6 seconds per slide (reduced by 1 second from 4.6s for faster, dynamic transitions)
@@ -28,6 +29,7 @@ export const HeroSlider: React.FC<HeroSliderProps> = ({
   onOpenProgrammesPage,
   onOpenLegacyPage,
   onOpenCampusLifePage,
+  onOpenPortal,
 }) => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isHovered, setIsHovered] = useState(false);
@@ -206,15 +208,17 @@ export const HeroSlider: React.FC<HeroSliderProps> = ({
               <div className="relative z-20 max-w-7xl mx-auto h-full px-4 sm:px-6 lg:px-8 flex flex-col justify-center pb-20 sm:pb-28 lg:pb-28">
                 <div className="max-w-3xl text-left space-y-3 sm:space-y-4 lg:space-y-5">
                   
-                  {/* Clean Editorial Pre-Header */}
-                  <div 
-                    className={`inline-flex items-center text-[#FEF08A] text-[11px] sm:text-xs lg:text-sm font-semibold tracking-[0.2em] sm:tracking-[0.25em] uppercase drop-shadow-sm transition-all duration-700 ${
-                      isActive ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
-                    }`}
-                    style={{ transitionDelay: isActive ? '100ms' : '0ms' }}
-                  >
-                    <span>{slide.preheader || 'UNIVERSITY OF CENTRAL PUNJAB'}</span>
-                  </div>
+                  {/* Clean Editorial Pre-Header (Omitted on Slide 0 as requested) */}
+                  {index !== 0 && slide.preheader && (
+                    <div 
+                      className={`inline-flex items-center text-[#FEF08A] text-[11px] sm:text-xs lg:text-sm font-semibold tracking-[0.2em] sm:tracking-[0.25em] uppercase drop-shadow-sm transition-all duration-700 ${
+                        isActive ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+                      }`}
+                      style={{ transitionDelay: isActive ? '100ms' : '0ms' }}
+                    >
+                      <span>{slide.preheader}</span>
+                    </div>
+                  )}
 
                   {/* World-Class Editorial Serif Heading with Clip-Path Reveal */}
                   <div className="overflow-hidden py-1">
@@ -360,6 +364,22 @@ export const HeroSlider: React.FC<HeroSliderProps> = ({
           <p className="text-[9px] font-bold text-white leading-tight">Punjab Group Legacy</p>
           <p className="text-[8px] text-white/70 mt-1 leading-tight">40 Years of Educational Excellence</p>
         </div>
+        <div 
+          onClick={() => onOpenPortal && onOpenPortal()}
+          className="flex-1 min-w-[65px] cursor-pointer active:opacity-80 flex flex-col items-center text-center border-l border-white/20 pl-1"
+        >
+          <User size={12} className="text-white/80 mb-0.5" />
+          <p className="text-[9px] font-medium text-white/90 leading-tight">Portal</p>
+        </div>
+        <div 
+          onClick={() => {
+            window.dispatchEvent(new CustomEvent('open-ucp-search'));
+          }}
+          className="flex-1 min-w-[50px] cursor-pointer active:opacity-80 flex flex-col items-center text-center"
+        >
+          <Search size={12} className="text-white/80 mb-0.5" />
+          <p className="text-[9px] font-medium text-white/90 leading-tight">Search</p>
+        </div>
       </div>
 
       {/* Desktop Code: Existing as is with hidden lg:block - DO NOT CHANGE */}
@@ -369,7 +389,7 @@ export const HeroSlider: React.FC<HeroSliderProps> = ({
         style={{ background: 'none' }}
       >
         <div 
-          className="flex flex-nowrap items-start gap-[35px]"
+          className="flex flex-nowrap items-center gap-[30px]"
           style={{ background: 'none' }}
         >
           {/* Career-Focused Education */}
@@ -450,6 +470,31 @@ export const HeroSlider: React.FC<HeroSliderProps> = ({
             >
               40 Years of Educational Excellence
             </p>
+          </div>
+
+          {/* Minimal Corner Utilities: Student Portal & Search (Not highlighted) */}
+          <div className="flex items-center gap-3 pl-4 border-l border-white/20 self-center shrink-0">
+            <button
+              type="button"
+              onClick={() => {
+                window.dispatchEvent(new CustomEvent('open-ucp-search'));
+              }}
+              className="cursor-pointer flex items-center gap-1.5 text-white/70 hover:text-white transition-colors text-xs font-normal"
+              title="Search (Ctrl+K)"
+            >
+              <Search size={14} className="text-white/60" />
+              <span>Search</span>
+            </button>
+
+            <button
+              type="button"
+              onClick={() => onOpenPortal && onOpenPortal()}
+              className="cursor-pointer flex items-center gap-1.5 text-white/70 hover:text-white transition-colors text-xs font-normal"
+              title="Student Portal Login"
+            >
+              <User size={14} className="text-white/60" />
+              <span>Student Portal</span>
+            </button>
           </div>
         </div>
       </section>
