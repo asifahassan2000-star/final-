@@ -64,7 +64,7 @@ const MobileFacultyCarousel: React.FC<{
             <div className="w-full aspect-[3/4] rounded-lg overflow-hidden bg-slate-100 border border-slate-200/90 shadow-2xs relative">
               <img decoding="async" src={faculty.photoUrl}
                 alt={faculty.name}
-                className={`w-full h-full object-cover ${faculty.objectPosition || 'object-top'}`}
+                className={`w-full h-full object-cover ${faculty.objectPosition || 'object-top'} ${faculty.imageTransform || ''}`}
                 loading="lazy"
                 onError={(e) => {
                   (e.target as HTMLImageElement).src = faculty.fallbackPhotoUrl;
@@ -143,8 +143,8 @@ export const FacultySection: React.FC<FacultySectionProps> = ({
         >
           <div>
             <div className="flex items-center gap-2 mb-1.5">
-              <span className="w-5 h-[2px] bg-[#C5A059]" />
-              <span className="text-[10px] sm:text-[11px] font-bold uppercase tracking-[0.2em] text-[#C5A059]">
+              <span className="w-5 h-[2px] bg-[#C8102E]" />
+              <span className="text-[10px] sm:text-[11px] font-bold uppercase tracking-[0.2em] text-[#C8102E]">
                 Academic & Administrative Excellence
               </span>
             </div>
@@ -204,12 +204,6 @@ export const FacultySection: React.FC<FacultySectionProps> = ({
         */}
         <div className="hidden md:grid md:grid-cols-4 gap-4 sm:gap-6 lg:gap-8">
           {displayedMembers.map((member, index) => {
-            const isProfessor = member.designation.toLowerCase().includes('professor') && !member.designation.toLowerCase().includes('associate') && !member.designation.toLowerCase().includes('assistant');
-            const isAssociate = member.designation.toLowerCase().includes('associate');
-            const isAssistant = member.designation.toLowerCase().includes('assistant');
-            const isLecturer = member.designation.toLowerCase().includes('lecturer');
-            const rankLabel = isProfessor ? 'Professor' : isAssociate ? 'Associate Professor' : isAssistant ? 'Assistant Professor' : isLecturer ? 'Lecturer' : member.designation;
-
             return (
               <motion.div
                 key={member.id}
@@ -226,10 +220,10 @@ export const FacultySection: React.FC<FacultySectionProps> = ({
               >
                 <div className="w-full">
                   {/* Strict Equal Aspect-[4/5] Portrait Frame */}
-                  <div className="w-full aspect-[4/5] rounded-xl sm:rounded-2xl overflow-hidden bg-slate-100 border border-slate-200/90 shadow-2xs group-hover:shadow-md group-hover:border-[#C5A059] transition-all duration-300 relative">
+                  <div className="w-full aspect-[4/5] rounded-xl sm:rounded-2xl overflow-hidden bg-slate-100 border border-slate-200/90 shadow-2xs group-hover:shadow-md group-hover:border-[#0F2C61] transition-all duration-300 relative">
                     <img src={member.photoUrl}
                       alt={member.name}
-                      className={`w-full h-full object-cover ${member.objectPosition || 'object-top'} transition-transform duration-500 ease-out group-hover:scale-105`}
+                      className={`w-full h-full object-cover ${member.objectPosition || 'object-top'} ${member.imageTransform || ''} transition-transform duration-500 ease-out ${member.imageTransform ? 'group-hover:scale-[1.33]' : 'group-hover:scale-105'}`}
                       loading="lazy"
                       decoding="async"
                       onError={(e) => {
@@ -239,13 +233,8 @@ export const FacultySection: React.FC<FacultySectionProps> = ({
                     <div className="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
                   </div>
 
-                  {/* Rank Tag, Name & Designation */}
+                  {/* Name & Designation */}
                   <div className="mt-3 px-1 w-full text-center">
-                    <div className="mb-1">
-                      <span className="inline-block text-[10px] font-bold uppercase tracking-wider text-[#C5A059] font-sans">
-                        {activeTab === 'administration' ? 'Administration' : rankLabel}
-                      </span>
-                    </div>
                     <h3 className="font-['Playfair_Display',serif] text-sm sm:text-base lg:text-lg font-bold text-[#0F2C61] group-hover:text-[#a30f16] transition-colors leading-snug">
                       {member.name}
                     </h3>

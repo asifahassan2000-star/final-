@@ -11,6 +11,7 @@ export interface FacultyMemberData {
   photoUrl: string;
   fallbackPhotoUrl: string;
   objectPosition?: string;
+  imageTransform?: string;
   // Professional Profile Dossier Fields
   qualifications?: string[];
   experienceDetails?: string[];
@@ -137,7 +138,8 @@ export const ALL_FACULTY_MEMBERS: FacultyMemberData[] = [
     intro: 'Assistant Professor specializing in literary theory, research methodologies, and humanities curriculum design with extensive postgraduate mentorship.',
     photoUrl: '/assets/faculty/prof_uzma_zulqurnain.webp',
     fallbackPhotoUrl: 'https://i.ibb.co/20rgrjKf/image-40.jpg',
-    objectPosition: 'object-top',
+    objectPosition: 'object-center',
+    imageTransform: 'scale-[1.28] origin-center',
     qualifications: [
       'Ph.D. in English Literature',
       'M.Phil in English Literature & Linguistics',

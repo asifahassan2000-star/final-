@@ -313,7 +313,7 @@ export const FacultyPage: React.FC<FacultyPageProps> = ({
                     <div className="w-full aspect-[4/5] rounded-xl sm:rounded-2xl overflow-hidden bg-slate-100 border border-slate-200/90 shadow-2xs group-hover:shadow-xs group-hover:border-[#C5A059]/60 transition-all duration-300 relative">
                       <img src={faculty.photoUrl}
                         alt={faculty.name}
-                        className={`w-full h-full object-cover ${faculty.objectPosition || 'object-top'} transition-transform duration-500 ease-out group-hover:scale-105`}
+                        className={`w-full h-full object-cover ${faculty.objectPosition || 'object-top'} ${faculty.imageTransform || ''} transition-transform duration-500 ease-out ${faculty.imageTransform ? 'group-hover:scale-[1.19]' : 'group-hover:scale-105'}`}
                         loading="lazy"
                         decoding="async"
                         onError={(e) => {

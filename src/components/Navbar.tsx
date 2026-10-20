@@ -129,7 +129,6 @@ export const Navbar: React.FC<NavbarProps> = ({
         { id: 'contact', elementId: 'footer-section' },
         { id: 'admissions', elementId: 'closing-campus-section' },
         { id: 'admissions', elementId: 'admissions-section' },
-        { id: 'campus-life', elementId: 'beyond-the-classroom-section' },
         { id: 'campus-life', elementId: 'campus-section' },
         { id: 'facilities', elementId: 'facilities-section' },
         { id: 'about', elementId: 'our-campus-section' },

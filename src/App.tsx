@@ -26,7 +26,6 @@ const FacilitiesSection = React.lazy(() => import('./components/FacilitiesSectio
 const OurLeadershipSection = React.lazy(() => import('./components/OurLeadershipSection').then(m => ({ default: m.OurLeadershipSection })));
 const LeadershipImpactSection = React.lazy(() => import('./components/LeadershipImpactSection').then(m => ({ default: m.LeadershipImpactSection })));
 const CampusLife = React.lazy(() => import('./components/CampusLife').then(m => ({ default: m.CampusLife })));
-const BeyondTheClassroomSection = React.lazy(() => import('./components/BeyondTheClassroomSection').then(m => ({ default: m.BeyondTheClassroomSection })));
 const NewsAndEvents = React.lazy(() => import('./components/NewsAndEvents').then(m => ({ default: m.NewsAndEvents })));
 const AdmissionsExperienceSection = React.lazy(() => import('./components/AdmissionsExperienceSection').then(m => ({ default: m.AdmissionsExperienceSection })));
 const ClosingDramaticSection = React.lazy(() => import('./components/ClosingDramaticSection').then(m => ({ default: m.ClosingDramaticSection })));
@@ -553,13 +552,7 @@ export default function App() {
               />
             </div>
 
-            {/* 10. BEYOND THE CLASSROOM — Student Engagement & Experiential Learning */}
-            <div className="w-full">
-              <BeyondTheClassroomSection
-                onScrollToCampusLife={() => handleScrollTo('campus-section')}
-                onOpenCampusLifePage={handleOpenCampusLifePage}
-              />
-            </div>
+
 
             {/* 11. NEWS & EVENTS — Timely Updates, Academic Symposia & Campus Happenings */}
             <div className="w-full">

@@ -216,12 +216,12 @@ export const CampusLife: React.FC<CampusLifeProps> = ({ onOpenCampusLifePage }) 
             headerVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-7'
           }`}
         >
-          {/* Small label: CAMPUS LIFE & STUDENT CULTURE with subtle gold accent line */}
+          {/* Small label: CAMPUS LIFE & STUDENT CULTURE with official red accent line */}
           <div className="flex items-center gap-3 mb-4">
-            <span className="text-xs font-mono font-bold uppercase tracking-[0.28em] text-[#C5A880]">
+            <span className="text-xs font-mono font-bold uppercase tracking-[0.28em] text-[#C8102E]">
               CAMPUS LIFE & STUDENT CULTURE
             </span>
-            <span className="h-px w-10 bg-[#C5A880]/60" aria-hidden="true" />
+            <span className="h-px w-10 bg-[#C8102E]/60" aria-hidden="true" />
           </div>
 
           {/* Main Title: Celebrations, Culture & Campus Life */}
@@ -234,7 +234,7 @@ export const CampusLife: React.FC<CampusLifeProps> = ({ onOpenCampusLifePage }) 
           </h2>
 
           {/* Supporting Text: Beyond the classroom, every experience becomes part of the UCP journey. */}
-          <p className="text-lg sm:text-xl text-slate-700 font-serif italic leading-relaxed border-l-2 border-[#C5A880] pl-4 sm:pl-5 mb-5">
+          <p className="text-lg sm:text-xl text-slate-700 font-serif italic leading-relaxed border-l-2 border-[#C8102E] pl-4 sm:pl-5 mb-5">
             From live musical concerts and decorated corridors to open courtyards, every moment becomes an unforgettable chapter of the UCP journey.
           </p>
 
@@ -278,7 +278,7 @@ export const CampusLife: React.FC<CampusLifeProps> = ({ onOpenCampusLifePage }) 
 
               {/* Minimalist Editorial Under-Caption (Clean layout, no text over image) */}
               <div className="mt-4 px-2">
-                <span className="text-[10px] sm:text-[11px] font-mono uppercase tracking-[0.22em] text-[#C5A880] font-semibold block mb-1">
+                <span className="text-[10px] sm:text-[11px] font-mono uppercase tracking-[0.22em] text-[#C8102E] font-semibold block mb-1">
                   CHOLISTAN HAVELI • EVENING MUSICAL SESSION
                 </span>
                 <h3 
@@ -294,7 +294,7 @@ export const CampusLife: React.FC<CampusLifeProps> = ({ onOpenCampusLifePage }) 
 
               {/* Decorative Subtle Accent Tag */}
               <div className="absolute -top-3 -right-3 hidden sm:flex items-center gap-2 bg-white/95 backdrop-blur-md px-4 py-2 rounded-full border border-[#0A1931]/10 shadow-lg text-[11px] font-mono uppercase tracking-wider text-[#0A1931]">
-                <Sparkles size={13} className="text-[#C5A880]" />
+                <Sparkles size={13} className="text-[#C8102E]" />
                 <span>Student Music Vibe</span>
               </div>
             </div>
@@ -320,7 +320,7 @@ export const CampusLife: React.FC<CampusLifeProps> = ({ onOpenCampusLifePage }) 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 pt-3 border-t border-[#0A1931]/10">
                 <div className="space-y-1.5">
                   <div className="flex items-center gap-2 text-xs font-mono text-[#0A1931] font-bold uppercase tracking-wider">
-                    <Users size={14} className="text-[#C5A880]" />
+                    <Users size={14} className="text-[#C8102E]" />
                     <span>Active Student Activities & Clubs</span>
                   </div>
                   <p className="text-xs text-slate-600 leading-relaxed font-sans">
@@ -330,7 +330,7 @@ export const CampusLife: React.FC<CampusLifeProps> = ({ onOpenCampusLifePage }) 
 
                 <div className="space-y-1.5">
                   <div className="flex items-center gap-2 text-xs font-mono text-[#0A1931] font-bold uppercase tracking-wider">
-                    <Music size={14} className="text-[#C5A880]" />
+                    <Music size={14} className="text-[#C8102E]" />
                     <span>Live Concerts & Traditions</span>
                   </div>
                   <p className="text-xs text-slate-600 leading-relaxed font-sans">
@@ -344,10 +344,10 @@ export const CampusLife: React.FC<CampusLifeProps> = ({ onOpenCampusLifePage }) 
                 <div className="pt-2">
                   <button
                     onClick={onOpenCampusLifePage}
-                    className="inline-flex items-center gap-2 text-xs font-mono font-bold uppercase tracking-[0.2em] text-[#0A1931] hover:text-[#A51C30] transition-colors cursor-pointer group"
+                    className="inline-flex items-center gap-2 text-xs font-mono font-bold uppercase tracking-[0.2em] text-[#0A1931] hover:text-[#C8102E] transition-colors cursor-pointer group"
                   >
                     <span>View Dedicated Campus Life Archive</span>
-                    <ArrowRight size={14} className="transition-transform duration-300 group-hover:translate-x-1.5 text-[#C5A880]" />
+                    <ArrowRight size={14} className="transition-transform duration-300 group-hover:translate-x-1.5 text-[#C8102E]" />
                   </button>
                 </div>
               )}
@@ -380,7 +380,7 @@ export const CampusLife: React.FC<CampusLifeProps> = ({ onOpenCampusLifePage }) 
                 </p>
               </div>
               <div className="shrink-0 flex items-center gap-2 text-xs font-mono font-semibold text-[#0A1931] bg-slate-50 px-3.5 py-2 rounded-xl border border-slate-200">
-                <Award size={15} className="text-[#C5A880]" />
+                <Award size={15} className="text-[#C8102E]" />
                 <span>INSTITUTIONAL ALLIANCE</span>
               </div>
             </div>
@@ -403,49 +403,8 @@ export const CampusLife: React.FC<CampusLifeProps> = ({ onOpenCampusLifePage }) 
           </div>
         </div>
 
-        {/* ====================================================================
-            2B. CAMPUS LIFE COLLABORATION & LEADERSHIP ASSEMBLIES
-            Full size borderless display showing complete, uncut images
-            ==================================================================== */}
-        <div className="mb-28 sm:mb-36">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 items-start">
-            {/* Image 1: Boardroom Dialogue UCP Campus Bahawalpur (Visible Full Size, No Border) */}
-            <div className="w-full">
-              <div 
-                onClick={() => openStackLightbox(['/assets/campus-life/campus-activity-1.jpg', '/assets/campus-life/campus-activity-2.jpg', '/assets/campus-life/mou-signing-ceremony.jpg'], 'Constituent College UCP Campus Bahawalpur')}
-                className="relative w-full overflow-hidden border-0 shadow-none bg-transparent cursor-pointer group"
-              >
-                <img decoding="async" src="/assets/campus-life/campus-activity-1.jpg"
-                  alt="Constituent College UCP Campus Bahawalpur Leadership Assembly"
-                  loading="eager"
-                  className="w-full h-auto object-contain block border-0 shadow-none transition-transform duration-500 ease-out group-hover:scale-[1.01]"
-                  onError={(e) => {
-                    const target = e.target as HTMLImageElement;
-                    target.src = 'https://i.ibb.co/LXhsjL46/Whats-App-Image-2026-10-11-at-11-28-36-PM.jpg';
-                  }}
-                />
-              </div>
-            </div>
 
-            {/* Image 2: UCP x Haveli Cholistan Collaboration (Visible Full Size, No Border) */}
-            <div className="w-full">
-              <div 
-                onClick={() => openStackLightbox(['/assets/campus-life/campus-activity-2.jpg', '/assets/campus-life/campus-activity-1.jpg', '/assets/campus-life/mou-signing-ceremony.jpg'], 'UCP x Haveli Cholistan Collaboration')}
-                className="relative w-full overflow-hidden border-0 shadow-none bg-transparent cursor-pointer group"
-              >
-                <img decoding="async" src="/assets/campus-life/campus-activity-2.jpg"
-                  alt="UCP Bahawalpur x Haveli Cholistan Collaboration"
-                  loading="eager"
-                  className="w-full h-auto object-contain block border-0 shadow-none transition-transform duration-500 ease-out group-hover:scale-[1.01]"
-                  onError={(e) => {
-                    const target = e.target as HTMLImageElement;
-                    target.src = 'https://i.ibb.co/WYSTnBb/Whats-App-Image-2026-10-19-at-2-08-09-AM.jpg';
-                  }}
-                />
-              </div>
-            </div>
-          </div>
-        </div>
+
 
         {/* ====================================================================
             3. CINEMATIC ARCHITECTURAL VIEW — "CAMPUS EVENING VIEW"
@@ -491,7 +450,7 @@ export const CampusLife: React.FC<CampusLifeProps> = ({ onOpenCampusLifePage }) 
         >
           {/* Header above Marquee */}
           <div className="text-center max-w-3xl mx-auto space-y-3 px-4">
-            <span className="text-xs font-mono font-bold uppercase tracking-[0.26em] text-[#C5A880]">
+            <span className="text-xs font-mono font-bold uppercase tracking-[0.26em] text-[#C8102E]">
               CURATED RETROSPECTIVE
             </span>
             <h3 
@@ -557,7 +516,7 @@ export const CampusLife: React.FC<CampusLifeProps> = ({ onOpenCampusLifePage }) 
 
                     {/* Editorial Tag & Title Overlay */}
                     <div className="absolute bottom-4 left-5 right-5 sm:bottom-6 sm:left-6 sm:right-6 text-white pointer-events-none">
-                      <span className="text-[10px] font-mono uppercase tracking-[0.22em] text-[#C5A880] font-semibold block mb-1">
+                      <span className="text-[10px] font-mono uppercase tracking-[0.22em] text-[#C8102E] font-semibold block mb-1">
                         {tag}
                       </span>
                       <h4 
@@ -612,7 +571,7 @@ export const CampusLife: React.FC<CampusLifeProps> = ({ onOpenCampusLifePage }) 
 
                     {/* Editorial Tag & Title Overlay */}
                     <div className="absolute bottom-4 left-5 right-5 sm:bottom-6 sm:left-6 sm:right-6 text-white pointer-events-none">
-                      <span className="text-[10px] font-mono uppercase tracking-[0.22em] text-[#C5A880] font-semibold block mb-1">
+                      <span className="text-[10px] font-mono uppercase tracking-[0.22em] text-[#C8102E] font-semibold block mb-1">
                         {tag}
                       </span>
                       <h4 
