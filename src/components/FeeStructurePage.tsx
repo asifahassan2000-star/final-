@@ -568,16 +568,16 @@ export const FeeStructurePage: React.FC<FeeStructurePageProps> = ({
                     <button
                       type="button"
                       onClick={() => {
-                        setCalcConcession(50);
-                        setCalcConcessionLabel('50% PGC Alumni Privilege (Punjab Colleges Graduate)');
+                        setCalcConcession(25);
+                        setCalcConcessionLabel('25% PGC Alumni Privilege (Punjab Colleges Graduate)');
                       }}
                       className={`p-3 text-left border rounded-[6px] transition-all cursor-pointer ${
-                        calcConcession === 50 && calcConcessionLabel.includes('PGC')
+                        calcConcession === 25 && calcConcessionLabel.includes('PGC')
                           ? 'border-[#0F2C52] bg-[#F0F7FF] text-[#0F2C52]'
                           : 'border-[#E5E7EB] bg-[#FFFFFF] text-[#4B5563] hover:border-[#D1D5DB]'
                       }`}
                     >
-                      <div className="font-bold text-xs text-[#0F2C52]">50% PGC Alumni Concession</div>
+                      <div className="font-bold text-xs text-[#0F2C52]">25% PGC Alumni Concession</div>
                       <div className="text-[11px] text-[#6B7280] mt-0.5">For graduates of Punjab Group of Colleges</div>
                     </button>
 

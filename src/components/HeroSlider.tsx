@@ -250,31 +250,36 @@ export const HeroSlider: React.FC<HeroSliderProps> = ({
                     {slide.subtitle}
                   </p>
 
-                  {/* Professional Action Buttons: Subtle CTA reveal */}
+                  {/* Clean Non-Distracting Text with Arrow (Unobtrusive to image view) */}
                   <div 
-                    className={`flex flex-wrap items-center gap-2.5 sm:gap-4 pt-1 sm:pt-2 transition-all duration-600 ease-out ${
+                    className={`flex flex-wrap items-center gap-4 sm:gap-6 pt-2 sm:pt-3 transition-all duration-600 ease-out ${
                       isActive ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
                     }`}
                     style={{ transitionDelay: isActive ? '460ms' : '0ms' }}
                   >
-                    {/* Primary Button */}
+                    {/* Primary Text with Arrow */}
                     <button
                       id={`hero-cta-primary-${slide.id}`}
                       onClick={() => handleAction(slide.primaryCta.action)}
-                      className="bg-[#a30f16] hover:bg-[#860c12] text-white px-4 py-2.5 sm:px-7 sm:py-3.5 rounded-xl font-bold text-xs sm:text-sm tracking-wide transition-all shadow-xl hover:shadow-rose-950/60 flex items-center gap-2 transform hover:-translate-y-0.5 active:translate-y-0 active:scale-95 cursor-pointer border border-rose-500/30"
+                      className="group inline-flex items-center gap-2 text-white hover:text-amber-300 font-semibold text-xs sm:text-base tracking-wide transition-all duration-200 cursor-pointer drop-shadow-md bg-transparent border-none p-0 focus:outline-none"
                     >
-                      <span>{slide.primaryCta.label}</span>
-                      <ArrowRight size={15} className="transition-transform group-hover:translate-x-0.5" />
+                      <span className="border-b border-white/60 group-hover:border-amber-300 pb-0.5 transition-colors">
+                        {slide.primaryCta.label}
+                      </span>
+                      <ArrowRight size={16} className="transition-transform duration-200 group-hover:translate-x-1.5 text-amber-400 group-hover:text-amber-300 shrink-0" />
                     </button>
 
-                    {/* Secondary Button */}
+                    {/* Secondary Text with Arrow (Subtle, non-distracting) */}
                     {slide.secondaryCta && (
                       <button
                         id={`hero-cta-secondary-${slide.id}`}
                         onClick={() => handleAction(slide.secondaryCta!.action)}
-                        className="bg-white/10 hover:bg-white/20 text-white border border-white/30 hover:border-white/70 px-3.5 py-2.5 sm:px-6 sm:py-3.5 rounded-xl font-semibold text-xs sm:text-sm backdrop-blur-md transition-all active:scale-95 cursor-pointer shadow-lg"
+                        className="group inline-flex items-center gap-1.5 text-slate-200 hover:text-white font-medium text-xs sm:text-sm tracking-wide transition-all duration-200 cursor-pointer drop-shadow-sm bg-transparent border-none p-0 focus:outline-none opacity-90 hover:opacity-100"
                       >
-                        {slide.secondaryCta.label}
+                        <span className="border-b border-transparent group-hover:border-white/60 pb-0.5 transition-colors">
+                          {slide.secondaryCta.label}
+                        </span>
+                        <ArrowRight size={14} className="transition-transform duration-200 group-hover:translate-x-1 text-slate-300 group-hover:text-white shrink-0" />
                       </button>
                     )}
                   </div>

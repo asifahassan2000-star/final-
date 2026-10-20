@@ -32,24 +32,21 @@ export const FeeCalculatorModal: React.FC<FeeCalculatorModalProps> = ({
   const admissionFee = 25000; // One-time
 
   // Calculate scholarship
+  // Calculate scholarship (Up to 50% Merit, 25% PGC Alumni)
   let scholarshipPercent = 0;
   let scholarshipTitle = 'Standard Fee';
 
-  if (isPgcGraduate) {
+  if (marksPercentage >= 80) {
     scholarshipPercent = 50;
-    scholarshipTitle = '50% PGC Alumni Fee Concession';
-  } else if (marksPercentage >= 90) {
-    scholarshipPercent = 100;
-    scholarshipTitle = '100% Merit Scholarship (Top Tier)';
-  } else if (marksPercentage >= 85) {
-    scholarshipPercent = 75;
-    scholarshipTitle = '75% Merit Scholarship';
-  } else if (marksPercentage >= 80) {
-    scholarshipPercent = 50;
-    scholarshipTitle = '50% Merit Scholarship';
-  } else if (marksPercentage >= 75) {
+    scholarshipTitle = '50% Merit Scholarship (Top Tier)';
+  } else if (marksPercentage >= 70) {
     scholarshipPercent = 25;
     scholarshipTitle = '25% Merit Scholarship';
+  }
+
+  if (isPgcGraduate && scholarshipPercent < 25) {
+    scholarshipPercent = 25;
+    scholarshipTitle = '25% PGC Alumni Fee Concession';
   }
 
   if (isKinship && scholarshipPercent < 25) {
@@ -156,7 +153,7 @@ export const FeeCalculatorModal: React.FC<FeeCalculatorModalProps> = ({
                 onChange={(e) => setIsPgcGraduate(e.target.checked)}
                 className="rounded text-[#b8121a]"
               />
-              <span><strong>PGC Alumni</strong> (50% Flat Off)</span>
+              <span><strong>PGC Alumni</strong> (25% Flat Off)</span>
             </label>
 
             <label className="flex items-center gap-2.5 p-3 rounded-xl border border-slate-200 bg-slate-50 text-xs text-slate-800 cursor-pointer hover:bg-slate-100">

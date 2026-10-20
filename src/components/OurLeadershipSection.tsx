@@ -62,7 +62,7 @@ const LEADERSHIP_PROFILES: LeaderProfile[] = [
     designation: 'Executive Director PGC (UCP)',
     secondaryDesignation: 'Executive Director, Educational Excellence Limited · Member BoG, UCP & MAJU',
     officialRole: 'Executive Director PGC (UCP) & Member Board of Governors, UCP',
-    portraitUrl: '/assets/leadership/sohail_afzal.jpg',
+    portraitUrl: '/assets/leadership/sohail_afzal_user_selected_3_4.jpg',
     fallbackUrl: 'https://i.ibb.co/HffRMp9g/Whats-App-Image-2026-10-20-at-2-07-37-AM.jpg',
     messageTitle: 'Executive Director’s Message',
     fullMessage: [
@@ -133,9 +133,9 @@ const LEADERSHIP_PROFILES: LeaderProfile[] = [
   {
     id: 'prof-hamid-iqbal',
     name: 'Prof. Hamid Iqbal',
-    designation: 'Director UCP Bahawalpur',
-    secondaryDesignation: 'Executive Directorate, Campus Governance',
-    officialRole: 'Director, UCP Bahawalpur Campus',
+    designation: 'Director PGC & UCP Bahawalpur Cluster',
+    secondaryDesignation: 'Director PGC & UCP Bahawalpur Cluster',
+    officialRole: 'Director PGC & UCP Bahawalpur Cluster',
     portraitUrl: '/assets/leadership/prof_hamid_iqbal_director.png',
     fallbackUrl: 'https://i.ibb.co/5hzSMywr/IMG-3544.png',
     messageTitle: 'Director’s Message',
@@ -206,9 +206,16 @@ const MobileLeaderCard: React.FC<{
           <img
             src={leader.portraitUrl}
             alt={leader.name}
-            className={`w-full h-full ${
+            style={{
+              width: '100%',
+              height: '100%',
+              minHeight: '100%',
+              objectFit: 'cover',
+              objectPosition: leader.id === 'sohail-afzal' ? 'center 12%' : 'center',
+            }}
+            className={`w-full h-full !h-full min-h-full ${
               leader.id === 'sohail-afzal'
-                ? 'object-cover object-top'
+                ? 'object-cover scale-110'
                 : 'object-cover object-center'
             }`}
             onError={(e) => {
@@ -443,11 +450,18 @@ export const OurLeadershipSection: React.FC<OurLeadershipSectionProps> = () => {
                       alt={`${leader.name} - ${leader.designation}`}
                       loading={index === 0 ? 'eager' : 'lazy'}
                       decoding="async"
-                      className={`w-full h-full ${
+                      style={{
+                        width: '100%',
+                        height: '100%',
+                        minHeight: '100%',
+                        objectFit: 'cover',
+                        objectPosition: leader.id === 'sohail-afzal' ? 'center 12%' : 'center',
+                      }}
+                      className={`w-full h-full !h-full min-h-full ${
                         leader.id === 'sohail-afzal'
-                          ? 'object-cover object-top'
-                          : 'object-cover object-center'
-                      } transition-transform duration-500 ease-out group-hover:scale-105`}
+                          ? 'object-cover scale-[1.12] group-hover:scale-[1.18]'
+                          : 'object-cover object-center group-hover:scale-105'
+                      } transition-transform duration-500 ease-out`}
                       onError={(e) => {
                         const target = e.target as HTMLImageElement;
                         if (target.src !== leader.fallbackUrl) {
@@ -619,9 +633,16 @@ export const OurLeadershipSection: React.FC<OurLeadershipSectionProps> = () => {
                     <img
                       src={selectedLeader.portraitUrl}
                       alt={selectedLeader.name}
-                      className={`w-full h-full ${
+                      style={{
+                        width: '100%',
+                        height: '100%',
+                        minHeight: '100%',
+                        objectFit: 'cover',
+                        objectPosition: selectedLeader.id === 'sohail-afzal' ? 'center 12%' : 'center',
+                      }}
+                      className={`w-full h-full !h-full min-h-full ${
                         selectedLeader.id === 'sohail-afzal'
-                          ? 'object-cover object-top'
+                          ? 'object-cover scale-110'
                           : 'object-cover object-center'
                       }`}
                       onError={(e) => {

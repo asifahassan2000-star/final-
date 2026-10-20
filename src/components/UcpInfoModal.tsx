@@ -381,12 +381,12 @@ export const UcpInfoModal: React.FC<UcpInfoModalProps> = ({
               </p>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 text-xs">
                 <div className="p-3 bg-amber-50 rounded-xl border border-amber-200">
-                  <h5 className="font-bold text-amber-950">Merit Scholarships (Up to 100%)</h5>
-                  <p className="text-amber-900 mt-0.5">Awarded to top performers with outstanding board and entry test scores.</p>
+                  <h5 className="font-bold text-amber-950">Merit Scholarships (Up to 50%)</h5>
+                  <p className="text-amber-900 mt-0.5">Awarded to top performers with outstanding intermediate board scores.</p>
                 </div>
                 <div className="p-3 bg-slate-50 rounded-xl border border-slate-200">
-                  <h5 className="font-bold text-slate-900">PGC Alumni Concession (50%)</h5>
-                  <p className="text-slate-600 mt-0.5">50% tuition waiver for graduates of the Punjab Group of Colleges.</p>
+                  <h5 className="font-bold text-slate-900">PGC Alumni Concession (25%)</h5>
+                  <p className="text-slate-600 mt-0.5">25% tuition fee concession for graduates of the Punjab Group of Colleges.</p>
                 </div>
                 <div className="p-3 bg-slate-50 rounded-xl border border-slate-200">
                   <h5 className="font-bold text-slate-900">Kinship Fee Concession (25%)</h5>
@@ -604,7 +604,7 @@ export const UcpInfoModal: React.FC<UcpInfoModalProps> = ({
               <div className="p-3 bg-slate-50 rounded-xl border border-slate-200">
                 <h5 className="font-bold text-slate-900">What is the criteria for UCP Merit Scholarships?</h5>
                 <p className="text-slate-600 mt-1">
-                  Students scoring 85%+ in Intermediate/A-Levels are eligible for up to 100% tuition scholarships. PGC alumni automatically receive a 50% tuition waiver across all undergraduate programs.
+                  Students scoring high in Intermediate/A-Levels are eligible for up to 50% tuition scholarships based on merit. PGC alumni receive a 25% tuition fee concession across all undergraduate programs.
                 </p>
               </div>
               <div className="p-3 bg-slate-50 rounded-xl border border-slate-200">

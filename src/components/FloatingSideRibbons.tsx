@@ -10,6 +10,7 @@ interface FloatingSideRibbonsProps {
   onOpenProgrammesPage?: () => void;
   onOpenScholarshipsPage?: () => void;
   onOpenFeeStructurePage?: () => void;
+  onOpenPortal?: () => void;
 }
 
 export const FloatingSideRibbons: React.FC<FloatingSideRibbonsProps> = ({
@@ -20,6 +21,7 @@ export const FloatingSideRibbons: React.FC<FloatingSideRibbonsProps> = ({
   onOpenProgrammesPage,
   onOpenScholarshipsPage,
   onOpenFeeStructurePage,
+  onOpenPortal,
 }) => {
   const [showCallTooltip, setShowCallTooltip] = useState(false);
   const [isCallMenuOpen, setIsCallMenuOpen] = useState(false);
@@ -121,6 +123,25 @@ export const FloatingSideRibbons: React.FC<FloatingSideRibbonsProps> = ({
         >
           <span className="inline-block py-2 sm:py-2.5 md:py-3 px-1 sm:px-1.2 md:px-1.5 text-[9.5px] sm:text-[11px] md:text-xs font-semibold tracking-tight sm:tracking-normal md:tracking-wider whitespace-nowrap leading-none">
             Fee Structure
+          </span>
+        </button>
+
+        {/* Tab 6: Student Portal (Official Crimson Red Accent) */}
+        <button
+          id="ribbon-student-portal"
+          onClick={() => {
+            if (onOpenPortal) {
+              onOpenPortal();
+            } else {
+              window.open('https://mcom.pgc.edu.pk/Student/StdLogin.jsp', '_blank', 'noopener,noreferrer');
+            }
+          }}
+          className="group relative bg-[#a30f16] hover:bg-[#860c12] active:bg-[#860c12] text-white border-l border-t border-b border-rose-900/60 rounded-l-[4px] transition-all duration-200 hover:pr-1 shadow-md focus:outline-none cursor-pointer"
+          style={{ writingMode: 'vertical-rl', transform: 'rotate(180deg)' }}
+          title="Student Portal Login — Grades, Attendance, Timetables & Fee Vouchers"
+        >
+          <span className="inline-block py-2 sm:py-2.5 md:py-3 px-1 sm:px-1.2 md:px-1.5 text-[9.5px] sm:text-[11px] md:text-xs font-bold tracking-tight sm:tracking-normal md:tracking-wider whitespace-nowrap leading-none">
+            Student Portal
           </span>
         </button>
       </aside>

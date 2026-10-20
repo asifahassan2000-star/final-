@@ -100,8 +100,8 @@ export function getInstantBotResponse(userQuery: string): BotResponse {
   // 11. Scholarships & Financial Aid
   if (/scholarship|concession|discount|financial aid|kinship|pgc student|merit|free education/i.test(q)) {
     return {
-      reply: "🏆 **Scholarships & Fee Concessions at UCP Bahawalpur**:\n\n• **Merit Scholarships**: Up to 100% tuition waiver awarded based on intermediate marks!\n• **PGC Alumni Concession**: 25% to 50% tuition waiver for students from Punjab Group of Colleges 🎓\n• **Kinship Concession**: 25% waiver for real siblings concurrently enrolled\n• **Sports & Co-Curricular**: Full tuition waivers for national/provincial athletes\n• **Need-Based Aid**: Dedicated financial assistance through the campus Student Aid Committee ✨!",
-      suggestions: ["Eligibility for 100% 🏅", "PGC Discount 🎒", "Apply for Admission 📝"],
+      reply: "🏆 **Scholarships & Fee Concessions at UCP Bahawalpur**:\n\n• **Merit Scholarships**: Up to 50% tuition waiver awarded based on intermediate marks!\n• **PGC Alumni Concession**: 25% tuition fee concession for students from Punjab Group of Colleges 🎓\n• **Kinship Concession**: 25% waiver for real siblings concurrently enrolled\n• **Sports & Co-Curricular**: Competitive fee concessions for recognized athletes\n• **Need-Based Aid**: Dedicated financial assistance through the campus Student Aid Committee ✨!",
+      suggestions: ["Eligibility for 50% 🏅", "PGC 25% Concession 🎒", "Apply for Admission 📝"],
       actionLink: { label: "View Scholarships Details", url: "#scholarships" }
     };
   }
@@ -142,7 +142,7 @@ export function getInstantBotResponse(userQuery: string): BotResponse {
   // 16. Leadership & Affiliation
   if (/leader|leadership|chairman|rector|director|mian amir|aurangzaib|hamid iqbal|principal|owner/i.test(q)) {
     return {
-      reply: "👔 **Executive Leadership at UCP Bahawalpur**:\n\n• **Prof. Hamid Iqbal**: Director, UCP Bahawalpur Campus\n• **Prof. Dr. Aurangzaib Virk**: Head / Principal, UCP Bahawalpur Campus\n• **Mian Amir Mahmood**: Founder, University of Central Punjab & Punjab Group of Colleges (PGC)\n\nDedicated to academic integrity, world-class curricula, and student empowerment 🌟!",
+      reply: "👔 **Executive Leadership at UCP Bahawalpur**:\n\n• **Prof. Hamid Iqbal**: Director PGC & UCP Bahawalpur Cluster\n• **Prof. Dr. Aurangzaib Virk**: Principal, UCP Bahawalpur Campus\n• **Prof. Sohail Afzal**: Executive Director PGC (UCP)\n• **Mian Amer Mahmood**: Founder & Chairman, Punjab Group of Colleges (PGC) & UCP\n\nDedicated to academic integrity, world-class curricula, and student empowerment 🌟!",
       suggestions: ["Campus Mission 🎯", "Browse Degrees 🎓", "Admissions 📝"]
     };
   }

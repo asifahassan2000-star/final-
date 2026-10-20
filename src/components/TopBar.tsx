@@ -15,7 +15,7 @@ export const TopBar: React.FC<TopBarProps> = ({ onOpenPortal, onOpenFee, onOpenA
     'Admissions Open for Fall 2026 Semester – Apply Online Today!',
     'Official Merit Lists (1st & 2nd) are now live on UCP Portal.',
     'Two-Day National Symposium on Lab Safety & Research Ethics (Sept 2026).',
-    'Up to 100% Merit Scholarships & 50% PGC Alumni Fee Concession available.',
+    'Up to 50% Merit Scholarships & 25% PGC Alumni Fee Concession available.',
     'CNN Academy at UCP – Applications open for Autumn Media Fellowship.',
   ];
 

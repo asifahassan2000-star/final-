@@ -21,6 +21,7 @@ const FacultiesGrid = React.lazy(() => import('./components/FacultiesGrid').then
 const WhatWeOfferAccordion = React.lazy(() => import('./components/WhatWeOfferAccordion').then(m => ({ default: m.WhatWeOfferAccordion })));
 const FacultySection = React.lazy(() => import('./components/FacultySection').then(m => ({ default: m.FacultySection })));
 const AboutCampusSection = React.lazy(() => import('./components/AboutCampusSection').then(m => ({ default: m.AboutCampusSection })));
+const StatisticsSection = React.lazy(() => import('./components/StatisticsSection').then(m => ({ default: m.StatisticsSection })));
 const FacilitiesSection = React.lazy(() => import('./components/FacilitiesSection').then(m => ({ default: m.FacilitiesSection })));
 const OurLeadershipSection = React.lazy(() => import('./components/OurLeadershipSection').then(m => ({ default: m.OurLeadershipSection })));
 const LeadershipImpactSection = React.lazy(() => import('./components/LeadershipImpactSection').then(m => ({ default: m.LeadershipImpactSection })));
@@ -57,6 +58,7 @@ export default function App() {
   const [facultyCategory, setFacultyCategory] = useState<string>('all');
   const [selectedProgrammeId, setSelectedProgrammeId] = useState<string | null>(null);
   const [selectedProgrammeCategory, setSelectedProgrammeCategory] = useState<string | null>(null);
+  const [scholarshipSectionId, setScholarshipSectionId] = useState<string | null>(null);
 
   // Modal states
   const [isApplyOpen, setIsApplyOpen] = useState(false);
@@ -183,11 +185,14 @@ export default function App() {
     requestAnimationFrame(() => scrollToTopInstant());
   };
 
-  const handleOpenScholarshipsPage = () => {
+  const handleOpenScholarshipsPage = (sectionId?: string) => {
     scrollToTopInstant();
     setSelectedProgrammeId(null);
+    setScholarshipSectionId(sectionId || null);
     setCurrentPage('scholarships');
-    requestAnimationFrame(() => scrollToTopInstant());
+    if (!sectionId) {
+      requestAnimationFrame(() => scrollToTopInstant());
+    }
   };
 
   const handleOpenFeeStructurePage = () => {
@@ -224,6 +229,14 @@ export default function App() {
 
   const handleOpenFee = () => {
     handleOpenFeeStructurePage();
+  };
+
+  const handleOpenPortal = () => {
+    window.open(
+      'https://mcom.pgc.edu.pk/Student/StdLogin.jsp',
+      '_blank',
+      'noopener,noreferrer'
+    );
   };
 
   const handleOpenInfo = (type: InfoModalType) => {
@@ -363,7 +376,7 @@ export default function App() {
       <Navbar
         onOpenApply={() => handleOpenApply()}
         onOpenFee={handleOpenFee}
-        onOpenPortal={() => setIsPortalOpen(true)}
+        onOpenPortal={handleOpenPortal}
         onOpenInfo={handleOpenInfo}
         onSelectFaculty={handleSelectFaculty}
         onScrollTo={handleScrollTo}
@@ -424,6 +437,7 @@ export default function App() {
             onOpenApply={() => handleOpenApply()}
             onOpenProgrammesPage={handleOpenProgrammesPage}
             onOpenFee={handleOpenFee}
+            initialSectionId={scholarshipSectionId || undefined}
           />
         ) : currentPage === 'fee-structure' ? (
           /* Dedicated Official Fee Structure & Tuition Schedules Page */
@@ -437,7 +451,7 @@ export default function App() {
           /* Dedicated Official CNN Academy Strategic Collaboration & Guidance Page */
           <CnnAcademyPage
             onBackToHome={handleBackToHome}
-            onOpenPortal={() => setIsPortalOpen(true)}
+            onOpenPortal={handleOpenPortal}
             onOpenProgrammesPage={handleOpenProgrammesPage}
           />
         ) : currentPage === 'calendar' ? (
@@ -458,7 +472,7 @@ export default function App() {
               onOpenProgrammesPage={handleOpenProgrammesPage}
               onOpenLegacyPage={handleOpenLegacyPage}
               onOpenCampusLifePage={handleOpenCampusLifePage}
-              onOpenPortal={() => setIsPortalOpen(true)}
+              onOpenPortal={handleOpenPortal}
             />
 
             {/* WELCOME UCP — Executive Welcome Section with GSAP Sticky Stacking Cards & Official Blue Background */}
@@ -570,6 +584,11 @@ export default function App() {
                 onScrollTo={handleScrollTo}
               />
             </div>
+
+            {/* 14. UCP BAHAWALPUR MOVING LINE (Ticker Tape at end of website before footer) */}
+            <div className="w-full">
+              <StatisticsSection />
+            </div>
           </>
         )}
         </Suspense>
@@ -580,7 +599,7 @@ export default function App() {
         <Footer
           onOpenApply={() => handleOpenApply()}
           onOpenFee={handleOpenFee}
-          onOpenPortal={() => setIsPortalOpen(true)}
+          onOpenPortal={handleOpenPortal}
           onOpenInfo={handleOpenInfo}
           onScrollTo={handleScrollTo}
           onSelectFaculty={handleSelectFaculty}
@@ -596,6 +615,7 @@ export default function App() {
           onOpenProgrammesPage={() => handleOpenProgrammesPage()}
           onOpenScholarshipsPage={handleOpenScholarshipsPage}
           onOpenFeeStructurePage={handleOpenFeeStructurePage}
+          onOpenPortal={handleOpenPortal}
         />
       </Suspense>
 
@@ -625,7 +645,7 @@ export default function App() {
           type={selectedInfoModal}
           onClose={() => setSelectedInfoModal(null)}
           onOpenApply={() => handleOpenApply()}
-          onOpenPortal={() => setIsPortalOpen(true)}
+          onOpenPortal={handleOpenPortal}
           onOpenProgrammesPage={() => handleOpenProgrammesPage()}
         />
 

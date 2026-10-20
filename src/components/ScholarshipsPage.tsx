@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { 
   Award, GraduationCap, Users, ShieldCheck, ArrowLeft, ArrowRight,
   CheckCircle2, Calculator, Info, ExternalLink, Sparkles, AlertCircle,
@@ -12,6 +12,7 @@ interface ScholarshipsPageProps {
   onOpenApply: () => void;
   onOpenProgrammesPage: (progId?: string) => void;
   onOpenFee: () => void;
+  initialSectionId?: string;
 }
 
 // Subtle, neat jumping word animation component without extra borders
@@ -63,9 +64,22 @@ export const ScholarshipsPage: React.FC<ScholarshipsPageProps> = ({
   onOpenApply,
   onOpenProgrammesPage,
   onOpenFee,
+  initialSectionId,
 }) => {
   // Navigation & Category Tab state
   const [activeTab, setActiveTab] = useState<'all' | 'bs' | 'kinship' | 'adp' | 'cgpa'>('all');
+
+  useEffect(() => {
+    if (initialSectionId) {
+      const timer = setTimeout(() => {
+        const el = document.getElementById(initialSectionId);
+        if (el) {
+          el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }, 150);
+      return () => clearTimeout(timer);
+    }
+  }, [initialSectionId]);
 
   // Interactive Calculator State
   const [calcDegreeType, setCalcDegreeType] = useState<'bs' | 'adp'>('bs');
@@ -120,21 +134,11 @@ export const ScholarshipsPage: React.FC<ScholarshipsPageProps> = ({
           rationale = 'Intermediate Marks ≥ 75% for 2-Year Associate Degree Programs';
         }
 
-        // ADP Old Student
-        if (isOldStudent) {
-          if (calcMarks >= 60) {
-            if (50 > bestPercent) {
-              bestPercent = 50;
-              tierTitle = '50% Old Student ADP Concession';
-              rationale = 'PGC Alumni with ≥ 60% Intermediate marks in ADP';
-            }
-          } else {
-            if (25 > bestPercent) {
-              bestPercent = 25;
-              tierTitle = '25% Old Student ADP Concession';
-              rationale = 'PGC Alumni with < 60% Intermediate marks in ADP';
-            }
-          }
+        // ADP Old Student (25% Tuition Fee Concession for PGC Alumni)
+        if (isOldStudent && bestPercent < 25) {
+          bestPercent = 25;
+          tierTitle = '25% Old Student Concession';
+          rationale = 'Punjab Group of Colleges (PGC) Alumni Privilege (25% Concession)';
         }
 
         // ADP Kinship / Armed Forces / Teacher child (25%)
@@ -273,11 +277,11 @@ export const ScholarshipsPage: React.FC<ScholarshipsPageProps> = ({
                 PGC Alumni
               </span>
               <div className="text-[26px] font-bold text-[#0F2C52] mt-1.5 flex items-baseline gap-1">
-                <span>Up to</span>
-                <JumpingWord text="50%" className="text-[#a30f16]" />
+                <span>Flat</span>
+                <JumpingWord text="25%" className="text-[#a30f16]" />
               </div>
               <span className="text-[12px] text-[#4B5563] mt-0.5 block font-medium">
-                Old Student Privilege
+                Tuition Fee Concession
               </span>
             </div>
 
@@ -1242,21 +1246,21 @@ export const ScholarshipsPage: React.FC<ScholarshipsPageProps> = ({
                       <tr className="bg-white hover:bg-[#F9FAFB] transition-colors">
                         <td className="py-3 px-4 text-xs font-mono text-[#64748B]">I1</td>
                         <td className="py-3 px-4 font-bold text-[#111827]">
-                          60% and above marks in Intermediate (At Admission)
+                          PGC Alumni Intermediate Graduates (At Admission)
                         </td>
                         <td className="py-3 px-4 text-center">
                           <span className="inline-block px-3 py-1 bg-[#FFF1F2] text-[#a30f16] font-black text-base border border-[#FECDD3] rounded-[4px]">
-                            <JumpingWord text="50%" className="text-[#a30f16]" />
+                            <JumpingWord text="25%" className="text-[#a30f16]" />
                           </span>
                         </td>
                         <td className="py-3 px-4 text-xs text-[#4B5563]">
-                          PGC Alumni special privilege in 1st Semester
+                          PGC Alumni flat tuition fee concession in 1st Semester
                         </td>
                       </tr>
                       <tr className="bg-[#F9FAFB] hover:bg-[#F1F5F9] transition-colors">
                         <td className="py-3 px-4 text-xs font-mono text-[#64748B]">I2</td>
                         <td className="py-3 px-4 font-bold text-[#111827]">
-                          Less than 60% marks in Intermediate (At Admission)
+                          Kinship & Armed Forces / Government Employee Children (At Admission)
                         </td>
                         <td className="py-3 px-4 text-center">
                           <span className="inline-block px-3 py-1 bg-slate-100 text-[#1E293B] font-bold border border-slate-300 rounded-[4px]">
@@ -1264,7 +1268,7 @@ export const ScholarshipsPage: React.FC<ScholarshipsPageProps> = ({
                           </span>
                         </td>
                         <td className="py-3 px-4 text-xs text-[#4B5563]">
-                          PGC Alumni standard concession in 1st Semester
+                          Concession applicable in 1st Semester
                         </td>
                       </tr>
                       <tr className="bg-white hover:bg-[#F9FAFB] transition-colors">

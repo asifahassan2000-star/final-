@@ -24,7 +24,7 @@ interface NavbarProps {
   onOpenProgrammesPage?: (progId?: string) => void;
   onOpenLegacyPage?: () => void;
   onOpenCampusLifePage?: () => void;
-  onOpenScholarshipsPage?: () => void;
+  onOpenScholarshipsPage?: (sectionId?: string) => void;
   onOpenCnnAcademyPage?: () => void;
   onOpenCalendar?: () => void;
   onBackToHome?: () => void;
@@ -229,7 +229,7 @@ export const Navbar: React.FC<NavbarProps> = ({
       id: 'page-scholarships',
       title: 'Scholarships & Concessions',
       category: 'Pages',
-      description: 'Up to 100% Merit Scholarships, 25-50% PGC Alumni and Kinship fee concessions',
+      description: 'Up to 50% Merit Scholarships & 25% PGC Alumni and Kinship fee concessions',
       icon: Award,
       action: () => {
         setIsSearchOpen(false);
@@ -491,8 +491,11 @@ export const Navbar: React.FC<NavbarProps> = ({
                       type="button"
                       onClick={() => { 
                         setActiveDropdown(null); 
-                        if (onOpenProgrammesPage) onOpenProgrammesPage();
-                        else handleNavClick('finder-section'); 
+                        if (onOpenScholarshipsPage) {
+                          onOpenScholarshipsPage('scholarship-calculator');
+                        } else {
+                          handleNavClick('scholarship-calculator');
+                        }
                       }}
                       className="w-full text-left py-[8px] px-[14px] rounded-[6px] hover:bg-[#F5F5F5] flex items-center justify-between text-[#333333] cursor-pointer"
                     >
@@ -591,7 +594,7 @@ export const Navbar: React.FC<NavbarProps> = ({
 
                     <button
                       type="button"
-                      onClick={() => { setActiveDropdown(null); handleNavClick('stats-section'); }}
+                      onClick={() => { setActiveDropdown(null); handleNavClick('vision-rankings-section'); }}
                       className="w-full text-left py-[8px] px-[14px] rounded-[6px] hover:bg-[#F5F5F5] text-[#333333] flex items-center justify-between cursor-pointer"
                     >
                       <span>Vision & Rankings</span>
@@ -919,6 +922,15 @@ export const Navbar: React.FC<NavbarProps> = ({
               Our Leadership
             </button>
             <button
+              onClick={() => {
+                setMobileMenuOpen(false);
+                handleNavClick('vision-rankings-section');
+              }}
+              className="w-full text-left py-1.5 text-slate-200 hover:text-white flex items-center justify-between"
+            >
+              <span>Vision & Rankings</span>
+            </button>
+            <button
               onClick={() => { 
                 setMobileMenuOpen(false); 
                 if (onOpenLegacyPage) onOpenLegacyPage(); 
@@ -926,6 +938,19 @@ export const Navbar: React.FC<NavbarProps> = ({
               className="w-full text-left py-1.5 text-slate-200 hover:text-amber-300 flex items-center justify-between"
             >
               <span>Our Legacy</span>
+            </button>
+            <button
+              onClick={() => {
+                setMobileMenuOpen(false);
+                onOpenPortal();
+              }}
+              className="w-full text-left py-1.5 text-slate-200 hover:text-amber-300 flex items-center justify-between"
+            >
+              <span className="flex items-center gap-1.5">
+                <User size={13} className="text-amber-400" />
+                <span>Student Portal</span>
+              </span>
+              <span className="text-xs text-amber-300">Login ↗</span>
             </button>
             <button
               onClick={() => { 
