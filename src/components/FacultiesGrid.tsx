@@ -73,10 +73,12 @@ export const FacultiesGrid: React.FC<FacultiesGridProps> = ({
     <section id="faculties-section" className="py-20 sm:py-24 lg:py-28 bg-[#f8fafc] text-[#0F2C61] border-b border-slate-200 select-none">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        {/* Section Header: Minimal & Compact WordPress Style */}
-        <div 
-          data-reveal="heading"
-          data-reveal-delay="0"
+        {/* Section Header: Minimal & Compact with Smooth Motion Animation */}
+        <motion.div 
+          initial={{ opacity: 0, y: 22 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '-20px' }}
+          transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
           className="flex flex-col sm:flex-row sm:items-end justify-between mb-7 sm:mb-8 pb-4 border-b border-slate-200/80 gap-3"
         >
           <div>
@@ -86,9 +88,17 @@ export const FacultiesGrid: React.FC<FacultiesGridProps> = ({
                 Academic Faculties
               </span>
             </div>
-            <h2 className="font-['Playfair_Display',Georgia,serif] text-2xl sm:text-3xl font-bold text-[#0F2C61] tracking-tight leading-snug">
-              Academic Programmes
-            </h2>
+            <div className="overflow-hidden">
+              <motion.h2 
+                initial={{ y: '100%', opacity: 0 }}
+                whileInView={{ y: 0, opacity: 1 }}
+                viewport={{ once: true, margin: '-20px' }}
+                transition={{ duration: 0.75, ease: [0.16, 1, 0.3, 1] }}
+                className="font-['Playfair_Display',Georgia,serif] text-2xl sm:text-3xl font-bold text-[#0F2C61] tracking-tight leading-snug"
+              >
+                Academic Programmes
+              </motion.h2>
+            </div>
           </div>
 
           <div className="flex flex-wrap items-center gap-3">
@@ -112,7 +122,7 @@ export const FacultiesGrid: React.FC<FacultiesGridProps> = ({
               <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
             </button>
           </div>
-        </div>
+        </motion.div>
 
         {/* Compact, Minimal Graphic Cards Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">

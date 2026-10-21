@@ -238,13 +238,15 @@ export const WelcomeUcpSection: React.FC<WelcomeUcpSectionProps> = ({
             </div>
 
             {/* Main Heading: A Warm Welcome to UCPians */}
-            <h2 
-              data-reveal="heading"
-              data-reveal-delay="120"
-              className="font-['Source_Serif_4','Source_Serif_Pro','Georgia',serif] text-3xl sm:text-4xl lg:text-[45px] font-bold text-[#0A1931] dark:text-white tracking-tight leading-[1.18] mb-6 sm:mb-8 text-balance"
-            >
-              A Warm Welcome to <span className="text-[#0A1931] dark:text-amber-400">UCPians</span>
-            </h2>
+            <div className="mask-reveal-wrap">
+              <h2 
+                data-reveal="heading"
+                data-reveal-delay="120"
+                className="mask-reveal-child font-['Source_Serif_4','Source_Serif_Pro','Georgia',serif] text-3xl sm:text-4xl lg:text-[45px] font-bold text-[#0A1931] dark:text-white tracking-tight leading-[1.18] mb-6 sm:mb-8 text-balance"
+              >
+                A Warm Welcome to <span className="text-[#0A1931] dark:text-amber-400">UCPians</span>
+              </h2>
+            </div>
 
             {/* Welcome Message: Styled as an elegant editorial quotation (Single unit) */}
             <div 

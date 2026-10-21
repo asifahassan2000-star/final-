@@ -47,13 +47,19 @@ export const ClosingDramaticSection: React.FC<ClosingDramaticSectionProps> = ({
           <span>YOUR ACADEMIC HOME IN SOUTHERN PUNJAB</span>
         </div>
 
-        {/* Main Heading with Playfair Display */}
-        <h2
-          id="closing-heading"
-          className="text-3xl sm:text-5xl lg:text-6xl font-['Playfair_Display',serif] font-bold tracking-tight text-white leading-[1.15] drop-shadow-md mb-6"
-        >
-          Experience UCP Bahawalpur
-        </h2>
+        {/* Main Heading with Playfair Display and Smooth Mask Reveal */}
+        <div className="overflow-hidden">
+          <motion.h2
+            id="closing-heading"
+            initial={{ y: '100%', opacity: 0 }}
+            whileInView={{ y: 0, opacity: 1 }}
+            viewport={{ once: true, margin: '-20px' }}
+            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+            className="text-3xl sm:text-5xl lg:text-6xl font-['Playfair_Display',serif] font-bold tracking-tight text-white leading-[1.15] drop-shadow-md mb-6"
+          >
+            Experience UCP Bahawalpur
+          </motion.h2>
+        </div>
 
         {/* Staggered Supporting Text (Inter) */}
         <p className="max-w-2xl mx-auto text-base sm:text-lg text-slate-100 font-sans leading-relaxed mb-10 drop-shadow-sm">

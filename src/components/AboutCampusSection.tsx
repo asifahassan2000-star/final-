@@ -76,14 +76,8 @@ export const AboutCampusSection: React.FC<AboutCampusSectionProps> = ({
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        {/* Header with Framer Motion Reveal */}
-        <motion.div 
-          className="max-w-3xl mb-12 sm:mb-16"
-          initial={{ opacity: 0, y: 32 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.78, ease: easeCurve }}
-          viewport={{ once: true, margin: '0px 0px -15% 0px' }}
-        >
+        {/* Header with Framer Motion Mask Reveal */}
+        <div className="max-w-3xl mb-12 sm:mb-16">
           <div className="flex items-center gap-3 mb-3">
             <span className="text-xs font-bold uppercase tracking-[0.22em] text-[#a30f16] dark:text-amber-400">
               OUR CAMPUS · BAHAWALPUR
@@ -91,149 +85,120 @@ export const AboutCampusSection: React.FC<AboutCampusSectionProps> = ({
             <span className="h-px w-8 bg-[#a30f16]/40 dark:bg-amber-400/40" aria-hidden="true" />
           </div>
 
-          <h2
-            id="about-campus-heading"
-            className="text-3xl sm:text-4xl lg:text-[46px] font-serif font-semibold text-[#092242] dark:text-white tracking-tight leading-[1.18]"
-            style={{ fontFamily: "'Cormorant Garamond', 'Libre Baskerville', Georgia, serif" }}
-          >
-            An Environment Built for Growth & Academic Discovery
-          </h2>
+          <div className="overflow-hidden">
+            <motion.h2
+              id="about-campus-heading"
+              initial={{ y: '100%', opacity: 0 }}
+              whileInView={{ y: 0, opacity: 1 }}
+              viewport={{ once: true, margin: '-40px' }}
+              transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+              className="text-3xl sm:text-4xl lg:text-[46px] font-serif font-semibold text-[#092242] dark:text-white tracking-tight leading-[1.18]"
+              style={{ fontFamily: "'Cormorant Garamond', 'Libre Baskerville', Georgia, serif" }}
+            >
+              An Environment Built for Growth & Academic Discovery
+            </motion.h2>
+          </div>
 
-          <p className="mt-4 text-base sm:text-lg text-slate-600 dark:text-slate-300 leading-relaxed font-sans max-w-2xl">
+          <motion.p 
+            initial={{ opacity: 0, y: 18 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: '-20px' }}
+            transition={{ duration: 0.75, delay: 0.1, ease: easeCurve }}
+            className="mt-4 text-base sm:text-lg text-slate-600 dark:text-slate-300 leading-relaxed font-sans max-w-2xl"
+          >
             Rooted in the historic scholarly legacy of Bahawalpur and developed with purpose-built modern architecture, UCP Bahawalpur provides world-class educational spaces and interactive classrooms designed to inspire learning.
-          </p>
-        </motion.div>
+          </motion.p>
+        </div>
 
         {/* =========================================================================
             1. DUAL-COLUMN ARCHITECTURAL & GROUNDS SHOWCASE
+            Harvard Editorial Style — Pure Clean Text, No Frame, No Border, Just Text
             ========================================================================= */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-start mb-16 sm:mb-20">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start mb-16 sm:mb-20">
           
           {/* Left Column: Architectural Exterior */}
-          <motion.div 
-            className="lg:col-span-7 flex flex-col space-y-6"
-            initial={{ opacity: 0, y: 32 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.78, delay: 0.12, ease: easeCurve }}
-            viewport={{ once: true, margin: '0px 0px -15% 0px' }}
-          >
-            {/* Architectural Exterior Photograph (Minimal, No Extra Border) */}
-            <div className="group relative overflow-hidden rounded-xl bg-slate-100 dark:bg-slate-900 shadow-xs w-full aspect-[16/9]">
-              <img src="/assets/campus/12_about_architecture_exterior.jpg"
+          <div className="lg:col-span-7 flex flex-col space-y-5">
+            {/* Architectural Exterior Photograph (Pure Edge-to-Edge, No Frame, No Shadow) */}
+            <div className="relative overflow-hidden rounded-xl w-full aspect-[16/9]">
+              <img 
+                src="/assets/campus/12_about_architecture_exterior.jpg"
                 alt="UCP Bahawalpur Architectural Exterior and Modern Campus Facade"
                 loading="lazy"
                 decoding="async"
-                className="w-full h-full object-cover object-center block transition-transform duration-700 ease-out group-hover:scale-102"
+                className="w-full h-full object-cover object-center block"
               />
             </div>
 
-            {/* Contemporary Learning Standards Narrative Block */}
-            <div className="bg-[#FDFBF7] dark:bg-[#0d1e38] rounded-xl p-6 sm:p-7 space-y-4 shadow-xs border border-transparent dark:border-[#1e3256] transition-colors">
-              <div className="flex items-center justify-between flex-wrap gap-2">
-                <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.16em] text-[#a30f16] dark:text-amber-400">
-                  <Building2 size={16} />
-                  <span>Purpose-Built Academic Infrastructure</span>
-                </div>
-                <span className="text-[11px] font-medium text-slate-500 dark:text-slate-300 bg-white dark:bg-[#12284c] px-2.5 py-1 rounded-full border border-slate-200/80 dark:border-[#1e3256]">
-                  Bahawalpur Region
-                </span>
+            {/* Harvard Editorial Style — Pure Clean Text, No Background Box, No Frame, No Extra Icons */}
+            <div className="space-y-3 pt-1">
+              <div className="overflow-hidden">
+                <motion.h3 
+                  initial={{ y: '100%', opacity: 0 }}
+                  whileInView={{ y: 0, opacity: 1 }}
+                  viewport={{ once: true, margin: '-30px' }}
+                  transition={{ duration: 0.75, ease: [0.16, 1, 0.3, 1] }}
+                  className="font-serif text-2xl sm:text-3xl font-normal text-[#092242] dark:text-white tracking-tight leading-snug"
+                  style={{ fontFamily: "'Playfair Display', 'Cormorant Garamond', Georgia, serif" }}
+                >
+                  World-Class Academic Infrastructure &amp; Research Spaces
+                </motion.h3>
               </div>
 
-              <h4 
-                className="font-serif text-xl sm:text-2xl font-semibold text-[#092242] dark:text-white"
-                style={{ fontFamily: "'Cormorant Garamond', 'Libre Baskerville', Georgia, serif" }}
+              <motion.p 
+                initial={{ opacity: 0, y: 16 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: '-20px' }}
+                transition={{ duration: 0.72, delay: 0.08, ease: easeCurve }}
+                className="text-base text-slate-600 dark:text-slate-300 leading-relaxed font-sans"
               >
-                World-Class Facilities for Tomorrow’s Leaders
-              </h4>
+                Spread across an expansive architectural footprint on Airport Road, UCP Bahawalpur integrates digital lecture theatres, advanced computing laboratories, high-speed fiber connectivity, and dedicated faculty research lounges. Every space is purposefully designed to cultivate disciplined inquiry, critical analysis, and collaborative scholarship.
+              </motion.p>
+            </div>
+          </div>
 
-              <p className="text-sm text-slate-600 dark:text-slate-300 leading-relaxed font-sans">
-                Spread across an expansive footprint, the campus integrates digital lecture theatres, advanced computing labs, high-speed fiber connectivity, and dedicated faculty research lounges. Every space is engineered to facilitate rigorous inquiry and collaborative problem solving.
-              </p>
-
-              <div className="pt-2 flex items-center gap-4 flex-wrap border-t border-slate-200/70 dark:border-white/10">
-                {onOpenLegacyPage && (
-                  <button
-                    onClick={onOpenLegacyPage}
-                    className="inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-[0.16em] text-[#092242] dark:text-slate-200 hover:text-[#a30f16] dark:hover:text-amber-400 transition-colors cursor-pointer group/btn"
-                  >
-                    <span>Explore Our Legacy</span>
-                    <ArrowRight size={13} className="transition-transform group-hover/btn:translate-x-1 text-[#a30f16] dark:text-amber-400" />
-                  </button>
-                )}
-                {onOpenApply && (
-                  <button
-                    onClick={onOpenApply}
-                    className="inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-[0.16em] text-[#a30f16] dark:text-amber-400 hover:text-[#092242] dark:hover:text-white transition-colors cursor-pointer group/btn ml-auto"
-                  >
-                    <span>Apply for Admissions</span>
-                    <ArrowRight size={13} className="transition-transform group-hover/btn:translate-x-1" />
-                  </button>
-                )}
-              </div>
+          {/* Right Column: Campus Grounds Visual & Narrative (Harvard Editorial Style) */}
+          <div className="lg:col-span-5 flex flex-col space-y-5">
+            {/* Full-Bleed Edge-to-Edge Image (No Frame, No Shadow) */}
+            <div className="relative overflow-hidden rounded-xl w-full aspect-[16/9]">
+              <img 
+                src="/assets/campus/central_lawn_academic_complex.jpg"
+                alt="University of Central Punjab Bahawalpur Campus Central Lawns and Academic Complex"
+                loading="lazy"
+                decoding="async"
+                className="w-full h-full object-cover object-center block"
+                onError={(e) => {
+                  const target = e.target as HTMLImageElement;
+                  target.src = 'https://i.ibb.co/pr54WNFV/Whats-App-Image-2026-10-10-at-7-16-33-AM.jpg';
+                }}
+              />
             </div>
 
-          </motion.div>
-
-          {/* Right Column: Campus Grounds Visual & Specs (CSS Selectors 2 & 3) */}
-          <motion.div 
-            className="lg:col-span-5 flex flex-col space-y-6"
-            initial={{ opacity: 0, y: 32 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.78, delay: 0.24, ease: easeCurve }}
-            viewport={{ once: true, margin: '0px 0px -15% 0px' }}
-          >
-            <div className="bg-[#FAF8F5] dark:bg-[#0d1e38] rounded-xl p-6 sm:p-7 shadow-xs space-y-5 border border-transparent dark:border-[#1e3256] transition-colors">
-              <div className="flex items-center justify-between flex-wrap gap-2">
-                <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-[0.18em] text-[#092242] dark:text-white">
-                  <Trees size={16} className="text-[#a30f16] dark:text-amber-400" />
-                  <span>Central Lawns & Academic Complex</span>
-                </div>
-                <span className="text-[11px] font-medium text-slate-500 dark:text-slate-300 bg-white dark:bg-[#12284c] px-2.5 py-1 rounded-full border border-slate-200/80 dark:border-[#1e3256]">
-                  Full Campus View
-                </span>
+            {/* Pure Harvard Editorial Text — No Frame, No Background Box, Just Text */}
+            <div className="space-y-3 pt-1">
+              <div className="overflow-hidden">
+                <motion.h3 
+                  initial={{ y: '100%', opacity: 0 }}
+                  whileInView={{ y: 0, opacity: 1 }}
+                  viewport={{ once: true, margin: '-30px' }}
+                  transition={{ duration: 0.75, ease: [0.16, 1, 0.3, 1] }}
+                  className="font-serif text-2xl sm:text-3xl font-normal text-[#092242] dark:text-white tracking-tight leading-snug"
+                  style={{ fontFamily: "'Playfair Display', 'Cormorant Garamond', Georgia, serif" }}
+                >
+                  Central Lawns &amp; Academic Complex
+                </motion.h3>
               </div>
 
-              {/* Full-Bleed 16:9 Edge-to-Edge Image (Minimal, No Extra Border) */}
-              <div className="group relative overflow-hidden rounded-xl bg-slate-100 dark:bg-slate-900 shadow-xs w-full aspect-[16/9]">
-                <img src="/assets/campus/central_lawn_academic_complex.jpg"
-                  alt="University of Central Punjab Bahawalpur Campus Central Lawns and Academic Complex"
-                  loading="lazy"
-                  decoding="async"
-                  className="w-full h-full object-cover object-center block transition-transform duration-700 ease-out group-hover:scale-102"
-                  onError={(e) => {
-                    const target = e.target as HTMLImageElement;
-                    target.src = 'https://i.ibb.co/pr54WNFV/Whats-App-Image-2026-10-10-at-7-16-33-AM.jpg';
-                  }}
-                />
-              </div>
-
-              <div className="space-y-3 text-xs sm:text-[13px] text-slate-700 dark:text-slate-200">
-                <p className="text-slate-600 dark:text-slate-300 leading-relaxed font-sans">
-                  The Bahawalpur campus grounds combine expansive green lawns with modern academic wings, providing peaceful student gathering areas and outdoor study environments.
-                </p>
-
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 pt-3 border-t border-slate-200/70 dark:border-white/10">
-                  <div className="flex items-start gap-2">
-                    <CheckCircle2 size={15} className="text-emerald-600 dark:text-emerald-400 mt-0.5 shrink-0" />
-                    <span><strong className="text-slate-900 dark:text-white">Purpose-Built:</strong> Higher education complex.</span>
-                  </div>
-                  <div className="flex items-start gap-2">
-                    <CheckCircle2 size={15} className="text-emerald-600 dark:text-emerald-400 mt-0.5 shrink-0" />
-                    <span><strong className="text-slate-900 dark:text-white">Lush Greenery:</strong> Manicured lawns & quads.</span>
-                  </div>
-                  <div className="flex items-start gap-2">
-                    <CheckCircle2 size={15} className="text-emerald-600 dark:text-emerald-400 mt-0.5 shrink-0" />
-                    <span><strong className="text-slate-900 dark:text-white">Multimedia Halls:</strong> Smart classrooms & labs.</span>
-                  </div>
-                  <div className="flex items-start gap-2">
-                    <CheckCircle2 size={15} className="text-emerald-600 dark:text-emerald-400 mt-0.5 shrink-0" />
-                    <span><strong className="text-slate-900 dark:text-white">Safe & Accessible:</strong> 24/7 security & concourses.</span>
-                  </div>
-                </div>
-              </div>
+              <motion.p 
+                initial={{ opacity: 0, y: 16 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: '-20px' }}
+                transition={{ duration: 0.72, delay: 0.08, ease: easeCurve }}
+                className="text-base text-slate-600 dark:text-slate-300 leading-relaxed font-sans"
+              >
+                The Bahawalpur campus grounds combine expansive manicured lawns with modern academic pavilions, providing peaceful student gathering areas and outdoor study spaces designed to support intellectual focus and community life.
+              </motion.p>
             </div>
-
-          </motion.div>
+          </div>
 
         </div>
 
@@ -259,12 +224,18 @@ export const AboutCampusSection: React.FC<AboutCampusSectionProps> = ({
                   STUDENT & FACULTY SESSIONS
                 </span>
               </div>
-              <h3 
-                className="text-2xl sm:text-3xl font-serif font-bold text-[#092242] dark:text-white tracking-tight"
-                style={{ fontFamily: "'Cormorant Garamond', 'Libre Baskerville', Georgia, serif" }}
-              >
-                Interactive Classrooms, Presentations & Teacher Training
-              </h3>
+              <div className="overflow-hidden">
+                <motion.h3 
+                  initial={{ y: '100%', opacity: 0 }}
+                  whileInView={{ y: 0, opacity: 1 }}
+                  viewport={{ once: true, margin: '-20px' }}
+                  transition={{ duration: 0.75, ease: [0.16, 1, 0.3, 1] }}
+                  className="text-2xl sm:text-3xl font-serif font-bold text-[#092242] dark:text-white tracking-tight"
+                  style={{ fontFamily: "'Cormorant Garamond', 'Libre Baskerville', Georgia, serif" }}
+                >
+                  Interactive Classrooms, Presentations &amp; Teacher Training
+                </motion.h3>
+              </div>
             </div>
             <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 max-w-md font-sans">
               Equipped with smart digital podiums and collaborative acoustics, our lecture halls foster confident student case presentations and engaging pedagogical sessions.
@@ -280,12 +251,12 @@ export const AboutCampusSection: React.FC<AboutCampusSectionProps> = ({
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: idx * 0.08, ease: easeCurve }}
                 viewport={{ once: true, amount: 0.2 }}
-                className="bg-[#FAF8F5] dark:bg-[#0d1e38] rounded-xl p-4 sm:p-5 flex flex-col justify-between shadow-2xs hover:shadow-md transition-all duration-300 group cursor-pointer border border-transparent dark:border-[#1e3256]"
+                className="bg-transparent p-0 flex flex-col justify-between transition-all duration-300 group cursor-pointer border-0 shadow-none space-y-3"
                 onClick={() => setActivePhoto(item)}
               >
                 <div>
                   {/* Photo Frame */}
-                  <div className="relative w-full aspect-[16/10] rounded-lg overflow-hidden bg-slate-100 dark:bg-slate-900 mb-3.5 shadow-2xs border-0">
+                  <div className="relative w-full aspect-[16/10] rounded-xl overflow-hidden bg-slate-100 dark:bg-slate-900 mb-3 shadow-xs border-0">
                     <img src={item.src}
                       alt={item.title}
                       loading="lazy"
@@ -301,23 +272,13 @@ export const AboutCampusSection: React.FC<AboutCampusSectionProps> = ({
                       <span className="text-white text-[11px] font-mono tracking-wider flex items-center gap-1.5 bg-black/60 px-2 py-0.5 rounded backdrop-blur-xs">
                         <Maximize2 size={11} /> View Full
                       </span>
-                      <span className="text-white/90 text-[10px] font-mono bg-[#a30f16]/80 px-1.5 py-0.5 rounded">
-                        {item.tag}
-                      </span>
-                    </div>
-
-                    {/* Tag badge */}
-                    <div className="absolute top-2.5 left-2.5 pointer-events-none">
-                      <span className="text-[9px] font-mono font-semibold tracking-wider uppercase text-white bg-[#092242]/80 dark:bg-[#092242]/90 px-2 py-0.5 rounded backdrop-blur-xs">
-                        {item.tag}
-                      </span>
                     </div>
                   </div>
 
                   {/* Title & Subtitle */}
                   <h4 
-                    className="text-base sm:text-lg font-serif font-bold text-[#092242] dark:text-white mb-1 group-hover:text-[#a30f16] dark:group-hover:text-amber-400 transition-colors"
-                    style={{ fontFamily: "'Cormorant Garamond', 'Libre Baskerville', Georgia, serif" }}
+                    className="text-lg font-serif font-bold text-[#092242] dark:text-white mb-1 group-hover:text-[#a30f16] dark:group-hover:text-amber-400 transition-colors"
+                    style={{ fontFamily: "'Playfair Display', 'Cormorant Garamond', Georgia, serif" }}
                   >
                     {item.title}
                   </h4>

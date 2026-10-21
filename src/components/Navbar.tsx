@@ -634,58 +634,6 @@ export const Navbar: React.FC<NavbarProps> = ({
                       <span>Harassment Protection Policy</span>
                     </button>
 
-                    <div className="my-1 border-t border-[#E5E7EB]" />
-                    <div className="px-[14px] py-1 text-[11px] font-bold text-[#888888] uppercase tracking-wider">
-                      Programs & Centers
-                    </div>
-
-                    <button
-                      type="button"
-                      onClick={() => { 
-                        setActiveDropdown(null); 
-                        if (onOpenCnnAcademyPage) {
-                          onOpenCnnAcademyPage();
-                        } else {
-                          onSelectFaculty('fmmc');
-                        }
-                      }}
-                      className="w-full text-left py-[8px] px-[14px] rounded-[6px] hover:bg-[#F5F5F5] text-[#333333] flex items-center justify-between cursor-pointer"
-                    >
-                      <span>CNN Academy at UCP</span>
-                      <span className="text-[10px] font-mono text-[#A51C30] font-bold bg-[#A51C30]/5 px-1.5 py-0.5 border border-[#A51C30]/20">
-                        Official
-                      </span>
-                    </button>
-
-                    <button
-                      type="button"
-                      onClick={() => { setActiveDropdown(null); onOpenInfo('ucp-online'); }}
-                      className="w-full text-left py-[8px] px-[14px] rounded-[6px] hover:bg-[#F5F5F5] text-[#333333] flex items-center justify-between cursor-pointer"
-                    >
-                      <span>UCP Online (LMS)</span>
-                    </button>
-
-                    <a
-                      href="https://oric.ucp.edu.pk/?_gl=1%2A1038nq8%2A_gcl_au%2AMTgzMjA3ODQ4MC4xNzkwMDEyMzQ5Li0uLS4xNzkwMTgwNDM0LjY0MTA5MDAyNi4xNzkwMTgwNDM0LjE3OTAxODA0MzQ.%2A_ga%2AMTk1MTM4Njg4MS4xNzkwMDEyMzQ5%2A_ga_9BBZL6TFYQ%2AczE3OTAxNzk2OTYkbzYkZzEkdDE3OTAxODA1MTUkajQyJGwwJGg0NzM0NDM5MzA."
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      onClick={() => setActiveDropdown(null)}
-                      className="w-full text-left py-[8px] px-[14px] rounded-[6px] hover:bg-[#F5F5F5] text-[#333333] flex items-center justify-between"
-                    >
-                      <span>ORIC (Research & Tech)</span>
-                      <span className="text-[11px] text-[#666666]">↗</span>
-                    </a>
-
-                    <a
-                      href="https://ucp.edu.pk/blog/?_gl=1*g7icau*_gcl_au*mtgzmja3odq4mc4xnzkwmdeymzq5li0uls4xnzkwmtgwndm0ljy0mta5mdayni4xnzkwmtgwndm0lje3otaxoda0mzq.*_ga*mtk1mtm4njg4ms4xnzkwmdeymzq5*_ga_9bbzl6tfyq*cze3otaxnzk2otykbzykzzekdde3otaxoda0otckajywjgwwjgg0nzm0ndm5mza."
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      onClick={() => setActiveDropdown(null)}
-                      className="w-full text-left py-[8px] px-[14px] rounded-[6px] hover:bg-[#F5F5F5] text-[#333333] flex items-center justify-between"
-                    >
-                      <span>UCP Official Blog</span>
-                      <span className="text-[11px] text-[#666666]">↗</span>
-                    </a>
                   </motion.div>
                 )}
               </AnimatePresence>
@@ -950,25 +898,6 @@ export const Navbar: React.FC<NavbarProps> = ({
                 <span>Student Portal</span>
               </span>
               <span className="text-xs text-amber-300">Login ↗</span>
-            </button>
-            <button
-              onClick={() => { 
-                setMobileMenuOpen(false); 
-                if (onOpenCnnAcademyPage) {
-                  onOpenCnnAcademyPage();
-                } else {
-                  onSelectFaculty('fmmc');
-                }
-              }}
-              className="w-full text-left py-1.5 text-slate-200 hover:text-white flex items-center justify-between"
-            >
-              <span>CNN Academy at UCP</span>
-            </button>
-            <button
-              onClick={() => { setMobileMenuOpen(false); onOpenInfo('ucp-online'); }}
-              className="w-full text-left py-1.5 text-slate-200 hover:text-white"
-            >
-              UCP Online (Distance Education)
             </button>
 
             {/* Official Mobile Appearance Mode Toggle */}

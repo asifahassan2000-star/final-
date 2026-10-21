@@ -16,7 +16,7 @@ export const TopBar: React.FC<TopBarProps> = ({ onOpenPortal, onOpenFee, onOpenA
     'Official Merit Lists (1st & 2nd) are now live on UCP Portal.',
     'Two-Day National Symposium on Lab Safety & Research Ethics (Sept 2026).',
     'Up to 50% Merit Scholarships & 25% PGC Alumni Fee Concession available.',
-    'CNN Academy at UCP – Applications open for Autumn Media Fellowship.',
+    'Campus Tours & Admissions Advisory available Monday to Saturday.',
   ];
 
   const [currentIdx, setCurrentIdx] = useState(0);
@@ -40,13 +40,7 @@ export const TopBar: React.FC<TopBarProps> = ({ onOpenPortal, onOpenFee, onOpenA
             </span>
             <div 
               className="truncate font-medium text-slate-200 hover:text-white transition-colors cursor-pointer" 
-              onClick={() => {
-                if (announcements[currentIdx].includes('CNN Academy') && onOpenCnnAcademyPage) {
-                  onOpenCnnAcademyPage();
-                } else {
-                  onOpenApply();
-                }
-              }}
+              onClick={onOpenApply}
             >
               <span>{announcements[currentIdx]}</span>
             </div>

@@ -18,8 +18,6 @@ export type InfoModalType =
   | 'faqs'
   | 'international-programs'
   | 'ucp-online'
-  | 'blog'
-  | 'oric'
   | 'newsletter'
   | 'merit-list'
   | 'fee-structure'
@@ -86,8 +84,6 @@ export const UcpInfoModal: React.FC<UcpInfoModalProps> = ({
               {type === 'faqs' && <HelpCircle size={18} />}
               {type === 'international-programs' && <Globe size={18} />}
               {type === 'ucp-online' && <BookOpen size={18} />}
-              {type === 'blog' && <FileText size={18} />}
-              {type === 'oric' && <GraduationCap size={18} />}
               {type === 'newsletter' && <Mail size={18} />}
               {type === 'merit-list' && <FileText size={18} />}
               {type === 'fee-structure' && <FileText size={18} />}
@@ -107,8 +103,6 @@ export const UcpInfoModal: React.FC<UcpInfoModalProps> = ({
                 {type === 'faqs' && 'Frequently Asked Questions (Admissions & Campus)'}
                 {type === 'international-programs' && 'International Linkages & Exchange Programs'}
                 {type === 'ucp-online' && 'UCP Online & Digital Learning Portal'}
-                {type === 'blog' && 'UCP Official Blog & Campus Insights'}
-                {type === 'oric' && 'Office of Research, Innovation & Commercialization (ORIC)'}
                 {type === 'newsletter' && 'Subscribe to UCP Official Newsletter'}
                 {type === 'merit-list' && 'Fall 2026 Admissions Merit Lists'}
                 {type === 'fee-structure' && 'Official UCP Fee Structure (2025–2026)'}
@@ -653,78 +647,7 @@ export const UcpInfoModal: React.FC<UcpInfoModalProps> = ({
             </div>
           )}
 
-          {/* Blog */}
-          {type === 'blog' && (
-            <div className="space-y-3 text-xs">
-              <div className="p-3.5 rounded-xl bg-rose-50 border border-rose-200 flex items-center justify-between gap-3">
-                <div>
-                  <span className="text-xs font-bold text-[#092242] block">
-                    Official UCP Blogs & Stories
-                  </span>
-                  <span className="text-[11px] font-mono text-slate-500 truncate block">
-                    ucp.edu.pk/blog
-                  </span>
-                </div>
-                <a
-                  href="https://ucp.edu.pk/blog/?_gl=1*g7icau*_gcl_au*mtgzmja3odq4mc4xnzkwmdeymzq5li0uls4xnzkwmtgwndm0ljy0mta5mdayni4xnzkwmtgwndm0lje3otaxoda0mzq.*_ga*mtk1mtm4njg4ms4xnzkwmdeymzq5*_ga_9bbzl6tfyq*cze3otaxnzk2otykbzykzzekdde3otaxoda0otckajywjgwwjgg0nzm0ndm5mza."
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="bg-[#a30f16] hover:bg-[#850c12] text-white text-xs font-bold px-3.5 py-2 rounded-lg shrink-0 flex items-center gap-1 transition-colors shadow-xs"
-                >
-                  <ExternalLink size={13} /> Visit Official Blog
-                </a>
-              </div>
 
-              <div className="p-3 bg-slate-50 rounded-xl border border-slate-200">
-                <span className="text-[10px] text-rose-600 font-bold uppercase">Campus Story</span>
-                <h5 className="font-bold text-slate-900 text-sm mt-0.5">UCP Robotics Team Clinches 1st Place at National Tech Olympiad</h5>
-                <p className="text-slate-600 mt-1">Students from the Faculty of Engineering demonstrated autonomous industrial inspection drones...</p>
-              </div>
-              <div className="p-3 bg-slate-50 rounded-xl border border-slate-200">
-                <span className="text-[10px] text-blue-600 font-bold uppercase">Research Spotlight</span>
-                <h5 className="font-bold text-slate-900 text-sm mt-0.5">Breakthrough in Nanotechnology for Clean Water Treatment</h5>
-                <p className="text-slate-600 mt-1">Dr. Saima Tariq’s lab publishes pioneering water purification paper in Nature Materials...</p>
-              </div>
-            </div>
-          )}
-
-          {/* ORIC */}
-          {type === 'oric' && (
-            <div className="space-y-3 text-xs">
-              <div className="p-3.5 rounded-xl bg-emerald-50 border border-emerald-200 flex items-center justify-between gap-3">
-                <div>
-                  <span className="text-xs font-bold text-[#092242] block">
-                    Official UCP ORIC Research & Tech Portal
-                  </span>
-                  <span className="text-[11px] font-mono text-slate-500 truncate block">
-                    oric.ucp.edu.pk
-                  </span>
-                </div>
-                <a
-                  href="https://oric.ucp.edu.pk/?_gl=1%2A1038nq8%2A_gcl_au%2AMTgzMjA3ODQ4MC4xNzkwMDEyMzQ5Li0uLS4xNzkwMTgwNDM0LjY0MTA5MDAyNi4xNzkwMTgwNDM0LjE3OTAxODA0MzQ.%2A_ga%2AMTk1MTM4Njg4MS4xNzkwMDEyMzQ5%2A_ga_9BBZL6TFYQ%2AczE3OTAxNzk2OTYkbzYkZzEkdDE3OTAxODA1MTUkajQyJGwwJGg0NzM0NDM5MzA."
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="bg-[#092242] hover:bg-[#14325a] text-white text-xs font-bold px-3.5 py-2 rounded-lg shrink-0 flex items-center gap-1 transition-colors shadow-xs"
-                >
-                  <ExternalLink size={13} /> Open ORIC Portal
-                </a>
-              </div>
-
-              <p className="text-slate-600">
-                The <strong>Office of Research, Innovation & Commercialization (ORIC)</strong> promotes high-impact research, commercializes inventions, and incubates student startups through the Takhleeq Business Incubator.
-              </p>
-              <div className="grid grid-cols-2 gap-2 text-center">
-                <div className="p-3 bg-slate-100 rounded-xl">
-                  <span className="text-xl font-black text-[#0b2341]">480+</span>
-                  <p className="text-[11px] text-slate-600 mt-0.5">Impact Factor Papers in 2025</p>
-                </div>
-                <div className="p-3 bg-slate-100 rounded-xl">
-                  <span className="text-xl font-black text-[#a30f16]">28+</span>
-                  <p className="text-[11px] text-slate-600 mt-0.5">Patents Filed & Granted</p>
-                </div>
-              </div>
-            </div>
-          )}
 
           {/* Newsletter */}
           {type === 'newsletter' && (

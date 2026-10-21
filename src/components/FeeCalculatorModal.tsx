@@ -137,10 +137,8 @@ export const FeeCalculatorModal: React.FC<FeeCalculatorModalProps> = ({
             />
             <div className="flex justify-between text-[10px] text-slate-400 font-semibold mt-1">
               <span>50% (Min)</span>
-              <span>75% (25% Aid)</span>
-              <span>80% (50% Aid)</span>
-              <span>85% (75% Aid)</span>
-              <span>90%+ (100% Free Tuition)</span>
+              <span>70% (25% Merit)</span>
+              <span>80%+ (Up to 50% Merit)</span>
             </div>
           </div>
 

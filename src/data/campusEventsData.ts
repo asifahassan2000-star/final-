@@ -414,7 +414,7 @@ export const CAMPUS_EVENTS_DATA: CampusEvent[] = [
     badge: 'Merit & Leadership Showcase',
     description: 'An official campus-wide campaign spotlighting top academic achievers, merit scholarship recipients, and society presidents. The network fosters leadership development, career mentoring, and corporate networking for high-performing UCPians.',
     highlights: [
-      '100% Merit Scholarship Achievers Recognized',
+      'Up to 50% Merit Scholarship Achievers Recognized',
       'Executive Mentoring by Corporate Leaders',
       'Campus Brand Ambassador Induction',
       'Professional Development & Public Speaking Bootcamps'

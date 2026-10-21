@@ -1209,7 +1209,7 @@ export const OurLegacyPage: React.FC<OurLegacyPageProps> = ({
                   <CheckCircle2 size={18} className="text-emerald-600 shrink-0 mt-0.5" />
                   <div>
                     <strong className="text-xs font-bold text-[#092242] block">Research & Civic Linkages</strong>
-                    <span className="text-xs text-slate-600">Active Office of Research, Innovation & Commercialization (ORIC), peer-reviewed research publications, and community outreach.</span>
+                    <span className="text-xs text-slate-600">Active peer-reviewed research publications, technology commercialization, and regional community outreach.</span>
                   </div>
                 </div>
               </div>
@@ -1340,7 +1340,7 @@ export const OurLegacyPage: React.FC<OurLegacyPageProps> = ({
                   Academic & Institutional Growth
                 </h3>
                 <p className="text-xs text-slate-300 mt-2">
-                  Multidisciplinary faculties, PhD programs, and ORIC research expansion.
+                  Multidisciplinary faculties, PhD programs, and advanced academic research expansion.
                 </p>
               </div>
               <div className="mt-4 pt-3 border-t border-white/10 w-full text-[11px] text-amber-300 font-semibold">

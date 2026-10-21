@@ -421,14 +421,16 @@ export const WhatWeOfferAccordion: React.FC<WhatWeOfferAccordionProps> = ({
         <div className="mb-10 md:mb-12 text-left">
           <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
             <div>
-              <h2
-                data-reveal="heading"
-                data-reveal-delay="0"
-                className="text-3xl sm:text-4xl lg:text-[42px] font-bold text-[#091E3A] tracking-tight leading-tight"
-                style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
-              >
-                Campus Life, Co-Curricular Activities &amp; Leadership Experience
-              </h2>
+              <div className="mask-reveal-wrap">
+                <h2
+                  data-reveal="heading"
+                  data-reveal-delay="0"
+                  className="mask-reveal-child text-3xl sm:text-4xl lg:text-[42px] font-bold text-[#091E3A] tracking-tight leading-tight"
+                  style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
+                >
+                  Campus Life, Co-Curricular Activities &amp; Leadership Experience
+                </h2>
+              </div>
               
               <p 
                 data-reveal="paragraph"

@@ -8,11 +8,10 @@ interface StatisticsSectionProps {
 export const StatisticsSection: React.FC<StatisticsSectionProps> = () => {
   const [isPaused, setIsPaused] = useState<boolean>(false);
 
-  // Authentic facts strictly about UCP Bahawalpur Campus (Undergraduate degrees only)
+  // Authentic facts strictly about UCP Bahawalpur Campus
   const tickerItems = [
     { label: 'UCP Bahawalpur', text: 'Constituent Campus on Airport Road, Bahawalpur' },
-    { label: 'Undergraduate Degrees', text: 'Exclusively Offering 4-Year BS & 2-Year Associate Degree (ADP/ADS) Programmes' },
-    { label: 'Undergraduate Focus', text: 'Exclusively Dedicated to Undergraduate Education (No Graduate / Masters Degrees Offered)' },
+    { label: 'Academic Programmes', text: 'Offering 4-Year BS & 2-Year Associate Degree (ADP/ADS) Programmes' },
     { label: 'Merit Scholarships', text: 'Up to 50% Tuition Fee Concessions Based on Intermediate Marks' },
     { label: 'PGC Concession', text: '25% Tuition Fee Concession for Punjab College Alumni' },
     { label: 'Computing & AI', text: 'Advanced Computer Science, Software Engineering & AI Development Labs' },

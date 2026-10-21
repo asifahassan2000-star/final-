@@ -463,7 +463,7 @@ export const UcpChatbot: React.FC = () => {
                   >
                     <span className="block text-sm mb-0.5">🏆</span>
                     <span className="font-semibold text-xs text-slate-800 block group-hover:text-[#0A1931] leading-tight">Scholarships</span>
-                    <span className="text-[10px] text-slate-400 block mt-0.5">Up to 100% merit</span>
+                    <span className="text-[10px] text-slate-400 block mt-0.5">Up to 50% on merit</span>
                   </button>
                 </div>
               </div>

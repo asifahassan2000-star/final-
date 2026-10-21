@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { motion } from 'framer-motion';
 import { 
   Building2, Cpu, BookOpen, Microscope, ArrowRight, Maximize2, X
 } from 'lucide-react';
@@ -40,12 +41,14 @@ export const FacilitiesSection: React.FC<FacilitiesSectionProps> = ({
           <span className="text-xs font-medium uppercase tracking-wider text-slate-500 dark:text-slate-400 block mb-2">
             Campus Facilities
           </span>
-          <h2
-            id="facilities-heading"
-            className="text-2xl sm:text-3xl font-serif font-semibold text-slate-900 dark:text-white tracking-tight"
-          >
-            Learning Environment, Library & Laboratories
-          </h2>
+          <div className="mask-reveal-wrap">
+            <h2
+              id="facilities-heading"
+              className="mask-reveal-child text-2xl sm:text-3xl font-serif font-semibold text-slate-900 dark:text-white tracking-tight"
+            >
+              Learning Environment, Library &amp; Laboratories
+            </h2>
+          </div>
           <p className="mt-2 text-sm sm:text-base text-slate-600 dark:text-slate-300 leading-relaxed font-sans">
             Explore the academic spaces, central library, computer labs, and science facilities at UCP Bahawalpur.
           </p>

@@ -430,12 +430,17 @@ export const CampusLifePage: React.FC<CampusLifePageProps> = ({
           <span className="h-px w-10 bg-slate-200 dark:bg-white/20" aria-hidden="true" />
         </div>
 
-        <h1 
-          className="text-3xl sm:text-5xl lg:text-[52px] font-serif font-bold text-[#0A1931] dark:text-white tracking-tight leading-[1.14] mb-4"
-          style={{ fontFamily: "'Playfair Display', 'Cormorant Garamond', Georgia, serif" }}
-        >
-          Campus Life &amp; Events
-        </h1>
+        <div className="overflow-hidden py-1">
+          <motion.h1 
+            initial={{ opacity: 0, y: 32, clipPath: 'polygon(0 100%, 100% 100%, 100% 100%, 0 100%)' }}
+            animate={{ opacity: 1, y: 0, clipPath: 'polygon(0 0, 100% 0, 100% 100%, 0 100%)' }}
+            transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
+            className="text-3xl sm:text-5xl lg:text-[52px] font-serif font-bold text-[#0A1931] dark:text-white tracking-tight leading-[1.14] mb-4"
+            style={{ fontFamily: "'Playfair Display', 'Cormorant Garamond', Georgia, serif" }}
+          >
+            Campus Life &amp; Events
+          </motion.h1>
+        </div>
 
         <p className="text-base sm:text-lg text-slate-600 dark:text-slate-300 font-sans leading-relaxed max-w-3xl font-light">
           Official chronological chronicle of collegiate milestones, academic symposiums, excursions, and student traditions at University of Central Punjab (UCP) Bahawalpur.
@@ -464,7 +469,7 @@ export const CampusLifePage: React.FC<CampusLifePageProps> = ({
                   : 'text-slate-600 dark:text-slate-400 hover:text-[#0A1931] dark:hover:text-white'
               }`}
             >
-              2025 Events (1–6)
+              2025 Events
             </button>
             <button
               onClick={() => setSelectedYear('2026')}
@@ -474,7 +479,7 @@ export const CampusLifePage: React.FC<CampusLifePageProps> = ({
                   : 'text-slate-600 dark:text-slate-400 hover:text-[#0A1931] dark:hover:text-white'
               }`}
             >
-              2026 Events (7–22)
+              2026 Events
             </button>
           </div>
 
@@ -515,14 +520,20 @@ export const CampusLifePage: React.FC<CampusLifePageProps> = ({
             <div className="pt-6 pb-4 border-b border-slate-200 dark:border-white/10 flex items-center justify-between">
               <div>
                 <span className="text-xs font-mono font-bold uppercase tracking-widest text-[#C8102E]">
-                  PART 1 · 2025 CHRONICLE
+                  2025 CHRONICLE
                 </span>
-                <h2 
-                  id="heading-2025"
-                  className="text-xl sm:text-2xl font-serif font-bold text-[#0A1931] dark:text-white mt-1"
-                >
-                  2025 Events (Events 1 to 6)
-                </h2>
+                <div className="overflow-hidden py-1">
+                  <motion.h2 
+                    id="heading-2025"
+                    initial={{ opacity: 0, y: 24, clipPath: 'polygon(0 100%, 100% 100%, 100% 100%, 0 100%)' }}
+                    whileInView={{ opacity: 1, y: 0, clipPath: 'polygon(0 0, 100% 0, 100% 100%, 0 100%)' }}
+                    viewport={{ once: true, margin: '-20px' }}
+                    transition={{ duration: 0.85, ease: [0.16, 1, 0.3, 1] }}
+                    className="text-xl sm:text-2xl font-serif font-bold text-[#0A1931] dark:text-white mt-1"
+                  >
+                    2025 Events
+                  </motion.h2>
+                </div>
               </div>
               <span className="text-xs font-mono text-slate-500 dark:text-slate-400">
                 {displayed2025Events.length} Events
@@ -562,14 +573,20 @@ export const CampusLifePage: React.FC<CampusLifePageProps> = ({
             <div className="pt-6 pb-4 border-b border-slate-200 dark:border-white/10 flex items-center justify-between">
               <div>
                 <span className="text-xs font-mono font-bold uppercase tracking-widest text-[#C8102E]">
-                  PART 2 · 2026 CHRONICLE
+                  2026 CHRONICLE
                 </span>
-                <h2 
-                  id="heading-2026"
-                  className="text-xl sm:text-2xl font-serif font-bold text-[#0A1931] dark:text-white mt-1"
-                >
-                  2026 Events (Events 7 to 22)
-                </h2>
+                <div className="overflow-hidden py-1">
+                  <motion.h2 
+                    id="heading-2026"
+                    initial={{ opacity: 0, y: 24, clipPath: 'polygon(0 100%, 100% 100%, 100% 100%, 0 100%)' }}
+                    whileInView={{ opacity: 1, y: 0, clipPath: 'polygon(0 0, 100% 0, 100% 100%, 0 100%)' }}
+                    viewport={{ once: true, margin: '-20px' }}
+                    transition={{ duration: 0.85, ease: [0.16, 1, 0.3, 1] }}
+                    className="text-xl sm:text-2xl font-serif font-bold text-[#0A1931] dark:text-white mt-1"
+                  >
+                    2026 Events
+                  </motion.h2>
+                </div>
               </div>
               <span className="text-xs font-mono text-slate-500 dark:text-slate-400">
                 {displayed2026Events.length} Events

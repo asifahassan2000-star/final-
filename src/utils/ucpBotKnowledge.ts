@@ -14,7 +14,7 @@ export function getInstantBotResponse(userQuery: string): BotResponse {
   // 1. Greetings & Friendly Small Talk
   if (/^(hi|hello|hey|salam|assalam|aoa|greetings|hola|subha bakhair|good morning|good evening|good afternoon)/i.test(q)) {
     return {
-      reply: "👋 Hello and welcome to UCP Bahawalpur! I'm **UCP Assistant** 🎓.\n\nHow can I help your academic journey today? Feel free to ask about our degree programmes, fee structure, scholarships up to 100%, admissions, or campus facilities!",
+      reply: "👋 Hello and welcome to UCP Bahawalpur! I'm **UCP Assistant** 🎓.\n\nHow can I help your academic journey today? Feel free to ask about our degree programmes, fee structure, scholarships up to 50% on merit, admissions, or campus facilities!",
       suggestions: ["Degree Programmes 🎓", "Fee Structure 💰", "Scholarships 🏆", "How to Apply 📝"]
     };
   }
@@ -157,7 +157,7 @@ export function getInstantBotResponse(userQuery: string): BotResponse {
 
   // 18. Default Conversational Engine (Rich, Friendly, Helpful, Concise)
   return {
-    reply: `💡 I'm here to assist with everything regarding **UCP Bahawalpur**! You can ask me about:\n\n• Degree programmes in Computing, Business, Natural Sciences, or Humanities\n• Tuition fee schedules and installment plans\n• Merit & PGC scholarships up to 100%\n• Admission eligibility (minimum 50% in Intermediate)\n• Campus facilities, laboratories, and transport 🎓\n\nHow can I help you today? Feel free to call our campus helpline at 062-2202030 / 062-2202050! 😊`,
+    reply: `💡 I'm here to assist with everything regarding **UCP Bahawalpur**! You can ask me about:\n\n• Degree programmes in Computing, Business, Natural Sciences, or Humanities\n• Tuition fee schedules and installment plans\n• Merit scholarships up to 50% on merit & PGC concessions\n• Admission eligibility (minimum 50% in Intermediate)\n• Campus facilities, laboratories, and transport 🎓\n\nHow can I help you today? Feel free to call our campus helpline at 062-2202030 / 062-2202050! 😊`,
     suggestions: [
       "ADP Artificial Intelligence 🤖",
       "BS Computer Science 💻",

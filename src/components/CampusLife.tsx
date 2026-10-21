@@ -224,14 +224,19 @@ export const CampusLife: React.FC<CampusLifeProps> = ({ onOpenCampusLifePage }) 
             <span className="h-px w-10 bg-[#C8102E]/60" aria-hidden="true" />
           </div>
 
-          {/* Main Title: Celebrations, Culture & Campus Life */}
-          <h2
-            id="campus-life-heading"
-            className="text-3xl sm:text-5xl lg:text-[54px] font-serif font-bold text-[#0A1931] tracking-tight leading-[1.12] mb-5"
-            style={{ fontFamily: "'Cormorant Garamond', 'Libre Baskerville', 'Playfair Display', Georgia, serif" }}
-          >
-            Celebrations, Culture & Campus Life
-          </h2>
+          {/* Main Title: Celebrations, Culture & Campus Life with Smooth Mask Reveal */}
+          <div className="overflow-hidden">
+            <h2
+              id="campus-life-heading"
+              className="text-3xl sm:text-5xl lg:text-[54px] font-serif font-bold text-[#0A1931] tracking-tight leading-[1.12] mb-5 transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)]"
+              style={{ 
+                fontFamily: "'Cormorant Garamond', 'Libre Baskerville', 'Playfair Display', Georgia, serif",
+                transform: headerVisible ? 'translateY(0)' : 'translateY(100%)',
+              }}
+            >
+              Celebrations, Culture &amp; Campus Life
+            </h2>
+          </div>
 
           {/* Supporting Text: Beyond the classroom, every experience becomes part of the UCP journey. */}
           <p className="text-lg sm:text-xl text-slate-700 font-serif italic leading-relaxed border-l-2 border-[#C8102E] pl-4 sm:pl-5 mb-5">

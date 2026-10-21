@@ -275,22 +275,6 @@ export default function App() {
       window.open('https://ucp.edu.pk/faqs/', '_blank', 'noopener,noreferrer');
       return;
     }
-    if (type === 'blog') {
-      window.open(
-        'https://ucp.edu.pk/blog/?_gl=1*g7icau*_gcl_au*mtgzmja3odq4mc4xnzkwmdeymzq5li0uls4xnzkwmtgwndm0ljy0mta5mdayni4xnzkwmtgwndm0lje3otaxoda0mzq.*_ga*mtk1mtm4njg4ms4xnzkwmdeymzq5*_ga_9bbzl6tfyq*cze3otaxnzk2otykbzykzzekdde3otaxoda0otckajywjgwwjgg0nzm0ndm5mza.',
-        '_blank',
-        'noopener,noreferrer'
-      );
-      return;
-    }
-    if (type === 'oric') {
-      window.open(
-        'https://oric.ucp.edu.pk/?_gl=1%2A1038nq8%2A_gcl_au%2AMTgzMjA3ODQ4MC4xNzkwMDEyMzQ5Li0uLS4xNzkwMTgwNDM0LjY0MTA5MDAyNi4xNzkwMTgwNDM0LjE3OTAxODA0MzQ.%2A_ga%2AMTk1MTM4Njg4MS4xNzkwMDEyMzQ5%2A_ga_9BBZL6TFYQ%2AczE3OTAxNzk2OTYkbzYkZzEkdDE3OTAxODA1MTUkajQyJGwwJGg0NzM0NDM5MzA.',
-        '_blank',
-        'noopener,noreferrer'
-      );
-      return;
-    }
     setSelectedInfoModal(type);
   };
 

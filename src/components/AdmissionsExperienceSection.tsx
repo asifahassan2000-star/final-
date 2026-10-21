@@ -46,12 +46,18 @@ export const AdmissionsExperienceSection: React.FC<AdmissionsExperienceSectionPr
             <span className="h-[2px] w-8 bg-[#C5A059] dark:bg-amber-400" aria-hidden="true" />
           </div>
 
-          <h2
-            id="admissions-heading"
-            className="text-3xl sm:text-4xl lg:text-[46px] font-['Playfair_Display',serif] font-bold text-[#0F2C61] dark:text-white tracking-tight leading-[1.18]"
-          >
-            Begin Your Journey — Visit Our Campus
-          </h2>
+          <div className="overflow-hidden">
+            <motion.h2
+              id="admissions-heading"
+              initial={{ y: '100%', opacity: 0 }}
+              whileInView={{ y: 0, opacity: 1 }}
+              viewport={{ once: true, margin: '-20px' }}
+              transition={{ duration: 0.75, ease: [0.16, 1, 0.3, 1] }}
+              className="text-3xl sm:text-4xl lg:text-[46px] font-['Playfair_Display',serif] font-bold text-[#0F2C61] dark:text-white tracking-tight leading-[1.18]"
+            >
+              Begin Your Journey — Visit Our Campus
+            </motion.h2>
+          </div>
 
           <p className="mt-4 text-base sm:text-lg text-slate-600 dark:text-slate-300 leading-relaxed font-sans max-w-2xl">
             A welcoming arrival experience awaits every prospective student and family at UCP Bahawalpur. Tour our lecture halls, laboratories, and student facilities firsthand.

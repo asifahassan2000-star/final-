@@ -149,9 +149,11 @@ export const FacultySection: React.FC<FacultySectionProps> = ({
               </span>
             </div>
             
-            <h2 className="font-['Playfair_Display',serif] text-2xl sm:text-3xl lg:text-4xl font-normal text-[#0F2C61] tracking-tight">
-              Our Faculty & Leadership
-            </h2>
+            <div className="mask-reveal-wrap">
+              <h2 className="mask-reveal-child font-['Playfair_Display',serif] text-2xl sm:text-3xl lg:text-4xl font-normal text-[#0F2C61] tracking-tight">
+                Our Faculty &amp; Leadership
+              </h2>
+            </div>
           </div>
 
           <div className="flex items-center gap-3 flex-wrap self-start sm:self-end">

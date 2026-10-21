@@ -228,19 +228,6 @@ export const Footer: React.FC<FooterProps> = ({
               </div>
 
 
-              {/* Website Link */}
-              <div className="flex items-center gap-3">
-                <Globe size={16} className="text-white shrink-0" />
-                <a 
-                  href="https://bit.ly/ucpbahawalpur"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-white font-mono hover:underline"
-                >
-                  bit.ly/ucpbahawalpur
-                </a>
-              </div>
-
               {/* Email */}
               <div className="flex items-center gap-3">
                 <Mail size={16} className="text-white shrink-0" />

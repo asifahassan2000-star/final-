@@ -30,13 +30,19 @@ export const LeadershipImpactSection: React.FC<LeadershipImpactSectionProps> = (
               INSTITUTIONAL GOVERNANCE & SUSTAINABILITY
             </span>
           </div>
-          <h2
-            id="leadership-impact-heading"
-            className="text-2xl sm:text-3xl lg:text-4xl font-serif font-bold text-[#0A1931] tracking-tight leading-tight"
-            style={{ fontFamily: "'Cormorant Garamond', 'Libre Baskerville', Georgia, serif" }}
-          >
-            Environmental Stewardship & Faculty Leadership
-          </h2>
+          <div className="overflow-hidden">
+            <motion.h2
+              id="leadership-impact-heading"
+              initial={{ y: '100%', opacity: 0 }}
+              whileInView={{ y: 0, opacity: 1 }}
+              viewport={{ once: true, margin: '-20px' }}
+              transition={{ duration: 0.75, ease: [0.16, 1, 0.3, 1] }}
+              className="text-2xl sm:text-3xl lg:text-4xl font-serif font-bold text-[#0A1931] tracking-tight leading-tight"
+              style={{ fontFamily: "'Cormorant Garamond', 'Libre Baskerville', Georgia, serif" }}
+            >
+              Environmental Stewardship &amp; Faculty Leadership
+            </motion.h2>
+          </div>
         </motion.div>
 
         {/* =========================================================================
@@ -66,40 +72,12 @@ export const LeadershipImpactSection: React.FC<LeadershipImpactSectionProps> = (
               />
             </div>
 
-            <div className="max-w-4xl pt-0.5">
-              <p className="text-sm sm:text-base text-slate-800 font-medium leading-relaxed font-sans">
-                UCP is committed to the UN Sustainable Development Goals (SDGs), recognized nationally for clean energy, zero single-use plastics, and community outreach.
+            <div className="max-w-4xl pt-1 space-y-2.5">
+              <p className="text-sm sm:text-base text-slate-700 leading-relaxed font-sans">
+                At the University of Central Punjab (UCP) Bahawalpur Campus, leadership extends beyond classrooms to encompass environmental stewardship, cultural heritage, and community empowerment. As a leading institution in South Punjab, UCP Bahawalpur is proudly aligned with the UN Sustainable Development Goals (SDGs), championing initiatives in clean energy, zero single-use plastics, and green campus development.
               </p>
-              <p className="mt-1 text-xs text-slate-500 font-sans">
-                Director Prof. Hamid Iqbal inaugurating the Green Campus & UN Sustainable Development Goals Tree Plantation Drive at UCP Bahawalpur.
-              </p>
-            </div>
-          </motion.div>
-
-          {/* 2. Director Recognizing Faculty Member */}
-          <motion.div
-            className="pt-6 border-t border-slate-200/80 space-y-3"
-            initial={{ opacity: 0, y: 18 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, ease: easeCurve }}
-            viewport={{ once: true, amount: 0.15 }}
-          >
-            <div className="relative w-full rounded-xl overflow-hidden bg-slate-100 shadow-xs aspect-[16/9] sm:aspect-[21/10] max-h-[600px]">
-              <img
-                src="/assets/leadership/director-faculty-handshake.jpg"
-                alt="Director Prof. Hamid Iqbal with faculty member at UCP Bahawalpur"
-                loading="lazy"
-                decoding="async"
-                className="w-full h-full object-cover object-center block"
-                onError={(e) => {
-                  (e.target as HTMLImageElement).src = 'https://i.ibb.co/WN1SQWGm/image-5.jpg';
-                }}
-              />
-            </div>
-
-            <div className="max-w-4xl pt-0.5">
-              <p className="text-sm text-slate-700 leading-relaxed font-sans">
-                Director Prof. Hamid Iqbal recognizing and commending faculty members for meritorious academic service, research contributions, and leadership at UCP Bahawalpur. Official institutional assemblies, faculty convocations, and executive recognition ceremonies celebrating academic culture and institutional excellence.
+              <p className="text-sm sm:text-base text-slate-700 leading-relaxed font-sans">
+                Our faculty leadership believes in leading by example — fostering a campus culture that values sustainability, honors academic collaboration, and celebrates community bonds. Through meaningful engagements, outreach programs like the Village Tour, and initiatives that recognize contribution and partnership, UCP Bahawalpur continues to shape responsible leaders and a greener, more inclusive future for the region.
               </p>
             </div>
           </motion.div>
