@@ -68,14 +68,27 @@ export const ScrollRevealManager: React.FC = () => {
       }
     );
 
-    // 4. Function to scan and observe all unrevealed elements
+    // 4. Function to scan and observe all unrevealed elements & home page section headings
     const observeAll = () => {
-      const viewportTriggerLine = window.innerHeight * 0.85;
+      // Proactively ensure all section headings on the home page have smooth reveal animation
+      document.querySelectorAll<HTMLElement>(
+        'main section h1, main section h2, main section header h2, main section header h3, .section-heading, [data-reveal="heading"]'
+      ).forEach((heading) => {
+        // Ignore headers inside modals, dialogs or collapsed drawers
+        if (heading.closest('[role="dialog"]') || heading.closest('.modal-content')) return;
+
+        if (!heading.hasAttribute('data-reveal')) {
+          heading.setAttribute('data-reveal', 'heading');
+          heading.classList.add('heading-smooth-reveal');
+        }
+      });
+
+      const viewportTriggerLine = window.innerHeight * 0.88;
       const elements = document.querySelectorAll<HTMLElement>('[data-reveal]:not(.is-revealed)');
       
       elements.forEach((el) => {
         const rect = el.getBoundingClientRect();
-        // If element is already above or within 85% viewport (e.g. initial view above fold)
+        // If element is already above or within 88% viewport (e.g. initial view above fold)
         if (rect.top <= viewportTriggerLine) {
           el.classList.add('is-revealed');
           el.setAttribute('data-revealed', 'true');

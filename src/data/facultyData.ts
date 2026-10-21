@@ -61,7 +61,7 @@ export const ALL_FACULTY_MEMBERS: FacultyMemberData[] = [
     specialization: 'Diagnostic Radiology, Safe Handling of Radioactive Materials & Academic Quality Assurance',
     intro: 'Senior Professor and Head of Quality Enhancement Cell (QEC) at UCP Bahawalpur with 24 years of academic excellence. Pioneer in diagnostic radiology research, radiation safety governance, and university examinations management.',
     photoUrl: '/assets/faculty/dr-abdul-kareem.jpg',
-    fallbackPhotoUrl: 'https://i.ibb.co/KpHwQ29z/Whats-App-Image-2026-10-12-at-9-45-57-PM.jpg',
+    fallbackPhotoUrl: '/images/KpHwQ29z_Whats-App-Image-2026-10-12-at-9-45-57-PM.jpg',
     objectPosition: 'object-top',
     qualifications: [
       'Ph.D. in Physics (Nuclear Medicine)',
@@ -106,7 +106,7 @@ export const ALL_FACULTY_MEMBERS: FacultyMemberData[] = [
     specialization: 'Historical Research, South Asian History & Social Sciences',
     intro: 'Assistant Professor in Social Sciences with 8 years of university teaching and scholarly research in history.',
     photoUrl: '/assets/faculty/dr-abbas-haider.jpg',
-    fallbackPhotoUrl: 'https://i.ibb.co/MDRVG6JB/image-25.jpg',
+    fallbackPhotoUrl: '/images/MDRVG6JB_image-25.jpg',
     objectPosition: 'object-top',
     qualifications: [
       'Ph.D. in History',
@@ -137,7 +137,7 @@ export const ALL_FACULTY_MEMBERS: FacultyMemberData[] = [
     specialization: 'Post-Colonial Literature, Applied Linguistics & Critical Discourse',
     intro: 'Assistant Professor specializing in literary theory, research methodologies, and humanities curriculum design with extensive postgraduate mentorship.',
     photoUrl: '/assets/faculty/prof_uzma_zulqurnain.webp',
-    fallbackPhotoUrl: 'https://i.ibb.co/20rgrjKf/image-40.jpg',
+    fallbackPhotoUrl: '/images/20rgrjKf_image-40.jpg',
     objectPosition: 'object-center',
     imageTransform: 'scale-[1.28] origin-center',
     qualifications: [
@@ -168,7 +168,7 @@ export const ALL_FACULTY_MEMBERS: FacultyMemberData[] = [
     specialization: 'Applied Linguistics, English Pedagogy, Reading, Academic Writing & Web-Based Research',
     intro: 'Dedicated Assistant Professor of English and applied linguist at UCP Bahawalpur holding an M.Phil in Linguistics. Specialized in university-level English teaching, reading comprehension, academic writing development, and modern digital information literacy.',
     photoUrl: '/assets/faculty/prof-abeer-aslam.jpg',
-    fallbackPhotoUrl: 'https://i.ibb.co/My6FmnQm/image-22.jpg',
+    fallbackPhotoUrl: '/images/My6FmnQm_image-22.jpg',
     objectPosition: 'object-top',
     qualifications: [
       'M.Phil in Linguistics',
@@ -205,7 +205,7 @@ export const ALL_FACULTY_MEMBERS: FacultyMemberData[] = [
     specialization: 'Applied Mathematics, Entry Test Pedagogy, Calculus & Quantitative Problem Solving',
     intro: 'Distinguished mathematician and premier Entry Test Specialist with 20 years of higher education teaching excellence. Author of 2 peer-reviewed mathematical research publications and legendary mentor for competitive entrance exams across Punjab.',
     photoUrl: '/assets/faculty/dr-mushtaq.jpg',
-    fallbackPhotoUrl: 'https://i.ibb.co/mVDvc6n7/Whats-App-Image-2026-10-09-at-1-11-15-AM.jpg',
+    fallbackPhotoUrl: '/images/mVDvc6n7_Whats-App-Image-2026-10-09-at-1-11-15-AM.jpg',
     objectPosition: 'object-top',
     qualifications: [
       'Ph.D. in Mathematics',
@@ -243,7 +243,7 @@ export const ALL_FACULTY_MEMBERS: FacultyMemberData[] = [
     specialization: 'Materials Characterization, Nanoparticles Synthesis, Cancer Diagnosis & Biomedical Applications',
     intro: 'Assistant Professor of Physics with 15 years of higher education experience. Recipient of prestigious national research honors including the HEC IRSIP Award, focusing on cutting-edge nanotechnology and oncology diagnosis.',
     photoUrl: '/assets/faculty/dr-abdul-raouf.jpg',
-    fallbackPhotoUrl: 'https://i.ibb.co/q3shvZ1g/image-29.jpg',
+    fallbackPhotoUrl: '/images/q3shvZ1g_image-29.jpg',
     objectPosition: 'object-top',
     qualifications: [
       'Ph.D. in Physics',
@@ -281,7 +281,7 @@ export const ALL_FACULTY_MEMBERS: FacultyMemberData[] = [
     specialization: 'Quran & Tafseer, Islamic Jurisprudence & Contemporary Islamic Thought',
     intro: 'Assistant Professor of Islamic Studies with 12 years of university teaching experience, including 6 years leading BS classes. Specialized in Quran & Tafseer.',
     photoUrl: '/assets/faculty/dr-muhammad-tahir-akbar.jpg',
-    fallbackPhotoUrl: 'https://i.ibb.co/pT1Mdp1/image-39.jpg',
+    fallbackPhotoUrl: '/images/pT1Mdp1_image-39.jpg',
     objectPosition: 'object-top',
     qualifications: [
       'Ph.D. in Islamic Studies with Specialization in Quran & Tafseer',
@@ -309,7 +309,7 @@ export const ALL_FACULTY_MEMBERS: FacultyMemberData[] = [
     specialization: 'Accounting, Corporate Finance, Strategic Marketing & Commerce',
     intro: 'Accomplished Commerce & Business Studies educator with over 25 years of distinguished teaching tenure, academic administration, and sports leadership at UCP and PGC Bahawalpur. Two-time recipient of the Chief Minister Punjab Best Teacher Cash Prize.',
     photoUrl: '/assets/faculty/prof-khizer-hayat.jpg',
-    fallbackPhotoUrl: 'https://i.ibb.co/wN3FYgTw/Whats-App-Image-2026-10-14-at-8-11-53-AM.jpg',
+    fallbackPhotoUrl: '/images/wN3FYgTw_Whats-App-Image-2026-10-14-at-8-11-53-AM.jpg',
     objectPosition: 'object-top',
     qualifications: [
       'Ph.D. Scholar in Commerce',
@@ -354,7 +354,7 @@ export const ALL_FACULTY_MEMBERS: FacultyMemberData[] = [
     specialization: 'Artificial Intelligence, Healthcare IoT Systems, Explainable AI (XAI) & Embedded Intelligent Systems',
     intro: 'Accomplished AI researcher and Assistant Professor with 18 years of university teaching, research, and department management experience. Holds a Ph.D. in Artificial Intelligence from Lincoln University Malaysia (CGPA 3.73).',
     photoUrl: '/assets/faculty/prof-ali-shan.jpg',
-    fallbackPhotoUrl: 'https://i.ibb.co/Hf1sx73S/Whats-App-Image-2026-10-14-at-8-12-50-AM.jpg',
+    fallbackPhotoUrl: '/images/Hf1sx73S_Whats-App-Image-2026-10-14-at-8-12-50-AM.jpg',
     objectPosition: 'object-top',
     qualifications: [
       'Ph.D. in Artificial Intelligence (AI) — Lincoln University Malaysia, 2022 (CGPA: 3.73)',
@@ -438,7 +438,7 @@ export const ALL_FACULTY_MEMBERS: FacultyMemberData[] = [
     specialization: 'Applied Mathematics, Advanced Calculus, Linear Algebra & Analytical Problem Solving',
     intro: 'Dedicated Mathematics Lecturer with 10 years of academic teaching and pedagogical experience at UCP Bahawalpur. Specializing in pure and applied mathematics, calculus, and mathematical modeling, committed to nurturing rigorous analytical thought and academic excellence.',
     photoUrl: '/assets/faculty/prof-malik-allah-rakha.jpg',
-    fallbackPhotoUrl: 'https://i.ibb.co/jk3H0PVK/Whats-App-Image-2026-10-15-at-10-47-55-PM.jpg',
+    fallbackPhotoUrl: '/images/jk3H0PVK_Whats-App-Image-2026-10-15-at-10-47-55-PM.jpg',
     objectPosition: 'object-top',
     qualifications: [
       'M.Phil in Mathematics',
@@ -476,7 +476,7 @@ export const ALL_FACULTY_MEMBERS: FacultyMemberData[] = [
     specialization: 'Computing, Information Technology, Artificial Intelligence & Programming',
     intro: 'Dedicated Computer Science / IT Lecturer with 7+ years of teaching experience in higher education. Experienced in Computing, Information Technology, Artificial Intelligence, Programming, and emerging technologies, with strong expertise in student mentoring, research, and interactive practical learning.',
     photoUrl: '/assets/faculty/prof-aliya-batool.jpg',
-    fallbackPhotoUrl: 'https://i.ibb.co/zVHGmSrW/Whats-App-Image-2026-10-05-at-2-39-09-AM-2.jpg',
+    fallbackPhotoUrl: '/images/zVHGmSrW_Whats-App-Image-2026-10-05-at-2-39-09-AM-2.jpg',
     objectPosition: 'object-top',
     qualifications: [
       'Ph.D. Scholar in Computer Science / Information Technology',
@@ -549,7 +549,7 @@ export const ALL_FACULTY_MEMBERS: FacultyMemberData[] = [
     specialization: 'Applied Economics, Econometrics, Quantitative Microeconomics & Macroeconomic Analysis',
     intro: 'Dedicated Economics Lecturer at UCP Bahawalpur holding an M.Phil in Economics with 8+ years of higher education teaching experience. Committed to instructing macro and micro-economic theories, financial economics, and quantitative data analysis.',
     photoUrl: '/assets/faculty/prof-iqra-shabbir.jpg',
-    fallbackPhotoUrl: 'https://i.ibb.co/7xV0RjTJ/image-21.jpg',
+    fallbackPhotoUrl: '/images/7xV0RjTJ_image-21.jpg',
     objectPosition: 'object-top',
     qualifications: [
       'M.Phil in Economics',
@@ -585,7 +585,7 @@ export const ALL_FACULTY_MEMBERS: FacultyMemberData[] = [
     specialization: 'Computer Science, Systems Operations, CMS Leadership & Project Management',
     intro: 'Lecturer holding an MSCS with comprehensive academic teaching, institutional project management, and campus CMS administrative leadership across premier educational institutions.',
     photoUrl: '/assets/faculty/prof-usman-kazmi.jpg',
-    fallbackPhotoUrl: 'https://i.ibb.co/NRMsLPh/image-28.jpg',
+    fallbackPhotoUrl: '/images/NRMsLPh_image-28.jpg',
     objectPosition: 'object-top',
     qualifications: [
       'MSCS — Master of Science in Computer Science (Last Degree)',
@@ -614,7 +614,7 @@ export const ALL_FACULTY_MEMBERS: FacultyMemberData[] = [
     specialization: 'Web Technologies (HTML/CSS), Project Management, Complex Problem Solving & E-Commerce',
     intro: 'Lecturer in Computer Science Department at UCP Bahawalpur. Holds an MSCS in Computer Science and is pursuing Ph.D. at The Islamia University of Bahawalpur. Academic experience across IUB, University of Education, and CTI.',
     photoUrl: '/assets/faculty/prof-marriam-gill.jpg',
-    fallbackPhotoUrl: 'https://i.ibb.co/JRFr4LLF/image-31.jpg',
+    fallbackPhotoUrl: '/images/JRFr4LLF_image-31.jpg',
     objectPosition: 'object-top',
     qualifications: [
       'MSCS — Computer Science',
@@ -643,7 +643,7 @@ export const ALL_FACULTY_MEMBERS: FacultyMemberData[] = [
     specialization: 'Programming (C++, Java, Python), Web Development, SQL Databases & Graphic Designing',
     intro: 'Dynamic Information Technology lecturer at UCP Bahawalpur with MS and BS in IT. Combines hands-on software development, relational database engineering, and digital graphic design in undergraduate computing education.',
     photoUrl: '/assets/faculty/prof-humra-owj.jpg',
-    fallbackPhotoUrl: 'https://i.ibb.co/tPkwz4Ly/Whats-App-Image-2026-10-14-at-8-13-35-AM.jpg',
+    fallbackPhotoUrl: '/images/tPkwz4Ly_Whats-App-Image-2026-10-14-at-8-13-35-AM.jpg',
     objectPosition: 'object-top',
     qualifications: [
       'MS in Information Technology (MS IT)',
@@ -684,7 +684,7 @@ export const ALL_FACULTY_MEMBERS: FacultyMemberData[] = [
     specialization: 'English Language, Literature & Communication Skills',
     intro: 'Dedicated English Lecturer at UCP Bahawalpur holding an M.Phil in English with 3 years of academic teaching experience.',
     photoUrl: '/assets/faculty/prof-huzaira-akram.jpg',
-    fallbackPhotoUrl: 'https://i.ibb.co/gZ5ZH99L/Whats-App-Image-2026-10-14-at-8-11-35-AM.jpg',
+    fallbackPhotoUrl: '/images/gZ5ZH99L_Whats-App-Image-2026-10-14-at-8-11-35-AM.jpg',
     objectPosition: 'object-top',
     qualifications: [
       'M. Phil English',
@@ -718,7 +718,7 @@ export const ADMINISTRATION_MEMBERS: FacultyMemberData[] = [
     specialization: 'Academic Followup, Financial Operations & Institutional Coordination',
     intro: 'Experienced administrative leader with 11 years banking experience as OG-1 and 2 years at PGC Main Cluster Office, Bahawalpur. Holds MBA and M.Sc (Hons) in Agriculture.',
     photoUrl: '/assets/admin/faheem-fazal-qureshi.jpg',
-    fallbackPhotoUrl: 'https://i.ibb.co/7JVX7DYr/Whats-App-Image-2026-10-15-at-10-32-37-PM.jpg',
+    fallbackPhotoUrl: '/images/7JVX7DYr_Whats-App-Image-2026-10-15-at-10-32-37-PM.jpg',
     objectPosition: 'object-center',
     qualifications: [
       'MBA (Master of Business Administration)',
@@ -756,7 +756,7 @@ export const ADMINISTRATION_MEMBERS: FacultyMemberData[] = [
     specialization: 'Graphic Design, Visual Branding, Digital Media & UI/UX Design',
     intro: 'Creative design professional holding a Masters in Computer Science with 5 years of rich experience in visual branding, digital assets, multimedia presentations, and campus marketing collateral.',
     photoUrl: '/assets/admin/miss-alisha-tariq.jpg',
-    fallbackPhotoUrl: 'https://i.ibb.co/vvTJ4GPy/Whats-App-Image-2026-10-17-at-3-27-42-AM.jpg',
+    fallbackPhotoUrl: '/images/vvTJ4GPy_Whats-App-Image-2026-10-17-at-3-27-42-AM.jpg',
     objectPosition: 'object-center',
     qualifications: [
       'Masters in Computer Science (MCS)',
@@ -794,7 +794,7 @@ export const ADMINISTRATION_MEMBERS: FacultyMemberData[] = [
     specialization: 'Student Portal Management, Academic Database Administration & IT Support',
     intro: 'Senior systems and portal administrator with 10 years of proven experience managing student information systems, academic credentials, online portal services, and student technical assistance.',
     photoUrl: '/assets/admin/mr-hafiz-nadeem.jpg',
-    fallbackPhotoUrl: 'https://i.ibb.co/MkL1TDt1/Whats-App-Image-2026-10-15-at-10-47-27-PM.jpg',
+    fallbackPhotoUrl: '/images/MkL1TDt1_Whats-App-Image-2026-10-15-at-10-47-27-PM.jpg',
     objectPosition: 'object-center',
     qualifications: [
       'B.Sc Sciences',

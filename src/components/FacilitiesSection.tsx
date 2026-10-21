@@ -99,7 +99,7 @@ export const FacilitiesSection: React.FC<FacilitiesSectionProps> = ({
                   className="w-full h-full object-cover object-center block"
                   onError={(e) => {
                     const target = e.target as HTMLImageElement;
-                    target.src = 'https://i.ibb.co/tPJpr2Hc/image-13.jpg';
+                    target.src = '/images/tPJpr2Hc_image-13.jpg';
                   }}
                 />
               </div>
@@ -120,7 +120,7 @@ export const FacilitiesSection: React.FC<FacilitiesSectionProps> = ({
                 className="bg-white dark:bg-[#0d1e38] rounded-xl border border-slate-200 dark:border-[#1e3256] overflow-hidden shadow-xs hover:shadow-md transition-shadow cursor-pointer group"
                 onClick={() => setSelectedImage({
                   src: '/assets/campus/campus-reception-hall.jpg',
-                  fallback: 'https://i.ibb.co/Z9LT1K2/image-34.jpg',
+                  fallback: '/images/Z9LT1K2_image-34.jpg',
                   title: 'Campus Reception & Central Hall'
                 })}
               >
@@ -131,7 +131,7 @@ export const FacilitiesSection: React.FC<FacilitiesSectionProps> = ({
                     className="w-full h-full object-cover object-center block group-hover:scale-102 transition-transform duration-500"
                     onError={(e) => {
                       const target = e.target as HTMLImageElement;
-                      target.src = 'https://i.ibb.co/Z9LT1K2/image-34.jpg';
+                      target.src = '/images/Z9LT1K2_image-34.jpg';
                     }}
                   />
                   <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors pointer-events-none" />
@@ -143,7 +143,7 @@ export const FacilitiesSection: React.FC<FacilitiesSectionProps> = ({
                 className="bg-white dark:bg-[#0d1e38] rounded-xl border border-slate-200 dark:border-[#1e3256] overflow-hidden shadow-xs hover:shadow-md transition-shadow cursor-pointer group"
                 onClick={() => setSelectedImage({
                   src: '/assets/campus/corridor-portrait-9-16.jpg',
-                  fallback: 'https://i.ibb.co/0jL07ssr/image-33.jpg',
+                  fallback: '/images/0jL07ssr_image-33.jpg',
                   title: 'Sunlit Campus Corridors & Walkways'
                 })}
               >
@@ -154,7 +154,7 @@ export const FacilitiesSection: React.FC<FacilitiesSectionProps> = ({
                     className="w-full h-full object-cover object-center block group-hover:scale-102 transition-transform duration-500"
                     onError={(e) => {
                       const target = e.target as HTMLImageElement;
-                      target.src = 'https://i.ibb.co/0jL07ssr/image-33.jpg';
+                      target.src = '/images/0jL07ssr_image-33.jpg';
                     }}
                   />
                   <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors pointer-events-none" />
@@ -207,7 +207,7 @@ export const FacilitiesSection: React.FC<FacilitiesSectionProps> = ({
                 className="relative w-full aspect-[16/9] overflow-hidden bg-slate-900 cursor-pointer"
                 onClick={() => setSelectedImage({
                   src: '/assets/facilities/library-main-large-new.jpg',
-                  fallback: 'https://i.ibb.co/q3RfST0D/Whats-App-Image-2026-10-12-at-4-10-57-AM.jpg',
+                  fallback: '/images/q3RfST0D_Whats-App-Image-2026-10-12-at-4-10-57-AM.jpg',
                   title: 'Central Library Main Reading Hall',
                   caption: 'Spacious quiet reading hall equipped with dedicated study tables and reference materials.'
                 })}
@@ -218,7 +218,7 @@ export const FacilitiesSection: React.FC<FacilitiesSectionProps> = ({
                   className="w-full h-full object-cover object-center block transition-transform duration-500 ease-out group-hover:scale-102"
                   onError={(e) => {
                     const target = e.target as HTMLImageElement;
-                    target.src = 'https://i.ibb.co/q3RfST0D/Whats-App-Image-2026-10-12-at-4-10-57-AM.jpg';
+                    target.src = '/images/q3RfST0D_Whats-App-Image-2026-10-12-at-4-10-57-AM.jpg';
                   }}
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end justify-between p-3.5">
@@ -247,7 +247,7 @@ export const FacilitiesSection: React.FC<FacilitiesSectionProps> = ({
                   className="relative w-full aspect-[9/16] overflow-hidden bg-slate-900 cursor-pointer"
                   onClick={() => setSelectedImage({
                     src: '/assets/facilities/library-reading-2.jpg',
-                    fallback: 'https://i.ibb.co/369CDwy/Whats-App-Image-2026-10-09-at-3-42-32-AM.jpg',
+                    fallback: '/images/369CDwy_Whats-App-Image-2026-10-09-at-3-42-32-AM.jpg',
                     title: 'Individual Study Areas',
                     caption: 'Quiet seating arrangements for individual reading, exam revision, and research work.'
                   })}
@@ -258,7 +258,7 @@ export const FacilitiesSection: React.FC<FacilitiesSectionProps> = ({
                     className="w-full h-full object-cover object-center block transition-transform duration-500 ease-out group-hover:scale-102"
                     onError={(e) => {
                       const target = e.target as HTMLImageElement;
-                      target.src = 'https://i.ibb.co/369CDwy/Whats-App-Image-2026-10-09-at-3-42-32-AM.jpg';
+                      target.src = '/images/369CDwy_Whats-App-Image-2026-10-09-at-3-42-32-AM.jpg';
                     }}
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end justify-between p-3">
@@ -285,7 +285,7 @@ export const FacilitiesSection: React.FC<FacilitiesSectionProps> = ({
                   className="relative w-full aspect-[9/16] overflow-hidden bg-slate-900 cursor-pointer"
                   onClick={() => setSelectedImage({
                     src: '/assets/facilities/library-stacks-new-2.jpg',
-                    fallback: 'https://i.ibb.co/G3P4PsnZ/Whats-App-Image-2026-10-12-at-5-10-51-AM.jpg',
+                    fallback: '/images/G3P4PsnZ_Whats-App-Image-2026-10-12-at-5-10-51-AM.jpg',
                     title: 'Book Stacks & Collections',
                     caption: 'Organized shelves with curriculum textbooks, reference guides, and journals.'
                   })}
@@ -296,7 +296,7 @@ export const FacilitiesSection: React.FC<FacilitiesSectionProps> = ({
                     className="w-full h-full object-cover object-center block transition-transform duration-500 ease-out group-hover:scale-102"
                     onError={(e) => {
                       const target = e.target as HTMLImageElement;
-                      target.src = 'https://i.ibb.co/G3P4PsnZ/Whats-App-Image-2026-10-12-at-5-10-51-AM.jpg';
+                      target.src = '/images/G3P4PsnZ_Whats-App-Image-2026-10-12-at-5-10-51-AM.jpg';
                     }}
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end justify-between p-3">
@@ -368,7 +368,7 @@ export const FacilitiesSection: React.FC<FacilitiesSectionProps> = ({
                     className="w-full h-full object-cover object-center block"
                     onError={(e) => {
                       const target = e.target as HTMLImageElement;
-                      target.src = 'https://i.ibb.co/XZypYYCk/Whats-App-Image-2026-10-09-at-6-42-28-AM.jpg';
+                      target.src = '/images/XZypYYCk_Whats-App-Image-2026-10-09-at-6-42-28-AM.jpg';
                     }}
                   />
                 </div>
@@ -394,7 +394,7 @@ export const FacilitiesSection: React.FC<FacilitiesSectionProps> = ({
                       className="relative w-full aspect-[4/3] rounded-lg overflow-hidden bg-slate-900 border border-slate-200 dark:border-[#1e3256] shadow-2xs group cursor-pointer"
                       onClick={() => setSelectedImage({
                         src: '/assets/facilities/comp-lab-3.jpg',
-                        fallback: 'https://i.ibb.co/PZ48d5XF/Whats-App-Image-2026-10-17-at-3-35-03-AM.jpg',
+                        fallback: '/images/PZ48d5XF_Whats-App-Image-2026-10-17-at-3-35-03-AM.jpg',
                         title: 'Computer Laboratory & Student Workstation Suite',
                         caption: 'High-density computational workstations equipped for advanced programming, software development, and machine learning.'
                       })}
@@ -404,7 +404,7 @@ export const FacilitiesSection: React.FC<FacilitiesSectionProps> = ({
                         loading="lazy"
                         className="w-full h-full object-cover object-center block group-hover:scale-102 transition-transform duration-500"
                         onError={(e) => {
-                          (e.target as HTMLImageElement).src = 'https://i.ibb.co/PZ48d5XF/Whats-App-Image-2026-10-17-at-3-35-03-AM.jpg';
+                          (e.target as HTMLImageElement).src = '/images/PZ48d5XF_Whats-App-Image-2026-10-17-at-3-35-03-AM.jpg';
                         }}
                       />
                       <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors pointer-events-none" />
@@ -425,7 +425,7 @@ export const FacilitiesSection: React.FC<FacilitiesSectionProps> = ({
                     className="w-full h-full object-cover object-center block"
                     onError={(e) => {
                       const target = e.target as HTMLImageElement;
-                      target.src = 'https://i.ibb.co/JwR6L6CZ/Whats-App-Image-2026-10-09-at-6-51-57-AM.jpg';
+                      target.src = '/images/JwR6L6CZ_Whats-App-Image-2026-10-09-at-6-51-57-AM.jpg';
                     }}
                   />
                 </div>
@@ -497,7 +497,7 @@ export const FacilitiesSection: React.FC<FacilitiesSectionProps> = ({
                     className="w-full h-full object-cover object-center block"
                     onError={(e) => {
                       const target = e.target as HTMLImageElement;
-                      target.src = 'https://i.ibb.co/Mksk66Y7/image-9.jpg';
+                      target.src = '/images/Mksk66Y7_image-9.jpg';
                     }}
                   />
                 </div>
@@ -527,7 +527,7 @@ export const FacilitiesSection: React.FC<FacilitiesSectionProps> = ({
                     className="w-full h-full object-cover object-center block"
                     onError={(e) => {
                       const target = e.target as HTMLImageElement;
-                      target.src = 'https://i.ibb.co/jPMt5k22/image-10.jpg';
+                      target.src = '/images/jPMt5k22_image-10.jpg';
                     }}
                   />
                 </div>

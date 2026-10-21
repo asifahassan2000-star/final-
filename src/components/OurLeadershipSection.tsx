@@ -57,13 +57,87 @@ export interface LeaderProfile {
 
 const LEADERSHIP_PROFILES: LeaderProfile[] = [
   {
+    id: 'mian-amer-mahmood',
+    name: 'Mian Amer Mahmood (Hilal-e-Imtiaz)',
+    designation: 'Chairman, Board of Governors, UCP & PGC',
+    secondaryDesignation: 'Founder & Chairman, Punjab Group of Colleges · Former Mayor of Lahore (2001–2009)',
+    officialRole: 'Chairman, Board of Governors, University of Central Punjab & Punjab Group of Colleges',
+    portraitUrl: '/assets/welcome/mian-amer-mahmood.png',
+    fallbackUrl: '/images/99s2Cmqj_mian-ameer.png',
+    messageTitle: 'Chairman’s Message',
+    fullMessage: [
+      '“We are truly humbled by the trust of millions and take pride in uplifting our social fabric by educating the youth and mentoring them for a better future. Our journey of over 38 years is nothing but a reflection of our commitment and passion towards creating a better tomorrow for our society. With our wide network of schools, colleges and universities, we believe in continuously improving the standards and quality of education in Pakistan.”',
+      'By the Chairman UCP/PGC\nMIAN AMER MAHMOOD'
+    ],
+    contactInfo: {
+      email: 'chairman@pgc.edu',
+      website: 'https://pgc.edu/',
+      categories: ['Educationist', 'Philanthropist', 'Former Mayor of Lahore (2001–2009)', 'Founder, Dunya Media Group']
+    },
+    portfolio: [
+      {
+        role: 'Founder & Chairman',
+        organizations: [
+          'Punjab Group of Colleges (PGC) — 400+ Campuses across 100+ Cities',
+          'University of Central Punjab (UCP)',
+          'Dunya Media Group (Dunya News & Daily Dunya)'
+        ]
+      },
+      {
+        role: 'Chairman, Board of Governors',
+        organizations: [
+          'University of Central Punjab (UCP)',
+          'Mohammad Ali Jinnah University (MAJU)',
+          'Capital University of Science & Technology (CUST)'
+        ]
+      },
+      {
+        role: 'Civic Leadership & Public Service',
+        organizations: [
+          'City District Nazim (Mayor) of Lahore (2001–2009, 2 Consecutive Terms)',
+          'Chairman, Lahore Development Authority (LDA) & WASA (2001–2009)'
+        ]
+      },
+      {
+        role: 'National Honors & Philanthropy',
+        organizations: [
+          'Conferred Hilal-e-Imtiaz (2012) by the President of Pakistan',
+          'Over Rs. 1.3 Billion in Annual Need & Merit Scholarships'
+        ]
+      }
+    ],
+    biography: {
+      executiveProfile: 'Mian Amer Mahmood is a celebrated Pakistani educationist, philanthropist, and former City District Nazim (Mayor) of Lahore. Holding an MBA from the Institute of Business Administration (IBA), University of the Punjab (1981), he established the Punjab College of Commerce in 1985 on Muslim Town Canal, Lahore. Through pioneering vision and commitment to educational equity, he built Pakistan’s largest academic network spanning 400+ campuses, chartered universities, and over 2 million alumni.',
+      visionQuote: '“Our journey of over 38 years is a reflection of our commitment and passion towards creating a better tomorrow for our society.”',
+      motto: 'ACCESSIBLE EXCELLENCE · YOUTH EMPOWERMENT · NATIONAL SERVICE',
+      summary: 'Distinguished academic leader, civic reformer, and recipient of the Hilal-e-Imtiaz for exemplary national service to education and urban modernization.',
+      qualification: 'MBA, Institute of Business Administration (IBA), University of the Punjab (1981)',
+      highlights: [
+        'Established Punjab College of Commerce in 1985, pioneering modern professional commerce and science education in Pakistan.',
+        'Chartered University of Central Punjab (UCP) in 2002, creating a premier multidisciplinary research university.',
+        'Elected City District Nazim (Mayor) of Lahore for two consecutive terms (2001–2009), spearheading historic infrastructure, healthcare, and educational reforms.',
+        'Conferred Hilal-e-Imtiaz (2012) by the President of Pakistan for national contributions to higher education and public service.',
+        'Disburses over Rs. 1.3 Billion annually in merit and need-based tuition waivers to ensure higher education accessibility for all.'
+      ],
+      awards: [
+        'Hilal-e-Imtiaz (Crescent of Excellence) — Conferred by the President of Pakistan in 2012 for revolutionary contributions to higher education and public service.',
+        'Honorary Lifetime Achievement Recognition — Association of Private Sector Universities of Pakistan (APSUP).'
+      ],
+      contactInfo: {
+        email: 'chairman@pgc.edu',
+        website: 'https://pgc.edu/',
+        categories: ['Educationist', 'Philanthropist', 'Former Mayor of Lahore (2001–2009)']
+      }
+    }
+  },
+  {
     id: 'sohail-afzal',
     name: 'Prof. Sohail Afzal',
     designation: 'Executive Director PGC (UCP)',
     secondaryDesignation: 'Executive Director, Educational Excellence Limited · Member BoG, UCP & MAJU',
     officialRole: 'Executive Director PGC (UCP) & Member Board of Governors, UCP',
     portraitUrl: '/assets/leadership/sohail_afzal_user_selected_3_4.jpg',
-    fallbackUrl: 'https://i.ibb.co/HffRMp9g/Whats-App-Image-2026-10-20-at-2-07-37-AM.jpg',
+    fallbackUrl: '/images/HffRMp9g_Whats-App-Image-2026-10-20-at-2-07-37-AM.jpg',
     messageTitle: 'Executive Director’s Message',
     fullMessage: [
       '“At UCP we are not just means to education but a family that cares, grooms and helps unlock the true potential of our students. We are in a constant relentless pursuit to help provide a better future to our youth and build a society that is wise, intelligent and educated. Your trust in us motivates and inspires us to continue doing more so that you can shine in every aspect of your life.”',
@@ -137,7 +211,7 @@ const LEADERSHIP_PROFILES: LeaderProfile[] = [
     secondaryDesignation: 'Director PGC & UCP Bahawalpur Cluster',
     officialRole: 'Director PGC & UCP Bahawalpur Cluster',
     portraitUrl: '/assets/leadership/prof_hamid_iqbal_director.png',
-    fallbackUrl: 'https://i.ibb.co/5hzSMywr/IMG-3544.png',
+    fallbackUrl: '/images/5hzSMywr_IMG-3544.png',
     messageTitle: 'Director’s Message',
     fullMessage: [
       'The University of Central Punjab is a nationally recognized institution dedicated to academic excellence, impactful research, and the holistic development of students within a diverse and inclusive community. UCP equips its students with the adaptability, critical thinking, creativity, and entrepreneurial mindset required to succeed in a rapidly evolving society. Through world-class resources and a committed faculty, the University ensures a transformative, enriching, and memorable educational experience.'
@@ -159,11 +233,11 @@ const LEADERSHIP_PROFILES: LeaderProfile[] = [
   {
     id: 'prof-dr-aurangzaib-virk',
     name: 'Prof. Dr. Aurangzaib Virk',
-    designation: 'Principal, UCP Bahawalpur',
-    secondaryDesignation: 'Campus Governance & Academic Administration',
-    officialRole: 'Principal, University of Central Punjab Bahawalpur',
+    designation: 'Principal, UCP Bahawalpur Campus',
+    secondaryDesignation: 'Principal, UCP Bahawalpur Campus',
+    officialRole: 'Principal, UCP Bahawalpur Campus',
     portraitUrl: '/assets/campus/prof_aurangzaib_virk.png',
-    fallbackUrl: 'https://i.ibb.co/hRDYDCRp/IMG-3542.png',
+    fallbackUrl: '/images/hRDYDCRp_IMG-3542.png',
     messageTitle: 'Principal’s Message',
     fullMessage: [
       'The University of Central Punjab warmly welcomes students and parents to an institution committed to academic excellence, integrity, and transformative education.',

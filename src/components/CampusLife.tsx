@@ -38,11 +38,11 @@ const scienceLabImg = '/assets/facilities/comp-lab-2.jpg';
 
 // Authentic campus assets from public/assets/campus
 const concertImg = '/assets/campus/campus-concert-live-music.png';
-const concertFallback = 'https://i.ibb.co/dwVXXsjv/image-11.png';
+const concertFallback = '/images/dwVXXsjv_image-11.png';
 const cholistanHaveliSingingImg = '/assets/campus/haveli_cholistan_student_singing.jpg';
-const cholistanHaveliSingingFallback = 'https://i.ibb.co/7dwzJ7HH/Whats-App-Image-2026-10-11-at-11-12-56-PM.jpg';
+const cholistanHaveliSingingFallback = '/images/7dwzJ7HH_Whats-App-Image-2026-10-11-at-11-12-56-PM.jpg';
 const rhythmCampusLifeImg = '/assets/campus/campus_life_rhythm_featured.jpg';
-const rhythmCampusLifeFallback = 'https://i.ibb.co/NBMmfPv/Whats-App-Image-2026-10-09-at-8-49-16-AM.jpg';
+const rhythmCampusLifeFallback = '/images/NBMmfPv_Whats-App-Image-2026-10-09-at-8-49-16-AM.jpg';
 const corridorImg = '/assets/campus/6_campus_life_decorated_corridor.jpg';
 const courtyardImg = '/assets/campus/8_campus_life_courtyard.jpg';
 const nightCampusImg = '/assets/campus/3_campus_after_hours_night.jpg';
@@ -361,57 +361,6 @@ export const CampusLife: React.FC<CampusLifeProps> = ({ onOpenCampusLifePage }) 
         </div>
 
         {/* ====================================================================
-            2A. OFFICIAL STRATEGIC COLLABORATION: MOU SIGNING CEREMONY UCP X HAVELI CHOLISTAN
-            Proper big size frame matching natural photo dimensions with lightbox
-            ==================================================================== */}
-        <div className="mb-28 sm:mb-36">
-          <div className="overflow-hidden p-0 sm:p-2 border-0 shadow-none">
-            <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8">
-              <div className="space-y-2">
-                <div className="flex items-center gap-2.5">
-                  <span className="h-2 w-2 rounded-full bg-[#A51C30]" />
-                  <span className="font-mono text-xs uppercase tracking-[0.22em] text-[#A51C30] font-bold">
-                    OFFICIAL STRATEGIC COLLABORATION
-                  </span>
-                </div>
-                <h3 
-                  className="text-2xl sm:text-3xl lg:text-4xl font-serif font-bold text-[#0A1931] tracking-tight leading-tight"
-                  style={{ fontFamily: "'Cormorant Garamond', 'Libre Baskerville', Georgia, serif" }}
-                >
-                  MOU SIGNING CEREMONY: UCP X HAVELI CHOLISTAN
-                </h3>
-                <p className="text-slate-600 text-xs sm:text-sm md:text-base leading-relaxed font-sans max-w-3xl">
-                  Formalizing an institutional partnership between the University of Central Punjab and Haveli Cholistan — creating dedicated avenues for collegiate excursions, leadership camps, cultural retreats, desert heritage fieldwork, and collaborative student activities.
-                </p>
-              </div>
-              <div className="shrink-0 flex items-center gap-2 text-xs font-mono font-semibold text-[#0A1931] bg-slate-50 px-3.5 py-2 rounded-xl border border-slate-200">
-                <Award size={15} className="text-[#C8102E]" />
-                <span>INSTITUTIONAL ALLIANCE</span>
-              </div>
-            </div>
-
-            {/* Proper Big Visible Size Image Display without black line border and no border behind it */}
-            <div 
-              onClick={() => openStackLightbox(['/assets/campus-life/mou-signing-ceremony.jpg', cholistanHaveliSingingImg, '/assets/campus/campus-evening-view.jpg'], 'MOU Signing Ceremony: UCP x Haveli Cholistan')}
-              className="relative w-full aspect-[4/3] max-h-[720px] rounded-2xl overflow-hidden bg-transparent border-0 shadow-none cursor-pointer group hover:brightness-105 transition-all duration-300"
-            >
-              <img decoding="async" src="/assets/campus-life/mou-signing-ceremony.jpg"
-                alt="MOU SIGNING CEREMONY UCP X HAVELI CHOLISTAN"
-                loading="eager"
-                className="w-full h-full object-cover object-center transition-all duration-700 ease-out group-hover:scale-[1.02] block border-0"
-                onError={(e) => {
-                  (e.target as HTMLImageElement).src = 'https://i.ibb.co/chjWx2NR/Whats-App-Image-2026-10-13-at-1-06-35-AM.jpg';
-                }}
-              />
-              <div className="absolute inset-0 bg-black/0 group-hover:bg-black/15 transition-colors pointer-events-none" />
-            </div>
-          </div>
-        </div>
-
-
-
-
-        {/* ====================================================================
             3. CINEMATIC ARCHITECTURAL VIEW — "CAMPUS EVENING VIEW"
             Proper image visible in full frame without text overlay
             ==================================================================== */}
@@ -431,7 +380,7 @@ export const CampusLife: React.FC<CampusLifeProps> = ({ onOpenCampusLifePage }) 
                 loading="eager"
                 className="w-full h-full object-cover object-center transition-all duration-1000 ease-out group-hover:scale-[1.02] animate-in fade-in"
                 onError={(e) => {
-                  (e.target as HTMLImageElement).src = 'https://i.ibb.co/jZ9yKdMk/Whats-App-Image-2026-10-11-at-11-11-08-PM.jpg';
+                  (e.target as HTMLImageElement).src = '/images/jZ9yKdMk_Whats-App-Image-2026-10-11-at-11-11-08-PM.jpg';
                 }}
               />
             </div>

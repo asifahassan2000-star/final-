@@ -30,7 +30,7 @@ export const AboutCampusSection: React.FC<AboutCampusSectionProps> = ({
       title: 'Student Case Presentations',
       subtitle: 'Multimedia Lecture Halls & Interactive Delivery',
       src: '/assets/campus/student-classroom-presentation-1.jpg',
-      fallback: 'https://i.ibb.co/fdNr6DW5/Whats-App-Image-2026-10-11-at-11-26-34-PM.jpg',
+      fallback: '/images/fdNr6DW5_Whats-App-Image-2026-10-11-at-11-26-34-PM.jpg',
       caption: 'Students delivering oral presentations, presenting semester case studies, and defending course projects in digitally equipped classrooms.',
       tag: 'STUDENT PRESENTATION',
     },
@@ -39,7 +39,7 @@ export const AboutCampusSection: React.FC<AboutCampusSectionProps> = ({
       title: 'Interactive Academic Dialogue',
       subtitle: 'Faculty Mentorship & Collaborative Inquiry',
       src: '/assets/campus/student-classroom-presentation-2.jpg',
-      fallback: 'https://i.ibb.co/LDpBsFvq/Whats-App-Image-2026-10-11-at-11-19-54-PM.jpg',
+      fallback: '/images/LDpBsFvq_Whats-App-Image-2026-10-11-at-11-19-54-PM.jpg',
       caption: 'Dynamic peer exchanges, active faculty question-and-answer sessions, and interactive classroom learning fostering intellectual confidence.',
       tag: 'ACTIVE LEARNING',
     },
@@ -48,7 +48,7 @@ export const AboutCampusSection: React.FC<AboutCampusSectionProps> = ({
       title: 'Teacher Training & Pedagogical Development',
       subtitle: 'Subject Delivery, Generational Mindset & Modern Pedagogy',
       src: '/assets/campus/teacher-training-presentation.jpg',
-      fallback: 'https://i.ibb.co/PGh5DQqD/Whats-App-Image-2026-10-11-at-11-35-45-PM.jpg',
+      fallback: '/images/PGh5DQqD_Whats-App-Image-2026-10-11-at-11-35-45-PM.jpg',
       caption: 'Faculty development sessions where professors deliver presentations on subject methodologies, classroom pedagogy, and modern teaching techniques.',
       tag: 'TEACHER TRAINING',
     },
@@ -168,7 +168,7 @@ export const AboutCampusSection: React.FC<AboutCampusSectionProps> = ({
                 className="w-full h-full object-cover object-center block"
                 onError={(e) => {
                   const target = e.target as HTMLImageElement;
-                  target.src = 'https://i.ibb.co/pr54WNFV/Whats-App-Image-2026-10-10-at-7-16-33-AM.jpg';
+                  target.src = '/images/pr54WNFV_Whats-App-Image-2026-10-10-at-7-16-33-AM.jpg';
                 }}
               />
             </div>

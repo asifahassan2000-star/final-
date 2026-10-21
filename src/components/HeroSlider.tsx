@@ -179,9 +179,10 @@ export const HeroSlider: React.FC<HeroSliderProps> = ({
                 <img
                   src={imageSrc}
                   alt={slide.title}
-                  loading={index === 0 ? "eager" : "lazy"}
+                  loading={index < 2 ? "eager" : "lazy"}
                   decoding="async"
-                  fetchPriority={index === 0 ? "high" : "low"}
+                  fetchPriority={index < 2 ? "high" : "low"}
+                  sizes="(max-width: 768px) 100vw, 50vw"
                   referrerPolicy="no-referrer"
                   style={{
                     transform: 'none',
@@ -194,7 +195,7 @@ export const HeroSlider: React.FC<HeroSliderProps> = ({
                     } else if (target.src.endsWith('.webp')) {
                       target.src = target.src.replace('.webp', '.jpg');
                     } else if (slide.id === 'bahawalpur-excellence') {
-                      target.src = 'https://i.ibb.co/wmw3sjb/UCP-Bahawalpur-Campus-at-Night.png';
+                      target.src = '/images/wmw3sjb_UCP-Bahawalpur-Campus-at-Night.png';
                     }
                   }}
                 />

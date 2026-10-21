@@ -13,40 +13,40 @@ import { UCP_CONTACT } from '../data/ucpData';
 // Authentic historical portrait of the Nawab of Bahawalpur (Abbasi Dynasty)
 import nawabFullLengthImg from '../assets/images/nawab_of_bahawalpur.jpg';
 import nawabFaceSquareImg from '../assets/images/nawab_face_square.jpg';
-const NAWAB_BAHAWALPUR_URL = 'https://i.ibb.co/FbztWRNC/9ada4ca53a44a4a1bf356cbc4d1a84b4.jpg';
+const NAWAB_BAHAWALPUR_URL = '/images/FbztWRNC_9ada4ca53a44a4a1bf356cbc4d1a84b4.jpg';
 
 // Authentic visual record of the Cholistan Desert (Rohi)
-const CHOLISTAN_DESERT_IMG = 'https://i.ibb.co/4nqfrP2k/caption.jpg';
-const CHOLISTAN_DESERT_FALLBACK = 'https://i.ibb.co/7dfzm2Qh/caption.jpg';
+const CHOLISTAN_DESERT_IMG = '/images/4nqfrP2k_caption.jpg';
+const CHOLISTAN_DESERT_FALLBACK = '/images/7dfzm2Qh_caption.jpg';
 
 // Modern Bahawalpur architectural master planning & urban design
-const MODERN_BAHAWALPUR_IMG = 'https://i.ibb.co/yBh5dy61/DHA-Bahawalpur-design.webp';
-const MODERN_BAHAWALPUR_FALLBACK = 'https://i.ibb.co/7NgVjWn5/DHA-Bahawalpur-design.webp';
+const MODERN_BAHAWALPUR_IMG = '/images/yBh5dy61_DHA-Bahawalpur-design.webp';
+const MODERN_BAHAWALPUR_FALLBACK = '/images/7NgVjWn5_DHA-Bahawalpur-design.webp';
 
 // Central Library Bahawalpur (Historic interior architecture & reading hall)
-const CENTRAL_LIBRARY_IMG = 'https://i.ibb.co/ZpFGDsb3/Interior-of-Central-Library-Bahawalpur.jpg';
-const CENTRAL_LIBRARY_FALLBACK = 'https://i.ibb.co/xtBXTvry/Interior-of-Central-Library-Bahawalpur.jpg';
+const CENTRAL_LIBRARY_IMG = '/images/ZpFGDsb3_Interior-of-Central-Library-Bahawalpur.jpg';
+const CENTRAL_LIBRARY_FALLBACK = '/images/xtBXTvry_Interior-of-Central-Library-Bahawalpur.jpg';
 
 // Al-Sadiq Mosque (Grand Jamia Mosque of Bahawalpur)
-const AL_SADIQ_MOSQUE_IMG = 'https://i.ibb.co/7JyHQBjd/504070207-9306697746096496-2110290870646406506-n.jpg';
-const AL_SADIQ_MOSQUE_FALLBACK = 'https://i.ibb.co/mCzm0dbV/504070207-9306697746096496-2110290870646406506-n.jpg';
+const AL_SADIQ_MOSQUE_IMG = '/images/7JyHQBjd_504070207-9306697746096496-2110290870646406506-n.jpg';
+const AL_SADIQ_MOSQUE_FALLBACK = '/images/mCzm0dbV_504070207-9306697746096496-2110290870646406506-n.jpg';
 
 // Authentic UCP Bahawalpur Campus Building Photographs
 import ucpBuildingBlueprintImg from '../assets/images/ucp_building_blueprint.jpg';
-const UCP_BWP_BUILDING_1 = 'https://i.ibb.co/Qv89YHt5/83465e1d-068b-2508-b106-0177842d2b18-25460-F17-EBBC-4-FE6-9900-C688-B2739086.jpg';
-const UCP_BWP_BUILDING_1_FALLBACK = 'https://i.ibb.co/YBD2fdwr/83465e1d-068b-2508-b106-0177842d2b18-25460-F17-EBBC-4-FE6-9900-C688-B2739086.jpg';
+const UCP_BWP_BUILDING_1 = '/images/Qv89YHt5_83465e1d-068b-2508-b106-0177842d2b18-25460-F17-EBBC-4-FE6-9900-C688-B2739086.jpg';
+const UCP_BWP_BUILDING_1_FALLBACK = '/images/YBD2fdwr_83465e1d-068b-2508-b106-0177842d2b18-25460-F17-EBBC-4-FE6-9900-C688-B2739086.jpg';
 
-const UCP_BWP_BUILDING_2 = 'https://i.ibb.co/27R0ggJH/92d98f95-f6b4-b9d1-7c21-1edc80969a4a-177-F3-FFA-C68-F-42-DD-93-B6-62708-B02-B887.jpg';
-const UCP_BWP_BUILDING_2_FALLBACK = 'https://i.ibb.co/kgzVQQZv/92d98f95-f6b4-b9d1-7c21-1edc80969a4a-177-F3-FFA-C68-F-42-DD-93-B6-62708-B02-B887.jpg';
+const UCP_BWP_BUILDING_2 = '/images/27R0ggJH_92d98f95-f6b4-b9d1-7c21-1edc80969a4a-177-F3-FFA-C68-F-42-DD-93-B6-62708-B02-B887.jpg';
+const UCP_BWP_BUILDING_2_FALLBACK = '/images/kgzVQQZv_92d98f95-f6b4-b9d1-7c21-1edc80969a4a-177-F3-FFA-C68-F-42-DD-93-B6-62708-B02-B887.jpg';
 
-const UCP_BWP_BUILDING_3 = 'https://i.ibb.co/G4KqHRdW/2b6fc1a1-b138-45fc-4190-ee20c9ec66ec-8-D7-DE21-D-BE51-4196-89-D0-F27-F4-E80-B669.jpg';
-const UCP_BWP_BUILDING_3_FALLBACK = 'https://i.ibb.co/xtpNF621/2b6fc1a1-b138-45fc-4190-ee20c9ec66ec-8-D7-DE21-D-BE51-4196-89-D0-F27-F4-E80-B669.jpg';
+const UCP_BWP_BUILDING_3 = '/images/G4KqHRdW_2b6fc1a1-b138-45fc-4190-ee20c9ec66ec-8-D7-DE21-D-BE51-4196-89-D0-F27-F4-E80-B669.jpg';
+const UCP_BWP_BUILDING_3_FALLBACK = '/images/xtpNF621_2b6fc1a1-b138-45fc-4190-ee20c9ec66ec-8-D7-DE21-D-BE51-4196-89-D0-F27-F4-E80-B669.jpg';
 
-const UCP_BWP_BUILDING_4 = 'https://i.ibb.co/35GkrL7M/f20540bb-58c2-5d50-e433-1b6e507af588-84-B2-C91-C-6-F98-46-E2-9620-09-C36081-FED7.jpg';
-const UCP_BWP_BUILDING_4_FALLBACK = 'https://i.ibb.co/bjq7W8P2/f20540bb-58c2-5d50-e433-1b6e507af588-84-B2-C91-C-6-F98-46-E2-9620-09-C36081-FED7.jpg';
+const UCP_BWP_BUILDING_4 = '/images/35GkrL7M_f20540bb-58c2-5d50-e433-1b6e507af588-84-B2-C91-C-6-F98-46-E2-9620-09-C36081-FED7.jpg';
+const UCP_BWP_BUILDING_4_FALLBACK = '/images/bjq7W8P2_f20540bb-58c2-5d50-e433-1b6e507af588-84-B2-C91-C-6-F98-46-E2-9620-09-C36081-FED7.jpg';
 
-const UCP_BWP_BUILDING_5 = 'https://i.ibb.co/NnL9xCmX/IMG-7973.jpg';
-const UCP_BWP_BUILDING_5_FALLBACK = 'https://i.ibb.co/3Y0p1dMw/IMG-7973.jpg';
+const UCP_BWP_BUILDING_5 = '/images/NnL9xCmX_IMG-7973.jpg';
+const UCP_BWP_BUILDING_5_FALLBACK = '/images/3Y0p1dMw_IMG-7973.jpg';
 
 const UCP_BWP_BUILDING_PHOTOS = [
   {

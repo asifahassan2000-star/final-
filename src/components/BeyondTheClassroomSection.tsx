@@ -5,60 +5,60 @@ import { EditorialNewspaperSection } from './EditorialNewspaperSection';
 
 // 1. TOP & MAIN FOCUS: Documentary & Short Reel Competition Assets
 const docJudge = '/assets/events/documentary-competition-judges.jpg';
-const docJudgeFallback = 'https://i.ibb.co/wFy5dC60/Whats-App-Image-2026-10-11-at-11-09-33-PM.jpg';
+const docJudgeFallback = '/images/wFy5dC60_Whats-App-Image-2026-10-11-at-11-09-33-PM.jpg';
 const doc1 = '/assets/events/documentary-competition-1.jpg';
-const doc1Fallback = 'https://i.ibb.co/Z6gCjzm9/Whats-App-Image-2026-10-11-at-11-08-09-PM.jpg';
+const doc1Fallback = '/images/Z6gCjzm9_Whats-App-Image-2026-10-11-at-11-08-09-PM.jpg';
 const doc2 = '/assets/events/documentary-competition-2.jpg';
-const doc2Fallback = 'https://i.ibb.co/DPc3whkY/Whats-App-Image-2026-10-11-at-11-06-29-PM.jpg';
+const doc2Fallback = '/images/DPc3whkY_Whats-App-Image-2026-10-11-at-11-06-29-PM.jpg';
 const doc3 = '/assets/events/documentary-competition-3.jpg';
-const doc3Fallback = 'https://i.ibb.co/JWgxKLmW/Whats-App-Image-2026-10-11-at-11-08-23-PM.jpg';
+const doc3Fallback = '/images/JWgxKLmW_Whats-App-Image-2026-10-11-at-11-08-23-PM.jpg';
 const docAwards = '/assets/events/documentary-competition-awards.jpg';
-const docAwardsFallback = 'https://i.ibb.co/1t5rZr61/Whats-App-Image-2026-10-11-at-11-09-58-PM.jpg';
+const docAwardsFallback = '/images/1t5rZr61_Whats-App-Image-2026-10-11-at-11-09-58-PM.jpg';
 
 // 2. Community & Cultural Excursions Assets
 const mothersDay1 = '/assets/campus-life/mothers-day-historic-tribute-1.jpg';
-const mothersDay1Fallback = 'https://i.ibb.co/pjcYnN2B/Whats-App-Image-2026-10-05-at-2-39-19-AM-2.jpg';
+const mothersDay1Fallback = '/images/pjcYnN2B_Whats-App-Image-2026-10-05-at-2-39-19-AM-2.jpg';
 const mothersDay2Replacement = '/assets/campus-life/mothers-day-tribute-replacement.jpg';
-const mothersDay2ReplacementFallback = 'https://i.ibb.co/HTqzJNjb/Whats-App-Image-2026-10-05-at-1-12-46-AM.jpg';
+const mothersDay2ReplacementFallback = '/images/HTqzJNjb_Whats-App-Image-2026-10-05-at-1-12-46-AM.jpg';
 
 const jeepRallyMain = '/assets/campus-life/jeep-rally-main.jpg';
-const jeepRallyMainFallback = 'https://i.ibb.co/PshpBWGn/Whats-App-Image-2026-10-05-at-2-39-14-AM.jpg';
+const jeepRallyMainFallback = '/images/PshpBWGn_Whats-App-Image-2026-10-05-at-2-39-14-AM.jpg';
 const jeepRallyMeeting1 = '/assets/campus-life/jeep-rally-meeting-1.jpg';
-const jeepRallyMeeting1Fallback = 'https://i.ibb.co/PGGS4ZQ0/Whats-App-Image-2026-10-05-at-1-23-51-AM-1.jpg';
+const jeepRallyMeeting1Fallback = '/images/PGGS4ZQ0_Whats-App-Image-2026-10-05-at-1-23-51-AM-1.jpg';
 const jeepRallyMeeting2 = '/assets/campus-life/jeep-rally-meeting-2.jpg';
-const jeepRallyMeeting2Fallback = 'https://i.ibb.co/VcMt0mZx/Whats-App-Image-2026-10-05-at-1-23-52-AM.jpg';
+const jeepRallyMeeting2Fallback = '/images/VcMt0mZx_Whats-App-Image-2026-10-05-at-1-23-52-AM.jpg';
 
 const villageTour1 = '/assets/campus-life/village-tour-1.jpg';
-const villageTour1Fallback = 'https://i.ibb.co/KxnwgN6v/Whats-App-Image-2026-10-05-at-1-17-53-AM-4-Copy.jpg';
+const villageTour1Fallback = '/images/KxnwgN6v_Whats-App-Image-2026-10-05-at-1-17-53-AM-4-Copy.jpg';
 const villageTour2 = '/assets/campus-life/village-tour-2.jpg';
-const villageTour2Fallback = 'https://i.ibb.co/bRWh39Z1/Whats-App-Image-2026-10-11-at-11-07-35-PM.jpg';
+const villageTour2Fallback = '/images/bRWh39Z1_Whats-App-Image-2026-10-11-at-11-07-35-PM.jpg';
 const villageTour3 = '/assets/campus-life/village-tour-3.jpg';
-const villageTour3Fallback = 'https://i.ibb.co/hxJ4v4xv/Whats-App-Image-2026-10-11-at-11-30-43-PM.jpg';
+const villageTour3Fallback = '/images/hxJ4v4xv_Whats-App-Image-2026-10-11-at-11-30-43-PM.jpg';
 const villageTour4 = '/assets/campus-life/village-tour-4.jpg';
-const villageTour4Fallback = 'https://i.ibb.co/W4CphPKd/Whats-App-Image-2026-10-11-at-11-31-06-PM.jpg';
+const villageTour4Fallback = '/images/W4CphPKd_Whats-App-Image-2026-10-11-at-11-31-06-PM.jpg';
 
 const innovistaCinemaSinging = '/assets/campus-life/innovista-cholistan-movie-singing.jpg';
-const innovistaCinemaSingingFallback = 'https://i.ibb.co/F4M5mF0r/Whats-App-Image-2026-10-11-at-11-23-40-PM.jpg';
+const innovistaCinemaSingingFallback = '/images/F4M5mF0r_Whats-App-Image-2026-10-11-at-11-23-40-PM.jpg';
 const movieDayAddition = '/assets/campus-life/movie-day-addition.jpg';
-const movieDayAdditionFallback = 'https://i.ibb.co/pjpRGkzG/Whats-App-Image-2026-10-11-at-11-24-05-PM.jpg';
+const movieDayAdditionFallback = '/images/pjpRGkzG_Whats-App-Image-2026-10-11-at-11-24-05-PM.jpg';
 const mouSigning = '/assets/campus-life/mou-signing-ceremony.jpg';
-const mouSigningFallback = 'https://i.ibb.co/chjWx2NR/Whats-App-Image-2026-10-13-at-1-06-35-AM.jpg';
+const mouSigningFallback = '/images/chjWx2NR_Whats-App-Image-2026-10-13-at-1-06-35-AM.jpg';
 
 // 3. Tutorial Lectures & Recreational Gaming / Skills Assets
 const studentSinging = '/assets/campus-life/student-singing-vocal-performance.jpg';
-const studentSingingFallback = 'https://i.ibb.co/4RGfzpX8/image-2.jpg';
+const studentSingingFallback = '/images/4RGfzpX8_image-2.jpg';
 const studentDigitalSkills = '/assets/campus-life/student-digital-skills-lab.jpg';
-const studentDigitalSkillsFallback = 'https://i.ibb.co/5x6v5v8X/image-1.jpg';
+const studentDigitalSkillsFallback = '/images/5x6v5v8X_image-1.jpg';
 
 // 3. Tutorial Lectures & Recreational Gaming / Skills Assets
 const tutorialGaming1 = '/assets/campus-life/student-recreational-gaming-tutorial.jpg';
-const tutorialGaming1Fallback = 'https://i.ibb.co/d0RFqWwY/Whats-App-Image-2026-10-08-at-12-46-41-AM-1.jpg';
+const tutorialGaming1Fallback = '/images/d0RFqWwY_Whats-App-Image-2026-10-08-at-12-46-41-AM-1.jpg';
 const tutorialLecture2 = '/assets/campus-life/tutorial-lecture-2.jpg';
-const tutorialLecture2Fallback = 'https://i.ibb.co/k20Sp6Gq/Whats-App-Image-2026-10-08-at-12-46-42-AM-3.jpg';
+const tutorialLecture2Fallback = '/images/k20Sp6Gq_Whats-App-Image-2026-10-08-at-12-46-42-AM-3.jpg';
 const tutorialLecture3 = '/assets/campus-life/tutorial-lecture-3.jpg';
-const tutorialLecture3Fallback = 'https://i.ibb.co/JYCmfbX/Whats-App-Image-2026-10-08-at-12-46-43-AM.jpg';
+const tutorialLecture3Fallback = '/images/JYCmfbX_Whats-App-Image-2026-10-08-at-12-46-43-AM.jpg';
 const tutorialLecture4 = '/assets/campus-life/tutorial-lecture-4.jpg';
-const tutorialLecture4Fallback = 'https://i.ibb.co/rKVgFRvy/Whats-App-Image-2026-10-08-at-12-46-42-AM.jpg';
+const tutorialLecture4Fallback = '/images/rKVgFRvy_Whats-App-Image-2026-10-08-at-12-46-42-AM.jpg';
 
 interface BeyondTheClassroomProps {
   onScrollToCampusLife?: () => void;
@@ -282,21 +282,21 @@ export const BeyondTheClassroomSection: React.FC<BeyondTheClassroomProps> = ({
             },
             {
               src: '/assets/campus-life/shogran-valley-tour-1.jpg',
-              fallback: 'https://i.ibb.co/0j944vNC/image-8.jpg',
+              fallback: '/images/0j944vNC_image-8.jpg',
               alt: 'Shogran Valley excursion tour with UCP Bahawalpur scholars',
               caption: 'Shogran Valley Northern Tour: UCP Bahawalpur students and faculty exploring the scenic pine trails, alpine heights, and natural vistas of Shogran.',
               tag: 'SHOGRAN VALLEY TOUR',
             },
             {
               src: '/assets/campus-life/campus-life-culture-1.jpg',
-              fallback: 'https://i.ibb.co/q3FMgJQ6/Whats-App-Image-2026-10-18-at-1-23-07-AM.jpg',
+              fallback: '/images/q3FMgJQ6_Whats-App-Image-2026-10-18-at-1-23-07-AM.jpg',
               alt: 'Campus Life cultural celebrations and student gathering at UCP Bahawalpur',
               caption: 'Campus Life & Cultural Celebration: Dynamic student festivities, cultural representation, and communal camaraderie across faculties.',
               tag: 'CAMPUS LIFE CELEBRATION',
             },
             {
               src: '/assets/campus-life/campus-life-culture-2.jpg',
-              fallback: 'https://i.ibb.co/7tL25pD8/Whats-App-Image-2026-10-18-at-1-24-42-AM.jpg',
+              fallback: '/images/7tL25pD8_Whats-App-Image-2026-10-18-at-1-24-42-AM.jpg',
               alt: 'Student cultural excursion and collegiate memories at UCP Bahawalpur',
               caption: 'Collegiate Cultural Milestones: Memorable student outdoor events, interactive gatherings, and peer excursions fostering lasting bonds.',
               tag: 'CULTURAL EXCURSION',

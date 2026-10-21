@@ -23,7 +23,7 @@ export const EditorialNewspaperSection: React.FC = () => {
       title: 'Seminar on Effective Communication',
       subtitle: 'Keynote Address on Executive Oratory, Rhetorical Precision & Leadership Presence',
       imageSrc: '/assets/events/seminar-comm-keynote-large.jpg',
-      fallbackImage: 'https://i.ibb.co/4wq6trSW/Whats-App-Image-2026-10-11-at-11-04-13-PM.jpg',
+      fallbackImage: '/images/4wq6trSW_Whats-App-Image-2026-10-11-at-11-04-13-PM.jpg',
       alt: 'Keynote speaker delivering executive address on effective communication at UCP Bahawalpur',
       caption: 'Distinguished guest speaker addressing students and faculty on high-impact verbal rhetoric, corporate diplomacy, and confident public delivery.',
       dateline: 'EXECUTIVE AUDITORIUM · MAIN LECTURE',
@@ -35,7 +35,7 @@ export const EditorialNewspaperSection: React.FC = () => {
       title: 'Speaker Lecture & Discourse Session',
       subtitle: 'Mastering Professional Eloquence & Interpersonal Agility',
       imageSrc: '/assets/events/seminar-speaker-session.jpg',
-      fallbackImage: 'https://i.ibb.co/LzRyY8vQ/Whats-App-Image-2026-10-12-at-3-48-34-AM.jpg',
+      fallbackImage: '/images/LzRyY8vQ_Whats-App-Image-2026-10-12-at-3-48-34-AM.jpg',
       alt: 'Distinguished speaker presenting during executive seminar at UCP Bahawalpur',
       caption: 'Practical exercises in strategic messaging, audience engagement, and confident oral argumentation for collegiate scholars.',
       dateline: 'MAIN AUDITORIUM · PODIUM SESSION',
@@ -47,7 +47,7 @@ export const EditorialNewspaperSection: React.FC = () => {
       title: 'Executive Stage Panel & Academic Review',
       subtitle: 'Faculty Dignitaries & Invited Guest Speakers in Plenary Discussion',
       imageSrc: '/assets/events/seminar-stage-panel.jpg',
-      fallbackImage: 'https://i.ibb.co/Z6LzQgNC/Whats-App-Image-2026-10-12-at-3-50-32-AM.jpg',
+      fallbackImage: '/images/Z6LzQgNC_Whats-App-Image-2026-10-12-at-3-50-32-AM.jpg',
       alt: 'Executive seminar stage and distinguished faculty panel at UCP Bahawalpur',
       caption: 'Senior administration, visiting guest educators, and academic leadership presiding over executive communication proceedings.',
       dateline: 'EXECUTIVE STAGE · FORMAL PLENARY',
@@ -59,7 +59,7 @@ export const EditorialNewspaperSection: React.FC = () => {
       title: 'Audience Hall & Student Assembly',
       subtitle: 'Active Student Engagement Across Academic Faculties',
       imageSrc: '/assets/events/seminar-audience-delegates.jpg',
-      fallbackImage: 'https://i.ibb.co/b58txN9k/Whats-App-Image-2026-10-12-at-3-49-32-AM.jpg',
+      fallbackImage: '/images/b58txN9k_Whats-App-Image-2026-10-12-at-3-49-32-AM.jpg',
       alt: 'Full audience hall of students and faculty during seminar at UCP Bahawalpur',
       caption: 'Packed lecture theater with students, researchers, and faculty members actively engaged in executive training modules.',
       dateline: 'CENTRAL AUDITORIUM · FULL ASSEMBLY',
@@ -71,7 +71,7 @@ export const EditorialNewspaperSection: React.FC = () => {
       title: 'Distinguished Guest Lecture & Faculty Assembly',
       subtitle: 'Interpersonal Dynamics and Scholarly Communication Standards',
       imageSrc: '/assets/events/seminar-overview-1.jpg',
-      fallbackImage: 'https://i.ibb.co/p9wFJZF/image-15.jpg',
+      fallbackImage: '/images/p9wFJZF_image-15.jpg',
       alt: 'Seminar on effective communication audience and executive stage',
       caption: 'Undergraduate student delegations and senior academicians engaged in an intensive seminar exploring contemporary business discourse.',
       dateline: 'EXECUTIVE HALL · SESSION 01',
@@ -83,7 +83,7 @@ export const EditorialNewspaperSection: React.FC = () => {
       title: 'Interactive Deliberations & Q&A Discourse',
       subtitle: 'Critical Inquiry, Cross-Examination & Collaborative Speaking Roundtables',
       imageSrc: '/assets/events/seminar-overview-2.jpg',
-      fallbackImage: 'https://i.ibb.co/Kpn9Bc8J/Whats-App-Image-2026-10-11-at-11-02-58-PM.jpg',
+      fallbackImage: '/images/Kpn9Bc8J_Whats-App-Image-2026-10-11-at-11-02-58-PM.jpg',
       alt: 'Interactive discussion and student participation in communication seminar',
       caption: 'Dynamic participant question-and-answer exchanges refining conversational agility, debate mechanics, and interpersonal clarity.',
       dateline: 'SEMINAR SUITE · WORKSHOP SESSION',
@@ -99,7 +99,7 @@ export const EditorialNewspaperSection: React.FC = () => {
       title: 'International Symposium on AI and Secure Systems',
       subtitle: 'Keynote Deliberations & Technical Plenary Sessions',
       imageSrc: '/assets/events/symposium-ai-secure-systems-1.jpg',
-      fallbackImage: 'https://i.ibb.co/Z6LzQgNC/Whats-App-Image-2026-10-12-at-3-50-32-AM.jpg',
+      fallbackImage: '/images/Z6LzQgNC_Whats-App-Image-2026-10-12-at-3-50-32-AM.jpg',
       alt: 'International Symposium on AI and Secure Systems Keynote Session at UCP Bahawalpur',
       caption: 'International researchers and computational scientists convening in the Executive Auditorium for keynote deliberations on AI, neural systems, and secure architectures.',
       dateline: 'FLAGSHIP SYMPOSIUM · GRAND AUDITORIUM',
@@ -111,7 +111,7 @@ export const EditorialNewspaperSection: React.FC = () => {
       title: 'International Symposium on AI and Secure Systems',
       subtitle: 'International Research Delegates & Academic Colloquium',
       imageSrc: '/assets/events/symposium-ai-secure-systems-2.jpg',
-      fallbackImage: 'https://i.ibb.co/ymcGpgCf/Whats-App-Image-2026-10-12-at-3-51-10-AM.jpg',
+      fallbackImage: '/images/ymcGpgCf_Whats-App-Image-2026-10-12-at-3-51-10-AM.jpg',
       alt: 'Distinguished international delegates attending AI and Secure Systems symposium at UCP Bahawalpur',
       caption: 'Distinguished international scholars and department faculty reviewing breakthroughs in machine learning, cryptographic protocols, and automated secure computing.',
       dateline: 'RESEARCH COUNCIL FORUM · PLENARY',
@@ -127,7 +127,7 @@ export const EditorialNewspaperSection: React.FC = () => {
       title: 'Annual Student Project & Innovation Exhibition',
       subtitle: 'Flagship Showcase of Applied Computing, Embedded Hardware & Commercial Innovations',
       imageSrc: '/assets/events/project-exhibition-top.jpg',
-      fallbackImage: 'https://i.ibb.co/gLWYH4T1/Whats-App-Image-2026-10-11-at-11-43-36-PM.jpg',
+      fallbackImage: '/images/gLWYH4T1_Whats-App-Image-2026-10-11-at-11-43-36-PM.jpg',
       alt: 'UCP Bahawalpur Student Project Exhibition Flagship Showcase Arena',
       caption: 'Flagship exhibition hall welcoming academic evaluators, industrial executives, and university delegations reviewing senior capstone innovations.',
       dateline: 'CENTRAL EXHIBITION HALL · LEAD SHOWCASE',
@@ -139,7 +139,7 @@ export const EditorialNewspaperSection: React.FC = () => {
       title: 'Applied Engineering, Computing & Commercial Capstones',
       subtitle: 'Cross-Faculty Evaluation with Leading Tech Professionals',
       imageSrc: '/assets/events/project-exhibition.jpg',
-      fallbackImage: 'https://i.ibb.co/vvQkvTcd/Whats-App-Image-2026-10-11-at-11-40-34-PM.jpg',
+      fallbackImage: '/images/vvQkvTcd_Whats-App-Image-2026-10-11-at-11-40-34-PM.jpg',
       alt: 'UCP Bahawalpur Student Project Exhibition Main Hall Showcase',
       caption: 'Undergraduate and graduate students presenting working prototypes, embedded systems, and enterprise software systems to evaluation panels.',
       dateline: 'DEPARTMENTAL SHOWCASE · EXHIBITION ARENA',
@@ -151,7 +151,7 @@ export const EditorialNewspaperSection: React.FC = () => {
       title: 'Student Innovation Pods & Interactive Live Demos',
       subtitle: 'Hands-on Technical Execution Evaluated by Departmental Juries',
       imageSrc: '/assets/events/project-exhibition-7.jpg',
-      fallbackImage: 'https://i.ibb.co/wr04XwP2/Whats-App-Image-2026-10-11-at-11-42-37-PM.jpg',
+      fallbackImage: '/images/wr04XwP2_Whats-App-Image-2026-10-11-at-11-42-37-PM.jpg',
       alt: 'Student developers demonstrating active project hardware and software',
       caption: 'Live demonstrations of automated systems, web architectures, and hardware modules undergoing scrutiny by industry panels.',
       dateline: 'ENGINEERING PODS · LIVE DEMO',
@@ -163,7 +163,7 @@ export const EditorialNewspaperSection: React.FC = () => {
       title: 'Robotics & Hardware Systems Demonstrations',
       subtitle: 'Microcontroller Firmware & Industrial Automation Frameworks',
       imageSrc: '/assets/events/project-exhibition-2.jpg',
-      fallbackImage: 'https://i.ibb.co/wxv8Pzc/Whats-App-Image-2026-10-11-at-11-46-24-PM.jpg',
+      fallbackImage: '/images/wxv8Pzc_Whats-App-Image-2026-10-11-at-11-46-24-PM.jpg',
       alt: 'Students demonstrating robotics and hardware innovation projects',
       caption: 'Interactive robotics models and automated sensor nodes tested live during peer and faculty review sessions.',
       dateline: 'EMBEDDED SYSTEMS LAB · POD 02',
@@ -175,7 +175,7 @@ export const EditorialNewspaperSection: React.FC = () => {
       title: 'Software Architectures & AI Capstone Juries',
       subtitle: 'Technical Rigour Judged by Industrial Software Architects',
       imageSrc: '/assets/events/project-exhibition-3.jpg',
-      fallbackImage: 'https://i.ibb.co/KBSTmxb/Whats-App-Image-2026-10-11-at-11-43-53-PM.jpg',
+      fallbackImage: '/images/KBSTmxb_Whats-App-Image-2026-10-11-at-11-43-53-PM.jpg',
       alt: 'Student developers explaining cloud and algorithmic solutions to juries',
       caption: 'Senior engineering faculties and industry delegates conducting in-depth technical code audits and viva assessments.',
       dateline: 'INNOVATION ATRIUM · JURY STAGE',
@@ -187,7 +187,7 @@ export const EditorialNewspaperSection: React.FC = () => {
       title: 'Smart Automation & IoT Demonstration Pods',
       subtitle: 'Applied Prototypes Addressing Real-World Challenges',
       imageSrc: '/assets/events/project-exhibition-4.jpg',
-      fallbackImage: 'https://i.ibb.co/tTkCHVb9/Whats-App-Image-2026-10-11-at-11-46-24-PM.jpg',
+      fallbackImage: '/images/tTkCHVb9_Whats-App-Image-2026-10-11-at-11-46-24-PM.jpg',
       alt: 'Exhibition project display boards and hardware interfaces',
       caption: 'Telemetry devices, agricultural automation modules, and smart monitors exhibited with live serial data visualization.',
       dateline: 'COMPUTING & ENGINEERING PAVILION',
@@ -199,7 +199,7 @@ export const EditorialNewspaperSection: React.FC = () => {
       title: 'Commercial Startup Models & Incubation Pitches',
       subtitle: 'Market Viability & Business Feasibility Formulations',
       imageSrc: '/assets/events/project-exhibition-5.jpg',
-      fallbackImage: 'https://i.ibb.co/MDT4rNPv/Whats-App-Image-2026-10-11-at-11-41-20-PM.jpg',
+      fallbackImage: '/images/MDT4rNPv_Whats-App-Image-2026-10-11-at-11-41-20-PM.jpg',
       alt: 'Students pitching startup models and project feasibility studies',
       caption: 'Teams displaying commercial viability, unit economics, and operational roadmaps to angel investors and visiting venture leaders.',
       dateline: 'ENTREPRENEURSHIP SUITE · DISPLAY POD',
@@ -211,7 +211,7 @@ export const EditorialNewspaperSection: React.FC = () => {
       title: 'Engineering Prototyping & Capstone Assembly Arena',
       subtitle: 'Interdisciplinary Collaboration Across Computing & Management',
       imageSrc: '/assets/events/project-exhibition-6.jpg',
-      fallbackImage: 'https://i.ibb.co/Y4084CbJ/Whats-App-Image-2026-10-11-at-11-44-52-PM.jpg',
+      fallbackImage: '/images/Y4084CbJ_Whats-App-Image-2026-10-11-at-11-44-52-PM.jpg',
       alt: 'Students and visitors interacting around project exhibition showcase booths',
       caption: 'Visitors, visiting educators, and students interacting across exhibition stands to evaluate technical execution and market potential.',
       dateline: 'CENTRAL ATRIUM · MAIN ARENA',
@@ -352,7 +352,7 @@ export const EditorialNewspaperSection: React.FC = () => {
                   decoding="async"
                   className="w-full h-full object-cover object-center transition-transform duration-700 ease-out group-hover/img:scale-103"
                   onError={(e) => {
-                    (e.target as HTMLImageElement).src = 'https://i.ibb.co/Z6LzQgNC/Whats-App-Image-2026-10-12-at-3-50-32-AM.jpg';
+                    (e.target as HTMLImageElement).src = '/images/Z6LzQgNC_Whats-App-Image-2026-10-12-at-3-50-32-AM.jpg';
                   }}
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-transparent to-transparent opacity-0 group-hover/img:opacity-100 transition-opacity duration-300 flex items-end justify-between p-2.5">
@@ -376,7 +376,7 @@ export const EditorialNewspaperSection: React.FC = () => {
                   decoding="async"
                   className="w-full h-full object-cover object-center transition-transform duration-700 ease-out group-hover/img:scale-103"
                   onError={(e) => {
-                    (e.target as HTMLImageElement).src = 'https://i.ibb.co/ymcGpgCf/Whats-App-Image-2026-10-12-at-3-51-10-AM.jpg';
+                    (e.target as HTMLImageElement).src = '/images/ymcGpgCf_Whats-App-Image-2026-10-12-at-3-51-10-AM.jpg';
                   }}
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-transparent to-transparent opacity-0 group-hover/img:opacity-100 transition-opacity duration-300 flex items-end justify-between p-2.5">

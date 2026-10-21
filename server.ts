@@ -185,6 +185,30 @@ const isProd = process.env.NODE_ENV === 'production' || (!process.env.NODE_ENV &
 
 app.use(express.json());
 
+// Edge Caching & Cache-Control Headers Middleware
+app.use((req, res, next) => {
+  if (req.path.startsWith('/images/') || req.path.startsWith('/assets/')) {
+    res.setHeader('Cache-Control', 'public, max-age=31536000, immutable');
+  } else if (!req.path.startsWith('/api/')) {
+    res.setHeader('Cache-Control', 'public, max-age=0, s-maxage=3600, stale-while-revalidate=86400');
+  }
+  next();
+});
+
+// Serve local public/images with high performance immutable caching
+app.use('/images', express.static(path.resolve(__dirname, 'public/images'), {
+  maxAge: '365d',
+  immutable: true,
+  etag: true,
+}));
+
+// Serve local public/assets with immutable caching
+app.use('/assets', express.static(path.resolve(__dirname, 'public/assets'), {
+  maxAge: '365d',
+  immutable: true,
+  etag: true,
+}));
+
 // Healthcheck endpoints for Cloud Run & container orchestrators
 app.get('/healthz', (_req, res) => res.status(200).send('OK'));
 app.get('/api/health', (_req, res) => res.status(200).json({ status: 'ok', time: new Date().toISOString() }));
@@ -330,6 +354,40 @@ app.post('/api/chat', async (req, res) => {
 
 async function startServer() {
   const httpServer = http.createServer(app);
+
+  // High-Performance Cached Static Asset Serving with Cache-Control headers
+  app.use('/images', express.static(path.resolve(__dirname, 'public/images'), {
+    maxAge: '365d',
+    immutable: true,
+    etag: true,
+    lastModified: true,
+    setHeaders: (res) => {
+      res.setHeader('Cache-Control', 'public, max-age=31536000, immutable');
+      res.setHeader('Timing-Allow-Origin', '*');
+    }
+  }));
+
+  app.use('/assets', express.static(path.resolve(__dirname, 'public/assets'), {
+    maxAge: '365d',
+    immutable: true,
+    etag: true,
+    lastModified: true,
+    setHeaders: (res) => {
+      res.setHeader('Cache-Control', 'public, max-age=31536000, immutable');
+      res.setHeader('Timing-Allow-Origin', '*');
+    }
+  }));
+
+  app.use(express.static(path.resolve(__dirname, 'public'), {
+    maxAge: '30d',
+    etag: true,
+    lastModified: true,
+    setHeaders: (res, filePath) => {
+      if (/\.(jpg|jpeg|png|webp|svg|gif|ico|woff2?|ttf)$/i.test(filePath)) {
+        res.setHeader('Cache-Control', 'public, max-age=31536000, immutable');
+      }
+    }
+  }));
 
   if (!isProd) {
     const { createLogger } = await import('vite');

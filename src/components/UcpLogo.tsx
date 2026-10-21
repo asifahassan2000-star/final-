@@ -13,7 +13,7 @@ export const UcpLogo: React.FC<UcpLogoProps> = ({ variant = 'header', className 
 
   // Official uploaded UCP logo permanent static asset path
   const officialLogoPath = '/assets/ucp-official-logo.png';
-  const fallbackUrl = 'https://i.ibb.co/BVZkCkFf/e4f3a018-e327-765a-db91-e468a8c6672d-4596-F431-6479-4-D27-A36-B-9750-DA25-F303.jpg';
+  const fallbackUrl = '/images/BVZkCkFf_e4f3a018-e327-765a-db91-e468a8c6672d-4596-F431-6479-4-D27-A36-B-9750-DA25-F303.jpg';
 
   return (
     <div 

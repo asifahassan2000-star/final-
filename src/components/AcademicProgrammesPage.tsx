@@ -41,33 +41,33 @@ type CategoryFilter =
 // Comprehensive fallback images for academic programmes
 const getProgrammeFallbackImage = (progId: string, currentSrc?: string): string => {
   const fallbacks: Record<string, string> = {
-    'bs-psychology': 'https://i.ibb.co/zWQVBLTD/shutterstock-158110544-scaled.jpg',
-    'bs-physics': 'https://i.ibb.co/MkxJ7Nzy/Chat-GPT-Image-Sep-26-2026-09-44-35-AM.png',
-    'bba': 'https://i.ibb.co/TXgwt6f/Chat-GPT-Image-Sep-27-2026-07-07-56-AM.png',
-    'adp-artificial-intelligence': 'https://i.ibb.co/bMFsfmxh/hand-holding-ai-globe.jpg',
-    'adp-cyber-security': 'https://i.ibb.co/DPDbZQ7K/images.jpg',
-    'bs-cyber-security': 'https://i.ibb.co/DPDbZQ7K/images.jpg',
-    'bs-cyber': 'https://i.ibb.co/DPDbZQ7K/images.jpg',
-    'bs-mathematics': 'https://i.ibb.co/2Ys8Y5H3/shutterstock-2475273911-scaled.jpg',
-    'bs-chemistry': 'https://i.ibb.co/h1fDTVTm/p0f776fj.png',
-    'bs-zoology': 'https://i.ibb.co/hFKgG2vw/Zoology.png',
-    'adp-psychology': 'https://i.ibb.co/chP4mYWB/What-s-the-Difference-Between-a-Psychiatrist-and-Psychologist.webp',
-    'bs-english': 'https://i.ibb.co/cKvTywH6/360-F-409187796-W9bg-IQAKZYs-Wkc9g-Xt-Pbs5h-YAWXd6z1-T.jpg',
-    'bs-business-analytics': 'https://i.ibb.co/Ld75Vg2t/i-Stock-1311598658.jpg',
-    'bs-biotechnology': 'https://i.ibb.co/wFZF6w95/Biotechnology-1000x600px.jpg',
-    'bs-accounting-finance': 'https://i.ibb.co/p6MpMGDn/shutterstock-527098861-1-scaled.avif',
-    'bs-biochemistry': 'https://i.ibb.co/VW7jZHDF/pipette-over-test-tube-dropping-sample-chemical-into-sample-plant-scaled-jpg.webp',
-    'bs-computer-science': 'https://i.ibb.co/V0QdQKgG/images-1.jpg',
-    'adp-software-engineering': 'https://i.ibb.co/rf2T1y2M/images.jpg',
-    'adp-data-science': 'https://i.ibb.co/LDnggNLM/FUq-HEVVUs-AAb-ZB0.jpg',
-    'ads-zoology-botany-chemistry': 'https://i.ibb.co/GfDX6Zg7/pngtree-laboratory-plant-research-image-21361714.webp',
-    'ads-math-physics': 'https://i.ibb.co/wN2rcm0p/creative-concept-hand-holding-light-bulb-with-planets-mathematical-formulas-representing-idea-genera.jpg',
-    'adp-english': 'https://i.ibb.co/xdLNTjf/360-F-310395027-i-VFf-VOCWFUONEIo-Ri-Tk7-Wq-U7-GLTOf3-QE.jpg',
-    'adp-business-analytics': 'https://i.ibb.co/cKT5qwbp/What-is-business-analytics-Getty-Images-1281224851-e1708028042563.webp',
-    'adp-biotechnology': 'https://i.ibb.co/35mFgXjT/7052877-13ab.webp',
-    'adp-accounting-finance': 'https://i.ibb.co/xS78W5ZT/accounting-and-finance.jpg',
-    'adp-business-administration': 'https://i.ibb.co/Ps0SNKc7/images-1.jpg',
-    'adp-computer-science': 'https://i.ibb.co/nqtHPF6p/Online-Learning-South-Asia-Learning-Indoor-Getty-Images-1071652068.webp',
+    'bs-psychology': '/images/zWQVBLTD_shutterstock-158110544-scaled.jpg',
+    'bs-physics': '/images/MkxJ7Nzy_Chat-GPT-Image-Sep-26-2026-09-44-35-AM.png',
+    'bba': '/images/TXgwt6f_Chat-GPT-Image-Sep-27-2026-07-07-56-AM.png',
+    'adp-artificial-intelligence': '/images/bMFsfmxh_hand-holding-ai-globe.jpg',
+    'adp-cyber-security': '/images/DPDbZQ7K_images.jpg',
+    'bs-cyber-security': '/images/DPDbZQ7K_images.jpg',
+    'bs-cyber': '/images/DPDbZQ7K_images.jpg',
+    'bs-mathematics': '/images/2Ys8Y5H3_shutterstock-2475273911-scaled.jpg',
+    'bs-chemistry': '/images/h1fDTVTm_p0f776fj.png',
+    'bs-zoology': '/images/hFKgG2vw_Zoology.png',
+    'adp-psychology': '/images/chP4mYWB_What-s-the-Difference-Between-a-Psychiatrist-and-Psychologist.webp',
+    'bs-english': '/images/cKvTywH6_360-F-409187796-W9bg-IQAKZYs-Wkc9g-Xt-Pbs5h-YAWXd6z1-T.jpg',
+    'bs-business-analytics': '/images/Ld75Vg2t_i-Stock-1311598658.jpg',
+    'bs-biotechnology': '/images/wFZF6w95_Biotechnology-1000x600px.jpg',
+    'bs-accounting-finance': '/images/p6MpMGDn_shutterstock-527098861-1-scaled.avif',
+    'bs-biochemistry': '/images/VW7jZHDF_pipette-over-test-tube-dropping-sample-chemical-into-sample-plant-scaled-jpg.webp',
+    'bs-computer-science': '/images/V0QdQKgG_images-1.jpg',
+    'adp-software-engineering': '/images/rf2T1y2M_images.jpg',
+    'adp-data-science': '/images/LDnggNLM_FUq-HEVVUs-AAb-ZB0.jpg',
+    'ads-zoology-botany-chemistry': '/images/GfDX6Zg7_pngtree-laboratory-plant-research-image-21361714.webp',
+    'ads-math-physics': '/images/wN2rcm0p_creative-concept-hand-holding-light-bulb-with-planets-mathematical-formulas-representing-idea-genera.jpg',
+    'adp-english': '/images/xdLNTjf_360-F-310395027-i-VFf-VOCWFUONEIo-Ri-Tk7-Wq-U7-GLTOf3-QE.jpg',
+    'adp-business-analytics': '/images/cKT5qwbp_What-is-business-analytics-Getty-Images-1281224851-e1708028042563.webp',
+    'adp-biotechnology': '/images/35mFgXjT_7052877-13ab.webp',
+    'adp-accounting-finance': '/images/xS78W5ZT_accounting-and-finance.jpg',
+    'adp-business-administration': '/images/Ps0SNKc7_images-1.jpg',
+    'adp-computer-science': '/images/nqtHPF6p_Online-Learning-South-Asia-Learning-Indoor-Getty-Images-1071652068.webp',
   };
   return fallbacks[progId] || currentSrc || '/public/hero-featured-campus.jpg';
 };
@@ -887,55 +887,55 @@ Campus Phone: 062-2202030 / 062-2202050
                       onError={(e) => {
                         const target = e.target as HTMLImageElement;
                         if (prog.id === 'bs-psychology') {
-                          target.src = 'https://i.ibb.co/zWQVBLTD/shutterstock-158110544-scaled.jpg';
+                          target.src = '/images/zWQVBLTD_shutterstock-158110544-scaled.jpg';
                         } else if (prog.id === 'bs-physics') {
-                          target.src = 'https://i.ibb.co/MkxJ7Nzy/Chat-GPT-Image-Sep-26-2026-09-44-35-AM.png';
+                          target.src = '/images/MkxJ7Nzy_Chat-GPT-Image-Sep-26-2026-09-44-35-AM.png';
                         } else if (prog.id === 'bba') {
-                          target.src = 'https://i.ibb.co/TXgwt6f/Chat-GPT-Image-Sep-27-2026-07-07-56-AM.png';
+                          target.src = '/images/TXgwt6f_Chat-GPT-Image-Sep-27-2026-07-07-56-AM.png';
                         } else if (prog.id === 'adp-artificial-intelligence') {
-                          target.src = 'https://i.ibb.co/bMFsfmxh/hand-holding-ai-globe.jpg';
+                          target.src = '/images/bMFsfmxh_hand-holding-ai-globe.jpg';
                         } else if (prog.id === 'adp-cyber-security' || prog.id === 'bs-cyber-security' || prog.id === 'bs-cyber') {
-                          target.src = 'https://i.ibb.co/DPDbZQ7K/images.jpg';
+                          target.src = '/images/DPDbZQ7K_images.jpg';
                         } else if (prog.id === 'bs-mathematics') {
-                          target.src = 'https://i.ibb.co/2Ys8Y5H3/shutterstock-2475273911-scaled.jpg';
+                          target.src = '/images/2Ys8Y5H3_shutterstock-2475273911-scaled.jpg';
                         } else if (prog.id === 'bs-chemistry') {
-                          target.src = 'https://i.ibb.co/h1fDTVTm/p0f776fj.png';
+                          target.src = '/images/h1fDTVTm_p0f776fj.png';
                         } else if (prog.id === 'bs-zoology') {
-                          target.src = 'https://i.ibb.co/hFKgG2vw/Zoology.png';
+                          target.src = '/images/hFKgG2vw_Zoology.png';
                         } else if (prog.id === 'adp-psychology') {
-                          target.src = 'https://i.ibb.co/chP4mYWB/What-s-the-Difference-Between-a-Psychiatrist-and-Psychologist.webp';
+                          target.src = '/images/chP4mYWB_What-s-the-Difference-Between-a-Psychiatrist-and-Psychologist.webp';
                         } else if (prog.id === 'bs-english') {
-                          target.src = 'https://i.ibb.co/cKvTywH6/360-F-409187796-W9bg-IQAKZYs-Wkc9g-Xt-Pbs5h-YAWXd6z1-T.jpg';
+                          target.src = '/images/cKvTywH6_360-F-409187796-W9bg-IQAKZYs-Wkc9g-Xt-Pbs5h-YAWXd6z1-T.jpg';
                         } else if (prog.id === 'bs-business-analytics') {
-                          target.src = 'https://i.ibb.co/Ld75Vg2t/i-Stock-1311598658.jpg';
+                          target.src = '/images/Ld75Vg2t_i-Stock-1311598658.jpg';
                         } else if (prog.id === 'bs-biotechnology') {
-                          target.src = 'https://i.ibb.co/wFZF6w95/Biotechnology-1000x600px.jpg';
+                          target.src = '/images/wFZF6w95_Biotechnology-1000x600px.jpg';
                         } else if (prog.id === 'bs-accounting-finance') {
-                          target.src = 'https://i.ibb.co/p6MpMGDn/shutterstock-527098861-1-scaled.avif';
+                          target.src = '/images/p6MpMGDn_shutterstock-527098861-1-scaled.avif';
                         } else if (prog.id === 'bs-biochemistry') {
-                          target.src = 'https://i.ibb.co/VW7jZHDF/pipette-over-test-tube-dropping-sample-chemical-into-sample-plant-scaled-jpg.webp';
+                          target.src = '/images/VW7jZHDF_pipette-over-test-tube-dropping-sample-chemical-into-sample-plant-scaled-jpg.webp';
                         } else if (prog.id === 'bs-computer-science') {
-                          target.src = 'https://i.ibb.co/V0QdQKgG/images-1.jpg';
+                          target.src = '/images/V0QdQKgG_images-1.jpg';
                         } else if (prog.id === 'adp-software-engineering') {
-                          target.src = 'https://i.ibb.co/rf2T1y2M/images.jpg';
+                          target.src = '/images/rf2T1y2M_images.jpg';
                         } else if (prog.id === 'adp-data-science') {
-                          target.src = 'https://i.ibb.co/LDnggNLM/FUq-HEVVUs-AAb-ZB0.jpg';
+                          target.src = '/images/LDnggNLM_FUq-HEVVUs-AAb-ZB0.jpg';
                         } else if (prog.id === 'ads-zoology-botany-chemistry') {
-                          target.src = 'https://i.ibb.co/GfDX6Zg7/pngtree-laboratory-plant-research-image-21361714.webp';
+                          target.src = '/images/GfDX6Zg7_pngtree-laboratory-plant-research-image-21361714.webp';
                         } else if (prog.id === 'ads-math-physics') {
-                          target.src = 'https://i.ibb.co/wN2rcm0p/creative-concept-hand-holding-light-bulb-with-planets-mathematical-formulas-representing-idea-genera.jpg';
+                          target.src = '/images/wN2rcm0p_creative-concept-hand-holding-light-bulb-with-planets-mathematical-formulas-representing-idea-genera.jpg';
                         } else if (prog.id === 'adp-english') {
-                          target.src = 'https://i.ibb.co/xdLNTjf/360-F-310395027-i-VFf-VOCWFUONEIo-Ri-Tk7-Wq-U7-GLTOf3-QE.jpg';
+                          target.src = '/images/xdLNTjf_360-F-310395027-i-VFf-VOCWFUONEIo-Ri-Tk7-Wq-U7-GLTOf3-QE.jpg';
                         } else if (prog.id === 'adp-business-analytics') {
-                          target.src = 'https://i.ibb.co/cKT5qwbp/What-is-business-analytics-Getty-Images-1281224851-e1708028042563.webp';
+                          target.src = '/images/cKT5qwbp_What-is-business-analytics-Getty-Images-1281224851-e1708028042563.webp';
                         } else if (prog.id === 'adp-biotechnology') {
-                          target.src = 'https://i.ibb.co/35mFgXjT/7052877-13ab.webp';
+                          target.src = '/images/35mFgXjT_7052877-13ab.webp';
                         } else if (prog.id === 'adp-accounting-finance') {
-                          target.src = 'https://i.ibb.co/xS78W5ZT/accounting-and-finance.jpg';
+                          target.src = '/images/xS78W5ZT_accounting-and-finance.jpg';
                         } else if (prog.id === 'adp-business-administration') {
-                          target.src = 'https://i.ibb.co/Ps0SNKc7/images-1.jpg';
+                          target.src = '/images/Ps0SNKc7_images-1.jpg';
                         } else if (prog.id === 'adp-computer-science') {
-                          target.src = 'https://i.ibb.co/nqtHPF6p/Online-Learning-South-Asia-Learning-Indoor-Getty-Images-1071652068.webp';
+                          target.src = '/images/nqtHPF6p_Online-Learning-South-Asia-Learning-Indoor-Getty-Images-1071652068.webp';
                         }
                       }}
                       className={`w-full h-full object-cover group-hover:scale-103 transition-transform duration-300 ${
@@ -1023,9 +1023,9 @@ Campus Phone: 062-2202030 / 062-2202050
                       onError={(e) => {
                         const target = e.target as HTMLImageElement;
                         if (prog.id === 'adp-artificial-intelligence') {
-                          target.src = 'https://i.ibb.co/bMFsfmxh/hand-holding-ai-globe.jpg';
+                          target.src = '/images/bMFsfmxh_hand-holding-ai-globe.jpg';
                         } else if (prog.id === 'adp-cyber-security') {
-                          target.src = 'https://i.ibb.co/DPDbZQ7K/images.jpg';
+                          target.src = '/images/DPDbZQ7K_images.jpg';
                         }
                       }}
                       className="w-full h-full object-cover group-hover:scale-103 transition-transform duration-300"

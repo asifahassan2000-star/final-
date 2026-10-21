@@ -67,16 +67,16 @@ export const LeadershipImpactSection: React.FC<LeadershipImpactSectionProps> = (
                 decoding="async"
                 className="w-full h-full object-cover object-center block"
                 onError={(e) => {
-                  (e.target as HTMLImageElement).src = 'https://i.ibb.co/qZbTG19/Whats-App-Image-2026-10-11-at-11-32-22-PM.jpg';
+                  (e.target as HTMLImageElement).src = '/images/qZbTG19_Whats-App-Image-2026-10-11-at-11-32-22-PM.jpg';
                 }}
               />
             </div>
 
-            <div className="max-w-4xl pt-1 space-y-2.5">
-              <p className="text-sm sm:text-base text-slate-700 leading-relaxed font-sans">
+            <div className="max-w-4xl mx-auto pt-1 space-y-3">
+              <p className="text-left text-sm sm:text-base text-slate-700 leading-7 font-sans">
                 At the University of Central Punjab (UCP) Bahawalpur Campus, leadership extends beyond classrooms to encompass environmental stewardship, cultural heritage, and community empowerment. As a leading institution in South Punjab, UCP Bahawalpur is proudly aligned with the UN Sustainable Development Goals (SDGs), championing initiatives in clean energy, zero single-use plastics, and green campus development.
               </p>
-              <p className="text-sm sm:text-base text-slate-700 leading-relaxed font-sans">
+              <p className="text-left text-sm sm:text-base text-slate-700 leading-7 font-sans">
                 Our faculty leadership believes in leading by example — fostering a campus culture that values sustainability, honors academic collaboration, and celebrates community bonds. Through meaningful engagements, outreach programs like the Village Tour, and initiatives that recognize contribution and partnership, UCP Bahawalpur continues to shape responsible leaders and a greener, more inclusive future for the region.
               </p>
             </div>
@@ -100,7 +100,7 @@ export const LeadershipImpactSection: React.FC<LeadershipImpactSectionProps> = (
                   decoding="async"
                   className="w-full h-full object-cover object-center block"
                   onError={(e) => {
-                    (e.target as HTMLImageElement).src = 'https://i.ibb.co/RTFJgsVp/Whats-App-Image-2026-10-13-at-12-53-34-AM.jpg';
+                    (e.target as HTMLImageElement).src = '/images/RTFJgsVp_Whats-App-Image-2026-10-13-at-12-53-34-AM.jpg';
                   }}
                 />
               </div>
@@ -114,7 +114,7 @@ export const LeadershipImpactSection: React.FC<LeadershipImpactSectionProps> = (
                   decoding="async"
                   className="w-full h-full object-cover object-center block"
                   onError={(e) => {
-                    (e.target as HTMLImageElement).src = 'https://i.ibb.co/RGrj83r1/Whats-App-Image-2026-10-11-at-11-38-19-PM.jpg';
+                    (e.target as HTMLImageElement).src = '/images/RGrj83r1_Whats-App-Image-2026-10-11-at-11-38-19-PM.jpg';
                   }}
                 />
               </div>

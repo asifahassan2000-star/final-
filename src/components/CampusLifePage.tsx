@@ -57,13 +57,13 @@ const MinimalEventItem: React.FC<MinimalEventItemProps> = ({ event, onOpenLightb
       onMouseLeave={() => setIsHovered(false)}
     >
       {/* 1. Event Name */}
-      <div className="max-w-5xl mb-3 sm:mb-4 overflow-hidden">
+      <div className="max-w-4xl mx-auto mb-3 sm:mb-4 overflow-hidden">
         <motion.h3 
           initial={{ opacity: 0, y: 24, clipPath: 'polygon(0 100%, 100% 100%, 100% 100%, 0 100%)' }}
           whileInView={{ opacity: 1, y: 0, clipPath: 'polygon(0 0, 100% 0, 100% 100%, 0 100%)' }}
           viewport={{ once: true, margin: '-20px' }}
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-          className="text-2xl sm:text-3xl lg:text-4xl font-serif font-bold text-[#0A1931] dark:text-white tracking-tight leading-snug"
+          className="text-left text-2xl sm:text-3xl lg:text-4xl font-serif font-bold text-[#0A1931] dark:text-white tracking-tight leading-snug"
           style={{ fontFamily: "'Playfair Display', 'Cormorant Garamond', Georgia, serif" }}
         >
           {event.number}. {event.title}
@@ -75,14 +75,14 @@ const MinimalEventItem: React.FC<MinimalEventItemProps> = ({ event, onOpenLightb
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-20px' }}
           transition={{ duration: 0.7, delay: 0.08, ease: [0.16, 1, 0.3, 1] }}
-          className="text-sm sm:text-base text-slate-600 dark:text-slate-300 font-sans leading-relaxed mt-2.5 max-w-4xl font-normal"
+          className="text-left text-sm sm:text-base text-slate-600 dark:text-slate-300 font-sans leading-7 mt-2.5 max-w-4xl font-normal"
         >
           {event.description}
         </motion.p>
       </div>
 
       {/* 3. ONE BIG IMAGE */}
-      <div className="mt-4 max-w-5xl">
+      <div className="mt-4 max-w-4xl mx-auto">
         <div 
           onClick={() => onOpenLightbox(event.id, activeIdx)}
           className="relative w-full aspect-[16/9] sm:aspect-[16/9.5] rounded-2xl overflow-hidden bg-slate-100 dark:bg-[#0A1931] cursor-pointer group shadow-xs hover:shadow-lg transition-all duration-300"
@@ -508,7 +508,7 @@ export const CampusLifePage: React.FC<CampusLifePageProps> = ({
       </header>
 
       {/* 3. Event List (2025 on Top, Then 2026) */}
-      <main className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
+      <main className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
         
         {/* ====================================================================
             2025 EVENTS ON TOP (EVENTS 1 TO 6)
