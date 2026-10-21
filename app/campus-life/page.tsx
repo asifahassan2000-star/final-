@@ -25,7 +25,7 @@ export default function CampusLifeRoute() {
 
       {/* Environmental Stewardship & Faculty Leadership Section */}
       <div className="border-t border-slate-200 dark:border-white/10 bg-slate-50 dark:bg-[#0B1528] py-8">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <LeadershipImpactSection />
         </div>
       </div>

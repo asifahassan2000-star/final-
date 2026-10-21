@@ -3,6 +3,7 @@ export interface FacultyMemberData {
   numericId: number;
   name: string;
   designation: string;
+  cardDesignation?: string;
   department: string;
   highestDegree: string;
   experienceYears?: string;
@@ -163,22 +164,30 @@ export const ALL_FACULTY_MEMBERS: FacultyMemberData[] = [
     name: 'Prof. Abeer Aslam',
     designation: 'Assistant Professor',
     department: 'Department of English & Humanities',
-    highestDegree: 'M.Phil in Linguistics',
-    experienceYears: '9+ Years',
+    highestDegree: 'PhD Scholar English Linguistics (contd)',
+    experienceYears: '15+ Years',
     specialization: 'Applied Linguistics, English Pedagogy, Reading, Academic Writing & Web-Based Research',
-    intro: 'Dedicated Assistant Professor of English and applied linguist at UCP Bahawalpur holding an M.Phil in Linguistics. Specialized in university-level English teaching, reading comprehension, academic writing development, and modern digital information literacy.',
+    intro: 'Assistant Professor of English Language and Literature at UCP, currently PhD scholar in linguistics. Specialized in university-level English teaching, reading comprehension, academic writing development, and modern digital information literacy.',
     photoUrl: '/assets/faculty/prof-abeer-aslam.jpg',
     fallbackPhotoUrl: '/images/My6FmnQm_image-22.jpg',
     objectPosition: 'object-top',
     qualifications: [
-      'M.Phil in Linguistics',
-      'Master of Arts (M.A.) in English Literature & Linguistics',
-      'BS / B.A. in English'
+      'PhD Scholar English Linguistics (contd)',
+      'M.Phil in English Linguistics',
+      'M.A in English Language Teaching',
+      'Diploma in Phonetics and Phonology',
+      'M.A in English Literature',
+      'B.Ed'
     ],
     experienceDetails: [
-      '9+ Years of Teaching Experience as Faculty in English at UCP Bahawalpur',
-      'Instruction in Functional English, Communication Skills, and Advanced Linguistic Studies',
-      'Student mentoring in scholarly reading, essay structuring, and professional communication'
+      '9+ Years of Teaching Experience as Faculty in English at UCP Bahawalpur Campus',
+      '5+ Years Instruction in Functional English, Communication Skills, and Advanced Linguistic Studies',
+      '15+ Years in Student Mentoring in Scholarly Reading, Essay Structuring, and Professional Communication'
+    ],
+    academicAdministration: [
+      '9+ Years of Teaching Experience as Faculty in English at UCP Bahawalpur Campus',
+      '5+ Years Instruction in Functional English, Communication Skills, and Advanced Linguistic Studies',
+      '15+ Years in Student Mentoring in Scholarly Reading, Essay Structuring, and Professional Communication'
     ],
     coreTechnicalSkills: [
       'University-Level English Language Teaching',
@@ -197,8 +206,9 @@ export const ALL_FACULTY_MEMBERS: FacultyMemberData[] = [
   {
     id: 'dr-mushtaq',
     numericId: 6,
-    name: 'Dr. Mushtaq',
+    name: 'Prof. Mushtaq Ahmad',
     designation: 'Assistant Professor • Entry Test Specialist',
+    cardDesignation: 'Assistant Professor',
     department: 'Department of Mathematics & Quantitative Sciences',
     highestDegree: 'Ph.D. in Mathematics',
     experienceYears: '20 Years',
@@ -303,6 +313,7 @@ export const ALL_FACULTY_MEMBERS: FacultyMemberData[] = [
     numericId: 9,
     name: 'Prof. Khizer Hayat',
     designation: 'Assistant Professor — Commerce & Business Studies',
+    cardDesignation: 'Assistant Professor',
     department: 'Faculty of Management Sciences (Commerce & Business Studies)',
     highestDegree: 'Ph.D. Scholar (Commerce) • M.Phil Management Sciences (Finance)',
     experienceYears: 'Over 25 Years',

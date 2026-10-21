@@ -18,7 +18,7 @@ export const LeadershipImpactSection: React.FC<LeadershipImpactSectionProps> = (
         
         {/* First Section Heading — Kept Exactly Same */}
         <motion.div
-          className="max-w-3xl mb-8 sm:mb-10"
+          className="w-[95%] max-w-[1200px] mx-auto mb-8 sm:mb-10"
           initial={{ opacity: 0, y: 18 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, ease: easeCurve }}
@@ -53,7 +53,7 @@ export const LeadershipImpactSection: React.FC<LeadershipImpactSectionProps> = (
 
           {/* 1. Director Tree Planting & UN SDGs Commitment */}
           <motion.div 
-            className="space-y-3"
+            className="w-[95%] max-w-[1200px] mx-auto space-y-4"
             initial={{ opacity: 0, y: 18 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, ease: easeCurve }}
@@ -72,11 +72,27 @@ export const LeadershipImpactSection: React.FC<LeadershipImpactSectionProps> = (
               />
             </div>
 
-            <div className="max-w-4xl mx-auto pt-1 space-y-3">
-              <p className="text-left text-sm sm:text-base text-slate-700 leading-7 font-sans">
+            <div className="w-full pt-1 space-y-3.5">
+              <p 
+                className="w-full text-slate-700 font-sans"
+                style={{
+                  fontSize: '17px',
+                  lineHeight: '1.8',
+                  textAlign: 'justify',
+                  textJustify: 'inter-word'
+                }}
+              >
                 At the University of Central Punjab (UCP) Bahawalpur Campus, leadership extends beyond classrooms to encompass environmental stewardship, cultural heritage, and community empowerment. As a leading institution in South Punjab, UCP Bahawalpur is proudly aligned with the UN Sustainable Development Goals (SDGs), championing initiatives in clean energy, zero single-use plastics, and green campus development.
               </p>
-              <p className="text-left text-sm sm:text-base text-slate-700 leading-7 font-sans">
+              <p 
+                className="w-full text-slate-700 font-sans"
+                style={{
+                  fontSize: '17px',
+                  lineHeight: '1.8',
+                  textAlign: 'justify',
+                  textJustify: 'inter-word'
+                }}
+              >
                 Our faculty leadership believes in leading by example — fostering a campus culture that values sustainability, honors academic collaboration, and celebrates community bonds. Through meaningful engagements, outreach programs like the Village Tour, and initiatives that recognize contribution and partnership, UCP Bahawalpur continues to shape responsible leaders and a greener, more inclusive future for the region.
               </p>
             </div>
@@ -84,7 +100,7 @@ export const LeadershipImpactSection: React.FC<LeadershipImpactSectionProps> = (
 
           {/* 3. Combined Side-by-Side: Selected Image on Left, New Awards/Ceremony Image on Right */}
           <motion.div
-            className="pt-6 border-t border-slate-200/80"
+            className="w-[95%] max-w-[1200px] mx-auto pt-6 border-t border-slate-200/80"
             initial={{ opacity: 0, y: 18 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, ease: easeCurve }}

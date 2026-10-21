@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ArrowRight, Building2, Trees, CheckCircle2, Presentation, Maximize2, X } from 'lucide-react';
+import { ArrowRight, Building2, Trees, CheckCircle2, Presentation, Maximize2, X, Sparkles } from 'lucide-react';
 
 interface ClassroomPhoto {
   id: string;
@@ -23,6 +23,27 @@ export const AboutCampusSection: React.FC<AboutCampusSectionProps> = ({
   onOpenLegacyPage,
 }) => {
   const [activePhoto, setActivePhoto] = useState<ClassroomPhoto | null>(null);
+
+  const orientationPhotos: ClassroomPhoto[] = [
+    {
+      id: 'orientation-tree',
+      title: 'The Family Tree Tradition',
+      subtitle: 'Leaving a Thumbprint, Growing Together as a UCPian',
+      src: 'https://ik.imagekit.io/Muffins/image%20(40).jpg',
+      fallback: '/assets/campus/orientation-thumbprint-tree.jpg',
+      caption: 'Every new student leaves a single colorful thumbprint on our family tree canvas, leaving their indelible mark and becoming an active leaf in our expanding legacy.',
+      tag: 'FAMILY TREE TRADITION',
+    },
+    {
+      id: 'orientation-frame',
+      title: 'Proud "I am a UCPian" Moments',
+      subtitle: 'Capturing the Joy of Belonging and New Friendships',
+      src: 'https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-19%20at%203.44.31%20AM.jpeg',
+      fallback: '/assets/campus/orientation-ucpian-frame.jpeg',
+      caption: 'Smiling inside the celebratory frame to declare belonging to the world, creating memories that get shared everywhere as a lifelong member of the UCP family.',
+      tag: 'STUDENT IDENTITY & BELONGING',
+    },
+  ];
 
   const classroomPhotos: ClassroomPhoto[] = [
     {
@@ -203,7 +224,112 @@ export const AboutCampusSection: React.FC<AboutCampusSectionProps> = ({
         </div>
 
         {/* =========================================================================
-            2. STUDENT CLASSROOM PRESENTATIONS & BEST STUDY ENVIRONMENT
+            2. ORIENTATION DAY & STUDENT BELONGING TRADITIONS
+            Thumbprint Tree Tradition & "I am a UCPian" Photo Frame
+            ========================================================================= */}
+        <motion.div
+          className="pt-10 sm:pt-14 mb-16 sm:mb-20 border-t border-slate-200/80 dark:border-white/10"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, ease: easeCurve }}
+          viewport={{ once: true, amount: 0.15 }}
+        >
+          {/* Section Eyebrow & Title */}
+          <div className="max-w-4xl mb-8">
+            <div className="flex items-center gap-2 mb-2.5">
+              <span className="text-xs font-mono font-bold tracking-[0.2em] text-[#a30f16] dark:text-amber-400 uppercase flex items-center gap-1.5">
+                <Sparkles size={14} /> ORIENTATION DAY · STUDENT TRADITIONS &amp; BELONGING
+              </span>
+              <span className="h-3 w-px bg-slate-300 dark:bg-white/20" />
+              <span className="text-[11px] font-mono text-slate-500 dark:text-slate-400 uppercase tracking-wider">
+                MEMORIES &amp; IDENTITY
+              </span>
+            </div>
+
+            <div className="overflow-hidden">
+              <motion.h3
+                initial={{ y: '100%', opacity: 0 }}
+                whileInView={{ y: 0, opacity: 1 }}
+                viewport={{ once: true, margin: '-20px' }}
+                transition={{ duration: 0.75, ease: [0.16, 1, 0.3, 1] }}
+                className="text-2xl sm:text-3xl lg:text-[34px] font-serif font-bold text-[#092242] dark:text-white tracking-tight leading-tight"
+                style={{ fontFamily: "'Cormorant Garamond', 'Libre Baskerville', Georgia, serif" }}
+              >
+                Orientation Day at UCP Bahawalpur — The Beginning of Belonging
+              </motion.h3>
+            </div>
+          </div>
+
+          {/* Both Images Side-by-Side (Proper Size, Full Visible 4:3 Aspect Ratio) */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 mb-6 sm:mb-8">
+            {orientationPhotos.map((item) => (
+              <motion.div
+                key={item.id}
+                whileHover={{ y: -4 }}
+                transition={{ duration: 0.3 }}
+                onClick={() => setActivePhoto(item)}
+                className="group cursor-pointer flex flex-col space-y-3"
+              >
+                <div className="relative w-full aspect-[4/3] rounded-2xl overflow-hidden bg-slate-100 dark:bg-slate-900 shadow-md border border-slate-200/90 dark:border-white/10 group-hover:border-[#C5A059]/60 transition-all duration-300">
+                  <img
+                    src={item.src}
+                    alt={item.title}
+                    loading="lazy"
+                    decoding="async"
+                    className="w-full h-full object-cover object-center block transition-transform duration-700 ease-out group-hover:scale-105"
+                    onError={(e) => {
+                      (e.target as HTMLImageElement).src = item.fallback;
+                    }}
+                  />
+                  {/* Subtle hover overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-4 sm:p-5">
+                    <span className="text-amber-300 text-[11px] font-mono uppercase tracking-wider font-semibold mb-1">
+                      {item.tag}
+                    </span>
+                    <h5 className="text-white text-base sm:text-lg font-serif font-bold leading-snug">
+                      {item.title}
+                    </h5>
+                    <span className="text-slate-300 text-xs mt-2 flex items-center gap-1.5 font-sans">
+                      <Maximize2 size={12} /> Click to view full high-resolution image
+                    </span>
+                  </div>
+                </div>
+
+                <div className="flex items-center justify-between px-1">
+                  <div>
+                    <h4 className="font-serif text-base sm:text-lg font-bold text-[#092242] dark:text-white group-hover:text-[#a30f16] dark:group-hover:text-amber-400 transition-colors">
+                      {item.title}
+                    </h4>
+                    <p className="text-xs text-slate-500 dark:text-slate-400 font-sans mt-0.5">
+                      {item.subtitle}
+                    </p>
+                  </div>
+                  <span className="text-[11px] font-mono text-[#092242] dark:text-amber-400 font-semibold group-hover:translate-x-1 transition-transform inline-flex items-center gap-1 shrink-0 ml-3">
+                    View <Maximize2 size={11} />
+                  </span>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+
+          {/* Full Narrative Text — Perfectly Organized Across Full Width */}
+          <div className="w-full bg-[#FAF8F5] dark:bg-[#0d1829] rounded-2xl p-6 sm:p-8 border border-amber-200/50 dark:border-white/10 shadow-xs">
+            <p 
+              className="text-slate-700 dark:text-slate-200 font-sans leading-relaxed"
+              style={{
+                fontSize: '17px',
+                lineHeight: '1.8',
+                textAlign: 'justify',
+                textJustify: 'inter-word',
+              }}
+            >
+              Orientation Day at UCP Bahawalpur is more than just a welcome, it's the beginning of belonging. It starts with a single thumbprint on our family tree, where every new student leaves a mark and becomes a leaf in our growing legacy. And it continues with a smile inside a frame, proudly declaring to the world, “I am a UCPian.” From a small impression that stays forever to a picture that gets shared everywhere, this is where your identity begins, your friendships form, and your journey as part of the UCP family truly takes root.
+            </p>
+          </div>
+        </motion.div>
+
+        {/* =========================================================================
+            3. STUDENT CLASSROOM PRESENTATIONS & BEST STUDY ENVIRONMENT
             ========================================================================= */}
         <motion.div
           className="pt-6 border-t border-slate-200/80 dark:border-white/10"

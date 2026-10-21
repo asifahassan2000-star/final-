@@ -76,7 +76,7 @@ const MobileFacultyCarousel: React.FC<{
                 {faculty.name}
               </h3>
               <p className="text-[9px] text-slate-500 font-sans mt-0.5 font-medium line-clamp-1">
-                {faculty.designation}
+                {faculty.cardDesignation || faculty.designation}
               </p>
             </div>
           </div>
@@ -241,7 +241,7 @@ export const FacultySection: React.FC<FacultySectionProps> = ({
                       {member.name}
                     </h3>
                     <p className="text-[11px] sm:text-xs text-slate-500 font-sans mt-0.5 font-medium line-clamp-1">
-                      {member.designation}
+                      {member.cardDesignation || member.designation}
                     </p>
                   </div>
                 </div>

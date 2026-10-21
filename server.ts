@@ -181,16 +181,22 @@ function getInstantBotResponse(userQuery: string): BotResponse {
 const app = express();
 // Port 3000 is required by the environment; Nginx reverse proxy listens on 8080 and forwards to 3000
 const PORT = 3000;
-const isProd = process.env.NODE_ENV === 'production' || (!process.env.NODE_ENV && fs.existsSync(path.resolve(__dirname, 'dist', 'index.html')));
+const isProd = process.env.NODE_ENV === 'production';
 
 app.use(express.json());
 
-// Edge Caching & Cache-Control Headers Middleware
+// In development, prevent stale caching so changes reflect immediately on screen; in production, use edge caching
 app.use((req, res, next) => {
-  if (req.path.startsWith('/images/') || req.path.startsWith('/assets/')) {
-    res.setHeader('Cache-Control', 'public, max-age=31536000, immutable');
-  } else if (!req.path.startsWith('/api/')) {
-    res.setHeader('Cache-Control', 'public, max-age=0, s-maxage=3600, stale-while-revalidate=86400');
+  if (isProd) {
+    if (req.path.startsWith('/images/') || req.path.startsWith('/assets/')) {
+      res.setHeader('Cache-Control', 'public, max-age=31536000, immutable');
+    } else if (!req.path.startsWith('/api/')) {
+      res.setHeader('Cache-Control', 'public, max-age=0, s-maxage=3600, stale-while-revalidate=86400');
+    }
+  } else {
+    res.setHeader('Cache-Control', 'no-store, no-cache, must-revalidate, proxy-revalidate');
+    res.setHeader('Pragma', 'no-cache');
+    res.setHeader('Expires', '0');
   }
   next();
 });
