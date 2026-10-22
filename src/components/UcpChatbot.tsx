@@ -4,7 +4,7 @@ import {
   ExternalLink, Zap, Sparkles,
   Maximize2, Minimize2
 } from 'lucide-react';
-import { getInstantBotResponse } from '../utils/ucpBotKnowledge';
+import { getInstantBotResponse, searchUcpKnowledge } from '../utils/ucpBotKnowledge';
 import { UcpRobotMascot } from './UcpRobotMascot';
 
 interface Message {
@@ -245,14 +245,83 @@ export const UcpChatbot: React.FC = () => {
       text: m.text
     }));
 
+    // Step 1: Check for affirmative response to "Would you like me to open admission form?"
+    const lowerQuery = query.toLowerCase().trim();
+    const isAffirmative = /^(yes|open|open form|open admission|open admission form|yes please|sure|please open|haan|khol do|admissions form)/i.test(lowerQuery);
+    const hasAdmissionContext = conversationHistory.some(m => 
+      m.text.toLowerCase().includes('open admission form') || 
+      m.text.toLowerCase().includes('admission')
+    );
+
+    if (isAffirmative && hasAdmissionContext) {
+      if (typeof window !== 'undefined') {
+        window.open('https://admissions.ucpcolleges.pgc.edu/login?returnUrl=%2Flogin%3FreturnUrl%3D%252F', '_blank');
+      }
+      setMessages((prev) => [
+        ...prev,
+        {
+          id: `bot-${Date.now()}`,
+          sender: 'bot',
+          text: "Opening the official UCP online admission portal for you right now 📝✨ Best of luck with your application!",
+          time: currentTime,
+          actionLink: { label: "Open Admission Portal 🚀", url: "https://admissions.ucpcolleges.pgc.edu/login?returnUrl=%2Flogin%3FreturnUrl%3D%252F" },
+          suggestions: ["Eligibility Criteria 📋", "Fee Structure 💰", "Degree Programmes 🎓"],
+          isStreaming: true
+        }
+      ]);
+      setIsLoading(false);
+      setIsHappy(true);
+      setIsBouncing(true);
+      setTimeout(() => {
+        setIsHappy(false);
+        setIsBouncing(false);
+      }, 1500);
+      return;
+    }
+
+    // Step 2: FIRST SEARCH IN ucp-knowledge.js (TRAINED LOGIC - NO API NEEDED FIRST)
+    const { match, confidence } = searchUcpKnowledge(query);
+
+    if (match && confidence >= 20) {
+      let botReplyText = match.answer;
+      let actionLink = match.actionLink;
+      let suggestions = match.suggestions;
+
+      // If someone asks admission, also ask "Would you like me to open admission form?"
+      if (match.isAdmissionRelated && !botReplyText.includes("open admission form")) {
+        botReplyText += "\n\nWould you like me to open admission form?";
+      }
+
+      setMessages((prev) => [
+        ...prev,
+        {
+          id: `bot-${Date.now()}`,
+          sender: 'bot',
+          text: botReplyText,
+          time: currentTime,
+          actionLink,
+          suggestions,
+          isStreaming: true
+        }
+      ]);
+      setIsLoading(false);
+      setIsHappy(true);
+      setIsBouncing(true);
+      setTimeout(() => {
+        setIsHappy(false);
+        setIsBouncing(false);
+      }, 1500);
+      return;
+    }
+
+    // Step 3: GEMINI FOR ALL WORLD QUESTIONS & BACKUP
     let botReplyText = '';
     let actionLink: { label: string; url: string } | undefined;
     let suggestions: string[] | undefined;
 
-    // Fast server-side call with 6s timeout and instant verified campus knowledge engine fallback
     try {
       const controller = new AbortController();
-      const timeoutId = setTimeout(() => controller.abort(), 6000);
+      const timeoutId = setTimeout(() => controller.abort(), 25000);
 
       const response = await fetch('/api/chat', {
         method: 'POST',
@@ -269,13 +338,15 @@ export const UcpChatbot: React.FC = () => {
         const data = await response.json();
         if (data.success && data.reply) {
           botReplyText = data.reply;
+          suggestions = data.suggestions;
+          actionLink = data.actionLink;
         }
       }
     } catch {
-      // Immediate silent fallback to instant campus knowledge engine
+      // Live API call timed out or network error
     }
 
-    // Local instant knowledge fallback if server is slow or offline
+    // Step 4: If Gemini API fails or key breaks, show friendly message:
     if (!botReplyText) {
       const localResult = getInstantBotResponse(query);
       botReplyText = localResult.reply;

@@ -162,8 +162,8 @@ const LEADERSHIP_PROFILES: LeaderProfile[] = [
     designation: 'Principal, UCP Bahawalpur Campus',
     secondaryDesignation: 'Principal, UCP Bahawalpur Campus',
     officialRole: 'Principal, UCP Bahawalpur Campus',
-    portraitUrl: '/assets/campus/prof_aurangzaib_virk.png',
-    fallbackUrl: '/images/hRDYDCRp_IMG-3542.png',
+    portraitUrl: 'https://ik.imagekit.io/Muffins/IMG_3542.PNG?updatedAt=1792580124994',
+    fallbackUrl: '/assets/campus/prof_aurangzaib_virk.png',
     messageTitle: 'Principal’s Message',
     fullMessage: [
       'The University of Central Punjab warmly welcomes students and parents to an institution committed to academic excellence, integrity, and transformative education.',

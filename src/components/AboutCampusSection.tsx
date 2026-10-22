@@ -236,16 +236,6 @@ export const AboutCampusSection: React.FC<AboutCampusSectionProps> = ({
         >
           {/* Section Eyebrow & Title */}
           <div className="max-w-4xl mb-8">
-            <div className="flex items-center gap-2 mb-2.5">
-              <span className="text-xs font-mono font-bold tracking-[0.2em] text-[#a30f16] dark:text-amber-400 uppercase flex items-center gap-1.5">
-                <Sparkles size={14} /> ORIENTATION DAY · STUDENT TRADITIONS &amp; BELONGING
-              </span>
-              <span className="h-3 w-px bg-slate-300 dark:bg-white/20" />
-              <span className="text-[11px] font-mono text-slate-500 dark:text-slate-400 uppercase tracking-wider">
-                MEMORIES &amp; IDENTITY
-              </span>
-            </div>
-
             <div className="overflow-hidden">
               <motion.h3
                 initial={{ y: '100%', opacity: 0 }}
@@ -260,69 +250,32 @@ export const AboutCampusSection: React.FC<AboutCampusSectionProps> = ({
             </div>
           </div>
 
-          {/* Both Images Side-by-Side (Proper Size, Full Visible 4:3 Aspect Ratio) */}
+          {/* Both Images Side-by-Side (Clean & Professional, No Overlay Text, No Full View Lightbox) */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 mb-6 sm:mb-8">
             {orientationPhotos.map((item) => (
-              <motion.div
+              <div
                 key={item.id}
-                whileHover={{ y: -4 }}
-                transition={{ duration: 0.3 }}
-                onClick={() => setActivePhoto(item)}
-                className="group cursor-pointer flex flex-col space-y-3"
+                className="w-full"
               >
-                <div className="relative w-full aspect-[4/3] rounded-2xl overflow-hidden bg-slate-100 dark:bg-slate-900 shadow-md border border-slate-200/90 dark:border-white/10 group-hover:border-[#C5A059]/60 transition-all duration-300">
+                <div className="relative w-full aspect-[4/3] rounded-2xl overflow-hidden bg-slate-100 dark:bg-slate-900 shadow-sm border border-slate-200/80 dark:border-white/10 transition-all duration-300">
                   <img
                     src={item.src}
                     alt={item.title}
                     loading="lazy"
                     decoding="async"
-                    className="w-full h-full object-cover object-center block transition-transform duration-700 ease-out group-hover:scale-105"
+                    className="w-full h-full object-cover object-center block"
                     onError={(e) => {
                       (e.target as HTMLImageElement).src = item.fallback;
                     }}
                   />
-                  {/* Subtle hover overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-4 sm:p-5">
-                    <span className="text-amber-300 text-[11px] font-mono uppercase tracking-wider font-semibold mb-1">
-                      {item.tag}
-                    </span>
-                    <h5 className="text-white text-base sm:text-lg font-serif font-bold leading-snug">
-                      {item.title}
-                    </h5>
-                    <span className="text-slate-300 text-xs mt-2 flex items-center gap-1.5 font-sans">
-                      <Maximize2 size={12} /> Click to view full high-resolution image
-                    </span>
-                  </div>
                 </div>
-
-                <div className="flex items-center justify-between px-1">
-                  <div>
-                    <h4 className="font-serif text-base sm:text-lg font-bold text-[#092242] dark:text-white group-hover:text-[#a30f16] dark:group-hover:text-amber-400 transition-colors">
-                      {item.title}
-                    </h4>
-                    <p className="text-xs text-slate-500 dark:text-slate-400 font-sans mt-0.5">
-                      {item.subtitle}
-                    </p>
-                  </div>
-                  <span className="text-[11px] font-mono text-[#092242] dark:text-amber-400 font-semibold group-hover:translate-x-1 transition-transform inline-flex items-center gap-1 shrink-0 ml-3">
-                    View <Maximize2 size={11} />
-                  </span>
-                </div>
-              </motion.div>
+              </div>
             ))}
           </div>
 
-          {/* Full Narrative Text — Perfectly Organized Across Full Width */}
-          <div className="w-full bg-[#FAF8F5] dark:bg-[#0d1829] rounded-2xl p-6 sm:p-8 border border-amber-200/50 dark:border-white/10 shadow-xs">
-            <p 
-              className="text-slate-700 dark:text-slate-200 font-sans leading-relaxed"
-              style={{
-                fontSize: '17px',
-                lineHeight: '1.8',
-                textAlign: 'justify',
-                textJustify: 'inter-word',
-              }}
-            >
+          {/* Simple Neat Narrative Text — No Border or Box Behind Text */}
+          <div className="w-full">
+            <p className="text-slate-600 dark:text-slate-300 font-sans text-base sm:text-lg leading-relaxed text-justify">
               Orientation Day at UCP Bahawalpur is more than just a welcome, it's the beginning of belonging. It starts with a single thumbprint on our family tree, where every new student leaves a mark and becomes a leaf in our growing legacy. And it continues with a smile inside a frame, proudly declaring to the world, “I am a UCPian.” From a small impression that stays forever to a picture that gets shared everywhere, this is where your identity begins, your friendships form, and your journey as part of the UCP family truly takes root.
             </p>
           </div>
@@ -339,7 +292,7 @@ export const AboutCampusSection: React.FC<AboutCampusSectionProps> = ({
           viewport={{ once: true, amount: 0.15 }}
         >
           {/* Subheading Block */}
-          <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-8 sm:mb-10">
+          <div className="mb-8 sm:mb-10">
             <div>
               <div className="flex items-center gap-2 mb-2">
                 <span className="text-xs font-mono font-bold tracking-[0.2em] text-[#a30f16] dark:text-amber-400 uppercase flex items-center gap-1.5">
@@ -363,9 +316,6 @@ export const AboutCampusSection: React.FC<AboutCampusSectionProps> = ({
                 </motion.h3>
               </div>
             </div>
-            <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 max-w-md font-sans">
-              Equipped with smart digital podiums and collaborative acoustics, our lecture halls foster confident student case presentations and engaging pedagogical sessions.
-            </p>
           </div>
 
           {/* 3-Card Minimal Classroom & Student Sessions Showcase Grid */}

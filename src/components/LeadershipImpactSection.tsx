@@ -110,13 +110,13 @@ export const LeadershipImpactSection: React.FC<LeadershipImpactSectionProps> = (
               {/* Left: Selected Assembly Image */}
               <div className="relative w-full rounded-xl overflow-hidden bg-slate-100 shadow-xs aspect-[4/3] sm:aspect-[3/2]">
                 <img
-                  src="/assets/leadership/leadership-official-gathering.jpg"
+                  src="https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-13%20at%2012.53.34%20AM.jpeg"
                   alt="Faculty and leadership assembly at UCP Bahawalpur"
                   loading="lazy"
                   decoding="async"
                   className="w-full h-full object-cover object-center block"
                   onError={(e) => {
-                    (e.target as HTMLImageElement).src = '/images/RTFJgsVp_Whats-App-Image-2026-10-13-at-12-53-34-AM.jpg';
+                    (e.target as HTMLImageElement).src = '/assets/leadership/leadership-official-gathering.jpg';
                   }}
                 />
               </div>
@@ -124,13 +124,13 @@ export const LeadershipImpactSection: React.FC<LeadershipImpactSectionProps> = (
               {/* Right: Added Ceremony & Awards Image (https://ibb.co/PsXDkcXR) */}
               <div className="relative w-full rounded-xl overflow-hidden bg-slate-100 shadow-xs aspect-[4/3] sm:aspect-[3/2]">
                 <img
-                  src="/assets/leadership/leadership-ceremony-awards.jpg"
+                  src="https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-11%20at%2011.38.19%20PM.jpeg"
                   alt="Official faculty awards ceremony and institutional recognition at UCP Bahawalpur"
                   loading="lazy"
                   decoding="async"
                   className="w-full h-full object-cover object-center block"
                   onError={(e) => {
-                    (e.target as HTMLImageElement).src = '/images/RGrj83r1_Whats-App-Image-2026-10-11-at-11-38-19-PM.jpg';
+                    (e.target as HTMLImageElement).src = '/assets/leadership/leadership-ceremony-awards.jpg';
                   }}
                 />
               </div>

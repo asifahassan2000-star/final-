@@ -284,13 +284,13 @@ export const FacilitiesSection: React.FC<FacilitiesSectionProps> = ({
                 <div 
                   className="relative w-full aspect-[9/16] overflow-hidden bg-slate-900 cursor-pointer"
                   onClick={() => setSelectedImage({
-                    src: '/assets/facilities/library-stacks-new-2.jpg',
+                    src: 'https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-12%20at%205.10.51%20AM.jpeg',
                     fallback: '/images/G3P4PsnZ_Whats-App-Image-2026-10-12-at-5-10-51-AM.jpg',
                     title: 'Book Stacks & Collections',
                     caption: 'Organized shelves with curriculum textbooks, reference guides, and journals.'
                   })}
                 >
-                  <img decoding="async" src="/assets/facilities/library-stacks-new-2.jpg"
+                  <img decoding="async" src="https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-12%20at%205.10.51%20AM.jpeg"
                     alt="Central Library Reference Section and Book Collections"
                     loading="lazy"
                     className="w-full h-full object-cover object-center block transition-transform duration-500 ease-out group-hover:scale-102"

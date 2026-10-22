@@ -39,100 +39,75 @@ export const CAMPUS_EVENTS_DATA: CampusEvent[] = [
     ],
     images: [
       {
-        src: '/assets/hero/sangat-dostaan-alumni-reunion.jpg',
-        fallbackSrc: '/assets/hero/sangat-dostaan-alumni-reunion.jpg',
-        alt: 'UCP Bahawalpur Alumni Reunion 2025 Sangat-e-Dostaan gathering on main campus lawn',
+        src: 'https://ik.imagekit.io/Muffins/image%20(18).jpg',
+        alt: 'UCP Bahawalpur Alumni Reunion 2025 opening reception',
+        caption: 'Alumni Reunion 2025 — Welcome reception and campus gathering'
+      },
+      {
+        src: 'https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-20%20at%203.00.11%20AM%20(3).png',
+        alt: 'Alumni Reunion 2025 special commemoration moments',
+        caption: 'Alumni Reunion 2025 — Celebratory moments and distinguished delegates'
+      },
+      {
+        src: 'https://ik.imagekit.io/Muffins/image%20(48).png',
+        alt: 'UCP Bahawalpur Alumni Reunion 2025 Sangat-e-Dostaan gathering',
         caption: 'Alumni Reunion 2025 — Grand Sangat-e-Dostaan gathering celebrating generational excellence'
       },
       {
-        src: '/assets/campus-life-new/campus-new-d.jpg',
-        fallbackSrc: '/images/ks8XD1L6_Whats-App-Image-2026-10-05-at-2-38-52-AM-2.jpg',
-        alt: 'Distinguished alumni group and faculty leadership at UCP Bahawalpur reunion ceremony',
-        caption: 'University leadership welcoming returning graduates back to their alma mater'
+        src: 'https://ik.imagekit.io/Muffins/image%20(44).png',
+        alt: 'Distinguished alumni group and guests at UCP Bahawalpur reunion ceremony',
+        caption: 'Distinguished alumni and guests gathered at UCP Bahawalpur campus'
       },
       {
-        src: '/assets/campus-life-new/campus-new-a.jpg',
-        fallbackSrc: '/images/QF79SG2D_Whats-App-Image-2026-10-05-at-2-38-56-AM-3.jpg',
-        alt: 'Evening stage celebration and musical performances during Alumni Reunion 2025',
-        caption: 'Festive musical performance and lighting setup on the main outdoor auditorium stage'
+        src: 'https://ik.imagekit.io/Muffins/image%20(46).png',
+        alt: 'Alumni celebration and networking at UCP Bahawalpur',
+        caption: 'Alumni networking and reconnecting across campus'
       },
       {
-        src: '/assets/campus-life-new/campus-15.jpg',
-        fallbackSrc: '/images/d0RFqWwY_Whats-App-Image-2026-10-08-at-12-46-41-AM-1.jpg',
-        alt: 'Alumni reconnecting with professors and junior batch delegates across the decorated campus quad',
-        caption: 'Heartfelt reconnecting moments between alumni mentors and current students'
+        src: 'https://ik.imagekit.io/Muffins/image%20(45).png',
+        alt: 'Evening stage celebration and honors during Alumni Reunion 2025',
+        caption: 'Evening celebration ceremony and special honors on the main stage'
       },
       {
-        src: '/assets/campus-life-new/campus-26.jpg',
-        fallbackSrc: '/images/Hfkk9bSJ_Whats-App-Image-2026-10-05-at-2-39-03-AM-1.jpg',
-        alt: 'Commemorative shields and excellence awards distributed at Alumni Reunion 2025',
-        caption: 'Presentation of honorary shields to prominent alumni industry leaders'
+        src: 'https://ik.imagekit.io/Muffins/image%20(52).png',
+        alt: 'Alumni reunion attendees and campus festivities',
+        caption: 'Celebrating shared campus memories and generational milestones'
       },
       {
-        src: '/assets/campus-life-new/campus-30.jpg',
-        fallbackSrc: '/images/20TtTtdG_Whats-App-Image-2026-10-05-at-2-38-58-AM-1.jpg',
-        alt: 'Formal banquet dinner and student musical ensemble closing the 2025 Alumni Reunion',
-        caption: 'Grand banquet dinner bringing together graduates from across Pakistan'
-      }
-    ]
-  },
-  {
-    id: 'trip-northern-area',
-    number: 2,
-    title: 'Trip to Northern Area',
-    year: '2025',
-    date: 'August 2025',
-    category: 'Tours & Excursions',
-    badge: 'Alpine Adventure Excursion',
-    description: 'An unforgettable multi-day alpine expedition across Shogran, Siri Paye, and Kaghan Valley. Students and faculty mentors explored breathtaking glaciers, alpine meadows, and mountain culture while building lifelong camaraderie.',
-    highlights: [
-      'Expedition to Shogran & Siri Paye Meadows',
-      'Campfire Leadership & Team-Building Circles',
-      'Scenic Photography Workshops',
-      'Supervised Alpine Safety Protocols'
-    ],
-    images: [
-      {
-        src: '/assets/campus-life/shogran-valley-tour-1.jpg',
-        fallbackSrc: '/images/0j944vNC_image-8.jpg',
-        alt: 'UCP Bahawalpur students exploring Shogran Valley alpine meadows during Northern tour',
-        caption: 'Shogran Valley Alpine Expedition — Students and faculty amidst lush mountain vistas'
+        src: 'https://ik.imagekit.io/Muffins/image%20(50).png',
+        alt: 'University leadership welcoming returning graduates back to their alma mater',
+        caption: 'University leadership welcoming returning graduates back to UCP'
       },
       {
-        src: '/assets/campus-life-new/campus-37.jpg',
-        fallbackSrc: '/images/20TtTtdG_Whats-App-Image-2026-10-05-at-2-38-58-AM-1.jpg',
-        alt: 'Trekking through Pine forests and panoramic mountain ridges in Kaghan Valley',
-        caption: 'Pine trail trekking and team orientation high in the Northern highlands'
+        src: 'https://ik.imagekit.io/Muffins/image%20(51).png',
+        alt: 'Alumni reconnecting across decorated campus grounds',
+        caption: 'Warm moments of reconnection among alumni batches'
       },
       {
-        src: '/assets/campus-life-new/campus-4.jpg',
-        fallbackSrc: '/images/Hfkk9bSJ_Whats-App-Image-2026-10-05-at-2-39-03-AM-1.jpg',
-        alt: 'Student group photograph at mountain summit overlook during northern excursion',
-        caption: 'Summit group milestone — Celebrating collegiate adventure together'
+        src: 'https://ik.imagekit.io/Muffins/image%20(43).png',
+        alt: 'Campus presentations and alumni celebration moments',
+        caption: 'Honoring prominent alumni achievements and campus traditions'
       },
       {
-        src: '/assets/campus-life-new/campus-7.jpg',
-        fallbackSrc: '/images/d0RFqWwY_Whats-App-Image-2026-10-08-at-12-46-41-AM-1.jpg',
-        alt: 'Jeep safari across rugged high-altitude passes to Siri Paye meadows',
-        caption: 'Thrill of the off-road mountain jeep safari across rugged terrain'
+        src: 'https://ik.imagekit.io/Muffins/image%20(47).png',
+        alt: 'Commemorative shields and excellence recognitions at Alumni Reunion 2025',
+        caption: 'Presentation of honorary shields to distinguished alumni'
       },
       {
-        src: '/assets/campus-life-new/campus-12.jpg',
-        fallbackSrc: '/images/ks8XD1L6_Whats-App-Image-2026-10-05-at-2-38-52-AM-2.jpg',
-        alt: 'Evening campfire gathering and acoustic singing circle under starlit mountain skies',
-        caption: 'Evening bonfire circles sharing stories, folk songs, and warm tea'
+        src: 'https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-20%20at%203.00.11%20AM.jpeg',
+        alt: 'Special guest delegation at Alumni Reunion 2025',
+        caption: 'Distinguished guests and alumni delegation at Sangat-e-Dostaan 2025'
       },
       {
-        src: '/assets/campus-life-new/campus-23.jpg',
-        fallbackSrc: '/images/QF79SG2D_Whats-App-Image-2026-10-05-at-2-38-56-AM-3.jpg',
-        alt: 'Faculty supervisors and students celebrating successful completion of northern tour',
-        caption: 'Safe return and memorable group photo at the final excursion basecamp'
+        src: 'https://ik.imagekit.io/Muffins/image%20(49).png',
+        alt: 'Grand alumni gathering and commemorative group photo',
+        caption: 'Grand group photograph commemorating Alumni Reunion 2025'
       }
     ]
   },
   {
     id: 'orientation-day',
-    number: 3,
+    number: 2,
     title: 'Orientation Day',
     year: '2025',
     date: 'October 2025',
@@ -186,7 +161,7 @@ export const CAMPUS_EVENTS_DATA: CampusEvent[] = [
   },
   {
     id: '1st-day-welcome',
-    number: 4,
+    number: 3,
     title: '1st Day Welcome',
     year: '2025',
     date: 'October 2025',
@@ -201,46 +176,40 @@ export const CAMPUS_EVENTS_DATA: CampusEvent[] = [
     ],
     images: [
       {
-        src: '/assets/campus/4_admissions_entrance_red_carpet.jpg',
-        fallbackSrc: '/images/ks8XD1L6_Whats-App-Image-2026-10-05-at-2-38-52-AM-2.jpg',
-        alt: 'Red carpet ceremonial entrance welcoming students on their first day at UCP Bahawalpur',
+        src: 'https://ik.imagekit.io/Muffins/image%20(56).png',
+        alt: '1st Day Welcome red carpet entrance at UCP Bahawalpur',
         caption: '1st Day Welcome — Red carpet campus reception greeting new students'
       },
       {
-        src: '/assets/campus/student-gathering-ground-2.jpg',
-        fallbackSrc: '/images/QF79SG2D_Whats-App-Image-2026-10-05-at-2-38-56-AM-3.jpg',
-        alt: 'New students congregating in the sunlit central lawn before first morning lectures',
-        caption: 'Morning buzz as students meet classmates for their initial lectures'
+        src: 'https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-05%20at%202.39.06%20AM%20(1).jpeg',
+        alt: 'Students and faculty welcoming new arrivals on the first day',
+        caption: 'Warm greetings and arrival moments as freshmen enter campus'
       },
       {
-        src: '/assets/campus-life/campus-activity-1.jpg',
-        fallbackSrc: '/images/d0RFqWwY_Whats-App-Image-2026-10-08-at-12-46-41-AM-1.jpg',
-        alt: 'Student help desk providing course schedules, portal credentials, and campus maps',
-        caption: 'Information desks assisting students with course enrollment and portal logins'
+        src: 'https://ik.imagekit.io/Muffins/image%20(54).png',
+        alt: 'First day campus atmosphere and welcome activities',
+        caption: 'Vibrant first day atmosphere across campus hallways and courtyard'
       },
       {
-        src: '/assets/campus-life-new/campus-2.jpg',
-        fallbackSrc: '/images/Hfkk9bSJ_Whats-App-Image-2026-10-05-at-2-39-03-AM-1.jpg',
-        alt: 'First day commemorative photograph booth with UCP official backdrop',
-        caption: 'Commemorative first-day photo booth capturing proud university moments'
+        src: 'https://ik.imagekit.io/Muffins/image%20(55).png',
+        alt: 'Faculty and student ambassadors greeting incoming students',
+        caption: 'Faculty mentors and student ambassadors welcoming new students'
       },
       {
-        src: '/assets/campus-life-new/campus-5.jpg',
-        fallbackSrc: '/images/20TtTtdG_Whats-App-Image-2026-10-05-at-2-38-58-AM-1.jpg',
-        alt: 'Faculty members interacting with students in the decorated main corridors',
-        caption: 'Faculty mentors welcoming freshmen warmly outside academic lecture halls'
+        src: 'https://ik.imagekit.io/Muffins/image%20(57).png',
+        alt: 'Student gathering and campus welcome activities',
+        caption: 'New students congregating and celebrating their first university day'
       },
       {
-        src: '/assets/campus-life-new/campus-8.jpg',
-        fallbackSrc: '/images/0j944vNC_image-8.jpg',
-        alt: 'Students enjoying complimentary refreshments and celebration sweets on campus lawn',
-        caption: 'Celebratory sweets and warm greetings distributed across the campus grounds'
+        src: 'https://ik.imagekit.io/Muffins/image%20(53).png',
+        alt: 'First day welcome smiles and memorable moments',
+        caption: 'Memorable first-day moments capturing the beginning of university life'
       }
     ]
   },
   {
     id: 'welcome-party-2025',
-    number: 5,
+    number: 4,
     title: 'Welcome Party 2025',
     year: '2025',
     date: 'November 2025',
@@ -294,7 +263,7 @@ export const CAMPUS_EVENTS_DATA: CampusEvent[] = [
   },
   {
     id: 'tutorial-lectures',
-    number: 6,
+    number: 5,
     title: 'Tutorial Lectures',
     year: '2025',
     date: 'Ongoing Fall 2025',
@@ -352,7 +321,7 @@ export const CAMPUS_EVENTS_DATA: CampusEvent[] = [
   // =========================================================================
   {
     id: 'isaiss-2026-symposium',
-    number: 7,
+    number: 6,
     title: 'ISAISS 2026 (Symposium)',
     year: '2026',
     date: 'January 2026',
@@ -406,7 +375,7 @@ export const CAMPUS_EVENTS_DATA: CampusEvent[] = [
   },
   {
     id: 'ucp-elite-student-network',
-    number: 8,
+    number: 7,
     title: 'UCP Elite student Network campaign',
     year: '2026',
     date: 'January - February 2026',
@@ -460,7 +429,7 @@ export const CAMPUS_EVENTS_DATA: CampusEvent[] = [
   },
   {
     id: 'state-bank-session-2026',
-    number: 9,
+    number: 8,
     title: 'State bank Session 2026',
     year: '2026',
     date: 'February 2026',
@@ -514,7 +483,7 @@ export const CAMPUS_EVENTS_DATA: CampusEvent[] = [
   },
   {
     id: 'teaching-excellence-360',
-    number: 10,
+    number: 9,
     title: 'Teaching excellence 360°',
     year: '2026',
     date: 'February 2026',
@@ -568,7 +537,7 @@ export const CAMPUS_EVENTS_DATA: CampusEvent[] = [
   },
   {
     id: 'documentary-reel-competition',
-    number: 11,
+    number: 10,
     title: 'Documentary and reel competition',
     year: '2026',
     date: 'February 2026',
@@ -622,7 +591,7 @@ export const CAMPUS_EVENTS_DATA: CampusEvent[] = [
   },
   {
     id: 'village-tour',
-    number: 12,
+    number: 11,
     title: 'Village Tour',
     year: '2026',
     date: 'February 2026',
@@ -676,7 +645,7 @@ export const CAMPUS_EVENTS_DATA: CampusEvent[] = [
   },
   {
     id: 'spring-festival',
-    number: 13,
+    number: 12,
     title: 'Spring Festival',
     year: '2026',
     date: 'March 2026',
@@ -730,7 +699,7 @@ export const CAMPUS_EVENTS_DATA: CampusEvent[] = [
   },
   {
     id: '21-jeep-rally-2026',
-    number: 14,
+    number: 13,
     title: '21 Jeep rally 2026',
     year: '2026',
     date: 'February - March 2026',
@@ -784,7 +753,7 @@ export const CAMPUS_EVENTS_DATA: CampusEvent[] = [
   },
   {
     id: 'ice-throne-event',
-    number: 15,
+    number: 14,
     title: 'Ice Throne event',
     year: '2026',
     date: 'January 2026',
@@ -838,7 +807,7 @@ export const CAMPUS_EVENTS_DATA: CampusEvent[] = [
   },
   {
     id: 'mou-signing-tdcp-cholistan',
-    number: 16,
+    number: 15,
     title: 'MOU signing (TDCP, MOU meeting,Haveli Cholistan)',
     year: '2026',
     date: 'February 2026',
@@ -892,7 +861,7 @@ export const CAMPUS_EVENTS_DATA: CampusEvent[] = [
   },
   {
     id: 'mothers-day',
-    number: 17,
+    number: 16,
     title: 'Mothers day',
     year: '2026',
     date: 'May 2026',
@@ -946,7 +915,7 @@ export const CAMPUS_EVENTS_DATA: CampusEvent[] = [
   },
   {
     id: 'arts-and-carnival-festival',
-    number: 18,
+    number: 17,
     title: 'Arts and carnival festival',
     year: '2026',
     date: 'March 2026',
@@ -1000,7 +969,7 @@ export const CAMPUS_EVENTS_DATA: CampusEvent[] = [
   },
   {
     id: 'farewell-party-2026',
-    number: 19,
+    number: 18,
     title: 'Farewell party 2026',
     year: '2026',
     date: 'May 2026',
@@ -1054,7 +1023,7 @@ export const CAMPUS_EVENTS_DATA: CampusEvent[] = [
   },
   {
     id: 'qawwali-night',
-    number: 20,
+    number: 19,
     title: 'Qawwali Night',
     year: '2026',
     date: 'February 2026',
@@ -1108,7 +1077,7 @@ export const CAMPUS_EVENTS_DATA: CampusEvent[] = [
   },
   {
     id: 'annual-project-exhibition-2026',
-    number: 21,
+    number: 20,
     title: 'Annual project exhibition 2026',
     year: '2026',
     date: 'March 2026',
@@ -1162,7 +1131,7 @@ export const CAMPUS_EVENTS_DATA: CampusEvent[] = [
   },
   {
     id: 'inovista-cholistan-movie-day',
-    number: 22,
+    number: 21,
     title: 'Inovista Cholistan movie day',
     year: '2026',
     date: 'March 2026',
@@ -1211,6 +1180,60 @@ export const CAMPUS_EVENTS_DATA: CampusEvent[] = [
         fallbackSrc: '/images/d0RFqWwY_Whats-App-Image-2026-10-08-at-12-46-41-AM-1.jpg',
         alt: 'Group celebration photo of Inovista Cholistan movie day attendees and faculty',
         caption: 'Unforgettable collegiate memories blending desert serenity and student joy'
+      }
+    ]
+  },
+  {
+    id: 'trip-northern-area',
+    number: 22,
+    title: 'Trip to Northern Area',
+    year: '2026',
+    date: 'August 2026',
+    category: 'Tours & Excursions',
+    badge: 'Alpine Adventure Excursion',
+    description: 'An unforgettable multi-day alpine expedition across Shogran, Siri Paye, and Kaghan Valley. Students and faculty mentors explored breathtaking glaciers, alpine meadows, and mountain culture while building lifelong camaraderie.',
+    highlights: [
+      'Expedition to Shogran & Siri Paye Meadows',
+      'Campfire Leadership & Team-Building Circles',
+      'Scenic Photography Workshops',
+      'Supervised Alpine Safety Protocols'
+    ],
+    images: [
+      {
+        src: '/assets/campus-life/shogran-valley-tour-1.jpg',
+        fallbackSrc: '/images/0j944vNC_image-8.jpg',
+        alt: 'UCP Bahawalpur students exploring Shogran Valley alpine meadows during Northern tour',
+        caption: 'Shogran Valley Alpine Expedition — Students and faculty amidst lush mountain vistas'
+      },
+      {
+        src: '/assets/campus-life-new/campus-37.jpg',
+        fallbackSrc: '/images/20TtTtdG_Whats-App-Image-2026-10-05-at-2-38-58-AM-1.jpg',
+        alt: 'Trekking through Pine forests and panoramic mountain ridges in Kaghan Valley',
+        caption: 'Pine trail trekking and team orientation high in the Northern highlands'
+      },
+      {
+        src: '/assets/campus-life-new/campus-4.jpg',
+        fallbackSrc: '/images/Hfkk9bSJ_Whats-App-Image-2026-10-05-at-2-39-03-AM-1.jpg',
+        alt: 'Student group photograph at mountain summit overlook during northern excursion',
+        caption: 'Summit group milestone — Celebrating collegiate adventure together'
+      },
+      {
+        src: '/assets/campus-life-new/campus-7.jpg',
+        fallbackSrc: '/images/d0RFqWwY_Whats-App-Image-2026-10-08-at-12-46-41-AM-1.jpg',
+        alt: 'Jeep safari across rugged high-altitude passes to Siri Paye meadows',
+        caption: 'Thrill of the off-road mountain jeep safari across rugged terrain'
+      },
+      {
+        src: '/assets/campus-life-new/campus-12.jpg',
+        fallbackSrc: '/images/ks8XD1L6_Whats-App-Image-2026-10-05-at-2-38-52-AM-2.jpg',
+        alt: 'Evening campfire gathering and acoustic singing circle under starlit mountain skies',
+        caption: 'Evening bonfire circles sharing stories, folk songs, and warm tea'
+      },
+      {
+        src: '/assets/campus-life-new/campus-23.jpg',
+        fallbackSrc: '/images/QF79SG2D_Whats-App-Image-2026-10-05-at-2-38-56-AM-3.jpg',
+        alt: 'Faculty supervisors and students celebrating successful completion of northern tour',
+        caption: 'Safe return and memorable group photo at the final excursion basecamp'
       }
     ]
   }
