@@ -122,40 +122,64 @@ export const CAMPUS_EVENTS_DATA: CampusEvent[] = [
     ],
     images: [
       {
-        src: '/assets/campus/orientation-day-celebration.jpg',
-        fallbackSrc: '/images/7tL25pD8_Whats-App-Image-2026-10-18-at-1-24-42-AM.jpg',
-        alt: 'UCP Bahawalpur Orientation Day central auditorium welcome session with freshmen',
-        caption: 'Orientation Day 2025 — Freshmen inducted into the UCP academic tradition'
+        src: 'https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-21%20at%2011.28.10%20PM%20(1).png',
+        fallbackSrc: '/assets/campus/orientation-day-celebration.jpg',
+        alt: 'UCP Bahawalpur Orientation Day central auditorium welcome ceremony with freshmen',
+        caption: 'Orientation Day 2025 — Incoming students inducted into the UCP academic tradition'
       },
       {
-        src: '/assets/campus/student-classroom-presentation-1.jpg',
+        src: 'https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-21%20at%2011.28.10%20PM%20(3).png',
         fallbackSrc: '/assets/campus/student-classroom-presentation-1.jpg',
-        alt: 'Academic briefing and curriculum roadmaps presented in modern lecture theatre',
-        caption: 'Faculty presentation outlining semester milestones and learning objectives'
+        alt: 'Deans and faculty addressing new students during the academic orientation session',
+        caption: 'Leadership address: Deans and Directors sharing academic guidance and values'
       },
       {
-        src: '/assets/campus/student-gathering-ground-1.jpg',
-        fallbackSrc: '/images/0j944vNC_image-8.jpg',
-        alt: 'New students exploring the campus courtyard and society registration kiosks',
-        caption: 'Student society registration booths buzzing with enthusiastic new members'
+        src: 'https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-21%20at%2011.28.10%20PM%20(2).png',
+        fallbackSrc: '/assets/campus/student-gathering-ground-1.jpg',
+        alt: 'Freshmen batch receiving university guidance and curriculum roadmaps',
+        caption: 'Curriculum overview and roadmap presentation in the university auditorium'
       },
       {
-        src: '/assets/facilities/grand_staircase_central_atrium.jpg',
-        fallbackSrc: '/images/ks8XD1L6_Whats-App-Image-2026-10-05-at-2-38-52-AM-2.jpg',
-        alt: 'Guided campus orientation tour through the grand central academic atrium',
-        caption: 'Guided architectural tour across the campus central atrium and learning wings'
+        src: 'https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-21%20at%2011.28.10%20PM%20(4).png',
+        fallbackSrc: '/assets/facilities/grand_staircase_central_atrium.jpg',
+        alt: 'Interactive Q&A and student mentorship session during Orientation Day',
+        caption: 'Senior student mentors guiding freshmen through campus resources and societies'
       },
       {
-        src: '/assets/campus-life-new/campus-1.jpg',
-        fallbackSrc: '/images/QF79SG2D_Whats-App-Image-2026-10-05-at-2-38-56-AM-3.jpg',
-        alt: 'Student ambassadors handing out university starter packs and welcome pins',
-        caption: 'Senior UCP student ambassadors welcoming incoming students with starter kits'
+        src: 'https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-21%20at%2011.37.33%20PM%20(2).png',
+        fallbackSrc: '/assets/campus-life-new/campus-1.jpg',
+        alt: 'Student society registration booths and campus engagement stalls',
+        caption: 'Student societies and co-curricular clubs welcoming enthusiastic new members'
       },
       {
-        src: '/assets/campus-life-new/campus-6.jpg',
-        fallbackSrc: '/images/d0RFqWwY_Whats-App-Image-2026-10-08-at-12-46-41-AM-1.jpg',
-        alt: 'Freshmen batch celebrating their maiden university day on the main lawn',
-        caption: 'First group milestone — The beginning of an extraordinary university journey'
+        src: 'https://ik.imagekit.io/Muffins/image%20(64).png',
+        fallbackSrc: '/assets/campus-life-new/campus-6.jpg',
+        alt: 'Guided campus tour through academic wings and state-of-the-art facilities',
+        caption: 'Guided orientation tours exploring modern computer labs, library, and lecture theatres'
+      },
+      {
+        src: 'https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-21%20at%2011.28.10%20PM.png',
+        fallbackSrc: '/assets/campus/orientation-day-celebration.jpg',
+        alt: 'Student ambassadors distributing academic kits, welcome dossiers, and university pins',
+        caption: 'Ambassadors welcoming fresh entrants with personalized academic kits and badges'
+      },
+      {
+        src: 'https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-21%20at%2011.37.33%20PM%20(1).png',
+        fallbackSrc: '/assets/campus-life-new/campus-1.jpg',
+        alt: 'New students bonding in the campus courtyard and lawn areas',
+        caption: 'New UCPians connecting with peers across university courtyards and green lawns'
+      },
+      {
+        src: 'https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-21%20at%2011.37.33%20PM.png',
+        fallbackSrc: '/assets/campus-life-new/campus-6.jpg',
+        alt: 'Commemorative photo moments and photo frame celebration on Orientation Day',
+        caption: 'Capturing maiden university memories at the official Orientation Day photo spots'
+      },
+      {
+        src: 'https://ik.imagekit.io/Muffins/image%20(63).png',
+        fallbackSrc: '/assets/campus/orientation-day-celebration.jpg',
+        alt: 'Freshmen batch ensemble celebration marking the start of university life',
+        caption: 'A celebratory welcome celebrating the beginning of an extraordinary academic journey'
       }
     ]
   },
@@ -224,40 +248,64 @@ export const CAMPUS_EVENTS_DATA: CampusEvent[] = [
     ],
     images: [
       {
-        src: '/assets/campus-life-new/campus-new-a.jpg',
-        fallbackSrc: '/images/QF79SG2D_Whats-App-Image-2026-10-05-at-2-38-56-AM-3.jpg',
-        alt: 'Grand Welcome Party 2025 stage performance with dynamic laser lighting and live band',
-        caption: 'Welcome Party 2025 — Electrifying stage performance on the grand campus lawn'
+        src: 'https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-20%20at%202.32.52%20AM%20(3).jpeg?updatedAt=1792580312746',
+        fallbackSrc: '/assets/campus-life-new/campus-new-a.jpg',
+        alt: 'UCP Bahawalpur Welcome Party 2025 grand celebration stage and student gathering',
+        caption: 'Welcome Party 2025 — Grand collegiate gala celebrating the incoming batch with electrifying performances'
       },
       {
-        src: '/assets/campus/campus-concert-live-music.png',
-        fallbackSrc: '/images/dwVXXsjv_image-11.png',
-        alt: 'Live musical night concert crowd cheering under vibrant campus stage illumination',
-        caption: 'Vibrant crowd of freshmen and seniors enjoying high-energy musical sets'
+        src: 'https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-20%20at%201.36.47%20AM.jpeg?updatedAt=1792580301241',
+        fallbackSrc: '/assets/campus/campus-concert-live-music.png',
+        alt: 'Students enjoying Welcome Party 2025 festivities and interactive segments',
+        caption: 'Freshmen and senior students sharing memorable moments during the Welcome 2025 festivities'
       },
       {
-        src: '/assets/campus-life-new/campus-36.jpg',
-        fallbackSrc: '/images/20TtTtdG_Whats-App-Image-2026-10-05-at-2-38-58-AM-1.jpg',
-        alt: 'Theatrical drama presentation and humorous student skits on main stage',
-        caption: 'Dramatic arts society presenting hilarious parody skits and roasts'
+        src: 'https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-20%20at%202.32.52%20AM%20(6).jpeg?updatedAt=1792580309892',
+        fallbackSrc: '/assets/campus-life-new/campus-36.jpg',
+        alt: 'Welcome Party 2025 live performance on the illuminated campus stage',
+        caption: 'Live musical night performance under vibrant campus lighting and festive decor'
       },
       {
-        src: '/assets/campus-life-new/campus-new-b.jpg',
-        fallbackSrc: '/images/ks8XD1L6_Whats-App-Image-2026-10-05-at-2-38-52-AM-2.jpg',
-        alt: 'Presentation of Mr. & Ms. Freshmen titles and sashes during the gala evening',
-        caption: 'Awarding the coveted Mr. & Ms. Freshmen 2025 titles to student winners'
+        src: 'https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-20%20at%202.32.53%20AM.jpeg?updatedAt=1792580310894',
+        fallbackSrc: '/assets/campus-life-new/campus-new-b.jpg',
+        alt: 'UCP Bahawalpur students celebrating together at Welcome Party 2025',
+        caption: 'Enthusiastic audience cheering during theatrical drama skits and musical sets'
       },
       {
-        src: '/assets/campus-life-new/campus-11.jpg',
-        fallbackSrc: '/images/d0RFqWwY_Whats-App-Image-2026-10-08-at-12-46-41-AM-1.jpg',
-        alt: 'Formal seated dinner and culinary arrangements under starlit festive tents',
-        caption: 'Sumptuous multi-course gala dinner served under grand canopy lighting'
+        src: 'https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-20%20at%202.32.52%20AM%20(5).jpeg?updatedAt=1792580308508',
+        fallbackSrc: '/assets/campus-life-new/campus-11.jpg',
+        alt: 'Welcome Party 2025 stage presentations and student recognition',
+        caption: 'Honoring outstanding talent and presentations during the Welcome Gala evening'
       },
       {
-        src: '/assets/campus-life-new/campus-19.jpg',
-        fallbackSrc: '/images/Hfkk9bSJ_Whats-App-Image-2026-10-05-at-2-39-03-AM-1.jpg',
-        alt: 'Closing ensemble photo of organizing committee and student council members',
-        caption: 'Student executive council celebrating the resounding success of Welcome 2025'
+        src: 'https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-20%20at%202.32.52%20AM%20(9).jpeg?updatedAt=1792580309558',
+        fallbackSrc: '/assets/campus-life-new/campus-19.jpg',
+        alt: 'Vibrant student crowd celebrating Welcome Party 2025',
+        caption: 'Dynamic festive atmosphere across the decorated UCP Bahawalpur campus grounds'
+      },
+      {
+        src: 'https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-20%20at%202.32.52%20AM%20(2).jpeg?updatedAt=1792580299843',
+        fallbackSrc: '/assets/campus-life-new/campus-10.jpg',
+        alt: 'Welcome Party 2025 campus celebrations and student group photography',
+        caption: 'Students capturing unforgettable memories at the Welcome 2025 photo booth and lawn decor'
+      },
+      {
+        src: 'https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-20%20at%202.32.53%20AM%20(1).jpeg?updatedAt=1792580307331',
+        fallbackSrc: '/assets/campus-life-new/campus-12.jpg',
+        alt: 'Stage lights and live musical beats at Welcome Party 2025',
+        caption: 'Live band performance and cultural presentations entertaining the campus community'
+      },
+      {
+        src: 'https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-20%20at%202.32.52%20AM%20(7).jpeg?updatedAt=1792580298134',
+        fallbackSrc: '/assets/campus-life-new/campus-13.jpg',
+        alt: 'Executive dinner and social gathering at Welcome Party 2025',
+        caption: 'Formal banquet dinner and collegiate bonding under starlit Bahawalpur evening'
+      },
+      {
+        src: 'https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-20%20at%202.32.52%20AM%20(8).jpeg?updatedAt=1792580312727',
+        fallbackSrc: '/assets/campus-life-new/campus-14.jpg',
+        alt: 'Student organizing committee and attendees celebrating Welcome Party 2025 finale',
+        caption: 'Grand closing ceremony celebrating the triumphant success of Welcome Party 2025'
       }
     ]
   },
@@ -322,54 +370,66 @@ export const CAMPUS_EVENTS_DATA: CampusEvent[] = [
   {
     id: 'isaiss-2026-symposium',
     number: 6,
-    title: 'ISAISS 2026 (Symposium)',
+    title: 'ISAISS 2026 (Symposium and Seminar)',
     year: '2026',
     date: 'January 2026',
     category: 'Academic Symposium',
     badge: 'International AI & Security Conference',
-    description: 'A premier international symposium bringing together global AI researchers, cybersecurity professionals, and university faculty. Keynotes explored ethical AI, neural architectures, quantum cryptography, and practical industry deployment.',
+    description: 'A premier international symposium and academic seminar bringing together global AI researchers, cybersecurity professionals, university faculty, and industry speakers. Alongside research tracks exploring ethical AI, neural architectures, and quantum cryptography, the event featured an intensive seminar on professional communication skills and leadership.',
     highlights: [
       'International Keynote Speakers & Academicians',
+      'Seminar on Professional Communication Skills',
       '30+ Peer-Reviewed Research Presentations',
-      'Panel Discussion on Cybersecurity & Generative AI',
-      'IEEE & HEC Academic Recognition'
+      'Panel Discussion on Cybersecurity & Generative AI'
     ],
     images: [
       {
-        src: '/assets/events/international-symposium-ai.jpg',
-        fallbackSrc: '/images/Z6gCjzm9_Whats-App-Image-2026-10-11-at-11-08-09-PM.jpg',
-        alt: 'ISAISS 2026 International Symposium on AI and Secure Systems main conference hall',
-        caption: 'ISAISS 2026 — Global researchers convening on AI and Cybersecurity at UCP'
+        src: 'https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-12%20at%203.51.10%20AM.jpeg',
+        fallbackSrc: '/assets/events/international-symposium-ai.jpg',
+        alt: 'ISAISS 2026 International Symposium on AI and Secure Systems conference session',
+        caption: 'ISAISS 2026 — International Symposium on Artificial Intelligence & Secure Systems'
       },
       {
-        src: '/assets/events/international-symposium-ai-2.jpg',
-        fallbackSrc: '/images/DPc3whkY_Whats-App-Image-2026-10-11-at-11-06-29-PM.jpg',
-        alt: 'Keynote speaker delivering address on advanced deep learning and quantum cryptography',
-        caption: 'Keynote paper presentation addressing breakthroughs in neural architectures'
+        src: 'https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-12%20at%203.49.32%20AM.jpeg',
+        fallbackSrc: '/assets/events/international-symposium-ai-2.jpg',
+        alt: 'Keynote speakers and research scholars addressing ISAISS 2026 plenary',
+        caption: 'Distinguished researchers presenting advances in neural networks and cybersecurity'
       },
       {
-        src: '/assets/events/international-symposium-ai-3.jpg',
-        fallbackSrc: '/images/JWgxKLmW_Whats-App-Image-2026-10-11-at-11-08-23-PM.jpg',
-        alt: 'Panel session on industrial AI adoption with technology delegates and professors',
-        caption: 'Distinguished panel exploring data security protocols in financial systems'
+        src: 'https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-12%20at%203.48.34%20AM.jpeg',
+        fallbackSrc: '/assets/events/international-symposium-ai-3.jpg',
+        alt: 'Panel discussion on generative AI governance and ethical intelligent systems',
+        caption: 'Expert panel session exploring ethical AI frameworks and quantum-safe cryptography'
       },
       {
-        src: '/assets/events/symposium-ai-secure-systems-1.jpg',
-        fallbackSrc: '/images/1t5rZr61_Whats-App-Image-2026-10-11-at-11-09-58-PM.jpg',
-        alt: 'Audience of postgraduate scholars, researchers, and engineers at ISAISS 2026',
-        caption: 'Packed auditorium of computing scholars, industry engineers, and faculty delegates'
+        src: 'https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-12%20at%203.50.32%20AM.jpeg',
+        fallbackSrc: '/assets/events/symposium-ai-secure-systems-1.jpg',
+        alt: 'Auditorium audience of computing scholars, industry engineers, and university faculty',
+        caption: 'Engaged academic assembly of researchers, delegates, and postgraduate students'
       },
       {
-        src: '/assets/events/symposium-ai-secure-systems-2.jpg',
-        fallbackSrc: '/images/wFy5dC60_Whats-App-Image-2026-10-11-at-11-09-33-PM.jpg',
-        alt: 'Presentation of symposium proceedings and honorary crests to international delegates',
-        caption: 'Distribution of symposium proceedings and honorary crests by the Campus Director'
+        src: 'https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-11%20at%2011.14.54%20PM.jpeg',
+        fallbackSrc: '/assets/events/symposium-ai-secure-systems-2.jpg',
+        alt: 'Presentation of symposium crests and commemorative shields to guest speakers',
+        caption: 'Conferring honorary shields and certificates to keynote speakers and scholars'
       },
       {
-        src: '/assets/events/seminar-comm-keynote-large.jpg',
-        fallbackSrc: '/images/ks8XD1L6_Whats-App-Image-2026-10-05-at-2-38-52-AM-2.jpg',
-        alt: 'Closing plenary session on future-ready computing and student innovation grants',
-        caption: 'Closing plenary affirming UCP Bahawalpur as a hub for scientific research'
+        src: 'https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-11%20at%2011.02.58%20PM.jpeg',
+        fallbackSrc: '/assets/events/seminar-comm-keynote-large.jpg',
+        alt: 'Seminar on Communication Skills: Keynote speaker addressing UCP students on public speaking',
+        caption: 'Seminar on Communication Skills — Developing articulate presentation and rhetoric mastery'
+      },
+      {
+        src: 'https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-11%20at%2011.04.13%20PM.jpeg',
+        fallbackSrc: '/assets/campus/student-classroom-presentation-2.jpg',
+        alt: 'Interactive workshop on verbal fluency, interview techniques, and interpersonal leadership',
+        caption: 'Interactive communication workshop focusing on corporate pitching and executive presence'
+      },
+      {
+        src: 'https://ik.imagekit.io/Muffins/image%20(15).png',
+        fallbackSrc: '/assets/events/symposium-ai-secure-systems-2.jpg',
+        alt: 'Commemorative certificate and token of appreciation presented to communication seminar trainer',
+        caption: 'Conferring honorary shields to communication trainers and symposium session chairs'
       }
     ]
   },
@@ -389,6 +449,42 @@ export const CAMPUS_EVENTS_DATA: CampusEvent[] = [
       'Professional Development & Public Speaking Bootcamps'
     ],
     images: [
+      {
+        src: 'https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-05%20at%2011.54.53%20PM.jpeg',
+        fallbackSrc: '/assets/elite-network-new/elite-1.jpg',
+        alt: 'UCP Elite Student Network scholars and student leadership council',
+        caption: 'UCP Elite Student Network — Dedicated scholars and emerging campus leaders'
+      },
+      {
+        src: 'https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-20%20at%201.36.45%20AM.jpeg?updatedAt=1792580286666',
+        fallbackSrc: '/assets/elite-network-new/elite-1.jpg',
+        alt: 'UCP Elite Student Network top scholars and student ambassadors celebrating excellence',
+        caption: 'UCP Elite Student Network — Inspiring student scholars and campus ambassadors'
+      },
+      {
+        src: 'https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-08%20at%2012.41.42%20AM.jpeg',
+        fallbackSrc: '/assets/elite-network-new/elite-1.jpg',
+        alt: 'UCP Elite Student Network scholars and student brand ambassadors in campus lounge',
+        caption: 'UCP Elite Student Network — Empowering top academic achievers and student ambassadors'
+      },
+      {
+        src: 'https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-08%20at%2012.44.21%20AM%20(8).jpeg',
+        fallbackSrc: '/assets/elite-network-new/elite-2.jpg',
+        alt: 'Elite Student Network leadership conference and peer mentorship session',
+        caption: 'Scholars participating in executive leadership and collaborative mentorship discussions'
+      },
+      {
+        src: 'https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-08%20at%2012.44.21%20AM%20(7).jpeg',
+        fallbackSrc: '/assets/elite-network-new/elite-3.jpg',
+        alt: 'UCP Elite Student Network certificate and recognition ceremony',
+        caption: 'Recognizing academic distinction and leadership contributions across faculties'
+      },
+      {
+        src: 'https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-08%20at%2012.43.08%20AM%20(3).jpeg',
+        fallbackSrc: '/assets/elite-network-new/elite-4.jpg',
+        alt: 'Elite student ambassadors presenting university initiatives and community projects',
+        caption: 'Elite ambassadors spearheading impactful community and academic engagement projects'
+      },
       {
         src: '/assets/elite-network-new/elite-1.jpg',
         fallbackSrc: '/images/4RGfzpX8_image-2.jpg',
@@ -498,40 +594,58 @@ export const CAMPUS_EVENTS_DATA: CampusEvent[] = [
     ],
     images: [
       {
-        src: '/assets/campus/teacher-training-presentation.jpg',
-        fallbackSrc: '/images/KxnwgN6v_Whats-App-Image-2026-10-05-at-1-17-53-AM-4-Copy.jpg',
-        alt: 'Teaching Excellence 360 workshop presentation by senior education specialist',
-        caption: 'Teaching Excellence 360° — Faculty mastering student-centric pedagogies'
+        src: 'https://ik.imagekit.io/Muffins/image%20(66).png',
+        fallbackSrc: '/assets/campus/teacher-training-presentation.jpg',
+        alt: 'Teaching Excellence 360 faculty development seminar in session',
+        caption: 'Teaching Excellence 360° — Faculty mastering modern student-centric pedagogies'
       },
       {
-        src: '/assets/faculty/faculty-in-action-presentation.jpg',
-        fallbackSrc: '/images/bRWh39Z1_Whats-App-Image-2026-10-11-at-11-07-35-PM.jpg',
-        alt: 'Professor demonstrating innovative classroom technology and digital assessment tools',
-        caption: 'Live demonstration of digital learning toolkits and active feedback loops'
+        src: 'https://ik.imagekit.io/Muffins/image%20(68).png',
+        fallbackSrc: '/assets/faculty/faculty-in-action-presentation.jpg',
+        alt: 'Keynote lecture on transformative teaching and active learning strategies',
+        caption: 'Keynote presentation on outcome-based education and transformative curricula'
       },
       {
-        src: '/assets/events/workshop-endnote-shahid-amin.jpg',
-        fallbackSrc: '/images/hxJ4v4xv_Whats-App-Image-2026-10-11-at-11-30-43-PM.jpg',
-        alt: 'Research citation and scientific publishing workshop led by Dr. Shahid Amin',
-        caption: 'Research methodology and EndNote bibliographic masterclass for research faculty'
+        src: 'https://ik.imagekit.io/Muffins/image%20(65).png',
+        fallbackSrc: '/assets/events/workshop-endnote-shahid-amin.jpg',
+        alt: 'Interactive faculty workshop with practical teaching exercises',
+        caption: 'Faculty collaborative workshop refining classroom engagement and instructional rubrics'
       },
       {
-        src: '/assets/campus/student-classroom-presentation-2.jpg',
-        fallbackSrc: '/images/W4CphPKd_Whats-App-Image-2026-10-11-at-11-31-06-PM.jpg',
-        alt: 'Micro-teaching breakout group evaluating rubric-based academic grading',
-        caption: 'Departmental roundtables refining modern outcome-based education (OBE) rubrics'
+        src: 'https://ik.imagekit.io/Muffins/image%20(70).png',
+        fallbackSrc: '/assets/campus/student-classroom-presentation-2.jpg',
+        alt: 'Professors participating in interactive digital learning and pedagogy breakout group',
+        caption: 'Departmental breakout sessions discussing interactive assessment frameworks'
       },
       {
-        src: '/assets/facilities/comp-lab-2.jpg',
-        fallbackSrc: '/images/chjWx2NR_Whats-App-Image-2026-10-13-at-1-06-35-AM.jpg',
-        alt: 'Faculty computer lab session practicing LMS portal integration and digital exams',
-        caption: 'Hands-on training in learning management portals and computerized exam evaluation'
+        src: 'https://ik.imagekit.io/Muffins/image%20(67).png',
+        fallbackSrc: '/assets/facilities/comp-lab-2.jpg',
+        alt: 'Senior educationist presenting research-informed instructional methodologies',
+        caption: 'Senior educationists demonstrating research-backed classroom pedagogies'
       },
       {
-        src: '/assets/facilities/science_lab_1.jpg',
-        fallbackSrc: '/images/ks8XD1L6_Whats-App-Image-2026-10-05-at-2-38-52-AM-2.jpg',
-        alt: 'Science laboratory safety and experiential experimentation standards review',
-        caption: 'Science faculty reviewing advanced laboratory safety and investigative standards'
+        src: 'https://ik.imagekit.io/Muffins/image%20(69).png',
+        fallbackSrc: '/assets/facilities/science_lab_1.jpg',
+        alt: 'Faculty attendees actively participating in pedagogical debate and discussion',
+        caption: 'Faculty discourse on advancing student engagement and innovative learning techniques'
+      },
+      {
+        src: 'https://ik.imagekit.io/Muffins/image%20(71).png',
+        fallbackSrc: '/assets/campus/teacher-training-presentation.jpg',
+        alt: 'Presentation of training certificates to faculty cohort members',
+        caption: 'Awarding certificates of completion to faculty participants for pedagogical excellence'
+      },
+      {
+        src: 'https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-21%20at%2011.42.04%20PM%20(1).png',
+        fallbackSrc: '/assets/faculty/faculty-in-action-presentation.jpg',
+        alt: 'Faculty hands-on training session on learning technology and digital classrooms',
+        caption: 'Hands-on training integrating digital classroom tools and modern LMS portals'
+      },
+      {
+        src: 'https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-21%20at%2011.42.04%20PM.png',
+        fallbackSrc: '/assets/campus/teacher-training-presentation.jpg',
+        alt: 'Commemorative group photograph of UCP faculty and trainers at Teaching Excellence 360',
+        caption: 'Faculty cohort group portrait concluding the Teaching Excellence 360° symposium'
       }
     ]
   },
@@ -582,10 +696,22 @@ export const CAMPUS_EVENTS_DATA: CampusEvent[] = [
         caption: 'Trophy presentation celebrating the champion student documentary creators'
       },
       {
-        src: '/assets/campus-life/movie-day-addition.jpg',
-        fallbackSrc: '/images/pjpRGkzG_Whats-App-Image-2026-10-11-at-11-24-05-PM.jpg',
-        alt: 'Creative post-production editing showcase and student filmmaker group portrait',
-        caption: 'Student content creators, visual storytellers, and media club coordinators'
+        src: 'https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-11%20at%2011.08.45%20PM.jpeg',
+        fallbackSrc: '/assets/campus-life/movie-day-addition.jpg',
+        alt: 'Student filmmakers and content creators showcasing creative video productions',
+        caption: 'Creative post-production editing showcase and student filmmaker presentations'
+      },
+      {
+        src: 'https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-11%20at%2011.09.06%20PM.jpeg',
+        fallbackSrc: '/images/1Y1Q7MxY_Whats-App-Image-2026-10-11-at-11-12-31-PM.jpg',
+        alt: 'Documentary and Reel Competition showcase ceremony and director group photo',
+        caption: 'Student content creators, visual storytellers, and media coordinators celebrating cinematic excellence'
+      },
+      {
+        src: 'https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-11%20at%2011.07.35%20PM.jpeg',
+        fallbackSrc: '/assets/events/documentary-competition-1.jpg',
+        alt: 'Student filmmakers and visual artists showcasing documentary storytelling',
+        caption: 'Inspiring visual journalism, documentary screenings, and creative student cinema'
       }
     ]
   },
@@ -612,12 +738,6 @@ export const CAMPUS_EVENTS_DATA: CampusEvent[] = [
         caption: 'Village Tour 2026 — Experiencing authentic agrarian traditions and rural warmth'
       },
       {
-        src: '/assets/campus-life/village-tour-2.jpg',
-        fallbackSrc: '/images/bRWh39Z1_Whats-App-Image-2026-10-11-at-11-07-35-PM.jpg',
-        alt: 'Students learning traditional pottery techniques from master village artisans',
-        caption: 'Hands-on clay pottery and ceramic crafts workshop with local master artisans'
-      },
-      {
         src: '/assets/campus-life/village-tour-3.jpg',
         fallbackSrc: '/images/hxJ4v4xv_Whats-App-Image-2026-10-11-at-11-30-43-PM.jpg',
         alt: 'Agricultural field research examining organic crop farming and canal irrigation',
@@ -630,16 +750,64 @@ export const CAMPUS_EVENTS_DATA: CampusEvent[] = [
         caption: 'Enjoying traditional rural tandoori dining and folkloric tales with village elders'
       },
       {
-        src: '/assets/campus-life/campus-activity-2.jpg',
-        fallbackSrc: '/images/chjWx2NR_Whats-App-Image-2026-10-13-at-1-06-35-AM.jpg',
-        alt: 'Students interacting with local schoolchildren and distributing books during village tour',
-        caption: 'Social impact initiative: Sharing educational storybooks with village school pupils'
+        src: 'https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-05%20at%201.17.53%20AM%20(12).jpeg',
+        fallbackSrc: '/assets/campus-life/campus-activity-2.jpg',
+        alt: 'Students exploring rural architectural heritage and village lifestyle',
+        caption: 'Field immersion in rural crafts, community interactions, and cultural heritage'
       },
       {
-        src: '/assets/campus-life-new/campus-14.jpg',
-        fallbackSrc: '/images/ks8XD1L6_Whats-App-Image-2026-10-05-at-2-38-52-AM-2.jpg',
-        alt: 'Commemorative group photo of students and faculty with village community hosts',
-        caption: 'Heartfelt group memory capturing rich cultural heritage and community gratitude'
+        src: 'https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-05%20at%201.17.53%20AM%20(1)%20-%20Copy.jpeg',
+        fallbackSrc: '/assets/campus-life-new/campus-14.jpg',
+        alt: 'Students and faculty during rural community study session',
+        caption: 'Experiential learning and field observations with local farming families'
+      },
+      {
+        src: 'https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-05%20at%201.17.53%20AM%20(5)%20-%20Copy.jpeg',
+        fallbackSrc: '/images/PvhQzQgn_Whats-App-Image-2026-10-05-at-1-17-53-AM-5-Copy.jpg',
+        alt: 'Field observations and ecological insights in rural Bahawalpur outskirts',
+        caption: 'Studying sustainable agriculture, traditional irrigation, and village ecology'
+      },
+      {
+        src: 'https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-05%20at%201.17.53%20AM%20(8).jpeg',
+        fallbackSrc: '/images/tpSrPtDC_Whats-App-Image-2026-10-05-at-1-17-53-AM-1-Copy.jpg',
+        alt: 'Village community interaction and experiential rural culture tour',
+        caption: 'Experiencing warm rural hospitality and cultural storytelling with local elders'
+      },
+      {
+        src: 'https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-05%20at%201.17.53%20AM%20(3)%20-%20Copy.jpeg',
+        fallbackSrc: '/images/rfQMzVZ6_Whats-App-Image-2026-10-05-at-1-17-53-AM-3-Copy.jpg',
+        alt: 'Traditional rural homesteads and agricultural fieldwork study',
+        caption: 'Fieldwork documenting regional pastoral customs, agrarian crafts, and rural life'
+      },
+      {
+        src: 'https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-05%20at%201.17.53%20AM%20(6)%20-%20Copy.jpeg',
+        fallbackSrc: '/images/dJXJwCKk_Whats-App-Image-2026-10-05-at-1-17-53-AM-7-Copy.jpg',
+        alt: 'Student cohort visiting rural artisans and cottage enterprises',
+        caption: 'Exploring artisanal cottage industries and traditional craftsmanship in the village'
+      },
+      {
+        src: 'https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-05%20at%201.17.53%20AM%20-%20Copy.jpeg',
+        fallbackSrc: '/images/yn90BQCV_Whats-App-Image-2026-10-05-at-1-17-53-AM-Copy.jpg',
+        alt: 'Authentic village landscape and traditional mud-brick courtyards',
+        caption: 'Documenting architectural heritage and serene rural surroundings in Southern Punjab'
+      },
+      {
+        src: 'https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-05%20at%201.17.53%20AM%20(2)%20-%20Copy.jpeg',
+        fallbackSrc: '/images/8D3ZbPGK_Whats-App-Image-2026-10-05-at-1-17-53-AM-2-Copy.jpg',
+        alt: 'Students experiencing traditional rural practices and livestock farming',
+        caption: 'Hands-on agricultural insights into organic farming and rural livelihoods'
+      },
+      {
+        src: 'https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-05%20at%201.17.53%20AM%20(13).jpeg',
+        fallbackSrc: '/images/wF7fbh1h_Whats-App-Image-2026-10-05-at-1-17-53-AM-13-Copy.jpg',
+        alt: 'Village tour memorable encounters and friendly local receptions',
+        caption: 'Warm community reception reflecting timeless Cholistani and Saraiki culture'
+      },
+      {
+        src: 'https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-05%20at%201.17.53%20AM%20(11).jpeg',
+        fallbackSrc: '/images/MxkcXbzY_Whats-App-Image-2026-10-05-at-1-17-53-AM-11.jpg',
+        alt: 'Commemorative group photograph of students and community members',
+        caption: 'A memorable village excursion fostering cultural empathy and community solidarity'
       }
     ]
   },
@@ -650,50 +818,86 @@ export const CAMPUS_EVENTS_DATA: CampusEvent[] = [
     year: '2026',
     date: 'March 2026',
     category: 'Cultural Fest',
-    badge: 'Jashn-e-Baharan Festivities',
-    description: 'The iconic Jashn-e-Baharan campus carnival adorned with blooming floral arrangements, ethnic clothing pavilions, food stalls representing all four provinces, kite decorations, and folk instrumental melodies celebrating the arrival of spring.',
+    badge: 'Jashn-e-Baharan at Haveli Cholistan',
+    description: 'Hosted in the heart-warming, regal ambiance of Haveli Cholistan, this festive Spring celebration immersed students in the timeless cultural charm of Bahawalpur\'s historic Nawabi heritage. Amidst classic architectural arches, festive floral courtyard decor, soul-stirring folk music, authentic regional culinary feasts, and vibrant traditional attire, students spent an unforgettable time experiencing the warmth, elegance, and living history of the princely state of Bahawalpur.',
     highlights: [
-      'Provincial Cultural Kiosks & Traditional Attire',
-      'Live Folk Instrumental & Dhol Performances',
-      'Food Streets with Authentic Regional Cuisines',
-      'Inter-Department Floral Exhibition & Contests'
+      'Regal Nawabi-Style Ambience at Haveli Cholistan',
+      'Live Folk Instrumental, Dhol & Classical Recitals',
+      'Authentic Regional Delicacies & Royal Feast Kiosks',
+      'Provincial Cultural Pavilions & Traditional Attire Showcase'
     ],
     images: [
       {
-        src: '/assets/campus-life/campus-life-culture-1.jpg',
-        fallbackSrc: '/images/q3FMgJQ6_Whats-App-Image-2026-10-18-at-1-23-07-AM.jpg',
-        alt: 'UCP Bahawalpur Spring Festival campus celebrations with vibrant cultural displays',
-        caption: 'Spring Festival 2026 — Jashn-e-Baharan blooming across the campus quads'
+        src: 'https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-05%20at%202.39.05%20AM%20(1).jpeg',
+        fallbackSrc: '/assets/campus-life/campus-life-culture-1.jpg',
+        alt: 'Spring Festival Jashn-e-Baharan celebration at Haveli Cholistan in grand Nawabi style',
+        caption: 'Spring Festival 2026 — Jashn-e-Baharan at Haveli Cholistan celebrating Bahawalpur’s Nawabi heritage'
       },
       {
-        src: '/assets/campus-life/campus-life-culture-2.jpg',
-        fallbackSrc: '/images/7tL25pD8_Whats-App-Image-2026-10-18-at-1-24-42-AM.jpg',
-        alt: 'Students dressed in colorful regional attire celebrating cultural harmony on campus',
+        src: 'https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-11%20at%2011.13.40%20PM.jpeg',
+        fallbackSrc: '/assets/campus-life/campus-life-culture-2.jpg',
+        alt: 'Students dressed in colorful provincial attire representing Pakistan cultural diversity',
         caption: 'Celebrating provincial unity with Sindhi, Balochi, Pashto, and Punjabi traditions'
       },
       {
-        src: '/assets/campus-life-new/campus-new-c.jpg',
-        fallbackSrc: '/images/QF79SG2D_Whats-App-Image-2026-10-05-at-2-38-56-AM-3.jpg',
-        alt: 'Folk musicians performing classical melodies and energetic dhol beats during carnival',
-        caption: 'Live dhol rhythms and folk instrumental performances energizing the student crowd'
+        src: 'https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-05%20at%202.39.05%20AM%20(2).jpeg',
+        fallbackSrc: '/assets/campus-life-new/campus-new-c.jpg',
+        alt: 'Live folk instrumental performances and energetic dhol rhythms',
+        caption: 'Live dhol rhythms and folk instrumental melodies energizing the student crowd'
       },
       {
-        src: '/assets/campus-life-new/campus-30.jpg',
-        fallbackSrc: '/images/20TtTtdG_Whats-App-Image-2026-10-05-at-2-38-58-AM-1.jpg',
-        alt: 'Floral garden exhibition and student landscaping competitions on the campus lawn',
+        src: 'https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-05%20at%202.39.04%20AM%20(1).jpeg',
+        fallbackSrc: '/assets/campus-life-new/campus-30.jpg',
+        alt: 'Floral exhibitions, garden designs, and blooming flower competitions',
         caption: 'Artistic floral arrangements and garden exhibits curated by student societies'
       },
       {
-        src: '/assets/campus-life-new/campus-17.jpg',
-        fallbackSrc: '/images/Hfkk9bSJ_Whats-App-Image-2026-10-05-at-2-39-03-AM-1.jpg',
-        alt: 'Regional food stalls serving Gol Gappay, Biryani, Sajji, and traditional sweets',
+        src: 'https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-05%20at%202.39.04%20AM%20(2).jpeg',
+        fallbackSrc: '/assets/campus-life-new/campus-17.jpg',
+        alt: 'Food street pavilions serving authentic traditional regional cuisines',
         caption: 'Bustling student food kiosks serving authentic traditional treats and cuisines'
       },
       {
-        src: '/assets/campus-life-new/campus-20.jpg',
-        fallbackSrc: '/images/d0RFqWwY_Whats-App-Image-2026-10-08-at-12-46-41-AM-1.jpg',
-        alt: 'Joyful group of university students celebrating spring festivities in the sunshine',
-        caption: 'Infectious smiles and cherished youth memories celebrating springtime in Bahawalpur'
+        src: 'https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-05%20at%202.39.05%20AM.jpeg',
+        fallbackSrc: '/assets/campus-life-new/campus-20.jpg',
+        alt: 'Students participating in kite flying traditions and festive campus games',
+        caption: 'Traditional spring festivities, cultural games, and campus camaraderie'
+      },
+      {
+        src: 'https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-11%20at%2011.12.31%20PM.jpeg',
+        fallbackSrc: '/assets/campus-life/campus-life-culture-1.jpg',
+        alt: 'Regional cultural pavilions showcasing artisanal embroidery and crafts',
+        caption: 'Cultural exhibition showcasing regional handicrafts, Ajraks, and shawls'
+      },
+      {
+        src: 'https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-11%20at%2011.11.08%20PM.jpeg',
+        fallbackSrc: '/assets/campus-life/campus-life-culture-2.jpg',
+        alt: 'Live student theatrical performance on spring themes and cultural unity',
+        caption: 'Stage performances, theatrical sketches, and cultural recitals on the main lawn'
+      },
+      {
+        src: 'https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-05%20at%202.39.05%20AM%20(3).jpeg',
+        fallbackSrc: '/assets/campus-life-new/campus-new-c.jpg',
+        alt: 'Campus quad decorated with colorful ribbons, kites, and spring motifs',
+        caption: 'Vibrant quad decor and celebratory campus atmosphere welcoming spring'
+      },
+      {
+        src: 'https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-05%20at%202.39.04%20AM.jpeg',
+        fallbackSrc: '/assets/campus-life-new/campus-30.jpg',
+        alt: 'Students enjoying music, laughter, and springtime festivities together',
+        caption: 'Memorable youth moments and joyous student celebrations under sunny skies'
+      },
+      {
+        src: 'https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-19%20at%202.10.10%20AM.jpeg',
+        fallbackSrc: '/assets/campus-life-new/campus-17.jpg',
+        alt: 'Award ceremony for best floral arrangement and provincial stall decoration',
+        caption: 'Honoring outstanding student society stalls and creative cultural presentations'
+      },
+      {
+        src: 'https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-19%20at%202.10.09%20AM.jpeg',
+        fallbackSrc: '/assets/campus-life-new/campus-20.jpg',
+        alt: 'Grand group celebration of UCP Bahawalpur students and faculty at Spring Festival',
+        caption: 'Grand ensemble photograph celebrating the resounding success of Spring Festival 2026'
       }
     ]
   },
@@ -714,40 +918,52 @@ export const CAMPUS_EVENTS_DATA: CampusEvent[] = [
     ],
     images: [
       {
-        src: '/assets/campus-life/jeep-rally-main.jpg',
-        fallbackSrc: '/images/PshpBWGn_Whats-App-Image-2026-10-05-at-2-39-14-AM.jpg',
-        alt: '21st Cholistan Jeep Rally racing vehicles roaring past desert sand dunes',
-        caption: '21st Cholistan Jeep Rally 2026 — High-octane motorsport across golden dunes'
+        src: 'https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-05%20at%202.39.12%20AM%20(1).jpeg',
+        fallbackSrc: '/assets/campus-life/jeep-rally-main.jpg',
+        alt: '21st Cholistan Desert Jeep Rally 2026 race track excitement and vehicle lineup',
+        caption: '21st Cholistan Jeep Rally 2026 — Roaring engines and racing excitement across desert dunes'
       },
       {
-        src: '/assets/campus-life/jeep-rally-meeting-1.jpg',
-        fallbackSrc: '/images/PGGS4ZQ0_Whats-App-Image-2026-10-05-at-1-23-51-AM-1.jpg',
-        alt: 'UCP Bahawalpur leadership and TDCP officials organizing rally coordination meeting',
-        caption: 'Strategic rally planning meeting between UCP leadership and TDCP authorities'
+        src: 'https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-05%20at%202.39.14%20AM%20(1).jpeg',
+        fallbackSrc: '/assets/campus-life/jeep-rally-meeting-1.jpg',
+        alt: 'UCP Bahawalpur students and organizers at Cholistan Jeep Rally track',
+        caption: 'UCP student contingents experiencing the high-speed thrills at the Derawar Fort circuit'
       },
       {
-        src: '/assets/campus-life/jeep-rally-meeting-2.jpg',
-        fallbackSrc: '/images/VcMt0mZx_Whats-App-Image-2026-10-05-at-1-23-52-AM.jpg',
-        alt: 'Student volunteer orientation for hospitality and media coverage at Derawar Fort',
-        caption: 'Orientation for UCP student event managers and media reporters at the rally'
+        src: 'https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-05%20at%202.39.13%20AM%20(2).jpeg',
+        fallbackSrc: '/assets/campus-life/jeep-rally-meeting-2.jpg',
+        alt: '4x4 desert racing vehicles conquering tough Cholistan sand terrain',
+        caption: 'High-octane 4x4 rally vehicles maneuvering the challenging desert dunes'
       },
       {
-        src: '/assets/events/mou-haveli-cholistan-jeep-rally.jpg',
-        fallbackSrc: '/images/chjWx2NR_Whats-App-Image-2026-10-13-at-1-06-35-AM.jpg',
-        alt: 'UCP official desert camp and pavilion setup near the iconic Derawar Fort',
-        caption: 'UCP hospitality pavilion welcoming racers, tourists, and university delegates'
+        src: 'https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-05%20at%202.39.14%20AM%20(3).jpeg',
+        fallbackSrc: '/assets/events/mou-haveli-cholistan-jeep-rally.jpg',
+        alt: 'Spectators and students enjoying the Cholistan rally festivities and atmosphere',
+        caption: 'Vibrant festival atmosphere welcoming automotive enthusiasts and student volunteers'
       },
       {
-        src: '/assets/campus-life-new/campus-3.jpg',
-        fallbackSrc: '/images/ks8XD1L6_Whats-App-Image-2026-10-05-at-2-38-52-AM-2.jpg',
-        alt: 'Students witnessing live desert track qualifiers and modified 4x4 vehicles',
-        caption: 'Firsthand thrill of watching modified rally trucks conquer desert terrain'
+        src: 'https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-05%20at%202.39.12%20AM%20(2).jpeg',
+        fallbackSrc: '/assets/campus-life-new/campus-3.jpg',
+        alt: 'Desert landscape and rally racing checkpoint near Derawar Fort',
+        caption: 'Scenic desert checkpoints highlighting the grandeur of Derawar Fort and Cholistan'
       },
       {
-        src: '/assets/campus-life-new/campus-9.jpg',
-        fallbackSrc: '/images/QF79SG2D_Whats-App-Image-2026-10-05-at-2-38-56-AM-3.jpg',
-        alt: 'Nighttime desert cultural festival with lanterns and folk songs at Derawar Fort',
-        caption: 'Mesmerizing desert night festivities beneath the illuminated walls of Derawar Fort'
+        src: 'https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-05%20at%202.39.15%20AM.jpeg',
+        fallbackSrc: '/assets/campus-life-new/campus-9.jpg',
+        alt: 'UCP students and rally team members sharing memorable moments at the camp',
+        caption: 'Camp hospitality and cultural camaraderie during the annual desert motorsport festival'
+      },
+      {
+        src: 'https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-05%20at%202.39.14%20AM%20(2).jpeg',
+        fallbackSrc: '/assets/campus-life/jeep-rally-main.jpg',
+        alt: 'Rally drivers and custom 4x4 vehicles preparing at the starting grid',
+        caption: 'Technical vehicle inspections and adrenaline-filled race starts on the desert course'
+      },
+      {
+        src: 'https://ik.imagekit.io/Muffins/image%20(4).png',
+        fallbackSrc: '/assets/events/mou-haveli-cholistan-jeep-rally.jpg',
+        alt: 'Official commemorative visual for the 21st Cholistan Jeep Rally 2026',
+        caption: 'Celebrating sportsmanship, adventure tourism, and cultural heritage at Cholistan Rally 2026'
       }
     ]
   },
@@ -768,40 +984,76 @@ export const CAMPUS_EVENTS_DATA: CampusEvent[] = [
     ],
     images: [
       {
-        src: '/assets/campus-life-new/campus-36.jpg',
-        fallbackSrc: '/images/20TtTtdG_Whats-App-Image-2026-10-05-at-2-38-58-AM-1.jpg',
-        alt: 'Grand Ice Throne themed stage structure illuminated in ice blue and crystal decor',
+        src: 'https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-20%20at%2012.30.03%20AM.jpeg?updatedAt=1792580311292',
+        fallbackSrc: '/assets/campus-life-new/campus-36.jpg',
+        alt: 'Ice Throne Event grand thematic stage and student celebration',
         caption: 'Ice Throne Event — Magnificent crystalline stage decor and fantasy atmosphere'
       },
       {
-        src: '/assets/campus-life-new/campus-37.jpg',
-        fallbackSrc: '/images/Hfkk9bSJ_Whats-App-Image-2026-10-05-at-2-39-03-AM-1.jpg',
-        alt: 'Students participating in dramatic roleplay tournaments and fantasy cosplays',
-        caption: 'Creative students competing in the theatrical fantasy costume showcase'
+        src: 'https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-20%20at%2012.30.46%20AM.jpeg?updatedAt=1792580312465',
+        fallbackSrc: '/assets/campus-life-new/campus-37.jpg',
+        alt: 'Students enjoying the Ice Throne themed festivities and character performances',
+        caption: 'Theatrical winter gala with cosplay pageants and character performances'
       },
       {
-        src: '/assets/campus-life-new/campus-40.jpg',
-        fallbackSrc: '/images/ks8XD1L6_Whats-App-Image-2026-10-05-at-2-38-52-AM-2.jpg',
-        alt: 'Interactive crowd participation in winter trivia quests and gaming challenges',
-        caption: 'Audience cheering interactive trivia tournaments and stage challenges'
+        src: 'https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-20%20at%2012.32.16%20AM.jpeg?updatedAt=1792580286865',
+        fallbackSrc: '/assets/campus-life-new/campus-40.jpg',
+        alt: 'Vibrant student crowd celebrating around the Ice Throne setup',
+        caption: 'Students gathering around the illuminated Ice Throne centerpiece'
       },
       {
-        src: '/assets/campus-life-new/campus-45.jpg',
-        fallbackSrc: '/images/QF79SG2D_Whats-App-Image-2026-10-05-at-2-38-56-AM-3.jpg',
-        alt: 'Nighttime illumination with fog effects and laser beams around the Ice Throne',
-        caption: 'Spectacular atmospheric fog effects and illumination lighting up the quad'
+        src: 'https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-20%20at%2012.32.04%20AM.jpeg?updatedAt=1792580289029',
+        fallbackSrc: '/assets/campus-life-new/campus-45.jpg',
+        alt: 'Atmospheric stage lighting and winter fantasy decor on campus',
+        caption: 'Spectacular atmospheric lighting and winter wonderland decor'
       },
       {
-        src: '/assets/campus-life-new/campus-46.jpg',
-        fallbackSrc: '/images/d0RFqWwY_Whats-App-Image-2026-10-08-at-12-46-41-AM-1.jpg',
-        alt: 'Students posing on the Ice Throne during commemorative photo sessions',
-        caption: 'Students capturing unforgettable memories on the royal Ice Throne set'
+        src: 'https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-20%20at%2012.28.17%20AM.jpeg?updatedAt=1792580308464',
+        fallbackSrc: '/assets/campus-life-new/campus-46.jpg',
+        alt: 'Cosplay competition participants posing at the Ice Throne',
+        caption: 'Cosplay tournament participants displaying imaginative fantasy attire'
       },
       {
-        src: '/assets/campus-life-new/campus-47.jpg',
-        fallbackSrc: '/images/0j944vNC_image-8.jpg',
-        alt: 'Warm beverage kiosks serving hot cocoa and winter snacks during festival',
-        caption: 'Cozy winter refreshments and sweet delicacies keeping spirits high'
+        src: 'https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-20%20at%2012.31.54%20AM.jpeg?updatedAt=1792580286851',
+        fallbackSrc: '/assets/campus-life-new/campus-47.jpg',
+        alt: 'Students sharing memorable photo moments during the Ice Throne gala',
+        caption: 'Cherished student memories and photography at the winter gala'
+      },
+      {
+        src: 'https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-05%20at%202.39.17%20AM%20(2)%20-%20Copy%20-%20Copy.jpeg',
+        fallbackSrc: '/assets/campus-life-new/campus-36.jpg',
+        alt: 'Interactive gaming and student activities at the Ice Throne festival',
+        caption: 'Interactive quests, gaming challenges, and stage trivia competitions'
+      },
+      {
+        src: 'https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-05%20at%202.39.15%20AM%20(2)%20-%20Copy.jpeg',
+        fallbackSrc: '/assets/campus-life-new/campus-37.jpg',
+        alt: 'Festive student group celebration and cheerful moments',
+        caption: 'Dynamic campus enthusiasm and cheerful group festivities'
+      },
+      {
+        src: 'https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-05%20at%201.06.21%20AM%20(1)%20-%20Copy.jpeg',
+        fallbackSrc: '/assets/campus-life-new/campus-40.jpg',
+        alt: 'Evening illuminations and ambient winter festival stalls',
+        caption: 'Evening festivities with warm winter beverage kiosks and food stalls'
+      },
+      {
+        src: 'https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-05%20at%202.39.16%20AM%20(1)%20-%20Copy%20-%20Copy.jpeg',
+        fallbackSrc: '/assets/campus-life-new/campus-45.jpg',
+        alt: 'Student performers and theatrical enactments at the Ice Throne',
+        caption: 'Student artists delivering high-energy theatrical acts and skits'
+      },
+      {
+        src: 'https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-05%20at%202.39.16%20AM%20-%20Copy.jpeg',
+        fallbackSrc: '/assets/campus-life-new/campus-46.jpg',
+        alt: 'Students posing with the royal Ice Throne crown and props',
+        caption: 'Royal Ice Throne photo sessions and interactive student pageantry'
+      },
+      {
+        src: 'https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-05%20at%201.06.21%20AM%20(2)%20-%20Copy.jpeg',
+        fallbackSrc: '/assets/campus-life-new/campus-47.jpg',
+        alt: 'Grand ensemble celebration and memorable moments of Ice Throne event',
+        caption: 'A celebratory closing to one of the winter semester’s most creative spectacles'
       }
     ]
   },
@@ -834,22 +1086,22 @@ export const CAMPUS_EVENTS_DATA: CampusEvent[] = [
         caption: 'Collaborative pact with Haveli Cholistan promoting eco-tourism and cultural research'
       },
       {
-        src: '/assets/leadership/director-faculty-handshake.jpg',
-        fallbackSrc: '/images/ks8XD1L6_Whats-App-Image-2026-10-05-at-2-38-52-AM-2.jpg',
-        alt: 'Campus Director shaking hands with regional tourism dignitaries following agreement',
-        caption: 'Ceremonial handshake solidifying institutional alliances and academic linkages'
+        src: 'https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-05%20at%201.23.52%20AM.jpeg',
+        fallbackSrc: '/assets/leadership/director-faculty-handshake.jpg',
+        alt: 'Strategic MoU coordination meeting between UCP leadership, TDCP, and Haveli Cholistan',
+        caption: 'Strategic MoU discussions between UCP administrative leadership and tourism authorities'
       },
       {
-        src: '/assets/leadership/leadership-official-gathering.jpg',
-        fallbackSrc: '/images/QF79SG2D_Whats-App-Image-2026-10-05-at-2-38-56-AM-3.jpg',
-        alt: 'Official executive committee reviewing internship placements for hospitality students',
-        caption: 'University executive committee delineating internship placements and project scopes'
+        src: 'https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-05%20at%201.23.51%20AM%20(2).jpeg',
+        fallbackSrc: '/assets/leadership/leadership-official-gathering.jpg',
+        alt: 'Signing of collaboration documents and partnership agreements at Haveli Cholistan',
+        caption: 'Execution of collaboration pacts fostering tourism development and academic research'
       },
       {
-        src: '/assets/campus-life/campus-collaboration-1.jpg',
-        fallbackSrc: '/images/d0RFqWwY_Whats-App-Image-2026-10-08-at-12-46-41-AM-1.jpg',
-        alt: 'Tourism officials presenting commemorative plaques to UCP faculty coordinators',
-        caption: 'Commemorative plaques presented celebrating public-private academic partnership'
+        src: 'https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-05%20at%201.23.51%20AM.jpeg',
+        fallbackSrc: '/assets/campus-life/campus-collaboration-1.jpg',
+        alt: 'Delegation meeting discussing student internships and cultural research initiatives',
+        caption: 'Delegation review detailing student internships, desert heritage tours, and field research'
       },
       {
         src: '/assets/campus-life/campus-collaboration-2.jpg',
@@ -888,28 +1140,46 @@ export const CAMPUS_EVENTS_DATA: CampusEvent[] = [
         caption: 'Students presenting hand-crafted floral bouquets and heartfelt letters of thanks'
       },
       {
-        src: '/assets/campus-life-new/campus-18.jpg',
-        fallbackSrc: '/images/ks8XD1L6_Whats-App-Image-2026-10-05-at-2-38-52-AM-2.jpg',
-        alt: 'Emotional video screening highlighting mother-student journeys through university',
-        caption: 'Auditorium screening of touching student video diaries and family milestones'
+        src: 'https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-20%20at%201.30.57%20AM%20(1).jpeg?updatedAt=1792580309872',
+        fallbackSrc: '/assets/campus-life-new/campus-18.jpg',
+        alt: 'Poignant poetry recitations and speeches dedicated to mothers at UCP Bahawalpur',
+        caption: 'Students reciting touching tributes and poetic verses honoring maternal affection'
       },
       {
-        src: '/assets/campus-life-new/campus-22.jpg',
-        fallbackSrc: '/images/QF79SG2D_Whats-App-Image-2026-10-05-at-2-38-56-AM-3.jpg',
-        alt: 'Distinguished mother delivering address on encouraging children toward higher education',
-        caption: 'Guest mothers addressing the auditorium with inspiring words on resilience'
+        src: 'https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-20%20at%201.34.21%20AM.jpeg?updatedAt=1792580312645',
+        fallbackSrc: '/assets/campus-life-new/campus-22.jpg',
+        alt: 'Honoring mothers of academic achievers with honorary shields and tokens',
+        caption: 'Recognizing and honoring exemplary mothers for supporting student milestones'
       },
       {
-        src: '/assets/campus-life-new/campus-25.jpg',
-        fallbackSrc: '/images/d0RFqWwY_Whats-App-Image-2026-10-08-at-12-46-41-AM-1.jpg',
-        alt: 'Presentation of commemorative shields honoring exemplary mothers of academic scholars',
-        caption: 'Campus Director presenting honorary crests to exemplary mothers of scholars'
+        src: 'https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-20%20at%201.31.13%20AM.jpeg?updatedAt=1792580312027',
+        fallbackSrc: '/assets/campus-life-new/campus-25.jpg',
+        alt: 'Auditorium screening of student video tributes and family journeys',
+        caption: 'Emotional reflections and student video dedications highlighting maternal dedication'
       },
       {
-        src: '/assets/campus-life-new/campus-28.jpg',
-        fallbackSrc: '/images/Hfkk9bSJ_Whats-App-Image-2026-10-05-at-2-39-03-AM-1.jpg',
-        alt: 'Family photographs and celebration tea hosted in the decorated central campus courtyard',
-        caption: 'Joyous family photo sessions in the festively adorned central campus courtyard'
+        src: 'https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-20%20at%201.35.18%20AM.jpeg?updatedAt=1792580311777',
+        fallbackSrc: '/assets/campus-life-new/campus-28.jpg',
+        alt: 'Students and families celebrating Mothers Day together in decorated campus hall',
+        caption: 'Family celebrations and heartwarming bonding moments during the annual tribute'
+      },
+      {
+        src: 'https://ik.imagekit.io/Muffins/image%20(61).png',
+        fallbackSrc: '/assets/campus-life-new/campus-18.jpg',
+        alt: 'Floral presentations and celebratory souvenirs given to guest mothers',
+        caption: 'Floral arrangements, souvenir gifts, and commemorative tokens presented to mothers'
+      },
+      {
+        src: 'https://ik.imagekit.io/Muffins/image%20(62).png',
+        fallbackSrc: '/assets/campus-life-new/campus-22.jpg',
+        alt: 'Auditorium audience of students, faculty, and mothers applauding tribute speeches',
+        caption: 'Campus community and families united in expressing gratitude and reverence'
+      },
+      {
+        src: 'https://ik.imagekit.io/Muffins/image%20(60).png',
+        fallbackSrc: '/assets/campus-life-new/campus-25.jpg',
+        alt: 'Commemorative group portrait of students, mothers, and university leadership',
+        caption: 'Grand ensemble photograph concluding Mothers Day 2026 celebration in Bahawalpur'
       }
     ]
   },
@@ -930,40 +1200,88 @@ export const CAMPUS_EVENTS_DATA: CampusEvent[] = [
     ],
     images: [
       {
-        src: '/assets/campus-life-new/campus-15.jpg',
-        fallbackSrc: '/images/d0RFqWwY_Whats-App-Image-2026-10-08-at-12-46-41-AM-1.jpg',
-        alt: 'Arts and Carnival Festival visual art exhibition along the main campus walkway',
-        caption: 'Arts & Carnival Festival 2026 — Student canvases, calligraphy, and creative crafts'
+        src: 'https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-05%20at%202.38.57%20AM%20(1).jpeg',
+        fallbackSrc: '/assets/campus-life-new/campus-15.jpg',
+        alt: 'Arts and Carnival Festival vibrant campus venue and student stalls',
+        caption: 'Arts & Carnival Festival 2026 — Creative student art displays and bustling carnival setup'
       },
       {
-        src: '/assets/campus-life-new/campus-26.jpg',
-        fallbackSrc: '/images/Hfkk9bSJ_Whats-App-Image-2026-10-05-at-2-39-03-AM-1.jpg',
-        alt: 'Students creating live acrylic paintings and sketches during open-air arts competition',
-        caption: 'Live speed-painting and canvas portraits executed in real time by fine arts students'
+        src: 'https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-05%20at%202.39.01%20AM.jpeg',
+        fallbackSrc: '/assets/campus-life-new/campus-26.jpg',
+        alt: 'Live painting and creative sketching by fine arts students on campus',
+        caption: 'Fine arts students demonstrating live acrylic painting and portrait techniques'
       },
       {
-        src: '/assets/campus-life-new/campus-41.jpg',
-        fallbackSrc: '/images/20TtTtdG_Whats-App-Image-2026-10-05-at-2-38-58-AM-1.jpg',
-        alt: 'Carnival games area with dart boards, ring toss, and prizes buzzing with students',
-        caption: 'Exciting carnival game booths and prize giveaways drawing enthusiastic crowds'
+        src: 'https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-05%20at%202.39.01%20AM%20(2).jpeg',
+        fallbackSrc: '/assets/campus-life-new/campus-41.jpg',
+        alt: 'Calligraphy masterpieces and traditional Islamic art gallery',
+        caption: 'Traditional calligraphy and geometric arabesque artworks curated by student artists'
       },
       {
-        src: '/assets/campus-life-new/campus-42.jpg',
-        fallbackSrc: '/images/ks8XD1L6_Whats-App-Image-2026-10-05-at-2-38-52-AM-2.jpg',
-        alt: 'Handmade cultural crafts, calligraphy prints, and ceramic ornaments on display',
-        caption: 'Exquisite traditional calligraphy and craft pavilions curated by youth artisans'
+        src: 'https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-05%20at%202.38.59%20AM.jpeg',
+        fallbackSrc: '/assets/campus-life-new/campus-42.jpg',
+        alt: 'Interactive carnival games area with ring toss and amusement booths',
+        caption: 'Interactive carnival games, challenges, and prize giveaways drawing large crowds'
       },
       {
-        src: '/assets/campus-life-new/campus-48.jpg',
-        fallbackSrc: '/images/QF79SG2D_Whats-App-Image-2026-10-05-at-2-38-56-AM-3.jpg',
-        alt: 'Open mic acoustic stage with student singers and guitarists performing live',
-        caption: 'Acoustic musical jam and spoken-word poetry under shaded garden canopies'
+        src: 'https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-05%20at%202.38.57%20AM%20(2).jpeg',
+        fallbackSrc: '/assets/campus-life-new/campus-48.jpg',
+        alt: 'Handcrafted jewelry, pottery wheels, and artisanal craft kiosks',
+        caption: 'Handmade crafts, pottery demonstrations, and decorative accessories on display'
       },
       {
-        src: '/assets/campus-life-new/campus-49.jpg',
-        fallbackSrc: '/images/0j944vNC_image-8.jpg',
-        alt: 'Awards ceremony for best creative painting, sculpture, and carnival exhibit',
-        caption: 'Awarding trophies and artistic grants to standout student creative contributors'
+        src: 'https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-05%20at%202.39.03%20AM.jpeg',
+        fallbackSrc: '/assets/campus-life-new/campus-49.jpg',
+        alt: 'Open-mic music stage and live acoustic jam in the garden quad',
+        caption: 'Live acoustic music and spoken-word performances under decorated garden canopies'
+      },
+      {
+        src: 'https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-05%20at%202.39.03%20AM%20(1).jpeg',
+        fallbackSrc: '/assets/campus-life-new/campus-15.jpg',
+        alt: 'Students enjoying food streets and carnival treats on the campus lawn',
+        caption: 'Festive street food kiosks and dessert stalls keeping students energized'
+      },
+      {
+        src: 'https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-05%20at%202.38.59%20AM%20(1).jpeg',
+        fallbackSrc: '/assets/campus-life-new/campus-26.jpg',
+        alt: 'Photography exhibition and visual storytelling pavilion',
+        caption: 'Student visual journalism and photography prints showcasing regional heritage'
+      },
+      {
+        src: 'https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-05%20at%202.39.03%20AM%20(2).jpeg',
+        fallbackSrc: '/assets/campus-life-new/campus-41.jpg',
+        alt: 'Cultural performances and lively student flashmob on the central quad',
+        caption: 'Dynamic cultural performances and celebratory ensemble acts in the central courtyard'
+      },
+      {
+        src: 'https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-05%20at%202.39.02%20AM%20(1).jpeg',
+        fallbackSrc: '/assets/campus-life-new/campus-42.jpg',
+        alt: 'Creative sculpture, modeling, and 3D architectural craft exhibits',
+        caption: 'Sculptures, recycled art models, and architectural dioramas exhibited by students'
+      },
+      {
+        src: 'https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-05%20at%202.39.02%20AM.jpeg',
+        fallbackSrc: '/assets/campus-life-new/campus-48.jpg',
+        alt: 'Art competition judging and faculty review of student portfolios',
+        caption: 'Expert jury evaluating student artworks and offering professional critiques'
+      },
+      {
+        src: 'https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-05%20at%202.39.02%20AM%20(2).jpeg',
+        fallbackSrc: '/assets/campus-life-new/campus-49.jpg',
+        alt: 'Prize distribution ceremony honoring winners of art and carnival contests',
+        caption: 'Awarding trophies and cash prizes to champions of the art and carnival competitions'
+      },
+      {
+        src: 'https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-05%20at%202.38.59%20AM%20(2).jpeg',
+        fallbackSrc: '/assets/campus-life-new/campus-15.jpg',
+        alt: 'Cheerful group celebrations and memorable moments at the photo booth',
+        caption: 'Students capturing unforgettable moments at the themed carnival photo corners'
+      },
+      {
+        src: 'https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-05%20at%202.38.58%20AM%20(1).jpeg',
+        fallbackSrc: '/assets/campus-life-new/campus-26.jpg',
+        alt: 'Grand festival finale with student organizing committee and faculty',
+        caption: 'Organizing committee celebrating the resounding success of the Arts & Carnival Festival'
       }
     ]
   },
@@ -1126,6 +1444,18 @@ export const CAMPUS_EVENTS_DATA: CampusEvent[] = [
         fallbackSrc: '/images/ks8XD1L6_Whats-App-Image-2026-10-05-at-2-38-52-AM-2.jpg',
         alt: 'Award ceremony honoring best capstone projects with innovation shields and cash prizes',
         caption: 'Distribution of annual excellence trophies and cash awards to winning teams'
+      },
+      {
+        src: 'https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-06%20at%2012.11.15%20AM.jpeg',
+        fallbackSrc: '/assets/events/project-exhibition-top.jpg',
+        alt: 'Students demonstrating capstone engineering project models to industrial evaluators',
+        caption: 'Interactive student presentations of practical engineering and software prototypes'
+      },
+      {
+        src: 'https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-06%20at%2012.11.14%20AM.jpeg',
+        fallbackSrc: '/assets/events/project-exhibition.jpg',
+        alt: 'Faculty evaluators and students reviewing capstone research posters and hardware exhibits',
+        caption: 'Faculty reviews and industry expert evaluations of senior capstone innovations'
       }
     ]
   },
@@ -1146,40 +1476,16 @@ export const CAMPUS_EVENTS_DATA: CampusEvent[] = [
     ],
     images: [
       {
-        src: '/assets/campus-life/innovista-cholistan-movie-singing.jpg',
-        fallbackSrc: '/images/F4M5mF0r_Whats-App-Image-2026-10-11-at-11-23-40-PM.jpg',
-        alt: 'Inovista Cholistan Movie Day students singing around campfire at Haveli Cholistan',
-        caption: 'Inovista Cholistan Movie Day — Outdoor cinema and musical campfire in the desert'
+        src: 'https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-11%20at%2011.24.05%20PM.jpeg',
+        fallbackSrc: '/assets/campus-life/movie-day-addition.jpg',
+        alt: 'Giant outdoor cinema projection setup at Haveli Cholistan under desert night skies',
+        caption: 'Inovista Cholistan Movie Day — Giant outdoor cinema screening under the stars at Haveli Cholistan'
       },
       {
-        src: '/assets/campus-life/movie-day-addition.jpg',
-        fallbackSrc: '/images/pjpRGkzG_Whats-App-Image-2026-10-11-at-11-24-05-PM.jpg',
-        alt: 'Giant outdoor cinema screen setup against the historic architecture of Haveli Cholistan',
-        caption: 'Open-air cinema screening under the pristine, star-filled Cholistani sky'
-      },
-      {
-        src: '/assets/campus/haveli_cholistan_student_singing.jpg',
-        fallbackSrc: '/images/7dwzJ7HH_Whats-App-Image-2026-10-11-at-11-12-56-PM.jpg',
-        alt: 'Acoustic jam session with students singing popular songs by the desert fire pit',
-        caption: 'Acoustic guitar sing-alongs and laughter echoing through the desert night'
-      },
-      {
-        src: '/assets/campus-life-new/campus-new-i.jpg',
-        fallbackSrc: '/images/ks8XD1L6_Whats-App-Image-2026-10-05-at-2-38-52-AM-2.jpg',
-        alt: 'Delicious Cholistani barbecue and earthen-pot chai served to university students',
-        caption: 'Authentic Cholistani barbecue and matka chai served around the desert campsite'
-      },
-      {
-        src: '/assets/campus-life-new/campus-new-j.jpg',
-        fallbackSrc: '/images/QF79SG2D_Whats-App-Image-2026-10-05-at-2-38-56-AM-3.jpg',
-        alt: 'Students stargazing with telescope and enjoying telescope astronomy tutorials',
-        caption: 'Desert astronomy and stargazing tutorials in the clean night atmosphere'
-      },
-      {
-        src: '/assets/campus-life-new/campus-new-k.jpg',
-        fallbackSrc: '/images/d0RFqWwY_Whats-App-Image-2026-10-08-at-12-46-41-AM-1.jpg',
-        alt: 'Group celebration photo of Inovista Cholistan movie day attendees and faculty',
-        caption: 'Unforgettable collegiate memories blending desert serenity and student joy'
+        src: 'https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-11%20at%2011.23.40%20PM.jpeg',
+        fallbackSrc: '/assets/campus-life/innovista-cholistan-movie-singing.jpg',
+        alt: 'Students enjoying live acoustic singing and campfire fellowship in the desert',
+        caption: 'Acoustic musical jam, campfire fellowship, and heartwarming desert hospitality'
       }
     ]
   },
@@ -1200,40 +1506,16 @@ export const CAMPUS_EVENTS_DATA: CampusEvent[] = [
     ],
     images: [
       {
-        src: '/assets/campus-life/shogran-valley-tour-1.jpg',
-        fallbackSrc: '/images/0j944vNC_image-8.jpg',
-        alt: 'UCP Bahawalpur students exploring Shogran Valley alpine meadows during Northern tour',
-        caption: 'Shogran Valley Alpine Expedition — Students and faculty amidst lush mountain vistas'
+        src: 'https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-19%20at%202.11.37%20AM.jpeg',
+        fallbackSrc: '/assets/campus-life/shogran-valley-tour-1.jpg',
+        alt: 'UCP students and faculty on alpine mountain excursion across northern valleys',
+        caption: 'Trip to Northern Area — Students exploring picturesque alpine valleys and scenic mountain vistas'
       },
       {
-        src: '/assets/campus-life-new/campus-37.jpg',
-        fallbackSrc: '/images/20TtTtdG_Whats-App-Image-2026-10-05-at-2-38-58-AM-1.jpg',
-        alt: 'Trekking through Pine forests and panoramic mountain ridges in Kaghan Valley',
-        caption: 'Pine trail trekking and team orientation high in the Northern highlands'
-      },
-      {
-        src: '/assets/campus-life-new/campus-4.jpg',
-        fallbackSrc: '/images/Hfkk9bSJ_Whats-App-Image-2026-10-05-at-2-39-03-AM-1.jpg',
-        alt: 'Student group photograph at mountain summit overlook during northern excursion',
-        caption: 'Summit group milestone — Celebrating collegiate adventure together'
-      },
-      {
-        src: '/assets/campus-life-new/campus-7.jpg',
-        fallbackSrc: '/images/d0RFqWwY_Whats-App-Image-2026-10-08-at-12-46-41-AM-1.jpg',
-        alt: 'Jeep safari across rugged high-altitude passes to Siri Paye meadows',
-        caption: 'Thrill of the off-road mountain jeep safari across rugged terrain'
-      },
-      {
-        src: '/assets/campus-life-new/campus-12.jpg',
-        fallbackSrc: '/images/ks8XD1L6_Whats-App-Image-2026-10-05-at-2-38-52-AM-2.jpg',
-        alt: 'Evening campfire gathering and acoustic singing circle under starlit mountain skies',
-        caption: 'Evening bonfire circles sharing stories, folk songs, and warm tea'
-      },
-      {
-        src: '/assets/campus-life-new/campus-23.jpg',
-        fallbackSrc: '/images/QF79SG2D_Whats-App-Image-2026-10-05-at-2-38-56-AM-3.jpg',
-        alt: 'Faculty supervisors and students celebrating successful completion of northern tour',
-        caption: 'Safe return and memorable group photo at the final excursion basecamp'
+        src: 'https://ik.imagekit.io/Muffins/image%20(14).png',
+        fallbackSrc: '/assets/campus-life-new/campus-4.jpg',
+        alt: 'Commemorative group portrait of students and faculty during Northern Area excursion',
+        caption: 'A memorable milestone celebrating collegiate friendship, nature exploration, and mountain adventure'
       }
     ]
   }
