@@ -159,6 +159,24 @@ export default function App() {
     };
   }, [currentPage]);
 
+  // Dynamic page titles for SEO & browser navigation
+  useEffect(() => {
+    const titles: Record<string, string> = {
+      home: 'UCP Bahawalpur Campus | University of Central Punjab BWP - Official Admissions & Programs',
+      programmes: 'Academic Programmes (BS & ADP) | UCP Bahawalpur Campus',
+      faculty: 'Faculty Directory & Professors | UCP Bahawalpur Campus',
+      'campus-life': 'Campus Life, Societies & Events | UCP Bahawalpur Campus',
+      scholarships: 'Scholarships & Merit Concessions | UCP Bahawalpur Campus',
+      'fee-structure': 'Official Fee Structure & Tuition | UCP Bahawalpur Campus',
+      legacy: 'Institutional Legacy & Heritage | UCP Bahawalpur Campus',
+      'cnn-academy': 'CNN Academy Strategic Partnership | UCP Bahawalpur Campus',
+      calendar: 'Academic Calendar | UCP Bahawalpur Campus',
+    };
+    if (titles[currentPage]) {
+      document.title = titles[currentPage];
+    }
+  }, [currentPage]);
+
   const handleOpenProgrammesPage = (progId?: string, category?: string) => {
     scrollToTopInstant();
     setSelectedProgrammeId(progId || null);
