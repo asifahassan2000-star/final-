@@ -1084,7 +1084,7 @@ Campus Phone: 062-2202030 / 062-2202050
               Need Guidance on Programme Selection?
             </h3>
             <p className="text-xs text-stone-600 max-w-xl leading-relaxed">
-              Our academic advisors at the Bahawalpur Campus are available Monday to Friday (9:00 AM – 5:00 PM) to assist prospective students with degree path guidance and eligibility verification.
+              Our academic advisors at the Bahawalpur Campus are available Monday to Friday (8:00 AM – 4:00 PM) to assist prospective students with degree path guidance and eligibility verification.
             </p>
           </div>
           <div className="flex items-center gap-3 shrink-0">

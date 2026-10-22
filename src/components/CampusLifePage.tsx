@@ -131,7 +131,7 @@ const MinimalEventItem: React.FC<MinimalEventItemProps> = ({ event, onOpenLightb
         </div>
 
         {/* Photo Caption text straight under the big image */}
-        {activeImage.caption && (
+        {activeImage.caption && event.id !== 'tutorial-lectures' && (
           <p className="mt-2.5 text-xs sm:text-sm text-slate-500 dark:text-slate-400 font-sans italic">
             {activeImage.caption}
           </p>

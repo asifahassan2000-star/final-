@@ -1,6 +1,6 @@
 import React from 'react';
 import { 
-  MapPin, Phone, Mail, Globe
+  MapPin, Phone, Mail, Globe, Clock
 } from 'lucide-react';
 import { UcpLogo } from './UcpLogo';
 import { UCP_CONTACT } from '../data/ucpData';
@@ -234,6 +234,14 @@ export const Footer: React.FC<FooterProps> = ({
                 <a href="mailto:info@ucp.edu.pk" className="text-white hover:underline">
                   info@ucp.edu.pk
                 </a>
+              </div>
+
+              {/* Office Timing */}
+              <div className="flex items-center gap-3">
+                <Clock size={16} className="text-white shrink-0" />
+                <span className="text-white font-medium text-xs">
+                  Office Hours: 8:00 AM – 4:00 PM
+                </span>
               </div>
             </div>
           </div>

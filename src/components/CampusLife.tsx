@@ -5,26 +5,40 @@ import {
 } from 'lucide-react';
 import { FadingStackLightbox } from './FadingStackLightbox';
 import { UcpEliteNetworkSection } from './UcpEliteNetworkSection';
-import { CAMPUS_GALLERY_IMAGES, CampusGalleryImage } from '../data/campusGalleryData';
+import { CAMPUS_EVENTS_DATA } from '../data/campusEventsData';
 
-// Helper to determine clean category tag from alt text
-const getCampusLifeCategory = (alt: string): string => {
-  const lower = alt.toLowerCase();
-  if (lower.includes('concert') || lower.includes('musical')) return 'Annual Concert';
-  if (lower.includes('celebration') || lower.includes('gala')) return 'Celebration & Gala';
-  if (lower.includes('activities') || lower.includes('club') || lower.includes('engagement')) return 'Student Activities';
-  if (lower.includes('gathering') || lower.includes('community')) return 'Campus Community';
-  if (lower.includes('outdoor') || lower.includes('lawn') || lower.includes('courtyard')) return 'Courtyards & Quads';
-  if (lower.includes('stage') || lower.includes('auditorium') || lower.includes('theatre')) return 'Stage & Performances';
-  if (lower.includes('festiv')) return 'Campus Festivities';
-  if (lower.includes('sports') || lower.includes('olympiad')) return 'Athletics & Sports';
-  return 'Campus Life';
-};
+export interface EventMarqueeMoment {
+  id: string;
+  eventId: string;
+  eventName: string;
+  imageSrc: string;
+  fallbackSrc: string;
+  alt: string;
+}
 
-const getCampusLifeTitle = (alt: string): string => {
-  const cleaned = alt.replace(/^UCP Bahawalpur\s*/i, '').trim();
-  return cleaned || 'Campus Life Moment';
-};
+// Master pool of all authentic images across all 23 campus life events with their exact event names
+const ALL_CAMPUS_EVENT_MOMENTS: EventMarqueeMoment[] = CAMPUS_EVENTS_DATA.flatMap((event) =>
+  event.images.map((img, idx) => ({
+    id: `${event.id}-${idx}`,
+    eventId: event.id,
+    eventName: event.title,
+    imageSrc: img.src,
+    fallbackSrc: img.fallbackSrc || img.src,
+    alt: `${event.title} — UCP Bahawalpur`,
+  }))
+);
+
+// Initial balanced curated sequence taking representative images across all events in sequence
+const INITIAL_MARQUEE_MOMENTS: EventMarqueeMoment[] = CAMPUS_EVENTS_DATA.flatMap((event) =>
+  event.images.slice(0, 3).map((img, idx) => ({
+    id: `init-${event.id}-${idx}`,
+    eventId: event.id,
+    eventName: event.title,
+    imageSrc: img.src,
+    fallbackSrc: img.fallbackSrc || img.src,
+    alt: `${event.title} — UCP Bahawalpur`,
+  }))
+);
 
 // Authentic project assets from src/assets/images and public/assets
 import studentPortraitImg from '../assets/images/bs_psychology_user.webp';
@@ -154,7 +168,7 @@ export const CampusLife: React.FC<CampusLifeProps> = ({ onOpenCampusLifePage }) 
   }, []);
 
   // Helper to shuffle images for randomized streaming on page load
-  const shuffleImages = (arr: CampusGalleryImage[]): CampusGalleryImage[] => {
+  const shuffleMoments = (arr: EventMarqueeMoment[]): EventMarqueeMoment[] => {
     const shuffled = [...arr];
     for (let i = shuffled.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
@@ -163,19 +177,18 @@ export const CampusLife: React.FC<CampusLifeProps> = ({ onOpenCampusLifePage }) 
     return shuffled;
   };
 
-  // State holds all 59 images from Campus Life section, randomized and continuously flowing
-  const [streamImages, setStreamImages] = useState<CampusGalleryImage[]>(() => {
-    return shuffleImages(CAMPUS_GALLERY_IMAGES);
+  // State holds authentic event moments representing all 23 campus life events, randomized and continuously flowing
+  const [streamImages, setStreamImages] = useState<EventMarqueeMoment[]>(() => {
+    return shuffleMoments(INITIAL_MARQUEE_MOMENTS);
   });
 
-  // Continuously rotate / update cards randomly so any image from campus life section comes here and changes continuously
+  // Continuously rotate / update cards randomly so any authentic image from all campus events streams smoothly
   useEffect(() => {
     const timer = setInterval(() => {
       setStreamImages((prev) => {
         if (!prev.length) return prev;
-        // Select a random slot and swap with another random image from the complete pool
         const targetSlot = Math.floor(Math.random() * prev.length);
-        const randomPoolImg = CAMPUS_GALLERY_IMAGES[Math.floor(Math.random() * CAMPUS_GALLERY_IMAGES.length)];
+        const randomPoolImg = ALL_CAMPUS_EVENT_MOMENTS[Math.floor(Math.random() * ALL_CAMPUS_EVENT_MOMENTS.length)];
         const next = [...prev];
         next[targetSlot] = randomPoolImg;
         return next;
@@ -435,23 +448,19 @@ export const CampusLife: React.FC<CampusLifeProps> = ({ onOpenCampusLifePage }) 
               
               {/* First Sequence of All Campus Life Images */}
               {streamImages.map((item, idx) => {
-                const title = getCampusLifeTitle(item.alt);
-                const tag = getCampusLifeCategory(item.alt);
-                const imgSrc = item.localSrc || item.fallbackSrc;
+                const imgSrc = item.imageSrc || item.fallbackSrc;
 
                 return (
                   <div 
                     key={`mq-first-${item.id}-${idx}`}
-                    className="group/card relative w-[320px] sm:w-[400px] md:w-[440px] aspect-[16/11] flex-shrink-0 overflow-hidden rounded-2xl sm:rounded-3xl border border-[#0A1931]/10 bg-slate-100 shadow-[0_10px_30px_rgba(10,25,49,0.06)] cursor-pointer hover:brightness-105 transition-all duration-300"
+                    className="group/card relative w-[320px] sm:w-[400px] md:w-[440px] aspect-[16/11] flex-shrink-0 overflow-hidden rounded-2xl sm:rounded-3xl border border-[#0A1931]/10 bg-slate-900 shadow-[0_10px_30px_rgba(10,25,49,0.06)] cursor-pointer hover:brightness-105 transition-all duration-300"
                     onClick={() => {
-                      const surrounding = [
-                        imgSrc,
-                        ...streamImages.map(m => m.localSrc || m.fallbackSrc).filter(u => u !== imgSrc)
-                      ].slice(0, 10);
-                      openStackLightbox(surrounding, tag);
+                      const eventImages = CAMPUS_EVENTS_DATA.find(e => e.id === item.eventId)?.images.map(img => img.src) || [imgSrc];
+                      openStackLightbox(eventImages, item.eventName);
                     }}
                   >
-                    <img src={item.localSrc}
+                    <img 
+                      src={item.imageSrc}
                       alt={item.alt}
                       loading="lazy"
                       decoding="async"
@@ -465,23 +474,17 @@ export const CampusLife: React.FC<CampusLifeProps> = ({ onOpenCampusLifePage }) 
                       }}
                     />
                     
-                    {/* Scrim */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#0A1931]/85 via-[#0A1931]/20 to-transparent pointer-events-none transition-opacity duration-300 group-hover/card:opacity-95" />
+                    {/* Contrast Scrim */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#0A1931]/90 via-[#0A1931]/20 to-transparent pointer-events-none transition-opacity duration-300 group-hover/card:opacity-95" />
 
-                    {/* Editorial Tag & Title Overlay */}
+                    {/* Exact Event Name and Pic — No numbers or generic labels */}
                     <div className="absolute bottom-4 left-5 right-5 sm:bottom-6 sm:left-6 sm:right-6 text-white pointer-events-none">
-                      <span className="text-[10px] font-mono uppercase tracking-[0.22em] text-[#C8102E] font-semibold block mb-1">
-                        {tag}
-                      </span>
                       <h4 
-                        className="font-serif text-base sm:text-lg lg:text-xl font-bold text-white leading-tight drop-shadow-xs mb-1 line-clamp-1"
+                        className="font-serif text-base sm:text-lg lg:text-xl font-bold text-white leading-tight drop-shadow-md line-clamp-1"
                         style={{ fontFamily: "'Cormorant Garamond', 'Libre Baskerville', Georgia, serif" }}
                       >
-                        {title}
+                        {item.eventName}
                       </h4>
-                      <p className="text-[11px] sm:text-xs text-slate-200 line-clamp-1 font-sans">
-                        UCP Bahawalpur • Life Beyond the Classroom
-                      </p>
                     </div>
                   </div>
                 );
@@ -489,24 +492,20 @@ export const CampusLife: React.FC<CampusLifeProps> = ({ onOpenCampusLifePage }) 
 
               {/* Exact Duplicated Sequence for Perfect Gapless Infinite Loop (Left-to-Right) */}
               {streamImages.map((item, idx) => {
-                const title = getCampusLifeTitle(item.alt);
-                const tag = getCampusLifeCategory(item.alt);
-                const imgSrc = item.localSrc || item.fallbackSrc;
+                const imgSrc = item.imageSrc || item.fallbackSrc;
 
                 return (
                   <div 
                     key={`mq-second-${item.id}-${idx}`}
-                    className="group/card relative w-[320px] sm:w-[400px] md:w-[440px] aspect-[16/11] flex-shrink-0 overflow-hidden rounded-2xl sm:rounded-3xl border border-[#0A1931]/10 bg-slate-100 shadow-[0_10px_30px_rgba(10,25,49,0.06)] cursor-pointer hover:brightness-105 transition-all duration-300"
+                    className="group/card relative w-[320px] sm:w-[400px] md:w-[440px] aspect-[16/11] flex-shrink-0 overflow-hidden rounded-2xl sm:rounded-3xl border border-[#0A1931]/10 bg-slate-900 shadow-[0_10px_30px_rgba(10,25,49,0.06)] cursor-pointer hover:brightness-105 transition-all duration-300"
                     onClick={() => {
-                      const surrounding = [
-                        imgSrc,
-                        ...streamImages.map(m => m.localSrc || m.fallbackSrc).filter(u => u !== imgSrc)
-                      ].slice(0, 10);
-                      openStackLightbox(surrounding, tag);
+                      const eventImages = CAMPUS_EVENTS_DATA.find(e => e.id === item.eventId)?.images.map(img => img.src) || [imgSrc];
+                      openStackLightbox(eventImages, item.eventName);
                     }}
                     aria-hidden="true"
                   >
-                    <img src={item.localSrc}
+                    <img 
+                      src={item.imageSrc}
                       alt={item.alt}
                       loading="lazy"
                       decoding="async"
@@ -520,23 +519,17 @@ export const CampusLife: React.FC<CampusLifeProps> = ({ onOpenCampusLifePage }) 
                       }}
                     />
                     
-                    {/* Scrim */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#0A1931]/85 via-[#0A1931]/20 to-transparent pointer-events-none transition-opacity duration-300 group-hover/card:opacity-95" />
+                    {/* Contrast Scrim */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#0A1931]/90 via-[#0A1931]/20 to-transparent pointer-events-none transition-opacity duration-300 group-hover/card:opacity-95" />
 
-                    {/* Editorial Tag & Title Overlay */}
+                    {/* Exact Event Name and Pic — No numbers or generic labels */}
                     <div className="absolute bottom-4 left-5 right-5 sm:bottom-6 sm:left-6 sm:right-6 text-white pointer-events-none">
-                      <span className="text-[10px] font-mono uppercase tracking-[0.22em] text-[#C8102E] font-semibold block mb-1">
-                        {tag}
-                      </span>
                       <h4 
-                        className="font-serif text-base sm:text-lg lg:text-xl font-bold text-white leading-tight drop-shadow-xs mb-1 line-clamp-1"
+                        className="font-serif text-base sm:text-lg lg:text-xl font-bold text-white leading-tight drop-shadow-md line-clamp-1"
                         style={{ fontFamily: "'Cormorant Garamond', 'Libre Baskerville', Georgia, serif" }}
                       >
-                        {title}
+                        {item.eventName}
                       </h4>
-                      <p className="text-[11px] sm:text-xs text-slate-200 line-clamp-1 font-sans">
-                        UCP Bahawalpur • Life Beyond the Classroom
-                      </p>
                     </div>
                   </div>
                 );

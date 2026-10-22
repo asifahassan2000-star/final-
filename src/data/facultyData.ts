@@ -106,8 +106,8 @@ export const ALL_FACULTY_MEMBERS: FacultyMemberData[] = [
     experienceYears: 'Eight Years',
     specialization: 'Historical Research, South Asian History & Social Sciences',
     intro: 'Assistant Professor in Social Sciences with 8 years of university teaching and scholarly research in history.',
-    photoUrl: '/assets/faculty/dr-abbas-haider.jpg',
-    fallbackPhotoUrl: '/images/MDRVG6JB_image-25.jpg',
+    photoUrl: 'https://ik.imagekit.io/Muffins/image%20-%202026-10-22T163817.930.png',
+    fallbackPhotoUrl: 'https://ik.imagekit.io/Muffins/image%20-%202026-10-22T163817.930.png',
     objectPosition: 'object-top',
     qualifications: [
       'Ph.D. in History',
@@ -839,7 +839,7 @@ export const ADMINISTRATION_CONTACT = {
   phone1: '062-2202030',
   phone2: '062-2202050',
   location: 'Constituent College, UCP Campus, Airport Road, Bahawalpur',
-  officeHours: 'Monday – Friday: 9:00 AM – 5:00 PM',
+  officeHours: 'Monday – Friday: 8:00 AM – 4:00 PM',
   portalUrl: 'https://mcom.pgc.edu.pk/Student/StdLogin.jsp'
 };
 

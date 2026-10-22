@@ -102,7 +102,7 @@ export const AdmissionsExperienceSection: React.FC<AdmissionsExperienceSectionPr
                   <CheckCircle2 size={13} />
                 </div>
                 <div className="text-xs sm:text-sm text-slate-700 dark:text-slate-200 font-sans">
-                  <strong>Personalized Campus Tours:</strong> Monday through Friday, 9:00 AM – 5:00 PM.
+                  <strong>Personalized Campus Tours:</strong> Monday through Friday, 8:00 AM – 4:00 PM.
                 </div>
               </div>
 
@@ -334,10 +334,10 @@ export const AdmissionsExperienceSection: React.FC<AdmissionsExperienceSectionPr
                     className="text-base font-semibold text-[#0F2C61] dark:text-white mt-1 tracking-tight"
                     style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
                   >
-                    Mon – Fri: 8:30 AM – 5:00 PM
+                    Mon – Fri: 8:00 AM – 4:00 PM
                   </h4>
                   <p className="text-xs text-slate-500 dark:text-slate-300 mt-1 font-sans">
-                    Saturday: 9:00 AM – 2:00 PM
+                    Office Timing: 8:00 AM – 4:00 PM
                   </p>
                 </div>
 

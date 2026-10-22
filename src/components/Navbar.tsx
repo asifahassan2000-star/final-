@@ -653,30 +653,37 @@ export const Navbar: React.FC<NavbarProps> = ({
 
           </nav>
 
-          {/* Right Header Area: Mobile Menu Toggle only (Clean, neat, uncluttered) */}
+          {/* Right Header Area: Minimal Search Icon (Mobile & Desktop) + Mobile Menu Toggle Icon */}
           <div className="flex items-center gap-1.5 sm:gap-2 shrink-0">
-            {/* Mobile menu toggle button — Prominently visible, high contrast, clean */}
+            {/* Small Minimal Search Icon on top (both mobile and desktop view) */}
+            <button
+              id="header-search-btn"
+              type="button"
+              onClick={() => setIsSearchOpen(true)}
+              className="p-2 rounded-lg text-white/90 hover:text-white hover:bg-white/10 active:bg-white/15 border border-white/20 hover:border-white/35 transition-all duration-200 cursor-pointer flex items-center justify-center shrink-0 shadow-xs"
+              title="Search UCP Programmes & Pages (Ctrl+K)"
+              aria-label="Search site"
+            >
+              <Search size={17} className="text-white" />
+            </button>
+
+            {/* Mobile menu toggle button — Just icon on mobile, no text */}
             <button
               id="mobile-menu-toggle-btn"
+              type="button"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className={`lg:hidden flex items-center gap-1.5 px-3 py-1.5 rounded-lg font-bold text-xs transition-all duration-200 focus:outline-none cursor-pointer shadow-md shrink-0 border z-10 ${
+              className={`lg:hidden p-2 rounded-lg transition-all duration-200 focus:outline-none cursor-pointer shadow-md shrink-0 border z-10 flex items-center justify-center ${
                 mobileMenuOpen
                   ? 'bg-[#C8102E] text-white border-white/50 shadow-rose-950/40'
                   : 'bg-white text-[#0A1931] border-slate-200 hover:bg-slate-100 shadow-md'
               }`}
-              aria-label="Toggle Navigation Menu"
+              aria-label={mobileMenuOpen ? 'Close Navigation Menu' : 'Open Navigation Menu'}
               aria-expanded={mobileMenuOpen}
             >
               {mobileMenuOpen ? (
-                <>
-                  <X size={16} className="text-white" />
-                  <span className="tracking-wide uppercase font-sans text-xs">Close</span>
-                </>
+                <X size={18} className="text-white" />
               ) : (
-                <>
-                  <Menu size={16} className="text-[#0A1931]" />
-                  <span className="tracking-wide uppercase font-sans text-xs">Menu</span>
-                </>
+                <Menu size={18} className="text-[#0A1931]" />
               )}
             </button>
           </div>

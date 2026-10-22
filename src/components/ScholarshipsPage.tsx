@@ -1380,18 +1380,18 @@ export const ScholarshipsPage: React.FC<ScholarshipsPageProps> = ({
             ----------------------------------------------------------------------- */}
         <div 
           id="sec-policy"
-          className="bg-[#FFFBEB] border border-[#FDE68A] text-[#92400E] rounded-[10px] p-5 shadow-xs"
+          className="bg-[#FFFBEB] dark:bg-amber-950/40 border border-[#FDE68A] dark:border-amber-500/40 text-[#92400E] dark:text-amber-200 rounded-[10px] p-5 shadow-xs dark:shadow-md dark:shadow-amber-950/20 transition-colors duration-200"
         >
           <div className="flex items-start gap-3">
-            <AlertCircle size={22} className="text-[#B45309] shrink-0 mt-0.5" />
+            <AlertCircle size={22} className="text-[#B45309] dark:text-amber-400 shrink-0 mt-0.5" />
             <div className="space-y-1.5">
-              <h4 className="text-[15px] font-bold text-[#92400E]">
-                Official University Concession Non-Stacking Clause
+              <h4 className="text-[15px] font-bold text-[#92400E] dark:text-amber-300 flex items-center gap-2">
+                <span>Official University Concession Non-Stacking Clause</span>
               </h4>
-              <p className="text-[13px] text-[#92400E] leading-relaxed">
-                <strong>NOTE:</strong> Multiple concessions <strong>cannot</strong> be availed simultaneously. 
+              <p className="text-[13px] text-[#92400E] dark:text-amber-100/90 leading-relaxed font-normal">
+                <strong className="text-[#78350F] dark:text-white font-bold">NOTE:</strong> Multiple concessions <strong className="text-[#78350F] dark:text-amber-200 font-semibold">cannot</strong> be availed simultaneously. 
                 If a candidate qualifies for more than one concession category (such as Merit alongside Kinship or PGC Alumni privilege), 
-                the candidate will be awarded the <strong>single highest applicable percentage</strong> concession. 
+                the candidate will be awarded the <strong className="text-[#78350F] dark:text-amber-200 font-semibold">single highest applicable percentage</strong> concession. 
                 Tuition fee waivers apply solely to tuition fees and exclude registration, admission, examination, and laboratory fees.
               </p>
             </div>
@@ -1419,11 +1419,13 @@ export const ScholarshipsPage: React.FC<ScholarshipsPageProps> = ({
             <div className="flex flex-wrap gap-4 pt-2 text-xs text-[#6B7280]">
               <span className="flex items-center gap-1.5 font-medium">
                 <PhoneCall size={14} className="text-[#0F2C52]" />
-                Toll Free Helpline: <strong className="text-[#111827]">(+92) 800-00827</strong>
+                Official Helpline: <a href="tel:0622202030" className="text-[#111827] font-bold hover:underline">062-2202030</a>
+                <span className="text-[#9CA3AF]">/</span>
+                <a href="tel:0622202050" className="text-[#111827] font-bold hover:underline">062-2202050</a>
               </span>
               <span className="flex items-center gap-1.5 font-medium">
                 <Building2 size={14} className="text-[#0F2C52]" />
-                Office Timing: <strong className="text-[#111827]">9:00 AM – 5:00 PM (Monday – Saturday)</strong>
+                Office Timing: <strong className="text-[#111827]">8:00 AM – 4:00 PM</strong>
               </span>
             </div>
           </div>

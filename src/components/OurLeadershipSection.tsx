@@ -880,21 +880,42 @@ export const OurLeadershipSection: React.FC<OurLeadershipSectionProps> = () => {
 
                 {/* State Awards & Honors */}
                 {selectedLeader.biography?.awards && (
-                  <div className="space-y-3 pt-4 border-t border-slate-200">
+                  <div className="space-y-3 pt-4 border-t border-slate-200 dark:border-slate-700/60">
                     <div className="flex items-center gap-1.5">
-                      <ShieldCheck size={16} className="text-[#C8102E]" />
-                      <h4 className="text-xs font-bold uppercase tracking-wide text-[#0A1931]">
+                      <ShieldCheck size={16} className="text-[#C8102E] dark:text-red-400" />
+                      <h4 className="text-xs font-bold uppercase tracking-wide text-[#0A1931] dark:text-slate-200">
                         State Awards & Public Accolades
                       </h4>
                     </div>
 
                     <div className="space-y-2 pt-1">
-                      {selectedLeader.biography.awards.map((award, idx) => (
-                        <div key={idx} className="p-3 bg-amber-50/70 border border-amber-200 rounded-none text-xs text-slate-800 leading-relaxed flex items-start gap-2">
-                          <span className="text-amber-800 font-bold shrink-0">★</span>
-                          <span>{award}</span>
-                        </div>
-                      ))}
+                      {selectedLeader.biography.awards.map((award, idx) => {
+                        const hasDash = award.includes('—');
+                        const title = hasDash ? award.split('—')[0].trim() : '';
+                        const desc = hasDash ? award.split('—').slice(1).join('—').trim() : award;
+
+                        return (
+                          <div 
+                            key={idx} 
+                            className="p-3 bg-amber-50/70 dark:bg-amber-950/40 border border-amber-200 dark:border-amber-500/40 rounded-none text-xs text-slate-800 dark:text-amber-100 leading-relaxed flex items-start gap-2.5 transition-colors duration-200 shadow-2xs dark:shadow-md dark:shadow-amber-950/30"
+                          >
+                            <span className="text-amber-800 dark:text-amber-400 font-bold shrink-0 mt-0.5 text-sm" aria-hidden="true">★</span>
+                            {hasDash ? (
+                              <span className="leading-relaxed">
+                                <strong className="font-bold text-slate-900 dark:text-amber-300 dark:font-semibold">
+                                  {title}
+                                </strong>
+                                <span className="text-amber-800 dark:text-amber-400 font-semibold mx-1.5">—</span>
+                                <span className="text-slate-700 dark:text-amber-100/90 font-normal">
+                                  {desc}
+                                </span>
+                              </span>
+                            ) : (
+                              <span className="text-slate-800 dark:text-amber-100 font-normal">{award}</span>
+                            )}
+                          </div>
+                        );
+                      })}
                     </div>
                   </div>
                 )}

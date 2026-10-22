@@ -18,7 +18,7 @@ export const StatisticsSection: React.FC<StatisticsSectionProps> = () => {
     { label: 'Natural Sciences', text: 'Specialized Biotechnology, Chemistry, Zoology & Physics Laboratories' },
     { label: 'ADP to BS Pathway', text: 'Direct Progression Route into 5th Semester of 4-Year BS Degrees' },
     { label: 'Campus Transport', text: 'Dedicated Air-Conditioned Shuttle Fleet across Bahawalpur City & Districts' },
-    { label: 'Campus Location', text: 'Airport Road, Bahawalpur · Phone: 062-2202030 / 062-2202050 · Toll-Free: 0800-00827' },
+    { label: 'Campus Location', text: 'Airport Road, Bahawalpur · Phone: 062-2202030 / 062-2202050 · Office Hours: 8:00 AM – 4:00 PM' },
   ];
 
   return (
