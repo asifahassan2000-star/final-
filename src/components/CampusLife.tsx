@@ -16,30 +16,6 @@ export interface EventMarqueeMoment {
   alt: string;
 }
 
-// Master pool of all authentic images across all 23 campus life events with their exact event names
-const ALL_CAMPUS_EVENT_MOMENTS: EventMarqueeMoment[] = CAMPUS_EVENTS_DATA.flatMap((event) =>
-  event.images.map((img, idx) => ({
-    id: `${event.id}-${idx}`,
-    eventId: event.id,
-    eventName: event.title,
-    imageSrc: img.src,
-    fallbackSrc: img.fallbackSrc || img.src,
-    alt: `${event.title} — UCP Bahawalpur`,
-  }))
-);
-
-// Initial balanced curated sequence taking representative images across all events in sequence
-const INITIAL_MARQUEE_MOMENTS: EventMarqueeMoment[] = CAMPUS_EVENTS_DATA.flatMap((event) =>
-  event.images.slice(0, 3).map((img, idx) => ({
-    id: `init-${event.id}-${idx}`,
-    eventId: event.id,
-    eventName: event.title,
-    imageSrc: img.src,
-    fallbackSrc: img.fallbackSrc || img.src,
-    alt: `${event.title} — UCP Bahawalpur`,
-  }))
-);
-
 // Authentic project assets from src/assets/images and public/assets
 import studentPortraitImg from '../assets/images/bs_psychology_user.webp';
 import bbaImg from '../assets/images/program_bba.webp';
@@ -81,7 +57,6 @@ export const CampusLife: React.FC<CampusLifeProps> = ({ onOpenCampusLifePage }) 
   // Scroll reveal visibility flags for each block (true by default for instant rendering)
   const [headerVisible, setHeaderVisible] = useState(true);
   const [spreadVisible, setSpreadVisible] = useState(true);
-  const [nightSpreadVisible, setNightSpreadVisible] = useState(true);
   const [marqueeHeaderVisible, setMarqueeHeaderVisible] = useState(true);
 
   // Fading Stack Lightbox state
@@ -128,7 +103,6 @@ export const CampusLife: React.FC<CampusLifeProps> = ({ onOpenCampusLifePage }) 
 
   const headerRef = useRef<HTMLDivElement>(null);
   const spreadRef = useRef<HTMLDivElement>(null);
-  const nightSpreadRef = useRef<HTMLDivElement>(null);
   const marqueeHeaderRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -137,7 +111,6 @@ export const CampusLife: React.FC<CampusLifeProps> = ({ onOpenCampusLifePage }) 
         if (entry.isIntersecting) {
           if (entry.target === headerRef.current) setHeaderVisible(true);
           if (entry.target === spreadRef.current) setSpreadVisible(true);
-          if (entry.target === nightSpreadRef.current) setNightSpreadVisible(true);
           if (entry.target === marqueeHeaderRef.current) setMarqueeHeaderVisible(true);
         }
       });
@@ -150,14 +123,12 @@ export const CampusLife: React.FC<CampusLifeProps> = ({ onOpenCampusLifePage }) 
 
     if (headerRef.current) observer.observe(headerRef.current);
     if (spreadRef.current) observer.observe(spreadRef.current);
-    if (nightSpreadRef.current) observer.observe(nightSpreadRef.current);
     if (marqueeHeaderRef.current) observer.observe(marqueeHeaderRef.current);
 
     // Fallback timer so animations always display quickly
     const fallbackTimer = setTimeout(() => {
       setHeaderVisible(true);
       setSpreadVisible(true);
-      setNightSpreadVisible(true);
       setMarqueeHeaderVisible(true);
     }, 1200);
 
@@ -167,35 +138,19 @@ export const CampusLife: React.FC<CampusLifeProps> = ({ onOpenCampusLifePage }) 
     };
   }, []);
 
-  // Helper to shuffle images for randomized streaming on page load
-  const shuffleMoments = (arr: EventMarqueeMoment[]): EventMarqueeMoment[] => {
-    const shuffled = [...arr];
-    for (let i = shuffled.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
-    }
-    return shuffled;
-  };
-
-  // State holds authentic event moments representing all 23 campus life events, randomized and continuously flowing
-  const [streamImages, setStreamImages] = useState<EventMarqueeMoment[]>(() => {
-    return shuffleMoments(INITIAL_MARQUEE_MOMENTS);
-  });
-
-  // Continuously rotate / update cards randomly so any authentic image from all campus events streams smoothly
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setStreamImages((prev) => {
-        if (!prev.length) return prev;
-        const targetSlot = Math.floor(Math.random() * prev.length);
-        const randomPoolImg = ALL_CAMPUS_EVENT_MOMENTS[Math.floor(Math.random() * ALL_CAMPUS_EVENT_MOMENTS.length)];
-        const next = [...prev];
-        next[targetSlot] = randomPoolImg;
-        return next;
-      });
-    }, 4000);
-
-    return () => clearInterval(timer);
+  // Curated 16 high-impact authentic event moments (one per key event) for lightning-fast performance
+  const streamImages = React.useMemo<EventMarqueeMoment[]>(() => {
+    return CAMPUS_EVENTS_DATA.slice(0, 16).map((event) => {
+      const img = event.images[0] || { src: '', fallbackSrc: '' };
+      return {
+        id: `curated-${event.id}`,
+        eventId: event.id,
+        eventName: event.title,
+        imageSrc: img.src,
+        fallbackSrc: img.fallbackSrc || img.src,
+        alt: `${event.title} — UCP Bahawalpur`,
+      };
+    });
   }, []);
 
   return (
@@ -373,32 +328,7 @@ export const CampusLife: React.FC<CampusLifeProps> = ({ onOpenCampusLifePage }) 
           </div>
         </div>
 
-        {/* ====================================================================
-            3. CINEMATIC ARCHITECTURAL VIEW — "CAMPUS EVENING VIEW"
-            Proper image visible in full frame without text overlay
-            ==================================================================== */}
-        <div 
-          ref={nightSpreadRef}
-          className={`mb-32 sm:mb-40 transition-all duration-800 ease-out ${
-            nightSpreadVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-          }`}
-        >
-          <div 
-            onClick={() => openStackLightbox(['/assets/campus/campus-evening-view.jpg', nightCampusImg, corridorImg, courtyardImg, closingDramaticImg], 'Campus Evening Architectural View')}
-            className="relative group overflow-hidden rounded-[24px] sm:rounded-[36px] border border-[#0A1931]/10 bg-[#07192F] shadow-[0_20px_50px_rgba(10,25,49,0.08)] cursor-pointer hover:brightness-105 transition-all duration-300"
-          >
-            <div className="relative aspect-[4/3] sm:aspect-[16/10] max-h-[700px] w-full overflow-hidden">
-              <img decoding="async" src="/assets/campus/campus-evening-view.jpg"
-                alt="UCP Bahawalpur Campus Evening Architectural View"
-                loading="eager"
-                className="w-full h-full object-cover object-center transition-all duration-1000 ease-out group-hover:scale-[1.02] animate-in fade-in"
-                onError={(e) => {
-                  (e.target as HTMLImageElement).src = '/images/jZ9yKdMk_Whats-App-Image-2026-10-11-at-11-11-08-PM.jpg';
-                }}
-              />
-            </div>
-          </div>
-        </div>
+
 
         {/* ====================================================================
             4. INFINITE HORIZONTAL IMAGE MARQUEE SECTION

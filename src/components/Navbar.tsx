@@ -359,7 +359,11 @@ export const Navbar: React.FC<NavbarProps> = ({
           />
 
           {/* Desktop Navigation Links - Official, clean, balanced and spacious */}
-          <nav className="hidden lg:flex items-center space-x-2 xl:space-x-4 text-[14px] font-medium text-white whitespace-nowrap shrink-0">
+          <nav 
+            onMouseEnter={() => (window as any).__preloadSubpages?.()}
+            onTouchStart={() => (window as any).__preloadSubpages?.()}
+            className="hidden lg:flex items-center space-x-2 xl:space-x-4 text-[14px] font-medium text-white whitespace-nowrap shrink-0"
+          >
             
             {/* 1. Home Button */}
             <button

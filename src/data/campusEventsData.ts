@@ -353,16 +353,6 @@ export const CAMPUS_EVENTS_DATA: CampusEvent[] = [
         alt: 'Hands-on practical masterclass and student skill development in digital studio'
       },
       {
-        src: 'https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-20%20at%202.32.52%20AM%20(7).jpeg?updatedAt=1792580298134',
-        fallbackSrc: '/assets/campus-life/student-digital-skills-lab.jpg',
-        alt: 'Student leadership, public speaking, communication practice, and debate session'
-      },
-      {
-        src: 'https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-20%20at%202.32.52%20AM%20(2).jpeg?updatedAt=1792580299843',
-        fallbackSrc: '/assets/campus-life/student-recreational-gaming-tutorial.jpg',
-        alt: 'Recreational activities, mental strategy games, and student camaraderie'
-      },
-      {
         src: '/assets/campus-life/tutorial-lecture-2.jpg',
         fallbackSrc: '/images/k20Sp6Gq_Whats-App-Image-2026-10-08-at-12-46-42-AM-3.jpg',
         alt: 'UCP Bahawalpur tutorial lecture session with interactive faculty instruction'
@@ -751,10 +741,16 @@ export const CAMPUS_EVENTS_DATA: CampusEvent[] = [
         caption: 'Senior educationists demonstrating research-backed classroom pedagogies'
       },
       {
-        src: 'https://ik.imagekit.io/Muffins/image%20(69).png',
+        src: 'https://ik.imagekit.io/Muffins/image%20-%202026-10-23T101823.034.png',
         fallbackSrc: '/assets/facilities/science_lab_1.jpg',
         alt: 'Faculty attendees actively participating in pedagogical debate and discussion',
         caption: 'Faculty discourse on advancing student engagement and innovative learning techniques'
+      },
+      {
+        src: 'https://ik.imagekit.io/Muffins/image%20-%202026-10-23T101838.362.png',
+        fallbackSrc: '/assets/campus/teacher-training-presentation.jpg',
+        alt: 'Teaching Excellence 360 faculty presentation and session highlight',
+        caption: 'Teaching Excellence 360° — Active instructional workshop and faculty collaboration'
       },
       {
         src: 'https://ik.imagekit.io/Muffins/image%20(71).png',
@@ -1045,6 +1041,12 @@ export const CAMPUS_EVENTS_DATA: CampusEvent[] = [
     ],
     images: [
       {
+        src: 'https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-22%20at%209.39.50%20PM%20(2).png',
+        fallbackSrc: '/assets/campus-life/jeep-rally-main.jpg',
+        alt: '21st Cholistan Desert Jeep Rally 2026 opening ceremony and race preparation',
+        caption: '21st Cholistan Jeep Rally 2026 — Official rally start and team lineup'
+      },
+      {
         src: 'https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-05%20at%202.39.12%20AM%20(1).jpeg',
         fallbackSrc: '/assets/campus-life/jeep-rally-main.jpg',
         alt: '21st Cholistan Desert Jeep Rally 2026 race track excitement and vehicle lineup',
@@ -1075,7 +1077,7 @@ export const CAMPUS_EVENTS_DATA: CampusEvent[] = [
         caption: 'Scenic desert checkpoints highlighting the grandeur of Derawar Fort and Cholistan'
       },
       {
-        src: 'https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-05%20at%202.39.15%20AM.jpeg',
+        src: 'https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-22%20at%209.40.31%20PM.png',
         fallbackSrc: '/assets/campus-life-new/campus-9.jpg',
         alt: 'UCP students and rally team members sharing memorable moments at the camp',
         caption: 'Camp hospitality and cultural camaraderie during the annual desert motorsport festival'
@@ -1087,7 +1089,7 @@ export const CAMPUS_EVENTS_DATA: CampusEvent[] = [
         caption: 'Technical vehicle inspections and adrenaline-filled race starts on the desert course'
       },
       {
-        src: 'https://ik.imagekit.io/Muffins/image%20(4).png',
+        src: 'https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-22%20at%209.39.50%20PM%20(1).png',
         fallbackSrc: '/assets/events/mou-haveli-cholistan-jeep-rally.jpg',
         alt: 'Official commemorative visual for the 21st Cholistan Jeep Rally 2026',
         caption: 'Celebrating sportsmanship, adventure tourism, and cultural heritage at Cholistan Rally 2026'
@@ -1199,7 +1201,7 @@ export const CAMPUS_EVENTS_DATA: CampusEvent[] = [
   {
     id: 'mou-signing-tdcp-cholistan',
     number: 16,
-    title: 'MOU signing (TDCP, MOU meeting,Haveli Cholistan)',
+    title: 'MOU signing(Haveli Cholistan), TDCP',
     year: '2026',
     date: 'February 2026',
     category: 'Strategic Partnerships',
@@ -1212,6 +1214,18 @@ export const CAMPUS_EVENTS_DATA: CampusEvent[] = [
       'Ceremonial Exchange of Corporate Gifts'
     ],
     images: [
+      {
+        src: 'https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-22%20at%2010.12.40%20PM%20(1).png',
+        fallbackSrc: '/assets/campus-life/mou-signing-ceremony.jpg',
+        alt: 'MOU signing (Haveli Cholistan), TDCP milestone ceremony with institutional delegates',
+        caption: 'MOU signing (Haveli Cholistan), TDCP official partnership documentation'
+      },
+      {
+        src: 'https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-22%20at%2010.12.40%20PM.png',
+        fallbackSrc: '/assets/campus-life/mou-signing-ceremony.jpg',
+        alt: 'MOU signing (Haveli Cholistan), TDCP collaborative discussions and document exchange',
+        caption: 'MOU signing (Haveli Cholistan), TDCP delegates formalizing agreements'
+      },
       {
         src: 'https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-22%20at%202.08.30%20AM.jpeg',
         fallbackSrc: '/assets/campus-life/mou-signing-ceremony.jpg',

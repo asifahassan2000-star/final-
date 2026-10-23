@@ -32,15 +32,50 @@ const ClosingDramaticSection = React.lazy(() => import('./components/ClosingDram
 const Footer = React.lazy(() => import('./components/Footer').then(m => ({ default: m.Footer })));
 const FloatingSideRibbons = React.lazy(() => import('./components/FloatingSideRibbons').then(m => ({ default: m.FloatingSideRibbons })));
 
-// Lazy-loaded Subpages for instant page transitions
-const FacultyPage = React.lazy(() => import('./components/FacultyPage').then(m => ({ default: m.FacultyPage })));
-const AcademicProgrammesPage = React.lazy(() => import('./components/AcademicProgrammesPage').then(m => ({ default: m.AcademicProgrammesPage })));
-const OurLegacyPage = React.lazy(() => import('./components/OurLegacyPage').then(m => ({ default: m.OurLegacyPage })));
-const ScholarshipsPage = React.lazy(() => import('./components/ScholarshipsPage').then(m => ({ default: m.ScholarshipsPage })));
-const FeeStructurePage = React.lazy(() => import('./components/FeeStructurePage').then(m => ({ default: m.FeeStructurePage })));
-const CampusLifePage = React.lazy(() => import('./components/CampusLifePage').then(m => ({ default: m.CampusLifePage })));
-const CnnAcademyPage = React.lazy(() => import('./components/CnnAcademyPage').then(m => ({ default: m.CnnAcademyPage })));
-const AcademicCalendarSection = React.lazy(() => import('./components/AcademicCalendarSection').then(m => ({ default: m.AcademicCalendarSection })));
+// Lazy-loaded Subpage Loaders with Preload Capability for Instant Page Transitions
+const loadFacultyPage = () => import('./components/FacultyPage').then(m => ({ default: m.FacultyPage }));
+const loadAcademicProgrammesPage = () => import('./components/AcademicProgrammesPage').then(m => ({ default: m.AcademicProgrammesPage }));
+const loadOurLegacyPage = () => import('./components/OurLegacyPage').then(m => ({ default: m.OurLegacyPage }));
+const loadScholarshipsPage = () => import('./components/ScholarshipsPage').then(m => ({ default: m.ScholarshipsPage }));
+const loadFeeStructurePage = () => import('./components/FeeStructurePage').then(m => ({ default: m.FeeStructurePage }));
+const loadCampusLifePage = () => import('./components/CampusLifePage').then(m => ({ default: m.CampusLifePage }));
+const loadCnnAcademyPage = () => import('./components/CnnAcademyPage').then(m => ({ default: m.CnnAcademyPage }));
+const loadAcademicCalendarSection = () => import('./components/AcademicCalendarSection').then(m => ({ default: m.AcademicCalendarSection }));
+
+const FacultyPage = React.lazy(loadFacultyPage);
+const AcademicProgrammesPage = React.lazy(loadAcademicProgrammesPage);
+const OurLegacyPage = React.lazy(loadOurLegacyPage);
+const ScholarshipsPage = React.lazy(loadScholarshipsPage);
+const FeeStructurePage = React.lazy(loadFeeStructurePage);
+const CampusLifePage = React.lazy(loadCampusLifePage);
+const CnnAcademyPage = React.lazy(loadCnnAcademyPage);
+const AcademicCalendarSection = React.lazy(loadAcademicCalendarSection);
+
+export const preloadSubpages = () => {
+  loadAcademicProgrammesPage();
+  loadFacultyPage();
+  loadOurLegacyPage();
+  loadScholarshipsPage();
+  loadFeeStructurePage();
+  loadCampusLifePage();
+  loadAcademicCalendarSection();
+};
+
+export type PageId = 'home' | 'faculty' | 'programmes' | 'legacy' | 'campus-life' | 'scholarships' | 'fee-structure' | 'cnn-academy' | 'calendar';
+
+const getPageFromHash = (): PageId => {
+  if (typeof window === 'undefined') return 'home';
+  const hash = (window.location.hash || '').replace('#', '').toLowerCase();
+  if (hash === 'programmes' || hash === 'programs') return 'programmes';
+  if (hash === 'faculty') return 'faculty';
+  if (hash === 'legacy') return 'legacy';
+  if (hash === 'campus-life' || hash === 'campuslife') return 'campus-life';
+  if (hash === 'scholarships') return 'scholarships';
+  if (hash === 'fee-structure' || hash === 'fees') return 'fee-structure';
+  if (hash === 'calendar') return 'calendar';
+  if (hash === 'cnn-academy') return 'cnn-academy';
+  return 'home';
+};
 
 // Lazy-loaded Modals & Chatbot for zero upfront overhead
 const ApplyModal = React.lazy(() => import('./components/ApplyModal').then(m => ({ default: m.ApplyModal })));
@@ -52,8 +87,8 @@ const UcpInfoModal = React.lazy(() => import('./components/UcpInfoModal').then(m
 const UcpChatbot = React.lazy(() => import('./components/UcpChatbot').then(m => ({ default: m.UcpChatbot })));
 
 export default function App() {
-  // Navigation / Page state
-  const [currentPage, setCurrentPage] = useState<'home' | 'faculty' | 'programmes' | 'legacy' | 'campus-life' | 'scholarships' | 'fee-structure' | 'cnn-academy' | 'calendar'>('home');
+  // Navigation / Page state initialized from URL hash for direct access and refresh
+  const [currentPage, setCurrentPage] = useState<PageId>(getPageFromHash);
   const [facultyCategory, setFacultyCategory] = useState<string>('all');
   const [selectedProgrammeId, setSelectedProgrammeId] = useState<string | null>(null);
   const [selectedProgrammeCategory, setSelectedProgrammeCategory] = useState<string | null>(null);
@@ -68,6 +103,18 @@ export default function App() {
   const [selectedArticle, setSelectedArticle] = useState<NewsEventItem | null>(null);
   const [preselectedProgramName, setPreselectedProgramName] = useState<string>('');
   const [mountChat, setMountChat] = useState(false);
+
+  // Idle preloader: Warm all subpage bundles immediately so clicking ANY navigation link loads in 0ms
+  useEffect(() => {
+    (window as any).__preloadSubpages = preloadSubpages;
+    if ('requestIdleCallback' in window) {
+      const id = (window as any).requestIdleCallback(preloadSubpages, { timeout: 1200 });
+      return () => (window as any).cancelIdleCallback(id);
+    } else {
+      const timer = setTimeout(preloadSubpages, 400);
+      return () => clearTimeout(timer);
+    }
+  }, []);
 
   // Defer chatbot mount to keep critical first paint completely free
   useEffect(() => {
@@ -177,12 +224,41 @@ export default function App() {
     }
   }, [currentPage]);
 
-  const handleOpenProgrammesPage = (progId?: string, category?: string) => {
+  // Helper to sync page and history hash for instant client navigation
+  const navigateToPage = (newPage: PageId) => {
     scrollToTopInstant();
+    setCurrentPage(newPage);
+    const targetHash = newPage === 'home' ? '' : `#${newPage}`;
+    if (window.location.hash !== targetHash) {
+      if (newPage === 'home') {
+        window.history.pushState(null, '', window.location.pathname + window.location.search);
+      } else {
+        window.history.pushState(null, '', targetHash);
+      }
+    }
+    requestAnimationFrame(() => scrollToTopInstant());
+  };
+
+  // Synchronize browser history and hash for back/forward navigation and direct refreshes
+  useEffect(() => {
+    const handleHashSync = () => {
+      const pageFromHash = getPageFromHash();
+      setCurrentPage(pageFromHash);
+      scrollToTopInstant();
+    };
+
+    window.addEventListener('hashchange', handleHashSync);
+    window.addEventListener('popstate', handleHashSync);
+    return () => {
+      window.removeEventListener('hashchange', handleHashSync);
+      window.removeEventListener('popstate', handleHashSync);
+    };
+  }, []);
+
+  const handleOpenProgrammesPage = (progId?: string, category?: string) => {
     setSelectedProgrammeId(progId || null);
     setSelectedProgrammeCategory(category || null);
-    setCurrentPage('programmes');
-    requestAnimationFrame(() => scrollToTopInstant());
+    navigateToPage('programmes');
   };
 
   const handleOpenProgrammesFromFaculty = (facultyId?: string) => {
@@ -196,41 +272,29 @@ export default function App() {
   };
 
   const handleOpenCampusLifePage = () => {
-    scrollToTopInstant();
     setSelectedProgrammeId(null);
-    setCurrentPage('campus-life');
-    requestAnimationFrame(() => scrollToTopInstant());
+    navigateToPage('campus-life');
   };
 
   const handleOpenScholarshipsPage = (sectionId?: string) => {
-    scrollToTopInstant();
     setSelectedProgrammeId(null);
     setScholarshipSectionId(sectionId || null);
-    setCurrentPage('scholarships');
-    if (!sectionId) {
-      requestAnimationFrame(() => scrollToTopInstant());
-    }
+    navigateToPage('scholarships');
   };
 
   const handleOpenFeeStructurePage = () => {
-    scrollToTopInstant();
     setSelectedProgrammeId(null);
-    setCurrentPage('fee-structure');
-    requestAnimationFrame(() => scrollToTopInstant());
+    navigateToPage('fee-structure');
   };
 
   const handleOpenCnnAcademyPage = () => {
-    scrollToTopInstant();
     setSelectedProgrammeId(null);
-    setCurrentPage('cnn-academy');
-    requestAnimationFrame(() => scrollToTopInstant());
+    navigateToPage('cnn-academy');
   };
 
   const handleOpenCalendarPage = () => {
-    scrollToTopInstant();
     setSelectedProgrammeId(null);
-    setCurrentPage('calendar');
-    requestAnimationFrame(() => scrollToTopInstant());
+    navigateToPage('calendar');
   };
 
   const handleOpenApply = (progName?: string) => {
@@ -297,29 +361,24 @@ export default function App() {
   };
 
   const handleOpenFacultyPage = (cat: string = 'all') => {
-    scrollToTopInstant();
     setFacultyCategory(cat);
-    setCurrentPage('faculty');
-    requestAnimationFrame(() => scrollToTopInstant());
+    setSelectedProgrammeId(null);
+    navigateToPage('faculty');
   };
 
   const handleOpenLegacyPage = () => {
-    scrollToTopInstant();
-    setCurrentPage('legacy');
     setSelectedProgrammeId(null);
-    requestAnimationFrame(() => scrollToTopInstant());
+    navigateToPage('legacy');
   };
 
   const handleBackToHome = () => {
-    scrollToTopInstant();
-    setCurrentPage('home');
     setSelectedProgrammeId(null);
-    requestAnimationFrame(() => scrollToTopInstant());
+    navigateToPage('home');
   };
 
   const handleScrollTo = (sectionId: string) => {
     if (currentPage !== 'home') {
-      setCurrentPage('home');
+      navigateToPage('home');
       setSelectedProgrammeId(null);
       setTimeout(() => {
         if (sectionId === 'top') {
@@ -394,9 +453,13 @@ export default function App() {
 
       <main>
         <Suspense fallback={
-          <div className="min-h-[60vh] flex flex-col items-center justify-center p-8 text-center bg-[#FAF8F5]">
-            <div className="w-10 h-10 border-3 border-[#0A1931]/20 border-t-[#C8102E] rounded-full animate-spin mb-4" />
-            <p className="text-xs uppercase font-bold tracking-widest text-[#0A1931]/70">Loading view...</p>
+          <div className="min-h-[70vh] w-full bg-[#FAF8F5] pt-24 pb-16 px-4 max-w-7xl mx-auto" aria-busy="true">
+            <div className="h-0.5 bg-gradient-to-r from-transparent via-[#C8102E] to-transparent mb-8 animate-pulse" />
+            <div className="max-w-2xl space-y-4 animate-pulse">
+              <div className="h-4 w-32 bg-slate-200 rounded" />
+              <div className="h-9 w-2/3 bg-slate-300 rounded" />
+              <div className="h-4 w-full bg-slate-200 rounded" />
+            </div>
           </div>
         }>
           {currentPage === 'programmes' ? (

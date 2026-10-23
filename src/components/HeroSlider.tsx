@@ -33,11 +33,22 @@ export const HeroSlider: React.FC<HeroSliderProps> = ({
 }) => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isHovered, setIsHovered] = useState(false);
+  const [visitedSlides, setVisitedSlides] = useState<Set<number>>(() => new Set([0]));
 
   const touchStartXRef = useRef<number | null>(null);
   const touchEndXRef = useRef<number | null>(null);
 
   const totalSlides = HERO_SLIDES.length;
+
+  // On-demand slide loading: add current slide and the upcoming slide to visited set
+  useEffect(() => {
+    setVisitedSlides((prev) => {
+      const next = new Set(prev);
+      next.add(currentSlide);
+      next.add((currentSlide + 1) % totalSlides);
+      return next;
+    });
+  }, [currentSlide, totalSlides]);
 
   const nextSlide = useCallback(() => {
     setCurrentSlide((prev) => (prev + 1) % totalSlides);
@@ -176,29 +187,33 @@ export const HeroSlider: React.FC<HeroSliderProps> = ({
             >
               {/* Background Image Container with Cinematic Ken Burns Zoom (1 to 1.08 over 10s) & High Clarity */}
               <div className="absolute inset-0 overflow-hidden bg-slate-900">
-                <img
-                  src={imageSrc}
-                  alt={slide.title}
-                  loading={index < 2 ? "eager" : "lazy"}
-                  decoding="async"
-                  fetchPriority={index < 2 ? "high" : "low"}
-                  sizes="(max-width: 768px) 100vw, 50vw"
-                  referrerPolicy="no-referrer"
-                  style={{
-                    transform: 'none',
-                  }}
-                  className="w-full h-full object-cover object-center"
-                  onError={(e) => {
-                    const target = e.target as HTMLImageElement;
-                    if (slide.fallbackImage && target.src !== slide.fallbackImage) {
-                      target.src = slide.fallbackImage;
-                    } else if (target.src.endsWith('.webp')) {
-                      target.src = target.src.replace('.webp', '.jpg');
-                    } else if (slide.id === 'bahawalpur-excellence') {
-                      target.src = '/images/wmw3sjb_UCP-Bahawalpur-Campus-at-Night.png';
-                    }
-                  }}
-                />
+                {visitedSlides.has(index) ? (
+                  <img
+                    src={imageSrc}
+                    alt={slide.title}
+                    loading={index === 0 ? "eager" : "lazy"}
+                    decoding="async"
+                    fetchPriority={index === 0 ? "high" : "low"}
+                    sizes="(max-width: 768px) 100vw, 100vw"
+                    referrerPolicy="no-referrer"
+                    style={{
+                      transform: 'none',
+                    }}
+                    className="w-full h-full object-cover object-center"
+                    onError={(e) => {
+                      const target = e.target as HTMLImageElement;
+                      if (slide.fallbackImage && target.src !== slide.fallbackImage) {
+                        target.src = slide.fallbackImage;
+                      } else if (target.src.endsWith('.webp')) {
+                        target.src = target.src.replace('.webp', '.jpg');
+                      } else if (slide.id === 'bahawalpur-excellence') {
+                        target.src = '/images/wmw3sjb_UCP-Bahawalpur-Campus-at-Night.png';
+                      }
+                    }}
+                  />
+                ) : (
+                  <div className="w-full h-full bg-slate-900" />
+                )}
 
                 {/* Subtle, Luminous Non-Dark Scrim (Preserving Full Image Brilliance) */}
                 <div className="absolute inset-0 bg-gradient-to-r from-black/45 via-black/20 to-transparent" />
