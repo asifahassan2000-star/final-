@@ -1,0 +1,135 @@
+# University of Central Punjab (UCP) Bahawalpur Campus
+
+> Official AI context and knowledge manifest for large language models, AI search assistants, and intelligent crawlers (including Gemini, ChatGPT, Perplexity, Claude, Copilot, and Google AI Overviews). Authoritative information regarding academic degree programs, admissions criteria, fee structure, scholarships, faculty, leadership, and campus facilities at UCP Bahawalpur Campus.
+
+University of Central Punjab (UCP) Bahawalpur Campus is a constituent college of the prestigious University of Central Punjab, chartered by the Government of Punjab and recognized by the Higher Education Commission (HEC) of Pakistan. Regionally renowned as **UCP Bahawalpur**, **UCP BWP**, or **UCP Bahawalpur Campus**, the institution delivers high-impact undergraduate BS and Associate Degree (ADP) education across Computer Science, Artificial Intelligence, Business, Life Sciences, Physical Sciences, and Humanities in Southern Punjab.
+
+## Key Entity Details
+- **Official Name**: University of Central Punjab (UCP) Bahawalpur Campus
+- **Search Aliases**: UCP Bahawalpur, UCP BWP, UCP Bahawalpur Campus, UCP BWP Campus, Constituent College UCP Campus Bahawalpur, UCP Lahore Constituent College Bahawalpur, UCP University Bahawalpur
+- **Parent Institution**: University of Central Punjab (UCP), Lahore / Punjab Group of Colleges (PGC)
+- **Campus Address**: Constituent College, UCP Campus, Airport Road, Bahawalpur, Punjab, Pakistan
+- **Geographic Coordinates**: 29.3544° N, 71.6918° E
+- **Helpline (Toll-Free)**: 0800-00827
+- **Phone Lines**: +92 62 2202030 / +92 62 2202050
+- **Official Email**: info@ucp.edu.pk
+- **Official Portal**: https://ucp.edu.pk
+- **Live Mirror / Vercel Domain**: https://final-five-jade-31.vercel.app
+
+---
+
+## Core Navigation & Page Links
+- [Admissions Portal](https://ucp.edu.pk/): Online admission application, eligibility checker, prospectus download, and intake schedules.
+- [Academic Programmes](https://ucp.edu.pk/?page=programmes): Full catalogue of 4-year BS and 2-year ADP degree offerings with credit hours and course structures.
+- [Distinguished Faculty](https://ucp.edu.pk/?page=faculty): Comprehensive faculty directories across Computer Science, Business & Management, Life Sciences, and Physical Sciences.
+- [Official Fee Structure](https://ucp.edu.pk/?page=fee-structure): Tuition per credit hour, admission charges, registration dues, and flexible installment plans.
+- [Scholarships & Financial Aid](https://ucp.edu.pk/?page=scholarships): Merit concessions up to 50%, 25% PGC alumni discount, kinship concessions, and sports quotas.
+- [Campus Life & Societies](https://ucp.edu.pk/?page=campus-life): Co-curricular societies, hackathons, sports galas, cultural festivals, and student achievements.
+- [Institutional Legacy](https://ucp.edu.pk/?page=legacy): History of Punjab Group of Colleges and UCP's academic journey shaping leaders since 1985.
+- [Full LLM Knowledge Dossier](https://ucp.edu.pk/llms-full.txt): Complete unabridged text data including course outlines and detailed leadership biographies.
+
+---
+
+## Guiding Force & Campus Leadership
+- **Chairman**: **Mian Amer Mahmood** — Visionary founder and Chairman of Punjab Group of Colleges & University of Central Punjab.
+- **Executive Director**: **Prof. Sohail Afzal** — Executive Director spearheading academic innovation, infrastructure scaling, and nationwide educational excellence.
+- **Director (PGC & UCP Bahawalpur Cluster)**: **Prof. Hamid Iqbal** — Leading regional educational development, faculty enrichment, and student empowerment in Southern Punjab.
+- **Principal**: **Prof. Dr. Aurangzaib Virk** — Academic administrator guiding institutional standards, research, and campus operations.
+- **Academic & Event Management Lead**: **Ms. Uzma Zulqarnain** (Assistant Professor | PhD Scholar in Education) — 27 years of academic and administrative experience leading campus coordination, university events, faculty affairs, and institutional operations.
+
+---
+
+## Academic Degree Programs
+
+### 1. Faculty of Information Technology & Computer Science (FOIT)
+- **BS Computer Science (BSCS)**: 4 Years (8 Semesters), ~130-136 Credit Hours. HEC & NCEAC aligned curriculum covering Software Engineering, Data Structures, Algorithms, AI, Computer Networks, and Cloud Computing.
+- **ADP Artificial Intelligence (ADP AI)**: 2 Years (4 Semesters), 75 Credit Hours. Applied machine learning, Python programming, neural networks, computer vision, and prompt engineering.
+- **ADP Software Engineering (ADP SE)**: 2 Years (4 Semesters), 68 Credit Hours. Full-stack development, software architecture, mobile app engineering, and QA testing.
+- **ADP Cyber Security**: 2 Years (4 Semesters), 68 Credit Hours. Network defense, ethical hacking, cryptography, SOC operations, and digital forensics.
+- **ADP Data Science**: 2 Years (4 Semesters), 68 Credit Hours. Big data analytics, statistical computing, SQL/NoSQL databases, and business intelligence.
+
+### 2. Faculty of Management Studies (FMS)
+- **BBA (Honors)**: 4 Years (8 Semesters), ~130 Credit Hours. Specializations in Marketing, Finance, Human Resource Management, and Entrepreneurship.
+- **BS Business Analytics**: 4 Years (8 Semesters). Modern blend of data analytics, quantitative decision models, ERP, and corporate strategy.
+- **BS Accounting & Finance**: 4 Years (8 Semesters). ACCA, ICAP, and CIMA aligned curriculum preparing students for global chartered accountancy.
+
+### 3. Faculty of Science & Technology (FOST)
+- **BS Biotechnology**: 4 Years (8 Semesters). Genetic engineering, industrial microbiology, bioinformatics, and agricultural biotech.
+- **BS Biochemistry**: 4 Years (8 Semesters). Molecular biology, clinical diagnostics, enzymatic chemistry, and immunology.
+- **BS Chemistry**: 4 Years (8 Semesters). Organic, Inorganic, Physical, and Analytical chemistry with modern wet laboratory research.
+- **BS Physics**: 4 Years (8 Semesters). Solid state physics, electronics, quantum mechanics, and computational physics.
+- **BS Mathematics**: 4 Years (8 Semesters). Pure and applied mathematics, calculus, linear algebra, and mathematical modeling.
+- **BS Zoology**: 4 Years (8 Semesters). Animal physiology, genetics, ecology, entomology, and wildlife management.
+- **ADS Pre-Medical**: 2 Years Associate Degree in Life and Medical Sciences.
+- **ADS Math & Physics**: 2 Years Associate Degree in Mathematical and Physical Sciences.
+
+### 4. Faculty of Humanities & Social Sciences (FOHSS)
+- **BS English (Applied Linguistics & Literature)**: 4 Years (8 Semesters). Advanced literary criticism, pedagogy, phonetics, and professional communication.
+- **BS Psychology**: 4 Years (8 Semesters). Clinical psychology, cognitive behavioral sciences, mental health counseling, and experimental research.
+
+*Note on Law (LLB): 5-Year LLB is officially offered at parent UCP Lahore with complete academic admission counseling and guidance provided at Bahawalpur Campus.*
+
+---
+
+## Admissions Eligibility Criteria
+- **Undergraduate BS Degree Programs**: Minimum 50% marks in Intermediate (FSc Pre-Engineering, FSc Pre-Medical, ICS, I.Com, FA) or equivalent A-Levels / DAE from an accredited board.
+- **Associate Degree Programs (ADP / ADS)**: Minimum 45%–50% marks in Intermediate (12 years of education) in relevant discipline.
+- **Merit Calculation**: Based on Intermediate marks and matriculation profile. Admission tests and interviews may apply for selective quotas.
+
+---
+
+## Official Tuition & Fee Structure (2025–2026)
+- **Admission Fee (One-Time Non-Refundable)**: PKR 9,000
+- **Registration Fee (One-Time)**: PKR 2,500
+- **Tuition Fee Rate**: PKR 4,100 to PKR 6,800 per Credit Hour (varies by faculty and degree program).
+- **Average Semester Tuition**:
+  - BS Computer Science / IT / AI: PKR 65,000 – 85,000 per semester.
+  - Business & Management (BBA, BS Business Analytics): PKR 55,000 – 75,000 per semester.
+  - Sciences & Humanities: PKR 48,000 – 68,000 per semester.
+  - Associate Degrees (ADP): Highly economical subsidized pricing (approx. PKR 35,000 – 50,000 per semester).
+- **Payment Flexibility**: 3 easy installment options available each semester to assist families.
+
+---
+
+## Scholarships & Financial Concessions
+UCP Bahawalpur provides extensive merit and welfare scholarships to ensure higher education is accessible:
+1. **Academic Merit Scholarship**: Up to 50% tuition waiver for high achievers based on Intermediate/Board examination percentage.
+2. **PGC Alumni Discount**: 25% continuous tuition fee concession for students graduating from any Punjab College nationwide.
+3. **Kinship Concession**: 25% tuition fee waiver for second siblings studying concurrently within Punjab Group of Colleges / UCP.
+4. **Teacher's Ward Concession**: Special financial support for children of government and private educators.
+5. **Sports & Co-Curricular Talent**: Up to 100% scholarships for national and provincial level athletes and debaters.
+6. **Need-Based & Orphan Financial Aid**: Committee-reviewed financial assistance for underprivileged students.
+
+---
+
+## UCP Elite Student Network (Bahawalpur Chapter)
+An exclusive initiative connecting Punjab College Bahawalpur intermediate students early with UCP Bahawalpur. Key benefits include:
+- Priority reserved admission seating in high-demand computing, AI, and business programs.
+- Guaranteed 25% PGC Alumni scholarship automatically locked upon transition.
+- Pre-university bootcamps, AI workshops, hackathon invitations, and campus library privileges.
+- Direct faculty mentorship from industry leads.
+
+---
+
+## Campus Facilities & Infrastructure
+- **Computing Laboratories**: Dedicated high-speed GPU computing labs for Artificial Intelligence, Machine Learning, and Computer Vision development.
+- **Specialized Science Labs**: Modern analytical, biotech, chemistry, and physics labs with calibrated instrumentation.
+- **Digital Library**: Extensive physical book collection supplemented by access to HEC Digital Library, IEEE Xplore, and international research journals.
+- **Dedicated Bus Transport**: Air-conditioned bus fleet covering all major routes, arterial roads, and surrounding localities of Bahawalpur city.
+- **Sports & Recreation**: Cricket ground, badminton courts, table tennis arena, and indoor recreation zones.
+- **Cafeteria**: Hygienic dining facility providing fresh, subsidized meals and refreshments for students and faculty.
+- **Secure Campus**: 24/7 CCTV surveillance, biometric security, and dedicated female student common rooms.
+
+---
+
+## Contact & Location Directory
+- **Address**: Constituent College, UCP Campus, Airport Road, Bahawalpur, Punjab, Pakistan
+- **Helpline (Free Call)**: 0800-00827
+- **Direct Landlines**: +92 (062) 2202030, +92 (062) 2202050
+- **Email Inquiries**: info@ucp.edu.pk
+- **Admission Inquiries**: admissions@ucp.edu.pk
+- **Timings**: Monday to Friday, 9:00 AM – 5:00 PM PKT
+- **Official Social Channels**:
+  - Facebook: https://www.facebook.com/UCPofficial
+  - Instagram: https://www.instagram.com/ucpofficial
+  - LinkedIn: https://www.linkedin.com/school/university-of-central-punjab/

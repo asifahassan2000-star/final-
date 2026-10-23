@@ -1230,3 +1230,33 @@ body, main, section, [id$="-section"] {
   border: 0 !important;
   text-decoration: none !important;
 }
+
+/* Elegant Text Animation for Our Guiding Force (100% visible in light & dark mode) */
+@keyframes guidingWordWave {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-4px);
+  }
+}
+
+.animate-guiding-word-1 {
+  display: inline-block;
+  animation: guidingWordWave 3.6s ease-in-out infinite;
+  animation-delay: 0s;
+}
+
+.animate-guiding-word-2 {
+  display: inline-block;
+  animation: guidingWordWave 3.6s ease-in-out infinite;
+  animation-delay: 0.35s;
+}
+
+.animate-guiding-word-3 {
+  display: inline-block;
+  animation: guidingWordWave 3.6s ease-in-out infinite;
+  animation-delay: 0.7s;
+}
+
+

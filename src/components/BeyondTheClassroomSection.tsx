@@ -267,6 +267,12 @@ export const BeyondTheClassroomSection: React.FC<BeyondTheClassroomProps> = ({
               tag: 'RURAL HERITAGE',
             },
             {
+              src: 'https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-23%20at%205.04.23%20AM.jpeg',
+              alt: 'UCP Bahawalpur students during rural village tour and cultural excursion',
+              caption: 'Village Tour Experience: Memorable student moments exploring local traditions, rural hospitality, and cultural heritage.',
+              tag: 'VILLAGE TOUR',
+            },
+            {
               src: innovistaCinemaSinging,
               fallback: innovistaCinemaSingingFallback,
               alt: 'Movie time at Innovista Cholistan and singing night at Haveli Cholistan',

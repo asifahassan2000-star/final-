@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
+        xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+        http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd
+        http://www.google.com/schemas/sitemap-image/1.1
+        http://www.google.com/schemas/sitemap-image/1.1/sitemap-image.xsd">
+
+  <!-- Core Pages -->
+  <url>
+    <loc>https://ucp.edu.pk/</loc>
+    <lastmod>2026-10-23T05:10:00+00:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.00</priority>
+    <image:image>
+      <image:loc>https://ucp.edu.pk/assets/campus/hero_campus_night_flagship.webp</image:loc>
+      <image:title>University of Central Punjab UCP Bahawalpur Campus</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://ucp.edu.pk/?page=programmes</loc>
+    <lastmod>2026-10-23T05:10:00+00:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.95</priority>
+  </url>
+  <url>
+    <loc>https://ucp.edu.pk/?page=faculty</loc>
+    <lastmod>2026-10-23T05:10:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.95</priority>
+  </url>
+  <url>
+    <loc>https://ucp.edu.pk/?page=fee-structure</loc>
+    <lastmod>2026-10-23T05:10:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.90</priority>
+  </url>
+  <url>
+    <loc>https://ucp.edu.pk/?page=scholarships</loc>
+    <lastmod>2026-10-23T05:10:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.90</priority>
+  </url>
+  <url>
+    <loc>https://ucp.edu.pk/?page=campus-life</loc>
+    <lastmod>2026-10-23T05:10:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.90</priority>
+  </url>
+  <url>
+    <loc>https://ucp.edu.pk/?page=legacy</loc>
+    <lastmod>2026-10-23T05:10:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://ucp.edu.pk/?page=calendar</loc>
+    <lastmod>2026-10-23T05:10:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://ucp.edu.pk/?page=cnn-academy</loc>
+    <lastmod>2026-10-23T05:10:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://ucp.edu.pk/llms.txt</loc>
+    <lastmod>2026-10-23T05:10:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+  <!-- Degree Programmes -->
+  <url><loc>https://ucp.edu.pk/?page=programmes&amp;program=bs-computer-science</loc><lastmod>2026-10-23T05:10:00+00:00</lastmod><priority>0.90</priority></url>
+  <url><loc>https://ucp.edu.pk/?page=programmes&amp;program=bba</loc><lastmod>2026-10-23T05:10:00+00:00</lastmod><priority>0.88</priority></url>
+  <url><loc>https://ucp.edu.pk/?page=programmes&amp;program=bs-business-analytics</loc><lastmod>2026-10-23T05:10:00+00:00</lastmod><priority>0.88</priority></url>
+  <url><loc>https://ucp.edu.pk/?page=programmes&amp;program=bs-accounting-finance</loc><lastmod>2026-10-23T05:10:00+00:00</lastmod><priority>0.88</priority></url>
+  <url><loc>https://ucp.edu.pk/?page=programmes&amp;program=bs-biotechnology</loc><lastmod>2026-10-23T05:10:00+00:00</lastmod><priority>0.85</priority></url>
+  <url><loc>https://ucp.edu.pk/?page=programmes&amp;program=bs-biochemistry</loc><lastmod>2026-10-23T05:10:00+00:00</lastmod><priority>0.85</priority></url>
+  <url><loc>https://ucp.edu.pk/?page=programmes&amp;program=bs-chemistry</loc><lastmod>2026-10-23T05:10:00+00:00</lastmod><priority>0.85</priority></url>
+  <url><loc>https://ucp.edu.pk/?page=programmes&amp;program=bs-physics</loc><lastmod>2026-10-23T05:10:00+00:00</lastmod><priority>0.85</priority></url>
+  <url><loc>https://ucp.edu.pk/?page=programmes&amp;program=bs-mathematics</loc><lastmod>2026-10-23T05:10:00+00:00</lastmod><priority>0.85</priority></url>
+  <url><loc>https://ucp.edu.pk/?page=programmes&amp;program=bs-zoology</loc><lastmod>2026-10-23T05:10:00+00:00</lastmod><priority>0.85</priority></url>
+  <url><loc>https://ucp.edu.pk/?page=programmes&amp;program=bs-english</loc><lastmod>2026-10-23T05:10:00+00:00</lastmod><priority>0.85</priority></url>
+  <url><loc>https://ucp.edu.pk/?page=programmes&amp;program=bs-psychology</loc><lastmod>2026-10-23T05:10:00+00:00</lastmod><priority>0.85</priority></url>
+  <url><loc>https://ucp.edu.pk/?page=programmes&amp;program=adp-artificial-intelligence</loc><lastmod>2026-10-23T05:10:00+00:00</lastmod><priority>0.88</priority></url>
+  <url><loc>https://ucp.edu.pk/?page=programmes&amp;program=adp-software-engineering</loc><lastmod>2026-10-23T05:10:00+00:00</lastmod><priority>0.88</priority></url>
+  <url><loc>https://ucp.edu.pk/?page=programmes&amp;program=adp-cyber-security</loc><lastmod>2026-10-23T05:10:00+00:00</lastmod><priority>0.88</priority></url>
+  <url><loc>https://ucp.edu.pk/?page=programmes&amp;program=adp-data-science</loc><lastmod>2026-10-23T05:10:00+00:00</lastmod><priority>0.88</priority></url>
+  <url><loc>https://ucp.edu.pk/?page=programmes&amp;program=adp-computer-science</loc><lastmod>2026-10-23T05:10:00+00:00</lastmod><priority>0.85</priority></url>
+  <url><loc>https://ucp.edu.pk/?page=programmes&amp;program=adp-business-administration</loc><lastmod>2026-10-23T05:10:00+00:00</lastmod><priority>0.85</priority></url>
+  <url><loc>https://ucp.edu.pk/?page=programmes&amp;program=adp-business-analytics</loc><lastmod>2026-10-23T05:10:00+00:00</lastmod><priority>0.85</priority></url>
+  <url><loc>https://ucp.edu.pk/?page=programmes&amp;program=adp-accounting-finance</loc><lastmod>2026-10-23T05:10:00+00:00</lastmod><priority>0.85</priority></url>
+  <url><loc>https://ucp.edu.pk/?page=programmes&amp;program=adp-biotechnology</loc><lastmod>2026-10-23T05:10:00+00:00</lastmod><priority>0.82</priority></url>
+  <url><loc>https://ucp.edu.pk/?page=programmes&amp;program=adp-english</loc><lastmod>2026-10-23T05:10:00+00:00</lastmod><priority>0.82</priority></url>
+  <url><loc>https://ucp.edu.pk/?page=programmes&amp;program=adp-psychology</loc><lastmod>2026-10-23T05:10:00+00:00</lastmod><priority>0.82</priority></url>
+  <url><loc>https://ucp.edu.pk/?page=programmes&amp;program=ads-math-physics</loc><lastmod>2026-10-23T05:10:00+00:00</lastmod><priority>0.82</priority></url>
+  <url><loc>https://ucp.edu.pk/?page=programmes&amp;program=ads-zoology-botany-chemistry</loc><lastmod>2026-10-23T05:10:00+00:00</lastmod><priority>0.82</priority></url>
+
+  <!-- Faculty -->
+  <url><loc>https://ucp.edu.pk/?page=faculty&amp;id=prof-uzma-zulqurnai</loc><lastmod>2026-10-23T05:10:00+00:00</lastmod><priority>0.85</priority></url>
+  <url><loc>https://ucp.edu.pk/?page=faculty&amp;id=dr-abdul-kareem</loc><lastmod>2026-10-23T05:10:00+00:00</lastmod><priority>0.85</priority></url>
+  <url><loc>https://ucp.edu.pk/?page=faculty&amp;id=dr-abbas-haider</loc><lastmod>2026-10-23T05:10:00+00:00</lastmod><priority>0.82</priority></url>
+  <url><loc>https://ucp.edu.pk/?page=faculty&amp;id=prof-abeer-aslam</loc><lastmod>2026-10-23T05:10:00+00:00</lastmod><priority>0.82</priority></url>
+  <url><loc>https://ucp.edu.pk/?page=faculty&amp;id=dr-mushtaq</loc><lastmod>2026-10-23T05:10:00+00:00</lastmod><priority>0.82</priority></url>
+  <url><loc>https://ucp.edu.pk/?page=faculty&amp;id=dr-abdul-raouf</loc><lastmod>2026-10-23T05:10:00+00:00</lastmod><priority>0.82</priority></url>
+  <url><loc>https://ucp.edu.pk/?page=faculty&amp;id=dr-m-tahir</loc><lastmod>2026-10-23T05:10:00+00:00</lastmod><priority>0.82</priority></url>
+  <url><loc>https://ucp.edu.pk/?page=faculty&amp;id=prof-khizer-hayat</loc><lastmod>2026-10-23T05:10:00+00:00</lastmod><priority>0.80</priority></url>
+  <url><loc>https://ucp.edu.pk/?page=faculty&amp;id=prof-ali-shan</loc><lastmod>2026-10-23T05:10:00+00:00</lastmod><priority>0.80</priority></url>
+
+  <!-- Campus Life Highlights -->
+  <url><loc>https://ucp.edu.pk/?page=campus-life#ucp-elite-student-network</loc><lastmod>2026-10-23T05:10:00+00:00</lastmod><priority>0.85</priority></url>
+  <url><loc>https://ucp.edu.pk/?page=campus-life#village-tour</loc><lastmod>2026-10-23T05:10:00+00:00</lastmod><priority>0.85</priority></url>
+  <url><loc>https://ucp.edu.pk/?page=campus-life#spring-festival</loc><lastmod>2026-10-23T05:10:00+00:00</lastmod><priority>0.82</priority></url>
+  <url><loc>https://ucp.edu.pk/?page=campus-life#alumni-reunion-2025</loc><lastmod>2026-10-23T05:10:00+00:00</lastmod><priority>0.82</priority></url>
+</urlset>

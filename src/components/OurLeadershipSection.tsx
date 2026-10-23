@@ -62,7 +62,7 @@ const LEADERSHIP_PROFILES: LeaderProfile[] = [
     designation: 'Director PGC & UCP Bahawalpur Cluster',
     secondaryDesignation: 'Director PGC & UCP Bahawalpur Cluster',
     officialRole: 'Director PGC & UCP Bahawalpur Cluster',
-    portraitUrl: 'https://ik.imagekit.io/Muffins/IMG_3544.PNG?updatedAt=1792577741736',
+    portraitUrl: 'https://ik.imagekit.io/Muffins/image%20-%202026-10-23T154255.281.png',
     fallbackUrl: '/assets/leadership/prof_hamid_iqbal_director.png',
     messageTitle: 'Director’s Message',
     fullMessage: [

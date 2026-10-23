@@ -925,6 +925,11 @@ export const CAMPUS_EVENTS_DATA: CampusEvent[] = [
         fallbackSrc: '/images/MxkcXbzY_Whats-App-Image-2026-10-05-at-1-17-53-AM-11.jpg',
         alt: 'Commemorative group photograph of students and community members',
         caption: 'A memorable village excursion fostering cultural empathy and community solidarity'
+      },
+      {
+        src: 'https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-23%20at%205.04.23%20AM.jpeg',
+        alt: 'UCP Bahawalpur students during rural village tour and cultural excursion',
+        caption: 'Village Tour — Authentic community immersion and memorable student moments in rural Southern Punjab'
       }
     ]
   },

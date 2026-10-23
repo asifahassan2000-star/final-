@@ -17,31 +17,44 @@ export const UcpEliteNetworkSection: React.FC = () => {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.15 }}
       transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-      className="w-full bg-[#ffffff] py-[80px] overflow-hidden select-none"
+      className="w-full bg-white dark:bg-[#07192F] py-[80px] overflow-hidden select-none transition-colors duration-200"
     >
       <div className="w-full max-w-7xl mx-auto px-4 sm:px-6">
         
         {/* =========================================================================
             HEADING:
-            UCP ELITE STUDENT NETWORK - center, color #0a1f44 dark blue,
-            font 36px bold 700 (mobile clamp(22px, 5vw, 36px)), letter-spacing 2px,
-            margin-bottom 40px. No yellow.
-            Below it: small line 60px width, 3px height, gold #d4af37 center.
+            UCP ELITE STUDENT NETWORK with Red & Blue Mix and Golden Line
             ========================================================================= */}
-        <div className="text-center mb-[40px]">
-          <h2
-            className="font-bold uppercase tracking-[2px] text-[#0a1f44]"
-            style={{
-              fontSize: 'clamp(22px, 5vw, 36px)',
-              lineHeight: 1.25,
-              fontWeight: 700,
-            }}
+        <div className="text-center mb-[44px]">
+          {/* Big Heading with Red and Blue Mix + Text Animation */}
+          <motion.h2
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+            className="font-extrabold uppercase tracking-tight text-3xl sm:text-4xl lg:text-5xl leading-tight flex items-center justify-center flex-wrap gap-x-2.5 sm:gap-x-3.5 text-center"
           >
-            UCP ELITE STUDENT NETWORK
-          </h2>
-          {/* Small Gold Accent Line */}
-          <div 
-            className="w-[60px] h-[3px] bg-[#d4af37] mx-auto mt-3 rounded-full" 
+            <span className="text-[#C8102E] dark:text-[#FF4A60] drop-shadow-xs">
+              UCP
+            </span>
+            <span className="text-[#002D62] dark:text-blue-300">
+              ELITE
+            </span>
+            <span className="text-[#C8102E] dark:text-[#FF4A60] drop-shadow-xs">
+              STUDENT
+            </span>
+            <span className="text-[#002D62] dark:text-white">
+              NETWORK
+            </span>
+          </motion.h2>
+
+          {/* Golden Line with shimmer gradient */}
+          <motion.div 
+            initial={{ scaleX: 0 }}
+            whileInView={{ scaleX: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
+            className="w-[120px] sm:w-[140px] h-[4px] bg-gradient-to-r from-[#D4AF37] via-[#F3D368] to-[#AA7C11] mx-auto mt-3.5 mb-2.5 rounded-full shadow-xs origin-center" 
             aria-hidden="true"
           />
         </div>

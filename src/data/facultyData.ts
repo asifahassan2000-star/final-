@@ -131,31 +131,50 @@ export const ALL_FACULTY_MEMBERS: FacultyMemberData[] = [
     id: 'prof-uzma-zulqurnai',
     numericId: 1,
     name: 'Prof. Uzma Zulqurnain',
-    designation: 'Assistant Professor',
+    designation: 'Assistant Professor | Academic & Event Management Lead',
+    cardDesignation: 'Assistant Professor | Academic & Event Management Lead',
     department: 'Department of Humanities & Social Sciences',
-    highestDegree: 'Ph.D. in English Literature',
-    experienceYears: '18+ Years',
-    specialization: 'Post-Colonial Literature, Applied Linguistics & Critical Discourse',
-    intro: 'Assistant Professor specializing in literary theory, research methodologies, and humanities curriculum design with extensive postgraduate mentorship.',
+    highestDegree: 'PhD Scholar (Education) - PhD in Progress',
+    experienceYears: '27 Years',
+    specialization: 'Academic Coordination, Event Management, Faculty Affairs, Institutional Operation',
+    intro: 'Ms. Uzma Zulqarnain is an Assistant Professor and a PhD Scholar in Education with 27 years of rich academic and administrative experience. She is the backbone of academic coordination at UCP Bahawalpur, efficiently managing university-wide events, faculty affairs, and academic operations. Known for her exceptional organizational skills and dedication, she plays a pivotal role in ensuring smooth academic and institutional excellence.',
     photoUrl: '/assets/faculty/prof_uzma_zulqurnain.webp',
     fallbackPhotoUrl: '/images/20rgrjKf_image-40.jpg',
     objectPosition: 'object-center',
     imageTransform: 'scale-[1.28] origin-center',
     qualifications: [
-      'Ph.D. in English Literature',
-      'M.Phil in English Literature & Linguistics',
-      'Master of Arts (M.A.) in English Literature'
+      'PhD Scholar (Education) - PhD in Progress',
+      'M.Phil in Education',
+      'Master of Arts (M.A.)'
     ],
     experienceDetails: [
-      '18+ Years of Higher Education Teaching & Scholarly Inquiry',
-      'Postgraduate Thesis Supervision in Humanities & Critical Discourse',
-      'Curriculum Design for University Academic Programs'
+      '27 Years of Rich Academic and Administrative Experience',
+      'Backbone of Academic Coordination at UCP Bahawalpur',
+      'Managing University-Wide Events, Faculty Affairs, and Academic Operations',
+      'Ensuring Smooth Academic and Institutional Excellence'
+    ],
+    academicAdministration: [
+      'Academic Coordination & University-Wide Event Management',
+      'Faculty Affairs & Academic Operations Leadership',
+      'Institutional Excellence & Program Execution'
     ],
     coreTechnicalSkills: [
-      'Literary Theory & Discourse Analysis',
-      'Advanced Pedagogical Design',
-      'Qualitative Academic Research & Publication',
-      'Student Academic Mentorship'
+      'Academic Coordination',
+      'Event Management',
+      'Faculty Affairs',
+      'Institutional Operation'
+    ],
+    managementLeadershipSkills: [
+      'Academic Coordination',
+      'Event Management',
+      'Faculty Affairs',
+      'Institutional Operation'
+    ],
+    areaOfInterest: [
+      'Academic Coordination',
+      'Event Management',
+      'Faculty Affairs',
+      'Institutional Operation'
     ]
   },
   {

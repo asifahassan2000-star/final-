@@ -56,6 +56,59 @@ app.use('/assets', express.static(path.resolve(__dirname, 'public/assets'), {
 app.get('/healthz', (_req, res) => res.status(200).send('OK'));
 app.get('/api/health', (_req, res) => res.status(200).json({ status: 'ok', time: new Date().toISOString() }));
 
+// Search Engine & AI / LLM Context endpoints (llms.txt standard)
+app.get('/llms.txt', (_req, res) => {
+  res.setHeader('Content-Type', 'text/plain; charset=utf-8');
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Cache-Control', 'public, max-age=3600, s-maxage=86400');
+  res.sendFile(path.resolve(__dirname, 'public/llms.txt'));
+});
+
+app.get('/llms-full.txt', (_req, res) => {
+  res.setHeader('Content-Type', 'text/plain; charset=utf-8');
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Cache-Control', 'public, max-age=3600, s-maxage=86400');
+  res.sendFile(path.resolve(__dirname, 'public/llms-full.txt'));
+});
+
+app.get('/robots.txt', (_req, res) => {
+  res.setHeader('Content-Type', 'text/plain; charset=utf-8');
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Cache-Control', 'public, max-age=3600, s-maxage=86400');
+  res.sendFile(path.resolve(__dirname, 'public/robots.txt'));
+});
+
+app.get('/sitemap.xml', (req, res) => {
+  res.setHeader('Content-Type', 'application/xml; charset=utf-8');
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Cache-Control', 'public, max-age=3600, s-maxage=86400');
+  
+  const host = (req.headers.host || '').toLowerCase();
+  const filePath = host.includes('ucp.edu.pk')
+    ? path.resolve(__dirname, 'public/sitemap-ucp.xml')
+    : path.resolve(__dirname, 'public/sitemap.xml');
+
+  if (fs.existsSync(filePath)) {
+    res.sendFile(filePath);
+  } else {
+    res.sendFile(path.resolve(__dirname, 'public/sitemap.xml'));
+  }
+});
+
+app.get('/sitemap-vercel.xml', (_req, res) => {
+  res.setHeader('Content-Type', 'application/xml; charset=utf-8');
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Cache-Control', 'public, max-age=3600, s-maxage=86400');
+  res.sendFile(path.resolve(__dirname, 'public/sitemap.xml'));
+});
+
+app.get('/sitemap-ucp.xml', (_req, res) => {
+  res.setHeader('Content-Type', 'application/xml; charset=utf-8');
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Cache-Control', 'public, max-age=3600, s-maxage=86400');
+  res.sendFile(path.resolve(__dirname, 'public/sitemap-ucp.xml'));
+});
+
 const SYSTEM_INSTRUCTION = `You are 'UCP Assistant', the official, friendly campus guide for University of Central Punjab (UCP) Bahawalpur Campus.
 
 CAPABILITIES:

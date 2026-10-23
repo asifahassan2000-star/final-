@@ -305,7 +305,7 @@ export const AboutUsPage: React.FC<AboutUsPageProps> = ({
             <div className="bg-white dark:bg-[#0a182c] border border-slate-200 dark:border-white/10 rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all flex flex-col group">
               <div className="aspect-[3/4] overflow-hidden bg-[#0A1931] relative">
                 <img
-                  src="https://ik.imagekit.io/Muffins/IMG_3544.PNG?updatedAt=1792577741736"
+                  src="https://ik.imagekit.io/Muffins/image%20-%202026-10-23T154255.281.png"
                   alt="Prof. Hamid Iqbal"
                   className="w-full h-full object-cover object-[center_top] group-hover:scale-105 transition-transform duration-500"
                   onError={(e) => {
