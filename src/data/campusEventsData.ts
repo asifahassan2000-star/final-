@@ -1448,75 +1448,80 @@ export const CAMPUS_EVENTS_DATA: CampusEvent[] = [
     ],
     images: [
       {
-        src: 'https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-13%20at%2012.53.33%20AM.jpeg',
+        src: 'https://ik.imagekit.io/Muffins/image%20(3).png',
         fallbackSrc: '/assets/campus-life-new/campus-13.jpg',
-        alt: 'Farewell Party 2026 senior batch celebration and stage honors',
-        caption: 'Farewell Party 2026 — Senior valedictory honors and celebratory banquet moments'
-      },
-      {
-        src: 'https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-13%20at%2012.54.54%20AM.jpeg',
-        fallbackSrc: '/assets/campus-life-new/campus-14.jpg',
-        alt: 'Graduating seniors and faculty celebration evening',
-        caption: 'Graduating seniors sharing indelible memories and milestone recognitions'
-      },
-      {
-        src: 'https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-22%20at%209.54.08%20PM.png',
-        alt: 'Farewell Party 2026 stage ceremony and graduating seniors celebration',
-        caption: 'Farewell Party 2026 — Celebrating the indelible legacy of graduating seniors'
+        alt: 'Farewell Party 2026 celebratory visual and senior batch honours',
+        caption: 'Farewell Party 2026 — Senior valedictory honours and celebratory banquet moments'
       },
       {
         src: 'https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-05%20at%202.38.54%20AM.jpeg',
+        fallbackSrc: '/assets/campus-life-new/campus-14.jpg',
         alt: 'Graduating seniors and faculty celebration at Farewell Party 2026',
         caption: 'Graduating seniors sharing memorable moments with faculty mentors'
       },
       {
         src: 'https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-05%20at%202.38.55%20AM.jpeg',
+        fallbackSrc: '/assets/campus-life-new/campus-13.jpg',
         alt: 'Presentation of personalized honorary titles and sashes',
         caption: 'Honoring senior achievers with bespoke sashes, titles, and mementos'
       },
       {
         src: 'https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-05%20at%202.38.56%20AM%20(3).jpeg',
+        fallbackSrc: '/assets/campus-life-new/campus-14.jpg',
         alt: 'Farewell Party evening ceremony and musical tributes',
         caption: 'Vibrant stage celebrations and musical dedications for the graduating batch'
       },
       {
         src: 'https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-05%20at%202.38.52%20AM%20(2).jpeg',
+        fallbackSrc: '/assets/campus-life-new/campus-13.jpg',
         alt: 'Students celebrating on the decorated campus grounds',
         caption: 'Graduates cherishing collegiate friendships and campus memories'
       },
       {
-        src: 'https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-22%20at%209.54.07%20PM.png',
-        alt: 'Farewell Party 2026 celebratory gathering and student laughter',
-        caption: 'Nostalgic moments capturing four unforgettable collegiate years'
+        src: 'https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-05%20at%202.38.56%20AM%20(1).jpeg',
+        fallbackSrc: '/assets/campus-life-new/campus-14.jpg',
+        alt: 'Seniors and peers sharing laughter and nostalgia during banquet',
+        caption: 'Heartwarming memories and peer camaraderie at the farewell gala'
       },
       {
-        src: 'https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-13%20at%2012.53.34%20AM.jpeg',
-        fallbackSrc: '/assets/leadership/leadership-official-gathering.jpg',
-        alt: 'Faculty and leadership assembly at Farewell Party celebration',
-        caption: 'Faculty leadership and mentors sharing celebratory valedictory moments'
+        src: 'https://ik.imagekit.io/Muffins/image%20(5).png',
+        fallbackSrc: '/assets/campus-life-new/campus-13.jpg',
+        alt: 'Official commemorative tribute visual celebrating the graduating class',
+        caption: 'Celebrating the legacy, resilience, and bright futures of UCP graduates'
       },
       {
         src: 'https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-05%20at%202.38.54%20AM%20(1).jpeg',
+        fallbackSrc: '/assets/leadership/leadership-official-gathering.jpg',
         alt: 'Faculty blessings and farewell speeches for outgoing batch',
         caption: 'Professors imparting final words of wisdom and professional blessings'
       },
       {
         src: 'https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-05%20at%202.38.52%20AM%20(1).jpeg',
+        fallbackSrc: '/assets/campus-life-new/campus-14.jpg',
         alt: 'Graduating students gathering for group photos at Farewell Party',
         caption: 'Senior students celebrating their milestone achievement at UCP'
       },
       {
         src: 'https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-05%20at%202.38.57%20AM.jpeg',
+        fallbackSrc: '/assets/campus-life-new/campus-13.jpg',
         alt: 'Farewell Party stage lighting and evening festivity',
         caption: 'Festive stage performances and evening banquet celebrations'
       },
       {
         src: 'https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-05%20at%202.38.55%20AM%20(1).jpeg',
+        fallbackSrc: '/assets/campus-life-new/campus-14.jpg',
         alt: 'Commemorative shields and memories at Farewell Party',
         caption: 'Distributing commemorative mementos and honorary recognitions'
       },
       {
+        src: 'https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-05%20at%202.38.55%20AM%20(2).jpeg',
+        fallbackSrc: '/assets/campus-life-new/campus-13.jpg',
+        alt: 'Faculty and student leaders sharing commemorative moments',
+        caption: 'Mentorship and gratitude as students prepare for professional careers'
+      },
+      {
         src: 'https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-05%20at%202.38.56%20AM%20(2).jpeg',
+        fallbackSrc: '/assets/campus-life-new/campus-14.jpg',
         alt: 'Final graduating batch group photo at Farewell Party 2026',
         caption: 'Final batch milestone — Stepping forward with pride, resilience, and lifelong friendships'
       }

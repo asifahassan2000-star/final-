@@ -13,7 +13,7 @@ export const UCP_CONTACT = {
   phone1: '062-2202030',
   phone2: '062-2202050',
   tollFree: '062-2202030',
-  email: 'info@ucp.edu.pk',
+  email: 'Principal.bahawalpur@ucp.edu.pk',
   admissionsEmail: 'admissions.bwp@ucp.edu.pk',
   fax: '+92-62-35954892',
   facebook: 'https://www.facebook.com/profile.php?id=61583228356324',

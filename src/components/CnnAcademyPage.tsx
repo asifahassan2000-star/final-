@@ -640,7 +640,7 @@ export const CnnAcademyPage: React.FC<CnnAcademyPageProps> = ({
                 <span>Official Inquiries</span>
               </div>
               <p className="leading-relaxed">
-                Email: info@ucp.edu.pk / admissions.bwp@ucp.edu.pk<br />
+                Email: Principal.bahawalpur@ucp.edu.pk / admissions.bwp@ucp.edu.pk<br />
                 Telephone: +92 (42) 111-000-827 / (062) UCP-BWP
               </p>
             </div>

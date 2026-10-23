@@ -96,6 +96,10 @@ const LEADERSHIP_PROFILES: LeaderProfile[] = [
       'UCP provides a rigorous and supportive learning environment that develops adaptable, skilled, and value-driven graduates prepared to meet future challenges.',
       'Through dedicated faculty, strong alumni engagement, and a culture of innovation, UCP nurtures leaders equipped to contribute meaningfully to society and the nation.'
     ],
+    contactInfo: {
+      email: 'Principal.bahawalpur@ucp.edu.pk',
+      categories: ['Principal Office', 'Academic Administration', 'Student Affairs']
+    },
     biography: {
       executiveProfile: 'Vision-driven and accomplished Academic Executive and Institutional Leader with extensive experience in the higher education and college education sectors, including nearly a decade of leadership and institutional experience with the Punjab Group of Colleges (PGC). Currently serving as Principal, University of Central Punjab (UCP), Bahawalpur Campus, with a strong track record of leading academic institutions, strengthening institutional systems, developing people, and translating strategic priorities into measurable academic and organizational outcomes.',
       visionQuote: '“Building Academic Excellence, Empowering People, Creating a Sustainable Future.”',
@@ -108,7 +112,11 @@ const LEADERSHIP_PROFILES: LeaderProfile[] = [
         'Current service as Principal, University of Central Punjab (UCP), Bahawalpur Campus.',
         'Strong track record of leading academic institutions, strengthening institutional systems, and developing people.',
         'Translating strategic priorities into measurable academic and organizational outcomes.'
-      ]
+      ],
+      contactInfo: {
+        email: 'Principal.bahawalpur@ucp.edu.pk',
+        categories: ['Principal Office', 'Academic Administration', 'Student Affairs']
+      }
     }
   }
 ];
@@ -117,123 +125,6 @@ interface OurLeadershipSectionProps {
   onOpenApply?: () => void;
   onScrollTo?: (sectionId: string) => void;
 }
-
-const MobileLeaderCard: React.FC<{
-  leader: LeaderProfile;
-  onSelect: (leader: LeaderProfile) => void;
-}> = ({ leader, onSelect }) => {
-  const [expanded, setExpanded] = useState(false);
-
-  return (
-    <div className="lg:hidden bg-white rounded-none sm:rounded-sm border border-slate-300 p-4 sm:p-5 shadow-xs">
-      <div className="flex gap-4 items-start">
-        {/* Square rectangular portrait frame */}
-        <div className="w-24 h-28 sm:w-28 sm:h-32 rounded-none overflow-hidden shrink-0 border border-slate-300 bg-[#0A1931]">
-          <img
-            src={leader.portraitUrl}
-            alt={leader.name}
-            loading="eager"
-            decoding="async"
-            style={{
-              width: '100%',
-              height: '100%',
-              minHeight: '100%',
-              objectFit: 'cover',
-              objectPosition: leader.id === 'prof-dr-aurangzaib-virk' ? 'center 14%' : 'center 12%',
-            }}
-            className="w-full h-full !h-full min-h-full object-cover"
-            onError={(e) => {
-              const target = e.target as HTMLImageElement;
-              if (target.src !== leader.fallbackUrl) {
-                target.src = leader.fallbackUrl;
-              }
-            }}
-          />
-        </div>
-        <div className="min-w-0 flex-1">
-          <h3 className="font-['Source_Serif_4','Source_Serif_Pro','Georgia',serif] text-base sm:text-lg font-bold text-[#0A1931] tracking-tight leading-snug">
-            {leader.name}
-          </h3>
-          <p className="text-[10px] sm:text-[11px] uppercase tracking-[1.2px] text-[#C8102E] font-semibold mt-0.5 font-sans">
-            {leader.designation}
-          </p>
-          <p className="text-xs text-slate-600 mt-2 line-clamp-3 leading-relaxed font-sans">
-            {leader.fullMessage[0]}
-          </p>
-        </div>
-      </div>
-
-      <button
-        onClick={() => setExpanded(!expanded)}
-        className="mt-3 w-full flex items-center justify-between text-xs font-semibold text-[#0A1931] bg-slate-100 hover:bg-slate-200 px-4 py-2 rounded-none cursor-pointer transition-colors border border-slate-300 font-sans"
-      >
-        <span>{expanded ? 'Show less' : 'Read Full Message'}</span>
-        <span className={`transform transition-transform duration-200 ${expanded ? 'rotate-90' : ''}`}>→</span>
-      </button>
-
-      {expanded && (
-        <div className="mt-3 pt-3 border-t border-slate-200 text-xs sm:text-sm text-slate-700 space-y-3 font-sans">
-          {leader.secondaryDesignation && (
-            <p className="text-xs text-slate-500 italic">
-              {leader.secondaryDesignation}
-            </p>
-          )}
-
-          {leader.contactInfo && (
-            <div className="p-3 bg-slate-50 border border-slate-200 space-y-2 text-xs text-slate-700">
-              {leader.contactInfo.email && (
-                <div className="flex items-center gap-2">
-                  <Mail size={13} className="text-[#C8102E] shrink-0" />
-                  <span className="text-slate-500 text-[11px]">Email:</span>
-                  <a href={`mailto:${leader.contactInfo.email}`} className="text-[#0A1931] hover:underline font-semibold">
-                    {leader.contactInfo.email}
-                  </a>
-                </div>
-              )}
-              {leader.contactInfo.website && (
-                <div className="flex items-center gap-2">
-                  <Globe size={13} className="text-[#0A1931] shrink-0" />
-                  <span className="text-slate-500 text-[11px]">Website:</span>
-                  <a href={leader.contactInfo.website} target="_blank" rel="noopener noreferrer" className="text-[#0A1931] hover:underline font-semibold">
-                    {leader.contactInfo.website}
-                  </a>
-                </div>
-              )}
-            </div>
-          )}
-
-          {leader.fullMessage.map((paragraph, pIdx) => (
-            <div key={pIdx}>
-              {paragraph.includes('\n') ? (
-                <div className="font-bold text-[#0A1931] text-xs uppercase tracking-wider pt-2">
-                  {paragraph.split('\n').map((line, lIdx) => (
-                    <span 
-                      key={lIdx} 
-                      className={lIdx === 1 ? "block text-sm font-extrabold text-[#C8102E] mt-0.5 tracking-wider font-serif" : "block text-slate-600 font-bold text-xs tracking-wider"}
-                    >
-                      {line}
-                    </span>
-                  ))}
-                </div>
-              ) : (
-                <p className="leading-relaxed">{paragraph}</p>
-              )}
-            </div>
-          ))}
-          <div className="pt-2">
-            <button
-              onClick={() => onSelect(leader)}
-              className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#0A1931] hover:text-white bg-slate-50 hover:bg-[#0A1931] px-3.5 py-2 rounded-none border border-slate-300 transition-all cursor-pointer shadow-2xs"
-            >
-              <span>View Profile & Credentials</span>
-              <ArrowUpRight size={13} className="text-[#C8102E]" />
-            </button>
-          </div>
-        </div>
-      )}
-    </div>
-  );
-};
 
 export const OurLeadershipSection: React.FC<OurLeadershipSectionProps> = () => {
   const [selectedLeader, setSelectedLeader] = useState<LeaderProfile | null>(null);
@@ -286,16 +177,16 @@ export const OurLeadershipSection: React.FC<OurLeadershipSectionProps> = () => {
   return (
     <section
       id="leadership-section"
-      className="relative bg-slate-50/70 text-slate-900 py-16 sm:py-20 lg:py-24 border-t border-b border-slate-200 select-none overflow-visible scroll-mt-20"
+      className="relative bg-white dark:bg-[#080f1d] text-slate-900 dark:text-slate-100 py-16 sm:py-20 lg:py-24 border-t border-b border-slate-200 dark:border-white/10 select-none overflow-visible scroll-mt-20 transition-colors duration-200"
       aria-labelledby="leadership-heading"
     >
       {/* Anchor alias for existing chairman-section references */}
       <div id="chairman-section" className="absolute -top-20" aria-hidden="true" />
 
       {/* =========================================================================
-          SECTION HEADER — Clean Official University Design with Guaranteed Visible Text Reveal
+          SECTION HEADER — Prestigious University Design Matching Welcome Section
           ========================================================================= */}
-      <div ref={headerRef} className="max-w-5xl mx-auto text-center px-4 sm:px-6 mb-12 sm:mb-16">
+      <div ref={headerRef} className="relative z-10 max-w-5xl xl:max-w-6xl mx-auto text-center px-4 sm:px-6 mb-14 sm:mb-18">
         <div className="inline-flex items-center gap-2 mb-2.5">
           <span 
             className="w-5 h-[2px] bg-[#D4AF37] origin-right transition-transform duration-500 ease-out"
@@ -312,220 +203,146 @@ export const OurLeadershipSection: React.FC<OurLeadershipSectionProps> = () => {
           />
         </div>
 
-        {/* Cinematic Staggered Text Reveal: Guaranteed 100% visible, Navy Blue #0A1931 */}
+        {/* Cinematic Heading */}
         <h2
           id="leadership-heading"
-          className="font-['Source_Serif_4','Source_Serif_Pro','Georgia',serif] text-3xl sm:text-4xl lg:text-[42px] font-bold text-[#0A1931] tracking-tight leading-tight mb-3.5"
+          className="font-['Source_Serif_4','Source_Serif_Pro','Georgia',serif] text-[30px] sm:text-[36px] lg:text-[42px] font-bold tracking-tight leading-tight text-[#0B1A3A] dark:text-white"
         >
-          {['Leadership', 'with', 'Vision.', 'Excellence', 'with', 'Purpose.'].map((word, idx) => (
-            <span
-              key={idx}
-              className="inline-block transition-all duration-600 ease-[cubic-bezier(0.16,1,0.3,1)] mr-[0.26em] last:mr-0 text-[#0A1931]"
-              style={{
-                opacity: isHeaderVisible ? 1 : 0.9,
-                transform: isHeaderVisible ? 'translateY(0)' : 'translateY(6px)',
-                transitionDelay: `${idx * 45}ms`,
-              }}
-            >
-              {word}
-            </span>
-          ))}
+          <span className="inline-flex items-center justify-center flex-wrap gap-x-2 sm:gap-x-3">
+            <span className="inline-block text-[#0B1A3A] dark:text-white">Leadership</span>
+            <span className="inline-block text-[#C8102E] dark:text-[#F3D368] font-extrabold">with Vision.</span>
+            <span className="inline-block text-[#0B1A3A] dark:text-white">Excellence</span>
+            <span className="inline-block text-[#C8102E] dark:text-[#F3D368] font-extrabold">with Purpose.</span>
+          </span>
         </h2>
 
-        {/* Narrative Subtitle Reveal */}
+        {/* Gold Underline */}
+        <div 
+          className="w-[64px] h-[3.5px] mx-auto mt-3.5 mb-5 rounded-full transition-all duration-700 ease-out origin-center bg-[#D4AF37] dark:bg-[#E5C158] shadow-sm"
+          style={{ 
+            transform: isHeaderVisible ? 'scaleX(1)' : 'scaleX(0.2)',
+            opacity: isHeaderVisible ? 1 : 0.4,
+          }}
+          aria-hidden="true"
+        />
+
+        {/* Narrative Subtitle */}
         <p 
-          className="text-sm sm:text-base text-slate-600 leading-relaxed font-sans max-w-2xl mx-auto font-normal transition-all duration-700 ease-out"
+          className="text-[#0B1A3A] dark:text-slate-100 text-base sm:text-lg lg:text-[20px] font-sans font-medium leading-relaxed sm:leading-[1.65] max-w-3xl mx-auto transition-all duration-700 ease-out text-center"
           style={{
             opacity: isHeaderVisible ? 1 : 0.85,
             transform: isHeaderVisible ? 'translateY(0)' : 'translateY(6px)',
-            transitionDelay: '280ms',
           }}
         >
-          Steered by visionary academic leaders committed to intellectual rigor, student development, and transformative opportunities.
+          Steered by visionary academic leaders committed to intellectual rigor, student development, and transformative educational opportunities across South Punjab.
         </p>
       </div>
 
       {/* =========================================================================
-          LEADERSHIP EDITORIAL PROFILES (Square & Rectangular Geometry, Large Portraits)
+          2 COLUMNS GRID — Prof. Hamid Iqbal & Prof. Dr. Aurangzaib Virk
+          Matching Mian Amer Mahmood & Prof. Sohail Afzal in WelcomeUcpSection:
+          Unboxed, prestigious layout with authentic building blueprint watermark,
+          grand circular gold-bordered portraits, designation badge & quotation block.
           ========================================================================= */}
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-4 lg:space-y-16">
-        {LEADERSHIP_PROFILES.map((leader, index) => {
-          const isImageLeft = index % 2 === 0;
+      <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 items-stretch">
+        {LEADERSHIP_PROFILES.map((leader) => (
+          <article
+            key={leader.id}
+            id={leader.id}
+            aria-label={`${leader.name} — ${leader.designation}`}
+            className="flex flex-col justify-between h-full space-y-6"
+          >
+            <div>
+              {/* Portrait Container with Authentic Building Blueprint Behind */}
+              <div className="relative flex flex-col items-center justify-center min-h-[300px] sm:min-h-[340px] lg:min-h-[380px]">
+                {/* Building Blueprint Watermark Linework Directly Behind Portrait */}
+                <div
+                  className="absolute inset-0 pointer-events-none select-none z-0 overflow-hidden flex items-center justify-center"
+                  aria-hidden="true"
+                >
+                  <img
+                    src="/assets/welcome/ucp_blueprint_lines_clean.png"
+                    alt=""
+                    className="w-full h-full max-w-[480px] max-h-[480px] object-contain opacity-[0.25] dark:opacity-[0.14] mix-blend-multiply dark:mix-blend-screen"
+                    onError={(e) => {
+                      (e.currentTarget as HTMLImageElement).src =
+                        '/assets/welcome/ucp_building_blueprint_lines.png';
+                    }}
+                  />
+                  {/* Gentle gradient fade */}
+                  <div className="absolute inset-0 bg-radial from-transparent via-white/30 to-white dark:via-[#080f1d]/40 dark:to-[#080f1d]" />
+                </div>
 
-          return (
-            <React.Fragment key={leader.id}>
-              {/* Mobile collapse card (< 1024px) */}
-              <MobileLeaderCard leader={leader} onSelect={setSelectedLeader} />
-
-              {/* Desktop editorial layout (1024px+) — Clean Rectangular University Aesthetic */}
-              <article
-                aria-label={`${leader.name} — ${leader.designation}`}
-                className={`hidden lg:flex ${
-                  isImageLeft ? 'lg:flex-row' : 'lg:flex-row-reverse'
-                } items-center justify-between gap-8 sm:gap-12 lg:gap-14 bg-white p-6 sm:p-8 lg:p-10 rounded-none sm:rounded-sm border border-slate-300 shadow-xs hover:border-slate-400 transition-colors`}
-              >
-                {/* ===================================================================
-                    PORTRAIT CONTAINER — Sharp Square / Rectangular Framing (300px x 400px aspect-3/4)
-                    =================================================================== */}
-                <div className="w-full lg:w-[320px] shrink-0 flex flex-col items-center">
-                  <div className="relative w-[260px] sm:w-[290px] lg:w-[310px] aspect-[3/4] bg-[#0A1931] border-2 border-slate-300 rounded-none overflow-hidden shadow-xs group">
+                {/* Big Circle Portrait */}
+                <div 
+                  onClick={() => setSelectedLeader(leader)}
+                  className="relative z-10 p-3 sm:p-3.5 lg:p-4 rounded-full border border-slate-200/90 dark:border-white/15 bg-white/90 dark:bg-[#0e1d38]/90 shadow-xl backdrop-blur-[2px] cursor-pointer group hover:scale-[1.03] transition-all duration-300"
+                  title={`Click to view biographical profile of ${leader.name}`}
+                >
+                  <div className="w-56 h-56 sm:w-64 sm:h-64 lg:w-72 lg:h-72 xl:w-80 xl:h-80 rounded-full overflow-hidden border-[3px] border-[#D4AF37] dark:border-[#D4AF37] shadow-2xl bg-[#0B1A3A] ring-4 ring-white dark:ring-[#080f1d] relative">
                     <img
                       src={leader.portraitUrl}
-                      alt={`${leader.name} - ${leader.designation}`}
-                      loading="eager"
-                      decoding="async"
-                      fetchPriority={leader.id === 'prof-hamid-iqbal' ? 'high' : undefined}
+                      alt={`${leader.name}, ${leader.designation}`}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                       style={{
-                        width: '100%',
-                        height: '100%',
-                        minHeight: '100%',
-                        objectFit: 'cover',
                         objectPosition: leader.id === 'prof-dr-aurangzaib-virk' ? 'center 14%' : 'center 12%',
                       }}
-                      className="w-full h-full !h-full min-h-full object-cover object-center group-hover:scale-105 transition-transform duration-500 ease-out"
+                      loading="eager"
                       onError={(e) => {
-                        const target = e.target as HTMLImageElement;
-                        if (target.src !== leader.fallbackUrl) {
-                          target.src = leader.fallbackUrl;
-                        }
+                        (e.currentTarget as HTMLImageElement).src = leader.fallbackUrl;
                       }}
                     />
-                  </div>
-                </div>
-
-                {/* ===================================================================
-                    CONTENT COLUMN — Academic Editorial Typography (Navy & Red)
-                    =================================================================== */}
-                <div className="w-full lg:flex-1 flex flex-col justify-center space-y-4">
-                  {/* 1. Leader Name in Official Navy with Red Accent & Staggered Reveal */}
-                  <div className="border-b border-slate-200 pb-3">
-                    <motion.div 
-                      initial={{ opacity: 0, x: -16 }}
-                      whileInView={{ opacity: 1, x: 0 }}
-                      viewport={{ once: true, amount: 0.25 }}
-                      transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-                      className="flex items-center gap-2 mb-1.5"
-                    >
-                      <span className="w-2 h-2 rounded-none bg-[#C8102E]" />
-                      <span className="text-[11px] font-bold uppercase tracking-wider text-[#C8102E] font-sans">
-                        {leader.designation}
+                    <div className="absolute inset-x-0 bottom-0 py-3 bg-gradient-to-t from-[#0B1A3A]/95 via-[#0B1A3A]/70 to-transparent flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                      <span className="text-[11px] sm:text-xs font-bold text-[#D4AF37] uppercase tracking-widest font-sans">
+                        View Profile ↗
                       </span>
-                    </motion.div>
-
-                    <motion.h3 
-                      initial="hidden"
-                      whileInView="visible"
-                      viewport={{ once: true, amount: 0.25 }}
-                      className="font-['Source_Serif_4','Source_Serif_Pro','Georgia',serif] text-2xl sm:text-3xl lg:text-[34px] font-bold text-[#0A1931] tracking-tight leading-snug"
-                    >
-                      {leader.name.split(' ').map((word, wIdx) => (
-                        <motion.span
-                          key={wIdx}
-                          variants={{
-                            hidden: { opacity: 0, y: 16 },
-                            visible: { 
-                              opacity: 1, 
-                              y: 0, 
-                              transition: { 
-                                duration: 0.55, 
-                                delay: wIdx * 0.08, 
-                                ease: [0.16, 1, 0.3, 1] 
-                              } 
-                            }
-                          }}
-                          className="inline-block mr-[0.25em] last:mr-0"
-                        >
-                          {word}
-                        </motion.span>
-                      ))}
-                    </motion.h3>
-
-                    {leader.secondaryDesignation && (
-                      <p className="text-xs sm:text-[13px] text-slate-500 font-sans mt-0.5">
-                        {leader.secondaryDesignation}
-                      </p>
-                    )}
-                  </div>
-
-                  {/* 2. Official Leadership Message Body — Full Complete Text */}
-                  <div className="space-y-3">
-                    <motion.div 
-                      initial={{ opacity: 0, y: 12 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      viewport={{ once: true, amount: 0.25 }}
-                      transition={{ duration: 0.5, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-                      className="flex items-center gap-1.5 text-[#0A1931]"
-                    >
-                      <Quote size={15} className="text-[#C8102E] shrink-0" aria-hidden="true" />
-                      <span className="text-xs font-bold uppercase tracking-wide text-[#0A1931] font-sans">
-                        {leader.messageTitle}
-                      </span>
-                    </motion.div>
-
-                    <div className="space-y-2.5 text-[14px] sm:text-[15px] text-slate-700 leading-relaxed font-sans">
-                      {leader.fullMessage.map((paragraph, pIdx) => (
-                        <div key={pIdx}>
-                          {paragraph.includes('\n') ? (
-                            <div className="font-bold text-[#0A1931] text-xs sm:text-sm tracking-wide uppercase pt-2">
-                              {paragraph.split('\n').map((line, lIdx) => (
-                                <span 
-                                  key={lIdx} 
-                                  className={lIdx === 1 ? "block text-sm sm:text-base font-extrabold text-[#C8102E] mt-0.5 tracking-wider font-serif" : "block text-slate-600 font-bold text-xs tracking-wider"}
-                                >
-                                  {line}
-                                </span>
-                              ))}
-                            </div>
-                          ) : (
-                            <p className="font-normal leading-relaxed text-slate-800">
-                              {paragraph}
-                            </p>
-                          )}
-                        </div>
-                      ))}
                     </div>
                   </div>
-
-                  {/* 3. Interactive Profile Button & Quick Contact */}
-                  <div className="pt-2 flex flex-wrap items-center gap-3">
-                    <button
-                      onClick={() => setSelectedLeader(leader)}
-                      className="inline-flex items-center gap-2 text-xs sm:text-sm font-semibold text-[#0A1931] hover:text-white bg-slate-50 hover:bg-[#0A1931] px-4 py-2.5 rounded-none border border-slate-300 hover:border-[#0A1931] transition-all duration-200 cursor-pointer group shadow-2xs font-sans"
-                      aria-label={`View full profile of ${leader.name}`}
-                    >
-                      <span>View Profile & Credentials</span>
-                      <ArrowUpRight size={14} className="text-[#C8102E] group-hover:text-white transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-                    </button>
-
-                    {leader.contactInfo?.email && (
-                      <a
-                        href={`mailto:${leader.contactInfo.email}`}
-                        className="inline-flex items-center gap-1.5 text-xs font-semibold text-slate-700 hover:text-[#C8102E] bg-white px-3 py-2 border border-slate-300 hover:border-[#C8102E] transition-colors shadow-2xs font-sans"
-                      >
-                        <Mail size={13} className="text-[#C8102E]" />
-                        <span>{leader.contactInfo.email}</span>
-                      </a>
-                    )}
-
-                    {leader.contactInfo?.website && (
-                      <a
-                        href={leader.contactInfo.website}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center gap-1.5 text-xs font-semibold text-slate-700 hover:text-[#0A1931] bg-white px-3 py-2 border border-slate-300 hover:border-[#0A1931] transition-colors shadow-2xs font-sans"
-                      >
-                        <Globe size={13} className="text-[#0A1931]" />
-                        <span>{leader.contactInfo.website}</span>
-                        <ExternalLink size={11} className="text-slate-400" />
-                      </a>
-                    )}
-                  </div>
-
                 </div>
-              </article>
-            </React.Fragment>
-          );
-        })}
+              </div>
+
+              {/* Identity & Designation Badge */}
+              <div className="text-center mt-5 sm:mt-6 flex flex-col items-center">
+                <h3 className="font-['Source_Serif_4','Source_Serif_Pro','Georgia',serif] text-2xl sm:text-3xl font-bold text-[#0B1A3A] dark:text-white tracking-tight uppercase">
+                  {leader.name}
+                </h3>
+                <span 
+                  className="inline-block px-3 py-1 text-[11px] sm:text-xs font-bold uppercase tracking-[0.18em] rounded-none mt-2.5 font-sans bg-[#0B1A3A] dark:bg-[#0e2248] text-[#D4AF37] dark:text-[#F3D368] border border-[#0B1A3A] dark:border-[#D4AF37]/30 shadow-xs"
+                >
+                  {leader.designation}
+                </span>
+              </div>
+
+              {/* Leadership Message (with gold quotation mark & italic Source Serif styling) */}
+              <div className="relative mt-6 max-w-xl mx-auto">
+                <span 
+                  className="font-serif text-4xl sm:text-5xl leading-none select-none float-left mr-2.5 -mt-1 text-[#D4AF37] dark:text-[#E5C158]"
+                  aria-hidden="true"
+                >
+                  “
+                </span>
+                <p className="font-['Source_Serif_4','Source_Serif_Pro','Georgia',serif] text-base sm:text-[17px] text-[#1E293B] dark:text-slate-200 leading-[1.78] italic text-justify">
+                  {leader.fullMessage.join(' ')}
+                </p>
+              </div>
+            </div>
+
+            {/* Bottom Action Link */}
+            <div className="pt-4 border-t border-slate-200/80 dark:border-white/10 flex items-center justify-center text-xs font-sans max-w-xl mx-auto w-full">
+              <button
+                type="button"
+                onClick={() => setSelectedLeader(leader)}
+                className="inline-flex items-center gap-1.5 font-bold text-[#0B1A3A] dark:text-slate-200 hover:text-[#C8102E] dark:hover:text-[#D4AF37] transition-colors cursor-pointer group py-1"
+                aria-label={`View Full Profile & Credentials of ${leader.name}`}
+              >
+                <span className="underline decoration-slate-300 dark:decoration-slate-600 underline-offset-4 group-hover:decoration-[#C8102E] dark:group-hover:decoration-[#D4AF37]">
+                  View Profile &amp; Credentials
+                </span>
+                <ArrowUpRight size={14} className="text-[#C8102E] dark:text-[#D4AF37] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+              </button>
+            </div>
+          </article>
+        ))}
       </div>
 
       {/* =========================================================================
@@ -565,10 +382,10 @@ export const OurLeadershipSection: React.FC<OurLeadershipSectionProps> = () => {
               className="bg-white w-full max-w-3xl rounded-none sm:rounded-sm border border-slate-300 shadow-2xl overflow-hidden my-8 max-h-[90vh] flex flex-col text-slate-900"
             >
               {/* Modal Header */}
-              <div className="flex items-center justify-between px-6 py-4 bg-[#0A1931] text-white border-b border-[#0A1931]">
+              <div className="flex items-center justify-between px-6 py-4 bg-[#0B1A3A] text-white border-b border-[#0B1A3A]">
                 <div className="flex items-center gap-2">
-                  <span className="w-2 h-2 rounded-none bg-[#C8102E]" />
-                  <span className="text-xs font-bold uppercase tracking-widest text-slate-300 font-sans">
+                  <span className="w-2 h-2 rounded-none bg-[#D4AF37]" />
+                  <span className="text-xs font-bold uppercase tracking-widest text-[#D4AF37] font-sans">
                     Institutional Leadership Profile
                   </span>
                 </div>
@@ -586,7 +403,7 @@ export const OurLeadershipSection: React.FC<OurLeadershipSectionProps> = () => {
                 
                 {/* Profile Hero Section */}
                 <div className="flex flex-col sm:flex-row items-center sm:items-start gap-6 pb-6 border-b border-slate-200">
-                  <div className="w-32 sm:w-40 aspect-[3/4] shrink-0 border-2 border-slate-300 rounded-none overflow-hidden bg-[#0A1931] shadow-xs relative">
+                  <div className="w-32 h-32 sm:w-40 sm:h-40 rounded-full shrink-0 border-[3px] border-[#D4AF37] ring-4 ring-slate-100 dark:ring-slate-800 overflow-hidden bg-[#0B1A3A] shadow-xl relative">
                     <img
                       src={selectedLeader.portraitUrl}
                       alt={selectedLeader.name}
@@ -595,13 +412,9 @@ export const OurLeadershipSection: React.FC<OurLeadershipSectionProps> = () => {
                         height: '100%',
                         minHeight: '100%',
                         objectFit: 'cover',
-                        objectPosition: selectedLeader.id === 'sohail-afzal' ? 'center 12%' : 'center',
+                        objectPosition: selectedLeader.id === 'prof-dr-aurangzaib-virk' ? 'center 14%' : 'center 12%',
                       }}
-                      className={`w-full h-full !h-full min-h-full ${
-                        selectedLeader.id === 'sohail-afzal'
-                          ? 'object-cover scale-110'
-                          : 'object-cover object-center'
-                      }`}
+                      className="w-full h-full object-cover"
                       onError={(e) => {
                         (e.target as HTMLImageElement).src = selectedLeader.fallbackUrl;
                       }}
@@ -609,13 +422,13 @@ export const OurLeadershipSection: React.FC<OurLeadershipSectionProps> = () => {
                   </div>
 
                   <div className="space-y-1 text-center sm:text-left">
-                    <span className="text-[11px] font-bold uppercase tracking-wider text-[#C8102E] font-sans">
+                    <span className="inline-block px-2.5 py-0.5 text-[11px] font-bold uppercase tracking-wider bg-[#0B1A3A] text-[#D4AF37] font-sans">
                       {selectedLeader.designation}
                     </span>
 
                     <h3
                       id="modal-leader-name"
-                      className="font-['Source_Serif_4','Source_Serif_Pro','Georgia',serif] text-2xl sm:text-3xl font-bold text-[#0A1931] tracking-tight"
+                      className="font-['Source_Serif_4','Source_Serif_Pro','Georgia',serif] text-2xl sm:text-3xl font-bold text-[#0B1A3A] tracking-tight"
                     >
                       {selectedLeader.name}
                     </h3>

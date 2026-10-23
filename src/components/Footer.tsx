@@ -233,8 +233,8 @@ export const Footer: React.FC<FooterProps> = ({
               {/* Email */}
               <div className="flex items-center gap-3">
                 <Mail size={16} className="text-white shrink-0" />
-                <a href="mailto:info@ucp.edu.pk" className="text-white hover:underline">
-                  info@ucp.edu.pk
+                <a href="mailto:Principal.bahawalpur@ucp.edu.pk" className="text-white hover:underline">
+                  Principal.bahawalpur@ucp.edu.pk
                 </a>
               </div>
 

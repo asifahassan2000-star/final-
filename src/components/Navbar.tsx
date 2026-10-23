@@ -123,6 +123,27 @@ export const Navbar: React.FC<NavbarProps> = ({
     return () => window.removeEventListener('open-ucp-search', handleOpenSearch);
   }, []);
 
+  // Close desktop dropdowns on outside click or Escape
+  useEffect(() => {
+    if (!activeDropdown) return;
+    const handleClickOutside = (e: MouseEvent) => {
+      const target = e.target as HTMLElement;
+      if (!target.closest('#nav-admissions-wrapper') && !target.closest('#nav-about-wrapper')) {
+        setActiveDropdown(null);
+      }
+    };
+    const handleEsc = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setActiveDropdown(null);
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    window.addEventListener('keydown', handleEsc);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+      window.removeEventListener('keydown', handleEsc);
+    };
+  }, [activeDropdown]);
+
+
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
@@ -363,7 +384,7 @@ export const Navbar: React.FC<NavbarProps> = ({
   return (
     <header 
       id="main-nav-header"
-      className={`sticky top-0 z-50 transition-all duration-300 ${
+      className={`sticky top-0 z-[100] transition-all duration-300 ${
         isScrolled 
           ? 'bg-[#092242]/95 backdrop-blur-md shadow-xl shadow-black/30 py-2.5 border-b border-[#183a66]' 
           : 'bg-[#092242] py-3.5 border-b border-[#122e54]'
@@ -429,12 +450,14 @@ export const Navbar: React.FC<NavbarProps> = ({
 
             {/* 2. Admissions Dropdown */}
             <div 
+              id="nav-admissions-wrapper"
               className="relative shrink-0"
               onMouseEnter={() => setActiveDropdown('admissions')}
               onMouseLeave={() => setActiveDropdown(null)}
             >
               <button
                 id="nav-admissions-btn"
+                type="button"
                 onClick={() => {
                   setActiveDropdown(activeDropdown === 'admissions' ? null : 'admissions');
                 }}
@@ -449,22 +472,21 @@ export const Navbar: React.FC<NavbarProps> = ({
               <AnimatePresence>
                 {activeDropdown === 'admissions' && (
                   <motion.div 
-                    initial={{ opacity: 0, y: -6 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -6 }}
-                    transition={{ duration: 0.22, ease: 'easeOut' }}
-                    className="absolute left-0 mt-1.5 w-[260px] max-h-[380px] bg-[#FFFFFF] text-[#333333] rounded-[6px] shadow-md border border-[#E5E7EB] p-1.5 overflow-y-auto dropdown-scrollbar z-50 text-[13px]"
-                    onMouseEnter={() => setActiveDropdown('admissions')}
+                    initial={{ opacity: 0, y: 12, scale: 0.98 }}
+                    animate={{ opacity: 1, y: 0, scale: 1 }}
+                    exit={{ opacity: 0, y: 8, scale: 0.98 }}
+                    transition={{ duration: 0.22, ease: [0.16, 1, 0.3, 1] }}
+                    className="absolute left-0 mt-2 w-[320px] sm:w-[350px] bg-white dark:bg-[#071322] text-[#0B1A3A] dark:text-white rounded-lg shadow-2xl border border-slate-200/90 dark:border-white/10 overflow-hidden z-[110] divide-y divide-slate-100 dark:divide-white/10 font-sans"
+                    onClick={(e) => e.stopPropagation()}
                   >
                     <a
                       href="https://admissions.ucpcolleges.pgc.edu/login?returnUrl=%2Flogin%3FreturnUrl%3D%252F"
                       target="_blank"
                       rel="noopener noreferrer"
                       onClick={() => setActiveDropdown(null)}
-                      className="w-full text-left py-[8px] px-[14px] rounded-[6px] hover:bg-[#F5F5F5] flex items-center justify-between text-[#333333] font-medium"
+                      className="w-full text-left px-5 py-3.5 sm:py-4 text-[15px] sm:text-[16px] font-semibold text-[#0B1A3A] dark:text-slate-100 hover:bg-slate-50 dark:hover:bg-white/5 hover:text-[#C8102E] dark:hover:text-[#F3D368] transition-colors flex items-center justify-between cursor-pointer"
                     >
                       <span>Apply Online</span>
-                      <span className="text-[11px] text-[#666666]">↗</span>
                     </a>
 
                     <button
@@ -473,10 +495,9 @@ export const Navbar: React.FC<NavbarProps> = ({
                         setActiveDropdown(null);
                         onOpenFee();
                       }}
-                      className="w-full text-left py-[8px] px-[14px] rounded-[6px] hover:bg-[#F5F5F5] flex items-center justify-between text-[#333333] cursor-pointer"
+                      className="w-full text-left px-5 py-3.5 sm:py-4 text-[15px] sm:text-[16px] font-semibold text-[#0B1A3A] dark:text-slate-100 hover:bg-slate-50 dark:hover:bg-white/5 hover:text-[#C8102E] dark:hover:text-[#F3D368] transition-colors flex items-center justify-between cursor-pointer"
                     >
-                      <span>Fee Structure & Programs</span>
-                      <span className="text-[11px] text-[#666666]">→</span>
+                      <span>Fee Structure &amp; Programs</span>
                     </button>
 
                     <button
@@ -486,10 +507,9 @@ export const Navbar: React.FC<NavbarProps> = ({
                         if (onOpenScholarshipsPage) onOpenScholarshipsPage();
                         else window.open('https://ucpcolleges.pgc.edu/scholarship/', '_blank', 'noopener,noreferrer');
                       }}
-                      className="w-full text-left py-[8px] px-[14px] rounded-[6px] hover:bg-[#F5F5F5] flex items-center justify-between text-[#333333] cursor-pointer"
+                      className="w-full text-left px-5 py-3.5 sm:py-4 text-[15px] sm:text-[16px] font-semibold text-[#0B1A3A] dark:text-slate-100 hover:bg-slate-50 dark:hover:bg-white/5 hover:text-[#C8102E] dark:hover:text-[#F3D368] transition-colors flex items-center justify-between cursor-pointer"
                     >
-                      <span>Scholarships & Concessions</span>
-                      <span className="text-[11px] text-[#666666]">↗</span>
+                      <span>Scholarships &amp; Concessions</span>
                     </button>
 
                     <button
@@ -499,7 +519,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                         if (onOpenProgrammesPage) onOpenProgrammesPage();
                         else onOpenInfo('merit-list'); 
                       }}
-                      className="w-full text-left py-[8px] px-[14px] rounded-[6px] hover:bg-[#F5F5F5] flex items-center justify-between text-[#333333] cursor-pointer"
+                      className="w-full text-left px-5 py-3.5 sm:py-4 text-[15px] sm:text-[16px] font-semibold text-[#0B1A3A] dark:text-slate-100 hover:bg-slate-50 dark:hover:bg-white/5 hover:text-[#C8102E] dark:hover:text-[#F3D368] transition-colors flex items-center justify-between cursor-pointer"
                     >
                       <span>Academic Programs</span>
                     </button>
@@ -511,7 +531,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                         if (onOpenCalendar) onOpenCalendar();
                         else onOpenInfo('academic-calendar');
                       }}
-                      className="w-full text-left py-[8px] px-[14px] rounded-[6px] hover:bg-[#F5F5F5] flex items-center justify-between text-[#333333] cursor-pointer"
+                      className="w-full text-left px-5 py-3.5 sm:py-4 text-[15px] sm:text-[16px] font-semibold text-[#0B1A3A] dark:text-slate-100 hover:bg-slate-50 dark:hover:bg-white/5 hover:text-[#C8102E] dark:hover:text-[#F3D368] transition-colors flex items-center justify-between cursor-pointer"
                     >
                       <span>Academic Calendar</span>
                     </button>
@@ -526,9 +546,9 @@ export const Navbar: React.FC<NavbarProps> = ({
                           handleNavClick('scholarship-calculator');
                         }
                       }}
-                      className="w-full text-left py-[8px] px-[14px] rounded-[6px] hover:bg-[#F5F5F5] flex items-center justify-between text-[#333333] cursor-pointer"
+                      className="w-full text-left px-5 py-3.5 sm:py-4 text-[15px] sm:text-[16px] font-semibold text-[#0B1A3A] dark:text-slate-100 hover:bg-slate-50 dark:hover:bg-white/5 hover:text-[#C8102E] dark:hover:text-[#F3D368] transition-colors flex items-center justify-between cursor-pointer"
                     >
-                      <span>Eligibility & Criteria</span>
+                      <span>Eligibility &amp; Criteria</span>
                     </button>
                   </motion.div>
                 )}
@@ -569,12 +589,14 @@ export const Navbar: React.FC<NavbarProps> = ({
 
             {/* 4. About Dropdown (All items organized in this folder) */}
             <div 
+              id="nav-about-wrapper"
               className="relative shrink-0"
               onMouseEnter={() => setActiveDropdown('about')}
               onMouseLeave={() => setActiveDropdown(null)}
             >
               <button
                 id="nav-about-btn"
+                type="button"
                 onClick={() => {
                   setActiveDropdown(activeDropdown === 'about' ? null : 'about');
                 }}
@@ -589,17 +611,13 @@ export const Navbar: React.FC<NavbarProps> = ({
               <AnimatePresence>
                 {activeDropdown === 'about' && (
                   <motion.div 
-                    initial={{ opacity: 0, y: -6 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -6 }}
-                    transition={{ duration: 0.22, ease: 'easeOut' }}
-                    className="absolute left-0 xl:left-auto xl:right-0 mt-1.5 w-[260px] max-h-[380px] bg-[#FFFFFF] text-[#333333] rounded-[6px] shadow-md border border-[#E5E7EB] p-1.5 overflow-y-auto dropdown-scrollbar z-50 text-[13px]"
-                    onMouseEnter={() => setActiveDropdown('about')}
+                    initial={{ opacity: 0, y: 12, scale: 0.98 }}
+                    animate={{ opacity: 1, y: 0, scale: 1 }}
+                    exit={{ opacity: 0, y: 8, scale: 0.98 }}
+                    transition={{ duration: 0.22, ease: [0.16, 1, 0.3, 1] }}
+                    className="absolute left-0 xl:left-auto xl:right-0 mt-2 w-[340px] sm:w-[360px] bg-white dark:bg-[#071322] text-[#0B1A3A] dark:text-white rounded-lg shadow-2xl border border-slate-200/90 dark:border-white/10 overflow-hidden z-[110] divide-y divide-slate-100 dark:divide-white/10 font-sans"
+                    onClick={(e) => e.stopPropagation()}
                   >
-                    <div className="px-[14px] py-1 text-[11px] font-bold text-[#888888] uppercase tracking-wider">
-                      About UCP
-                    </div>
-
                     <button
                       id="nav-dropdown-about-us-btn"
                       type="button"
@@ -609,32 +627,24 @@ export const Navbar: React.FC<NavbarProps> = ({
                           onOpenAboutUsPage();
                         }
                       }}
-                      className="w-full text-left py-[8px] px-[14px] rounded-[6px] hover:bg-[#F5F5F5] text-[#333333] flex items-center justify-between cursor-pointer group"
+                      className="w-full text-left px-5 py-3.5 sm:py-4 text-[15px] sm:text-[16px] font-semibold text-[#0B1A3A] dark:text-slate-100 hover:bg-slate-50 dark:hover:bg-white/5 hover:text-[#C8102E] dark:hover:text-[#F3D368] transition-colors flex items-center justify-between cursor-pointer"
                     >
-                      <span className="flex items-center gap-2">
-                        <Sparkles size={14} className="text-[#a30f16]" />
-                        <span className="font-semibold text-[#0F2C61]">About Us</span>
-                      </span>
-                      <span className="text-[11px] text-[#a30f16] font-medium group-hover:translate-x-0.5 transition-transform">Story &amp; Vision ↗</span>
+                      <span>About Us (Our Story &amp; Vision)</span>
                     </button>
 
                     <button
                       id="nav-dropdown-location-btn"
                       type="button"
                       onClick={() => { setActiveDropdown(null); handleNavClick('location-section'); }}
-                      className="w-full text-left py-[8px] px-[14px] rounded-[6px] hover:bg-[#F5F5F5] text-[#333333] flex items-center justify-between cursor-pointer group"
+                      className="w-full text-left px-5 py-3.5 sm:py-4 text-[15px] sm:text-[16px] font-semibold text-[#0B1A3A] dark:text-slate-100 hover:bg-slate-50 dark:hover:bg-white/5 hover:text-[#C8102E] dark:hover:text-[#F3D368] transition-colors flex items-center justify-between cursor-pointer"
                     >
-                      <span className="flex items-center gap-2">
-                        <MapPin size={14} className="text-[#a30f16]" />
-                        <span className="font-medium text-[#0F2C61]">Our Location</span>
-                      </span>
-                      <span className="text-[11px] text-[#a30f16] font-medium group-hover:translate-x-0.5 transition-transform">Map & Directions ↗</span>
+                      <span>Our Location (Map &amp; Directions)</span>
                     </button>
 
                     <button
                       type="button"
                       onClick={() => { setActiveDropdown(null); handleNavClick('leadership-section'); }}
-                      className="w-full text-left py-[8px] px-[14px] rounded-[6px] hover:bg-[#F5F5F5] text-[#333333] flex items-center justify-between cursor-pointer"
+                      className="w-full text-left px-5 py-3.5 sm:py-4 text-[15px] sm:text-[16px] font-semibold text-[#0B1A3A] dark:text-slate-100 hover:bg-slate-50 dark:hover:bg-white/5 hover:text-[#C8102E] dark:hover:text-[#F3D368] transition-colors flex items-center justify-between cursor-pointer"
                     >
                       <span>Our Leadership</span>
                     </button>
@@ -642,9 +652,9 @@ export const Navbar: React.FC<NavbarProps> = ({
                     <button
                       type="button"
                       onClick={() => { setActiveDropdown(null); handleNavClick('vision-rankings-section'); }}
-                      className="w-full text-left py-[8px] px-[14px] rounded-[6px] hover:bg-[#F5F5F5] text-[#333333] flex items-center justify-between cursor-pointer"
+                      className="w-full text-left px-5 py-3.5 sm:py-4 text-[15px] sm:text-[16px] font-semibold text-[#0B1A3A] dark:text-slate-100 hover:bg-slate-50 dark:hover:bg-white/5 hover:text-[#C8102E] dark:hover:text-[#F3D368] transition-colors flex items-center justify-between cursor-pointer"
                     >
-                      <span>Vision & Rankings</span>
+                      <span>Vision &amp; Rankings</span>
                     </button>
 
                     <button
@@ -658,7 +668,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                           handleNavClick('facilities-section');
                         }
                       }}
-                      className="w-full text-left py-[8px] px-[14px] rounded-[6px] hover:bg-[#F5F5F5] text-[#333333] flex items-center justify-between cursor-pointer"
+                      className="w-full text-left px-5 py-3.5 sm:py-4 text-[15px] sm:text-[16px] font-semibold text-[#0B1A3A] dark:text-slate-100 hover:bg-slate-50 dark:hover:bg-white/5 hover:text-[#C8102E] dark:hover:text-[#F3D368] transition-colors flex items-center justify-between cursor-pointer"
                     >
                       <span>Campus Facilities</span>
                     </button>
@@ -673,9 +683,9 @@ export const Navbar: React.FC<NavbarProps> = ({
                           handleNavClick('campus-section'); 
                         }
                       }}
-                      className="w-full text-left py-[8px] px-[14px] rounded-[6px] hover:bg-[#F5F5F5] text-[#333333] flex items-center justify-between cursor-pointer"
+                      className="w-full text-left px-5 py-3.5 sm:py-4 text-[15px] sm:text-[16px] font-semibold text-[#0B1A3A] dark:text-slate-100 hover:bg-slate-50 dark:hover:bg-white/5 hover:text-[#C8102E] dark:hover:text-[#F3D368] transition-colors flex items-center justify-between cursor-pointer"
                     >
-                      <span>Campus Life & Activities</span>
+                      <span>Campus Life &amp; Activities</span>
                     </button>
 
                     <button
@@ -685,7 +695,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                         setActiveDropdown(null); 
                         if (onOpenLegacyPage) onOpenLegacyPage(); 
                       }}
-                      className="w-full text-left py-[8px] px-[14px] rounded-[6px] hover:bg-[#F5F5F5] text-[#333333] flex items-center justify-between cursor-pointer"
+                      className="w-full text-left px-5 py-3.5 sm:py-4 text-[15px] sm:text-[16px] font-semibold text-[#0B1A3A] dark:text-slate-100 hover:bg-slate-50 dark:hover:bg-white/5 hover:text-[#C8102E] dark:hover:text-[#F3D368] transition-colors flex items-center justify-between cursor-pointer"
                     >
                       <span>Our Legacy</span>
                     </button>
@@ -693,11 +703,10 @@ export const Navbar: React.FC<NavbarProps> = ({
                     <button
                       type="button"
                       onClick={() => { setActiveDropdown(null); onOpenInfo('harassment-policy'); }}
-                      className="w-full text-left py-[8px] px-[14px] rounded-[6px] hover:bg-[#F5F5F5] text-[#333333] flex items-center justify-between cursor-pointer"
+                      className="w-full text-left px-5 py-3.5 sm:py-4 text-[15px] sm:text-[16px] font-semibold text-[#0B1A3A] dark:text-slate-100 hover:bg-slate-50 dark:hover:bg-white/5 hover:text-[#C8102E] dark:hover:text-[#F3D368] transition-colors flex items-center justify-between cursor-pointer"
                     >
                       <span>Harassment Protection Policy</span>
                     </button>
-
                   </motion.div>
                 )}
               </AnimatePresence>
@@ -757,14 +766,14 @@ export const Navbar: React.FC<NavbarProps> = ({
         <div className="lg:hidden">
           {/* Backdrop overlay */}
           <div 
-            className="fixed inset-0 bg-black/60 z-50 transition-opacity backdrop-blur-[2px]"
+            className="fixed inset-0 bg-black/60 z-[120] transition-opacity backdrop-blur-[2px]"
             onClick={() => setMobileMenuOpen(false)}
             aria-hidden="true"
           />
 
           {/* Full-screen drawer from right, crisp light/dark mode background, width 320px, with X close button */}
           <div 
-            className="fixed top-0 right-0 h-full w-[320px] max-w-[85vw] bg-white dark:bg-[#071322] text-[#0B1A3A] dark:text-white z-50 shadow-2xl flex flex-col justify-between overflow-hidden animate-in slide-in-from-right duration-300 border-l border-slate-200/80 dark:border-white/10"
+            className="fixed top-0 right-0 h-full w-[320px] max-w-[85vw] bg-white dark:bg-[#071322] text-[#0B1A3A] dark:text-white z-[125] shadow-2xl flex flex-col justify-between overflow-hidden animate-in slide-in-from-right duration-300 border-l border-slate-200/80 dark:border-white/10"
             role="dialog"
             aria-modal="true"
             aria-label="Mobile Navigation Drawer"
@@ -1086,7 +1095,7 @@ export const Navbar: React.FC<NavbarProps> = ({
           ========================================================================= */}
       {isSearchOpen && (
         <div 
-          className="fixed inset-0 z-50 bg-black/70 backdrop-blur-xs flex items-start justify-center pt-12 sm:pt-20 px-3 sm:px-6 animate-in fade-in duration-150"
+          className="fixed inset-0 z-[130] bg-black/70 backdrop-blur-xs flex items-start justify-center pt-12 sm:pt-20 px-3 sm:px-6 animate-in fade-in duration-150"
           onClick={() => setIsSearchOpen(false)}
         >
           <div 
