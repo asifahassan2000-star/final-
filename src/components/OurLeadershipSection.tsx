@@ -57,80 +57,6 @@ export interface LeaderProfile {
 
 const LEADERSHIP_PROFILES: LeaderProfile[] = [
   {
-    id: 'sohail-afzal',
-    name: 'Prof. Sohail Afzal',
-    designation: 'Executive Director PGC (UCP)',
-    secondaryDesignation: 'Executive Director, Educational Excellence Limited · Member BoG, UCP & MAJU',
-    officialRole: 'Executive Director PGC (UCP) & Member Board of Governors, UCP',
-    portraitUrl: '/assets/leadership/sohail_afzal_user_selected_3_4.jpg',
-    fallbackUrl: '/images/HffRMp9g_Whats-App-Image-2026-10-20-at-2-07-37-AM.jpg',
-    messageTitle: 'Executive Director’s Message',
-    fullMessage: [
-      '“At UCP we are not just means to education but a family that cares, grooms and helps unlock the true potential of our students. We are in a constant relentless pursuit to help provide a better future to our youth and build a society that is wise, intelligent and educated. Your trust in us motivates and inspires us to continue doing more so that you can shine in every aspect of your life.”',
-      'By the Executive Director PGC (UCP)\nPROF. SOHAIL AFZAL'
-    ],
-    contactInfo: {
-      email: 'sohail@pgc.edu',
-      website: 'http://pgc.edu/',
-      categories: ['Entrepreneur', 'Executive Director', 'Educational Excellence Limited']
-    },
-    portfolio: [
-      {
-        role: 'Executive Director',
-        organizations: [
-          'Punjab Group of Colleges (PGC)',
-          'Educational Excellence Limited'
-        ]
-      },
-      {
-        role: 'Member, Board of Governors',
-        organizations: [
-          'University of Central Punjab (UCP)',
-          'Mohammad Ali Jinnah University (MAJU)',
-          'Capital University of Science & Technology (CUST)'
-        ]
-      },
-      {
-        role: 'Executive Governance & Operations',
-        organizations: [
-          'Punjab Colleges Network (100+ Cities Nationwide)',
-          'Academic Workforce (3,000+ Educators & Teachers)'
-        ]
-      },
-      {
-        role: 'Educational Entrepreneurship & Strategic Leadership',
-        organizations: [
-          'Allied Schools & EFA System',
-          'Association of Private Sector Universities of Pakistan (APSUP)'
-        ]
-      }
-    ],
-    biography: {
-      executiveProfile: 'Mr. Sohail Afzal is a highly accomplished professional with a diverse background in education, technology, media, and community involvement. Currently serving as the Executive Director of Punjab Group, he oversees operations in over 100 cities and leads a team of over 3000 teachers. In addition to his role at Punjab Group, Mr. Sohail Afzal holds key positions as a Member of the Board of Governors at Muhammad Ali Jinnah University and the University of Central Punjab, as well as Executive Director of Educational Excellence Limited.',
-      visionQuote: '“At UCP we are not just means to education but a family that cares, grooms and helps unlock the true potential of our students.”',
-      motto: 'CARE · GROOMING · UNLOCKING STUDENT POTENTIAL',
-      summary: 'Prof. Sohail Afzal, Executive Director of Punjab Group (UCP), has received the Academic Excellence Award from the Association of Private Sector Universities of Pakistan (APSUP) for his outstanding achievements and significant contributions to Pakistani academia. His efforts have enhanced educational standards at UCP and have had a lasting influence on Pakistan\'s academic environment.',
-      qualification: 'Executive Leadership & Higher Education Governance',
-      highlights: [
-        'Executive Director of Punjab Group, overseeing educational operations spanning over 100 cities across Pakistan.',
-        'Leads and inspires an academic workforce and team of over 3,000 teachers and faculty members.',
-        'Member of the Board of Governors at the University of Central Punjab (UCP) and Mohammad Ali Jinnah University (MAJU).',
-        'Executive Director of Educational Excellence Limited, directing nationwide quality benchmarks and pedagogy.',
-        'Conferred the prestigious Academic Excellence Award by the Association of Private Sector Universities of Pakistan (APSUP) for outstanding achievements in Pakistani academia.',
-        'Pioneered educational technologies, digitized student learning systems, and merit-based youth empowerment programs.'
-      ],
-      awards: [
-        'Academic Excellence Award — Conferred by the Association of Private Sector Universities of Pakistan (APSUP) for outstanding achievements and significant contributions to Pakistani academia and enhancing educational standards at UCP.',
-        'Distinguished Executive Leadership Recognition — Punjab Group of Colleges (PGC) for institutional development and academic excellence across 100+ cities.'
-      ],
-      contactInfo: {
-        email: 'sohail@pgc.edu',
-        website: 'http://pgc.edu/',
-        categories: ['Entrepreneur', 'Executive Director', 'Educational Excellence Limited']
-      }
-    }
-  },
-  {
     id: 'prof-hamid-iqbal',
     name: 'Prof. Hamid Iqbal',
     designation: 'Director PGC & UCP Bahawalpur Cluster',
@@ -162,7 +88,7 @@ const LEADERSHIP_PROFILES: LeaderProfile[] = [
     designation: 'Principal, UCP Bahawalpur Campus',
     secondaryDesignation: 'Principal, UCP Bahawalpur Campus',
     officialRole: 'Principal, UCP Bahawalpur Campus',
-    portraitUrl: 'https://ik.imagekit.io/Muffins/IMG_3542.PNG?updatedAt=1792580124994',
+    portraitUrl: 'https://ik.imagekit.io/Muffins/image%20-%202026-10-23T154101.204.png',
     fallbackUrl: '/assets/campus/prof_aurangzaib_virk.png',
     messageTitle: 'Principal’s Message',
     fullMessage: [
@@ -213,13 +139,9 @@ const MobileLeaderCard: React.FC<{
               height: '100%',
               minHeight: '100%',
               objectFit: 'cover',
-              objectPosition: leader.id === 'sohail-afzal' ? 'center 12%' : 'center',
+              objectPosition: leader.id === 'prof-dr-aurangzaib-virk' ? 'center 14%' : 'center 12%',
             }}
-            className={`w-full h-full !h-full min-h-full ${
-              leader.id === 'sohail-afzal'
-                ? 'object-cover scale-110'
-                : 'object-cover object-center'
-            }`}
+            className="w-full h-full !h-full min-h-full object-cover"
             onError={(e) => {
               const target = e.target as HTMLImageElement;
               if (target.src !== leader.fallbackUrl) {
@@ -376,15 +298,15 @@ export const OurLeadershipSection: React.FC<OurLeadershipSectionProps> = () => {
       <div ref={headerRef} className="max-w-5xl mx-auto text-center px-4 sm:px-6 mb-12 sm:mb-16">
         <div className="inline-flex items-center gap-2 mb-2.5">
           <span 
-            className="w-5 h-[2px] bg-[#C8102E] origin-right transition-transform duration-500 ease-out"
+            className="w-5 h-[2px] bg-[#D4AF37] origin-right transition-transform duration-500 ease-out"
             style={{ transform: isHeaderVisible ? 'scaleX(1)' : 'scaleX(0.7)' }}
             aria-hidden="true" 
           />
-          <span className="text-[11px] font-bold uppercase tracking-[0.22em] text-[#C8102E] font-sans">
-            Campus Leadership
+          <span className="text-[11px] font-bold uppercase tracking-[0.22em] text-[#D4AF37] font-sans">
+            UCP BAHAWALPUR
           </span>
           <span 
-            className="w-5 h-[2px] bg-[#C8102E] origin-left transition-transform duration-500 ease-out"
+            className="w-5 h-[2px] bg-[#D4AF37] origin-left transition-transform duration-500 ease-out"
             style={{ transform: isHeaderVisible ? 'scaleX(1)' : 'scaleX(0.7)' }}
             aria-hidden="true" 
           />
@@ -458,13 +380,9 @@ export const OurLeadershipSection: React.FC<OurLeadershipSectionProps> = () => {
                         height: '100%',
                         minHeight: '100%',
                         objectFit: 'cover',
-                        objectPosition: leader.id === 'sohail-afzal' ? 'center 12%' : 'center',
+                        objectPosition: leader.id === 'prof-dr-aurangzaib-virk' ? 'center 14%' : 'center 12%',
                       }}
-                      className={`w-full h-full !h-full min-h-full ${
-                        leader.id === 'sohail-afzal'
-                          ? 'object-cover scale-[1.12] group-hover:scale-[1.18]'
-                          : 'object-cover object-center group-hover:scale-105'
-                      } transition-transform duration-500 ease-out`}
+                      className="w-full h-full !h-full min-h-full object-cover object-center group-hover:scale-105 transition-transform duration-500 ease-out"
                       onError={(e) => {
                         const target = e.target as HTMLImageElement;
                         if (target.src !== leader.fallbackUrl) {
@@ -479,18 +397,48 @@ export const OurLeadershipSection: React.FC<OurLeadershipSectionProps> = () => {
                     CONTENT COLUMN — Academic Editorial Typography (Navy & Red)
                     =================================================================== */}
                 <div className="w-full lg:flex-1 flex flex-col justify-center space-y-4">
-                  {/* 1. Leader Name in Official Navy with Red Accent */}
+                  {/* 1. Leader Name in Official Navy with Red Accent & Staggered Reveal */}
                   <div className="border-b border-slate-200 pb-3">
-                    <div className="flex items-center gap-2 mb-1.5">
+                    <motion.div 
+                      initial={{ opacity: 0, x: -16 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      viewport={{ once: true, amount: 0.25 }}
+                      transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+                      className="flex items-center gap-2 mb-1.5"
+                    >
                       <span className="w-2 h-2 rounded-none bg-[#C8102E]" />
                       <span className="text-[11px] font-bold uppercase tracking-wider text-[#C8102E] font-sans">
                         {leader.designation}
                       </span>
-                    </div>
+                    </motion.div>
 
-                    <h3 className="font-['Source_Serif_4','Source_Serif_Pro','Georgia',serif] text-2xl sm:text-3xl lg:text-[34px] font-bold text-[#0A1931] tracking-tight leading-snug">
-                      {leader.name}
-                    </h3>
+                    <motion.h3 
+                      initial="hidden"
+                      whileInView="visible"
+                      viewport={{ once: true, amount: 0.25 }}
+                      className="font-['Source_Serif_4','Source_Serif_Pro','Georgia',serif] text-2xl sm:text-3xl lg:text-[34px] font-bold text-[#0A1931] tracking-tight leading-snug"
+                    >
+                      {leader.name.split(' ').map((word, wIdx) => (
+                        <motion.span
+                          key={wIdx}
+                          variants={{
+                            hidden: { opacity: 0, y: 16 },
+                            visible: { 
+                              opacity: 1, 
+                              y: 0, 
+                              transition: { 
+                                duration: 0.55, 
+                                delay: wIdx * 0.08, 
+                                ease: [0.16, 1, 0.3, 1] 
+                              } 
+                            }
+                          }}
+                          className="inline-block mr-[0.25em] last:mr-0"
+                        >
+                          {word}
+                        </motion.span>
+                      ))}
+                    </motion.h3>
 
                     {leader.secondaryDesignation && (
                       <p className="text-xs sm:text-[13px] text-slate-500 font-sans mt-0.5">
@@ -501,12 +449,18 @@ export const OurLeadershipSection: React.FC<OurLeadershipSectionProps> = () => {
 
                   {/* 2. Official Leadership Message Body — Full Complete Text */}
                   <div className="space-y-3">
-                    <div className="flex items-center gap-1.5 text-[#0A1931]">
+                    <motion.div 
+                      initial={{ opacity: 0, y: 12 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true, amount: 0.25 }}
+                      transition={{ duration: 0.5, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+                      className="flex items-center gap-1.5 text-[#0A1931]"
+                    >
                       <Quote size={15} className="text-[#C8102E] shrink-0" aria-hidden="true" />
                       <span className="text-xs font-bold uppercase tracking-wide text-[#0A1931] font-sans">
                         {leader.messageTitle}
                       </span>
-                    </div>
+                    </motion.div>
 
                     <div className="space-y-2.5 text-[14px] sm:text-[15px] text-slate-700 leading-relaxed font-sans">
                       {leader.fullMessage.map((paragraph, pIdx) => (

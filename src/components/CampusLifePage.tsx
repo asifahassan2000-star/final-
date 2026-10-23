@@ -56,30 +56,131 @@ const MinimalEventItem: React.FC<MinimalEventItemProps> = ({ event, onOpenLightb
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      {/* 1. Event Name */}
-      <div className="max-w-4xl mx-auto mb-3 sm:mb-4 overflow-hidden">
-        <motion.h3 
-          initial={{ opacity: 0, y: 24, clipPath: 'polygon(0 100%, 100% 100%, 100% 100%, 0 100%)' }}
-          whileInView={{ opacity: 1, y: 0, clipPath: 'polygon(0 0, 100% 0, 100% 100%, 0 100%)' }}
-          viewport={{ once: true, margin: '-20px' }}
-          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-          className="text-left text-2xl sm:text-3xl lg:text-4xl font-serif font-bold text-[#0A1931] dark:text-white tracking-tight leading-snug"
-          style={{ fontFamily: "'Playfair Display', 'Cormorant Garamond', Georgia, serif" }}
-        >
-          {event.number}. {event.title}
-        </motion.h3>
+      {/* 1. Event Header & Content */}
+      {event.id === 'ucp-elite-student-network' ? (
+        <div className="max-w-4xl mx-auto mb-6 space-y-6 text-[#0A1931] dark:text-slate-200 font-sans">
+          {/* Heading 1 & Tagline */}
+          <div className="border-b border-slate-200 dark:border-white/10 pb-4">
+            <h3 
+              className="text-left text-2xl sm:text-3xl lg:text-4xl font-serif font-bold text-[#0A1931] dark:text-white tracking-tight leading-snug"
+              style={{ fontFamily: "'Playfair Display', 'Cormorant Garamond', Georgia, serif" }}
+            >
+              {event.number}. UCP ELITE STUDENT NETWORK
+            </h3>
+            <p className="mt-2 text-xs sm:text-sm font-semibold tracking-[0.18em] uppercase text-[#C8102E] font-mono">
+              PUNJABIANS TODAY, UCPIANS TOMORROW
+            </p>
+          </div>
 
-        {/* 2. Under it: Few lines of straight clean text */}
-        <motion.p 
-          initial={{ opacity: 0, y: 12 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: '-20px' }}
-          transition={{ duration: 0.7, delay: 0.08, ease: [0.16, 1, 0.3, 1] }}
-          className="text-left text-sm sm:text-base text-slate-600 dark:text-slate-300 font-sans leading-7 mt-2.5 max-w-4xl font-normal"
-        >
-          {event.description}
-        </motion.p>
-      </div>
+          {/* Paragraph 1 */}
+          <div className="space-y-3 text-sm sm:text-base text-slate-700 dark:text-slate-300 leading-relaxed">
+            <h4 className="text-base sm:text-lg font-bold text-[#0A1931] dark:text-white font-serif">
+              Your Future Starts with UCP — A Special Opportunity for Punjab College Students
+            </h4>
+            <p>
+              Punjab College Bahawalpur students now have an exclusive chance to connect early with the University of Central Punjab (UCP)—one of Pakistan's leading universities—through a special Student Membership Program.
+            </p>
+            <p>
+              This initiative is designed to secure your future, give you early university exposure, and reward your commitment with special benefits and scholarships.
+            </p>
+          </div>
+
+          {/* Heading 3: What Does This Program Offer You? */}
+          <div className="pt-2 space-y-5">
+            <h4 
+              className="text-lg sm:text-xl font-serif font-bold text-[#0A1931] dark:text-white border-b border-slate-200 dark:border-white/10 pb-2"
+              style={{ fontFamily: "'Playfair Display', 'Cormorant Garamond', Georgia, serif" }}
+            >
+              What Does This Program Offer You?
+            </h4>
+
+            <div className="space-y-4 text-sm sm:text-base text-slate-700 dark:text-slate-300 leading-relaxed">
+              <div>
+                <h5 className="font-bold text-[#0A1931] dark:text-white text-sm sm:text-base">
+                  UCP Student Membership Card
+                </h5>
+                <p className="mt-0.5 text-slate-600 dark:text-slate-300">
+                  Become an official UCP Associated Student while you're still in college.
+                </p>
+              </div>
+
+              <div>
+                <h5 className="font-bold text-[#0A1931] dark:text-white text-sm sm:text-base">
+                  Early Connection with UCP
+                </h5>
+                <p className="mt-0.5 text-slate-600 dark:text-slate-300">
+                  Attend UCP events, seminars, workshops, and open days. Experience university life before admission. Interact with UCP faculty, students, and counselors.
+                </p>
+              </div>
+
+              <div>
+                <h5 className="font-bold text-[#0A1931] dark:text-white text-sm sm:text-base">
+                  Special Scholarship Benefits
+                </h5>
+                <p className="mt-0.5 text-slate-600 dark:text-slate-300">
+                  Students enrolled in this program will be eligible for exclusive scholarships at the time of admission—not available to general applicants.
+                </p>
+              </div>
+
+              <div>
+                <h5 className="font-bold text-[#0A1931] dark:text-white text-sm sm:text-base">
+                  Secure Your Admission Path
+                </h5>
+                <p className="mt-0.5 text-slate-600 dark:text-slate-300">
+                  By submitting a Commitment Form signed by: Student, Parents, &amp; Class In-Charge and strengthen your admission profile at UCP.
+                </p>
+              </div>
+
+              <div>
+                <h5 className="font-bold text-[#0A1931] dark:text-white text-sm sm:text-base">
+                  Why Is This Commitment Important?
+                </h5>
+                <p className="mt-0.5 text-slate-600 dark:text-slate-300">
+                  This program is not just about admission—it's about planning ahead.
+                </p>
+                <ul className="mt-2 space-y-1.5 pl-5 list-disc text-slate-600 dark:text-slate-300">
+                  <li>Parents feel confident</li>
+                  <li>Teachers support your decision</li>
+                  <li>Students gain clarity and direction</li>
+                </ul>
+
+                <p className="mt-4 font-semibold text-[#0A1931] dark:text-white">
+                  Your commitment helps UCP prioritize you for:
+                </p>
+                <ul className="mt-1.5 space-y-1.5 pl-5 list-disc text-slate-600 dark:text-slate-300">
+                  <li>Admission facilitation</li>
+                  <li>Scholarships</li>
+                  <li>Academic guidance</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      ) : (
+        <div className="max-w-4xl mx-auto mb-3 sm:mb-4 overflow-hidden">
+          <motion.h3 
+            initial={{ opacity: 0, y: 24, clipPath: 'polygon(0 100%, 100% 100%, 100% 100%, 0 100%)' }}
+            whileInView={{ opacity: 1, y: 0, clipPath: 'polygon(0 0, 100% 0, 100% 100%, 0 100%)' }}
+            viewport={{ once: true, margin: '-20px' }}
+            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+            className="text-left text-2xl sm:text-3xl lg:text-4xl font-serif font-bold text-[#0A1931] dark:text-white tracking-tight leading-snug"
+            style={{ fontFamily: "'Playfair Display', 'Cormorant Garamond', Georgia, serif" }}
+          >
+            {event.number}. {event.title}
+          </motion.h3>
+
+          {/* 2. Under it: Few lines of straight clean text */}
+          <motion.p 
+            initial={{ opacity: 0, y: 12 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: '-20px' }}
+            transition={{ duration: 0.7, delay: 0.08, ease: [0.16, 1, 0.3, 1] }}
+            className="text-left text-sm sm:text-base text-slate-600 dark:text-slate-300 font-sans leading-7 mt-2.5 max-w-4xl font-normal"
+          >
+            {event.description}
+          </motion.p>
+        </div>
+      )}
 
       {/* 3. ONE BIG IMAGE */}
       <div className="mt-4 max-w-4xl mx-auto">

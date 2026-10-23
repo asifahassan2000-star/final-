@@ -34,7 +34,7 @@ export const Footer: React.FC<FooterProps> = ({
   return (
     <footer 
       id="footer-section" 
-      className="relative bg-[#06182e] text-white pt-14 pb-8 overflow-hidden border-t border-[#13335c] select-none"
+      className="relative bg-[#06182e] text-white pt-14 pb-20 sm:pb-8 overflow-hidden border-t border-[#13335c] select-none"
     >
       {/* Anchor alias for Contact navigation */}
       <div id="contact-section" className="absolute -top-12" aria-hidden="true" />
@@ -169,18 +169,6 @@ export const Footer: React.FC<FooterProps> = ({
                   <span className="text-slate-400 font-bold group-hover:text-white transition-colors">›</span>
                   <span className="group-hover:underline">Academic Calendar</span>
                 </button>
-              </li>
-
-              <li>
-                <a 
-                  href="https://ucp.edu.pk/exam-office/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group w-full text-left transition-colors duration-200 flex items-center gap-2 hover:text-white cursor-pointer"
-                >
-                  <span className="text-slate-400 font-bold group-hover:text-white transition-colors">›</span>
-                  <span className="group-hover:underline">Exam Office</span>
-                </a>
               </li>
 
               {onOpenAboutUsPage && (

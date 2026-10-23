@@ -147,7 +147,7 @@ export const FloatingSideRibbons: React.FC<FloatingSideRibbonsProps> = ({
       </aside>
 
       {/* Floating Official Campus Contact Call Button on Bottom-Right */}
-      <div className="fixed bottom-[108px] sm:bottom-[122px] lg:bottom-[128px] right-5 sm:right-6 z-40 flex items-center">
+      <div className="fixed bottom-[64px] sm:bottom-[122px] lg:bottom-[128px] right-4 sm:right-6 z-40 flex items-center">
         {showCallTooltip && !isCallMenuOpen && (
           <div className="hidden sm:block mr-2.5 bg-white text-slate-800 text-xs px-3 py-1.5 rounded-xl shadow-xl border border-slate-200 font-semibold animate-in fade-in slide-in-from-right-2">
             Call Campus: 062-2202030 / 062-2202050
@@ -156,7 +156,7 @@ export const FloatingSideRibbons: React.FC<FloatingSideRibbonsProps> = ({
 
         {/* Quick Call Popover Menu */}
         {isCallMenuOpen && (
-          <div className="absolute bottom-16 right-0 w-64 bg-white rounded-xl shadow-[0_16px_40px_rgba(10,25,49,0.22)] border border-slate-200 p-3.5 animate-in fade-in slide-in-from-bottom-2 z-50 text-slate-800">
+          <div className="absolute bottom-12 sm:bottom-16 right-0 w-64 bg-white rounded-xl shadow-[0_16px_40px_rgba(10,25,49,0.22)] border border-slate-200 p-3.5 animate-in fade-in slide-in-from-bottom-2 z-50 text-slate-800">
             <div className="flex items-center justify-between pb-2 border-b border-slate-100 mb-2.5">
               <div className="flex items-center gap-1.5 font-bold text-xs text-[#0A1931]">
                 <PhoneCall size={14} className="text-[#C8102E]" />
@@ -207,7 +207,7 @@ export const FloatingSideRibbons: React.FC<FloatingSideRibbonsProps> = ({
           onClick={handleContactClick}
           onMouseEnter={() => setShowCallTooltip(true)}
           onMouseLeave={() => setShowCallTooltip(false)}
-          className="w-12 h-12 sm:w-13 sm:h-13 rounded-full bg-[#0A1931] hover:bg-[#C8102E] text-white flex items-center justify-center shadow-xl hover:scale-108 active:scale-95 transition-all duration-200 group focus:outline-none relative border-2 border-slate-600/70 cursor-pointer"
+          className="w-10 h-10 sm:w-13 sm:h-13 rounded-full bg-[#0A1931] hover:bg-[#C8102E] text-white flex items-center justify-center shadow-xl hover:scale-108 active:scale-95 transition-all duration-200 group focus:outline-none relative border-2 border-slate-600/70 cursor-pointer"
           aria-label="Official Campus Contacts: 062-2202030 / 062-2202050"
           title="Official Campus Contacts: 062-2202030 / 062-2202050"
         >
@@ -215,7 +215,7 @@ export const FloatingSideRibbons: React.FC<FloatingSideRibbonsProps> = ({
           <span className="absolute -inset-1 rounded-full bg-[#C8102E] opacity-30 group-hover:animate-ping" />
           
           {/* Phone Call Icon */}
-          <PhoneCall className="w-5 h-5 sm:w-6 sm:h-6 text-white relative z-10 transition-transform group-hover:rotate-12" />
+          <PhoneCall className="w-4 h-4 sm:w-6 sm:h-6 text-white relative z-10 transition-transform group-hover:rotate-12" />
         </button>
       </div>
     </>

@@ -529,17 +529,17 @@ export const CAMPUS_EVENTS_DATA: CampusEvent[] = [
   {
     id: 'ucp-elite-student-network',
     number: 8,
-    title: 'UCP Elite student Network campaign',
+    title: 'UCP ELITE STUDENT NETWORK',
     year: '2026',
     date: 'January - February 2026',
     category: 'Student Leadership',
-    badge: 'Merit & Leadership Showcase',
-    description: 'An official campus-wide campaign spotlighting top academic achievers, merit scholarship recipients, and society presidents. The network fosters leadership development, career mentoring, and corporate networking for high-performing UCPians.',
+    badge: 'PUNJABIANS TODAY, UCPIANS TOMORROW',
+    description: "Your Future Starts with UCP - A Special Opportunity for Punjab College Students. Punjab College Bahawalpur students now have an exclusive chance to connect early with the University of Central Punjab (UCP)—one of Pakistan's leading universities—through a special Student Membership Program. This initiative is designed to secure your future, give you early university exposure, and reward your commitment with special benefits and scholarships.",
     highlights: [
-      'Up to 50% Merit Scholarship Achievers Recognized',
-      'Executive Mentoring by Corporate Leaders',
-      'Campus Brand Ambassador Induction',
-      'Professional Development & Public Speaking Bootcamps'
+      'Official UCP Student Membership Card & Associated Student Status',
+      'Early University Exposure, Seminars, Workshops & Open Days',
+      'Exclusive Special Scholarship Eligibility at Admission',
+      'Direct Commitment Form Admission Prioritization'
     ],
     images: [
       {
@@ -1579,9 +1579,9 @@ export const CAMPUS_EVENTS_DATA: CampusEvent[] = [
     date: 'March 2026',
     category: 'Innovation & Tech',
     badge: 'Engineering, Computing & Business Innovation',
-    description: 'The premier showcase of graduating capstone innovations! Over 80 student teams displayed cutting-edge AI prototypes, cyber-defense systems, IoT automation, fintech platforms, and biomedical research devices before industrial judges and investors.',
+    description: 'The premier showcase of graduating capstone innovations! Over 27 teams displayed cutting-edge AI prototypes, cyber-defense systems, IoT automation, fintech platforms, and biomedical research devices before industrial judges and investors.',
     highlights: [
-      '80+ Live Interactive Tech & Business Demos',
+      '27 Live Interactive Tech & Business Demos',
       'Corporate Evaluators from IT & Banking Industry',
       'Spot Job Offers & Seed Grant Nominations',
       'Annual Innovation Trophy & Cash Awards'

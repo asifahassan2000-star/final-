@@ -700,7 +700,7 @@ export const UcpChatbot: React.FC = () => {
           2. FLOATING ROBOT LAUNCHER & SNAPCHAT-STYLE ANIMATED GREETING BUBBLE
           ========================================================================= */}
       <div 
-        className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 lg:bottom-7 lg:right-7 z-50 flex items-center pointer-events-auto m-2 sm:m-0"
+        className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 lg:bottom-7 lg:right-7 z-40 flex items-center pointer-events-auto m-1 sm:m-0"
         style={{
           paddingBottom: 'env(safe-area-inset-bottom, 0px)',
           paddingRight: 'env(safe-area-inset-right, 0px)',
@@ -761,15 +761,15 @@ export const UcpChatbot: React.FC = () => {
 
         {/* =========================================================================
             PROMINENT ENLARGED FLOATING ROBOT LAUNCHER BUTTON
-            Desktop: ~84-88px diameter | Mobile: 48px diameter (w-12 h-12)
+            Desktop: ~84-88px diameter | Mobile: 40px diameter (w-10 h-10)
             ========================================================================= */}
         <button
           id="ucp-assistant-floating-launcher"
           onClick={handleToggleChat}
           className={`group relative rounded-full flex items-center justify-center transition-all duration-300 cursor-pointer focus:outline-none focus:ring-4 focus:ring-[#C8102E]/30 select-none ${
             isOpen
-              ? 'w-12 h-12 sm:w-16 sm:h-16 bg-[#C8102E] hover:bg-[#A51C30] text-white shadow-[0_10px_30px_rgba(200,16,46,0.4)] rotate-90 scale-95'
-              : 'w-12 h-12 sm:w-[82px] sm:h-[82px] lg:w-[88px] lg:h-[88px] bg-gradient-to-b from-[#0F223F] via-[#0A1931] to-[#061121] text-white hover:scale-105 active:scale-95 border-2 border-slate-600/80 hover:border-[#C8102E] shadow-[0_12px_40px_rgba(10,25,49,0.5)] ucp-robot-halo'
+              ? 'w-10 h-10 sm:w-16 sm:h-16 bg-[#C8102E] hover:bg-[#A51C30] text-white shadow-[0_10px_30px_rgba(200,16,46,0.4)] rotate-90 scale-95'
+              : 'w-10 h-10 sm:w-[82px] sm:h-[82px] lg:w-[88px] lg:h-[88px] bg-gradient-to-b from-[#0F223F] via-[#0A1931] to-[#061121] text-white hover:scale-105 active:scale-95 border-2 border-slate-600/80 hover:border-[#C8102E] shadow-[0_12px_40px_rgba(10,25,49,0.5)] ucp-robot-halo'
           } ${!isOpen && !isWaving ? 'ucp-robot-float' : ''} ${isBouncing ? 'ucp-robot-bounce' : ''}`}
           aria-label={isOpen ? "Close UCP Assistant" : "Open UCP Assistant — Campus AI Chatbot"}
           title={isOpen ? "Close UCP Assistant" : "Chat with UCP Assistant"}

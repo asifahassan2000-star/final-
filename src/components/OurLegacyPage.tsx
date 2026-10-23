@@ -279,7 +279,7 @@ export const OurLegacyPage: React.FC<OurLegacyPageProps> = ({
       year: '2012',
       title: 'Establishment of UCP Bahawalpur Campus',
       institution: 'Constituent College UCP Campus Bahawalpur',
-      description: 'In 2012, the University of Central Punjab established its constituent campus in Bahawalpur on Airport Road, bringing recognized undergraduate and associate degree programs, purpose-built academic architecture, and world-class higher education to Southern Punjab.',
+      description: 'In 2012, the University of Central Punjab established its constituent campus in Bahawalpur, bringing recognized undergraduate and associate degree programs, purpose-built academic architecture, and world-class higher education to Southern Punjab.',
       significance: 'Brought UCP academic distinction, qualified faculties, and modern research laboratories directly to the historic region of Bahawalpur.',
       icon: 'Building2'
     }
