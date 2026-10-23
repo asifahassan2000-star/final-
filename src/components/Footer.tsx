@@ -14,6 +14,7 @@ interface FooterProps {
   onScrollTo: (sectionId: string) => void;
   onSelectFaculty: (facultyId: string) => void;
   onOpenLegacyPage?: () => void;
+  onOpenAboutUsPage?: () => void;
 }
 
 export const Footer: React.FC<FooterProps> = ({
@@ -24,6 +25,7 @@ export const Footer: React.FC<FooterProps> = ({
   onScrollTo,
   onSelectFaculty,
   onOpenLegacyPage,
+  onOpenAboutUsPage,
 }) => {
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -180,6 +182,18 @@ export const Footer: React.FC<FooterProps> = ({
                   <span className="group-hover:underline">Exam Office</span>
                 </a>
               </li>
+
+              {onOpenAboutUsPage && (
+                <li>
+                  <button 
+                    onClick={onOpenAboutUsPage}
+                    className="group w-full text-left transition-colors duration-200 flex items-center gap-2 hover:text-white cursor-pointer"
+                  >
+                    <span className="text-slate-400 font-bold group-hover:text-white transition-colors">›</span>
+                    <span className="group-hover:underline">About Us (Our Story &amp; Vision)</span>
+                  </button>
+                </li>
+              )}
 
               {onOpenLegacyPage && (
                 <li>

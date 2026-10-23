@@ -221,21 +221,9 @@ export const HeroSlider: React.FC<HeroSliderProps> = ({
               </div>
 
               {/* Slide Content: Elegant International University Typography & Layout */}
-              <div className="relative z-20 max-w-7xl mx-auto h-full px-4 sm:px-6 lg:px-8 flex flex-col justify-center pb-20 sm:pb-28 lg:pb-28">
-                <div className="max-w-3xl text-left space-y-3 sm:space-y-4 lg:space-y-5">
+              <div className="relative z-20 max-w-7xl mx-auto h-full px-4 sm:px-6 lg:px-8 flex flex-col justify-center pb-28 sm:pb-36 lg:pb-36">
+                <div className="max-w-3xl text-left space-y-3 sm:space-y-4 lg:space-y-5 px-4 sm:px-0 -translate-y-5 sm:-translate-y-8 lg:-translate-y-10">
                   
-                  {/* Clean Editorial Pre-Header (Omitted on Slide 0 as requested) */}
-                  {index !== 0 && slide.preheader && (
-                    <div 
-                      className={`inline-flex items-center text-[#FEF08A] text-[11px] sm:text-xs lg:text-sm font-semibold tracking-[0.2em] sm:tracking-[0.25em] uppercase drop-shadow-sm transition-all duration-700 ${
-                        isActive ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
-                      }`}
-                      style={{ transitionDelay: isActive ? '100ms' : '0ms' }}
-                    >
-                      <span>{slide.preheader}</span>
-                    </div>
-                  )}
-
                   {/* World-Class Editorial Serif Heading with Clip-Path Reveal */}
                   <div className="overflow-hidden py-1">
                     <h1 
@@ -247,11 +235,8 @@ export const HeroSlider: React.FC<HeroSliderProps> = ({
                         transition: 'clip-path 1100ms cubic-bezier(0.16, 1, 0.3, 1), transform 1100ms cubic-bezier(0.16, 1, 0.3, 1)',
                         transitionDelay: isActive ? '200ms' : '0ms',
                       }}
-                      className="font-['Playfair_Display',serif] text-2xl sm:text-4xl lg:text-6xl font-bold text-white tracking-tight leading-[1.18] sm:leading-[1.14] drop-shadow-lg text-balance max-w-2xl"
+                      className="font-['Playfair_Display',serif] text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-bold text-white tracking-tight leading-tight drop-shadow-lg text-balance max-w-2xl"
                     >
-                      <span className="block text-amber-300 font-sans text-xs sm:text-sm lg:text-base font-bold tracking-[0.16em] uppercase mb-1 sm:mb-2 drop-shadow-md">
-                        UCP Bahawalpur · University of Central Punjab
-                      </span>
                       {slide.title}
                     </h1>
                   </div>
@@ -355,51 +340,56 @@ export const HeroSlider: React.FC<HeroSliderProps> = ({
       {/* Mobile Bottom Bar: Target <1024px only */}
       <div 
         aria-label="Why Choose UCP Bahawalpur"
-        className="lg:hidden absolute bottom-0 left-0 right-0 bg-black/30 backdrop-blur-sm px-4 py-3.5 flex flex-row justify-between gap-3 overflow-x-auto no-scrollbar z-30 select-none"
+        className="lg:hidden absolute bottom-0 left-0 right-0 bg-black/45 backdrop-blur-md px-4 py-3 z-30 select-none border-t border-white/10"
       >
-        <div 
-          onClick={() => onOpenProgrammesPage ? onOpenProgrammesPage() : onScrollTo('what-we-offer')}
-          className="flex-1 min-w-[90px] cursor-pointer active:opacity-80"
-        >
-          <p className="text-[9px] font-bold text-white leading-tight">Career-Focused Education</p>
-          <p className="text-[8px] text-white/70 mt-1 leading-tight">Industry Linkages & Scholarships</p>
-        </div>
-        <div 
-          onClick={() => onScrollTo('campus-section')}
-          className="flex-1 min-w-[90px] cursor-pointer active:opacity-80"
-        >
-          <p className="text-[9px] font-bold text-white leading-tight">Purpose-Built Campus</p>
-          <p className="text-[8px] text-white/70 mt-1 leading-tight">Modern Labs & Smart Facilities</p>
-        </div>
-        <div 
-          onClick={() => onOpenProgrammesPage ? onOpenProgrammesPage() : onScrollTo('faculties-section')}
-          className="flex-1 min-w-[80px] cursor-pointer active:opacity-80"
-        >
-          <p className="text-[9px] font-bold text-white leading-tight">HEC Recognized Degrees</p>
-          <p className="text-[8px] text-white/70 mt-1 leading-tight">25 Accredited Programs</p>
-        </div>
-        <div 
-          onClick={() => onOpenLegacyPage ? onOpenLegacyPage() : onScrollTo('heritage-section')}
-          className="flex-1 min-w-[90px] cursor-pointer active:opacity-80"
-        >
-          <p className="text-[9px] font-bold text-white leading-tight">Punjab Group Legacy</p>
-          <p className="text-[8px] text-white/70 mt-1 leading-tight">40 Years of Educational Excellence</p>
-        </div>
-        <div 
-          onClick={() => onOpenPortal && onOpenPortal()}
-          className="flex-1 min-w-[65px] cursor-pointer active:opacity-80 flex flex-col items-center text-center border-l border-white/20 pl-1"
-        >
-          <User size={12} className="text-white/80 mb-0.5" />
-          <p className="text-[9px] font-medium text-white/90 leading-tight">Portal</p>
-        </div>
-        <div 
-          onClick={() => {
-            window.dispatchEvent(new CustomEvent('open-ucp-search'));
-          }}
-          className="flex-1 min-w-[50px] cursor-pointer active:opacity-80 flex flex-col items-center text-center"
-        >
-          <Search size={12} className="text-white/80 mb-0.5" />
-          <p className="text-[9px] font-medium text-white/90 leading-tight">Search</p>
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
+          <div 
+            onClick={() => onOpenProgrammesPage ? onOpenProgrammesPage() : onScrollTo('what-we-offer')}
+            className="cursor-pointer active:opacity-80 flex flex-col justify-center"
+          >
+            <p className="text-sm md:text-base font-bold text-white leading-tight whitespace-nowrap overflow-hidden text-ellipsis">
+              Career-Focused Education
+            </p>
+            <p className="text-xs text-white/75 mt-0.5 leading-tight truncate">
+              Industry Linkages &amp; Scholarships
+            </p>
+          </div>
+
+          <div 
+            onClick={() => onScrollTo('campus-section')}
+            className="cursor-pointer active:opacity-80 flex flex-col justify-center"
+          >
+            <p className="text-sm md:text-base font-bold text-white leading-tight whitespace-nowrap overflow-hidden text-ellipsis">
+              Purpose-Built Campus
+            </p>
+            <p className="text-xs text-white/75 mt-0.5 leading-tight truncate">
+              Modern Labs &amp; Smart Facilities
+            </p>
+          </div>
+
+          <div 
+            onClick={() => onOpenProgrammesPage ? onOpenProgrammesPage() : onScrollTo('faculties-section')}
+            className="cursor-pointer active:opacity-80 flex flex-col justify-center"
+          >
+            <p className="text-sm md:text-base font-bold text-white leading-tight whitespace-nowrap overflow-hidden text-ellipsis">
+              HEC Recognized Degrees
+            </p>
+            <p className="text-xs text-white/75 mt-0.5 leading-tight truncate">
+              25 Accredited Programs
+            </p>
+          </div>
+
+          <div 
+            onClick={() => onOpenLegacyPage ? onOpenLegacyPage() : onScrollTo('heritage-section')}
+            className="cursor-pointer active:opacity-80 flex flex-col justify-center"
+          >
+            <p className="text-sm md:text-base font-bold text-white leading-tight whitespace-nowrap overflow-hidden text-ellipsis">
+              Punjab Group Legacy
+            </p>
+            <p className="text-xs text-white/75 mt-0.5 leading-tight truncate">
+              40 Years of Educational Excellence
+            </p>
+          </div>
         </div>
       </div>
 

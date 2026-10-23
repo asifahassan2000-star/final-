@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
-  Menu, X, ChevronDown, Search, GraduationCap, Building2, 
+  Menu, X, ChevronDown, ChevronRight, Search, GraduationCap, Building2, 
   Award, Globe, Newspaper, PhoneCall, BookOpen, Compass,
   Sparkles, CheckCircle2, User, ExternalLink, ShieldCheck,
   Video, Laptop, Lightbulb, FileText, ArrowRight, Calendar,
@@ -27,8 +27,10 @@ interface NavbarProps {
   onOpenScholarshipsPage?: (sectionId?: string) => void;
   onOpenCnnAcademyPage?: () => void;
   onOpenCalendar?: () => void;
+  onOpenCampusFacilitiesPage?: () => void;
+  onOpenAboutUsPage?: () => void;
   onBackToHome?: () => void;
-  currentPage?: 'home' | 'faculty' | 'programmes' | 'legacy' | 'campus-life' | 'scholarships' | 'fee-structure' | 'cnn-academy' | 'calendar';
+  currentPage?: 'home' | 'faculty' | 'programmes' | 'legacy' | 'campus-life' | 'scholarships' | 'fee-structure' | 'cnn-academy' | 'calendar' | 'campus-facilities' | 'about-us';
 }
 
 export const Navbar: React.FC<NavbarProps> = ({
@@ -45,12 +47,36 @@ export const Navbar: React.FC<NavbarProps> = ({
   onOpenScholarshipsPage,
   onOpenCnnAcademyPage,
   onOpenCalendar,
+  onOpenCampusFacilitiesPage,
+  onOpenAboutUsPage,
   onBackToHome,
   currentPage = 'home',
 }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
+  const [openMobileAccordions, setOpenMobileAccordions] = useState<Record<string, boolean>>({
+    academics: false,
+  });
+
+  const toggleMobileAccordion = (key: string) => {
+    setOpenMobileAccordions((prev) => ({
+      ...prev,
+      [key]: !prev[key],
+    }));
+  };
+
+  // Lock body scroll when mobile menu drawer is open
+  useEffect(() => {
+    if (mobileMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [mobileMenuOpen]);
 
   // Global Site Search States
   const [isSearchOpen, setIsSearchOpen] = useState(false);
@@ -575,6 +601,24 @@ export const Navbar: React.FC<NavbarProps> = ({
                     </div>
 
                     <button
+                      id="nav-dropdown-about-us-btn"
+                      type="button"
+                      onClick={() => { 
+                        setActiveDropdown(null); 
+                        if (onOpenAboutUsPage) {
+                          onOpenAboutUsPage();
+                        }
+                      }}
+                      className="w-full text-left py-[8px] px-[14px] rounded-[6px] hover:bg-[#F5F5F5] text-[#333333] flex items-center justify-between cursor-pointer group"
+                    >
+                      <span className="flex items-center gap-2">
+                        <Sparkles size={14} className="text-[#a30f16]" />
+                        <span className="font-semibold text-[#0F2C61]">About Us</span>
+                      </span>
+                      <span className="text-[11px] text-[#a30f16] font-medium group-hover:translate-x-0.5 transition-transform">Story &amp; Vision ↗</span>
+                    </button>
+
+                    <button
                       id="nav-dropdown-location-btn"
                       type="button"
                       onClick={() => { setActiveDropdown(null); handleNavClick('location-section'); }}
@@ -601,6 +645,22 @@ export const Navbar: React.FC<NavbarProps> = ({
                       className="w-full text-left py-[8px] px-[14px] rounded-[6px] hover:bg-[#F5F5F5] text-[#333333] flex items-center justify-between cursor-pointer"
                     >
                       <span>Vision & Rankings</span>
+                    </button>
+
+                    <button
+                      id="nav-dropdown-campus-facilities-btn"
+                      type="button"
+                      onClick={() => { 
+                        setActiveDropdown(null); 
+                        if (onOpenCampusFacilitiesPage) {
+                          onOpenCampusFacilitiesPage();
+                        } else {
+                          handleNavClick('facilities-section');
+                        }
+                      }}
+                      className="w-full text-left py-[8px] px-[14px] rounded-[6px] hover:bg-[#F5F5F5] text-[#333333] flex items-center justify-between cursor-pointer"
+                    >
+                      <span>Campus Facilities</span>
                     </button>
 
                     <button
@@ -672,22 +732,19 @@ export const Navbar: React.FC<NavbarProps> = ({
             </button>
 
             {/* Mobile menu toggle button — Just icon on mobile, no text */}
+            {/* Mobile menu toggle button */}
             <button
               id="mobile-menu-toggle-btn"
               type="button"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className={`lg:hidden p-2 rounded-lg transition-all duration-200 focus:outline-none cursor-pointer shadow-md shrink-0 border z-10 flex items-center justify-center ${
-                mobileMenuOpen
-                  ? 'bg-[#C8102E] text-white border-white/50 shadow-rose-950/40'
-                  : 'bg-white text-[#0A1931] border-slate-200 hover:bg-slate-100 shadow-md'
-              }`}
+              className="lg:hidden p-2 rounded-lg bg-[#0B1A3A] text-white border border-[#183a66] hover:bg-[#07152d] transition-all duration-200 focus:outline-none cursor-pointer shadow-md shrink-0 z-10 flex items-center justify-center"
               aria-label={mobileMenuOpen ? 'Close Navigation Menu' : 'Open Navigation Menu'}
               aria-expanded={mobileMenuOpen}
             >
               {mobileMenuOpen ? (
                 <X size={18} className="text-white" />
               ) : (
-                <Menu size={18} className="text-[#0A1931]" />
+                <Menu size={18} className="text-white" />
               )}
             </button>
           </div>
@@ -697,222 +754,322 @@ export const Navbar: React.FC<NavbarProps> = ({
 
       {/* Mobile Drawer Navigation */}
       {mobileMenuOpen && (
-        <div className="lg:hidden bg-[#071b34] border-t border-slate-700/70 px-5 pt-4 pb-6 text-sm text-slate-100 space-y-3.5 shadow-2xl animate-in slide-in-from-top-3">
-          {/* Very minor, subtle search button in mobile menu (not too highlighted) */}
-          <button
-            type="button"
-            onClick={() => {
-              setMobileMenuOpen(false);
-              setIsSearchOpen(true);
-            }}
-            className="w-full flex items-center gap-2 px-3 py-2 bg-white/[0.04] hover:bg-white/[0.08] border border-white/10 rounded-lg text-xs text-slate-400 hover:text-slate-200 transition-colors cursor-pointer mb-2"
-            title="Search UCP Bahawalpur"
+        <div className="lg:hidden">
+          {/* Backdrop overlay */}
+          <div 
+            className="fixed inset-0 bg-black/50 z-50 transition-opacity backdrop-blur-[1px]"
+            onClick={() => setMobileMenuOpen(false)}
+            aria-hidden="true"
+          />
+
+          {/* Full-screen drawer from right, white background, width 320px, with X close button */}
+          <div 
+            className="fixed top-0 right-0 h-full w-[320px] max-w-[85vw] bg-white z-50 shadow-2xl flex flex-col justify-between overflow-hidden animate-in slide-in-from-right duration-300"
+            role="dialog"
+            aria-modal="true"
+            aria-label="Mobile Navigation Drawer"
           >
-            <Search size={13} className="text-slate-400 shrink-0" />
-            <span className="text-slate-400 text-xs font-normal">Search programmes, fees, admissions...</span>
-          </button>
+            {/* Top of drawer: Only show Logo and close button */}
+            <div className="flex items-center justify-between px-4 py-4 border-b border-[#f3f4f6] shrink-0 bg-white">
+              <div 
+                className="flex items-center gap-2.5 cursor-pointer"
+                onClick={() => {
+                  setMobileMenuOpen(false);
+                  if (currentPage !== 'home' && onBackToHome) {
+                    onBackToHome();
+                  } else {
+                    handleNavClick('top');
+                  }
+                }}
+              >
+                <img
+                  src="/assets/ucp-official-logo.png"
+                  alt="UCP Logo"
+                  className="w-9 h-9 object-contain shrink-0"
+                  onError={(e) => {
+                    const img = e.currentTarget;
+                    if (!img.dataset.fallbackTried) {
+                      img.dataset.fallbackTried = 'true';
+                      img.src = '/images/BVZkCkFf_e4f3a018-e327-765a-db91-e468a8c6672d-4596-F431-6479-4-D27-A36-B-9750-DA25-F303.jpg';
+                    }
+                  }}
+                />
+                <div className="flex flex-col">
+                  <span 
+                    className="text-[#0B1A3A] text-[13px] sm:text-[14px] font-normal leading-tight whitespace-nowrap"
+                    style={{ fontFamily: "'UnifrakturMaguntia', 'MedievalSharp', serif" }}
+                  >
+                    University of Central Punjab
+                  </span>
+                  <span className="text-amber-600 font-semibold text-[8px] tracking-[0.18em] uppercase">
+                    Bahawalpur Campus
+                  </span>
+                </div>
+              </div>
 
-          <div className="grid grid-cols-2 gap-2 mb-2">
-            <button
-              onClick={() => {
-                setMobileMenuOpen(false);
-                if (onOpenCampusLifePage) {
-                  onOpenCampusLifePage();
-                } else {
-                  handleNavClick('campus-section');
-                }
-              }}
-              className="bg-white/10 text-white py-2 px-3 rounded-lg font-semibold text-center text-xs border border-white/20 block hover:bg-white/20 transition-colors"
-            >
-              Campus Life
-            </button>
-            <a
-              href="https://mcom.pgc.edu.pk/Student/StdLogin.jsp"
-              target="_blank"
-              rel="noopener noreferrer"
-              onClick={() => setMobileMenuOpen(false)}
-              className="bg-white/10 text-white py-2 px-3 rounded-lg font-semibold text-center text-xs border border-white/20 block hover:bg-white/20 transition-colors"
-            >
-              Student Portal
-            </a>
-          </div>
+              <button
+                type="button"
+                onClick={() => setMobileMenuOpen(false)}
+                className="p-1.5 rounded-md text-[#0B1A3A] hover:bg-slate-100 transition-colors cursor-pointer"
+                aria-label="Close navigation menu"
+              >
+                <X size={20} className="text-[#0B1A3A]" />
+              </button>
+            </div>
 
-          <div className="space-y-1.5 border-b border-slate-700/60 pb-3">
-            <button
-              onClick={() => {
-                setMobileMenuOpen(false);
-                if (currentPage !== 'home' && onBackToHome) {
-                  onBackToHome();
-                } else {
-                  handleNavClick('top');
-                }
-              }}
-              className="w-full text-left py-2 font-semibold text-white flex items-center justify-between"
-            >
-              <span className="flex items-center gap-2">
-                <Home size={15} />
-                Home
-              </span>
-            </button>
-            <button
-              onClick={() => {
-                setMobileMenuOpen(false);
-                if (onOpenProgrammesPage) {
-                  onOpenProgrammesPage();
-                } else {
-                  handleNavClick('finder-section');
-                }
-              }}
-              className="w-full text-left py-2 font-semibold text-white flex items-center justify-between"
-            >
-              <span>Academic Programmes</span>
-            </button>
-            <button
-              onClick={() => {
-                setMobileMenuOpen(false);
-                if (onOpenFacultyPage) {
-                  onOpenFacultyPage();
-                } else {
-                  handleNavClick('faculty-section');
-                }
-              }}
-              className="w-full text-left py-2 font-semibold text-white flex items-center justify-between"
-            >
-              <span>Our Faculty</span>
-            </button>
-            <button
-              onClick={() => {
-                setMobileMenuOpen(false);
-                if (onOpenProgrammesPage) onOpenProgrammesPage();
-                else handleNavClick('finder-section');
-              }}
-              className="w-full text-left py-2 font-semibold text-white flex items-center justify-between"
-            >
-              <span>Academics & Programmes</span>
-            </button>
-            <button
-              onClick={() => {
-                setMobileMenuOpen(false);
-                if (onOpenProgrammesPage) onOpenProgrammesPage('bs-business-analytics');
-              }}
-              className="w-full text-left py-1 text-slate-300 hover:text-white text-xs pl-2 flex items-center justify-between"
-            >
-              <span>• BS Programmes</span>
-            </button>
-            <button
-              onClick={() => {
-                setMobileMenuOpen(false);
-                if (onOpenProgrammesPage) onOpenProgrammesPage('adp-psychology');
-              }}
-              className="w-full text-left py-1 text-slate-300 hover:text-white text-xs pl-2 flex items-center justify-between"
-            >
-              <span>• ADP / ADS Programmes</span>
-            </button>
-            <button
-              onClick={() => {
-                setMobileMenuOpen(false);
-                if (onOpenProgrammesPage) onOpenProgrammesPage();
-                else handleNavClick('finder-section');
-              }}
-              className="w-full text-left py-1 text-slate-300 hover:text-white text-xs pl-2 flex items-center justify-between cursor-pointer"
-            >
-              <span>• Curriculum & Program Roadmaps</span>
-              <span className="text-amber-300">↗</span>
-            </button>
-            <button
-              onClick={() => {
-                setMobileMenuOpen(false);
-                if (onOpenScholarshipsPage) onOpenScholarshipsPage();
-                else window.open('https://ucpcolleges.pgc.edu/scholarship/', '_blank', 'noopener,noreferrer');
-              }}
-              className="w-full text-left py-1 text-slate-300 hover:text-white text-xs pl-2 flex items-center justify-between cursor-pointer"
-            >
-              <span>• Scholarships & Concessions (1.3B PKR)</span>
-              <span className="text-amber-300">↗</span>
-            </button>
-            <button
-              onClick={() => {
-                setMobileMenuOpen(false);
-                onOpenFee();
-              }}
-              className="w-full text-left py-1 text-slate-300 hover:text-white text-xs pl-2 flex items-center justify-between cursor-pointer"
-            >
-              <span>• Fee Structure & Tuition Schedules</span>
-              <span className="text-amber-300">→</span>
-            </button>
-          </div>
+            {/* Menu Items: Main Item Style: 15px, font-semibold, color #0B1A3A, padding 16px, border-bottom 1px solid #f3f4f6 */}
+            {/* Sub-Item Style: 13.5px, font-normal, color #6B7280, padding 12px from left 32px */}
+            <div className="flex-1 overflow-y-auto bg-white">
+              {/* Home */}
+              <button
+                type="button"
+                onClick={() => {
+                  setMobileMenuOpen(false);
+                  if (currentPage !== 'home' && onBackToHome) {
+                    onBackToHome();
+                  } else {
+                    handleNavClick('top');
+                  }
+                }}
+                className="w-full text-left text-[15px] font-semibold text-[#0B1A3A] p-4 border-b border-[#f3f4f6] flex items-center justify-between hover:bg-slate-50 transition-colors cursor-pointer"
+              >
+                <span>Home</span>
+              </button>
 
-          <div className="space-y-2 text-xs">
-            <button
-              onClick={() => { 
-                setMobileMenuOpen(false); 
-                if (onOpenProgrammesPage) onOpenProgrammesPage();
-                else onOpenInfo('merit-list'); 
-              }}
-              className="w-full text-left py-1.5 text-slate-200 hover:text-white"
-            >
-              Academic Programs
-            </button>
-            <button
-              type="button"
-              onClick={() => {
-                setMobileMenuOpen(false);
-                if (onOpenCalendar) onOpenCalendar();
-                else onOpenInfo('academic-calendar');
-              }}
-              className="w-full text-left py-1.5 text-slate-200 hover:text-white flex items-center justify-between cursor-pointer"
-            >
-              <span>Academic Calendar (Official)</span>
-            </button>
-            <button
-              onClick={() => { setMobileMenuOpen(false); handleNavClick('location-section'); }}
-              className="w-full text-left py-1.5 text-slate-200 hover:text-white flex items-center justify-between"
-            >
-              <span className="flex items-center gap-1.5">
-                <MapPin size={13} className="text-[#a30f16]" />
-                <span className="text-white font-medium">Our Location</span>
-              </span>
-            </button>
-            <button
-              onClick={() => handleNavClick('leadership-section')}
-              className="w-full text-left py-1.5 text-slate-200 hover:text-white"
-            >
-              Our Leadership
-            </button>
-            <button
-              onClick={() => {
-                setMobileMenuOpen(false);
-                handleNavClick('vision-rankings-section');
-              }}
-              className="w-full text-left py-1.5 text-slate-200 hover:text-white flex items-center justify-between"
-            >
-              <span>Vision & Rankings</span>
-            </button>
-            <button
-              onClick={() => { 
-                setMobileMenuOpen(false); 
-                if (onOpenLegacyPage) onOpenLegacyPage(); 
-              }}
-              className="w-full text-left py-1.5 text-slate-200 hover:text-amber-300 flex items-center justify-between"
-            >
-              <span>Our Legacy</span>
-            </button>
-            <button
-              onClick={() => {
-                setMobileMenuOpen(false);
-                onOpenPortal();
-              }}
-              className="w-full text-left py-1.5 text-slate-200 hover:text-amber-300 flex items-center justify-between"
-            >
-              <span className="flex items-center gap-1.5">
-                <User size={13} className="text-amber-400" />
+              {/* About Us (Our Story & Vision) */}
+              <button
+                type="button"
+                onClick={() => {
+                  setMobileMenuOpen(false);
+                  if (onOpenAboutUsPage) {
+                    onOpenAboutUsPage();
+                  }
+                }}
+                className="w-full text-left text-[15px] font-semibold text-[#0B1A3A] p-4 border-b border-[#f3f4f6] flex items-center justify-between hover:bg-slate-50 transition-colors cursor-pointer"
+              >
+                <span>About Us (Our Story &amp; Vision)</span>
+                <ChevronRight size={16} className="text-[#6B7280]" />
+              </button>
+
+              {/* Campus Life */}
+              <button
+                type="button"
+                onClick={() => {
+                  setMobileMenuOpen(false);
+                  if (onOpenCampusLifePage) {
+                    onOpenCampusLifePage();
+                  } else {
+                    handleNavClick('campus-section');
+                  }
+                }}
+                className="w-full text-left text-[15px] font-semibold text-[#0B1A3A] p-4 border-b border-[#f3f4f6] flex items-center justify-between hover:bg-slate-50 transition-colors cursor-pointer"
+              >
+                <span>Campus Life</span>
+              </button>
+
+              {/* Academics & Programmes (Accordion with sub-items) */}
+              <div className="border-b border-[#f3f4f6]">
+                <button
+                  type="button"
+                  onClick={() => toggleMobileAccordion('academics')}
+                  className="w-full text-left text-[15px] font-semibold text-[#0B1A3A] p-4 flex items-center justify-between hover:bg-slate-50 transition-colors cursor-pointer"
+                  aria-expanded={openMobileAccordions.academics}
+                >
+                  <span>Academics &amp; Programmes</span>
+                  <ChevronRight 
+                    size={16} 
+                    className={`text-[#6B7280] transition-transform duration-200 ${
+                      openMobileAccordions.academics ? 'rotate-90' : ''
+                    }`} 
+                  />
+                </button>
+
+                {openMobileAccordions.academics && (
+                  <div className="bg-slate-50/70 border-t border-[#f3f4f6]">
+                    <button
+                      type="button"
+                      onClick={() => {
+                        setMobileMenuOpen(false);
+                        if (onOpenProgrammesPage) onOpenProgrammesPage('bs-business-analytics');
+                      }}
+                      className="w-full text-left text-[13.5px] font-normal text-[#6B7280] py-3 pl-8 pr-4 hover:text-[#0B1A3A] hover:bg-slate-100/70 transition-colors cursor-pointer block border-b border-[#f3f4f6]/60"
+                    >
+                      BS Programmes
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => {
+                        setMobileMenuOpen(false);
+                        if (onOpenProgrammesPage) onOpenProgrammesPage('adp-psychology');
+                      }}
+                      className="w-full text-left text-[13.5px] font-normal text-[#6B7280] py-3 pl-8 pr-4 hover:text-[#0B1A3A] hover:bg-slate-100/70 transition-colors cursor-pointer block border-b border-[#f3f4f6]/60"
+                    >
+                      ADP / ADS Programmes
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => {
+                        setMobileMenuOpen(false);
+                        if (onOpenProgrammesPage) onOpenProgrammesPage();
+                        else handleNavClick('finder-section');
+                      }}
+                      className="w-full text-left text-[13.5px] font-normal text-[#6B7280] py-3 pl-8 pr-4 hover:text-[#0B1A3A] hover:bg-slate-100/70 transition-colors cursor-pointer block border-b border-[#f3f4f6]/60"
+                    >
+                      Curriculum &amp; Program Roadmaps
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => {
+                        setMobileMenuOpen(false);
+                        if (onOpenScholarshipsPage) onOpenScholarshipsPage();
+                        else window.open('https://ucpcolleges.pgc.edu/scholarship/', '_blank', 'noopener,noreferrer');
+                      }}
+                      className="w-full text-left text-[13.5px] font-normal text-[#6B7280] py-3 pl-8 pr-4 hover:text-[#0B1A3A] hover:bg-slate-100/70 transition-colors cursor-pointer block border-b border-[#f3f4f6]/60"
+                    >
+                      Scholarships &amp; Concessions (1.3B PKR)
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => {
+                        setMobileMenuOpen(false);
+                        onOpenFee();
+                      }}
+                      className="w-full text-left text-[13.5px] font-normal text-[#6B7280] py-3 pl-8 pr-4 hover:text-[#0B1A3A] hover:bg-slate-100/70 transition-colors cursor-pointer block border-b border-[#f3f4f6]/60"
+                    >
+                      Fee Structure &amp; Tuition Schedules
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => {
+                        setMobileMenuOpen(false);
+                        if (onOpenProgrammesPage) onOpenProgrammesPage();
+                        else onOpenInfo('merit-list');
+                      }}
+                      className="w-full text-left text-[13.5px] font-normal text-[#6B7280] py-3 pl-8 pr-4 hover:text-[#0B1A3A] hover:bg-slate-100/70 transition-colors cursor-pointer block"
+                    >
+                      Academic Programs Directory
+                    </button>
+                  </div>
+                )}
+              </div>
+
+              {/* Our Faculty */}
+              <button
+                type="button"
+                onClick={() => {
+                  setMobileMenuOpen(false);
+                  if (onOpenFacultyPage) {
+                    onOpenFacultyPage();
+                  } else {
+                    handleNavClick('faculty-section');
+                  }
+                }}
+                className="w-full text-left text-[15px] font-semibold text-[#0B1A3A] p-4 border-b border-[#f3f4f6] flex items-center justify-between hover:bg-slate-50 transition-colors cursor-pointer"
+              >
+                <span>Our Faculty</span>
+              </button>
+
+              {/* Academic Calendar */}
+              <button
+                type="button"
+                onClick={() => {
+                  setMobileMenuOpen(false);
+                  if (onOpenCalendar) onOpenCalendar();
+                  else onOpenInfo('academic-calendar');
+                }}
+                className="w-full text-left text-[15px] font-semibold text-[#0B1A3A] p-4 border-b border-[#f3f4f6] flex items-center justify-between hover:bg-slate-50 transition-colors cursor-pointer"
+              >
+                <span>Academic Calendar (Official)</span>
+              </button>
+
+              {/* Campus Facilities */}
+              <button
+                type="button"
+                onClick={() => {
+                  setMobileMenuOpen(false);
+                  if (onOpenCampusFacilitiesPage) {
+                    onOpenCampusFacilitiesPage();
+                  } else {
+                    handleNavClick('facilities-section');
+                  }
+                }}
+                className="w-full text-left text-[15px] font-semibold text-[#0B1A3A] p-4 border-b border-[#f3f4f6] flex items-center justify-between hover:bg-slate-50 transition-colors cursor-pointer"
+              >
+                <span>Campus Facilities</span>
+              </button>
+
+              {/* Our Location */}
+              <button
+                type="button"
+                onClick={() => {
+                  setMobileMenuOpen(false);
+                  handleNavClick('location-section');
+                }}
+                className="w-full text-left text-[15px] font-semibold text-[#0B1A3A] p-4 border-b border-[#f3f4f6] flex items-center justify-between hover:bg-slate-50 transition-colors cursor-pointer"
+              >
+                <span>Our Location</span>
+              </button>
+
+              {/* Our Leadership */}
+              <button
+                type="button"
+                onClick={() => {
+                  setMobileMenuOpen(false);
+                  handleNavClick('leadership-section');
+                }}
+                className="w-full text-left text-[15px] font-semibold text-[#0B1A3A] p-4 border-b border-[#f3f4f6] flex items-center justify-between hover:bg-slate-50 transition-colors cursor-pointer"
+              >
+                <span>Our Leadership</span>
+              </button>
+
+              {/* Vision & Rankings */}
+              <button
+                type="button"
+                onClick={() => {
+                  setMobileMenuOpen(false);
+                  handleNavClick('vision-rankings-section');
+                }}
+                className="w-full text-left text-[15px] font-semibold text-[#0B1A3A] p-4 border-b border-[#f3f4f6] flex items-center justify-between hover:bg-slate-50 transition-colors cursor-pointer"
+              >
+                <span>Vision &amp; Rankings</span>
+              </button>
+
+              {/* Our Legacy */}
+              <button
+                type="button"
+                onClick={() => {
+                  setMobileMenuOpen(false);
+                  if (onOpenLegacyPage) onOpenLegacyPage();
+                }}
+                className="w-full text-left text-[15px] font-semibold text-[#0B1A3A] p-4 border-b border-[#f3f4f6] flex items-center justify-between hover:bg-slate-50 transition-colors cursor-pointer"
+              >
+                <span>Our Legacy</span>
+              </button>
+            </div>
+
+            {/* Bottom of drawer: 2 buttons - Student Portal and Admissions Portal, full width, UCP blue background */}
+            <div className="p-4 border-t border-[#f3f4f6] space-y-2.5 bg-white shrink-0">
+              <a
+                href="https://mcom.pgc.edu.pk/Student/StdLogin.jsp"
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => setMobileMenuOpen(false)}
+                className="w-full py-2.5 px-4 bg-[#0B1A3A] hover:bg-[#07152d] text-white rounded-lg font-semibold text-[14px] flex items-center justify-center gap-2 shadow-xs transition-colors"
+              >
                 <span>Student Portal</span>
-              </span>
-              <span className="text-xs text-amber-300">Login ↗</span>
-            </button>
+              </a>
 
-            {/* Official Mobile Appearance Mode Toggle */}
-            <ThemeToggle variant="drawer" />
+              <button
+                type="button"
+                onClick={() => {
+                  setMobileMenuOpen(false);
+                  onOpenApply();
+                }}
+                className="w-full py-2.5 px-4 bg-[#0B1A3A] hover:bg-[#07152d] text-white rounded-lg font-semibold text-[14px] flex items-center justify-center gap-2 shadow-xs transition-colors cursor-pointer"
+              >
+                <span>Admissions Portal</span>
+              </button>
+            </div>
           </div>
         </div>
       )}

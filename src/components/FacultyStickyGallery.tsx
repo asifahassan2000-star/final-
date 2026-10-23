@@ -74,6 +74,13 @@ export const FACULTY_GALLERY_IMAGES = [
     alt: 'Faculty Academic Presentation & Pedagogical Delivery in Action',
     originalUrl: 'https://ibb.co/xTbNBKn',
   },
+  {
+    id: 11,
+    src: 'https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-11%20at%2011.38.19%20PM.jpeg',
+    fallback: '/assets/leadership/leadership-ceremony-awards.jpg',
+    alt: 'Faculty Awards Ceremony & Academic Recognition in Action',
+    originalUrl: 'https://ibb.co/PsXDkcXR',
+  },
 ];
 
 export const FacultyStickyGallery: React.FC = () => {

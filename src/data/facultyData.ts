@@ -167,7 +167,7 @@ export const ALL_FACULTY_MEMBERS: FacultyMemberData[] = [
     highestDegree: 'PhD Scholar English Linguistics (contd)',
     experienceYears: '15+ Years',
     specialization: 'Applied Linguistics, English Pedagogy, Reading, Academic Writing & Web-Based Research',
-    intro: 'Assistant Professor of English Language and Literature at UCP, currently PhD scholar in linguistics. Specialized in university-level English teaching, reading comprehension, academic writing development, and modern digital information literacy.',
+    intro: 'And language and literature at UCP, currently PhD scholar in linguistics. Professional experience 15+. Specialized in university-level English teaching, functional English communication skills, reading comprehension, essay structuring, and advanced linguistic studies.',
     photoUrl: '/assets/faculty/prof-abeer-aslam.jpg',
     fallbackPhotoUrl: '/images/My6FmnQm_image-22.jpg',
     objectPosition: 'object-top',

@@ -35,7 +35,7 @@ export const FloatingSideRibbons: React.FC<FloatingSideRibbonsProps> = ({
       {/* Right Edge Vertical Sticky Tabs */}
       <aside 
         aria-label="Quick Navigation Ribbons" 
-        className="fixed right-0 top-1/2 -translate-y-1/2 z-40 flex flex-col items-end shadow-xl select-none"
+        className="fixed right-0 top-1/2 -translate-y-1/2 z-40 hidden lg:flex flex-col items-end shadow-xl select-none"
       >
         {/* Tab 1: Campus Life (Replaces Our Newsletter as requested) */}
         <button

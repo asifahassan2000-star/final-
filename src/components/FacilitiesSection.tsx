@@ -7,11 +7,13 @@ import {
 interface FacilitiesSectionProps {
   onOpenApply?: () => void;
   onOpenCampusLifePage?: () => void;
+  onOpenFacultyPage?: () => void;
 }
 
 export const FacilitiesSection: React.FC<FacilitiesSectionProps> = ({
   onOpenApply,
   onOpenCampusLifePage,
+  onOpenFacultyPage,
 }) => {
   const [activeTab, setActiveTab] = useState<'all' | 'environment' | 'library' | 'computer' | 'science'>('all');
   const [isLibraryExpanded, setIsLibraryExpanded] = useState(false);
@@ -553,26 +555,43 @@ export const FacilitiesSection: React.FC<FacilitiesSectionProps> = ({
         )}
 
         {/* Minimal Bottom Action Strip */}
-        <div className="pt-6 border-t border-slate-200 dark:border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs sm:text-sm text-slate-600 dark:text-slate-300">
-          <span>Explore campus facilities or apply online for admissions.</span>
-          <div className="flex items-center gap-3">
-            {onOpenCampusLifePage && (
-              <button
-                onClick={onOpenCampusLifePage}
-                className="px-3.5 py-1.5 bg-white dark:bg-[#0d1e38] hover:bg-slate-50 dark:hover:bg-[#14284c] text-slate-700 dark:text-slate-200 font-medium rounded border border-slate-200 dark:border-[#1e3256] transition-colors cursor-pointer"
-              >
-                Campus Life
-              </button>
-            )}
-            {onOpenApply && (
-              <button
-                onClick={onOpenApply}
-                className="px-3.5 py-1.5 bg-[#a30f16] hover:bg-[#850c12] text-white font-medium rounded transition-colors cursor-pointer flex items-center gap-1.5"
-              >
-                <span>Apply Now</span>
-                <ArrowRight size={14} />
-              </button>
-            )}
+        <div className="pt-6 border-t border-slate-200 dark:border-white/10 space-y-4">
+          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 text-xs sm:text-sm text-slate-600 dark:text-slate-300">
+            {/* Connected Experienced Faculty Link: Just one line, no extra button, blue text with arrow */}
+            <div className="flex flex-wrap items-center gap-1.5 sm:gap-2">
+              <span>Modern laboratories and research facilities guided by experienced faculty.</span>
+              {onOpenFacultyPage && (
+                <button
+                  type="button"
+                  onClick={onOpenFacultyPage}
+                  className="text-[#0F2C61] dark:text-sky-400 hover:text-[#C8102E] dark:hover:text-amber-300 font-semibold inline-flex items-center gap-1 cursor-pointer transition-colors group underline-offset-2 hover:underline"
+                  aria-label="Connect to experienced faculty portion"
+                >
+                  <span>Meet Experienced Faculty</span>
+                  <ArrowRight size={14} className="transition-transform group-hover:translate-x-1" />
+                </button>
+              )}
+            </div>
+
+            <div className="flex items-center gap-3 self-end sm:self-auto shrink-0">
+              {onOpenCampusLifePage && (
+                <button
+                  onClick={onOpenCampusLifePage}
+                  className="px-3.5 py-1.5 bg-white dark:bg-[#0d1e38] hover:bg-slate-50 dark:hover:bg-[#14284c] text-slate-700 dark:text-slate-200 font-medium rounded border border-slate-200 dark:border-[#1e3256] transition-colors cursor-pointer"
+                >
+                  Campus Life
+                </button>
+              )}
+              {onOpenApply && (
+                <button
+                  onClick={onOpenApply}
+                  className="px-3.5 py-1.5 bg-[#a30f16] hover:bg-[#850c12] text-white font-medium rounded transition-colors cursor-pointer flex items-center gap-1.5"
+                >
+                  <span>Apply Now</span>
+                  <ArrowRight size={14} />
+                </button>
+              )}
+            </div>
           </div>
         </div>
 

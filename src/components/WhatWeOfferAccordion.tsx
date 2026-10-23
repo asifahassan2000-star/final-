@@ -44,6 +44,7 @@ interface WhatWeOfferAccordionProps {
   onOpenScholarshipsPage?: () => void;
   onOpenLegacyPage?: () => void;
   onOpenFacultyPage?: (category?: string) => void;
+  onOpenFacilitiesPage?: () => void;
   onScrollTo?: (id: string) => void;
 }
 
@@ -57,6 +58,7 @@ export const WhatWeOfferAccordion: React.FC<WhatWeOfferAccordionProps> = ({
   onOpenScholarshipsPage,
   onOpenLegacyPage,
   onOpenFacultyPage,
+  onOpenFacilitiesPage,
   onScrollTo,
 }) => {
   const [activeIndex, setActiveIndex] = useState<number>(0);
@@ -217,7 +219,9 @@ export const WhatWeOfferAccordion: React.FC<WhatWeOfferAccordionProps> = ({
     }
 
     if (card.actionType === 'facilities') {
-      if (onScrollTo) {
+      if (onOpenFacilitiesPage) {
+        onOpenFacilitiesPage();
+      } else if (onScrollTo) {
         onScrollTo('facilities-section');
       } else if (onOpenFacultyPage) {
         onOpenFacultyPage();

@@ -700,7 +700,7 @@ export const UcpChatbot: React.FC = () => {
           2. FLOATING ROBOT LAUNCHER & SNAPCHAT-STYLE ANIMATED GREETING BUBBLE
           ========================================================================= */}
       <div 
-        className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 lg:bottom-7 lg:right-7 z-45 flex items-center pointer-events-auto"
+        className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 lg:bottom-7 lg:right-7 z-50 flex items-center pointer-events-auto m-2 sm:m-0"
         style={{
           paddingBottom: 'env(safe-area-inset-bottom, 0px)',
           paddingRight: 'env(safe-area-inset-right, 0px)',
@@ -710,7 +710,7 @@ export const UcpChatbot: React.FC = () => {
         {!isOpen && !hasDismissedGreeting && (greetingState === 'entering' || greetingState === 'visible' || greetingState === 'exiting') && (
           <div
             onClick={handleToggleChat}
-            className={`relative mr-3 sm:mr-4 cursor-pointer select-none ${
+            className={`relative mr-2.5 sm:mr-4 cursor-pointer select-none hidden sm:block ${
               greetingState === 'exiting' ? 'ucp-speech-bubble-exit' : 'ucp-speech-bubble-enter'
             }`}
             title="Click to chat with UCP Assistant"
@@ -761,30 +761,30 @@ export const UcpChatbot: React.FC = () => {
 
         {/* =========================================================================
             PROMINENT ENLARGED FLOATING ROBOT LAUNCHER BUTTON
-            Desktop: ~84-88px diameter | Mobile: ~72-76px diameter
+            Desktop: ~84-88px diameter | Mobile: 48px diameter (w-12 h-12)
             ========================================================================= */}
         <button
           id="ucp-assistant-floating-launcher"
           onClick={handleToggleChat}
           className={`group relative rounded-full flex items-center justify-center transition-all duration-300 cursor-pointer focus:outline-none focus:ring-4 focus:ring-[#C8102E]/30 select-none ${
             isOpen
-              ? 'w-14 h-14 sm:w-16 sm:h-16 bg-[#C8102E] hover:bg-[#A51C30] text-white shadow-[0_10px_30px_rgba(200,16,46,0.4)] rotate-90 scale-95'
-              : 'w-[72px] h-[72px] sm:w-[82px] sm:h-[82px] lg:w-[88px] lg:h-[88px] bg-gradient-to-b from-[#0F223F] via-[#0A1931] to-[#061121] text-white hover:scale-105 active:scale-95 border-2 border-slate-600/80 hover:border-[#C8102E] shadow-[0_12px_40px_rgba(10,25,49,0.5)] ucp-robot-halo'
+              ? 'w-12 h-12 sm:w-16 sm:h-16 bg-[#C8102E] hover:bg-[#A51C30] text-white shadow-[0_10px_30px_rgba(200,16,46,0.4)] rotate-90 scale-95'
+              : 'w-12 h-12 sm:w-[82px] sm:h-[82px] lg:w-[88px] lg:h-[88px] bg-gradient-to-b from-[#0F223F] via-[#0A1931] to-[#061121] text-white hover:scale-105 active:scale-95 border-2 border-slate-600/80 hover:border-[#C8102E] shadow-[0_12px_40px_rgba(10,25,49,0.5)] ucp-robot-halo'
           } ${!isOpen && !isWaving ? 'ucp-robot-float' : ''} ${isBouncing ? 'ucp-robot-bounce' : ''}`}
           aria-label={isOpen ? "Close UCP Assistant" : "Open UCP Assistant — Campus AI Chatbot"}
           title={isOpen ? "Close UCP Assistant" : "Chat with UCP Assistant"}
         >
           {isOpen ? (
             /* Clean Close Cross */
-            <X size={26} className="text-white drop-shadow-md" />
+            <X size={20} className="text-white drop-shadow-md" />
           ) : (
             /* Large Visible Cute Robot Mascot */
-            <div className={`relative w-full h-full flex items-center justify-center p-1.5 ${!isWaving ? 'ucp-robot-tilt' : ''}`}>
+            <div className={`relative w-full h-full flex items-center justify-center p-1 sm:p-1.5 ${!isWaving ? 'ucp-robot-tilt' : ''}`}>
               
               {/* Mascot Vector Illustration peeking inside circular badge */}
               <UcpRobotMascot 
                 size={74}
-                className="w-[66px] h-[66px] sm:w-[74px] sm:h-[74px] lg:w-[80px] lg:h-[80px] transition-transform duration-200 group-hover:scale-105"
+                className="w-8 h-8 sm:w-[74px] sm:h-[74px] lg:w-[80px] lg:h-[80px] transition-transform duration-200 group-hover:scale-105"
                 isWaving={isWaving}
                 isBlinking={isBlinking}
                 isThinking={isLoading}
@@ -794,7 +794,7 @@ export const UcpChatbot: React.FC = () => {
 
               {/* UCP Crimson AI Badge Pin on Top Right */}
               <div 
-                className="absolute -top-1 -right-1 sm:top-0 sm:right-0 px-2 py-0.5 bg-[#C8102E] text-white font-mono font-bold text-[9px] rounded-full border border-white/70 shadow-md flex items-center gap-0.5"
+                className="absolute -top-1 -right-1 sm:top-0 sm:right-0 px-1 sm:px-2 py-0.5 bg-[#C8102E] text-white font-mono font-bold text-[7.5px] sm:text-[9px] rounded-full border border-white/70 shadow-md flex items-center gap-0.5"
                 aria-hidden="true"
               >
                 <span className="w-1.5 h-1.5 rounded-full bg-emerald-300 animate-pulse" />

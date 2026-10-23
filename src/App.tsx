@@ -22,7 +22,7 @@ const WhatWeOfferAccordion = React.lazy(() => import('./components/WhatWeOfferAc
 const FacultySection = React.lazy(() => import('./components/FacultySection').then(m => ({ default: m.FacultySection })));
 const AboutCampusSection = React.lazy(() => import('./components/AboutCampusSection').then(m => ({ default: m.AboutCampusSection })));
 const StatisticsSection = React.lazy(() => import('./components/StatisticsSection').then(m => ({ default: m.StatisticsSection })));
-const FacilitiesSection = React.lazy(() => import('./components/FacilitiesSection').then(m => ({ default: m.FacilitiesSection })));
+const CampusFacilitiesPreview = React.lazy(() => import('./components/CampusFacilitiesPreview').then(m => ({ default: m.CampusFacilitiesPreview })));
 const OurLeadershipSection = React.lazy(() => import('./components/OurLeadershipSection').then(m => ({ default: m.OurLeadershipSection })));
 const LeadershipImpactSection = React.lazy(() => import('./components/LeadershipImpactSection').then(m => ({ default: m.LeadershipImpactSection })));
 const CampusLife = React.lazy(() => import('./components/CampusLife').then(m => ({ default: m.CampusLife })));
@@ -41,6 +41,8 @@ const loadFeeStructurePage = () => import('./components/FeeStructurePage').then(
 const loadCampusLifePage = () => import('./components/CampusLifePage').then(m => ({ default: m.CampusLifePage }));
 const loadCnnAcademyPage = () => import('./components/CnnAcademyPage').then(m => ({ default: m.CnnAcademyPage }));
 const loadAcademicCalendarSection = () => import('./components/AcademicCalendarSection').then(m => ({ default: m.AcademicCalendarSection }));
+const loadCampusFacilitiesPage = () => import('./components/CampusFacilitiesPage').then(m => ({ default: m.CampusFacilitiesPage }));
+const loadAboutUsPage = () => import('./components/AboutUsPage').then(m => ({ default: m.AboutUsPage }));
 
 const FacultyPage = React.lazy(loadFacultyPage);
 const AcademicProgrammesPage = React.lazy(loadAcademicProgrammesPage);
@@ -50,6 +52,8 @@ const FeeStructurePage = React.lazy(loadFeeStructurePage);
 const CampusLifePage = React.lazy(loadCampusLifePage);
 const CnnAcademyPage = React.lazy(loadCnnAcademyPage);
 const AcademicCalendarSection = React.lazy(loadAcademicCalendarSection);
+const CampusFacilitiesPage = React.lazy(loadCampusFacilitiesPage);
+const AboutUsPage = React.lazy(loadAboutUsPage);
 
 export const preloadSubpages = () => {
   loadAcademicProgrammesPage();
@@ -59,13 +63,20 @@ export const preloadSubpages = () => {
   loadFeeStructurePage();
   loadCampusLifePage();
   loadAcademicCalendarSection();
+  loadCampusFacilitiesPage();
+  loadAboutUsPage();
 };
 
-export type PageId = 'home' | 'faculty' | 'programmes' | 'legacy' | 'campus-life' | 'scholarships' | 'fee-structure' | 'cnn-academy' | 'calendar';
+export type PageId = 'home' | 'faculty' | 'programmes' | 'legacy' | 'campus-life' | 'scholarships' | 'fee-structure' | 'cnn-academy' | 'calendar' | 'campus-facilities' | 'about-us';
 
 const getPageFromHash = (): PageId => {
   if (typeof window === 'undefined') return 'home';
+  const pathname = (window.location.pathname || '').replace(/^\/+/, '').toLowerCase();
+  if (pathname === 'campus-facilities' || pathname === 'facilities') return 'campus-facilities';
+  if (pathname === 'about-us' || pathname === 'about') return 'about-us';
   const hash = (window.location.hash || '').replace('#', '').toLowerCase();
+  if (hash === 'campus-facilities' || hash === 'facilities') return 'campus-facilities';
+  if (hash === 'about-us' || hash === 'about') return 'about-us';
   if (hash === 'programmes' || hash === 'programs') return 'programmes';
   if (hash === 'faculty') return 'faculty';
   if (hash === 'legacy') return 'legacy';
@@ -218,6 +229,8 @@ export default function App() {
       legacy: 'Institutional Legacy & Heritage | UCP Bahawalpur Campus',
       'cnn-academy': 'CNN Academy Strategic Partnership | UCP Bahawalpur Campus',
       calendar: 'Academic Calendar | UCP Bahawalpur Campus',
+      'campus-facilities': 'Campus Facilities, Central Library & Labs | UCP Bahawalpur Campus',
+      'about-us': 'About Us — Success Story, Leadership & Vision | UCP Bahawalpur Campus',
     };
     if (titles[currentPage]) {
       document.title = titles[currentPage];
@@ -228,13 +241,12 @@ export default function App() {
   const navigateToPage = (newPage: PageId) => {
     scrollToTopInstant();
     setCurrentPage(newPage);
-    const targetHash = newPage === 'home' ? '' : `#${newPage}`;
-    if (window.location.hash !== targetHash) {
-      if (newPage === 'home') {
-        window.history.pushState(null, '', window.location.pathname + window.location.search);
-      } else {
-        window.history.pushState(null, '', targetHash);
-      }
+    if (newPage === 'home') {
+      window.history.pushState(null, '', window.location.pathname + window.location.search);
+    } else if (newPage === 'campus-facilities') {
+      window.history.pushState(null, '', '/campus-facilities');
+    } else {
+      window.history.pushState(null, '', `#${newPage}`);
     }
     requestAnimationFrame(() => scrollToTopInstant());
   };
@@ -295,6 +307,16 @@ export default function App() {
   const handleOpenCalendarPage = () => {
     setSelectedProgrammeId(null);
     navigateToPage('calendar');
+  };
+
+  const handleOpenCampusFacilitiesPage = () => {
+    setSelectedProgrammeId(null);
+    navigateToPage('campus-facilities');
+  };
+
+  const handleOpenAboutUsPage = () => {
+    setSelectedProgrammeId(null);
+    navigateToPage('about-us');
   };
 
   const handleOpenApply = (progName?: string) => {
@@ -422,7 +444,7 @@ export default function App() {
   };
 
   return (
-    <div id="top" className="min-h-screen bg-white text-slate-900 dark:bg-[#080f1d] dark:text-[#f8fafc] font-sans selection:bg-[#a30f16] selection:text-white transition-colors duration-200">
+    <div id="top" className="min-h-screen bg-white text-slate-900 dark:bg-[#080f1d] dark:text-[#f8fafc] font-sans selection:bg-[#a30f16] selection:text-white transition-colors duration-200 overflow-x-hidden w-full max-w-full">
       {/* Interactive Click Glow & Highlight Manager for all text and images */}
       <ClickGlowManager />
       
@@ -447,11 +469,13 @@ export default function App() {
         onOpenScholarshipsPage={handleOpenScholarshipsPage}
         onOpenCnnAcademyPage={handleOpenCnnAcademyPage}
         onOpenCalendar={handleOpenCalendarPage}
+        onOpenCampusFacilitiesPage={handleOpenCampusFacilitiesPage}
+        onOpenAboutUsPage={handleOpenAboutUsPage}
         onBackToHome={handleBackToHome}
         currentPage={currentPage}
       />
 
-      <main>
+      <main className="w-full max-w-full overflow-x-hidden">
         <Suspense fallback={
           <div className="min-h-[70vh] w-full bg-[#FAF8F5] pt-24 pb-16 px-4 max-w-7xl mx-auto" aria-busy="true">
             <div className="h-0.5 bg-gradient-to-r from-transparent via-[#C8102E] to-transparent mb-8 animate-pulse" />
@@ -524,6 +548,23 @@ export default function App() {
             isStandalone={true}
             onBackToHome={handleBackToHome}
           />
+        ) : currentPage === 'campus-facilities' ? (
+          /* Dedicated Official Campus Facilities Page — Learning Environment, Central Library & Labs */
+          <CampusFacilitiesPage 
+            onBackToHome={handleBackToHome}
+            onOpenApply={() => handleOpenApply()}
+            onOpenCampusLifePage={handleOpenCampusLifePage}
+            onOpenFacultyPage={() => handleOpenFacultyPage('all')}
+          />
+        ) : currentPage === 'about-us' ? (
+          /* Dedicated Official About Us Page — Success Story, Leadership, Vision & Values */
+          <AboutUsPage
+            onBackToHome={handleBackToHome}
+            onOpenApply={() => handleOpenApply()}
+            onOpenProgrammesPage={handleOpenProgrammesPage}
+            onOpenFacilitiesPage={handleOpenCampusFacilitiesPage}
+            onOpenCampusLifePage={handleOpenCampusLifePage}
+          />
         ) : (
           /* Main Homepage Sections following World-Class SEO and Institutional Information Architecture */
           <>
@@ -544,6 +585,7 @@ export default function App() {
               <WelcomeUcpSection 
                 onOpenLegacyPage={handleOpenLegacyPage}
                 onOpenProgrammesPage={handleOpenProgrammesPage}
+                onOpenAboutUsPage={handleOpenAboutUsPage}
                 onScrollTo={handleScrollTo}
               />
             </div>
@@ -582,6 +624,7 @@ export default function App() {
                 onOpenScholarshipsPage={handleOpenScholarshipsPage}
                 onOpenLegacyPage={handleOpenLegacyPage}
                 onOpenFacultyPage={() => handleOpenFacultyPage('all')}
+                onOpenFacilitiesPage={handleOpenCampusFacilitiesPage}
                 onScrollTo={handleScrollTo}
               />
             </div>
@@ -602,11 +645,12 @@ export default function App() {
               />
             </div>
 
-            {/* 8. WORLD-CLASS FACILITIES — Purpose-Built Laboratories & Learning Infrastructure */}
+            {/* 8. CAMPUS FACILITIES PREVIEW — Purpose-Built Laboratories & Learning Infrastructure */}
             <div className="w-full">
-              <FacilitiesSection 
-                onOpenApply={() => handleOpenApply()}
-                onOpenCampusLifePage={handleOpenCampusLifePage}
+              <CampusFacilitiesPreview 
+                onOpenFacilitiesPage={handleOpenCampusFacilitiesPage}
+                onOpenFacultyPage={() => handleOpenFacultyPage('all')}
+                onScrollTo={handleScrollTo}
               />
             </div>
 
@@ -662,6 +706,7 @@ export default function App() {
           onScrollTo={handleScrollTo}
           onSelectFaculty={handleSelectFaculty}
           onOpenLegacyPage={handleOpenLegacyPage}
+          onOpenAboutUsPage={handleOpenAboutUsPage}
         />
 
         {/* Right Edge Floating Ribbons & WhatsApp Button */}

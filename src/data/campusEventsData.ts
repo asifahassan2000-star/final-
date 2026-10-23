@@ -681,12 +681,6 @@ export const CAMPUS_EVENTS_DATA: CampusEvent[] = [
         caption: 'Faculty and SBP delegates discussing collaborative curriculum alignment in finance'
       },
       {
-        src: 'https://ik.imagekit.io/Muffins/image%20(73).png',
-        fallbackSrc: '/assets/events/seminar-overview-1.jpg',
-        alt: 'State Bank delegates and university leadership during the formal proceedings',
-        caption: 'Distinguished guests and campus administrators during official seminar proceedings'
-      },
-      {
         src: 'https://ik.imagekit.io/Muffins/image%20(78).png',
         fallbackSrc: '/assets/events/seminar-comm-keynote-large.jpg',
         alt: 'Commemorative group photograph of State Bank dignitaries, faculty, and student organizers',
@@ -1155,24 +1149,6 @@ export const CAMPUS_EVENTS_DATA: CampusEvent[] = [
         caption: 'Cosplay tournament participants displaying imaginative fantasy attire'
       },
       {
-        src: 'https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-20%20at%2012.31.54%20AM.jpeg?updatedAt=1792580286851',
-        fallbackSrc: '/assets/campus-life-new/campus-47.jpg',
-        alt: 'Students sharing memorable photo moments during the Ice Throne gala',
-        caption: 'Cherished student memories and photography at the winter gala'
-      },
-      {
-        src: 'https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-05%20at%202.39.17%20AM%20(2)%20-%20Copy%20-%20Copy.jpeg',
-        fallbackSrc: '/assets/campus-life-new/campus-36.jpg',
-        alt: 'Interactive gaming and student activities at the Ice Throne festival',
-        caption: 'Interactive quests, gaming challenges, and stage trivia competitions'
-      },
-      {
-        src: 'https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-05%20at%202.39.15%20AM%20(2)%20-%20Copy.jpeg',
-        fallbackSrc: '/assets/campus-life-new/campus-37.jpg',
-        alt: 'Festive student group celebration and cheerful moments',
-        caption: 'Dynamic campus enthusiasm and cheerful group festivities'
-      },
-      {
         src: 'https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-05%20at%201.06.21%20AM%20(1)%20-%20Copy.jpeg',
         fallbackSrc: '/assets/campus-life-new/campus-40.jpg',
         alt: 'Evening illuminations and ambient winter festival stalls',
@@ -1261,12 +1237,6 @@ export const CAMPUS_EVENTS_DATA: CampusEvent[] = [
         fallbackSrc: '/assets/campus-life/campus-collaboration-1.jpg',
         alt: 'Delegation meeting discussing student internships and cultural research initiatives',
         caption: 'Delegation review detailing student internships, desert heritage tours, and field research'
-      },
-      {
-        src: '/assets/campus-life/campus-collaboration-2.jpg',
-        fallbackSrc: '/images/Hfkk9bSJ_Whats-App-Image-2026-10-05-at-2-39-03-AM-1.jpg',
-        alt: 'Joint delegation group portrait marking commitment to Southern Punjab heritage development',
-        caption: 'Historic delegation group portrait inaugurating multi-year collaboration'
       }
     ]
   },
@@ -1363,6 +1333,12 @@ export const CAMPUS_EVENTS_DATA: CampusEvent[] = [
         fallbackSrc: '/assets/campus-life-new/campus-15.jpg',
         alt: 'Arts and Carnival Festival campus celebration and creative showcase',
         caption: 'Arts & Carnival Festival 2026 — Vibrant campus celebration, student talent, and festive carnival stalls'
+      },
+      {
+        src: 'https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-13%20at%201.12.45%20AM.jpeg',
+        fallbackSrc: '/assets/campus-life-new/campus-15.jpg',
+        alt: 'Arts and Carnival Festival student celebrations and creative activities',
+        caption: 'Arts & Carnival Festival 2026 — Student celebrations, art stalls, and carnival excitement'
       },
       {
         src: 'https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-05%20at%202.38.57%20AM%20(1).jpeg',
@@ -1479,7 +1455,7 @@ export const CAMPUS_EVENTS_DATA: CampusEvent[] = [
         caption: 'Graduating seniors sharing indelible memories and milestone recognitions'
       },
       {
-        src: 'https://ik.imagekit.io/Muffins/image%20(3).png',
+        src: 'https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-22%20at%209.54.08%20PM.png',
         alt: 'Farewell Party 2026 stage ceremony and graduating seniors celebration',
         caption: 'Farewell Party 2026 — Celebrating the indelible legacy of graduating seniors'
       },
@@ -1504,14 +1480,15 @@ export const CAMPUS_EVENTS_DATA: CampusEvent[] = [
         caption: 'Graduates cherishing collegiate friendships and campus memories'
       },
       {
-        src: 'https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-05%20at%202.38.56%20AM%20(1).jpeg',
+        src: 'https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-22%20at%209.54.07%20PM.png',
         alt: 'Farewell Party 2026 celebratory gathering and student laughter',
         caption: 'Nostalgic moments capturing four unforgettable collegiate years'
       },
       {
-        src: 'https://ik.imagekit.io/Muffins/image%20(5).png',
-        alt: 'Formal banquet dinner and gala awards at Farewell Party 2026',
-        caption: 'Formal black-tie banquet dinner and senior awards ceremony'
+        src: 'https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-13%20at%2012.53.34%20AM.jpeg',
+        fallbackSrc: '/assets/leadership/leadership-official-gathering.jpg',
+        alt: 'Faculty and leadership assembly at Farewell Party celebration',
+        caption: 'Faculty leadership and mentors sharing celebratory valedictory moments'
       },
       {
         src: 'https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-05%20at%202.38.54%20AM%20(1).jpeg',
@@ -1532,11 +1509,6 @@ export const CAMPUS_EVENTS_DATA: CampusEvent[] = [
         src: 'https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-05%20at%202.38.55%20AM%20(1).jpeg',
         alt: 'Commemorative shields and memories at Farewell Party',
         caption: 'Distributing commemorative mementos and honorary recognitions'
-      },
-      {
-        src: 'https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-05%20at%202.38.55%20AM%20(2).jpeg',
-        alt: 'Graduates sharing heartfelt farewells on campus lawn',
-        caption: 'Heartfelt farewells and warm wishes as seniors embark on careers'
       },
       {
         src: 'https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-05%20at%202.38.56%20AM%20(2).jpeg',
@@ -1662,6 +1634,41 @@ export const CAMPUS_EVENTS_DATA: CampusEvent[] = [
         fallbackSrc: '/assets/events/project-exhibition.jpg',
         alt: 'Faculty evaluators and students reviewing capstone research posters and hardware exhibits',
         caption: 'Faculty reviews and industry expert evaluations of senior capstone innovations'
+      },
+      {
+        src: 'https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-22%20at%2010.30.08%20PM%20(2).png',
+        alt: 'Student teams showcasing innovative technological solutions at Project Exhibition',
+        caption: 'Student teams demonstrating hardware and software engineering innovations'
+      },
+      {
+        src: 'https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-22%20at%2010.30.09%20PM.png',
+        alt: 'Interactive tech prototype evaluations during Annual Project Exhibition',
+        caption: 'Live prototype testing and evaluations with academic and industry experts'
+      },
+      {
+        src: 'https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-22%20at%2010.30.09%20PM.jpeg',
+        alt: 'Faculty mentors reviewing senior capstone engineering projects',
+        caption: 'Mentorship and technical reviews of senior capstone research displays'
+      },
+      {
+        src: 'https://ik.imagekit.io/Muffins/image%20-%202026-10-23T104310.368.png',
+        alt: 'Student inventors presenting AI and computing models at exhibition',
+        caption: 'Senior students presenting cutting-edge AI and software prototypes'
+      },
+      {
+        src: 'https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-22%20at%2010.30.08%20PM%20(3).png',
+        alt: 'Exhibition attendees interacting with live computing demonstrations',
+        caption: 'Attendees and students interacting with practical computing implementations'
+      },
+      {
+        src: 'https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-22%20at%2010.30.08%20PM.jpeg',
+        alt: 'Exhibition project display boards and technical architecture diagrams',
+        caption: 'Detailed architectural frameworks and innovation project posters'
+      },
+      {
+        src: 'https://ik.imagekit.io/Muffins/image%20-%202026-10-23T104414.704.png',
+        alt: 'Honoring outstanding innovations and student project teams at Exhibition 2026',
+        caption: 'Recognizing outstanding student innovation teams and capstone achievements'
       }
     ]
   },
@@ -1733,17 +1740,17 @@ export const CAMPUS_EVENTS_DATA: CampusEvent[] = [
     date: 'August 2026',
     category: 'Tours & Excursions',
     badge: 'Alpine Adventure Excursion',
-    description: 'An unforgettable multi-day alpine expedition across Shogran, Siri Paye, and Kaghan Valley. Students and faculty mentors explored breathtaking glaciers, alpine meadows, and mountain culture while building lifelong camaraderie.',
+    description: 'An exhilarating high-altitude expedition into pristine alpine wilderness. Students and faculty mentors journeyed through towering mountain peaks, emerald pine forests, and glacial streams, discovering thrilling outdoor adventures and enduring camaraderie amid nature’s grandest horizons.',
     highlights: [
-      'Expedition to Shogran & Siri Paye Meadows',
+      'High-Altitude Alpine Treks & Wilderness Exploration',
       'Campfire Leadership & Team-Building Circles',
-      'Scenic Photography Workshops',
-      'Supervised Alpine Safety Protocols'
+      'Panoramic Mountain Photography & Environmental Studies',
+      'Supervised Alpine Safety Protocols & Outdoor Survival'
     ],
     images: [
       {
         src: 'https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-19%20at%202.11.37%20AM.jpeg',
-        fallbackSrc: '/assets/campus-life/shogran-valley-tour-1.jpg',
+        fallbackSrc: '/assets/campus-life-new/campus-4.jpg',
         alt: 'UCP students and faculty on alpine mountain excursion across northern valleys',
         caption: 'Trip to Northern Area — Students exploring picturesque alpine valleys and scenic mountain vistas'
       },
@@ -1752,6 +1759,26 @@ export const CAMPUS_EVENTS_DATA: CampusEvent[] = [
         fallbackSrc: '/assets/campus-life-new/campus-4.jpg',
         alt: 'Commemorative group portrait of students and faculty during Northern Area excursion',
         caption: 'A memorable milestone celebrating collegiate friendship, nature exploration, and mountain adventure'
+      },
+      {
+        src: 'https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-22%20at%2010.23.15%20PM.png',
+        alt: 'Scenic mountain viewpoints and student group excursion in northern areas',
+        caption: 'Scenic northern valley vistas and group explorations during the alpine tour'
+      },
+      {
+        src: 'https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-22%20at%2010.23.15%20PM%20(2).png',
+        alt: 'Students experiencing lush pine meadows and alpine wilderness',
+        caption: 'Pristine alpine meadows and mountain trekking adventures with peers'
+      },
+      {
+        src: 'https://ik.imagekit.io/Muffins/image%20-%202026-10-23T114726.836.png',
+        alt: 'Students experiencing high-altitude mountain vistas and wilderness adventure',
+        caption: 'Captivating high-altitude landscapes and spirited outdoor exploration'
+      },
+      {
+        src: 'https://ik.imagekit.io/Muffins/image%20-%202026-10-23T114828.315.png',
+        alt: 'Collegiate fellowship and mountain nature exploration on alpine expedition',
+        caption: 'Lifelong friendships forged amidst dramatic mountain peaks and open skies'
       }
     ]
   }

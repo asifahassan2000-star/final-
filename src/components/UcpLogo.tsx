@@ -58,11 +58,11 @@ export const UcpLogo: React.FC<UcpLogoProps> = ({ variant = 'header', className 
 
       {/* Typography: Official, Balanced Academic Wordmark */}
       {!isCompact && (
-        <div className="flex flex-col justify-center select-none min-w-0">
+        <div className="flex flex-col justify-center select-none min-w-max">
           <span 
-            className={`text-white leading-tight tracking-[0.02em] transition-colors duration-200 group-hover:text-amber-200 truncate ${
+            className={`text-white leading-tight tracking-[0.02em] transition-colors duration-200 group-hover:text-amber-200 whitespace-nowrap ${
               isFooter
-                ? 'text-xl sm:text-2xl lg:text-3xl font-normal'
+                ? 'text-lg sm:text-xl md:text-2xl lg:text-[24px] xl:text-[28px] font-normal'
                 : 'text-[15px] sm:text-[18px] md:text-[20px] lg:text-[22px] xl:text-[24px] font-normal'
             }`}
             style={{

@@ -98,45 +98,6 @@ export const LeadershipImpactSection: React.FC<LeadershipImpactSectionProps> = (
             </div>
           </motion.div>
 
-          {/* 3. Combined Side-by-Side: Selected Image on Left, New Awards/Ceremony Image on Right */}
-          <motion.div
-            className="w-[95%] max-w-[1200px] mx-auto pt-6 border-t border-slate-200/80"
-            initial={{ opacity: 0, y: 18 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, ease: easeCurve }}
-            viewport={{ once: true, amount: 0.15 }}
-          >
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
-              {/* Left: Selected Assembly Image */}
-              <div className="relative w-full rounded-xl overflow-hidden bg-slate-100 shadow-xs aspect-[4/3] sm:aspect-[3/2]">
-                <img
-                  src="https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-13%20at%2012.53.34%20AM.jpeg"
-                  alt="Faculty and leadership assembly at UCP Bahawalpur"
-                  loading="lazy"
-                  decoding="async"
-                  className="w-full h-full object-cover object-center block"
-                  onError={(e) => {
-                    (e.target as HTMLImageElement).src = '/assets/leadership/leadership-official-gathering.jpg';
-                  }}
-                />
-              </div>
-
-              {/* Right: Added Ceremony & Awards Image (https://ibb.co/PsXDkcXR) */}
-              <div className="relative w-full rounded-xl overflow-hidden bg-slate-100 shadow-xs aspect-[4/3] sm:aspect-[3/2]">
-                <img
-                  src="https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-11%20at%2011.38.19%20PM.jpeg"
-                  alt="Official faculty awards ceremony and institutional recognition at UCP Bahawalpur"
-                  loading="lazy"
-                  decoding="async"
-                  className="w-full h-full object-cover object-center block"
-                  onError={(e) => {
-                    (e.target as HTMLImageElement).src = '/assets/leadership/leadership-ceremony-awards.jpg';
-                  }}
-                />
-              </div>
-            </div>
-          </motion.div>
-
         </div>
 
       </div>
