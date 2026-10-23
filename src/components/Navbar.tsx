@@ -757,20 +757,20 @@ export const Navbar: React.FC<NavbarProps> = ({
         <div className="lg:hidden">
           {/* Backdrop overlay */}
           <div 
-            className="fixed inset-0 bg-black/50 z-50 transition-opacity backdrop-blur-[1px]"
+            className="fixed inset-0 bg-black/60 z-50 transition-opacity backdrop-blur-[2px]"
             onClick={() => setMobileMenuOpen(false)}
             aria-hidden="true"
           />
 
-          {/* Full-screen drawer from right, white background, width 320px, with X close button */}
+          {/* Full-screen drawer from right, crisp light/dark mode background, width 320px, with X close button */}
           <div 
-            className="fixed top-0 right-0 h-full w-[320px] max-w-[85vw] bg-white z-50 shadow-2xl flex flex-col justify-between overflow-hidden animate-in slide-in-from-right duration-300"
+            className="fixed top-0 right-0 h-full w-[320px] max-w-[85vw] bg-white dark:bg-[#071322] text-[#0B1A3A] dark:text-white z-50 shadow-2xl flex flex-col justify-between overflow-hidden animate-in slide-in-from-right duration-300 border-l border-slate-200/80 dark:border-white/10"
             role="dialog"
             aria-modal="true"
             aria-label="Mobile Navigation Drawer"
           >
-            {/* Top of drawer: Only show Logo and close button */}
-            <div className="flex items-center justify-between px-4 py-4 border-b border-[#f3f4f6] shrink-0 bg-white">
+            {/* Top of drawer: Logo, Campus identity, and close button */}
+            <div className="flex items-center justify-between px-4 py-4 border-b border-[#f3f4f6] dark:border-white/10 shrink-0 bg-white dark:bg-[#09182b]">
               <div 
                 className="flex items-center gap-2.5 cursor-pointer"
                 onClick={() => {
@@ -796,12 +796,12 @@ export const Navbar: React.FC<NavbarProps> = ({
                 />
                 <div className="flex flex-col">
                   <span 
-                    className="text-[#0B1A3A] text-[13px] sm:text-[14px] font-normal leading-tight whitespace-nowrap"
+                    className="text-[#0B1A3A] dark:text-white text-[13px] sm:text-[14px] font-normal leading-tight whitespace-nowrap"
                     style={{ fontFamily: "'UnifrakturMaguntia', 'MedievalSharp', serif" }}
                   >
                     University of Central Punjab
                   </span>
-                  <span className="text-amber-600 font-semibold text-[8px] tracking-[0.18em] uppercase">
+                  <span className="text-amber-600 dark:text-amber-400 font-semibold text-[8px] tracking-[0.18em] uppercase">
                     Bahawalpur Campus
                   </span>
                 </div>
@@ -810,16 +810,15 @@ export const Navbar: React.FC<NavbarProps> = ({
               <button
                 type="button"
                 onClick={() => setMobileMenuOpen(false)}
-                className="p-1.5 rounded-md text-[#0B1A3A] hover:bg-slate-100 transition-colors cursor-pointer"
+                className="p-1.5 rounded-md text-[#0B1A3A] dark:text-white hover:bg-slate-100 dark:hover:bg-white/10 transition-colors cursor-pointer"
                 aria-label="Close navigation menu"
               >
-                <X size={20} className="text-[#0B1A3A]" />
+                <X size={20} className="text-[#0B1A3A] dark:text-white" />
               </button>
             </div>
 
-            {/* Menu Items: Main Item Style: 15px, font-semibold, color #0B1A3A, padding 16px, border-bottom 1px solid #f3f4f6 */}
-            {/* Sub-Item Style: 13.5px, font-normal, color #6B7280, padding 12px from left 32px */}
-            <div className="flex-1 overflow-y-auto bg-white">
+            {/* Menu Items: Crisp typography and proper high-contrast text in both light and dark mode */}
+            <div className="flex-1 overflow-y-auto bg-white dark:bg-[#071322]">
               {/* Home */}
               <button
                 type="button"
@@ -831,7 +830,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                     handleNavClick('top');
                   }
                 }}
-                className="w-full text-left text-[15px] font-semibold text-[#0B1A3A] p-4 border-b border-[#f3f4f6] flex items-center justify-between hover:bg-slate-50 transition-colors cursor-pointer"
+                className="w-full text-left text-[15px] font-semibold text-[#0B1A3A] dark:text-slate-100 p-4 border-b border-[#f3f4f6] dark:border-white/10 flex items-center justify-between hover:bg-slate-50 dark:hover:bg-white/5 transition-colors cursor-pointer"
               >
                 <span>Home</span>
               </button>
@@ -845,10 +844,10 @@ export const Navbar: React.FC<NavbarProps> = ({
                     onOpenAboutUsPage();
                   }
                 }}
-                className="w-full text-left text-[15px] font-semibold text-[#0B1A3A] p-4 border-b border-[#f3f4f6] flex items-center justify-between hover:bg-slate-50 transition-colors cursor-pointer"
+                className="w-full text-left text-[15px] font-semibold text-[#0B1A3A] dark:text-slate-100 p-4 border-b border-[#f3f4f6] dark:border-white/10 flex items-center justify-between hover:bg-slate-50 dark:hover:bg-white/5 transition-colors cursor-pointer"
               >
                 <span>About Us (Our Story &amp; Vision)</span>
-                <ChevronRight size={16} className="text-[#6B7280]" />
+                <ChevronRight size={16} className="text-[#6B7280] dark:text-slate-400" />
               </button>
 
               {/* Campus Life */}
@@ -862,39 +861,40 @@ export const Navbar: React.FC<NavbarProps> = ({
                     handleNavClick('campus-section');
                   }
                 }}
-                className="w-full text-left text-[15px] font-semibold text-[#0B1A3A] p-4 border-b border-[#f3f4f6] flex items-center justify-between hover:bg-slate-50 transition-colors cursor-pointer"
+                className="w-full text-left text-[15px] font-semibold text-[#0B1A3A] dark:text-slate-100 p-4 border-b border-[#f3f4f6] dark:border-white/10 flex items-center justify-between hover:bg-slate-50 dark:hover:bg-white/5 transition-colors cursor-pointer"
               >
                 <span>Campus Life</span>
+                <ChevronRight size={16} className="text-[#6B7280] dark:text-slate-400" />
               </button>
 
               {/* Academics & Programmes (Accordion with sub-items) */}
-              <div className="border-b border-[#f3f4f6]">
+              <div className="border-b border-[#f3f4f6] dark:border-white/10">
                 <button
                   type="button"
                   onClick={() => toggleMobileAccordion('academics')}
-                  className="w-full text-left text-[15px] font-semibold text-[#0B1A3A] p-4 flex items-center justify-between hover:bg-slate-50 transition-colors cursor-pointer"
+                  className="w-full text-left text-[15px] font-semibold text-[#0B1A3A] dark:text-slate-100 p-4 flex items-center justify-between hover:bg-slate-50 dark:hover:bg-white/5 transition-colors cursor-pointer"
                   aria-expanded={openMobileAccordions.academics}
                 >
                   <span>Academics &amp; Programmes</span>
                   <ChevronRight 
                     size={16} 
-                    className={`text-[#6B7280] transition-transform duration-200 ${
-                      openMobileAccordions.academics ? 'rotate-90' : ''
+                    className={`text-[#6B7280] dark:text-slate-400 transition-transform duration-200 ${
+                      openMobileAccordions.academics ? 'rotate-90 text-[#0B1A3A] dark:text-amber-400' : ''
                     }`} 
                   />
                 </button>
 
                 {openMobileAccordions.academics && (
-                  <div className="bg-slate-50/70 border-t border-[#f3f4f6]">
+                  <div className="bg-slate-50/80 dark:bg-[#0a182c] border-t border-[#f3f4f6] dark:border-white/10">
                     <button
                       type="button"
                       onClick={() => {
                         setMobileMenuOpen(false);
                         if (onOpenProgrammesPage) onOpenProgrammesPage('bs-business-analytics');
                       }}
-                      className="w-full text-left text-[13.5px] font-normal text-[#6B7280] py-3 pl-8 pr-4 hover:text-[#0B1A3A] hover:bg-slate-100/70 transition-colors cursor-pointer block border-b border-[#f3f4f6]/60"
+                      className="w-full text-left text-[13.5px] font-medium text-slate-600 dark:text-slate-300 py-3 pl-8 pr-4 hover:text-[#0B1A3A] dark:hover:text-amber-300 hover:bg-slate-100/70 dark:hover:bg-white/5 transition-colors cursor-pointer block border-b border-[#f3f4f6]/60 dark:border-white/5"
                     >
-                      BS Programmes
+                      BS Programmes (4-Year Degrees)
                     </button>
                     <button
                       type="button"
@@ -902,9 +902,9 @@ export const Navbar: React.FC<NavbarProps> = ({
                         setMobileMenuOpen(false);
                         if (onOpenProgrammesPage) onOpenProgrammesPage('adp-psychology');
                       }}
-                      className="w-full text-left text-[13.5px] font-normal text-[#6B7280] py-3 pl-8 pr-4 hover:text-[#0B1A3A] hover:bg-slate-100/70 transition-colors cursor-pointer block border-b border-[#f3f4f6]/60"
+                      className="w-full text-left text-[13.5px] font-medium text-slate-600 dark:text-slate-300 py-3 pl-8 pr-4 hover:text-[#0B1A3A] dark:hover:text-amber-300 hover:bg-slate-100/70 dark:hover:bg-white/5 transition-colors cursor-pointer block border-b border-[#f3f4f6]/60 dark:border-white/5"
                     >
-                      ADP / ADS Programmes
+                      ADP / ADS Programmes (2-Year Degrees)
                     </button>
                     <button
                       type="button"
@@ -913,7 +913,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                         if (onOpenProgrammesPage) onOpenProgrammesPage();
                         else handleNavClick('finder-section');
                       }}
-                      className="w-full text-left text-[13.5px] font-normal text-[#6B7280] py-3 pl-8 pr-4 hover:text-[#0B1A3A] hover:bg-slate-100/70 transition-colors cursor-pointer block border-b border-[#f3f4f6]/60"
+                      className="w-full text-left text-[13.5px] font-medium text-slate-600 dark:text-slate-300 py-3 pl-8 pr-4 hover:text-[#0B1A3A] dark:hover:text-amber-300 hover:bg-slate-100/70 dark:hover:bg-white/5 transition-colors cursor-pointer block border-b border-[#f3f4f6]/60 dark:border-white/5"
                     >
                       Curriculum &amp; Program Roadmaps
                     </button>
@@ -924,7 +924,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                         if (onOpenScholarshipsPage) onOpenScholarshipsPage();
                         else window.open('https://ucpcolleges.pgc.edu/scholarship/', '_blank', 'noopener,noreferrer');
                       }}
-                      className="w-full text-left text-[13.5px] font-normal text-[#6B7280] py-3 pl-8 pr-4 hover:text-[#0B1A3A] hover:bg-slate-100/70 transition-colors cursor-pointer block border-b border-[#f3f4f6]/60"
+                      className="w-full text-left text-[13.5px] font-medium text-slate-600 dark:text-slate-300 py-3 pl-8 pr-4 hover:text-[#0B1A3A] dark:hover:text-amber-300 hover:bg-slate-100/70 dark:hover:bg-white/5 transition-colors cursor-pointer block border-b border-[#f3f4f6]/60 dark:border-white/5"
                     >
                       Scholarships &amp; Concessions (1.3B PKR)
                     </button>
@@ -934,7 +934,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                         setMobileMenuOpen(false);
                         onOpenFee();
                       }}
-                      className="w-full text-left text-[13.5px] font-normal text-[#6B7280] py-3 pl-8 pr-4 hover:text-[#0B1A3A] hover:bg-slate-100/70 transition-colors cursor-pointer block border-b border-[#f3f4f6]/60"
+                      className="w-full text-left text-[13.5px] font-medium text-slate-600 dark:text-slate-300 py-3 pl-8 pr-4 hover:text-[#0B1A3A] dark:hover:text-amber-300 hover:bg-slate-100/70 dark:hover:bg-white/5 transition-colors cursor-pointer block border-b border-[#f3f4f6]/60 dark:border-white/5"
                     >
                       Fee Structure &amp; Tuition Schedules
                     </button>
@@ -945,7 +945,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                         if (onOpenProgrammesPage) onOpenProgrammesPage();
                         else onOpenInfo('merit-list');
                       }}
-                      className="w-full text-left text-[13.5px] font-normal text-[#6B7280] py-3 pl-8 pr-4 hover:text-[#0B1A3A] hover:bg-slate-100/70 transition-colors cursor-pointer block"
+                      className="w-full text-left text-[13.5px] font-medium text-slate-600 dark:text-slate-300 py-3 pl-8 pr-4 hover:text-[#0B1A3A] dark:hover:text-amber-300 hover:bg-slate-100/70 dark:hover:bg-white/5 transition-colors cursor-pointer block"
                     >
                       Academic Programs Directory
                     </button>
@@ -964,9 +964,10 @@ export const Navbar: React.FC<NavbarProps> = ({
                     handleNavClick('faculty-section');
                   }
                 }}
-                className="w-full text-left text-[15px] font-semibold text-[#0B1A3A] p-4 border-b border-[#f3f4f6] flex items-center justify-between hover:bg-slate-50 transition-colors cursor-pointer"
+                className="w-full text-left text-[15px] font-semibold text-[#0B1A3A] dark:text-slate-100 p-4 border-b border-[#f3f4f6] dark:border-white/10 flex items-center justify-between hover:bg-slate-50 dark:hover:bg-white/5 transition-colors cursor-pointer"
               >
                 <span>Our Faculty</span>
+                <ChevronRight size={16} className="text-[#6B7280] dark:text-slate-400" />
               </button>
 
               {/* Academic Calendar */}
@@ -977,9 +978,10 @@ export const Navbar: React.FC<NavbarProps> = ({
                   if (onOpenCalendar) onOpenCalendar();
                   else onOpenInfo('academic-calendar');
                 }}
-                className="w-full text-left text-[15px] font-semibold text-[#0B1A3A] p-4 border-b border-[#f3f4f6] flex items-center justify-between hover:bg-slate-50 transition-colors cursor-pointer"
+                className="w-full text-left text-[15px] font-semibold text-[#0B1A3A] dark:text-slate-100 p-4 border-b border-[#f3f4f6] dark:border-white/10 flex items-center justify-between hover:bg-slate-50 dark:hover:bg-white/5 transition-colors cursor-pointer"
               >
                 <span>Academic Calendar (Official)</span>
+                <ChevronRight size={16} className="text-[#6B7280] dark:text-slate-400" />
               </button>
 
               {/* Campus Facilities */}
@@ -993,9 +995,10 @@ export const Navbar: React.FC<NavbarProps> = ({
                     handleNavClick('facilities-section');
                   }
                 }}
-                className="w-full text-left text-[15px] font-semibold text-[#0B1A3A] p-4 border-b border-[#f3f4f6] flex items-center justify-between hover:bg-slate-50 transition-colors cursor-pointer"
+                className="w-full text-left text-[15px] font-semibold text-[#0B1A3A] dark:text-slate-100 p-4 border-b border-[#f3f4f6] dark:border-white/10 flex items-center justify-between hover:bg-slate-50 dark:hover:bg-white/5 transition-colors cursor-pointer"
               >
                 <span>Campus Facilities</span>
+                <ChevronRight size={16} className="text-[#6B7280] dark:text-slate-400" />
               </button>
 
               {/* Our Location */}
@@ -1005,9 +1008,10 @@ export const Navbar: React.FC<NavbarProps> = ({
                   setMobileMenuOpen(false);
                   handleNavClick('location-section');
                 }}
-                className="w-full text-left text-[15px] font-semibold text-[#0B1A3A] p-4 border-b border-[#f3f4f6] flex items-center justify-between hover:bg-slate-50 transition-colors cursor-pointer"
+                className="w-full text-left text-[15px] font-semibold text-[#0B1A3A] dark:text-slate-100 p-4 border-b border-[#f3f4f6] dark:border-white/10 flex items-center justify-between hover:bg-slate-50 dark:hover:bg-white/5 transition-colors cursor-pointer"
               >
                 <span>Our Location</span>
+                <ChevronRight size={16} className="text-[#6B7280] dark:text-slate-400" />
               </button>
 
               {/* Our Leadership */}
@@ -1017,9 +1021,10 @@ export const Navbar: React.FC<NavbarProps> = ({
                   setMobileMenuOpen(false);
                   handleNavClick('leadership-section');
                 }}
-                className="w-full text-left text-[15px] font-semibold text-[#0B1A3A] p-4 border-b border-[#f3f4f6] flex items-center justify-between hover:bg-slate-50 transition-colors cursor-pointer"
+                className="w-full text-left text-[15px] font-semibold text-[#0B1A3A] dark:text-slate-100 p-4 border-b border-[#f3f4f6] dark:border-white/10 flex items-center justify-between hover:bg-slate-50 dark:hover:bg-white/5 transition-colors cursor-pointer"
               >
                 <span>Our Leadership</span>
+                <ChevronRight size={16} className="text-[#6B7280] dark:text-slate-400" />
               </button>
 
               {/* Vision & Rankings */}
@@ -1029,9 +1034,10 @@ export const Navbar: React.FC<NavbarProps> = ({
                   setMobileMenuOpen(false);
                   handleNavClick('vision-rankings-section');
                 }}
-                className="w-full text-left text-[15px] font-semibold text-[#0B1A3A] p-4 border-b border-[#f3f4f6] flex items-center justify-between hover:bg-slate-50 transition-colors cursor-pointer"
+                className="w-full text-left text-[15px] font-semibold text-[#0B1A3A] dark:text-slate-100 p-4 border-b border-[#f3f4f6] dark:border-white/10 flex items-center justify-between hover:bg-slate-50 dark:hover:bg-white/5 transition-colors cursor-pointer"
               >
                 <span>Vision &amp; Rankings</span>
+                <ChevronRight size={16} className="text-[#6B7280] dark:text-slate-400" />
               </button>
 
               {/* Our Legacy */}
@@ -1041,20 +1047,21 @@ export const Navbar: React.FC<NavbarProps> = ({
                   setMobileMenuOpen(false);
                   if (onOpenLegacyPage) onOpenLegacyPage();
                 }}
-                className="w-full text-left text-[15px] font-semibold text-[#0B1A3A] p-4 border-b border-[#f3f4f6] flex items-center justify-between hover:bg-slate-50 transition-colors cursor-pointer"
+                className="w-full text-left text-[15px] font-semibold text-[#0B1A3A] dark:text-slate-100 p-4 border-b border-[#f3f4f6] dark:border-white/10 flex items-center justify-between hover:bg-slate-50 dark:hover:bg-white/5 transition-colors cursor-pointer"
               >
                 <span>Our Legacy</span>
+                <ChevronRight size={16} className="text-[#6B7280] dark:text-slate-400" />
               </button>
             </div>
 
-            {/* Bottom of drawer: 2 buttons - Student Portal and Admissions Portal, full width, UCP blue background */}
-            <div className="p-4 border-t border-[#f3f4f6] space-y-2.5 bg-white shrink-0">
+            {/* Bottom of drawer: 2 buttons - Student Portal and Admissions Portal */}
+            <div className="p-4 border-t border-[#f3f4f6] dark:border-white/10 space-y-2.5 bg-white dark:bg-[#09182b] shrink-0">
               <a
                 href="https://mcom.pgc.edu.pk/Student/StdLogin.jsp"
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={() => setMobileMenuOpen(false)}
-                className="w-full py-2.5 px-4 bg-[#0B1A3A] hover:bg-[#07152d] text-white rounded-lg font-semibold text-[14px] flex items-center justify-center gap-2 shadow-xs transition-colors"
+                className="w-full py-2.5 px-4 bg-[#0B1A3A] hover:bg-[#07152d] dark:bg-slate-800 dark:hover:bg-slate-700 text-white rounded-lg font-semibold text-[14px] flex items-center justify-center gap-2 shadow-xs transition-colors border border-transparent dark:border-white/15 cursor-pointer"
               >
                 <span>Student Portal</span>
               </a>
@@ -1065,7 +1072,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                   setMobileMenuOpen(false);
                   onOpenApply();
                 }}
-                className="w-full py-2.5 px-4 bg-[#0B1A3A] hover:bg-[#07152d] text-white rounded-lg font-semibold text-[14px] flex items-center justify-center gap-2 shadow-xs transition-colors cursor-pointer"
+                className="w-full py-2.5 px-4 bg-[#C8102E] hover:bg-[#A51C30] text-white rounded-lg font-semibold text-[14px] flex items-center justify-center gap-2 shadow-xs transition-colors cursor-pointer"
               >
                 <span>Admissions Portal</span>
               </button>

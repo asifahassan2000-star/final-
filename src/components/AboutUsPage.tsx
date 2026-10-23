@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { 
   ArrowLeft, Compass, Award, ShieldCheck, GraduationCap, 
-  Building2, Users, Sparkles, CheckCircle2, BookOpen, 
+  Building2, Users, CheckCircle2, BookOpen, 
   MapPin, Globe, ExternalLink, ArrowRight, HeartHandshake,
   Lightbulb, Target, Landmark
 } from 'lucide-react';
@@ -181,7 +181,7 @@ export const AboutUsPage: React.FC<AboutUsPageProps> = ({
             </div>
 
             {/* Visual Showcase Card */}
-            <div className="lg:col-span-5 space-y-4">
+            <div className="lg:col-span-5">
               <div className="relative rounded-2xl overflow-hidden border border-slate-200 dark:border-white/10 shadow-2xl group">
                 <img
                   src={ucpBwpBuilding5Local}
@@ -191,26 +191,6 @@ export const AboutUsPage: React.FC<AboutUsPageProps> = ({
                     (e.currentTarget as HTMLImageElement).src = '/assets/campus/hero_campus_night_flagship.webp';
                   }}
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#06182e] via-transparent to-transparent" />
-                <div className="absolute bottom-4 left-4 right-4 text-white">
-                  <span className="text-[10px] uppercase font-mono tracking-widest text-amber-300 font-semibold block mb-1">
-                    AIRPORT ROAD · PURPOSE-BUILT ARCHITECTURE
-                  </span>
-                  <p className="text-sm font-semibold leading-snug">
-                    UCP Bahawalpur Campus — Modern smart lecture halls, advanced computing laboratories, and comprehensive central library.
-                  </p>
-                </div>
-              </div>
-
-              {/* Testimonial Quote Banner */}
-              <div className="p-5 bg-amber-50 dark:bg-[#0c1f38] border border-amber-200 dark:border-amber-500/20 rounded-xl space-y-2">
-                <div className="flex items-center gap-2 text-amber-700 dark:text-amber-300 text-xs font-bold uppercase tracking-wider">
-                  <Sparkles size={14} />
-                  <span>The Spirit of Bahawalpur</span>
-                </div>
-                <p className="text-xs sm:text-sm text-slate-700 dark:text-slate-300 italic leading-relaxed">
-                  “Here, academic prestige meets hometown pride. Our students don’t just graduate; they pioneer the future of computing, business, media, and science across Southern Punjab and beyond.”
-                </p>
               </div>
             </div>
 
@@ -259,14 +239,6 @@ export const AboutUsPage: React.FC<AboutUsPageProps> = ({
                   <span className="text-[11px] text-slate-300 block">Hilal-e-Imtiaz</span>
                 </div>
               </div>
-              <div className="p-4 flex-1 flex flex-col justify-between space-y-3">
-                <p className="text-xs text-slate-600 dark:text-slate-300 leading-relaxed italic">
-                  “Education is the greatest catalyst for national empowerment. When you empower a young mind with quality education, you uplift an entire generation.”
-                </p>
-                <div className="text-[11px] text-slate-500 dark:text-slate-400 border-t border-slate-100 dark:border-white/10 pt-2 font-mono">
-                  Chairman BoG, UCP &amp; PGC · Former 3rd Mayor of Lahore
-                </div>
-              </div>
             </div>
 
             {/* Leader 2: Prof. Sohail Afzal */}
@@ -289,14 +261,6 @@ export const AboutUsPage: React.FC<AboutUsPageProps> = ({
                     Prof. Sohail Afzal
                   </h3>
                   <span className="text-[11px] text-slate-300 block">Member BoG, UCP</span>
-                </div>
-              </div>
-              <div className="p-4 flex-1 flex flex-col justify-between space-y-3">
-                <p className="text-xs text-slate-600 dark:text-slate-300 leading-relaxed italic">
-                  “At UCP we are not just means to education but a family that cares, grooms and helps unlock the true potential of our students.”
-                </p>
-                <div className="text-[11px] text-slate-500 dark:text-slate-400 border-t border-slate-100 dark:border-white/10 pt-2 font-mono">
-                  Executive Director PGC · Recipient APSUP Academic Excellence Award
                 </div>
               </div>
             </div>
@@ -323,14 +287,6 @@ export const AboutUsPage: React.FC<AboutUsPageProps> = ({
                   <span className="text-[11px] text-slate-300 block">PGC &amp; UCP Bahawalpur Cluster</span>
                 </div>
               </div>
-              <div className="p-4 flex-1 flex flex-col justify-between space-y-3">
-                <p className="text-xs text-slate-600 dark:text-slate-300 leading-relaxed italic">
-                  “Translating strategic vision into sustainable, measurable outcomes and empowering academic teams toward institutional excellence.”
-                </p>
-                <div className="text-[11px] text-slate-500 dark:text-slate-400 border-t border-slate-100 dark:border-white/10 pt-2 font-mono">
-                  Director, UCP &amp; PGC Bahawalpur Cluster · 20+ Years Leadership
-                </div>
-              </div>
             </div>
 
             {/* Leader 4: Prof. Dr. Aurangzaib Virk */}
@@ -353,14 +309,6 @@ export const AboutUsPage: React.FC<AboutUsPageProps> = ({
                     Prof. Dr. Aurangzaib Virk
                   </h3>
                   <span className="text-[11px] text-slate-300 block">UCP Bahawalpur Campus</span>
-                </div>
-              </div>
-              <div className="p-4 flex-1 flex flex-col justify-between space-y-3">
-                <p className="text-xs text-slate-600 dark:text-slate-300 leading-relaxed italic">
-                  “Building Academic Excellence, Empowering People, Creating a Sustainable Future.”
-                </p>
-                <div className="text-[11px] text-slate-500 dark:text-slate-400 border-t border-slate-100 dark:border-white/10 pt-2 font-mono">
-                  Principal, UCP Bahawalpur · PhD in Management Sciences
                 </div>
               </div>
             </div>
