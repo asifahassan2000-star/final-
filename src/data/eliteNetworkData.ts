@@ -7,135 +7,111 @@ export interface EliteNetworkImage {
 
 export const ELITE_NETWORK_IMAGES: EliteNetworkImage[] = [
   {
-    "id": 1,
-    "localSrc": "/assets/elite-network-new/elite-1.jpg",
-    "fallbackSrc": "/images/s9qXdcmD_Whats-App-Image-2026-10-08-at-12-41-42-AM-1.jpg",
-    "alt": "UCP Elite Volunteer 1"
+    id: 1,
+    localSrc: 'https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-20%20at%201.36.45%20AM.jpeg?updatedAt=1792580286666',
+    fallbackSrc: 'https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-20%20at%201.36.45%20AM.jpeg?updatedAt=1792580286666',
+    alt: 'UCP Elite Student Network Member 1'
   },
   {
-    "id": 2,
-    "localSrc": "/assets/elite-network-new/elite-2.jpg",
-    "fallbackSrc": "/images/twv9W0qf_Whats-App-Image-2026-10-08-at-12-41-42-AM-2.jpg",
-    "alt": "UCP Elite Volunteer 2"
+    id: 2,
+    localSrc: 'https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-05%20at%2011.54.53%20PM.jpeg?updatedAt=1792648745872',
+    fallbackSrc: 'https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-05%20at%2011.54.53%20PM.jpeg?updatedAt=1792648745872',
+    alt: 'UCP Elite Student Network Member 2'
   },
   {
-    "id": 3,
-    "localSrc": "/assets/elite-network-new/elite-3.jpg",
-    "fallbackSrc": "/images/39YMW69n_Whats-App-Image-2026-10-08-at-12-41-42-AM-3.jpg",
-    "alt": "UCP Elite Volunteer 3"
+    id: 3,
+    localSrc: 'https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-08%20at%2012.43.08%20AM%20(3).jpeg?updatedAt=1792647973619',
+    fallbackSrc: 'https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-08%20at%2012.43.08%20AM%20(3).jpeg?updatedAt=1792647973619',
+    alt: 'UCP Elite Student Network Member 3'
   },
   {
-    "id": 4,
-    "localSrc": "/assets/elite-network-new/elite-4.jpg",
-    "fallbackSrc": "/images/Vp2tgk3X_Whats-App-Image-2026-10-08-at-12-41-42-AM-4.jpg",
-    "alt": "UCP Elite Volunteer 4"
+    id: 4,
+    localSrc: 'https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-08%20at%2012.44.21%20AM%20(8).jpeg?updatedAt=1792647976999',
+    fallbackSrc: 'https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-08%20at%2012.44.21%20AM%20(8).jpeg?updatedAt=1792647976999',
+    alt: 'UCP Elite Student Network Member 4'
   },
   {
-    "id": 5,
-    "localSrc": "/assets/elite-network-new/elite-5.jpg",
-    "fallbackSrc": "/images/NnHfzrr0_Whats-App-Image-2026-10-08-at-12-41-42-AM.jpg",
-    "alt": "UCP Elite Volunteer 5"
+    id: 5,
+    localSrc: 'https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-08%20at%2012.41.42%20AM.jpeg?updatedAt=1792647977066',
+    fallbackSrc: 'https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-08%20at%2012.41.42%20AM.jpeg?updatedAt=1792647977066',
+    alt: 'UCP Elite Student Network Member 5'
   },
   {
-    "id": 6,
-    "localSrc": "/assets/elite-network-new/elite-6.jpg",
-    "fallbackSrc": "/images/8L4q98H4_Whats-App-Image-2026-10-08-at-12-43-08-AM-1.jpg",
-    "alt": "UCP Elite Volunteer 6"
+    id: 6,
+    localSrc: 'https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-08%20at%2012.44.21%20AM%20(3).jpeg',
+    fallbackSrc: 'https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-08%20at%2012.44.21%20AM%20(3).jpeg',
+    alt: 'UCP Elite Student Network Member 6'
   },
   {
-    "id": 7,
-    "localSrc": "/assets/elite-network-new/elite-7.jpg",
-    "fallbackSrc": "/images/CNrTq2H_Whats-App-Image-2026-10-08-at-12-43-08-AM-2.jpg",
-    "alt": "UCP Elite Volunteer 7"
+    id: 7,
+    localSrc: 'https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-08%20at%2012.44.21%20AM%20(5).jpeg',
+    fallbackSrc: 'https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-08%20at%2012.44.21%20AM%20(5).jpeg',
+    alt: 'UCP Elite Student Network Member 7'
   },
   {
-    "id": 8,
-    "localSrc": "/assets/elite-network-new/elite-8.jpg",
-    "fallbackSrc": "/images/xKfP0W7d_Whats-App-Image-2026-10-08-at-12-43-08-AM-3.jpg",
-    "alt": "UCP Elite Volunteer 8"
+    id: 8,
+    localSrc: 'https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-08%20at%2012.43.08%20AM%20(2).jpeg',
+    fallbackSrc: 'https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-08%20at%2012.43.08%20AM%20(2).jpeg',
+    alt: 'UCP Elite Student Network Member 8'
   },
   {
-    "id": 9,
-    "localSrc": "/assets/elite-network-new/elite-9.jpg",
-    "fallbackSrc": "/images/ns8CZZQ7_Whats-App-Image-2026-10-08-at-12-43-08-AM.jpg",
-    "alt": "UCP Elite Volunteer 9"
+    id: 9,
+    localSrc: 'https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-08%20at%2012.44.21%20AM%20(8)_LCrH0crnu.jpeg',
+    fallbackSrc: 'https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-08%20at%2012.44.21%20AM%20(8)_LCrH0crnu.jpeg',
+    alt: 'UCP Elite Student Network Member 9'
   },
   {
-    "id": 10,
-    "localSrc": "/assets/toppers/elite-student-fixed.jpg",
-    "fallbackSrc": "/images/Z1FQMmdv_Whats-App-Image-2026-10-05-at-11-55-32-PM.jpg",
-    "alt": "UCP Elite Volunteer 10"
+    id: 10,
+    localSrc: 'https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-08%20at%2012.41.42%20AM%20(4).jpeg',
+    fallbackSrc: 'https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-08%20at%2012.41.42%20AM%20(4).jpeg',
+    alt: 'UCP Elite Student Network Member 10'
   },
   {
-    "id": 11,
-    "localSrc": "/assets/elite-network-new/elite-11.jpg",
-    "fallbackSrc": "/images/WNPrqjWJ_Whats-App-Image-2026-10-08-at-12-44-21-AM-1.jpg",
-    "alt": "UCP Elite Volunteer 11"
+    id: 11,
+    localSrc: 'https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-08%20at%2012.43.08%20AM.jpeg',
+    fallbackSrc: 'https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-08%20at%2012.43.08%20AM.jpeg',
+    alt: 'UCP Elite Student Network Member 11'
   },
   {
-    "id": 12,
-    "localSrc": "/assets/elite-network-new/elite-12.jpg",
-    "fallbackSrc": "/images/jPDXHsDb_Whats-App-Image-2026-10-08-at-12-44-21-AM-2.jpg",
-    "alt": "UCP Elite Volunteer 12"
+    id: 12,
+    localSrc: 'https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-08%20at%2012.44.21%20AM%20(2).jpeg',
+    fallbackSrc: 'https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-08%20at%2012.44.21%20AM%20(2).jpeg',
+    alt: 'UCP Elite Student Network Member 12'
   },
   {
-    "id": 13,
-    "localSrc": "/assets/elite-network-new/elite-13.jpg",
-    "fallbackSrc": "/images/WNqKXJnt_Whats-App-Image-2026-10-08-at-12-44-21-AM-3.jpg",
-    "alt": "UCP Elite Volunteer 13"
+    id: 13,
+    localSrc: 'https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-08%20at%2012.41.42%20AM%20(1).jpeg',
+    fallbackSrc: 'https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-08%20at%2012.41.42%20AM%20(1).jpeg',
+    alt: 'UCP Elite Student Network Member 13'
   },
   {
-    "id": 14,
-    "localSrc": "/assets/elite-network-new/elite-14.jpg",
-    "fallbackSrc": "/images/Pz4WNhMQ_Whats-App-Image-2026-10-08-at-12-44-21-AM-4.jpg",
-    "alt": "UCP Elite Volunteer 14"
+    id: 14,
+    localSrc: 'https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-08%20at%2012.44.21%20AM%20(4).jpeg',
+    fallbackSrc: 'https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-08%20at%2012.44.21%20AM%20(4).jpeg',
+    alt: 'UCP Elite Student Network Member 14'
   },
   {
-    "id": 15,
-    "localSrc": "/images/gLCDHtQw_Whats-App-Image-2026-10-08-at-12-44-21-AM-5.jpg",
-    "fallbackSrc": "/images/gLCDHtQw_Whats-App-Image-2026-10-08-at-12-44-21-AM-5.jpg",
-    "alt": "UCP Elite Volunteer 15"
+    id: 15,
+    localSrc: 'https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-08%20at%2012.41.42%20AM%20(2).jpeg',
+    fallbackSrc: 'https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-08%20at%2012.41.42%20AM%20(2).jpeg',
+    alt: 'UCP Elite Student Network Member 15'
   },
   {
-    "id": 16,
-    "localSrc": "/assets/elite-network-new/elite-16.jpg",
-    "fallbackSrc": "/assets/elite-network-new/elite-16.jpg",
-    "alt": "UCP Elite Volunteer 16"
+    id: 16,
+    localSrc: 'https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-08%20at%2012.43.08%20AM%20(1).jpeg',
+    fallbackSrc: 'https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-08%20at%2012.43.08%20AM%20(1).jpeg',
+    alt: 'UCP Elite Student Network Member 16'
   },
   {
-    "id": 17,
-    "localSrc": "/images/ns7WhkYr_Whats-App-Image-2026-10-08-at-12-44-21-AM-7.jpg",
-    "fallbackSrc": "/images/ns7WhkYr_Whats-App-Image-2026-10-08-at-12-44-21-AM-7.jpg",
-    "alt": "UCP Elite Volunteer 17"
+    id: 17,
+    localSrc: 'https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-05%20at%2011.55.32%20PM.jpeg',
+    fallbackSrc: 'https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-05%20at%2011.55.32%20PM.jpeg',
+    alt: 'UCP Elite Student Network Member 17'
   },
   {
-    "id": 18,
-    "localSrc": "/assets/elite-network-new/elite-18.jpg",
-    "fallbackSrc": "/images/G4NXHjcc_Whats-App-Image-2026-10-08-at-12-44-21-AM-8.jpg",
-    "alt": "UCP Elite Volunteer 18"
-  },
-  {
-    "id": 19,
-    "localSrc": "/assets/elite-network-new/elite-19.jpg",
-    "fallbackSrc": "/images/YBmtHZB1_Whats-App-Image-2026-10-08-at-12-44-21-AM.jpg",
-    "alt": "UCP Elite Volunteer 19"
-  },
-  {
-    "id": 20,
-    "localSrc": "/assets/elite-network-new/elite-20.jpg",
-    "fallbackSrc": "/images/99KpG1RY_Whats-App-Image-2026-10-08-at-12-44-22-AM.jpg",
-    "alt": "UCP Elite Volunteer 20"
-  },
-  {
-    "id": 21,
-    "localSrc": "/assets/elite-network-new/elite-21.jpg",
-    "fallbackSrc": "/images/8ntpY9jM_Whats-App-Image-2026-10-05-at-11-58-34-PM.jpg",
-    "alt": "UCP Elite Volunteer 21"
-  },
-  {
-    "id": 22,
-    "localSrc": "/assets/elite-network-new/elite-22.jpg",
-    "fallbackSrc": "/images/BVFH5vjv_Whats-App-Image-2026-10-05-at-11-54-53-PM.jpg",
-    "alt": "UCP Elite Volunteer 22"
+    id: 18,
+    localSrc: 'https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-05%20at%2011.57.07%20PM.jpeg',
+    fallbackSrc: 'https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-05%20at%2011.57.07%20PM.jpeg',
+    alt: 'UCP Elite Student Network Member 18'
   }
 ];

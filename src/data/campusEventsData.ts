@@ -543,76 +543,112 @@ export const CAMPUS_EVENTS_DATA: CampusEvent[] = [
     ],
     images: [
       {
-        src: 'https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-05%20at%2011.54.53%20PM.jpeg',
-        fallbackSrc: '/assets/elite-network-new/elite-1.jpg',
-        alt: 'UCP Elite Student Network scholars and student leadership council',
+        src: 'https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-20%20at%201.36.45%20AM.jpeg?updatedAt=1792580286666',
+        fallbackSrc: 'https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-20%20at%201.36.45%20AM.jpeg?updatedAt=1792580286666',
+        alt: 'UCP Elite Student Network — Top Scholars & Campus Ambassadors',
+        caption: 'UCP Elite Student Network — Celebrating excellence, leadership and university orientation'
+      },
+      {
+        src: 'https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-05%20at%2011.54.53%20PM.jpeg?updatedAt=1792648745872',
+        fallbackSrc: 'https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-05%20at%2011.54.53%20PM.jpeg?updatedAt=1792648745872',
+        alt: 'UCP Elite Student Network student council and ambassadors',
         caption: 'UCP Elite Student Network — Dedicated scholars and emerging campus leaders'
       },
       {
-        src: 'https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-20%20at%201.36.45%20AM.jpeg?updatedAt=1792580286666',
-        fallbackSrc: '/assets/elite-network-new/elite-1.jpg',
-        alt: 'UCP Elite Student Network top scholars and student ambassadors celebrating excellence',
-        caption: 'UCP Elite Student Network — Inspiring student scholars and campus ambassadors'
+        src: 'https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-08%20at%2012.43.08%20AM%20(3).jpeg?updatedAt=1792647973619',
+        fallbackSrc: 'https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-08%20at%2012.43.08%20AM%20(3).jpeg?updatedAt=1792647973619',
+        alt: 'Elite Student Network campus leadership and mentorship',
+        caption: 'Elite ambassadors participating in academic mentorship and leadership workshops'
       },
       {
-        src: 'https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-08%20at%2012.41.42%20AM.jpeg',
-        fallbackSrc: '/assets/elite-network-new/elite-1.jpg',
-        alt: 'UCP Elite Student Network scholars and student brand ambassadors in campus lounge',
-        caption: 'UCP Elite Student Network — Empowering top academic achievers and student ambassadors'
+        src: 'https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-08%20at%2012.44.21%20AM%20(8).jpeg?updatedAt=1792647976999',
+        fallbackSrc: 'https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-08%20at%2012.44.21%20AM%20(8).jpeg?updatedAt=1792647976999',
+        alt: 'Elite student scholars celebrating distinction at UCP Bahawalpur',
+        caption: 'Recognizing academic merit and outstanding student leadership across disciplines'
       },
       {
-        src: 'https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-08%20at%2012.44.21%20AM%20(8).jpeg',
-        fallbackSrc: '/assets/elite-network-new/elite-2.jpg',
-        alt: 'Elite Student Network leadership conference and peer mentorship session',
-        caption: 'Scholars participating in executive leadership and collaborative mentorship discussions'
+        src: 'https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-08%20at%2012.41.42%20AM.jpeg?updatedAt=1792647977066',
+        fallbackSrc: 'https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-08%20at%2012.41.42%20AM.jpeg?updatedAt=1792647977066',
+        alt: 'UCP Elite Student Network scholars in student lounge',
+        caption: 'Empowering top academic achievers and student brand ambassadors'
       },
       {
-        src: 'https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-08%20at%2012.44.21%20AM%20(7).jpeg',
-        fallbackSrc: '/assets/elite-network-new/elite-3.jpg',
-        alt: 'UCP Elite Student Network certificate and recognition ceremony',
-        caption: 'Recognizing academic distinction and leadership contributions across faculties'
+        src: 'https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-08%20at%2012.44.21%20AM%20(3).jpeg',
+        fallbackSrc: 'https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-08%20at%2012.44.21%20AM%20(3).jpeg',
+        alt: 'UCP Elite Network student orientation and collaboration',
+        caption: 'Collaborative student networking and university preparatory sessions'
       },
       {
-        src: 'https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-08%20at%2012.43.08%20AM%20(3).jpeg',
-        fallbackSrc: '/assets/elite-network-new/elite-4.jpg',
-        alt: 'Elite student ambassadors presenting university initiatives and community projects',
-        caption: 'Elite ambassadors spearheading impactful community and academic engagement projects'
+        src: 'https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-08%20at%2012.44.21%20AM%20(5).jpeg',
+        fallbackSrc: 'https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-08%20at%2012.44.21%20AM%20(5).jpeg',
+        alt: 'UCP Elite student scholars engagement and interactive seminars',
+        caption: 'Interactive university seminars and future academic pathway discussions'
       },
       {
-        src: '/assets/elite-network-new/elite-1.jpg',
-        fallbackSrc: '/images/4RGfzpX8_image-2.jpg',
-        alt: 'UCP Elite Student Network campaign launch featuring academic scholars and ambassadors',
-        caption: 'UCP Elite Student Network — Celebrating academic excellence and campus leadership'
+        src: 'https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-08%20at%2012.43.08%20AM%20(2).jpeg',
+        fallbackSrc: 'https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-08%20at%2012.43.08%20AM%20(2).jpeg',
+        alt: 'Elite Network student achievers and faculty mentors',
+        caption: 'Faculty mentorship and distinguished student scholar recognition'
       },
       {
-        src: '/assets/elite-network-new/elite-2.jpg',
-        fallbackSrc: '/images/5x6v5v8X_image-1.jpg',
-        alt: 'Top academic achievers receiving official UCP Elite lapel pins and certificates',
-        caption: 'Top rankers across Computer Science and Business inducted into the Elite Circle'
+        src: 'https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-08%20at%2012.44.21%20AM%20(8)_LCrH0crnu.jpeg',
+        fallbackSrc: 'https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-08%20at%2012.44.21%20AM%20(8)_LCrH0crnu.jpeg',
+        alt: 'Elite Student Network honors and scholarship facilitation',
+        caption: 'Early access to UCP scholarships and premium admission facilitation'
       },
       {
-        src: '/assets/elite-network-new/elite-3.jpg',
-        fallbackSrc: '/images/ks8XD1L6_Whats-App-Image-2026-10-05-at-2-38-52-AM-2.jpg',
-        alt: 'Executive round-table discussion between student leaders and visiting industry CEOs',
-        caption: 'Executive networking roundtable bridging student talent with corporate leadership'
+        src: 'https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-08%20at%2012.41.42%20AM%20(4).jpeg',
+        fallbackSrc: 'https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-08%20at%2012.41.42%20AM%20(4).jpeg',
+        alt: 'Elite Network scholars leadership training',
+        caption: 'Empowering future leaders with executive skills and university readiness'
       },
       {
-        src: '/assets/elite-network-new/elite-4.jpg',
-        fallbackSrc: '/images/QF79SG2D_Whats-App-Image-2026-10-05-at-2-38-56-AM-3.jpg',
-        alt: 'Public speaking and corporate leadership masterclass for Elite Network scholars',
-        caption: 'Masterclasses in corporate communication, personal branding, and venture leadership'
+        src: 'https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-08%20at%2012.43.08%20AM.jpeg',
+        fallbackSrc: 'https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-08%20at%2012.43.08%20AM.jpeg',
+        alt: 'UCP Elite Student Network conference and campus life engagement',
+        caption: 'Vibrant student life, academic distinction, and university networking'
       },
       {
-        src: '/assets/elite-network-new/elite-7.jpg',
-        fallbackSrc: '/images/d0RFqWwY_Whats-App-Image-2026-10-08-at-12-46-41-AM-1.jpg',
-        alt: 'Elite Network ambassadors presenting campus community outreach programs',
-        caption: 'Student ambassadors spearheading youth development and mentorship initiatives'
+        src: 'https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-08%20at%2012.44.21%20AM%20(2).jpeg',
+        fallbackSrc: 'https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-08%20at%2012.44.21%20AM%20(2).jpeg',
+        alt: 'UCP Elite Network student assembly and leadership address',
+        caption: 'Student assembly addressing future degree roadmaps and professional opportunities'
       },
       {
-        src: '/assets/elite-network-new/elite-11.jpg',
-        fallbackSrc: '/images/Hfkk9bSJ_Whats-App-Image-2026-10-05-at-2-39-03-AM-1.jpg',
-        alt: 'Official group portrait of UCP Bahawalpur Elite Student Network cohort',
-        caption: 'The inspiring faces of academic distinction and future leadership at UCP'
+        src: 'https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-08%20at%2012.41.42%20AM%20(1).jpeg',
+        fallbackSrc: 'https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-08%20at%2012.41.42%20AM%20(1).jpeg',
+        alt: 'Scholars discussing academic goals and university programs',
+        caption: 'High-achieving Punjab College students planning their university journey'
+      },
+      {
+        src: 'https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-08%20at%2012.44.21%20AM%20(4).jpeg',
+        fallbackSrc: 'https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-08%20at%2012.44.21%20AM%20(4).jpeg',
+        alt: 'Elite student delegates at UCP Bahawalpur',
+        caption: 'Student delegates building collaborative networks for collegiate success'
+      },
+      {
+        src: 'https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-08%20at%2012.41.42%20AM%20(2).jpeg',
+        fallbackSrc: 'https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-08%20at%2012.41.42%20AM%20(2).jpeg',
+        alt: 'UCP Elite Network peers and academic community',
+        caption: 'A cohesive community of forward-looking scholars and future leaders'
+      },
+      {
+        src: 'https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-08%20at%2012.43.08%20AM%20(1).jpeg',
+        fallbackSrc: 'https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-08%20at%2012.43.08%20AM%20(1).jpeg',
+        alt: 'Campus ambassadors championing academic distinction',
+        caption: 'Student ambassadors representing the values and excellence of UCP Bahawalpur'
+      },
+      {
+        src: 'https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-05%20at%2011.55.32%20PM.jpeg',
+        fallbackSrc: 'https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-05%20at%2011.55.32%20PM.jpeg',
+        alt: 'Elite Student Network recognition and membership card holders',
+        caption: 'Official UCP Student Membership status and associated collegiate privileges'
+      },
+      {
+        src: 'https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-05%20at%2011.57.07%20PM.jpeg',
+        fallbackSrc: 'https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-05%20at%2011.57.07%20PM.jpeg',
+        alt: 'UCP Elite Student Network cohort celebration',
+        caption: 'The inspiring future of UCP Bahawalpur — Punjabians Today, UCPIans Tomorrow'
       }
     ]
   },

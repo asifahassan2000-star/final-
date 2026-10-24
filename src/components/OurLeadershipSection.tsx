@@ -97,7 +97,6 @@ const LEADERSHIP_PROFILES: LeaderProfile[] = [
       'Through dedicated faculty, strong alumni engagement, and a culture of innovation, UCP nurtures leaders equipped to contribute meaningfully to society and the nation.'
     ],
     contactInfo: {
-      email: 'Principal.bahawalpur@ucp.edu.pk',
       categories: ['Principal Office', 'Academic Administration', 'Student Affairs']
     },
     biography: {
@@ -114,7 +113,6 @@ const LEADERSHIP_PROFILES: LeaderProfile[] = [
         'Translating strategic priorities into measurable academic and organizational outcomes.'
       ],
       contactInfo: {
-        email: 'Principal.bahawalpur@ucp.edu.pk',
         categories: ['Principal Office', 'Academic Administration', 'Student Affairs']
       }
     }

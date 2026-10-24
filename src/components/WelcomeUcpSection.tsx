@@ -229,12 +229,12 @@ export const WelcomeUcpSection: React.FC<WelcomeUcpSectionProps> = ({
                 >
                   <div className="w-56 h-56 sm:w-64 sm:h-64 lg:w-72 lg:h-72 xl:w-80 xl:h-80 rounded-full overflow-hidden border-[3px] border-[#D4AF37] dark:border-[#D4AF37] shadow-2xl bg-[#0B1A3A] ring-4 ring-white dark:ring-[#080f1d] relative">
                     <img
-                      src="/assets/welcome/mian-amer-mahmood.png"
+                      src="https://ik.imagekit.io/Muffins/image%20-%202026-10-23T213740.120.png"
                       alt="Mian Amer Mahmood, Chairman UCP"
                       className="w-full h-full object-cover object-[center_top] group-hover:scale-105 transition-transform duration-500"
                       loading="eager"
                       onError={(e) => {
-                        (e.currentTarget as HTMLImageElement).src = '/images/99s2Cmqj_mian-ameer.png';
+                        (e.currentTarget as HTMLImageElement).src = 'https://ik.imagekit.io/Muffins/image%20-%202026-10-23T213740.120.png';
                       }}
                     />
                     <div className="absolute inset-x-0 bottom-0 py-3 bg-gradient-to-t from-[#0B1A3A]/95 via-[#0B1A3A]/70 to-transparent flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
@@ -349,12 +349,12 @@ export const WelcomeUcpSection: React.FC<WelcomeUcpSectionProps> = ({
                 >
                   <div className="w-56 h-56 sm:w-64 sm:h-64 lg:w-72 lg:h-72 xl:w-80 xl:h-80 rounded-full overflow-hidden border-[3px] border-[#D4AF37] dark:border-[#D4AF37] shadow-2xl bg-[#0B1A3A] ring-4 ring-white dark:ring-[#080f1d] relative">
                     <img
-                      src="/assets/leadership/sohail_afzal_user_selected_3_4.jpg"
+                      src="https://ik.imagekit.io/Muffins/image%20-%202026-10-24T140135.933.png"
                       alt="Prof. Sohail Afzal, Executive Director PGC"
-                      className="w-full h-full object-cover object-[center_12%] scale-105 group-hover:scale-110 transition-transform duration-500"
+                      className="w-full h-full object-cover object-[center_top] group-hover:scale-105 transition-transform duration-500"
                       loading="eager"
                       onError={(e) => {
-                        (e.currentTarget as HTMLImageElement).src = '/images/HffRMp9g_Whats-App-Image-2026-10-20-at-2-07-37-AM.jpg';
+                        (e.currentTarget as HTMLImageElement).src = 'https://ik.imagekit.io/Muffins/image%20-%202026-10-24T140135.933.png';
                       }}
                     />
                     <div className="absolute inset-x-0 bottom-0 py-3 bg-gradient-to-t from-[#0B1A3A]/95 via-[#0B1A3A]/70 to-transparent flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
@@ -482,11 +482,11 @@ export const WelcomeUcpSection: React.FC<WelcomeUcpSectionProps> = ({
               <div className="flex flex-col sm:flex-row items-center sm:items-start gap-6 pb-6 border-b border-slate-200 dark:border-white/10">
                 <div className="w-32 sm:w-36 aspect-square shrink-0 rounded-full border-2 border-[#D4AF37] overflow-hidden bg-[#0A1931] shadow-md ring-4 ring-slate-100 dark:ring-slate-800">
                   <img
-                    src="/assets/welcome/mian-amer-mahmood.png"
+                    src="https://ik.imagekit.io/Muffins/image%20-%202026-10-23T213740.120.png"
                     alt="Mian Amer Mahmood"
                     className="w-full h-full object-cover object-[center_top]"
                     onError={(e) => {
-                      (e.currentTarget as HTMLImageElement).src = '/images/99s2Cmqj_mian-ameer.png';
+                      (e.currentTarget as HTMLImageElement).src = 'https://ik.imagekit.io/Muffins/image%20-%202026-10-23T213740.120.png';
                     }}
                   />
                 </div>
@@ -630,11 +630,11 @@ export const WelcomeUcpSection: React.FC<WelcomeUcpSectionProps> = ({
               <div className="flex flex-col sm:flex-row items-center sm:items-start gap-6 pb-6 border-b border-slate-200 dark:border-white/10">
                 <div className="w-32 sm:w-36 aspect-square shrink-0 rounded-full border-2 border-[#D4AF37] overflow-hidden bg-[#0A1931] shadow-md ring-4 ring-slate-100 dark:ring-slate-800">
                   <img
-                    src="/assets/leadership/sohail_afzal_user_selected_3_4.jpg"
+                    src="https://ik.imagekit.io/Muffins/image%20-%202026-10-24T140135.933.png"
                     alt="Prof. Sohail Afzal"
-                    className="w-full h-full object-cover object-[center_12%] scale-105"
+                    className="w-full h-full object-cover object-[center_top]"
                     onError={(e) => {
-                      (e.currentTarget as HTMLImageElement).src = '/images/HffRMp9g_Whats-App-Image-2026-10-20-at-2-07-37-AM.jpg';
+                      (e.currentTarget as HTMLImageElement).src = 'https://ik.imagekit.io/Muffins/image%20-%202026-10-24T140135.933.png';
                     }}
                   />
                 </div>

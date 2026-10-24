@@ -54,15 +54,15 @@ export const ALL_FACULTY_MEMBERS: FacultyMemberData[] = [
   {
     id: 'dr-abdul-kareem',
     numericId: 2,
-    name: 'Dr. Abdul Kareem',
+    name: 'Prof. Dr. Abdul Kareem',
     designation: 'Professor',
     department: 'Quality Enhancement Cell & Department of Physics',
     highestDegree: 'Ph.D. in Physics (Nuclear Medicine)',
     experienceYears: '24 Years',
     specialization: 'Diagnostic Radiology, Safe Handling of Radioactive Materials & Academic Quality Assurance',
     intro: 'Senior Professor and Head of Quality Enhancement Cell (QEC) at UCP Bahawalpur with 24 years of academic excellence. Pioneer in diagnostic radiology research, radiation safety governance, and university examinations management.',
-    photoUrl: '/assets/faculty/dr-abdul-kareem.jpg',
-    fallbackPhotoUrl: '/images/KpHwQ29z_Whats-App-Image-2026-10-12-at-9-45-57-PM.jpg',
+    photoUrl: 'https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-12%20at%209.45.57%20PM.jpeg',
+    fallbackPhotoUrl: 'https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-12%20at%209.45.57%20PM.jpeg',
     objectPosition: 'object-top',
     qualifications: [
       'Ph.D. in Physics (Nuclear Medicine)',
@@ -224,7 +224,7 @@ export const ALL_FACULTY_MEMBERS: FacultyMemberData[] = [
   {
     id: 'dr-mushtaq',
     numericId: 6,
-    name: 'Prof. Mushtaq Ahmad',
+    name: 'Dr. Mushtaq Ahmad',
     designation: 'Assistant Professor • Entry Test Specialist',
     cardDesignation: 'Assistant Professor',
     department: 'Department of Mathematics & Quantitative Sciences',
@@ -727,6 +727,43 @@ export const ALL_FACULTY_MEMBERS: FacultyMemberData[] = [
       'English Language Teaching & Pedagogy',
       'Academic Writing & Communication Skills',
       'Literary Analysis & Reading Comprehension'
+    ]
+  },
+  {
+    id: 'mr-moeen-akhtar-khan',
+    numericId: 18,
+    name: 'Prof. Moeen Akhtar Khan',
+    designation: 'Lecturer',
+    cardDesignation: 'Lecturer',
+    department: 'Department of English & Humanities',
+    highestDegree: 'M.A (M.Ed), English',
+    experienceYears: '18 Years',
+    specialization: 'ELT (English Language Teaching) & Early Education Pedagogy',
+    intro: 'Accomplished English Lecturer at UCP Bahawalpur with 18 years of teaching experience, recognized with the Long Service Award and Best Teaching Award, specializing in ELT and research on early education in Pakistan.',
+    photoUrl: 'https://ik.imagekit.io/Muffins/image%20-%202026-10-24T141008.182.png',
+    fallbackPhotoUrl: 'https://ik.imagekit.io/Muffins/image%20-%202026-10-24T141008.182.png',
+    objectPosition: 'object-top',
+    qualifications: [
+      'M.A. in English',
+      'M.Ed (Master of Education)'
+    ],
+    experienceDetails: [
+      '18 Years of Teaching Experience',
+      'ELT (English Language Teaching) Experience',
+      'Lecturer in English, University of Central Punjab (UCP) Bahawalpur'
+    ],
+    achievements: [
+      'Long Service Award',
+      'Best Teaching Award'
+    ],
+    researchPublications: [
+      'Research Work on Problem of Early Education in Pakistan'
+    ],
+    coreTechnicalSkills: [
+      'ELT (English Language Teaching)',
+      'Pedagogical Delivery & Teaching Methodology',
+      'Research on Problem of Early Education in Pakistan',
+      'Language Proficiency & Communication Skills'
     ]
   }
 ];

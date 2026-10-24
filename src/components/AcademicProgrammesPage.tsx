@@ -8,11 +8,9 @@ import {
   ExternalLink, 
   FileText, 
   HelpCircle, 
-  RotateCcw,
-  SlidersHorizontal,
-  ChevronDown,
-  Building,
-  GraduationCap
+  ChevronDown, 
+  Building, 
+  GraduationCap 
 } from 'lucide-react';
 import { 
   OFFICIAL_BAHAWALPUR_PROGRAMMES, 
@@ -90,8 +88,6 @@ export const AcademicProgrammesPage: React.FC<AcademicProgrammesPageProps> = ({
     return 'All';
   });
   const [searchQuery, setSearchQuery] = useState('');
-  const [degreeFilter, setDegreeFilter] = useState<'All' | 'BS' | 'BBA' | 'ADP' | 'ADS'>('All');
-  const [creditFilter, setCreditFilter] = useState<'All' | '60-70' | '71-80' | '125-135' | '136+'>('All');
   const [activeProgramme, setActiveProgramme] = useState<BahawalpurProgramme | null>(() => {
     if (initialSelectedId) {
       return OFFICIAL_BAHAWALPUR_PROGRAMMES.find((p) => p.id === initialSelectedId) || null;
@@ -134,19 +130,9 @@ export const AcademicProgrammesPage: React.FC<AcademicProgrammesPageProps> = ({
         matchesCategory = prog.category === selectedCategory;
       }
 
-      // Degree filter
-      const matchesDegree = degreeFilter === 'All' || prog.degree === degreeFilter;
-
-      // Credit hours filter
-      let matchesCredit = true;
-      if (creditFilter === '60-70') matchesCredit = prog.creditHours >= 60 && prog.creditHours <= 70;
-      else if (creditFilter === '71-80') matchesCredit = prog.creditHours >= 71 && prog.creditHours <= 80;
-      else if (creditFilter === '125-135') matchesCredit = prog.creditHours >= 125 && prog.creditHours <= 135;
-      else if (creditFilter === '136+') matchesCredit = prog.creditHours >= 136;
-
-      return matchesSearch && matchesCategory && matchesDegree && matchesCredit;
+      return matchesSearch && matchesCategory;
     });
-  }, [searchQuery, selectedCategory, degreeFilter, creditFilter]);
+  }, [searchQuery, selectedCategory]);
 
   // Grouped for editorial view
   const undergraduateList = useMemo(() => {
@@ -684,57 +670,36 @@ Campus Phone: 062-2202030 / 062-2202050
               Discover undergraduate & associate degree programmes designed to develop academic excellence, modern computing capabilities, and professional career readiness.
             </p>
 
-            {/* Operational Verification Tag */}
-            <div className="pt-2 flex flex-wrap items-center gap-3 text-xs text-stone-300 font-mono">
-              <div className="inline-flex items-center gap-2 bg-black/40 border border-white/15 px-3.5 py-1.5 rounded-full">
-                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
-                <span>Fall 2026 Admissions Open</span>
-              </div>
-              <div className="inline-flex items-center gap-2 bg-black/40 border border-white/15 px-3.5 py-1.5 rounded-full">
-                <span>27 Accredited Programmes</span>
-              </div>
-            </div>
           </div>
         </div>
       </section>
 
-      {/* Official Data Rule Banner */}
-      <div className="bg-stone-100 border-b border-stone-200 text-stone-600 text-xs py-2 px-4 text-center font-sans">
-        <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-6">
-          <span><strong>Official Campus Data:</strong> UCP Bahawalpur Fall 2026 verified schedule.</span>
-          <span className="hidden sm:inline text-stone-300">|</span>
-          <span className="text-stone-500">UCP reserves the right to revise fees and credit hours.</span>
-        </div>
-      </div>
-
-      {/* Main Container */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-12">
-
-        {/* Search & Academic Navigation Filter System */}
-        <div className="bg-white rounded-2xl border border-stone-200 p-6 shadow-xs space-y-5">
+      {/* Search & Academic Navigation Filter System — Placed at the top in place of the unnecessary upper bar */}
+      <div className="bg-white dark:bg-[#071322] border-b border-stone-200 dark:border-white/10 py-3.5 px-4 sm:px-6 lg:px-8 font-sans">
+        <div className="max-w-7xl mx-auto space-y-3">
           
-          {/* Search Bar */}
-          <div className="relative">
-            <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-stone-400" size={18} />
+          {/* Minimal Search Bar */}
+          <div className="relative w-full">
+            <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-stone-400 dark:text-stone-500" size={17} />
             <input
               type="text"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              placeholder="Search programmes by name, keyword, or career (e.g. Computer Science, Artificial Intelligence, Business, Psychology, English, Science)..."
-              className="w-full pl-11 pr-4 py-3 bg-stone-50 border border-stone-200 rounded-xl text-sm text-stone-900 placeholder-stone-400 focus:outline-none focus:ring-2 focus:ring-[#092242]/20 focus:border-[#092242]"
+              placeholder="Search programmes by name, keyword, or career (e.g. Computer Science, AI, Business, Psychology, English)..."
+              className="w-full pl-11 pr-10 py-2.5 bg-stone-100/90 dark:bg-white/5 text-stone-900 dark:text-white placeholder-stone-400 dark:placeholder-stone-500 rounded-xl text-sm focus:outline-none focus:bg-stone-100 dark:focus:bg-[#0e1d38] transition-colors"
             />
             {searchQuery && (
               <button
                 onClick={() => setSearchQuery('')}
-                className="absolute right-3.5 top-1/2 -translate-y-1/2 text-xs text-stone-400 hover:text-stone-700 font-mono"
+                className="absolute right-3.5 top-1/2 -translate-y-1/2 text-xs text-stone-400 hover:text-stone-700 dark:hover:text-stone-200 font-mono"
               >
                 Clear
               </button>
             )}
           </div>
 
-          {/* Academic Navigation Categories (Tabs) */}
-          <div className="flex items-center justify-between gap-1.5 overflow-x-auto pb-1 border-b border-stone-100 scrollbar-none text-xs font-medium">
+          {/* Academic Categories Tabs (Clean, borderless horizontal scroll) */}
+          <div className="flex items-center justify-between gap-3 overflow-x-auto pb-1 scrollbar-none text-xs">
             <div className="flex items-center gap-1.5 shrink-0">
               {categoryTabs.map((tab) => {
                 const isActive = selectedCategory === tab;
@@ -742,10 +707,10 @@ Campus Phone: 062-2202030 / 062-2202050
                   <button
                     key={tab}
                     onClick={() => setSelectedCategory(tab)}
-                    className={`px-3.5 py-2 rounded-lg whitespace-nowrap transition-colors focus:outline-none cursor-pointer ${
+                    className={`px-3 py-1.5 rounded-lg whitespace-nowrap transition-colors cursor-pointer text-xs font-medium ${
                       isActive
-                        ? 'bg-[#092242] text-white font-semibold'
-                        : 'text-stone-600 hover:text-stone-900 hover:bg-stone-100'
+                        ? 'bg-[#092242] text-white dark:bg-white dark:text-[#092242] font-semibold'
+                        : 'text-stone-600 dark:text-stone-300 hover:text-stone-900 dark:hover:text-white hover:bg-stone-100 dark:hover:bg-white/5'
                     }`}
                   >
                     {tab}
@@ -754,82 +719,28 @@ Campus Phone: 062-2202030 / 062-2202050
               })}
             </div>
 
-            {onOpenCalendar && (
-              <button
-                type="button"
-                onClick={onOpenCalendar}
-                className="px-3.5 py-2 rounded-lg whitespace-nowrap transition-colors bg-white hover:bg-slate-50 text-[#0A1931] border border-slate-300 font-semibold flex items-center gap-1.5 cursor-pointer shrink-0 ml-2"
-                title="Open Academic Calendar"
-              >
-                <span>Academic Calendar</span>
-                <span className="text-[#C8102E] font-bold">→</span>
-              </button>
-            )}
-          </div>
-
-          {/* Detailed Filters (Degree & Credit Hours) */}
-          <div className="flex flex-wrap items-center justify-between gap-4 pt-1 text-xs">
-            <div className="flex flex-wrap items-center gap-4">
-              <div className="flex items-center gap-2">
-                <span className="text-stone-500 font-medium">Degree:</span>
-                <div className="flex items-center gap-1">
-                  {(['All', 'BS', 'BBA', 'ADP', 'ADS'] as const).map((d) => (
-                    <button
-                      key={d}
-                      onClick={() => setDegreeFilter(d)}
-                      className={`px-2.5 py-1 rounded-md text-xs font-mono transition-colors ${
-                        degreeFilter === d
-                          ? 'bg-stone-200 text-stone-900 font-bold'
-                          : 'text-stone-600 hover:bg-stone-100'
-                      }`}
-                    >
-                      {d}
-                    </button>
-                  ))}
-                </div>
-              </div>
-
-              <div className="flex items-center gap-2">
-                <span className="text-stone-500 font-medium">Credit Hours:</span>
-                <div className="flex items-center gap-1">
-                  {(['All', '60-70', '71-80', '125-135', '136+'] as const).map((c) => (
-                    <button
-                      key={c}
-                      onClick={() => setCreditFilter(c)}
-                      className={`px-2.5 py-1 rounded-md text-xs font-mono transition-colors ${
-                        creditFilter === c
-                          ? 'bg-stone-200 text-stone-900 font-bold'
-                          : 'text-stone-600 hover:bg-stone-100'
-                      }`}
-                    >
-                      {c}
-                    </button>
-                  ))}
-                </div>
-              </div>
-            </div>
-
-            <div className="flex items-center gap-3">
-              {(searchQuery || selectedCategory !== 'All' || degreeFilter !== 'All' || creditFilter !== 'All') && (
+            <div className="flex items-center gap-3 shrink-0 ml-auto">
+              <span className="text-stone-400 dark:text-stone-500 font-mono text-[11px] hidden sm:inline">
+                {filteredProgrammes.length} Programmes
+              </span>
+              {onOpenCalendar && (
                 <button
-                  onClick={() => {
-                    setSearchQuery('');
-                    setSelectedCategory('All');
-                    setDegreeFilter('All');
-                    setCreditFilter('All');
-                  }}
-                  className="text-xs text-[#b8121a] hover:underline flex items-center gap-1"
+                  type="button"
+                  onClick={onOpenCalendar}
+                  className="px-3 py-1.5 rounded-lg whitespace-nowrap transition-colors text-xs font-semibold text-[#092242] dark:text-amber-300 hover:text-[#b8121a] dark:hover:text-amber-200 hover:bg-stone-100 dark:hover:bg-white/5 flex items-center gap-1 cursor-pointer"
+                  title="Open Academic Calendar"
                 >
-                  <RotateCcw size={12} />
-                  <span>Reset Filters</span>
+                  <span>Academic Calendar</span>
+                  <span className="text-[#b8121a] dark:text-amber-400">→</span>
                 </button>
               )}
-              <span className="text-stone-500 font-mono text-[11px]">
-                Showing {filteredProgrammes.length} of {OFFICIAL_BAHAWALPUR_PROGRAMMES.length} Programmes
-              </span>
             </div>
           </div>
         </div>
+      </div>
+
+      {/* Main Container */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-10 space-y-12">
 
         {/* Empty Search State */}
         {filteredProgrammes.length === 0 && (
@@ -843,8 +754,6 @@ Campus Phone: 062-2202030 / 062-2202050
               onClick={() => {
                 setSearchQuery('');
                 setSelectedCategory('All');
-                setDegreeFilter('All');
-                setCreditFilter('All');
               }}
               className="mt-4 px-4 py-2 bg-stone-900 text-white rounded-lg text-xs font-medium hover:bg-stone-800 transition-colors"
             >

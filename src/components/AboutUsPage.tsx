@@ -322,13 +322,13 @@ export const AboutUsPage: React.FC<AboutUsPageProps> = ({
 
               <div className="space-y-1.5 p-3.5 rounded-xl hover:bg-slate-50/80 transition-colors">
                 <div className="font-['Source_Serif_4','Source_Serif_Pro','Times_New_Roman',serif] text-4xl sm:text-5xl lg:text-6xl font-bold text-[#B31B1B]">
-                  <AnimatedCounter target={100} suffix="%" duration={0.9} />
+                  <AnimatedCounter target={2} suffix="M+" duration={0.9} />
                 </div>
                 <div className="font-sans text-xs sm:text-[13px] uppercase tracking-[0.1em] font-bold text-[#092242]">
-                  PhD &amp; MPhil Faculty
+                  Alumni Network
                 </div>
                 <p className="font-sans text-[13px] text-slate-500 leading-normal">
-                  Distinguished Academic Mentors
+                  PGC &amp; UCP Global Professionals
                 </p>
               </div>
 
@@ -440,11 +440,11 @@ export const AboutUsPage: React.FC<AboutUsPageProps> = ({
                 >
                   <div className="relative w-full max-w-[195px] sm:max-w-[215px] aspect-[3/4] bg-[#F5F5F5] rounded-[8px] overflow-hidden border border-[#EAEAEA] shadow-sm hover:shadow-md transition-all duration-300">
                     <img
-                      src="https://ik.imagekit.io/Muffins/image%20-%202026-10-23T213323.406.png"
+                      src="https://ik.imagekit.io/Muffins/image%20-%202026-10-24T140135.933.png"
                       alt="Prof. Sohail Afzal"
                       className="w-full h-full object-cover object-[center_top] group-hover:scale-104 transition-transform duration-500"
                       onError={(e) => {
-                        (e.currentTarget as HTMLImageElement).src = '/assets/leadership/sohail_afzal_user_selected_3_4.jpg';
+                        (e.currentTarget as HTMLImageElement).src = 'https://ik.imagekit.io/Muffins/image%20-%202026-10-24T140135.933.png';
                       }}
                     />
                     {/* Name minimal small on image at bottom */}
