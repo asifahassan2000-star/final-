@@ -13,6 +13,8 @@ import { ThemeToggle } from './components/ThemeToggle';
 import { ClickGlowManager } from './components/ClickGlowManager';
 import { ScrollRevealManager } from './components/ScrollReveal';
 import { SecretEasterEgg } from './components/SecretEasterEgg';
+import { useSeoMetadata } from './hooks/useSeoMetadata';
+import { SeoHead } from './components/SeoHead';
 import type { InfoModalType } from './components/UcpInfoModal';
 import { Program, NewsEventItem } from './types';
 import { FACULTIES, UCP_CONTACT } from './data/ucpData';
@@ -71,16 +73,18 @@ export const preloadSubpages = () => {
 
 const AsifaSecretPage = React.lazy(() => import('./components/AsifaSecretPage').then(m => ({ default: m.AsifaSecretPage })));
 
-export type PageId = 'home' | 'faculty' | 'programmes' | 'legacy' | 'campus-life' | 'scholarships' | 'fee-structure' | 'cnn-academy' | 'calendar' | 'campus-facilities' | 'about-us' | 'asifa';
+export type PageId = 'home' | 'faculty' | 'programmes' | 'legacy' | 'campus-life' | 'scholarships' | 'fee-structure' | 'cnn-academy' | 'calendar' | 'campus-facilities' | 'about-us' | 'developer' | 'asifa';
 
 const getPageFromHash = (): PageId => {
   if (typeof window === 'undefined') return 'home';
   const pathname = (window.location.pathname || '').replace(/^\/+|\/+$/g, '').toLowerCase();
-  if (pathname === 'asifa') return 'asifa';
+  if (pathname === 'developer') return 'developer';
+  if (pathname === 'asifa') return 'developer';
   if (pathname === 'campus-facilities' || pathname === 'facilities') return 'campus-facilities';
   if (pathname === 'about-us' || pathname === 'about') return 'about-us';
   const hash = (window.location.hash || '').replace(/^#\/?/, '').toLowerCase();
-  if (hash === 'asifa') return 'asifa';
+  if (hash === 'developer') return 'developer';
+  if (hash === 'asifa') return 'developer';
   if (hash === 'campus-facilities' || hash === 'facilities') return 'campus-facilities';
   if (hash === 'about-us' || hash === 'about') return 'about-us';
   if (hash === 'programmes' || hash === 'programs') return 'programmes';
@@ -223,83 +227,50 @@ export default function App() {
     };
   }, [currentPage]);
 
-  // Dynamic page titles, meta descriptions, OpenGraph, and canonical links for SEO & browser navigation
-  useEffect(() => {
-    const titles: Record<string, string> = {
-      home: 'UCP Bahawalpur Campus | University of Central Punjab BWP - Official Admissions & Programs',
-      programmes: 'Academic Programmes (BS & ADP) | UCP Bahawalpur Campus',
-      faculty: 'Faculty Directory & Professors | UCP Bahawalpur Campus',
-      'campus-life': 'Campus Life, Societies & Events | UCP Bahawalpur Campus',
-      scholarships: 'Scholarships & Merit Concessions | UCP Bahawalpur Campus',
-      'fee-structure': 'Official Fee Structure & Tuition | UCP Bahawalpur Campus',
-      legacy: 'Institutional Legacy & Heritage | UCP Bahawalpur Campus',
-      'cnn-academy': 'CNN Academy Strategic Partnership | UCP Bahawalpur Campus',
-      calendar: 'Academic Calendar | UCP Bahawalpur Campus',
-      'campus-facilities': 'Campus Facilities, Central Library & Labs | UCP Bahawalpur Campus',
-      'about-us': 'About Us — Success Story, Leadership & Vision | UCP Bahawalpur Campus',
-    };
-
-    const descriptions: Record<string, string> = {
-      home: 'Official website of UCP Bahawalpur Campus (University of Central Punjab BWP). Explore admissions, fee structures, merit scholarships, BS & ADP academic degree programs, faculty, and vibrant campus life in Bahawalpur.',
-      programmes: 'Explore 25+ accredited undergraduate BS and Associate Degree (ADP) programs at UCP Bahawalpur Campus across Computing, Business, Sciences, and Social Sciences.',
-      faculty: 'Meet the distinguished faculty and professors at UCP Bahawalpur Campus dedicated to academic excellence, innovative research, and student mentorship.',
-      'campus-life': 'Discover student societies, sports galas, cultural festivals, tech symposia, and vibrant student community at UCP Bahawalpur Campus.',
-      scholarships: 'Explore up to 50% merit-based scholarships, 25% PGC alumni concessions, kinship aid, and talent-based fee reductions at UCP Bahawalpur Campus.',
-      'fee-structure': 'View official credit-hour tuition, semester fee breakdowns, and installment payment plans for BS and ADP degrees at UCP Bahawalpur Campus.',
-      legacy: 'Learn about the 40-year educational legacy of Punjab Group of Colleges and UCP Bahawalpur Campus empowering generations of Pakistani scholars.',
-      'cnn-academy': 'UCP Bahawalpur Campus collaboration with CNN Academy, providing journalism and media students international broadcasting masterclasses.',
-      calendar: 'Official Academic Calendar for Fall & Spring semesters at UCP Bahawalpur Campus detailing semester teaching days, exams, and holidays.',
-      'campus-facilities': 'Tour world-class purpose-built campus facilities at UCP Bahawalpur including GPU computing labs, digital library, and air-conditioned shuttle transport.',
-      'about-us': 'Learn about UCP Bahawalpur Campus — our leadership, vision, HEC recognized degrees, and commitment to educational empowerment in South Punjab.',
-    };
-
-    const title = titles[currentPage] || titles.home;
-    const desc = descriptions[currentPage] || descriptions.home;
-
-    document.title = title;
-
-    // Update standard meta description
-    let metaDesc = document.querySelector('meta[name="description"]');
-    if (!metaDesc) {
-      metaDesc = document.createElement('meta');
-      metaDesc.setAttribute('name', 'description');
-      document.head.appendChild(metaDesc);
-    }
-    metaDesc.setAttribute('content', desc);
-
-    // Update OpenGraph tags
-    let ogTitle = document.querySelector('meta[property="og:title"]');
-    if (ogTitle) ogTitle.setAttribute('content', title);
-    let ogDesc = document.querySelector('meta[property="og:description"]');
-    if (ogDesc) ogDesc.setAttribute('content', desc);
-
-    // Update canonical link
-    let canonical = document.querySelector('link[rel="canonical"]');
-    if (!canonical) {
-      canonical = document.createElement('link');
-      canonical.setAttribute('rel', 'canonical');
-      document.head.appendChild(canonical);
-    }
-    const origin = typeof window !== 'undefined' ? window.location.origin : 'https://final-five-jade-31.vercel.app';
-    const pagePath = currentPage === 'home' ? '' : (currentPage === 'campus-facilities' ? '/campus-facilities' : `#${currentPage}`);
-    canonical.setAttribute('href', `${origin}/${pagePath}`);
-  }, [currentPage]);
+  // Centralized Dynamic SEO Metadata Hook (updates title, description, keywords, OpenGraph, Twitter, canonical, robots & JSON-LD schema)
+  useSeoMetadata(currentPage);
 
   // Helper to sync page and history hash for instant client navigation
   const navigateToPage = (newPage: PageId) => {
     scrollToTopInstant();
-    setCurrentPage(newPage);
-    if (newPage === 'home') {
+    const targetPage: PageId = newPage === 'asifa' ? 'developer' : newPage;
+    setCurrentPage(targetPage);
+    if (targetPage === 'home') {
       window.history.pushState(null, '', '/');
-    } else if (newPage === 'campus-facilities') {
+    } else if (targetPage === 'campus-facilities') {
       window.history.pushState(null, '', '/campus-facilities');
-    } else if (newPage === 'asifa') {
-      window.history.pushState(null, '', '/asifa');
+    } else if (targetPage === 'developer') {
+      window.history.pushState(null, '', '/developer');
     } else {
-      window.history.pushState(null, '', `#${newPage}`);
+      window.history.pushState(null, '', `#${targetPage}`);
     }
     requestAnimationFrame(() => scrollToTopInstant());
   };
+
+  // Secret Key Trigger: When user types "developer" or "builder" anywhere on keyboard, open developer info page
+  useEffect(() => {
+    let keyBuffer = '';
+    const handleSecretTyping = (e: KeyboardEvent) => {
+      // Don't intercept when user is typing in form fields or search inputs
+      const target = e.target as HTMLElement | null;
+      if (target && (target.tagName === 'INPUT' || target.tagName === 'TEXTAREA' || target.isContentEditable)) {
+        return;
+      }
+      if (e.ctrlKey || e.altKey || e.metaKey) return;
+      if (!e.key || e.key.length !== 1) return;
+
+      keyBuffer = (keyBuffer + e.key.toLowerCase()).slice(-20);
+      if (keyBuffer.endsWith('developer') || keyBuffer.endsWith('builder')) {
+        keyBuffer = '';
+        navigateToPage('developer');
+      }
+    };
+
+    window.addEventListener('keydown', handleSecretTyping);
+    return () => {
+      window.removeEventListener('keydown', handleSecretTyping);
+    };
+  }, []);
 
   // Synchronize browser history and hash for back/forward navigation and direct refreshes
   useEffect(() => {
@@ -493,7 +464,7 @@ export default function App() {
     }, 150);
   };
 
-  if (currentPage === 'asifa') {
+  if (currentPage === 'developer' || currentPage === 'asifa') {
     return (
       <div className="w-full min-h-screen bg-[#000000]">
         <Suspense fallback={<div className="min-h-screen w-full bg-[#000000]" />}>

@@ -128,29 +128,98 @@ export const OurLeadershipSection: React.FC<OurLeadershipSectionProps> = () => {
   const [selectedLeader, setSelectedLeader] = useState<LeaderProfile | null>(null);
   const [isHeaderVisible, setIsHeaderVisible] = useState(false);
   const headerRef = useRef<HTMLDivElement>(null);
+  const leadershipSectionRef = useRef<HTMLElement>(null);
 
   // Mobile horizontal swipe carousel state and handlers
   const [activeLeadershipMobileIndex, setActiveLeadershipMobileIndex] = useState(0);
   const leadershipCarouselRef = useRef<HTMLDivElement>(null);
+  const activeLeadershipIndexRef = useRef(0);
+  const isLeadershipInteractingRef = useRef(false);
+  const leadershipTouchTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+  const [isLeadershipSectionInView, setIsLeadershipSectionInView] = useState(false);
+
+  useEffect(() => {
+    activeLeadershipIndexRef.current = activeLeadershipMobileIndex;
+  }, [activeLeadershipMobileIndex]);
+
+  const scrollToLeadershipCard = (idx: number) => {
+    if (!leadershipCarouselRef.current) return;
+    const el = leadershipCarouselRef.current;
+    const cardEl = el.children[idx] as HTMLElement | undefined;
+    if (cardEl) {
+      const scrollPosition = cardEl.offsetLeft - (el.offsetWidth - cardEl.offsetWidth) / 2;
+      el.scrollTo({
+        left: Math.max(0, scrollPosition),
+        behavior: 'smooth',
+      });
+    } else {
+      const cardWidth = el.offsetWidth * 0.85;
+      el.scrollTo({
+        left: idx * (cardWidth + 16),
+        behavior: 'smooth',
+      });
+    }
+    setActiveLeadershipMobileIndex(idx);
+    activeLeadershipIndexRef.current = idx;
+  };
 
   const handleLeadershipMobileScroll = (e: React.UIEvent<HTMLDivElement>) => {
     const el = e.currentTarget;
     const scrollLeft = el.scrollLeft;
     const cardWidth = el.offsetWidth * 0.85;
     const newIdx = Math.round(scrollLeft / (cardWidth + 16));
-    setActiveLeadershipMobileIndex(Math.min(Math.max(newIdx, 0), LEADERSHIP_PROFILES.length - 1));
+    const clamped = Math.min(Math.max(newIdx, 0), LEADERSHIP_PROFILES.length - 1);
+    setActiveLeadershipMobileIndex(clamped);
+    activeLeadershipIndexRef.current = clamped;
   };
 
-  const scrollToLeadershipCard = (idx: number) => {
-    if (!leadershipCarouselRef.current) return;
-    const el = leadershipCarouselRef.current;
-    const cardWidth = el.offsetWidth * 0.85;
-    el.scrollTo({
-      left: idx * (cardWidth + 16),
-      behavior: 'smooth',
-    });
-    setActiveLeadershipMobileIndex(idx);
-  };
+  // Visibility detection: only activate auto-change when user scrolls into the leadership section
+  useEffect(() => {
+    const target = leadershipSectionRef.current;
+    if (!target) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsLeadershipSectionInView(entry.isIntersecting);
+        if (!entry.isIntersecting) {
+          // Keep Prof. Hamid Iqbal on top when not in view
+          scrollToLeadershipCard(0);
+        }
+      },
+      {
+        threshold: 0.2,
+      }
+    );
+
+    observer.observe(target);
+    return () => {
+      observer.disconnect();
+    };
+  }, []);
+
+  // 5-second alternating rotation: side card comes to front after 5s, then first card after 5s
+  useEffect(() => {
+    if (!isLeadershipSectionInView) return;
+
+    const interval = setInterval(() => {
+      if (isLeadershipInteractingRef.current) return;
+
+      // Only run when mobile carousel is active in viewport
+      if (leadershipCarouselRef.current && leadershipCarouselRef.current.offsetParent === null) {
+        return;
+      }
+
+      const nextIdx = (activeLeadershipIndexRef.current + 1) % LEADERSHIP_PROFILES.length;
+      scrollToLeadershipCard(nextIdx);
+    }, 5000);
+
+    return () => {
+      clearInterval(interval);
+      if (leadershipTouchTimeoutRef.current) {
+        clearTimeout(leadershipTouchTimeoutRef.current);
+      }
+    };
+  }, [isLeadershipSectionInView]);
 
   useEffect(() => {
     // Immediate fallback ensures heading is always visible
@@ -197,6 +266,7 @@ export const OurLeadershipSection: React.FC<OurLeadershipSectionProps> = () => {
 
   return (
     <section
+      ref={leadershipSectionRef}
       id="leadership-section"
       className="relative bg-white dark:bg-[#080f1d] text-slate-900 dark:text-slate-100 py-16 sm:py-20 lg:py-24 border-t border-b border-slate-200 dark:border-white/10 select-none overflow-visible scroll-mt-20 transition-colors duration-200"
       aria-labelledby="leadership-heading"
@@ -405,6 +475,26 @@ export const OurLeadershipSection: React.FC<OurLeadershipSectionProps> = () => {
         <div
           ref={leadershipCarouselRef}
           onScroll={handleLeadershipMobileScroll}
+          onTouchStart={() => {
+            isLeadershipInteractingRef.current = true;
+            if (leadershipTouchTimeoutRef.current) clearTimeout(leadershipTouchTimeoutRef.current);
+          }}
+          onTouchEnd={() => {
+            if (leadershipTouchTimeoutRef.current) clearTimeout(leadershipTouchTimeoutRef.current);
+            leadershipTouchTimeoutRef.current = setTimeout(() => {
+              isLeadershipInteractingRef.current = false;
+            }, 2000);
+          }}
+          onPointerDown={() => {
+            isLeadershipInteractingRef.current = true;
+            if (leadershipTouchTimeoutRef.current) clearTimeout(leadershipTouchTimeoutRef.current);
+          }}
+          onPointerUp={() => {
+            if (leadershipTouchTimeoutRef.current) clearTimeout(leadershipTouchTimeoutRef.current);
+            leadershipTouchTimeoutRef.current = setTimeout(() => {
+              isLeadershipInteractingRef.current = false;
+            }, 2000);
+          }}
           className="flex overflow-x-auto gap-4 px-6 pb-4 pt-2 scroll-smooth snap-x snap-mandatory [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none] [scroll-snap-stop:always]"
           style={{
             WebkitOverflowScrolling: 'touch',
@@ -415,57 +505,94 @@ export const OurLeadershipSection: React.FC<OurLeadershipSectionProps> = () => {
           {LEADERSHIP_PROFILES.map((leader) => (
             <div
               key={leader.id}
-              className="bg-white dark:bg-[#0e1d38] rounded-2xl shadow-lg p-5 min-h-[320px] flex flex-col justify-between border border-slate-100 dark:border-white/10 w-[85vw] max-w-[340px] shrink-0 snap-center transition-all duration-300 ease-in-out"
+              className="bg-white dark:bg-[#0e1d38] rounded-2xl shadow-xl p-5 min-h-[460px] flex flex-col justify-between border border-slate-100 dark:border-white/10 w-[88vw] max-w-[360px] shrink-0 snap-center transition-all duration-300 ease-in-out relative overflow-hidden"
               style={{
                 transform: 'translate3d(0,0,0)',
                 willChange: 'transform',
               }}
             >
               <div>
-                {/* Image: 96x96px circular, centered, object-cover object-top, border 2px gold #C5A880 */}
-                <div className="w-[96px] h-[96px] rounded-full overflow-hidden border-2 border-[#C5A880] mx-auto shadow-md aspect-square bg-[#0B1A3A] relative shrink-0">
-                  <img
-                    src={leader.portraitUrl}
-                    alt={leader.name}
-                    className="w-full h-full object-cover object-top aspect-square"
-                    loading="eager"
-                    onError={(e) => {
-                      (e.currentTarget as HTMLImageElement).src = leader.fallbackUrl;
-                    }}
-                  />
+                {/* Portrait Container with Authentic Building Blueprint Behind (Matching Desktop Prestige) */}
+                <div className="relative flex flex-col items-center justify-center pt-2 pb-2 overflow-hidden min-h-[220px]">
+                  {/* Building Blueprint Watermark Linework Directly Behind Portrait */}
+                  <div
+                    className="absolute inset-0 pointer-events-none select-none z-0 overflow-hidden flex items-center justify-center"
+                    aria-hidden="true"
+                  >
+                    <img
+                      src="/assets/welcome/ucp_blueprint_lines_clean.png"
+                      alt=""
+                      className="w-full h-full max-w-[290px] max-h-[290px] object-contain opacity-[0.38] dark:opacity-[0.22] mix-blend-multiply dark:mix-blend-screen scale-110"
+                      onError={(e) => {
+                        (e.currentTarget as HTMLImageElement).src =
+                          '/assets/welcome/ucp_building_blueprint_lines.png';
+                      }}
+                    />
+                    {/* Gentle radial gradient blend */}
+                    <div className="absolute inset-0 bg-radial from-transparent via-white/20 to-white dark:via-[#0e1d38]/30 dark:to-[#0e1d38]" />
+                  </div>
+
+                  {/* Big Circular Portrait with Gold Border & Rings (Enlarged Luxury Size) */}
+                  <div 
+                    onClick={() => setSelectedLeader(leader)}
+                    className="relative z-10 p-2.5 rounded-full border border-slate-200/90 dark:border-white/15 bg-white/95 dark:bg-[#0e1d38]/95 shadow-xl backdrop-blur-[2px] cursor-pointer group active:scale-98 transition-all duration-300"
+                    title={`Click to view biographical profile of ${leader.name}`}
+                  >
+                    <div className="w-48 h-48 xs:w-52 xs:h-52 rounded-full overflow-hidden border-[3px] border-[#D4AF37] dark:border-[#D4AF37] shadow-2xl bg-[#0B1A3A] ring-4 ring-white dark:ring-[#080f1d] relative">
+                      <img
+                        src={leader.portraitUrl}
+                        alt={leader.name}
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                        style={{
+                          objectPosition: leader.id === 'prof-dr-aurangzaib-virk' ? 'center 14%' : 'center 12%',
+                        }}
+                        loading="eager"
+                        onError={(e) => {
+                          (e.currentTarget as HTMLImageElement).src = leader.fallbackUrl;
+                        }}
+                      />
+                      <div className="absolute inset-x-0 bottom-0 py-2 bg-gradient-to-t from-[#0B1A3A]/95 via-[#0B1A3A]/70 to-transparent flex items-center justify-center">
+                        <span className="text-[10px] font-bold text-[#D4AF37] uppercase tracking-wider font-sans">
+                          View Profile ↗
+                        </span>
+                      </div>
+                    </div>
+                  </div>
                 </div>
 
-                {/* Name: font-bold 14px, center aligned */}
-                <h3 className="font-bold text-[14px] text-center text-[#0B1A3A] dark:text-white mt-3 font-sans">
+                {/* Name: font-bold 17px uppercase, center aligned */}
+                <h3 className="font-['Source_Serif_4','Source_Serif_Pro','Georgia',serif] font-bold text-[17px] text-center text-[#0B1A3A] dark:text-white mt-3 uppercase tracking-tight">
                   {leader.name}
                 </h3>
 
-                {/* Title: 11px uppercase, gray-500, letter-spacing, 2 lines max (line-clamp-2) */}
-                <p className="text-[11px] uppercase tracking-wider text-gray-500 dark:text-gray-400 text-center line-clamp-2 font-sans mt-0.5 px-2">
-                  {leader.designation}
-                </p>
+                {/* Title Badge: uppercase, gold on navy, center aligned */}
+                <div className="flex justify-center mt-1.5 px-1">
+                  <span className="text-[10.5px] uppercase tracking-wider font-semibold text-[#D4AF37] dark:text-[#F3D368] bg-[#0B1A3A] dark:bg-[#0e2248] px-2.5 py-0.5 border border-[#0B1A3A] dark:border-[#D4AF37]/30 text-center line-clamp-2">
+                    {leader.designation}
+                  </span>
+                </div>
 
-                {/* Bio: 12px gray-600, max 3 lines only (line-clamp-3) - show "Read more" to expand in modal */}
-                <div className="mt-2.5 text-center">
-                  <p className="text-[12px] text-gray-600 dark:text-gray-300 line-clamp-3 leading-relaxed font-sans">
-                    {leader.fullMessage[0]}
+                {/* Bio: 13px italic quotation, line-clamp-3 - show "Read more" to expand in modal */}
+                <div className="mt-3 text-center px-1">
+                  <p className="font-['Source_Serif_4','Source_Serif_Pro','Georgia',serif] text-[13px] text-gray-700 dark:text-slate-300 line-clamp-3 leading-relaxed italic text-justify">
+                    “{leader.fullMessage[0]}”
                   </p>
                   <button
                     type="button"
                     onClick={() => setSelectedLeader(leader)}
-                    className="text-[11.5px] font-semibold text-[#C8102E] dark:text-[#D4AF37] hover:underline mt-1 inline-block cursor-pointer"
+                    className="text-[11.5px] font-semibold text-[#C8102E] dark:text-[#D4AF37] hover:underline mt-1.5 inline-block cursor-pointer font-sans"
                   >
-                    Read more
+                    Read full message &amp; credentials →
                   </button>
                 </div>
               </div>
 
-              {/* Button: "View Profile & Credentials" small pill button, dark navy #0A1931 */}
+              {/* Button: "View Profile & Credentials" pill button, dark navy #0A1931 */}
               <div className="mt-4 pt-3 border-t border-slate-100 dark:border-white/10 w-full">
                 <button
                   type="button"
                   onClick={() => setSelectedLeader(leader)}
-                  className="w-full py-2 px-4 rounded-full bg-[#0A1931] hover:bg-[#0B1A3A] text-white text-[12px] font-medium tracking-wide font-sans shadow-sm transition-all duration-200 active:scale-98 flex items-center justify-center gap-1.5 cursor-pointer"
+                  className="w-full py-2.5 px-4 rounded-full bg-[#0A1931] hover:bg-[#0B1A3A] text-white text-[12px] font-semibold tracking-wide font-sans shadow-md transition-all duration-200 active:scale-98 flex items-center justify-center gap-1.5 cursor-pointer"
                 >
                   <span>View Profile &amp; Credentials</span>
                   <ArrowUpRight size={13} className="text-[#D4AF37]" />

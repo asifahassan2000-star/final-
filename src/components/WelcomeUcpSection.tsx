@@ -34,6 +34,10 @@ export const WelcomeUcpSection: React.FC<WelcomeUcpSectionProps> = ({
   // Mobile horizontal swipe carousel state and handlers
   const [activeWelcomeMobileIndex, setActiveWelcomeMobileIndex] = useState(0);
   const welcomeCarouselRef = useRef<HTMLDivElement>(null);
+  const activeWelcomeIndexRef = useRef(0);
+  const isWelcomeInteractingRef = useRef(false);
+  const welcomeTouchTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+  const [isWelcomeSectionInView, setIsWelcomeSectionInView] = useState(false);
 
   const welcomeLeaders = [
     {
@@ -54,24 +58,88 @@ export const WelcomeUcpSection: React.FC<WelcomeUcpSectionProps> = ({
     },
   ];
 
+  useEffect(() => {
+    activeWelcomeIndexRef.current = activeWelcomeMobileIndex;
+  }, [activeWelcomeMobileIndex]);
+
+  const scrollToWelcomeCard = (idx: number) => {
+    if (!welcomeCarouselRef.current) return;
+    const el = welcomeCarouselRef.current;
+    const cardEl = el.children[idx] as HTMLElement | undefined;
+    if (cardEl) {
+      const scrollPosition = cardEl.offsetLeft - (el.offsetWidth - cardEl.offsetWidth) / 2;
+      el.scrollTo({
+        left: Math.max(0, scrollPosition),
+        behavior: 'smooth',
+      });
+    } else {
+      const cardWidth = el.offsetWidth * 0.85;
+      el.scrollTo({
+        left: idx * (cardWidth + 16),
+        behavior: 'smooth',
+      });
+    }
+    setActiveWelcomeMobileIndex(idx);
+    activeWelcomeIndexRef.current = idx;
+  };
+
   const handleWelcomeMobileScroll = (e: React.UIEvent<HTMLDivElement>) => {
     const el = e.currentTarget;
     const scrollLeft = el.scrollLeft;
     const cardWidth = el.offsetWidth * 0.85;
     const newIdx = Math.round(scrollLeft / (cardWidth + 16));
-    setActiveWelcomeMobileIndex(Math.min(Math.max(newIdx, 0), welcomeLeaders.length - 1));
+    const clamped = Math.min(Math.max(newIdx, 0), welcomeLeaders.length - 1);
+    setActiveWelcomeMobileIndex(clamped);
+    activeWelcomeIndexRef.current = clamped;
   };
 
-  const scrollToWelcomeCard = (idx: number) => {
-    if (!welcomeCarouselRef.current) return;
-    const el = welcomeCarouselRef.current;
-    const cardWidth = el.offsetWidth * 0.85;
-    el.scrollTo({
-      left: idx * (cardWidth + 16),
-      behavior: 'smooth',
-    });
-    setActiveWelcomeMobileIndex(idx);
-  };
+  // Visibility detection: only activate auto-change when user scrolls into the section
+  useEffect(() => {
+    const target = sectionRef.current;
+    if (!target) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsWelcomeSectionInView(entry.isIntersecting);
+        if (!entry.isIntersecting) {
+          // Keep Mian Amer Mahmood on top when not in view
+          scrollToWelcomeCard(0);
+        }
+      },
+      {
+        threshold: 0.2,
+      }
+    );
+
+    observer.observe(target);
+    return () => {
+      observer.disconnect();
+    };
+  }, []);
+
+  // 5-second alternating rotation: side card comes to front after 5s, then first card after 5s
+  useEffect(() => {
+    if (!isWelcomeSectionInView) return;
+
+    const interval = setInterval(() => {
+      if (isWelcomeInteractingRef.current) return;
+
+      // Only run when mobile carousel is active in viewport
+      if (welcomeCarouselRef.current && welcomeCarouselRef.current.offsetParent === null) {
+        return;
+      }
+
+      const nextIdx = (activeWelcomeIndexRef.current + 1) % welcomeLeaders.length;
+      scrollToWelcomeCard(nextIdx);
+    }, 5000);
+
+    return () => {
+      clearInterval(interval);
+      if (welcomeTouchTimeoutRef.current) {
+        clearTimeout(welcomeTouchTimeoutRef.current);
+      }
+    };
+  }, [isWelcomeSectionInView]);
 
   useEffect(() => {
     const timer = setTimeout(() => setIsHeaderVisible(true), 150);
@@ -485,6 +553,26 @@ export const WelcomeUcpSection: React.FC<WelcomeUcpSectionProps> = ({
           <div
             ref={welcomeCarouselRef}
             onScroll={handleWelcomeMobileScroll}
+            onTouchStart={() => {
+              isWelcomeInteractingRef.current = true;
+              if (welcomeTouchTimeoutRef.current) clearTimeout(welcomeTouchTimeoutRef.current);
+            }}
+            onTouchEnd={() => {
+              if (welcomeTouchTimeoutRef.current) clearTimeout(welcomeTouchTimeoutRef.current);
+              welcomeTouchTimeoutRef.current = setTimeout(() => {
+                isWelcomeInteractingRef.current = false;
+              }, 2000);
+            }}
+            onPointerDown={() => {
+              isWelcomeInteractingRef.current = true;
+              if (welcomeTouchTimeoutRef.current) clearTimeout(welcomeTouchTimeoutRef.current);
+            }}
+            onPointerUp={() => {
+              if (welcomeTouchTimeoutRef.current) clearTimeout(welcomeTouchTimeoutRef.current);
+              welcomeTouchTimeoutRef.current = setTimeout(() => {
+                isWelcomeInteractingRef.current = false;
+              }, 2000);
+            }}
             className="flex overflow-x-auto gap-4 px-6 pb-4 pt-2 scroll-smooth snap-x snap-mandatory [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none] [scroll-snap-stop:always]"
             style={{
               WebkitOverflowScrolling: 'touch',
@@ -495,59 +583,93 @@ export const WelcomeUcpSection: React.FC<WelcomeUcpSectionProps> = ({
             {welcomeLeaders.map((leader) => (
               <div
                 key={leader.id}
-                className="bg-white dark:bg-[#0e1d38] rounded-2xl shadow-lg p-5 min-h-[320px] flex flex-col justify-between border border-slate-100 dark:border-white/10 w-[85vw] max-w-[340px] shrink-0 snap-center transition-all duration-300 ease-in-out"
+                className="bg-white dark:bg-[#0e1d38] rounded-2xl shadow-xl p-5 min-h-[460px] flex flex-col justify-between border border-slate-100 dark:border-white/10 w-[88vw] max-w-[360px] shrink-0 snap-center transition-all duration-300 ease-in-out relative overflow-hidden"
                 style={{
                   transform: 'translate3d(0,0,0)',
                   willChange: 'transform',
                 }}
               >
                 <div>
-                  {/* Image: 96x96px circular, centered, object-cover object-top, border 2px gold #C5A880 */}
-                  <div className="w-[96px] h-[96px] rounded-full overflow-hidden border-2 border-[#C5A880] mx-auto shadow-md aspect-square bg-[#0B1A3A] relative shrink-0">
-                    <img
-                      src={leader.image}
-                      alt={leader.name}
-                      className="w-full h-full object-cover object-top aspect-square"
-                      loading="eager"
-                      onError={(e) => {
-                        if (leader.id === 'mian-amer-mahmood') {
-                          (e.currentTarget as HTMLImageElement).src = '/assets/welcome/mian-amer-mahmood.png';
-                        }
-                      }}
-                    />
+                  {/* Portrait Container with Authentic Building Blueprint Behind (Matching Desktop Prestige) */}
+                  <div className="relative flex flex-col items-center justify-center pt-2 pb-2 overflow-hidden min-h-[220px]">
+                    {/* Building Blueprint Watermark Linework Directly Behind Portrait */}
+                    <div
+                      className="absolute inset-0 pointer-events-none select-none z-0 overflow-hidden flex items-center justify-center"
+                      aria-hidden="true"
+                    >
+                      <img
+                        src="/assets/welcome/ucp_blueprint_lines_clean.png"
+                        alt=""
+                        className="w-full h-full max-w-[290px] max-h-[290px] object-contain opacity-[0.38] dark:opacity-[0.22] mix-blend-multiply dark:mix-blend-screen scale-110"
+                        onError={(e) => {
+                          (e.currentTarget as HTMLImageElement).src =
+                            '/assets/welcome/ucp_building_blueprint_lines.png';
+                        }}
+                      />
+                      {/* Gentle radial gradient blend */}
+                      <div className="absolute inset-0 bg-radial from-transparent via-white/20 to-white dark:via-[#0e1d38]/30 dark:to-[#0e1d38]" />
+                    </div>
+
+                    {/* Big Circular Portrait with Gold Border & Rings (Enlarged Luxury Size) */}
+                    <div 
+                      onClick={leader.onOpenModal}
+                      className="relative z-10 p-2.5 rounded-full border border-slate-200/90 dark:border-white/15 bg-white/95 dark:bg-[#0e1d38]/95 shadow-xl backdrop-blur-[2px] cursor-pointer group active:scale-98 transition-all duration-300"
+                      title={`Click to view biographical profile of ${leader.name}`}
+                    >
+                      <div className="w-48 h-48 xs:w-52 xs:h-52 rounded-full overflow-hidden border-[3px] border-[#D4AF37] dark:border-[#D4AF37] shadow-2xl bg-[#0B1A3A] ring-4 ring-white dark:ring-[#080f1d] relative">
+                        <img
+                          src={leader.image}
+                          alt={leader.name}
+                          className="w-full h-full object-cover object-[center_top] group-hover:scale-105 transition-transform duration-500"
+                          loading="eager"
+                          onError={(e) => {
+                            if (leader.id === 'mian-amer-mahmood') {
+                              (e.currentTarget as HTMLImageElement).src = '/assets/welcome/mian-amer-mahmood.png';
+                            }
+                          }}
+                        />
+                        <div className="absolute inset-x-0 bottom-0 py-2 bg-gradient-to-t from-[#0B1A3A]/95 via-[#0B1A3A]/70 to-transparent flex items-center justify-center">
+                          <span className="text-[10px] font-bold text-[#D4AF37] uppercase tracking-wider font-sans">
+                            View Profile ↗
+                          </span>
+                        </div>
+                      </div>
+                    </div>
                   </div>
 
-                  {/* Name: font-bold 14px, center aligned */}
-                  <h3 className="font-bold text-[14px] text-center text-[#0B1A3A] dark:text-white mt-3 font-sans">
+                  {/* Name: font-bold 16px uppercase, center aligned */}
+                  <h3 className="font-['Source_Serif_4','Source_Serif_Pro','Georgia',serif] font-bold text-[17px] text-center text-[#0B1A3A] dark:text-white mt-3 uppercase tracking-tight">
                     {leader.name}
                   </h3>
 
-                  {/* Title: 11px uppercase, gray-500, letter-spacing, 2 lines max (line-clamp-2) */}
-                  <p className="text-[11px] uppercase tracking-wider text-gray-500 dark:text-gray-400 text-center line-clamp-2 font-sans mt-0.5 px-2">
-                    {leader.title}
-                  </p>
+                  {/* Title Badge: uppercase, gold on navy, center aligned */}
+                  <div className="flex justify-center mt-1.5 px-1">
+                    <span className="text-[10.5px] uppercase tracking-wider font-semibold text-[#D4AF37] dark:text-[#F3D368] bg-[#0B1A3A] dark:bg-[#0e2248] px-2.5 py-0.5 border border-[#0B1A3A] dark:border-[#D4AF37]/30 text-center line-clamp-2">
+                      {leader.title}
+                    </span>
+                  </div>
 
-                  {/* Bio: 12px gray-600, max 3 lines only (line-clamp-3) - show "Read more" to expand in modal */}
-                  <div className="mt-2.5 text-center">
-                    <p className="text-[12px] text-gray-600 dark:text-gray-300 line-clamp-3 leading-relaxed font-sans">
-                      {leader.bio}
+                  {/* Bio: 12.5px with quotation mark, line-clamp-3 - show "Read more" to expand in modal */}
+                  <div className="mt-3 text-center px-1">
+                    <p className="font-['Source_Serif_4','Source_Serif_Pro','Georgia',serif] text-[13px] text-gray-700 dark:text-slate-300 line-clamp-3 leading-relaxed italic text-justify">
+                      “{leader.bio}”
                     </p>
                     <button
                       type="button"
                       onClick={leader.onOpenModal}
-                      className="text-[11.5px] font-semibold text-[#C8102E] dark:text-[#D4AF37] hover:underline mt-1 inline-block cursor-pointer"
+                      className="text-[11.5px] font-semibold text-[#C8102E] dark:text-[#D4AF37] hover:underline mt-1.5 inline-block cursor-pointer font-sans"
                     >
-                      Read more
+                      Read full message &amp; credentials →
                     </button>
                   </div>
                 </div>
 
-                {/* Button: "View Profile & Credentials" small pill button, dark navy #0A1931 */}
+                {/* Button: "View Profile & Credentials" pill button, dark navy #0A1931 */}
                 <div className="mt-4 pt-3 border-t border-slate-100 dark:border-white/10 w-full">
                   <button
                     type="button"
                     onClick={leader.onOpenModal}
-                    className="w-full py-2 px-4 rounded-full bg-[#0A1931] hover:bg-[#0B1A3A] text-white text-[12px] font-medium tracking-wide font-sans shadow-sm transition-all duration-200 active:scale-98 flex items-center justify-center gap-1.5 cursor-pointer"
+                    className="w-full py-2.5 px-4 rounded-full bg-[#0A1931] hover:bg-[#0B1A3A] text-white text-[12px] font-semibold tracking-wide font-sans shadow-md transition-all duration-200 active:scale-98 flex items-center justify-center gap-1.5 cursor-pointer"
                   >
                     <span>View Profile &amp; Credentials</span>
                     <ArrowUpRight size={13} className="text-[#D4AF37]" />

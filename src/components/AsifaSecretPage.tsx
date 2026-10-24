@@ -124,13 +124,13 @@ export const AsifaSecretPage: React.FC<AsifaSecretPageProps> = ({ onBackToHome }
 
         {/* Subtitle: 24px white 70% */}
         <p className="mt-4 sm:mt-5 text-lg sm:text-xl md:text-[24px] text-white/70 font-light tracking-[-0.01em] max-w-2xl">
-          UCP BWP — ADP Artificial Intelligence — Batch 2025
+          UCP BWP — Student of Artificial Intelligence — Batch 2025
         </p>
 
         {/* Line 2: 20px developer identity */}
         <div className="mt-4 sm:mt-5 space-y-1 text-base sm:text-lg md:text-[20px] text-white/90 font-normal leading-relaxed">
           <p className="tracking-tight font-medium text-white">Architect of UCP BWP Campus Portal</p>
-          <p className="text-white/60 font-light text-sm sm:text-base md:text-[18px]">Full Stack Developer | AI Student</p>
+          <p className="text-white/60 font-light text-sm sm:text-base md:text-[18px]">Full Stack Developer | Student of Artificial Intelligence</p>
         </div>
 
         {/* Contact box: minimal white border */}
@@ -191,15 +191,9 @@ export const AsifaSecretPage: React.FC<AsifaSecretPageProps> = ({ onBackToHome }
           <span className="text-white/60">Asifa</span>
         </div>
 
-        <a
-          href="https://wa.me/923166126926"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="text-xs text-neutral-400 hover:text-white transition-colors flex items-center gap-1 underline underline-offset-4"
-        >
-          wa.me/923166126926
-          <ArrowUpRight size={12} />
-        </a>
+        <div className="text-xs text-neutral-500 font-mono tracking-wider uppercase">
+          UCP Bahawalpur Campus Portal
+        </div>
       </footer>
     </div>
   );

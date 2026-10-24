@@ -1272,4 +1272,141 @@ body, main, section, [id$="-section"] {
   animation-delay: 0.7s;
 }
 
+/* =========================================================================
+   Apple-Style Secret Easter Egg Lighted & Shiny Showcase (Borderless)
+   ========================================================================= */
+@keyframes appleEggPopIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.88) translateY(16px);
+    filter: blur(10px);
+  }
+  60% {
+    opacity: 1;
+    transform: scale(1.02) translateY(-2px);
+    filter: blur(0px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+    filter: blur(0px);
+  }
+}
+
+@keyframes appleEggGlowPulse {
+  0%, 100% {
+    opacity: 0.55;
+    transform: scale(0.95);
+  }
+  50% {
+    opacity: 0.85;
+    transform: scale(1.1);
+  }
+}
+
+@keyframes appleEggShimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.animate-apple-egg-pop {
+  animation: appleEggPopIn 0.65s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-apple-egg-glow {
+  animation: appleEggGlowPulse 3s ease-in-out infinite alternate;
+}
+
+.apple-egg-shimmer-text {
+  background: linear-gradient(
+    110deg,
+    #e2e8f0 10%,
+    #ffffff 28%,
+    #cbd5e1 45%,
+    #ffffff 60%,
+    #93c5fd 75%,
+    #ffffff 90%
+  );
+  background-size: 220% 100%;
+  color: transparent;
+  -webkit-background-clip: text;
+  background-clip: text;
+  animation: appleEggShimmer 3.2s linear infinite;
+  text-shadow: 0 0 50px rgba(255, 255, 255, 0.65), 0 0 100px rgba(147, 197, 253, 0.35);
+}
+
+/* Developer-Grade Cyber Aurora & Beam Animations */
+@keyframes devAuroraPulse {
+  0% {
+    transform: translate(-10%, -10%) scale(1) rotate(0deg);
+    opacity: 0.45;
+  }
+  50% {
+    transform: translate(10%, 15%) scale(1.25) rotate(180deg);
+    opacity: 0.75;
+  }
+  100% {
+    transform: translate(-10%, -10%) scale(1) rotate(360deg);
+    opacity: 0.45;
+  }
+}
+
+@keyframes devBeamSweep {
+  0% {
+    transform: translateX(-150%) skewX(-25deg);
+    opacity: 0;
+  }
+  20% {
+    opacity: 0.85;
+  }
+  80% {
+    opacity: 0.85;
+  }
+  100% {
+    transform: translateX(250%) skewX(-25deg);
+    opacity: 0;
+  }
+}
+
+@keyframes devParticleFloat {
+  0%, 100% {
+    transform: translateY(0px) scale(0.9);
+    opacity: 0.4;
+  }
+  50% {
+    transform: translateY(-18px) scale(1.15);
+    opacity: 0.95;
+  }
+}
+
+.animate-dev-aurora-1 {
+  animation: devAuroraPulse 14s ease-in-out infinite;
+}
+
+.animate-dev-aurora-2 {
+  animation: devAuroraPulse 18s ease-in-out infinite reverse;
+}
+
+.animate-dev-beam {
+  animation: devBeamSweep 2.8s cubic-bezier(0.16, 1, 0.3, 1) infinite;
+}
+
+.animate-dev-particle-1 {
+  animation: devParticleFloat 3.2s ease-in-out infinite;
+}
+
+.animate-dev-particle-2 {
+  animation: devParticleFloat 4.1s ease-in-out infinite 0.7s;
+}
+
+.animate-dev-particle-3 {
+  animation: devParticleFloat 3.7s ease-in-out infinite 1.4s;
+}
+
+
+
 
