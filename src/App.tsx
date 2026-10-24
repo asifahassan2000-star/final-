@@ -4,6 +4,7 @@
  */
 
 import React, { useState, useEffect, useRef, Suspense } from 'react';
+import { Analytics } from '@vercel/analytics/react';
 
 // Core Above-The-Fold Components for Instant LCP & First Paint
 import { Navbar } from './components/Navbar';
@@ -11,6 +12,7 @@ import { HeroSlider } from './components/HeroSlider';
 import { ThemeToggle } from './components/ThemeToggle';
 import { ClickGlowManager } from './components/ClickGlowManager';
 import { ScrollRevealManager } from './components/ScrollReveal';
+import { SecretEasterEgg } from './components/SecretEasterEgg';
 import type { InfoModalType } from './components/UcpInfoModal';
 import { Program, NewsEventItem } from './types';
 import { FACULTIES, UCP_CONTACT } from './data/ucpData';
@@ -67,14 +69,18 @@ export const preloadSubpages = () => {
   loadAboutUsPage();
 };
 
-export type PageId = 'home' | 'faculty' | 'programmes' | 'legacy' | 'campus-life' | 'scholarships' | 'fee-structure' | 'cnn-academy' | 'calendar' | 'campus-facilities' | 'about-us';
+const AsifaSecretPage = React.lazy(() => import('./components/AsifaSecretPage').then(m => ({ default: m.AsifaSecretPage })));
+
+export type PageId = 'home' | 'faculty' | 'programmes' | 'legacy' | 'campus-life' | 'scholarships' | 'fee-structure' | 'cnn-academy' | 'calendar' | 'campus-facilities' | 'about-us' | 'asifa';
 
 const getPageFromHash = (): PageId => {
   if (typeof window === 'undefined') return 'home';
-  const pathname = (window.location.pathname || '').replace(/^\/+/, '').toLowerCase();
+  const pathname = (window.location.pathname || '').replace(/^\/+|\/+$/g, '').toLowerCase();
+  if (pathname === 'asifa') return 'asifa';
   if (pathname === 'campus-facilities' || pathname === 'facilities') return 'campus-facilities';
   if (pathname === 'about-us' || pathname === 'about') return 'about-us';
-  const hash = (window.location.hash || '').replace('#', '').toLowerCase();
+  const hash = (window.location.hash || '').replace(/^#\/?/, '').toLowerCase();
+  if (hash === 'asifa') return 'asifa';
   if (hash === 'campus-facilities' || hash === 'facilities') return 'campus-facilities';
   if (hash === 'about-us' || hash === 'about') return 'about-us';
   if (hash === 'programmes' || hash === 'programs') return 'programmes';
@@ -217,7 +223,7 @@ export default function App() {
     };
   }, [currentPage]);
 
-  // Dynamic page titles for SEO & browser navigation
+  // Dynamic page titles, meta descriptions, OpenGraph, and canonical links for SEO & browser navigation
   useEffect(() => {
     const titles: Record<string, string> = {
       home: 'UCP Bahawalpur Campus | University of Central Punjab BWP - Official Admissions & Programs',
@@ -232,9 +238,51 @@ export default function App() {
       'campus-facilities': 'Campus Facilities, Central Library & Labs | UCP Bahawalpur Campus',
       'about-us': 'About Us — Success Story, Leadership & Vision | UCP Bahawalpur Campus',
     };
-    if (titles[currentPage]) {
-      document.title = titles[currentPage];
+
+    const descriptions: Record<string, string> = {
+      home: 'Official website of UCP Bahawalpur Campus (University of Central Punjab BWP). Explore admissions, fee structures, merit scholarships, BS & ADP academic degree programs, faculty, and vibrant campus life in Bahawalpur.',
+      programmes: 'Explore 25+ accredited undergraduate BS and Associate Degree (ADP) programs at UCP Bahawalpur Campus across Computing, Business, Sciences, and Social Sciences.',
+      faculty: 'Meet the distinguished faculty and professors at UCP Bahawalpur Campus dedicated to academic excellence, innovative research, and student mentorship.',
+      'campus-life': 'Discover student societies, sports galas, cultural festivals, tech symposia, and vibrant student community at UCP Bahawalpur Campus.',
+      scholarships: 'Explore up to 50% merit-based scholarships, 25% PGC alumni concessions, kinship aid, and talent-based fee reductions at UCP Bahawalpur Campus.',
+      'fee-structure': 'View official credit-hour tuition, semester fee breakdowns, and installment payment plans for BS and ADP degrees at UCP Bahawalpur Campus.',
+      legacy: 'Learn about the 40-year educational legacy of Punjab Group of Colleges and UCP Bahawalpur Campus empowering generations of Pakistani scholars.',
+      'cnn-academy': 'UCP Bahawalpur Campus collaboration with CNN Academy, providing journalism and media students international broadcasting masterclasses.',
+      calendar: 'Official Academic Calendar for Fall & Spring semesters at UCP Bahawalpur Campus detailing semester teaching days, exams, and holidays.',
+      'campus-facilities': 'Tour world-class purpose-built campus facilities at UCP Bahawalpur including GPU computing labs, digital library, and air-conditioned shuttle transport.',
+      'about-us': 'Learn about UCP Bahawalpur Campus — our leadership, vision, HEC recognized degrees, and commitment to educational empowerment in South Punjab.',
+    };
+
+    const title = titles[currentPage] || titles.home;
+    const desc = descriptions[currentPage] || descriptions.home;
+
+    document.title = title;
+
+    // Update standard meta description
+    let metaDesc = document.querySelector('meta[name="description"]');
+    if (!metaDesc) {
+      metaDesc = document.createElement('meta');
+      metaDesc.setAttribute('name', 'description');
+      document.head.appendChild(metaDesc);
     }
+    metaDesc.setAttribute('content', desc);
+
+    // Update OpenGraph tags
+    let ogTitle = document.querySelector('meta[property="og:title"]');
+    if (ogTitle) ogTitle.setAttribute('content', title);
+    let ogDesc = document.querySelector('meta[property="og:description"]');
+    if (ogDesc) ogDesc.setAttribute('content', desc);
+
+    // Update canonical link
+    let canonical = document.querySelector('link[rel="canonical"]');
+    if (!canonical) {
+      canonical = document.createElement('link');
+      canonical.setAttribute('rel', 'canonical');
+      document.head.appendChild(canonical);
+    }
+    const origin = typeof window !== 'undefined' ? window.location.origin : 'https://final-five-jade-31.vercel.app';
+    const pagePath = currentPage === 'home' ? '' : (currentPage === 'campus-facilities' ? '/campus-facilities' : `#${currentPage}`);
+    canonical.setAttribute('href', `${origin}/${pagePath}`);
   }, [currentPage]);
 
   // Helper to sync page and history hash for instant client navigation
@@ -242,9 +290,11 @@ export default function App() {
     scrollToTopInstant();
     setCurrentPage(newPage);
     if (newPage === 'home') {
-      window.history.pushState(null, '', window.location.pathname + window.location.search);
+      window.history.pushState(null, '', '/');
     } else if (newPage === 'campus-facilities') {
       window.history.pushState(null, '', '/campus-facilities');
+    } else if (newPage === 'asifa') {
+      window.history.pushState(null, '', '/asifa');
     } else {
       window.history.pushState(null, '', `#${newPage}`);
     }
@@ -442,6 +492,18 @@ export default function App() {
       }
     }, 150);
   };
+
+  if (currentPage === 'asifa') {
+    return (
+      <div className="w-full min-h-screen bg-[#000000]">
+        <Suspense fallback={<div className="min-h-screen w-full bg-[#000000]" />}>
+          <AsifaSecretPage onBackToHome={handleBackToHome} />
+        </Suspense>
+        <Analytics />
+        <SecretEasterEgg />
+      </div>
+    );
+  }
 
   return (
     <div id="top" className="min-h-screen bg-white text-slate-900 dark:bg-[#080f1d] dark:text-[#f8fafc] font-sans selection:bg-[#a30f16] selection:text-white transition-colors duration-200 overflow-x-hidden w-full max-w-full">
@@ -766,6 +828,12 @@ export default function App() {
           onClose={() => setSelectedArticle(null)}
         />
       </Suspense>
+
+      {/* Vercel Web Analytics */}
+      <Analytics />
+
+      {/* Secret Easter Egg Toast */}
+      <SecretEasterEgg />
 
     </div>
   );

@@ -301,7 +301,7 @@ export const AboutUsPage: React.FC<AboutUsPageProps> = ({
                   <AnimatedCounter target={25} suffix="+" duration={0.9} />
                 </div>
                 <div className="font-sans text-xs sm:text-[13px] uppercase tracking-[0.1em] font-bold text-[#092242]">
-                  HEC Accredited Degrees
+                  Academic Programs
                 </div>
                 <p className="font-sans text-[13px] text-slate-500 leading-normal">
                   Chartered BS &amp; ADP Programs
@@ -322,13 +322,13 @@ export const AboutUsPage: React.FC<AboutUsPageProps> = ({
 
               <div className="space-y-1.5 p-3.5 rounded-xl hover:bg-slate-50/80 transition-colors">
                 <div className="font-['Source_Serif_4','Source_Serif_Pro','Times_New_Roman',serif] text-4xl sm:text-5xl lg:text-6xl font-bold text-[#B31B1B]">
-                  <AnimatedCounter target={2} suffix="M+" duration={0.9} />
+                  <AnimatedCounter target={100} suffix="%" duration={0.9} />
                 </div>
                 <div className="font-sans text-xs sm:text-[13px] uppercase tracking-[0.1em] font-bold text-[#092242]">
-                  Alumni Network
+                  HEC Recognized Degree
                 </div>
                 <p className="font-sans text-[13px] text-slate-500 leading-normal">
-                  PGC &amp; UCP Global Professionals
+                  UCP Lahore Degree
                 </p>
               </div>
 

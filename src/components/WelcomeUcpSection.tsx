@@ -31,6 +31,48 @@ export const WelcomeUcpSection: React.FC<WelcomeUcpSectionProps> = ({
   const [isHeaderVisible, setIsHeaderVisible] = useState(false);
   const headerRef = useRef<HTMLDivElement>(null);
 
+  // Mobile horizontal swipe carousel state and handlers
+  const [activeWelcomeMobileIndex, setActiveWelcomeMobileIndex] = useState(0);
+  const welcomeCarouselRef = useRef<HTMLDivElement>(null);
+
+  const welcomeLeaders = [
+    {
+      id: 'mian-amer-mahmood',
+      name: 'Mian Amer Mahmood',
+      title: 'Chairman, UCP · Founder, PGC & UCP · Hilal-e-Imtiaz',
+      image: 'https://ik.imagekit.io/Muffins/image%20-%202026-10-23T213740.120.png',
+      bio: 'We are truly humbled by the trust of millions and take pride in uplifting our social fabric by educating the youth and mentoring them for a better future. Our journey of over 38 years is a reflection of our commitment towards creating a better tomorrow for our society through continuously improving education standards across Pakistan.',
+      onOpenModal: () => setIsChairmanProfileOpen(true),
+    },
+    {
+      id: 'prof-sohail-afzal',
+      name: 'Prof. Sohail Afzal',
+      title: 'Executive Director, PGC · Academic Excellence Awardee',
+      image: 'https://ik.imagekit.io/Muffins/image%20-%202026-10-24T140135.933.png',
+      bio: 'At UCP we are not just means to education but a family that cares, grooms and helps unlock the true potential of our students. We are in a constant relentless pursuit to help provide a better future to our youth and build a society that is wise, intelligent and educated so that every student can shine in every aspect of life.',
+      onOpenModal: () => setIsSohailProfileOpen(true),
+    },
+  ];
+
+  const handleWelcomeMobileScroll = (e: React.UIEvent<HTMLDivElement>) => {
+    const el = e.currentTarget;
+    const scrollLeft = el.scrollLeft;
+    const cardWidth = el.offsetWidth * 0.85;
+    const newIdx = Math.round(scrollLeft / (cardWidth + 16));
+    setActiveWelcomeMobileIndex(Math.min(Math.max(newIdx, 0), welcomeLeaders.length - 1));
+  };
+
+  const scrollToWelcomeCard = (idx: number) => {
+    if (!welcomeCarouselRef.current) return;
+    const el = welcomeCarouselRef.current;
+    const cardWidth = el.offsetWidth * 0.85;
+    el.scrollTo({
+      left: idx * (cardWidth + 16),
+      behavior: 'smooth',
+    });
+    setActiveWelcomeMobileIndex(idx);
+  };
+
   useEffect(() => {
     const timer = setTimeout(() => setIsHeaderVisible(true), 150);
     const observer = new IntersectionObserver(
@@ -189,11 +231,9 @@ export const WelcomeUcpSection: React.FC<WelcomeUcpSectionProps> = ({
         </div>
 
         {/* -------------------------------------------------------------------
-            2 COLUMNS GRID — Mian Amer Mahmood & Prof. Sohail Afzal
-            Unboxed, open, prestigious university design on white background.
-            Big circular portraits with authentic building blueprint behind each.
+            DESKTOP VIEW (>= 768px): Kept EXACTLY as is
             ------------------------------------------------------------------- */}
-        <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 items-stretch">
+        <div className="hidden md:grid relative z-10 grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 items-stretch">
           
           {/* =================================================================
               COLUMN 1 (LEFT): MIAN AMER MAHMOOD
@@ -435,6 +475,104 @@ export const WelcomeUcpSection: React.FC<WelcomeUcpSectionProps> = ({
             </div>
           </div>
 
+        </div>
+        {/* ===================================================================
+            MOBILE HORIZONTAL SWIPE CAROUSEL (< 768px)
+            Native momentum scroll, snap-center, 85% card width with 1.15 peek,
+            96x96 circular portraits with gold border, clamped bio, and navy pill button
+            =================================================================== */}
+        <div className="block md:hidden relative z-10 w-full overflow-hidden select-none">
+          <div
+            ref={welcomeCarouselRef}
+            onScroll={handleWelcomeMobileScroll}
+            className="flex overflow-x-auto gap-4 px-6 pb-4 pt-2 scroll-smooth snap-x snap-mandatory [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none] [scroll-snap-stop:always]"
+            style={{
+              WebkitOverflowScrolling: 'touch',
+              scrollSnapType: 'x mandatory',
+              scrollBehavior: 'smooth',
+            }}
+          >
+            {welcomeLeaders.map((leader) => (
+              <div
+                key={leader.id}
+                className="bg-white dark:bg-[#0e1d38] rounded-2xl shadow-lg p-5 min-h-[320px] flex flex-col justify-between border border-slate-100 dark:border-white/10 w-[85vw] max-w-[340px] shrink-0 snap-center transition-all duration-300 ease-in-out"
+                style={{
+                  transform: 'translate3d(0,0,0)',
+                  willChange: 'transform',
+                }}
+              >
+                <div>
+                  {/* Image: 96x96px circular, centered, object-cover object-top, border 2px gold #C5A880 */}
+                  <div className="w-[96px] h-[96px] rounded-full overflow-hidden border-2 border-[#C5A880] mx-auto shadow-md aspect-square bg-[#0B1A3A] relative shrink-0">
+                    <img
+                      src={leader.image}
+                      alt={leader.name}
+                      className="w-full h-full object-cover object-top aspect-square"
+                      loading="eager"
+                      onError={(e) => {
+                        if (leader.id === 'mian-amer-mahmood') {
+                          (e.currentTarget as HTMLImageElement).src = '/assets/welcome/mian-amer-mahmood.png';
+                        }
+                      }}
+                    />
+                  </div>
+
+                  {/* Name: font-bold 14px, center aligned */}
+                  <h3 className="font-bold text-[14px] text-center text-[#0B1A3A] dark:text-white mt-3 font-sans">
+                    {leader.name}
+                  </h3>
+
+                  {/* Title: 11px uppercase, gray-500, letter-spacing, 2 lines max (line-clamp-2) */}
+                  <p className="text-[11px] uppercase tracking-wider text-gray-500 dark:text-gray-400 text-center line-clamp-2 font-sans mt-0.5 px-2">
+                    {leader.title}
+                  </p>
+
+                  {/* Bio: 12px gray-600, max 3 lines only (line-clamp-3) - show "Read more" to expand in modal */}
+                  <div className="mt-2.5 text-center">
+                    <p className="text-[12px] text-gray-600 dark:text-gray-300 line-clamp-3 leading-relaxed font-sans">
+                      {leader.bio}
+                    </p>
+                    <button
+                      type="button"
+                      onClick={leader.onOpenModal}
+                      className="text-[11.5px] font-semibold text-[#C8102E] dark:text-[#D4AF37] hover:underline mt-1 inline-block cursor-pointer"
+                    >
+                      Read more
+                    </button>
+                  </div>
+                </div>
+
+                {/* Button: "View Profile & Credentials" small pill button, dark navy #0A1931 */}
+                <div className="mt-4 pt-3 border-t border-slate-100 dark:border-white/10 w-full">
+                  <button
+                    type="button"
+                    onClick={leader.onOpenModal}
+                    className="w-full py-2 px-4 rounded-full bg-[#0A1931] hover:bg-[#0B1A3A] text-white text-[12px] font-medium tracking-wide font-sans shadow-sm transition-all duration-200 active:scale-98 flex items-center justify-center gap-1.5 cursor-pointer"
+                  >
+                    <span>View Profile &amp; Credentials</span>
+                    <ArrowUpRight size={13} className="text-[#D4AF37]" />
+                  </button>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Dots indicator below to show active card */}
+          <div className="flex items-center justify-center gap-2 mt-4" aria-label="Slide indicators">
+            {welcomeLeaders.map((_, dotIdx) => (
+              <button
+                key={dotIdx}
+                type="button"
+                onClick={() => scrollToWelcomeCard(dotIdx)}
+                aria-label={`Go to slide ${dotIdx + 1}`}
+                className={`h-2 rounded-full transition-all duration-300 cursor-pointer ${
+                  dotIdx === activeWelcomeMobileIndex
+                    ? 'w-6 bg-[#0A1931] dark:bg-[#D4AF37]'
+                    : 'w-2 bg-slate-300 dark:bg-slate-700 hover:bg-slate-400'
+                }`}
+              />
+            ))}
+          </div>
         </div>
       </section>
 

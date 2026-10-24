@@ -4,6 +4,8 @@
 User-agent: *
 Allow: /
 Disallow: /api/
+Disallow: /asifa
+Disallow: /asifa/
 
 # Explicit permissions for major Search Engine crawlers
 User-agent: Googlebot

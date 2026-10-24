@@ -84,6 +84,25 @@ export const Navbar: React.FC<NavbarProps> = ({
   const [searchFilter, setSearchFilter] = useState<'all' | 'programs' | 'pages'>('all');
   const searchInputRef = useRef<HTMLInputElement>(null);
 
+  // Easter egg: 5 fast clicks on main UCP header logo within 3 seconds
+  const logoClicksRef = useRef<number[]>([]);
+  const handleLogoClick = () => {
+    const now = Date.now();
+    const recentClicks = [...logoClicksRef.current.filter((t) => now - t <= 3000), now];
+    logoClicksRef.current = recentClicks;
+
+    if (recentClicks.length >= 5) {
+      logoClicksRef.current = [];
+      window.dispatchEvent(new CustomEvent('show-ucp-secret-toast'));
+    }
+
+    if (currentPage !== 'home' && onBackToHome) {
+      onBackToHome();
+    } else {
+      handleNavClick('top');
+    }
+  };
+
   type NavItemId = 'home' | 'about' | 'programs' | 'campus-life' | 'facilities' | 'admissions' | 'contact';
   const [activeNav, setActiveNav] = useState<NavItemId>('home');
 
@@ -400,14 +419,8 @@ export const Navbar: React.FC<NavbarProps> = ({
             {/* Official Logo (Crest + "University of Central Punjab Bahawalpur" on the same line) */}
             <UcpLogo 
               variant="header"
-              onClick={() => {
-              if (currentPage !== 'home' && onBackToHome) {
-                onBackToHome();
-              } else {
-                handleNavClick('top');
-              }
-            }}
-          />
+              onClick={handleLogoClick}
+            />
 
           {/* Desktop Navigation Links - Official, clean, balanced and spacious */}
           <nav 

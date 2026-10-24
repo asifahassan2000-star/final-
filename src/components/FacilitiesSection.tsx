@@ -8,12 +8,14 @@ interface FacilitiesSectionProps {
   onOpenApply?: () => void;
   onOpenCampusLifePage?: () => void;
   onOpenFacultyPage?: () => void;
+  isStandalone?: boolean;
 }
 
 export const FacilitiesSection: React.FC<FacilitiesSectionProps> = ({
   onOpenApply,
   onOpenCampusLifePage,
   onOpenFacultyPage,
+  isStandalone = false,
 }) => {
   const [activeTab, setActiveTab] = useState<'all' | 'environment' | 'library' | 'computer' | 'science'>('all');
   const [isLibraryExpanded, setIsLibraryExpanded] = useState(false);
@@ -44,12 +46,21 @@ export const FacilitiesSection: React.FC<FacilitiesSectionProps> = ({
             Campus Facilities
           </span>
           <div className="mask-reveal-wrap">
-            <h2
-              id="facilities-heading"
-              className="mask-reveal-child text-2xl sm:text-3xl font-serif font-semibold text-slate-900 dark:text-white tracking-tight"
-            >
-              Learning Environment, Library &amp; Laboratories
-            </h2>
+            {isStandalone ? (
+              <h1
+                id="facilities-heading"
+                className="mask-reveal-child text-2xl sm:text-4xl font-serif font-semibold text-slate-900 dark:text-white tracking-tight"
+              >
+                Learning Environment, Library &amp; Laboratories | UCP Bahawalpur
+              </h1>
+            ) : (
+              <h2
+                id="facilities-heading"
+                className="mask-reveal-child text-2xl sm:text-3xl font-serif font-semibold text-slate-900 dark:text-white tracking-tight"
+              >
+                Learning Environment, Library &amp; Laboratories
+              </h2>
+            )}
           </div>
           <p className="mt-2 text-sm sm:text-base text-slate-600 dark:text-slate-300 leading-relaxed font-sans">
             Explore the academic spaces, central library, computer labs, and science facilities at UCP Bahawalpur.

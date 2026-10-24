@@ -58,6 +58,7 @@ export const CampusFacilitiesPage: React.FC<CampusFacilitiesPageProps> = ({
           onOpenApply={onOpenApply}
           onOpenCampusLifePage={onOpenCampusLifePage}
           onOpenFacultyPage={onOpenFacultyPage}
+          isStandalone={true}
         />
       </main>
 

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { X, CheckCircle, ArrowRight, ArrowLeft, Upload, FileText, Sparkles, AlertCircle } from 'lucide-react';
 import { PROGRAMS, FACULTIES } from '../data/ucpData';
+import { sanitizeInput, sanitizeEmail, sanitizePhone } from '../utils/sanitize';
 
 interface ApplyModalProps {
   isOpen: boolean;
@@ -131,7 +132,7 @@ export const ApplyModal: React.FC<ApplyModalProps> = ({
                   <input
                     type="text"
                     value={formData.fullName}
-                    onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
+                    onChange={(e) => setFormData({ ...formData, fullName: sanitizeInput(e.target.value) })}
                     placeholder="e.g. Muhammad Ali Khan"
                     className="w-full text-xs p-2.5 bg-slate-50 border border-slate-200 rounded-xl focus:bg-white focus:ring-2 focus:ring-[#112c4f] outline-none"
                   />
@@ -144,7 +145,7 @@ export const ApplyModal: React.FC<ApplyModalProps> = ({
                   <input
                     type="text"
                     value={formData.cnic}
-                    onChange={(e) => setFormData({ ...formData, cnic: e.target.value })}
+                    onChange={(e) => setFormData({ ...formData, cnic: sanitizeInput(e.target.value) })}
                     placeholder="35201-XXXXXXX-X"
                     className="w-full text-xs p-2.5 bg-slate-50 border border-slate-200 rounded-xl focus:bg-white focus:ring-2 focus:ring-[#112c4f] outline-none"
                   />
@@ -157,7 +158,7 @@ export const ApplyModal: React.FC<ApplyModalProps> = ({
                   <input
                     type="email"
                     value={formData.email}
-                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                    onChange={(e) => setFormData({ ...formData, email: sanitizeEmail(e.target.value) })}
                     placeholder="student@example.com"
                     className="w-full text-xs p-2.5 bg-slate-50 border border-slate-200 rounded-xl focus:bg-white focus:ring-2 focus:ring-[#112c4f] outline-none"
                   />
@@ -170,7 +171,7 @@ export const ApplyModal: React.FC<ApplyModalProps> = ({
                   <input
                     type="tel"
                     value={formData.phone}
-                    onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                    onChange={(e) => setFormData({ ...formData, phone: sanitizePhone(e.target.value) })}
                     placeholder="0300-1234567"
                     className="w-full text-xs p-2.5 bg-slate-50 border border-slate-200 rounded-xl focus:bg-white focus:ring-2 focus:ring-[#112c4f] outline-none"
                   />
@@ -193,7 +194,7 @@ export const ApplyModal: React.FC<ApplyModalProps> = ({
                   <input
                     type="text"
                     value={formData.city}
-                    onChange={(e) => setFormData({ ...formData, city: e.target.value })}
+                    onChange={(e) => setFormData({ ...formData, city: sanitizeInput(e.target.value) })}
                     placeholder="Lahore"
                     className="w-full text-xs p-2.5 bg-slate-50 border border-slate-200 rounded-xl outline-none"
                   />

@@ -129,6 +129,29 @@ export const OurLeadershipSection: React.FC<OurLeadershipSectionProps> = () => {
   const [isHeaderVisible, setIsHeaderVisible] = useState(false);
   const headerRef = useRef<HTMLDivElement>(null);
 
+  // Mobile horizontal swipe carousel state and handlers
+  const [activeLeadershipMobileIndex, setActiveLeadershipMobileIndex] = useState(0);
+  const leadershipCarouselRef = useRef<HTMLDivElement>(null);
+
+  const handleLeadershipMobileScroll = (e: React.UIEvent<HTMLDivElement>) => {
+    const el = e.currentTarget;
+    const scrollLeft = el.scrollLeft;
+    const cardWidth = el.offsetWidth * 0.85;
+    const newIdx = Math.round(scrollLeft / (cardWidth + 16));
+    setActiveLeadershipMobileIndex(Math.min(Math.max(newIdx, 0), LEADERSHIP_PROFILES.length - 1));
+  };
+
+  const scrollToLeadershipCard = (idx: number) => {
+    if (!leadershipCarouselRef.current) return;
+    const el = leadershipCarouselRef.current;
+    const cardWidth = el.offsetWidth * 0.85;
+    el.scrollTo({
+      left: idx * (cardWidth + 16),
+      behavior: 'smooth',
+    });
+    setActiveLeadershipMobileIndex(idx);
+  };
+
   useEffect(() => {
     // Immediate fallback ensures heading is always visible
     const timer = setTimeout(() => setIsHeaderVisible(true), 150);
@@ -249,7 +272,8 @@ export const OurLeadershipSection: React.FC<OurLeadershipSectionProps> = () => {
           Unboxed, prestigious layout with authentic building blueprint watermark,
           grand circular gold-bordered portraits, designation badge & quotation block.
           ========================================================================= */}
-      <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 items-stretch">
+        {/* DESKTOP VIEW (>= 768px): Kept EXACTLY as is */}
+        <div className="hidden md:grid relative z-10 grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 items-stretch">
         {LEADERSHIP_PROFILES.map((leader, index) => (
           <motion.article
             key={leader.id}
@@ -370,6 +394,103 @@ export const OurLeadershipSection: React.FC<OurLeadershipSectionProps> = () => {
             </motion.div>
           </motion.article>
         ))}
+      </div>
+
+      {/* ===================================================================
+          MOBILE HORIZONTAL SWIPE CAROUSEL (< 768px)
+          Native momentum scroll, snap-center, 85% card width with 1.15 peek,
+          96x96 circular portraits with gold border, clamped bio, and navy pill button
+          =================================================================== */}
+      <div className="block md:hidden relative z-10 w-full overflow-hidden select-none">
+        <div
+          ref={leadershipCarouselRef}
+          onScroll={handleLeadershipMobileScroll}
+          className="flex overflow-x-auto gap-4 px-6 pb-4 pt-2 scroll-smooth snap-x snap-mandatory [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none] [scroll-snap-stop:always]"
+          style={{
+            WebkitOverflowScrolling: 'touch',
+            scrollSnapType: 'x mandatory',
+            scrollBehavior: 'smooth',
+          }}
+        >
+          {LEADERSHIP_PROFILES.map((leader) => (
+            <div
+              key={leader.id}
+              className="bg-white dark:bg-[#0e1d38] rounded-2xl shadow-lg p-5 min-h-[320px] flex flex-col justify-between border border-slate-100 dark:border-white/10 w-[85vw] max-w-[340px] shrink-0 snap-center transition-all duration-300 ease-in-out"
+              style={{
+                transform: 'translate3d(0,0,0)',
+                willChange: 'transform',
+              }}
+            >
+              <div>
+                {/* Image: 96x96px circular, centered, object-cover object-top, border 2px gold #C5A880 */}
+                <div className="w-[96px] h-[96px] rounded-full overflow-hidden border-2 border-[#C5A880] mx-auto shadow-md aspect-square bg-[#0B1A3A] relative shrink-0">
+                  <img
+                    src={leader.portraitUrl}
+                    alt={leader.name}
+                    className="w-full h-full object-cover object-top aspect-square"
+                    loading="eager"
+                    onError={(e) => {
+                      (e.currentTarget as HTMLImageElement).src = leader.fallbackUrl;
+                    }}
+                  />
+                </div>
+
+                {/* Name: font-bold 14px, center aligned */}
+                <h3 className="font-bold text-[14px] text-center text-[#0B1A3A] dark:text-white mt-3 font-sans">
+                  {leader.name}
+                </h3>
+
+                {/* Title: 11px uppercase, gray-500, letter-spacing, 2 lines max (line-clamp-2) */}
+                <p className="text-[11px] uppercase tracking-wider text-gray-500 dark:text-gray-400 text-center line-clamp-2 font-sans mt-0.5 px-2">
+                  {leader.designation}
+                </p>
+
+                {/* Bio: 12px gray-600, max 3 lines only (line-clamp-3) - show "Read more" to expand in modal */}
+                <div className="mt-2.5 text-center">
+                  <p className="text-[12px] text-gray-600 dark:text-gray-300 line-clamp-3 leading-relaxed font-sans">
+                    {leader.fullMessage[0]}
+                  </p>
+                  <button
+                    type="button"
+                    onClick={() => setSelectedLeader(leader)}
+                    className="text-[11.5px] font-semibold text-[#C8102E] dark:text-[#D4AF37] hover:underline mt-1 inline-block cursor-pointer"
+                  >
+                    Read more
+                  </button>
+                </div>
+              </div>
+
+              {/* Button: "View Profile & Credentials" small pill button, dark navy #0A1931 */}
+              <div className="mt-4 pt-3 border-t border-slate-100 dark:border-white/10 w-full">
+                <button
+                  type="button"
+                  onClick={() => setSelectedLeader(leader)}
+                  className="w-full py-2 px-4 rounded-full bg-[#0A1931] hover:bg-[#0B1A3A] text-white text-[12px] font-medium tracking-wide font-sans shadow-sm transition-all duration-200 active:scale-98 flex items-center justify-center gap-1.5 cursor-pointer"
+                >
+                  <span>View Profile &amp; Credentials</span>
+                  <ArrowUpRight size={13} className="text-[#D4AF37]" />
+                </button>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* Dots Indicator below to show active card */}
+        <div className="flex items-center justify-center gap-2 mt-4" aria-label="Slide indicators">
+          {LEADERSHIP_PROFILES.map((_, dotIdx) => (
+            <button
+              key={dotIdx}
+              type="button"
+              onClick={() => scrollToLeadershipCard(dotIdx)}
+              aria-label={`Go to slide ${dotIdx + 1}`}
+              className={`h-2 rounded-full transition-all duration-300 cursor-pointer ${
+                dotIdx === activeLeadershipMobileIndex
+                  ? 'w-6 bg-[#0A1931] dark:bg-[#D4AF37]'
+                  : 'w-2 bg-slate-300 dark:bg-slate-700 hover:bg-slate-400'
+              }`}
+            />
+          ))}
+        </div>
       </div>
 
       {/* =========================================================================
