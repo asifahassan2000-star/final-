@@ -61,11 +61,9 @@ User-agent: Diffbot
 Allow: /
 
 # Canonical XML Sitemaps
-Sitemap: https://final-five-jade-31.vercel.app/sitemap.xml
-Sitemap: https://final-five-jade-31.vercel.app/sitemap-vercel.xml
+Sitemap: https://ucp-bahawalpur-campus.vercel.app/sitemap.xml
 Sitemap: https://ucp.edu.pk/sitemap.xml
-Sitemap: https://ucp.edu.pk/sitemap-ucp.xml
 
 # LLM Agent Knowledge Base (llms.txt standard - https://llmstxt.org/)
-# LLMs-Text: https://final-five-jade-31.vercel.app/llms.txt
-# LLMs-Full: https://final-five-jade-31.vercel.app/llms-full.txt
+# LLMs-Text: https://ucp-bahawalpur-campus.vercel.app/llms.txt
+# LLMs-Full: https://ucp-bahawalpur-campus.vercel.app/llms-full.txt
