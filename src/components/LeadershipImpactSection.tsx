@@ -61,13 +61,13 @@ export const LeadershipImpactSection: React.FC<LeadershipImpactSectionProps> = (
           >
             <div className="relative rounded-xl overflow-hidden bg-slate-100 shadow-xs w-full aspect-[16/10] sm:aspect-[16/9] max-h-[580px]">
               <img
-                src="/assets/leadership/director-tree-plantation-sdg.jpg"
+                src="https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-11%20at%2011.32.22%20PM.jpeg"
                 alt="Director Prof. Hamid Iqbal inaugurating the UN SDG Tree Plantation Drive at UCP Bahawalpur"
                 loading="lazy"
                 decoding="async"
                 className="w-full h-full object-cover object-center block"
                 onError={(e) => {
-                  (e.target as HTMLImageElement).src = '/images/qZbTG19_Whats-App-Image-2026-10-11-at-11-32-22-PM.jpg';
+                  (e.currentTarget as HTMLImageElement).src = '/assets/leadership/director-tree-plantation-sdg.jpg';
                 }}
               />
             </div>

@@ -451,13 +451,26 @@ html:not(.reveal-ready) .quote-premium-scroll .quote-accent-bar {
 .animate-marquee-ltr {
   display: flex;
   width: max-content;
-  animation: marquee-ltr 48s linear infinite;
+  animation: marquee-ltr 45s linear infinite;
   will-change: transform;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  touch-action: pan-y;
 }
 
-.animate-marquee-ltr:hover,
-.marquee-container:hover .animate-marquee-ltr {
-  animation-play-state: paused;
+/* Only pause on desktop hover with an actual mouse pointer — never freeze on mobile touch */
+@media (hover: hover) and (pointer: fine) {
+  .animate-marquee-ltr:hover,
+  .marquee-container:hover .animate-marquee-ltr {
+    animation-play-state: paused;
+  }
+}
+
+@media (max-width: 768px) {
+  .animate-marquee-ltr {
+    animation-duration: 36s !important;
+    touch-action: pan-y;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {

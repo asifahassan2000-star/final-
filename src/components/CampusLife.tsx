@@ -370,9 +370,9 @@ export const CampusLife: React.FC<CampusLifeProps> = ({ onOpenCampusLifePage }) 
 
             {/* Seamless Infinite Marquee Track Moving LEFT TO RIGHT with all Campus Life Images */}
             <div 
-              className="animate-marquee-ltr flex items-center gap-6 sm:gap-8"
+              className="animate-marquee-ltr flex items-center gap-3.5 sm:gap-6 md:gap-8 select-none"
               style={{
-                animationDuration: `${Math.max(streamImages.length * 4.2, 60)}s`,
+                animationDuration: `${Math.max(streamImages.length * 4.2, 55)}s`,
               }}
             >
               
@@ -383,7 +383,7 @@ export const CampusLife: React.FC<CampusLifeProps> = ({ onOpenCampusLifePage }) 
                 return (
                   <div 
                     key={`mq-first-${item.id}-${idx}`}
-                    className="group/card relative w-[320px] sm:w-[400px] md:w-[440px] aspect-[16/11] flex-shrink-0 overflow-hidden rounded-2xl sm:rounded-3xl border border-[#0A1931]/10 bg-slate-900 shadow-[0_10px_30px_rgba(10,25,49,0.06)] cursor-pointer hover:brightness-105 transition-all duration-300"
+                    className="group/card relative w-[210px] xs:w-[230px] sm:w-[340px] md:w-[420px] aspect-[16/11] flex-shrink-0 overflow-hidden rounded-xl sm:rounded-2xl md:rounded-3xl border border-[#0A1931]/10 bg-slate-900 shadow-[0_8px_24px_rgba(10,25,49,0.06)] cursor-pointer hover:brightness-105 transition-all duration-300"
                     onClick={() => {
                       const eventImages = CAMPUS_EVENTS_DATA.find(e => e.id === item.eventId)?.images.map(img => img.src) || [imgSrc];
                       openStackLightbox(eventImages, item.eventName);
@@ -408,9 +408,9 @@ export const CampusLife: React.FC<CampusLifeProps> = ({ onOpenCampusLifePage }) 
                     <div className="absolute inset-0 bg-gradient-to-t from-[#0A1931]/90 via-[#0A1931]/20 to-transparent pointer-events-none transition-opacity duration-300 group-hover/card:opacity-95" />
 
                     {/* Exact Event Name and Pic — No numbers or generic labels */}
-                    <div className="absolute bottom-4 left-5 right-5 sm:bottom-6 sm:left-6 sm:right-6 text-white pointer-events-none">
+                    <div className="absolute bottom-2.5 left-3.5 right-3.5 sm:bottom-6 sm:left-6 sm:right-6 text-white pointer-events-none">
                       <h4 
-                        className="font-serif text-base sm:text-lg lg:text-xl font-bold text-white leading-tight drop-shadow-md line-clamp-1"
+                        className="font-serif text-xs sm:text-base lg:text-xl font-bold text-white leading-tight drop-shadow-md line-clamp-1"
                         style={{ fontFamily: "'Cormorant Garamond', 'Libre Baskerville', Georgia, serif" }}
                       >
                         {item.eventName}
@@ -427,7 +427,7 @@ export const CampusLife: React.FC<CampusLifeProps> = ({ onOpenCampusLifePage }) 
                 return (
                   <div 
                     key={`mq-second-${item.id}-${idx}`}
-                    className="group/card relative w-[320px] sm:w-[400px] md:w-[440px] aspect-[16/11] flex-shrink-0 overflow-hidden rounded-2xl sm:rounded-3xl border border-[#0A1931]/10 bg-slate-900 shadow-[0_10px_30px_rgba(10,25,49,0.06)] cursor-pointer hover:brightness-105 transition-all duration-300"
+                    className="group/card relative w-[210px] xs:w-[230px] sm:w-[340px] md:w-[420px] aspect-[16/11] flex-shrink-0 overflow-hidden rounded-xl sm:rounded-2xl md:rounded-3xl border border-[#0A1931]/10 bg-slate-900 shadow-[0_8px_24px_rgba(10,25,49,0.06)] cursor-pointer hover:brightness-105 transition-all duration-300"
                     onClick={() => {
                       const eventImages = CAMPUS_EVENTS_DATA.find(e => e.id === item.eventId)?.images.map(img => img.src) || [imgSrc];
                       openStackLightbox(eventImages, item.eventName);
@@ -453,9 +453,9 @@ export const CampusLife: React.FC<CampusLifeProps> = ({ onOpenCampusLifePage }) 
                     <div className="absolute inset-0 bg-gradient-to-t from-[#0A1931]/90 via-[#0A1931]/20 to-transparent pointer-events-none transition-opacity duration-300 group-hover/card:opacity-95" />
 
                     {/* Exact Event Name and Pic — No numbers or generic labels */}
-                    <div className="absolute bottom-4 left-5 right-5 sm:bottom-6 sm:left-6 sm:right-6 text-white pointer-events-none">
+                    <div className="absolute bottom-2.5 left-3.5 right-3.5 sm:bottom-6 sm:left-6 sm:right-6 text-white pointer-events-none">
                       <h4 
-                        className="font-serif text-base sm:text-lg lg:text-xl font-bold text-white leading-tight drop-shadow-md line-clamp-1"
+                        className="font-serif text-xs sm:text-base lg:text-xl font-bold text-white leading-tight drop-shadow-md line-clamp-1"
                         style={{ fontFamily: "'Cormorant Garamond', 'Libre Baskerville', Georgia, serif" }}
                       >
                         {item.eventName}

@@ -165,200 +165,97 @@ export const AdmissionsExperienceSection: React.FC<AdmissionsExperienceSectionPr
           <div id="campus-location-section" className="absolute -top-24" aria-hidden="true" />
 
           {/* Subtle Institutional Hairline Separator */}
-          <div className="w-full h-px bg-slate-200/80 dark:bg-white/10 mb-14 sm:mb-20" aria-hidden="true" />
+          <div className="w-full h-px bg-slate-200/80 dark:bg-white/10 mb-8 sm:mb-12" aria-hidden="true" />
 
+          {/* Minimal Interactive Campus Map Section with Red Minimal Heading */}
           <motion.div
-            initial={{ opacity: 0, y: 45, scale: 0.99 }}
-            whileInView={{ opacity: 1, y: 0, scale: 1 }}
-            transition={{ duration: 0.95, ease: [0.16, 1, 0.3, 1] }}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.85, ease: [0.16, 1, 0.3, 1] }}
             viewport={{ once: true, amount: 0.15 }}
-            className="relative bg-white dark:bg-[#0d1e38] rounded-3xl border border-slate-200/80 dark:border-[#1e3256] shadow-[0_20px_50px_rgba(15,44,97,0.06)] hover:shadow-[0_25px_60px_rgba(15,44,97,0.09)] transition-all duration-500 overflow-hidden p-6 sm:p-8 lg:p-12 mb-10"
+            className="space-y-4"
           >
-            {/* Ambient Subtle Luminous Gradient Backdrop */}
-            <div 
-              className="absolute -top-32 -right-32 w-80 h-80 rounded-full bg-[#0F2C61]/5 dark:bg-amber-400/5 blur-3xl pointer-events-none" 
-              aria-hidden="true" 
-            />
-
-            {/* Section Header with Actions */}
-            <div className="relative z-10 flex flex-col md:flex-row md:items-end justify-between gap-6 pb-8 border-b border-slate-100 dark:border-white/10">
+            {/* Heading with Red Minimal Style & Minimal Text Controls — No borders */}
+            <div className="flex flex-wrap items-end justify-between gap-4">
               <div>
-                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#0F2C61]/5 dark:bg-amber-400/10 text-[#0F2C61] dark:text-amber-400 text-xs font-semibold tracking-wide uppercase mb-3">
-                  <MapPin size={13} className="text-[#a30f16] dark:text-amber-400" />
-                  <span>CAMPUS LOCATION & REACHABILITY</span>
-                </div>
+                <span className="text-[11px] font-mono uppercase tracking-[0.24em] text-[#a30f16] dark:text-[#ef4444] font-bold block mb-1">
+                  CAMPUS LOCATION
+                </span>
                 <h3 
-                  className="text-2xl sm:text-3xl lg:text-4xl font-bold text-[#0F2C61] dark:text-white tracking-tight leading-tight"
+                  className="text-2xl sm:text-3xl font-bold text-[#a30f16] dark:text-[#ef4444] tracking-tight font-serif"
                   style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
                 >
-                  Find UCP Bahawalpur Campus
+                  UCP Bahawalpur Campus
                 </h3>
-                <p className="mt-2 text-sm sm:text-base text-slate-600 dark:text-slate-300 max-w-2xl leading-relaxed">
-                  Centrally located with convenient transit access across Bahawalpur and Southern Punjab. Explore the interactive campus map below or launch live navigation.
-                </p>
               </div>
 
-              {/* Action Bar */}
-              <div className="flex flex-wrap items-center gap-3 shrink-0">
-                <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-100/90 dark:bg-[#14284c] text-[#0F2C61] dark:text-slate-200 text-xs font-semibold border border-slate-200 dark:border-[#1e3256]">
-                  <Navigation size={13} className="text-[#a30f16] dark:text-amber-400" />
-                  <span>{UCP_COORDINATES} ({UCP_PLUS_CODE})</span>
-                </span>
+              {/* Minimal Text Action Links — Pure text, no borders or AI boxes */}
+              <div className="flex items-center gap-5 text-xs font-medium">
+                <div className="flex items-center gap-3 text-slate-600 dark:text-slate-400">
+                  <button
+                    type="button"
+                    onClick={() => setMapType('map')}
+                    className={`cursor-pointer transition-colors ${
+                      mapType === 'map'
+                        ? 'text-[#a30f16] dark:text-[#ef4444] font-bold underline underline-offset-4'
+                        : 'hover:text-slate-900 dark:hover:text-white'
+                    }`}
+                  >
+                    Map View
+                  </button>
+                  <span className="text-slate-300 dark:text-slate-700">·</span>
+                  <button
+                    type="button"
+                    onClick={() => setMapType('satellite')}
+                    className={`cursor-pointer transition-colors ${
+                      mapType === 'satellite'
+                        ? 'text-[#a30f16] dark:text-[#ef4444] font-bold underline underline-offset-4'
+                        : 'hover:text-slate-900 dark:hover:text-white'
+                    }`}
+                  >
+                    Satellite View
+                  </button>
+                </div>
+
                 <a
                   href={GOOGLE_MAPS_PIN_URL}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 px-5 py-2.5 bg-[#a30f16] hover:bg-[#860c12] text-white rounded-xl text-xs font-bold uppercase tracking-[0.14em] transition-all shadow-md hover:shadow-lg cursor-pointer"
+                  className="text-[#a30f16] dark:text-[#ef4444] hover:underline font-bold inline-flex items-center gap-1"
                 >
                   <span>Open in Google Maps</span>
-                  <ExternalLink size={14} />
+                  <ExternalLink size={12} />
                 </a>
               </div>
             </div>
 
-            {/* Interactive Map & Side Location Details Grid */}
-            <div className="relative z-10 mt-8 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-start">
-              
-              {/* Responsive Google Map Container */}
-              <div className="lg:col-span-8">
-                <div className="relative w-full rounded-2xl overflow-hidden border border-slate-200 dark:border-[#1e3256] shadow-md bg-white dark:bg-[#091426] transition-all duration-300">
-                  
-                  {/* Clean light map frame */}
-                  <div className="relative w-full h-[480px] sm:h-[500px] overflow-hidden bg-slate-100 dark:bg-slate-900" style={{ minHeight: '480px' }}>
-                    <iframe
-                      title="University of Central Punjab Bahawalpur Campus - Official Google Map Location"
-                      src={`https://maps.google.com/maps?q=UCP+Bahawalpur+Campus,+Yazman+Rd,+New+Islami+Colony,+Bahawalpur,+Pakistan&t=${mapType === 'satellite' ? 'k' : ''}&z=16&ie=UTF8&iwloc=&output=embed`}
-                      className="w-full h-full border-0 block"
-                      loading="lazy"
-                      allowFullScreen={true}
-                      referrerPolicy="no-referrer-when-downgrade"
-                      style={{ border: 0, minHeight: '480px' }}
-                    />
+            {/* Fullscreen Big Borderless Interactive Google Map */}
+            <div className="relative w-screen left-1/2 -translate-x-1/2 overflow-hidden border-0 bg-slate-950 h-[560px] sm:h-[660px] lg:h-[760px] shadow-2xl">
+              <iframe
+                title="University of Central Punjab Bahawalpur Campus - Google Map"
+                src={`https://maps.google.com/maps?q=UCP+Bahawalpur+Campus,+Yazman+Rd,+New+Islami+Colony,+Bahawalpur,+Pakistan&t=${mapType === 'satellite' ? 'k' : ''}&z=16&ie=UTF8&iwloc=&output=embed`}
+                className="w-full h-full border-0 block"
+                loading="lazy"
+                allowFullScreen={true}
+                referrerPolicy="no-referrer-when-downgrade"
+                style={{ border: 0, width: '100%', height: '100%' }}
+              />
+            </div>
 
-                    {/* Official Campus Verified Badge Overlay */}
-                    <div className="absolute top-4 left-4 z-20 bg-white/95 dark:bg-[#0c182c]/95 backdrop-blur-md px-3.5 py-2 rounded-xl shadow-lg border border-slate-200 dark:border-[#1e3256] flex items-center gap-2.5 pointer-events-none">
-                      <span className="w-2.5 h-2.5 rounded-full bg-[#a30f16] animate-pulse" />
-                      <div>
-                        <span className="text-[11px] font-black uppercase tracking-wider text-[#0F2C61] dark:text-white block leading-none">
-                          UCP Bahawalpur Campus
-                        </span>
-                        <span className="text-[10px] text-slate-500 dark:text-slate-300 font-medium block mt-1 leading-none">
-                          {UCP_PLUS_CODE} • Yazman Road, Bahawalpur
-                        </span>
-                      </div>
-                    </div>
-
-                    {/* View Switcher: Default Light Map & Satellite */}
-                    <div className="absolute top-4 right-4 z-20 bg-white/95 dark:bg-[#0c182c]/95 backdrop-blur-md p-1 rounded-xl shadow-lg border border-slate-200 dark:border-[#1e3256] flex items-center gap-1">
-                      <button
-                        type="button"
-                        onClick={() => setMapType('map')}
-                        className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
-                          mapType === 'map'
-                            ? 'bg-[#0F2C61] text-white shadow-xs'
-                            : 'text-slate-600 dark:text-slate-300 hover:text-[#0F2C61] dark:hover:text-white hover:bg-slate-100 dark:hover:bg-[#14284c]'
-                        }`}
-                        title="Standard Google Map (Clean light view)"
-                      >
-                        <MapIcon size={12} />
-                        <span>Map</span>
-                      </button>
-                      <button
-                        type="button"
-                        onClick={() => setMapType('satellite')}
-                        className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
-                          mapType === 'satellite'
-                            ? 'bg-[#0F2C61] text-white shadow-xs'
-                            : 'text-slate-600 dark:text-slate-300 hover:text-[#0F2C61] dark:hover:text-white hover:bg-slate-100 dark:hover:bg-[#14284c]'
-                        }`}
-                        title="Google Satellite Imagery"
-                      >
-                        <Layers size={12} />
-                        <span>Satellite</span>
-                      </button>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Map Footer Note */}
-                <div className="mt-3 flex flex-wrap items-center justify-between text-xs text-slate-600 dark:text-slate-300 px-1 gap-2">
-                  <span>
-                    Official Campus Coordinates: <strong className="text-slate-700 dark:text-white">{UCP_COORDINATES}</strong> • Plus Code: <strong className="text-slate-700 dark:text-white">{UCP_PLUS_CODE}</strong>
-                  </span>
-                  <a 
-                    href={GOOGLE_MAPS_PIN_URL}
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    className="text-[#a30f16] dark:text-amber-400 hover:underline font-bold inline-flex items-center gap-1"
-                  >
-                    <span>Open in Google Maps</span>
-                    <ExternalLink size={12} />
-                  </a>
-                </div>
+            {/* Minimal Text Location Details Below Map — Pure text, no borders */}
+            <div className="pt-2 flex flex-wrap items-center justify-between gap-3 text-xs text-slate-600 dark:text-slate-400 font-sans">
+              <div className="flex flex-wrap items-center gap-3 sm:gap-6">
+                <span>Yazman Rd, New Islami Colony, Bahawalpur</span>
+                <span className="hidden sm:inline">·</span>
+                <span>Visiting Hours: Mon – Fri (8:00 AM – 4:00 PM)</span>
+                <span className="hidden md:inline">·</span>
+                <span className="hidden md:inline">Dedicated Shuttle Fleet</span>
               </div>
-
-              {/* Official Campus Access Information Panels */}
-              <div className="lg:col-span-4 flex flex-col divide-y divide-slate-100 dark:divide-white/10 pt-1 lg:pt-0">
-                
-                {/* Location */}
-                <div className="py-4.5 first:pt-0 transition-transform duration-200">
-                  <span className="text-[10px] font-bold uppercase tracking-[0.22em] text-[#a30f16] dark:text-amber-400 block">
-                    Campus Location
-                  </span>
-                  <h4 
-                    className="text-base font-semibold text-[#0F2C61] dark:text-white mt-1 tracking-tight"
-                    style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
-                  >
-                    Yazman Rd, New Islami Colony
-                  </h4>
-                  <p className="text-xs text-slate-500 dark:text-slate-300 mt-1 font-sans">
-                    Bahawalpur, Punjab, Pakistan (Plus Code: {UCP_PLUS_CODE})
-                  </p>
-                  <a
-                    href={GOOGLE_MAPS_PIN_URL}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1.5 text-xs text-[#a30f16] dark:text-amber-400 font-semibold mt-2 hover:underline transition-colors"
-                  >
-                    <span>Get Directions on Google Maps</span>
-                    <ArrowRight size={12} />
-                  </a>
-                </div>
-
-                {/* Visiting Hours */}
-                <div className="py-4.5 transition-transform duration-200">
-                  <span className="text-[10px] font-bold uppercase tracking-[0.22em] text-slate-400 dark:text-slate-400 block">
-                    Visiting Hours
-                  </span>
-                  <h4 
-                    className="text-base font-semibold text-[#0F2C61] dark:text-white mt-1 tracking-tight"
-                    style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
-                  >
-                    Mon – Fri: 8:00 AM – 4:00 PM
-                  </h4>
-                  <p className="text-xs text-slate-500 dark:text-slate-300 mt-1 font-sans">
-                    Office Timing: 8:00 AM – 4:00 PM
-                  </p>
-                </div>
-
-                {/* Campus Transit */}
-                <div className="py-4.5 last:pb-0 transition-transform duration-200">
-                  <span className="text-[10px] font-bold uppercase tracking-[0.22em] text-slate-400 dark:text-slate-400 block">
-                    Campus Transit
-                  </span>
-                  <h4 
-                    className="text-base font-semibold text-[#0F2C61] dark:text-white mt-1 tracking-tight"
-                    style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
-                  >
-                    Dedicated Shuttle Fleet
-                  </h4>
-                  <p className="text-xs text-slate-500 dark:text-slate-300 mt-1 font-sans leading-relaxed">
-                    Connecting Bahawalpur & surrounding districts
-                  </p>
-                </div>
-
+              <div className="flex items-center gap-4">
+                <span className="font-mono text-slate-500">Plus Code: {UCP_PLUS_CODE}</span>
+                <span>·</span>
+                <span className="font-semibold text-slate-700 dark:text-slate-300">{UCP_CONTACT.phone}</span>
               </div>
-
             </div>
           </motion.div>
         </div>

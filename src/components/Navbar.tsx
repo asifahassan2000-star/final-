@@ -4,7 +4,7 @@ import {
   Menu, X, ChevronDown, ChevronRight, Search, GraduationCap, Building2, 
   Award, Globe, Newspaper, PhoneCall, BookOpen, Compass,
   Sparkles, CheckCircle2, User, ExternalLink, ShieldCheck,
-  Video, Laptop, Lightbulb, FileText, ArrowRight, Calendar,
+  Video, Laptop, Lightbulb, FileText, ArrowRight, ArrowLeft, Calendar,
   Home, MapPin
 } from 'lucide-react';
 import { UcpLogo } from './UcpLogo';
@@ -384,19 +384,23 @@ export const Navbar: React.FC<NavbarProps> = ({
   return (
     <header 
       id="main-nav-header"
-      className={`sticky top-0 z-[100] transition-all duration-300 ${
-        isScrolled 
-          ? 'bg-[#092242]/95 backdrop-blur-md shadow-xl shadow-black/30 py-2.5 border-b border-[#183a66]' 
-          : 'bg-[#092242] py-3.5 border-b border-[#122e54]'
-      }`}
+      className="sticky top-0 z-[100] transition-all duration-300"
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between gap-4">
-          
-          {/* Official Logo (Crest + "University of Central Punjab Bahawalpur" on the same line) */}
-          <UcpLogo 
-            variant="header"
-            onClick={() => {
+      {/* Top Blue Header: Like before, original compact height */}
+      <div 
+        className={`transition-all duration-300 ${
+          isScrolled 
+            ? 'bg-[#092242]/95 backdrop-blur-md shadow-xl shadow-black/30 py-2.5 border-b border-[#183a66]' 
+            : 'bg-[#092242] py-3.5 border-b border-[#122e54]'
+        }`}
+      >
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center justify-between gap-4">
+            
+            {/* Official Logo (Crest + "University of Central Punjab Bahawalpur" on the same line) */}
+            <UcpLogo 
+              variant="header"
+              onClick={() => {
               if (currentPage !== 'home' && onBackToHome) {
                 onBackToHome();
               } else {
@@ -760,6 +764,55 @@ export const Navbar: React.FC<NavbarProps> = ({
 
         </div>
       </div>
+    </div>
+
+      {/* =======================================================================
+          RED SUB-HEADER (Stanford Cardinal Red Style):
+          - Placed directly under the top blue header with 0px space.
+          - ONLY for About Us page ('about-us') as requested.
+          - Removed from other pages.
+          - Zero blue part visible under the red header.
+      ======================================================================= */}
+      {currentPage === 'about-us' && (
+        <div className="bg-[#B31B1B] text-white py-2.5 sm:py-3 px-4 sm:px-6 lg:px-12 border-b border-[#9E1818] shadow-sm select-none">
+          <div className="max-w-7xl mx-auto flex items-center justify-between gap-4">
+            <div 
+              onClick={() => {
+                if (onBackToHome) onBackToHome();
+                else window.scrollTo({ top: 0, behavior: 'smooth' });
+              }}
+              className="flex items-center gap-3 cursor-pointer group"
+            >
+              <span className="font-['Source_Serif_4','Source_Serif_Pro','Times_New_Roman',serif] text-lg sm:text-xl font-normal text-white tracking-tight">
+                UCP Bahawalpur
+              </span>
+              <span className="hidden sm:inline-block text-[11px] uppercase tracking-[0.14em] text-white/80 font-sans border-l border-white/30 pl-3">
+                Constituent College
+              </span>
+            </div>
+
+            <div className="flex items-center gap-3 sm:gap-4 text-xs font-sans">
+              <button
+                type="button"
+                onClick={onBackToHome}
+                className="text-white hover:text-white/80 transition-colors flex items-center gap-1.5 font-medium cursor-pointer"
+              >
+                <ArrowLeft size={14} />
+                <span>Portal Home</span>
+              </button>
+              {onOpenApply && (
+                <button
+                  type="button"
+                  onClick={onOpenApply}
+                  className="bg-white text-[#B31B1B] hover:bg-white/95 px-3 py-1 sm:px-3.5 sm:py-1.5 rounded-full font-semibold uppercase tracking-[0.08em] text-[11px] transition-all cursor-pointer shadow-xs"
+                >
+                  Apply Online
+                </button>
+              )}
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* Mobile Drawer Navigation */}
       {mobileMenuOpen && (

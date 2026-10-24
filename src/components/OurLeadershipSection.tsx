@@ -186,7 +186,14 @@ export const OurLeadershipSection: React.FC<OurLeadershipSectionProps> = () => {
       {/* =========================================================================
           SECTION HEADER — Prestigious University Design Matching Welcome Section
           ========================================================================= */}
-      <div ref={headerRef} className="relative z-10 max-w-5xl xl:max-w-6xl mx-auto text-center px-4 sm:px-6 mb-14 sm:mb-18">
+      <motion.div 
+        ref={headerRef} 
+        initial={{ opacity: 0, y: 35 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.2 }}
+        transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+        className="relative z-10 max-w-5xl xl:max-w-6xl mx-auto text-center px-4 sm:px-6 mb-14 sm:mb-18"
+      >
         <div className="inline-flex items-center gap-2 mb-2.5">
           <span 
             className="w-5 h-[2px] bg-[#D4AF37] origin-right transition-transform duration-500 ease-out"
@@ -236,7 +243,7 @@ export const OurLeadershipSection: React.FC<OurLeadershipSectionProps> = () => {
         >
           Steered by visionary academic leaders committed to intellectual rigor, student development, and transformative educational opportunities across South Punjab.
         </p>
-      </div>
+      </motion.div>
 
       {/* =========================================================================
           2 COLUMNS GRID — Prof. Hamid Iqbal & Prof. Dr. Aurangzaib Virk
@@ -245,10 +252,14 @@ export const OurLeadershipSection: React.FC<OurLeadershipSectionProps> = () => {
           grand circular gold-bordered portraits, designation badge & quotation block.
           ========================================================================= */}
       <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 items-stretch">
-        {LEADERSHIP_PROFILES.map((leader) => (
-          <article
+        {LEADERSHIP_PROFILES.map((leader, index) => (
+          <motion.article
             key={leader.id}
             id={leader.id}
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.15 }}
+            transition={{ duration: 0.85, delay: index * 0.12, ease: [0.16, 1, 0.3, 1] }}
             aria-label={`${leader.name} — ${leader.designation}`}
             className="flex flex-col justify-between h-full space-y-6"
           >
@@ -302,7 +313,13 @@ export const OurLeadershipSection: React.FC<OurLeadershipSectionProps> = () => {
               </div>
 
               {/* Identity & Designation Badge */}
-              <div className="text-center mt-5 sm:mt-6 flex flex-col items-center">
+              <motion.div 
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.2 }}
+                transition={{ duration: 0.7, delay: 0.15 }}
+                className="text-center mt-5 sm:mt-6 flex flex-col items-center"
+              >
                 <h3 className="font-['Source_Serif_4','Source_Serif_Pro','Georgia',serif] text-2xl sm:text-3xl font-bold text-[#0B1A3A] dark:text-white tracking-tight uppercase">
                   {leader.name}
                 </h3>
@@ -311,10 +328,16 @@ export const OurLeadershipSection: React.FC<OurLeadershipSectionProps> = () => {
                 >
                   {leader.designation}
                 </span>
-              </div>
+              </motion.div>
 
               {/* Leadership Message (with gold quotation mark & italic Source Serif styling) */}
-              <div className="relative mt-6 max-w-xl mx-auto">
+              <motion.div 
+                initial={{ opacity: 0, y: 25 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.2 }}
+                transition={{ duration: 0.75, delay: 0.2 }}
+                className="relative mt-6 max-w-xl mx-auto"
+              >
                 <span 
                   className="font-serif text-4xl sm:text-5xl leading-none select-none float-left mr-2.5 -mt-1 text-[#D4AF37] dark:text-[#E5C158]"
                   aria-hidden="true"
@@ -324,11 +347,17 @@ export const OurLeadershipSection: React.FC<OurLeadershipSectionProps> = () => {
                 <p className="font-['Source_Serif_4','Source_Serif_Pro','Georgia',serif] text-base sm:text-[17px] text-[#1E293B] dark:text-slate-200 leading-[1.78] italic text-justify">
                   {leader.fullMessage.join(' ')}
                 </p>
-              </div>
+              </motion.div>
             </div>
 
             {/* Bottom Action Link */}
-            <div className="pt-4 border-t border-slate-200/80 dark:border-white/10 flex items-center justify-center text-xs font-sans max-w-xl mx-auto w-full">
+            <motion.div 
+              initial={{ opacity: 0, y: 15 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 0.6, delay: 0.25 }}
+              className="pt-4 border-t border-slate-200/80 dark:border-white/10 flex items-center justify-center text-xs font-sans max-w-xl mx-auto w-full"
+            >
               <button
                 type="button"
                 onClick={() => setSelectedLeader(leader)}
@@ -340,15 +369,21 @@ export const OurLeadershipSection: React.FC<OurLeadershipSectionProps> = () => {
                 </span>
                 <ArrowUpRight size={14} className="text-[#C8102E] dark:text-[#D4AF37] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
               </button>
-            </div>
-          </article>
+            </motion.div>
+          </motion.article>
         ))}
       </div>
 
       {/* =========================================================================
           SECTION SIGNATURE QUOTE with Masked Text Reveal
           ========================================================================= */}
-      <footer className="mt-14 sm:mt-18 pt-8 border-t border-slate-200 text-center max-w-2xl mx-auto px-6">
+      <motion.footer 
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.2 }}
+        transition={{ duration: 0.8 }}
+        className="mt-14 sm:mt-18 pt-8 border-t border-slate-200 text-center max-w-2xl mx-auto px-6"
+      >
         <blockquote
           className="font-['Source_Serif_4','Source_Serif_Pro','Georgia',serif] text-base sm:text-lg italic text-[#0A1931] leading-relaxed"
         >
@@ -359,7 +394,7 @@ export const OurLeadershipSection: React.FC<OurLeadershipSectionProps> = () => {
           <span>University of Central Punjab</span>
           <span className="w-3 h-px bg-[#C8102E]" />
         </div>
-      </footer>
+      </motion.footer>
 
       {/* =========================================================================
           POLISHED LEADER PROFILE MODAL (Rectangular Geometry, Accessible, Full Bio)

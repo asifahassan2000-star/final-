@@ -78,24 +78,25 @@ export const UcpEliteNetworkSection: React.FC = () => {
             centeredSlides={true}
             loop={true}
             slidesPerView="auto"
-            spaceBetween={24}
+            spaceBetween={16}
+            touchReleaseOnEdges={true}
             autoplay={{
-              delay: 2500,
+              delay: 2200,
               disableOnInteraction: false,
-              pauseOnMouseEnter: true,
+              pauseOnMouseEnter: false,
             }}
             coverflowEffect={{
               rotate: 0,
               stretch: 0,
-              depth: 0,
+              depth: 25,
               modifier: 1,
-              scale: 0.9,
+              scale: 0.92,
               slideShadows: false,
             }}
             breakpoints={{
               320: {
-                slidesPerView: 1,
-                spaceBetween: 0,
+                slidesPerView: 'auto',
+                spaceBetween: 14,
                 centeredSlides: true,
               },
               768: {
@@ -109,7 +110,7 @@ export const UcpEliteNetworkSection: React.FC = () => {
             {ELITE_NETWORK_IMAGES.map((item, index) => (
               <SwiperSlide
                 key={item.id}
-                className="!w-[380px] !h-[240px] max-md:!w-[92vw] max-md:!h-[220px] max-md:mx-auto shrink-0 transition-transform duration-300"
+                className="!w-[360px] !h-[230px] max-md:!w-[220px] max-md:!h-[150px] shrink-0 transition-transform duration-300"
               >
                 {({ isActive }) => (
                   <motion.div
@@ -122,7 +123,7 @@ export const UcpEliteNetworkSection: React.FC = () => {
                       ease: [0.16, 1, 0.3, 1],
                     }}
                     className={`w-full h-full rounded-[12px] overflow-hidden shadow-[0_4px_20px_rgba(0,0,0,0.08)] bg-slate-50 transition-all duration-300 ease-out hover:scale-[1.03] ${
-                      isActive ? 'opacity-100 scale-100' : 'opacity-60 scale-90 md:scale-95'
+                      isActive ? 'opacity-100 scale-100' : 'opacity-65 scale-92'
                     }`}
                   >
                     <img
@@ -170,21 +171,13 @@ export const UcpEliteNetworkSection: React.FC = () => {
           justify-content: center;
           align-items: center;
         }
-        @media (min-width: 768px) {
-          .ucp-elite-swiper-container .swiper-slide:not(.swiper-slide-active) {
-            opacity: 0.6;
-            transform: scale(0.9);
-          }
-          .ucp-elite-swiper-container .swiper-slide-active {
-            opacity: 1 !important;
-            transform: scale(1) !important;
-          }
+        .ucp-elite-swiper-container .swiper-slide:not(.swiper-slide-active) {
+          opacity: 0.65;
+          transform: scale(0.92);
         }
-        @media (max-width: 767px) {
-          .ucp-elite-swiper-container .swiper-slide {
-            opacity: 1 !important;
-            transform: none !important;
-          }
+        .ucp-elite-swiper-container .swiper-slide-active {
+          opacity: 1 !important;
+          transform: scale(1) !important;
         }
       `}</style>
     </motion.section>

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { 
   ArrowLeft, Search, Phone, ChevronRight, Building
@@ -28,7 +28,6 @@ export const FacultyPage: React.FC<FacultyPageProps> = ({
   );
   const [searchQuery, setSearchQuery] = useState<string>('');
   const [selectedFaculty, setSelectedFaculty] = useState<FacultyMemberData | null>(null);
-
   const getRankWeight = (f: FacultyMemberData): number => {
     const des = f.designation.toLowerCase();
     if (des.includes('associate professor')) return 2;
@@ -53,7 +52,7 @@ export const FacultyPage: React.FC<FacultyPageProps> = ({
   const filteredAdmins = ADMINISTRATION_MEMBERS
     .filter(admin => {
       const q = searchQuery.toLowerCase();
-      return searchQuery === '' ||
+      return searchQuery === '' || 
         admin.name.toLowerCase().includes(q) ||
         admin.designation.toLowerCase().includes(q) ||
         admin.department.toLowerCase().includes(q) ||
@@ -63,96 +62,86 @@ export const FacultyPage: React.FC<FacultyPageProps> = ({
 
   return (
     <div className="bg-white dark:bg-[#080f1d] min-h-screen text-slate-800 dark:text-[#f8fafc]">
-      
-      {/* 1. Sub-Header Banner & Institutional Breadcrumb */}
-      <div className="bg-[#092242] text-white border-b border-[#14325a] py-6 sm:py-8">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          
-          <div className="flex flex-wrap items-center justify-between gap-4 mb-4">
-            {/* Return to Home Button */}
-            <button
-              id="back-to-home-btn"
-              onClick={onBackToHome}
-              className="inline-flex items-center gap-2 text-xs sm:text-sm font-semibold text-slate-200 hover:text-amber-300 transition-colors bg-white/10 hover:bg-white/15 px-3.5 py-1.5 rounded-lg border border-white/15 cursor-pointer"
-            >
-              <ArrowLeft size={16} />
-              <span>Back to Home</span>
-            </button>
+      {/* =======================================================================
+          HERO SECTION: Big Centered "Faculty & Administration" on Clean White
+          - Directly below header with clean, tight spacing
+          - Big Serif heading
+          - Academic narrative subtitle
+          - Neatly organized Directory filters and Search bar
+      ======================================================================= */}
+      <section className="bg-[#FFFFFF] dark:bg-[#071322] pt-6 sm:pt-8 lg:pt-10 pb-8 sm:pb-12 px-4 sm:px-6 lg:px-12 text-center border-b border-[#EAEAEA] dark:border-white/10">
+        <div className="max-w-5xl mx-auto space-y-6">
+          <span className="text-[12px] font-sans uppercase tracking-[0.2em] text-[#B31B1B] font-bold block">
+            Academic Excellence &amp; Mentorship
+          </span>
 
-            {/* Eyebrow badge */}
-            <span className="text-[11px] sm:text-xs font-bold uppercase tracking-wider text-amber-300 bg-amber-400/10 px-3 py-1 rounded-full border border-amber-400/20">
-              Official Directory • UCP Bahawalpur
-            </span>
-          </div>
+          <h1 className="font-['Source_Serif_4','Source_Serif_Pro','Times_New_Roman',serif] font-normal text-[36px] sm:text-[48px] lg:text-[56px] text-[#000000] dark:text-white tracking-tight leading-tight">
+            Faculty &amp; Administration
+          </h1>
 
-          <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
-            <div>
-              <h1 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-white tracking-tight">
-                Faculty &amp; Administration
-              </h1>
-              <p className="mt-2 text-slate-300 text-sm sm:text-base max-w-2xl leading-relaxed">
-                Distinguished professors, academic mentors, and key administrative officers at UCP Bahawalpur.
-              </p>
+          <p className="font-sans text-[18px] sm:text-[20px] leading-[1.8] text-[#333333] dark:text-slate-300 font-normal max-w-2xl mx-auto">
+            Distinguished professors, PhD scholars, and experienced academic administrators dedicated to transformative student mentorship across Southern Punjab.
+          </p>
+
+          {/* Directory Toolbar: Tabs + Search Bar neatly organized */}
+          <div className="pt-6 flex flex-col md:flex-row items-center justify-between gap-4 max-w-4xl mx-auto border-t border-[#EAEAEA] dark:border-white/10">
+            {/* Filter Tabs */}
+            <div className="flex flex-wrap items-center justify-center gap-2">
+              <button
+                onClick={() => setActiveTab('all')}
+                className={`px-4 py-2 rounded-full text-xs sm:text-[13px] font-semibold tracking-wide transition-all cursor-pointer ${
+                  activeTab === 'all'
+                    ? 'bg-[#B31B1B] text-white shadow-xs'
+                    : 'bg-slate-100 dark:bg-white/10 text-slate-700 dark:text-slate-200 hover:bg-slate-200 dark:hover:bg-white/15'
+                }`}
+              >
+                All Directory
+              </button>
+              <button
+                onClick={() => setActiveTab('faculty')}
+                className={`px-4 py-2 rounded-full text-xs sm:text-[13px] font-semibold tracking-wide transition-all cursor-pointer ${
+                  activeTab === 'faculty'
+                    ? 'bg-[#B31B1B] text-white shadow-xs'
+                    : 'bg-slate-100 dark:bg-white/10 text-slate-700 dark:text-slate-200 hover:bg-slate-200 dark:hover:bg-white/15'
+                }`}
+              >
+                Academic Faculty
+              </button>
+              <button
+                onClick={() => setActiveTab('administration')}
+                className={`px-4 py-2 rounded-full text-xs sm:text-[13px] font-semibold tracking-wide transition-all cursor-pointer flex items-center gap-1.5 ${
+                  activeTab === 'administration'
+                    ? 'bg-[#B31B1B] text-white shadow-xs'
+                    : 'bg-slate-100 dark:bg-white/10 text-slate-700 dark:text-slate-200 hover:bg-slate-200 dark:hover:bg-white/15'
+                }`}
+              >
+                <Building size={14} />
+                <span>Administration</span>
+              </button>
             </div>
 
             {/* Search Input Bar */}
-            <div className="relative shrink-0 w-full sm:w-72">
-              <Search size={14} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400" />
+            <div className="relative w-full sm:w-80">
+              <Search size={15} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400" />
               <input
                 type="text"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                placeholder="Search by name or role..."
-                className="w-full pl-9 pr-3.5 py-2 text-xs rounded-xl border border-white/20 bg-white/10 text-white placeholder-slate-300 focus:bg-white focus:text-slate-900 focus:placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-amber-400 transition-all"
+                placeholder="Search by name, department, role..."
+                className="w-full pl-9 pr-8 py-2 text-xs sm:text-sm rounded-full border border-slate-300 dark:border-white/20 bg-white dark:bg-white/5 text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-[#B31B1B] transition-all font-sans"
               />
               {searchQuery && (
                 <button
                   onClick={() => setSearchQuery('')}
-                  className="absolute right-3 top-1/2 -translate-y-1/2 text-[11px] text-slate-300 hover:text-white cursor-pointer"
+                  className="absolute right-3 top-1/2 -translate-y-1/2 text-xs text-slate-400 hover:text-slate-600 dark:hover:text-white cursor-pointer"
                 >
-                  Clear
+                  ✕
                 </button>
               )}
             </div>
           </div>
-
-          {/* Directory Navigation Tabs without mentioning numbers */}
-          <div className="flex flex-wrap items-center gap-2 mt-6 pt-4 border-t border-white/10">
-            <button
-              onClick={() => setActiveTab('all')}
-              className={`px-3.5 py-1.5 rounded-lg text-xs font-semibold tracking-wide transition-all cursor-pointer ${
-                activeTab === 'all'
-                  ? 'bg-amber-400 text-slate-950 shadow-xs'
-                  : 'bg-white/10 text-slate-200 hover:bg-white/15'
-              }`}
-            >
-              All Directory
-            </button>
-            <button
-              onClick={() => setActiveTab('faculty')}
-              className={`px-3.5 py-1.5 rounded-lg text-xs font-semibold tracking-wide transition-all cursor-pointer ${
-                activeTab === 'faculty'
-                  ? 'bg-amber-400 text-slate-950 shadow-xs'
-                  : 'bg-white/10 text-slate-200 hover:bg-white/15'
-              }`}
-            >
-              Academic Faculty
-            </button>
-            <button
-              onClick={() => setActiveTab('administration')}
-              className={`px-3.5 py-1.5 rounded-lg text-xs font-semibold tracking-wide transition-all cursor-pointer flex items-center gap-1.5 ${
-                activeTab === 'administration'
-                  ? 'bg-amber-400 text-slate-950 shadow-xs'
-                  : 'bg-white/10 text-slate-200 hover:bg-white/15'
-              }`}
-            >
-              <Building size={13} />
-              <span>Campus Administration</span>
-            </button>
-          </div>
-
         </div>
-      </div>
+      </section>
 
       {/* 2. Main Content Container */}
       <main className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-14 space-y-16">

@@ -564,6 +564,8 @@ export default function App() {
             onOpenProgrammesPage={handleOpenProgrammesPage}
             onOpenFacilitiesPage={handleOpenCampusFacilitiesPage}
             onOpenCampusLifePage={handleOpenCampusLifePage}
+            onOpenLegacyPage={handleOpenLegacyPage}
+            onOpenFacultyPage={() => handleOpenFacultyPage('all')}
           />
         ) : (
           /* Main Homepage Sections following World-Class SEO and Institutional Information Architecture */

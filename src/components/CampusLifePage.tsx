@@ -501,119 +501,83 @@ export const CampusLifePage: React.FC<CampusLifePageProps> = ({
         dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
       />
 
-      {/* 1. Minimal Header & Navigation Bar */}
-      <nav 
-        aria-label="Campus Life Navigation" 
-        className="sticky top-0 z-30 bg-white/95 dark:bg-[#07192F]/95 backdrop-blur-md border-b border-slate-100 dark:border-white/10 py-3.5 px-4 sm:px-6 lg:px-8 select-none transition-colors"
-      >
-        <div className="max-w-5xl mx-auto flex items-center justify-between gap-4">
-          <button
-            onClick={onBackToHome}
-            className="group inline-flex items-center gap-2 text-xs sm:text-sm font-semibold text-slate-700 dark:text-slate-300 hover:text-[#C8102E] dark:hover:text-white transition-colors cursor-pointer"
-          >
-            <ArrowLeft size={16} className="transition-transform group-hover:-translate-x-1 text-[#C8102E]" />
-            <span>Return to Home</span>
-          </button>
-
-          <div className="flex items-center gap-2 sm:gap-4 text-xs font-mono">
-            <span className="text-slate-500 dark:text-slate-400">
-              22 Events Archive
-            </span>
-            <button
-              onClick={onOpenProgrammesPage}
-              className="font-sans font-semibold text-[#C8102E] hover:underline cursor-pointer"
-            >
-              Academic Programmes →
-            </button>
-          </div>
-        </div>
-      </nav>
-
-      {/* 2. Minimal Page Introduction */}
-      <header className="pt-12 sm:pt-16 pb-8 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto">
-        <div className="flex items-center gap-2 mb-3">
-          <span className="text-xs font-mono font-bold tracking-[0.25em] uppercase text-[#C8102E]">
-            OFFICIAL ARCHIVE · 2025 – 2026
+      {/* =======================================================================
+          HERO SECTION: Big Centered "Campus Life & Events" on Clean White
+          - Directly below header with clean, tight spacing
+      ======================================================================= */}
+      <section className="bg-[#FFFFFF] dark:bg-[#07192F] pt-6 sm:pt-8 lg:pt-10 pb-8 sm:pb-12 px-4 sm:px-6 lg:px-12 text-center border-b border-[#EAEAEA] dark:border-white/10">
+        <div className="max-w-5xl mx-auto space-y-6">
+          <span className="text-[12px] font-sans uppercase tracking-[0.2em] text-[#B31B1B] font-bold block">
+            Collegiate Chronicle · Southern Punjab
           </span>
-          <span className="h-px w-10 bg-slate-200 dark:bg-white/20" aria-hidden="true" />
-        </div>
 
-        <div className="overflow-hidden py-1">
-          <motion.h1 
-            initial={{ opacity: 0, y: 32, clipPath: 'polygon(0 100%, 100% 100%, 100% 100%, 0 100%)' }}
-            animate={{ opacity: 1, y: 0, clipPath: 'polygon(0 0, 100% 0, 100% 100%, 0 100%)' }}
-            transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
-            className="text-3xl sm:text-5xl lg:text-[52px] font-serif font-bold text-[#0A1931] dark:text-white tracking-tight leading-[1.14] mb-4"
-            style={{ fontFamily: "'Playfair Display', 'Cormorant Garamond', Georgia, serif" }}
-          >
+          <h1 className="font-['Source_Serif_4','Source_Serif_Pro','Times_New_Roman',serif] font-normal text-[36px] sm:text-[48px] lg:text-[56px] text-[#0A1931] dark:text-white tracking-tight leading-tight">
             Campus Life &amp; Events
-          </motion.h1>
-        </div>
+          </h1>
 
-        <p className="text-base sm:text-lg text-slate-600 dark:text-slate-300 font-sans leading-relaxed max-w-3xl font-light">
-          Official chronological chronicle of collegiate milestones, academic symposiums, excursions, and student traditions at University of Central Punjab (UCP) Bahawalpur.
-        </p>
+          <p className="font-sans text-[18px] sm:text-[20px] leading-[1.8] text-slate-600 dark:text-slate-300 font-normal max-w-2xl mx-auto">
+            Official chronological chronicle of collegiate milestones, academic symposiums, excursions, and student traditions at University of Central Punjab (UCP) Bahawalpur.
+          </p>
 
-        {/* Minimal Year Segment Selector & Search */}
-        <div className="mt-8 pt-6 border-t border-slate-100 dark:border-white/10 flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4">
-          
-          {/* 2025 and 2026 Switcher */}
-          <div className="flex items-center gap-1.5 p-1 bg-slate-100 dark:bg-[#0A1931] rounded-xl w-fit">
-            <button
-              onClick={() => setSelectedYear('all')}
-              className={`px-3.5 py-1.5 rounded-lg text-xs font-semibold transition-all cursor-pointer ${
-                selectedYear === 'all'
-                  ? 'bg-white dark:bg-[#0E2442] text-[#0A1931] dark:text-white shadow-xs font-bold'
-                  : 'text-slate-600 dark:text-slate-400 hover:text-[#0A1931] dark:hover:text-white'
-              }`}
-            >
-              All Events ({CAMPUS_EVENTS_DATA.length})
-            </button>
-            <button
-              onClick={() => setSelectedYear('2025')}
-              className={`px-3.5 py-1.5 rounded-lg text-xs font-semibold transition-all cursor-pointer ${
-                selectedYear === '2025'
-                  ? 'bg-[#C8102E] text-white shadow-xs font-bold'
-                  : 'text-slate-600 dark:text-slate-400 hover:text-[#0A1931] dark:hover:text-white'
-              }`}
-            >
-              2025 Events
-            </button>
-            <button
-              onClick={() => setSelectedYear('2026')}
-              className={`px-3.5 py-1.5 rounded-lg text-xs font-semibold transition-all cursor-pointer ${
-                selectedYear === '2026'
-                  ? 'bg-[#C8102E] text-white shadow-xs font-bold'
-                  : 'text-slate-600 dark:text-slate-400 hover:text-[#0A1931] dark:hover:text-white'
-              }`}
-            >
-              2026 Events
-            </button>
-          </div>
-
-          {/* Clean Search Input */}
-          <div className="relative max-w-xs w-full">
-            <Search size={14} className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 pointer-events-none" />
-            <input
-              type="text"
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              placeholder="Search event name or topic..."
-              className="w-full pl-9 pr-7 py-1.5 text-xs rounded-xl bg-slate-100 dark:bg-[#0A1931] text-[#0A1931] dark:text-white placeholder-slate-400 focus:outline-none focus:ring-1 focus:ring-[#C8102E] transition-all"
-            />
-            {searchQuery && (
+          {/* Minimal Year Segment Selector & Search */}
+          <div className="pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 max-w-4xl mx-auto border-t border-[#EAEAEA] dark:border-white/10">
+            {/* 2025 and 2026 Switcher */}
+            <div className="flex items-center gap-1.5 p-1 bg-slate-100 dark:bg-[#0A1931] rounded-full w-fit">
               <button
-                onClick={() => setSearchQuery('')}
-                className="absolute right-2.5 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600 dark:hover:text-white"
-                title="Clear"
+                onClick={() => setSelectedYear('all')}
+                className={`px-4 py-1.5 rounded-full text-xs sm:text-[13px] font-semibold transition-all cursor-pointer ${
+                  selectedYear === 'all'
+                    ? 'bg-[#B31B1B] text-white shadow-xs'
+                    : 'text-slate-600 dark:text-slate-400 hover:text-[#0A1931] dark:hover:text-white'
+                }`}
               >
-                <X size={12} />
+                All Events ({CAMPUS_EVENTS_DATA.length})
               </button>
-            )}
-          </div>
+              <button
+                onClick={() => setSelectedYear('2025')}
+                className={`px-4 py-1.5 rounded-full text-xs sm:text-[13px] font-semibold transition-all cursor-pointer ${
+                  selectedYear === '2025'
+                    ? 'bg-[#B31B1B] text-white shadow-xs'
+                    : 'text-slate-600 dark:text-slate-400 hover:text-[#0A1931] dark:hover:text-white'
+                }`}
+              >
+                2025 Events ({EVENTS_2025.length})
+              </button>
+              <button
+                onClick={() => setSelectedYear('2026')}
+                className={`px-4 py-1.5 rounded-full text-xs sm:text-[13px] font-semibold transition-all cursor-pointer ${
+                  selectedYear === '2026'
+                    ? 'bg-[#B31B1B] text-white shadow-xs'
+                    : 'text-slate-600 dark:text-slate-400 hover:text-[#0A1931] dark:hover:text-white'
+                }`}
+              >
+                2026 Events ({EVENTS_2026.length})
+              </button>
+            </div>
 
+            {/* Quick Keyword Search Filter */}
+            <div className="relative w-full sm:w-72">
+              <Search size={15} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400" />
+              <input
+                type="text"
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                placeholder="Search events, workshops..."
+                className="w-full pl-9 pr-8 py-2 text-xs sm:text-sm rounded-full border border-slate-300 dark:border-white/20 bg-white dark:bg-white/5 text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-[#B31B1B] transition-all font-sans"
+              />
+              {searchQuery && (
+                <button
+                  type="button"
+                  onClick={() => setSearchQuery('')}
+                  className="absolute right-3 top-1/2 -translate-y-1/2 text-xs text-slate-400 hover:text-slate-600 dark:hover:text-white cursor-pointer"
+                >
+                  ✕
+                </button>
+              )}
+            </div>
+          </div>
         </div>
-      </header>
+      </section>
 
       {/* 3. Event List (2025 on Top, Then 2026) */}
       <main className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
