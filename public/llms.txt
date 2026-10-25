@@ -1,0 +1,40 @@
+# UCP Bahawalpur Campus (University of Central Punjab)
+
+> Official academic portal for the University of Central Punjab (UCP) Bahawalpur Campus, located on Airport Road, Bahawalpur, Punjab, Pakistan. Providing premier undergraduate education under the Punjab Group of Colleges (PGC) network.
+
+## Key Facts
+- **Institution**: University of Central Punjab, Bahawalpur Campus (Constituent College)
+- **Parent Organization**: Punjab Group of Colleges (PGC)
+- **Location**: Airport Road, Bahawalpur, Punjab 63100, Pakistan
+- **Telephone**: +92-62-2202030 | +92 300 0000000
+- **Email**: info@ucp.edu.pk | admissions.bwp@ucp.edu.pk
+- **Official Admission Portal**: https://admissions.ucpcolleges.pgc.edu
+- **Official Website**: https://ucp-bahawalpur-campus.vercel.app/
+
+## Academic Faculties & Offerings
+- **Faculty of Information Technology (FOIT)**: BS Computer Science, BS Software Engineering, BS Artificial Intelligence, BS Data Science, BS Cyber Security, ADP Computer Science.
+- **Faculty of Management Studies (FMS)**: Bachelor of Business Administration (BBA Hons), BS Accounting & Finance, BS Business Analytics, ADP Business Administration, ADP Commerce.
+- **Faculty of Science & Technology (FOST)**: BS Biotechnology, BS Biochemistry, BS Chemistry, BS Zoology, BS Mathematics, BS Physics.
+- **Faculty of Humanities & Social Sciences (FHSS)**: BS English Language & Literature, BS Psychology, BS Clinical Psychology.
+- **Faculty of Media & Mass Communication (FMMC)**: BS Media & Communication Studies, Strategic CNN Academy collaboration.
+
+## Admissions & Scholarships
+- **Admissions Open**: Fall & Spring Admissions Cycles
+- **Eligibility**: Minimum 50% marks in intermediate (HSSC/FSc/FA/ICS/I.Com) or A-Levels equivalence
+- **Merit Scholarships**: Up to 100% tuition waiver based on intermediate marks
+- **PGC Alumni Concession**: Special financial concession for students from Punjab Group of Colleges
+- **Kinship Concession**: Financial waiver for siblings of currently enrolled UCP students
+- **Sports & Talent Concessions**: National & provincial athlete full scholarships
+
+## Campus Facilities
+- State-of-the-Art Computer & AI Research Laboratories
+- Modern Digital & Physical Reference Library with HEC Digital Library Access
+- Purpose-built Executive Lecture Theatres & Smart Classrooms
+- Student Cafeteria, Courtyard Gathering Spaces & Recreational Facilities
+- Dedicated Girls & Boys Common Rooms with Prayer Areas
+- Safe & Secure Campus Fleet Transport Across Bahawalpur & Suburbs
+
+## Canonical Documentation
+- Full Knowledge Base: https://ucp-bahawalpur-campus.vercel.app/llms-full.txt
+- XML Sitemap: https://ucp-bahawalpur-campus.vercel.app/sitemap.xml
+- Robots Policy: https://ucp-bahawalpur-campus.vercel.app/robots.txt

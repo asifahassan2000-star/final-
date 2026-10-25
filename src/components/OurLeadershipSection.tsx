@@ -390,7 +390,8 @@ export const OurLeadershipSection: React.FC<OurLeadershipSectionProps> = () => {
                       style={{
                         objectPosition: leader.id === 'prof-dr-aurangzaib-virk' ? 'center 14%' : 'center 12%',
                       }}
-                      loading="eager"
+                      loading="lazy"
+                      decoding="async"
                       onError={(e) => {
                         (e.currentTarget as HTMLImageElement).src = leader.fallbackUrl;
                       }}
@@ -546,7 +547,8 @@ export const OurLeadershipSection: React.FC<OurLeadershipSectionProps> = () => {
                         style={{
                           objectPosition: leader.id === 'prof-dr-aurangzaib-virk' ? 'center 14%' : 'center 12%',
                         }}
-                        loading="eager"
+                        loading="lazy"
+                        decoding="async"
                         onError={(e) => {
                           (e.currentTarget as HTMLImageElement).src = leader.fallbackUrl;
                         }}

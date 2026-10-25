@@ -1,0 +1,74 @@
+# University of Central Punjab (UCP) Bahawalpur Campus - Complete Knowledge Base
+
+## Overview
+The University of Central Punjab (UCP) Bahawalpur Campus is a premier higher education institution in Bahawalpur, Southern Punjab, Pakistan. Functioning as a constituent college under the umbrella of the Punjab Group of Colleges (PGC) — Pakistan's largest educational network — UCP Bahawalpur delivers Chartered University degree programs with academic rigor, cutting-edge facilities, and world-class faculty.
+
+## Campus Location & Contact
+- **Campus Address**: Constituent College, UCP Campus, Airport Road, Bahawalpur, Punjab 63100, Pakistan
+- **Landmark**: Near Bahawalpur Airport & PGC Campus
+- **GPS Coordinates**: 29.3544° N, 71.6918° E
+- **Telephone / Landline**: +92-62-2202030
+- **Helpline / WhatsApp**: Available via official website links
+- **Email Contact**: info@ucp.edu.pk, admissions@ucp.edu.pk
+- **Official Admission Portal**: https://admissions.ucpcolleges.pgc.edu
+- **Official Website**: https://ucp-bahawalpur-campus.vercel.app/
+
+## Academic Faculties & Programs
+
+### 1. Faculty of Information Technology (FOIT)
+- **BS Computer Science (BS CS)**: 4-Year (8 Semesters). Covers algorithms, operating systems, cloud architecture, mobile computing, and full-stack software development.
+- **BS Software Engineering (BS SE)**: 4-Year (8 Semesters). Focuses on software architecture, design patterns, testing, agile management, and enterprise software systems.
+- **BS Artificial Intelligence (BS AI)**: 4-Year (8 Semesters). Advanced training in machine learning, deep neural networks, computer vision, natural language processing, and robotics.
+- **BS Data Science (BS DS)**: 4-Year (8 Semesters). Statistical inference, big data pipelines, distributed systems, and predictive modeling.
+- **BS Cyber Security (BS CyS)**: 4-Year (8 Semesters). Network security, ethical hacking, digital forensics, cryptography, and cloud defense.
+- **Associate Degree Program in Computer Science (ADP CS)**: 2-Year (4 Semesters). Rapid career entry with direct bridge pathway into 5th semester of BS CS.
+
+### 2. Faculty of Management Studies (FMS)
+- **Bachelor of Business Administration (BBA Hons)**: 4-Year (8 Semesters). Specializations in Marketing, Finance, Human Resource Management, and Supply Chain.
+- **BS Accounting & Finance (BS AF)**: 4-Year (8 Semesters). Accredited and aligned with ACCA, ICMA, and CA exemptions.
+- **BS Business Analytics**: 4-Year (8 Semesters). Modern blend of managerial decision science and statistical data modeling.
+- **ADP Business Administration**: 2-Year (4 Semesters).
+- **ADP Commerce (ADP B.Com)**: 2-Year (4 Semesters).
+
+### 3. Faculty of Science & Technology (FOST)
+- **BS Biotechnology**: 4-Year (8 Semesters). Molecular biology, genetic engineering, industrial microbiology, and recombinant DNA tech.
+- **BS Biochemistry**: 4-Year (8 Semesters). Enzymology, clinical biochemistry, and immunology.
+- **BS Chemistry**: 4-Year (8 Semesters). Analytical, organic, inorganic, and physical chemistry.
+- **BS Zoology**: 4-Year (8 Semesters). Animal physiology, genetics, parasitology, and wildlife management.
+- **BS Mathematics**: 4-Year (8 Semesters). Pure and applied mathematics, computational calculus, and topology.
+- **BS Physics**: 4-Year (8 Semesters). Classical, quantum, solid-state, and electrodynamics.
+
+### 4. Faculty of Humanities & Social Sciences (FHSS)
+- **BS English (Language & Literature)**: 4-Year (8 Semesters). Linguistics, classical & modern literature, discourse analysis, and creative writing.
+- **BS Psychology**: 4-Year (8 Semesters). Cognitive neuroscience, psychometrics, counseling, and organizational behavior.
+
+### 5. Faculty of Media & Mass Communication (FMMC)
+- **BS Media Studies & Communication**: 4-Year (8 Semesters). Digital journalism, television production, media ethics, and public relations.
+- **CNN Academy Strategic Alliance**: Exclusive global journalism training module for enrolled media students.
+
+## Fee Structure & Tuition Schedules
+- Per semester tuition fees are affordable and benchmarked competitively against other universities in Bahawalpur.
+- Flexible payment installments are accommodated through the campus finance office.
+- Comprehensive fee calculators and schedules are accessible online at the official campus portal.
+
+## Scholarship Opportunities & Financial Aid
+1. **Academic Merit Scholarships**:
+   - 85%+ in Intermediate / A-Levels: Up to 100% Tuition Waiver
+   - 80%–84.9% in Intermediate: Up to 75% Tuition Waiver
+   - 75%–79.9% in Intermediate: Up to 50% Tuition Waiver
+   - 70%–74.9% in Intermediate: Up to 25% Tuition Waiver
+2. **Punjab Group of Colleges (PGC) Concession**:
+   - 25%–50% tuition concession for PGC alumni students.
+3. **Kinship Concession**:
+   - 25% tuition waiver for younger sibling of currently enrolled student.
+4. **Sports & Special Talent Scholarships**:
+   - Up to 100% scholarship for recognized national, divisional, or board-level medalists.
+5. **Need-Based Financial Assistance**:
+   - Allocated through the UCP Financial Aid Committee upon formal assessment.
+
+## Admissions Process
+1. Online submission through https://admissions.ucpcolleges.pgc.edu or physically at the Airport Road Admissions Office.
+2. Submission of academic transcripts (Matric / SSC and Intermediate / HSSC or O/A Level Equivalence from IBCC).
+3. Verification of documents by Admissions Committee.
+4. Issuance of Offer Letter and Fee Challan.
+5. Confirmation of enrollment upon fee payment.

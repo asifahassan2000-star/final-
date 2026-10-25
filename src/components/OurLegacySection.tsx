@@ -369,7 +369,7 @@ export const OurLegacySection: React.FC<OurLegacySectionProps> = ({
                           <img
                             src={milestone.imageUrl}
                             alt={milestone.imageAlt}
-                            loading="eager"
+                            loading="lazy"
                             decoding="async"
                             className="w-full h-full object-cover object-center transition-transform duration-500 ease-out group-hover:scale-[1.025]"
                           />

@@ -240,7 +240,7 @@ export const CampusLife: React.FC<CampusLifeProps> = ({ onOpenCampusLifePage }) 
                 <img decoding="async" key={currentCorridorImg}
                   src={currentCorridorImg}
                   alt="Student Life - Best vibes of students singing at Cholistan Haveli during evening session at UCP Bahawalpur"
-                  loading="eager"
+                  loading="lazy"
                   className="w-full h-full object-cover object-center transition-all duration-1000 ease-out group-hover:scale-[1.02] animate-in fade-in"
                   onError={(e) => {
                     const target = e.target as HTMLImageElement;

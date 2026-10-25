@@ -112,7 +112,7 @@ export const HeroSlider: React.FC<HeroSliderProps> = ({
       return slide.image || '/assets/campus/hero_campus_night_flagship.webp';
     }
     if (slide.id === 'campus-tomorrow') {
-      return ucpBuildingBlueprintImg;
+      return slide.image || ucpBuildingBlueprintImg;
     }
     if (slide.id === 'discover-future') {
       return '/assets/facilities/comp-lab-1.jpg';
@@ -224,16 +224,15 @@ export const HeroSlider: React.FC<HeroSliderProps> = ({
               <div className="relative z-20 max-w-7xl mx-auto h-full px-4 sm:px-6 lg:px-8 flex flex-col justify-center pb-28 sm:pb-36 lg:pb-36">
                 <div className="max-w-3xl text-left space-y-3 sm:space-y-4 lg:space-y-5 px-4 sm:px-0 -translate-y-5 sm:-translate-y-8 lg:-translate-y-10">
                   
-                  {/* World-Class Editorial Serif Heading with Clip-Path Reveal */}
+                  {/* World-Class Editorial Serif Heading with Instant Initial Paint and Smooth Carousel Transitions */}
                   <div className="overflow-hidden py-1">
                     <h1 
                       style={{
                         clipPath: isActive 
-                          ? 'polygon(0 0, 100% 0, 100% 100%, 0 100%)' 
+                          ? (index === 0 ? 'none' : 'polygon(0 0, 100% 0, 100% 100%, 0 100%)')
                           : 'polygon(0 100%, 100% 100%, 100% 100%, 0 100%)',
                         transform: isActive ? 'translateY(0)' : 'translateY(36px)',
-                        transition: 'clip-path 1100ms cubic-bezier(0.16, 1, 0.3, 1), transform 1100ms cubic-bezier(0.16, 1, 0.3, 1)',
-                        transitionDelay: isActive ? '200ms' : '0ms',
+                        transition: index === 0 ? 'none' : 'clip-path 800ms cubic-bezier(0.16, 1, 0.3, 1), transform 800ms cubic-bezier(0.16, 1, 0.3, 1)',
                       }}
                       className="font-['Playfair_Display',serif] text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-bold text-white tracking-tight leading-tight drop-shadow-lg text-balance max-w-2xl"
                     >
@@ -241,22 +240,20 @@ export const HeroSlider: React.FC<HeroSliderProps> = ({
                     </h1>
                   </div>
 
-                  {/* Clean, Modern Sans-Serif Body (Inter): Staggered supporting text */}
+                  {/* Clean, Modern Sans-Serif Body (Inter): Instant on first slide, smooth on change */}
                   <p 
-                    className={`text-xs sm:text-base lg:text-lg text-slate-100 font-sans font-normal leading-relaxed max-w-xl drop-shadow transition-all duration-700 ease-out line-clamp-2 sm:line-clamp-none ${
-                      isActive ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
-                    }`}
-                    style={{ transitionDelay: isActive ? '380ms' : '0ms' }}
+                    className={`text-xs sm:text-base lg:text-lg text-slate-100 font-sans font-normal leading-relaxed max-w-xl drop-shadow ${
+                      index === 0 ? 'opacity-100 translate-y-0' : (isActive ? 'opacity-100 translate-y-0 transition-all duration-500 ease-out' : 'opacity-0 translate-y-4')
+                    } line-clamp-2 sm:line-clamp-none`}
                   >
                     {slide.subtitle}
                   </p>
 
-                  {/* Clean Non-Distracting Text with Arrow (Unobtrusive to image view) */}
+                  {/* Clean Non-Distracting Text with Arrow (Instant on first slide) */}
                   <div 
-                    className={`flex flex-wrap items-center gap-4 sm:gap-6 pt-2 sm:pt-3 transition-all duration-600 ease-out ${
-                      isActive ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+                    className={`flex flex-wrap items-center gap-4 sm:gap-6 pt-2 sm:pt-3 ${
+                      index === 0 ? 'opacity-100 translate-y-0' : (isActive ? 'opacity-100 translate-y-0 transition-all duration-500 ease-out' : 'opacity-0 translate-y-4')
                     }`}
-                    style={{ transitionDelay: isActive ? '460ms' : '0ms' }}
                   >
                     {/* Primary Text with Arrow */}
                     <button

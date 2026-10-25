@@ -172,7 +172,7 @@ export const FacultyStickyGallery: React.FC = () => {
             >
               <img src={currentImage.src}
                 alt={currentImage.alt}
-                loading="eager"
+                loading="lazy"
                 decoding="async"
                 className="w-full h-full object-cover object-center block"
                 onError={(e) => {

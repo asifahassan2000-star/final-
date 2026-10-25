@@ -340,7 +340,8 @@ export const WelcomeUcpSection: React.FC<WelcomeUcpSectionProps> = ({
                       src="https://ik.imagekit.io/Muffins/image%20-%202026-10-23T213740.120.png"
                       alt="Mian Amer Mahmood, Chairman UCP"
                       className="w-full h-full object-cover object-[center_top] group-hover:scale-105 transition-transform duration-500"
-                      loading="eager"
+                      loading="lazy"
+                      decoding="async"
                       onError={(e) => {
                         (e.currentTarget as HTMLImageElement).src = 'https://ik.imagekit.io/Muffins/image%20-%202026-10-23T213740.120.png';
                       }}
@@ -460,7 +461,8 @@ export const WelcomeUcpSection: React.FC<WelcomeUcpSectionProps> = ({
                       src="https://ik.imagekit.io/Muffins/image%20-%202026-10-24T140135.933.png"
                       alt="Prof. Sohail Afzal, Executive Director PGC"
                       className="w-full h-full object-cover object-[center_top] group-hover:scale-105 transition-transform duration-500"
-                      loading="eager"
+                      loading="lazy"
+                      decoding="async"
                       onError={(e) => {
                         (e.currentTarget as HTMLImageElement).src = 'https://ik.imagekit.io/Muffins/image%20-%202026-10-24T140135.933.png';
                       }}
@@ -621,7 +623,8 @@ export const WelcomeUcpSection: React.FC<WelcomeUcpSectionProps> = ({
                           src={leader.image}
                           alt={leader.name}
                           className="w-full h-full object-cover object-[center_top] group-hover:scale-105 transition-transform duration-500"
-                          loading="eager"
+                          loading="lazy"
+                          decoding="async"
                           onError={(e) => {
                             if (leader.id === 'mian-amer-mahmood') {
                               (e.currentTarget as HTMLImageElement).src = '/assets/welcome/mian-amer-mahmood.png';

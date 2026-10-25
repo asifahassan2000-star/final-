@@ -19,22 +19,22 @@ import type { InfoModalType } from './components/UcpInfoModal';
 import { Program, NewsEventItem } from './types';
 import { FACULTIES, UCP_CONTACT } from './data/ucpData';
 
-// Lazy-loaded Below-the-Fold Homepage Sections
-const WelcomeUcpSection = React.lazy(() => import('./components/WelcomeUcpSection').then(m => ({ default: m.WelcomeUcpSection })));
-const FacultiesGrid = React.lazy(() => import('./components/FacultiesGrid').then(m => ({ default: m.FacultiesGrid })));
-const WhatWeOfferAccordion = React.lazy(() => import('./components/WhatWeOfferAccordion').then(m => ({ default: m.WhatWeOfferAccordion })));
-const FacultySection = React.lazy(() => import('./components/FacultySection').then(m => ({ default: m.FacultySection })));
-const AboutCampusSection = React.lazy(() => import('./components/AboutCampusSection').then(m => ({ default: m.AboutCampusSection })));
-const StatisticsSection = React.lazy(() => import('./components/StatisticsSection').then(m => ({ default: m.StatisticsSection })));
-const CampusFacilitiesPreview = React.lazy(() => import('./components/CampusFacilitiesPreview').then(m => ({ default: m.CampusFacilitiesPreview })));
-const OurLeadershipSection = React.lazy(() => import('./components/OurLeadershipSection').then(m => ({ default: m.OurLeadershipSection })));
-const LeadershipImpactSection = React.lazy(() => import('./components/LeadershipImpactSection').then(m => ({ default: m.LeadershipImpactSection })));
-const CampusLife = React.lazy(() => import('./components/CampusLife').then(m => ({ default: m.CampusLife })));
-const NewsAndEvents = React.lazy(() => import('./components/NewsAndEvents').then(m => ({ default: m.NewsAndEvents })));
-const AdmissionsExperienceSection = React.lazy(() => import('./components/AdmissionsExperienceSection').then(m => ({ default: m.AdmissionsExperienceSection })));
-const ClosingDramaticSection = React.lazy(() => import('./components/ClosingDramaticSection').then(m => ({ default: m.ClosingDramaticSection })));
-const Footer = React.lazy(() => import('./components/Footer').then(m => ({ default: m.Footer })));
-const FloatingSideRibbons = React.lazy(() => import('./components/FloatingSideRibbons').then(m => ({ default: m.FloatingSideRibbons })));
+// Synchronously imported Homepage Sections for instant, zero-delay initial paint (<0.2s)
+import { WelcomeUcpSection } from './components/WelcomeUcpSection';
+import { FacultiesGrid } from './components/FacultiesGrid';
+import { WhatWeOfferAccordion } from './components/WhatWeOfferAccordion';
+import { FacultySection } from './components/FacultySection';
+import { AboutCampusSection } from './components/AboutCampusSection';
+import { StatisticsSection } from './components/StatisticsSection';
+import { CampusFacilitiesPreview } from './components/CampusFacilitiesPreview';
+import { OurLeadershipSection } from './components/OurLeadershipSection';
+import { LeadershipImpactSection } from './components/LeadershipImpactSection';
+import { CampusLife } from './components/CampusLife';
+import { NewsAndEvents } from './components/NewsAndEvents';
+import { AdmissionsExperienceSection } from './components/AdmissionsExperienceSection';
+import { ClosingDramaticSection } from './components/ClosingDramaticSection';
+import { Footer } from './components/Footer';
+import { FloatingSideRibbons } from './components/FloatingSideRibbons';
 
 // Lazy-loaded Subpage Loaders with Preload Capability for Instant Page Transitions
 const loadFacultyPage = () => import('./components/FacultyPage').then(m => ({ default: m.FacultyPage }));
@@ -125,28 +125,29 @@ export default function App() {
   const [preselectedProgramName, setPreselectedProgramName] = useState<string>('');
   const [mountChat, setMountChat] = useState(false);
 
-  // Idle preloader: Warm all subpage bundles immediately so clicking ANY navigation link loads in 0ms
+  // Idle preloader: Delay warming subpage bundles until after initial render is fully idle
   useEffect(() => {
     (window as any).__preloadSubpages = preloadSubpages;
-    if ('requestIdleCallback' in window) {
-      const id = (window as any).requestIdleCallback(preloadSubpages, { timeout: 1200 });
-      return () => (window as any).cancelIdleCallback(id);
-    } else {
-      const timer = setTimeout(preloadSubpages, 400);
-      return () => clearTimeout(timer);
-    }
+    const timer = setTimeout(() => {
+      if ('requestIdleCallback' in window) {
+        (window as any).requestIdleCallback(preloadSubpages);
+      } else {
+        preloadSubpages();
+      }
+    }, 3000);
+    return () => clearTimeout(timer);
   }, []);
 
   // Defer chatbot mount to keep critical first paint completely free
   useEffect(() => {
-    const timer = setTimeout(() => setMountChat(true), 1500);
+    const timer = setTimeout(() => setMountChat(true), 2500);
     return () => clearTimeout(timer);
   }, []);
 
   // Lenis ref to programmatically control smooth scrolling during route transitions
   const lenisRef = useRef<any>(null);
 
-  // 1. Lenis Smooth Scroll Initialization (Dynamic import, desktop mouse wheel only)
+  // 1. Lenis Smooth Scroll Initialization (Deferred after first paint, desktop mouse wheel only)
   useEffect(() => {
     const isTouch = typeof window !== 'undefined' && ('ontouchstart' in window || navigator.maxTouchPoints > 0 || window.innerWidth < 1024);
     if (isTouch) {
@@ -156,39 +157,42 @@ export default function App() {
     let isMounted = true;
     let rafId: number;
 
-    Promise.all([
-      import('lenis'),
-      import('gsap'),
-      import('gsap/ScrollTrigger')
-    ]).then(([{ default: Lenis }, { default: gsap }, { ScrollTrigger }]) => {
-      if (!isMounted) return;
-      gsap.registerPlugin(ScrollTrigger);
+    const timer = setTimeout(() => {
+      Promise.all([
+        import('lenis'),
+        import('gsap'),
+        import('gsap/ScrollTrigger')
+      ]).then(([{ default: Lenis }, { default: gsap }, { ScrollTrigger }]) => {
+        if (!isMounted) return;
+        gsap.registerPlugin(ScrollTrigger);
 
-      const lenis = new Lenis({
-        duration: 1.1,
-        easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-        orientation: 'vertical',
-        gestureOrientation: 'vertical',
-        smoothWheel: true,
-      });
+        const lenis = new Lenis({
+          duration: 1.1,
+          easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+          orientation: 'vertical',
+          gestureOrientation: 'vertical',
+          smoothWheel: true,
+        });
 
-      lenisRef.current = lenis;
-      (window as any).__appLenis = lenis;
+        lenisRef.current = lenis;
+        (window as any).__appLenis = lenis;
 
-      lenis.on('scroll', () => {
-        ScrollTrigger.update();
-      });
+        lenis.on('scroll', () => {
+          ScrollTrigger.update();
+        });
 
-      function raf(time: number) {
-        lenis.raf(time);
+        function raf(time: number) {
+          lenis.raf(time);
+          rafId = requestAnimationFrame(raf);
+        }
+
         rafId = requestAnimationFrame(raf);
-      }
-
-      rafId = requestAnimationFrame(raf);
-    });
+      });
+    }, 800);
 
     return () => {
       isMounted = false;
+      clearTimeout(timer);
       if (rafId) cancelAnimationFrame(rafId);
       if (lenisRef.current) {
         lenisRef.current.destroy();
@@ -509,101 +513,9 @@ export default function App() {
       />
 
       <main className="w-full max-w-full overflow-x-hidden">
-        <Suspense fallback={
-          <div className="min-h-[70vh] w-full bg-[#FAF8F5] pt-24 pb-16 px-4 max-w-7xl mx-auto" aria-busy="true">
-            <div className="h-0.5 bg-gradient-to-r from-transparent via-[#C8102E] to-transparent mb-8 animate-pulse" />
-            <div className="max-w-2xl space-y-4 animate-pulse">
-              <div className="h-4 w-32 bg-slate-200 rounded" />
-              <div className="h-9 w-2/3 bg-slate-300 rounded" />
-              <div className="h-4 w-full bg-slate-200 rounded" />
-            </div>
-          </div>
-        }>
-          {currentPage === 'programmes' ? (
-            /* Official UCP Bahawalpur Academic Programmes Experience */
-            <AcademicProgrammesPage 
-              onBackToHome={handleBackToHome}
-              onOpenApply={handleOpenApply}
-              onOpenFee={handleOpenFee}
-              onOpenCalendar={handleOpenCalendarPage}
-              initialSelectedId={selectedProgrammeId}
-              initialCategory={selectedProgrammeCategory}
-            />
-        ) : currentPage === 'faculty' ? (
-          /* Separate Dedicated Faculty Page with 20 Slots & Department Views */
-          <FacultyPage 
-            onBackToHome={handleBackToHome}
-            initialCategory={facultyCategory}
-          />
-        ) : currentPage === 'legacy' ? (
-          /* Dedicated Official Our Legacy Page */
-          <OurLegacyPage
-            onBackToHome={handleBackToHome}
-            onOpenApply={handleOpenApply}
-            onOpenProgrammesPage={handleOpenProgrammesPage}
-            onOpenFee={handleOpenFee}
-          />
-        ) : currentPage === 'campus-life' ? (
-          /* Dedicated Official Premium Campus Life Page — “Life Beyond the Classroom” */
-          <CampusLifePage
-            onBackToHome={handleBackToHome}
-            onOpenApply={() => handleOpenApply()}
-            onOpenProgrammesPage={handleOpenProgrammesPage}
-            onOpenFee={handleOpenFee}
-          />
-        ) : currentPage === 'scholarships' ? (
-          /* Dedicated Official Scholarships & Concessions Page */
-          <ScholarshipsPage
-            onBackToHome={handleBackToHome}
-            onOpenApply={() => handleOpenApply()}
-            onOpenProgrammesPage={handleOpenProgrammesPage}
-            onOpenFee={handleOpenFee}
-            initialSectionId={scholarshipSectionId || undefined}
-          />
-        ) : currentPage === 'fee-structure' ? (
-          /* Dedicated Official Fee Structure & Tuition Schedules Page */
-          <FeeStructurePage
-            onBackToHome={handleBackToHome}
-            onOpenApply={(progName?: string) => handleOpenApply(progName)}
-            onOpenProgrammesPage={handleOpenProgrammesPage}
-            onOpenScholarshipsPage={handleOpenScholarshipsPage}
-          />
-        ) : currentPage === 'cnn-academy' ? (
-          /* Dedicated Official CNN Academy Strategic Collaboration & Guidance Page */
-          <CnnAcademyPage
-            onBackToHome={handleBackToHome}
-            onOpenPortal={handleOpenPortal}
-            onOpenProgrammesPage={handleOpenProgrammesPage}
-          />
-        ) : currentPage === 'calendar' ? (
-          /* Dedicated Official Academic Calendar Page */
-          <AcademicCalendarSection
-            isStandalone={true}
-            onBackToHome={handleBackToHome}
-          />
-        ) : currentPage === 'campus-facilities' ? (
-          /* Dedicated Official Campus Facilities Page — Learning Environment, Central Library & Labs */
-          <CampusFacilitiesPage 
-            onBackToHome={handleBackToHome}
-            onOpenApply={() => handleOpenApply()}
-            onOpenCampusLifePage={handleOpenCampusLifePage}
-            onOpenFacultyPage={() => handleOpenFacultyPage('all')}
-          />
-        ) : currentPage === 'about-us' ? (
-          /* Dedicated Official About Us Page — Success Story, Leadership, Vision & Values */
-          <AboutUsPage
-            onBackToHome={handleBackToHome}
-            onOpenApply={() => handleOpenApply()}
-            onOpenProgrammesPage={handleOpenProgrammesPage}
-            onOpenFacilitiesPage={handleOpenCampusFacilitiesPage}
-            onOpenCampusLifePage={handleOpenCampusLifePage}
-            onOpenLegacyPage={handleOpenLegacyPage}
-            onOpenFacultyPage={() => handleOpenFacultyPage('all')}
-          />
-        ) : (
-          /* Main Homepage Sections following World-Class SEO and Institutional Information Architecture */
+        {currentPage === 'home' ? (
           <>
-            {/* 1. HERO — Flagship Sunset Campus Photograph (IMAGE 13) */}
+            {/* 1. HERO — Renders instantly on first paint (<0.2s) without waiting for any lazy chunk */}
             <HeroSlider
               onOpenApply={() => handleOpenApply()}
               onOpenFee={handleOpenFee}
@@ -615,147 +527,228 @@ export default function App() {
               onOpenPortal={handleOpenPortal}
             />
 
+            {/* Below-the-fold content rendered synchronously for instant paint */}
             {/* WELCOME UCP — Executive Welcome Section with GSAP Sticky Stacking Cards & Official Blue Background */}
-            <div className="w-full">
-              <WelcomeUcpSection 
-                onOpenLegacyPage={handleOpenLegacyPage}
-                onOpenProgrammesPage={handleOpenProgrammesPage}
-                onOpenAboutUsPage={handleOpenAboutUsPage}
-                onScrollTo={handleScrollTo}
-              />
-            </div>
+              <div className="w-full">
+                <WelcomeUcpSection 
+                  onOpenLegacyPage={handleOpenLegacyPage}
+                  onOpenProgrammesPage={handleOpenProgrammesPage}
+                  onOpenAboutUsPage={handleOpenAboutUsPage}
+                  onScrollTo={handleScrollTo}
+                />
+              </div>
 
-            {/* 3. INSTITUTIONAL LEADERSHIP — Vision, Governance & Executive Guidance */}
-            <div className="w-full">
-              <OurLeadershipSection 
-                onOpenApply={() => handleOpenApply()}
-                onScrollTo={handleScrollTo}
-              />
-            </div>
+              {/* 3. INSTITUTIONAL LEADERSHIP — Vision, Governance & Executive Guidance */}
+              <div className="w-full">
+                <OurLeadershipSection 
+                  onOpenApply={() => handleOpenApply()}
+                  onScrollTo={handleScrollTo}
+                />
+              </div>
 
-            {/* INSTITUTIONAL GOVERNANCE, UN SDGs & FACULTY LEADERSHIP */}
-            <div className="w-full">
-              <LeadershipImpactSection 
-                onScrollTo={handleScrollTo}
-              />
-            </div>
+              {/* INSTITUTIONAL GOVERNANCE, UN SDGs & FACULTY LEADERSHIP */}
+              <div className="w-full">
+                <LeadershipImpactSection 
+                  onScrollTo={handleScrollTo}
+                />
+              </div>
 
-            {/* 4. ACADEMIC FACULTIES & DISCIPLINES — Core Educational Search Intent */}
-            <div className="w-full">
-              <FacultiesGrid
-                onSelectFaculty={handleSelectFaculty}
-                onExploreFacultyPrograms={handleOpenProgrammesFromFaculty}
-                onOpenProgrammesPage={() => handleOpenProgrammesPage()}
+              {/* 4. ACADEMIC FACULTIES & DISCIPLINES — Core Educational Search Intent */}
+              <div className="w-full">
+                <FacultiesGrid
+                  onSelectFaculty={handleSelectFaculty}
+                  onExploreFacultyPrograms={handleOpenProgrammesFromFaculty}
+                  onOpenProgrammesPage={() => handleOpenProgrammesPage()}
+                  onOpenCalendar={handleOpenCalendarPage}
+                />
+              </div>
+
+              {/* 5. WHAT WE OFFER FOR YOU — Expanding Interactive Academic Offerings */}
+              <div className="w-full">
+                <WhatWeOfferAccordion
+                  onOpenApply={() => handleOpenApply()}
+                  onOpenProgrammesPage={() => handleOpenProgrammesPage()}
+                  onOpenCampusLifePage={handleOpenCampusLifePage}
+                  onOpenScholarshipsPage={handleOpenScholarshipsPage}
+                  onOpenLegacyPage={handleOpenLegacyPage}
+                  onOpenFacultyPage={() => handleOpenFacultyPage('all')}
+                  onOpenFacilitiesPage={handleOpenCampusFacilitiesPage}
+                  onScrollTo={handleScrollTo}
+                />
+              </div>
+
+              {/* 6. DISTINGUISHED FACULTY SHOWCASE — Faculty Profiles, Mentors & PhD Researchers */}
+              <div className="w-full">
+                <FacultySection 
+                  onViewAllFaculty={handleOpenFacultyPage}
+                />
+              </div>
+
+              {/* 7. OUR CAMPUS — Architectural Presence & Scholarly Roots */}
+              <div className="w-full">
+                <AboutCampusSection
+                  onOpenApply={() => handleOpenApply()}
+                  onOpenLegacyPage={handleOpenLegacyPage}
+                  onScrollTo={handleScrollTo}
+                />
+              </div>
+
+              {/* 8. CAMPUS FACILITIES PREVIEW — Purpose-Built Laboratories & Learning Infrastructure */}
+              <div className="w-full">
+                <CampusFacilitiesPreview 
+                  onOpenFacilitiesPage={handleOpenCampusFacilitiesPage}
+                  onOpenFacultyPage={() => handleOpenFacultyPage('all')}
+                  onScrollTo={handleScrollTo}
+                />
+              </div>
+
+              {/* 9. CAMPUS LIFE — Student Life, Courtyard Gathering & Campus Culture */}
+              <div className="w-full">
+                <CampusLife 
+                  onOpenCampusLifePage={handleOpenCampusLifePage}
+                />
+              </div>
+
+              {/* 11. NEWS & EVENTS — Timely Updates, Academic Symposia & Campus Happenings */}
+              <div className="w-full">
+                <NewsAndEvents
+                  onSelectArticle={(article) => setSelectedArticle(article)}
+                />
+              </div>
+
+              {/* 12. ADMISSIONS EXPERIENCE — Red Carpet Welcome & Campus Visit Guidance */}
+              <div className="w-full">
+                <AdmissionsExperienceSection
+                  onOpenApply={() => handleOpenApply()}
+                  onOpenFee={handleOpenFee}
+                />
+              </div>
+
+              {/* 13. CLOSING DRAMATIC FINALE — Strategic Perspective & Application Anchors */}
+              <div className="w-full">
+                <ClosingDramaticSection
+                  onOpenApply={() => handleOpenApply()}
+                  onOpenProgrammesPage={() => handleOpenProgrammesPage()}
+                  onScrollTo={handleScrollTo}
+                />
+              </div>
+
+              {/* 14. UCP BAHAWALPUR MOVING LINE (Ticker Tape at end of website before footer) */}
+              <div className="w-full">
+                <StatisticsSection />
+              </div>
+          </>
+        ) : (
+          <Suspense fallback={null}>
+            {currentPage === 'programmes' ? (
+              /* Official UCP Bahawalpur Academic Programmes Experience */
+              <AcademicProgrammesPage 
+                onBackToHome={handleBackToHome}
+                onOpenApply={handleOpenApply}
+                onOpenFee={handleOpenFee}
                 onOpenCalendar={handleOpenCalendarPage}
+                initialSelectedId={selectedProgrammeId}
+                initialCategory={selectedProgrammeCategory}
               />
-            </div>
-
-            {/* 5. WHAT WE OFFER FOR YOU — Expanding Interactive Academic Offerings */}
-            <div className="w-full">
-              <WhatWeOfferAccordion
-                onOpenApply={() => handleOpenApply()}
-                onOpenProgrammesPage={() => handleOpenProgrammesPage()}
-                onOpenCampusLifePage={handleOpenCampusLifePage}
-                onOpenScholarshipsPage={handleOpenScholarshipsPage}
-                onOpenLegacyPage={handleOpenLegacyPage}
-                onOpenFacultyPage={() => handleOpenFacultyPage('all')}
-                onOpenFacilitiesPage={handleOpenCampusFacilitiesPage}
-                onScrollTo={handleScrollTo}
+            ) : currentPage === 'faculty' ? (
+              /* Separate Dedicated Faculty Page with 20 Slots & Department Views */
+              <FacultyPage 
+                onBackToHome={handleBackToHome}
+                initialCategory={facultyCategory}
               />
-            </div>
-
-            {/* 6. DISTINGUISHED FACULTY SHOWCASE — Faculty Profiles, Mentors & PhD Researchers */}
-            <div className="w-full">
-              <FacultySection 
-                onViewAllFaculty={handleOpenFacultyPage}
-              />
-            </div>
-
-            {/* 7. OUR CAMPUS — Architectural Presence & Scholarly Roots */}
-            <div className="w-full">
-              <AboutCampusSection
-                onOpenApply={() => handleOpenApply()}
-                onOpenLegacyPage={handleOpenLegacyPage}
-                onScrollTo={handleScrollTo}
-              />
-            </div>
-
-            {/* 8. CAMPUS FACILITIES PREVIEW — Purpose-Built Laboratories & Learning Infrastructure */}
-            <div className="w-full">
-              <CampusFacilitiesPreview 
-                onOpenFacilitiesPage={handleOpenCampusFacilitiesPage}
-                onOpenFacultyPage={() => handleOpenFacultyPage('all')}
-                onScrollTo={handleScrollTo}
-              />
-            </div>
-
-            {/* 9. CAMPUS LIFE — Student Life, Courtyard Gathering & Campus Culture */}
-            <div className="w-full">
-              <CampusLife 
-                onOpenCampusLifePage={handleOpenCampusLifePage}
-              />
-            </div>
-
-
-
-            {/* 11. NEWS & EVENTS — Timely Updates, Academic Symposia & Campus Happenings */}
-            <div className="w-full">
-              <NewsAndEvents
-                onSelectArticle={(article) => setSelectedArticle(article)}
-              />
-            </div>
-
-            {/* 12. ADMISSIONS EXPERIENCE — Red Carpet Welcome & Campus Visit Guidance */}
-            <div className="w-full">
-              <AdmissionsExperienceSection
-                onOpenApply={() => handleOpenApply()}
+            ) : currentPage === 'legacy' ? (
+              /* Dedicated Official Our Legacy Page */
+              <OurLegacyPage
+                onBackToHome={handleBackToHome}
+                onOpenApply={handleOpenApply}
+                onOpenProgrammesPage={handleOpenProgrammesPage}
                 onOpenFee={handleOpenFee}
               />
-            </div>
-
-            {/* 13. CLOSING DRAMATIC FINALE — Strategic Perspective & Application Anchors */}
-            <div className="w-full">
-              <ClosingDramaticSection
+            ) : currentPage === 'campus-life' ? (
+              /* Dedicated Official Premium Campus Life Page — “Life Beyond the Classroom” */
+              <CampusLifePage
+                onBackToHome={handleBackToHome}
                 onOpenApply={() => handleOpenApply()}
-                onOpenProgrammesPage={() => handleOpenProgrammesPage()}
-                onScrollTo={handleScrollTo}
+                onOpenProgrammesPage={handleOpenProgrammesPage}
+                onOpenFee={handleOpenFee}
               />
-            </div>
-
-            {/* 14. UCP BAHAWALPUR MOVING LINE (Ticker Tape at end of website before footer) */}
-            <div className="w-full">
-              <StatisticsSection />
-            </div>
-          </>
+            ) : currentPage === 'scholarships' ? (
+              /* Dedicated Official Scholarships & Concessions Page */
+              <ScholarshipsPage
+                onBackToHome={handleBackToHome}
+                onOpenApply={() => handleOpenApply()}
+                onOpenProgrammesPage={handleOpenProgrammesPage}
+                onOpenFee={handleOpenFee}
+                initialSectionId={scholarshipSectionId || undefined}
+              />
+            ) : currentPage === 'fee-structure' ? (
+              /* Dedicated Official Fee Structure & Tuition Schedules Page */
+              <FeeStructurePage
+                onBackToHome={handleBackToHome}
+                onOpenApply={(progName?: string) => handleOpenApply(progName)}
+                onOpenProgrammesPage={handleOpenProgrammesPage}
+                onOpenScholarshipsPage={handleOpenScholarshipsPage}
+              />
+            ) : currentPage === 'cnn-academy' ? (
+              /* Dedicated Official CNN Academy Strategic Collaboration & Guidance Page */
+              <CnnAcademyPage
+                onBackToHome={handleBackToHome}
+                onOpenPortal={handleOpenPortal}
+                onOpenProgrammesPage={handleOpenProgrammesPage}
+              />
+            ) : currentPage === 'calendar' ? (
+              /* Dedicated Official Academic Calendar Page */
+              <AcademicCalendarSection
+                isStandalone={true}
+                onBackToHome={handleBackToHome}
+              />
+            ) : currentPage === 'campus-facilities' ? (
+              /* Dedicated Official Campus Facilities Page — Learning Environment, Central Library & Labs */
+              <CampusFacilitiesPage 
+                onBackToHome={handleBackToHome}
+                onOpenApply={() => handleOpenApply()}
+                onOpenCampusLifePage={handleOpenCampusLifePage}
+                onOpenFacultyPage={() => handleOpenFacultyPage('all')}
+              />
+            ) : currentPage === 'about-us' ? (
+              /* Dedicated Official About Us Page — Success Story, Leadership, Vision & Values */
+              <AboutUsPage
+                onBackToHome={handleBackToHome}
+                onOpenApply={() => handleOpenApply()}
+                onOpenProgrammesPage={handleOpenProgrammesPage}
+                onOpenFacilitiesPage={handleOpenCampusFacilitiesPage}
+                onOpenCampusLifePage={handleOpenCampusLifePage}
+                onOpenLegacyPage={handleOpenLegacyPage}
+                onOpenFacultyPage={() => handleOpenFacultyPage('all')}
+              />
+            ) : null}
+          </Suspense>
         )}
-        </Suspense>
       </main>
 
       {/* 10. Official Comprehensive Footer & Floating Ribbons */}
-      <Suspense fallback={null}>
-        <Footer
-          onOpenApply={() => handleOpenApply()}
-          onOpenFee={handleOpenFee}
-          onOpenPortal={handleOpenPortal}
-          onOpenInfo={handleOpenInfo}
-          onScrollTo={handleScrollTo}
-          onSelectFaculty={handleSelectFaculty}
-          onOpenLegacyPage={handleOpenLegacyPage}
-          onOpenAboutUsPage={handleOpenAboutUsPage}
-        />
+      <Footer
+        onOpenApply={() => handleOpenApply()}
+        onOpenFee={handleOpenFee}
+        onOpenPortal={handleOpenPortal}
+        onOpenInfo={handleOpenInfo}
+        onScrollTo={handleScrollTo}
+        onSelectFaculty={handleSelectFaculty}
+        onOpenLegacyPage={handleOpenLegacyPage}
+        onOpenAboutUsPage={handleOpenAboutUsPage}
+      />
 
-        {/* Right Edge Floating Ribbons & WhatsApp Button */}
-        <FloatingSideRibbons
-          onOpenApply={() => handleOpenApply()}
-          onOpenInfo={handleOpenInfo}
-          onOpenLegacyPage={handleOpenLegacyPage}
-          onOpenCampusLifePage={handleOpenCampusLifePage}
-          onOpenProgrammesPage={() => handleOpenProgrammesPage()}
-          onOpenScholarshipsPage={handleOpenScholarshipsPage}
-          onOpenFeeStructurePage={handleOpenFeeStructurePage}
-          onOpenPortal={handleOpenPortal}
-        />
-      </Suspense>
+      {/* Right Edge Floating Ribbons & WhatsApp Button */}
+      <FloatingSideRibbons
+        onOpenApply={() => handleOpenApply()}
+        onOpenInfo={handleOpenInfo}
+        onOpenLegacyPage={handleOpenLegacyPage}
+        onOpenCampusLifePage={handleOpenCampusLifePage}
+        onOpenProgrammesPage={() => handleOpenProgrammesPage()}
+        onOpenScholarshipsPage={handleOpenScholarshipsPage}
+        onOpenFeeStructurePage={handleOpenFeeStructurePage}
+        onOpenPortal={handleOpenPortal}
+      />
 
       {/* Official 24/7 UCP Bot (Instant Knowledge + Gemini AI) & Modals */}
       <Suspense fallback={null}>

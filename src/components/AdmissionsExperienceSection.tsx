@@ -78,7 +78,7 @@ export const AdmissionsExperienceSection: React.FC<AdmissionsExperienceSectionPr
               <div className="relative aspect-[16/10] sm:aspect-[16/9] w-full overflow-hidden">
                 <img decoding="async" src="/assets/campus/4_admissions_entrance_red_carpet.jpg"
                   alt="Begin Your Journey - Welcoming Red Carpet Entrance to UCP Bahawalpur Campus"
-                  loading="eager"
+                  loading="lazy"
                   className="w-full h-full object-cover object-center scale-100 group-hover:scale-105 transition-transform duration-700 ease-out"
                 />
               </div>
