@@ -154,7 +154,7 @@ export const AboutCampusSection: React.FC<AboutCampusSectionProps> = ({
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Header with Framer Motion Mask Reveal */}
-        <div className="max-w-3xl mb-12 sm:mb-16">
+        <div className="max-w-3xl mb-0">
           <div className="flex items-center gap-3 mb-3">
             <span className="text-xs font-bold uppercase tracking-[0.22em] text-[#a30f16] dark:text-amber-400">
               OUR CAMPUS · BAHAWALPUR
@@ -181,57 +181,97 @@ export const AboutCampusSection: React.FC<AboutCampusSectionProps> = ({
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: '-20px' }}
             transition={{ duration: 0.75, delay: 0.1, ease: easeCurve }}
-            className="mt-4 text-base sm:text-lg text-slate-600 dark:text-slate-300 leading-relaxed font-sans max-w-2xl"
+            className="mt-4 text-base sm:text-lg text-slate-600 dark:text-slate-300 leading-relaxed font-sans max-w-3xl"
           >
-            Rooted in the historic scholarly legacy of Bahawalpur and developed with purpose-built modern architecture, UCP Bahawalpur provides world-class educational spaces and interactive classrooms designed to inspire learning.
+            UCP Constituent Colleges are academic units owned, maintained, and administered directly by the University of Central Punjab, Lahore. Our colleges across Punjab provide students the opportunity to earn HEC-recognized Bachelor's and Associate Degree Programs (ADP) with an official UCP Lahore degree.
           </motion.p>
         </div>
 
         {/* =========================================================================
             WHY JOIN CONSTITUENT COLLEGE UCP CAMPUS BAHAWALPUR?
-            Minimal NUST Official Academic Portal Design
+            Minimal & Professional Academic Layout
             ========================================================================= */}
-        <div className="w-full max-w-[750px] mx-auto py-[80px] px-4 sm:px-[40px] text-left">
-          
-          {/* 1. MAIN HEADING (Top) */}
-          <div className="mb-[40px]">
+        <div 
+          className="w-full my-[60px] py-[60px] px-4 sm:px-10 lg:px-[80px]"
+        >
+          {/* 1. MAIN HEADING (Center aligned, 36px, bold 800, red color, scroll animated) */}
+          <motion.div 
+            initial={{ opacity: 0, y: 35 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: '-40px' }}
+            transition={{ duration: 0.85, ease: [0.16, 1, 0.3, 1] }}
+            className="text-center mb-[50px]"
+          >
             <h3 
-              className="text-[24px] sm:text-[28px] font-bold text-[#111111] dark:text-white uppercase tracking-[0.5px] leading-tight text-left"
+              className="text-[26px] sm:text-[36px] font-[800] text-[#b01e23] dark:text-[#ef4444] uppercase tracking-[0.5px] leading-tight text-center max-w-4xl mx-auto"
               style={{ fontFamily: "'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" }}
             >
               WHY JOIN CONSTITUENT COLLEGE UCP CAMPUS BAHAWALPUR?
             </h3>
-            {/* Small red line below heading: 50px width, 3px height, color #b01e23 */}
-            <div 
-              className="w-[50px] h-[3px] bg-[#b01e23] mt-3" 
+            {/* Small red line: 70px width, 4px height, centered */}
+            <motion.div 
+              initial={{ scaleX: 0 }}
+              whileInView={{ scaleX: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+              className="w-[70px] h-[4px] bg-[#b01e23] dark:bg-[#ef4444] mx-auto mt-4 rounded-full origin-center" 
               aria-hidden="true" 
             />
-          </div>
+          </motion.div>
 
-          {/* 2. ITEMS LIST (9 items in same order, NUST style) */}
-          <div className="space-y-[10px]">
-            {WHY_JOIN_ITEMS.map((item, index) => {
-              const Icon = item.icon;
-              return (
-                <div
-                  key={index}
-                  className="group flex items-center h-[68px] px-[22px] py-[20px] bg-white dark:bg-[#0c1626] border-l-[4px] border-transparent hover:border-[#b01e23] hover:bg-[#f8f9ff] dark:hover:bg-slate-800/50 hover:translate-x-[6px] transition-all duration-300 ease-out cursor-default select-none shadow-none"
-                >
-                  {/* Left: 44px circular icon background #eef1f8 */}
-                  <div className="w-[44px] h-[44px] rounded-full bg-[#eef1f8] dark:bg-slate-800 flex items-center justify-center shrink-0 group-hover:bg-[#b01e23]/10 transition-colors duration-300">
-                    <Icon size={20} className="text-[#092242] dark:text-slate-200 group-hover:text-[#b01e23] transition-colors duration-300" />
-                  </div>
-
-                  {/* Font size 16px, font weight 600, uppercase, color #111 */}
-                  <span 
-                    className="ml-[18px] text-[15px] sm:text-[16px] font-semibold uppercase text-[#111111] dark:text-white tracking-wide truncate group-hover:text-[#b01e23] dark:group-hover:text-red-400 transition-colors duration-300"
-                    style={{ fontFamily: "'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" }}
+          {/* 2. GRID: 2 columns (5 left, 4 right) center alignment, max-width 1100px, gap 18px */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-[18px] max-w-[1100px] mx-auto w-full">
+            {/* Left Column (5 items) */}
+            <div className="flex flex-col gap-[18px]">
+              {WHY_JOIN_ITEMS.slice(0, 5).map((item, index) => {
+                const Icon = item.icon;
+                return (
+                  <div
+                    key={`left-${index}`}
+                    className="group card-shine-sweep flex items-center min-h-[78px] px-[28px] py-[24px] bg-white dark:bg-[#0c1626] border border-[#f0f0f0] dark:border-white/10 border-l-[4px] border-l-transparent hover:border-l-[#b01e23] transition-all duration-300 cursor-pointer select-none rounded-lg shadow-xs"
                   >
-                    {item.text}
-                  </span>
-                </div>
-              );
-            })}
+                    {/* Left: 42px circular icon */}
+                    <div className="w-[42px] h-[42px] rounded-full bg-[#f4f6fb] dark:bg-slate-800 flex items-center justify-center shrink-0 transition-transform duration-300 group-hover:scale-110 group-hover:bg-[#b01e23]/10">
+                      <Icon size={19} className="text-[#092242] dark:text-slate-200 transition-colors duration-200 group-hover:text-[#b01e23]" />
+                    </div>
+
+                    {/* Font size 16px bold uppercase */}
+                    <span 
+                      className="ml-[20px] text-[15px] sm:text-[16px] font-bold uppercase text-[#092242] dark:text-white tracking-wide truncate transition-colors duration-200"
+                      style={{ fontFamily: "'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" }}
+                    >
+                      {item.text}
+                    </span>
+                  </div>
+                );
+              })}
+            </div>
+
+            {/* Right Column (4 items) */}
+            <div className="flex flex-col gap-[18px]">
+              {WHY_JOIN_ITEMS.slice(5).map((item, index) => {
+                const Icon = item.icon;
+                return (
+                  <div
+                    key={`right-${index}`}
+                    className="group card-shine-sweep flex items-center min-h-[78px] px-[28px] py-[24px] bg-white dark:bg-[#0c1626] border border-[#f0f0f0] dark:border-white/10 border-l-[4px] border-l-transparent hover:border-l-[#b01e23] transition-all duration-300 cursor-pointer select-none rounded-lg shadow-xs"
+                  >
+                    {/* Left: 42px circular icon */}
+                    <div className="w-[42px] h-[42px] rounded-full bg-[#f4f6fb] dark:bg-slate-800 flex items-center justify-center shrink-0 transition-transform duration-300 group-hover:scale-110 group-hover:bg-[#b01e23]/10">
+                      <Icon size={19} className="text-[#092242] dark:text-slate-200 transition-colors duration-200 group-hover:text-[#b01e23]" />
+                    </div>
+
+                    {/* Font size 16px bold uppercase */}
+                    <span 
+                      className="ml-[20px] text-[15px] sm:text-[16px] font-bold uppercase text-[#092242] dark:text-white tracking-wide truncate transition-colors duration-200"
+                      style={{ fontFamily: "'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" }}
+                    >
+                      {item.text}
+                    </span>
+                  </div>
+                );
+              })}
+            </div>
           </div>
 
         </div>
@@ -263,7 +303,7 @@ export const AboutCampusSection: React.FC<AboutCampusSectionProps> = ({
             </div>
           </div>
 
-          {/* Both Images Side-by-Side (Clean & Professional, No Overlay Text, No Full View Lightbox) */}
+          {/* Both Images Side-by-Side (Clean & Professional, No Overlay Text) */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 mb-6 sm:mb-8">
             {orientationPhotos.map((item) => (
               <div
@@ -345,7 +385,7 @@ export const AboutCampusSection: React.FC<AboutCampusSectionProps> = ({
               >
                 <div>
                   {/* Photo Frame */}
-                  <div className="relative w-full aspect-[16/10] rounded-xl overflow-hidden bg-slate-100 dark:bg-slate-900 mb-3 shadow-xs border-0">
+                  <div className="relative w-full aspect-[16/10] rounded-xl overflow-hidden bg-slate-100 dark:bg-slate-900 mb-3 shadow-xs border border-slate-200/80 dark:border-white/10">
                     <img src={item.src}
                       alt={item.title}
                       loading="lazy"

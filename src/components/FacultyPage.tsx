@@ -290,7 +290,7 @@ export const FacultyPage: React.FC<FacultyPageProps> = ({
                           alt={admin.name}
                           loading="lazy"
                           decoding="async"
-                          className="w-full h-full object-cover object-center transition-transform duration-500 ease-out group-hover:scale-105"
+                          className={`w-full h-full object-cover ${admin.objectPosition || 'object-top'} ${admin.imageTransform || ''} transition-transform duration-500 ease-out ${admin.imageTransform ? 'group-hover:scale-[1.19]' : 'group-hover:scale-105'}`}
                           onError={(e) => {
                             (e.target as HTMLImageElement).src = admin.fallbackPhotoUrl;
                           }}

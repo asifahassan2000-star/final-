@@ -6,58 +6,79 @@
 
   <!-- Core Institutional Pages (UCP Bahawalpur Campus) -->
   <url>
+    <loc>https://ucp.edu.pk/</loc>
+    <lastmod>2026-10-25T08:00:00+00:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.00</priority>
+  </url>
+
+  <url>
     <loc>https://ucp-bahawalpur-campus.vercel.app/</loc>
-    <lastmod>2026-10-24T12:00:00+00:00</lastmod>
+    <lastmod>2026-10-25T08:00:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.00</priority>
   </url>
 
   <url>
     <loc>https://ucp-bahawalpur-campus.vercel.app/?page=about-us</loc>
-    <lastmod>2026-10-24T12:00:00+00:00</lastmod>
+    <lastmod>2026-10-25T08:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.95</priority>
   </url>
 
   <url>
     <loc>https://ucp-bahawalpur-campus.vercel.app/?page=programmes</loc>
-    <lastmod>2026-10-24T12:00:00+00:00</lastmod>
+    <lastmod>2026-10-25T08:00:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.95</priority>
   </url>
 
   <url>
     <loc>https://ucp-bahawalpur-campus.vercel.app/?page=faculty</loc>
-    <lastmod>2026-10-24T12:00:00+00:00</lastmod>
+    <lastmod>2026-10-25T08:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.90</priority>
   </url>
 
   <url>
     <loc>https://ucp-bahawalpur-campus.vercel.app/?page=campus-facilities</loc>
-    <lastmod>2026-10-24T12:00:00+00:00</lastmod>
+    <lastmod>2026-10-25T08:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.90</priority>
   </url>
 
   <url>
     <loc>https://ucp-bahawalpur-campus.vercel.app/?page=fee-structure</loc>
-    <lastmod>2026-10-24T12:00:00+00:00</lastmod>
+    <lastmod>2026-10-25T08:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.88</priority>
+    <priority>0.90</priority>
   </url>
 
   <url>
     <loc>https://ucp-bahawalpur-campus.vercel.app/?page=scholarships</loc>
-    <lastmod>2026-10-24T12:00:00+00:00</lastmod>
+    <lastmod>2026-10-25T08:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.90</priority>
+  </url>
+
+  <url>
+    <loc>https://ucp-bahawalpur-campus.vercel.app/?page=campus-life</loc>
+    <lastmod>2026-10-25T08:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.88</priority>
   </url>
 
   <url>
-    <loc>https://ucp-bahawalpur-campus.vercel.app/?page=campus-life</loc>
-    <lastmod>2026-10-24T12:00:00+00:00</lastmod>
-    <changefreq>weekly</changefreq>
+    <loc>https://ucp-bahawalpur-campus.vercel.app/?page=our-legacy</loc>
+    <lastmod>2026-10-25T08:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+  <url>
+    <loc>https://ucp-bahawalpur-campus.vercel.app/?page=academic-calendar</loc>
+    <lastmod>2026-10-25T08:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.85</priority>
   </url>
 

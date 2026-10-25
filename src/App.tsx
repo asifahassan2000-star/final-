@@ -12,9 +12,6 @@ import { HeroSlider } from './components/HeroSlider';
 import { ThemeToggle } from './components/ThemeToggle';
 import { ClickGlowManager } from './components/ClickGlowManager';
 import { ScrollRevealManager } from './components/ScrollReveal';
-import { SecretEasterEgg } from './components/SecretEasterEgg';
-import { useSeoMetadata } from './hooks/useSeoMetadata';
-import { SeoHead } from './components/SeoHead';
 import type { InfoModalType } from './components/UcpInfoModal';
 import { Program, NewsEventItem } from './types';
 import { FACULTIES, UCP_CONTACT } from './data/ucpData';
@@ -71,20 +68,14 @@ export const preloadSubpages = () => {
   loadAboutUsPage();
 };
 
-const AsifaSecretPage = React.lazy(() => import('./components/AsifaSecretPage').then(m => ({ default: m.AsifaSecretPage })));
-
-export type PageId = 'home' | 'faculty' | 'programmes' | 'legacy' | 'campus-life' | 'scholarships' | 'fee-structure' | 'cnn-academy' | 'calendar' | 'campus-facilities' | 'about-us' | 'developer' | 'asifa';
+export type PageId = 'home' | 'faculty' | 'programmes' | 'legacy' | 'campus-life' | 'scholarships' | 'fee-structure' | 'cnn-academy' | 'calendar' | 'campus-facilities' | 'about-us';
 
 const getPageFromHash = (): PageId => {
   if (typeof window === 'undefined') return 'home';
   const pathname = (window.location.pathname || '').replace(/^\/+|\/+$/g, '').toLowerCase();
-  if (pathname === 'developer') return 'developer';
-  if (pathname === 'asifa') return 'developer';
   if (pathname === 'campus-facilities' || pathname === 'facilities') return 'campus-facilities';
   if (pathname === 'about-us' || pathname === 'about') return 'about-us';
   const hash = (window.location.hash || '').replace(/^#\/?/, '').toLowerCase();
-  if (hash === 'developer') return 'developer';
-  if (hash === 'asifa') return 'developer';
   if (hash === 'campus-facilities' || hash === 'facilities') return 'campus-facilities';
   if (hash === 'about-us' || hash === 'about') return 'about-us';
   if (hash === 'programmes' || hash === 'programs') return 'programmes';
@@ -231,50 +222,21 @@ export default function App() {
     };
   }, [currentPage]);
 
-  // Centralized Dynamic SEO Metadata Hook (updates title, description, keywords, OpenGraph, Twitter, canonical, robots & JSON-LD schema)
-  useSeoMetadata(currentPage);
-
   // Helper to sync page and history hash for instant client navigation
   const navigateToPage = (newPage: PageId) => {
     scrollToTopInstant();
-    const targetPage: PageId = newPage === 'asifa' ? 'developer' : newPage;
-    setCurrentPage(targetPage);
-    if (targetPage === 'home') {
+    setCurrentPage(newPage);
+    if (newPage === 'home') {
       window.history.pushState(null, '', '/');
-    } else if (targetPage === 'campus-facilities') {
+    } else if (newPage === 'campus-facilities') {
       window.history.pushState(null, '', '/campus-facilities');
-    } else if (targetPage === 'developer') {
-      window.history.pushState(null, '', '/developer');
     } else {
-      window.history.pushState(null, '', `#${targetPage}`);
+      window.history.pushState(null, '', `#${newPage}`);
     }
     requestAnimationFrame(() => scrollToTopInstant());
   };
 
-  // Secret Key Trigger: When user types "developer" or "builder" anywhere on keyboard, open developer info page
-  useEffect(() => {
-    let keyBuffer = '';
-    const handleSecretTyping = (e: KeyboardEvent) => {
-      // Don't intercept when user is typing in form fields or search inputs
-      const target = e.target as HTMLElement | null;
-      if (target && (target.tagName === 'INPUT' || target.tagName === 'TEXTAREA' || target.isContentEditable)) {
-        return;
-      }
-      if (e.ctrlKey || e.altKey || e.metaKey) return;
-      if (!e.key || e.key.length !== 1) return;
 
-      keyBuffer = (keyBuffer + e.key.toLowerCase()).slice(-20);
-      if (keyBuffer.endsWith('developer') || keyBuffer.endsWith('builder')) {
-        keyBuffer = '';
-        navigateToPage('developer');
-      }
-    };
-
-    window.addEventListener('keydown', handleSecretTyping);
-    return () => {
-      window.removeEventListener('keydown', handleSecretTyping);
-    };
-  }, []);
 
   // Synchronize browser history and hash for back/forward navigation and direct refreshes
   useEffect(() => {
@@ -468,17 +430,6 @@ export default function App() {
     }, 150);
   };
 
-  if (currentPage === 'developer' || currentPage === 'asifa') {
-    return (
-      <div className="w-full min-h-screen bg-[#000000]">
-        <Suspense fallback={<div className="min-h-screen w-full bg-[#000000]" />}>
-          <AsifaSecretPage onBackToHome={handleBackToHome} />
-        </Suspense>
-        <Analytics />
-        <SecretEasterEgg />
-      </div>
-    );
-  }
 
   return (
     <div id="top" className="min-h-screen bg-white text-slate-900 dark:bg-[#080f1d] dark:text-[#f8fafc] font-sans selection:bg-[#a30f16] selection:text-white transition-colors duration-200 overflow-x-hidden w-full max-w-full">
@@ -796,8 +747,6 @@ export default function App() {
       {/* Vercel Web Analytics */}
       <Analytics />
 
-      {/* Secret Easter Egg Toast */}
-      <SecretEasterEgg />
 
     </div>
   );

@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import { X, CheckCircle, ArrowRight, ArrowLeft, Upload, FileText, Sparkles, AlertCircle } from 'lucide-react';
 import { PROGRAMS, FACULTIES } from '../data/ucpData';
-import { sanitizeInput, sanitizeEmail, sanitizePhone } from '../utils/sanitize';
+const sanitizeInput = (str: string) => str.replace(/[<>]/g, '').trimStart();
+const sanitizeEmail = (str: string) => str.replace(/[^a-zA-Z0-9@._+-]/g, '');
+const sanitizePhone = (str: string) => str.replace(/[^0-9+-\s()]/g, '');
 
 interface ApplyModalProps {
   isOpen: boolean;

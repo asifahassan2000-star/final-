@@ -194,7 +194,7 @@ export const AdmissionsExperienceSection: React.FC<AdmissionsExperienceSectionPr
                 </h3>
               </div>
 
-              {/* Minimal Text Action Links — Pure text, no borders or AI boxes */}
+              {/* Minimal Text Action Links — Pure text, no borders */}
               <div className="flex items-center gap-5 text-xs font-medium">
                 <div className="flex items-center gap-3 text-slate-600 dark:text-slate-400">
                   <button
@@ -206,7 +206,7 @@ export const AdmissionsExperienceSection: React.FC<AdmissionsExperienceSectionPr
                         : 'hover:text-slate-900 dark:hover:text-white'
                     }`}
                   >
-                    Map View
+                    Street Map
                   </button>
                   <span className="text-slate-300 dark:text-slate-700">·</span>
                   <button
@@ -218,7 +218,7 @@ export const AdmissionsExperienceSection: React.FC<AdmissionsExperienceSectionPr
                         : 'hover:text-slate-900 dark:hover:text-white'
                     }`}
                   >
-                    Satellite View
+                    Topographic / Campus Area
                   </button>
                 </div>
 
@@ -234,14 +234,13 @@ export const AdmissionsExperienceSection: React.FC<AdmissionsExperienceSectionPr
               </div>
             </div>
 
-            {/* Fullscreen Big Borderless Interactive Google Map */}
-            <div className="relative w-screen left-1/2 -translate-x-1/2 overflow-hidden border-0 bg-slate-950 h-[560px] sm:h-[660px] lg:h-[760px] shadow-2xl">
+            {/* Fullscreen Big Borderless Interactive Map with Campus Marker */}
+            <div className="relative w-screen left-1/2 -translate-x-1/2 overflow-hidden border-0 bg-slate-100 dark:bg-slate-950 h-[560px] sm:h-[660px] lg:h-[760px] shadow-2xl">
               <iframe
-                title="University of Central Punjab Bahawalpur Campus - Google Map"
-                src={`https://maps.google.com/maps?q=UCP+Bahawalpur+Campus,+Yazman+Rd,+New+Islami+Colony,+Bahawalpur,+Pakistan&t=${mapType === 'satellite' ? 'k' : ''}&z=16&ie=UTF8&iwloc=&output=embed`}
+                title="University of Central Punjab Bahawalpur Campus Map"
+                src={`https://www.openstreetmap.org/export/embed.html?bbox=71.6700%2C29.3450%2C71.7150%2C29.3700&layer=${mapType === 'satellite' ? 'hot' : 'mapnik'}&marker=29.3581%2C71.6943`}
                 className="w-full h-full border-0 block"
                 loading="lazy"
-                allowFullScreen={true}
                 referrerPolicy="no-referrer-when-downgrade"
                 style={{ border: 0, width: '100%', height: '100%' }}
               />

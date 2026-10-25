@@ -29,7 +29,7 @@ const scienceLabImg = '/assets/facilities/comp-lab-2.jpg';
 // Authentic campus assets from public/assets/campus
 const concertImg = '/assets/campus/campus-concert-live-music.png';
 const concertFallback = '/images/dwVXXsjv_image-11.png';
-const cholistanHaveliSingingImg = '/assets/campus/haveli_cholistan_student_singing.jpg';
+const cholistanHaveliSingingImg = 'https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-11%20at%2011.12.56%20PM.jpeg?updatedAt=1792654239523';
 const cholistanHaveliSingingFallback = '/images/7dwzJ7HH_Whats-App-Image-2026-10-11-at-11-12-56-PM.jpg';
 const rhythmCampusLifeImg = '/assets/campus/campus_life_rhythm_featured.jpg';
 const rhythmCampusLifeFallback = '/images/NBMmfPv_Whats-App-Image-2026-10-09-at-8-49-16-AM.jpg';

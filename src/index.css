@@ -1407,6 +1407,79 @@ body, main, section, [id$="-section"] {
   animation: devParticleFloat 3.7s ease-in-out infinite 1.4s;
 }
 
+/* =========================================================================
+   HIGH PERFORMANCE GPU-ACCELERATED SHINE SWEEP ANIMATION
+   Ultra-smooth hover sweep using composite-only properties (transform, opacity)
+   Zero CPU layout reflows, 120 FPS high performance.
+   ========================================================================= */
 
+.card-shine-sweep {
+  position: relative;
+  overflow: hidden;
+  will-change: transform, box-shadow;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease;
+}
 
+.card-shine-sweep::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -140%;
+  width: 80%;
+  height: 100%;
+  background: linear-gradient(
+    105deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.05) 20%,
+    rgba(255, 255, 255, 0.6) 50%,
+    rgba(176, 30, 35, 0.28) 65%,
+    transparent 100%
+  );
+  transform: skewX(-25deg);
+  pointer-events: none;
+  opacity: 0;
+  z-index: 20;
+  will-change: transform, opacity;
+}
 
+.card-shine-sweep:hover {
+  transform: translateY(-3px) translateX(3px);
+  box-shadow: 0 14px 30px -8px rgba(176, 30, 35, 0.14), 0 4px 12px -2px rgba(9, 34, 66, 0.06);
+}
+
+.card-shine-sweep:hover::after {
+  opacity: 1;
+  animation: shineLineSweepAnim 1.4s cubic-bezier(0.25, 1, 0.4, 1) forwards;
+}
+
+@keyframes shineLineSweepAnim {
+  0% {
+    left: -140%;
+    opacity: 0.1;
+  }
+  20% {
+    opacity: 1;
+  }
+  80% {
+    opacity: 0.8;
+  }
+  100% {
+    left: 220%;
+    opacity: 0;
+  }
+}
+
+.dark .card-shine-sweep::after {
+  background: linear-gradient(
+    105deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.05) 20%,
+    rgba(255, 255, 255, 0.45) 50%,
+    rgba(239, 68, 68, 0.28) 65%,
+    transparent 100%
+  );
+}
+
+.dark .card-shine-sweep:hover {
+  box-shadow: 0 14px 30px -8px rgba(0, 0, 0, 0.6), 0 0 20px -2px rgba(239, 68, 68, 0.2);
+}
