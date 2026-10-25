@@ -1,6 +1,62 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ArrowRight, Building2, Trees, CheckCircle2, Presentation, Maximize2, X, Sparkles } from 'lucide-react';
+import { 
+  ArrowRight, 
+  Building2, 
+  Trees, 
+  CheckCircle2, 
+  Presentation, 
+  Maximize2, 
+  X, 
+  Sparkles,
+  FlaskConical,
+  Users,
+  BookOpenCheck,
+  Award,
+  GraduationCap,
+  Coins,
+  ArrowRightLeft,
+  TrendingUp
+} from 'lucide-react';
+
+const WHY_JOIN_ITEMS = [
+  {
+    text: 'STATE-OF-THE-ART INFRASTRUCTURE',
+    icon: Building2,
+  },
+  {
+    text: 'ADVANCED SCIENCE & COMPUTER LABS',
+    icon: FlaskConical,
+  },
+  {
+    text: 'VIBRANT & SUPPORTIVE CAMPUS LIFE',
+    icon: Users,
+  },
+  {
+    text: 'A RIGOROUS CURRICULUM',
+    icon: BookOpenCheck,
+  },
+  {
+    text: 'WORLD-CLASS FACULTY',
+    icon: Award,
+  },
+  {
+    text: 'OFFICIAL UCP LAHORE DEGREE — CLOSE TO HOME',
+    icon: GraduationCap,
+  },
+  {
+    text: 'SAVE TRAVEL & LIVING COSTS',
+    icon: Coins,
+  },
+  {
+    text: 'SEAMLESS MOBILITY TO UCP LAHORE',
+    icon: ArrowRightLeft,
+  },
+  {
+    text: 'A STRONG FOUNDATION FOR FUTURE SUCCESS',
+    icon: TrendingUp,
+  },
+];
 
 interface ClassroomPhoto {
   id: string;
@@ -132,93 +188,50 @@ export const AboutCampusSection: React.FC<AboutCampusSectionProps> = ({
         </div>
 
         {/* =========================================================================
-            1. DUAL-COLUMN ARCHITECTURAL & GROUNDS SHOWCASE
-            Harvard Editorial Style — Pure Clean Text, No Frame, No Border, Just Text
+            WHY JOIN CONSTITUENT COLLEGE UCP CAMPUS BAHAWALPUR?
+            Minimal NUST Official Academic Portal Design
             ========================================================================= */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start mb-16 sm:mb-20">
+        <div className="w-full max-w-[750px] mx-auto py-[80px] px-4 sm:px-[40px] text-left">
           
-          {/* Left Column: Architectural Exterior */}
-          <div className="lg:col-span-7 flex flex-col space-y-5">
-            {/* Architectural Exterior Photograph (Pure Edge-to-Edge, No Frame, No Shadow) */}
-            <div className="relative overflow-hidden rounded-xl w-full aspect-[16/9]">
-              <img 
-                src="/assets/campus/12_about_architecture_exterior.jpg"
-                alt="UCP Bahawalpur Architectural Exterior and Modern Campus Facade"
-                loading="lazy"
-                decoding="async"
-                className="w-full h-full object-cover object-center block"
-              />
-            </div>
-
-            {/* Harvard Editorial Style — Pure Clean Text, No Background Box, No Frame, No Extra Icons */}
-            <div className="space-y-3 pt-1">
-              <div className="overflow-hidden">
-                <motion.h3 
-                  initial={{ y: '100%', opacity: 0 }}
-                  whileInView={{ y: 0, opacity: 1 }}
-                  viewport={{ once: true, margin: '-30px' }}
-                  transition={{ duration: 0.75, ease: [0.16, 1, 0.3, 1] }}
-                  className="font-serif text-2xl sm:text-3xl font-normal text-[#092242] dark:text-white tracking-tight leading-snug"
-                  style={{ fontFamily: "'Playfair Display', 'Cormorant Garamond', Georgia, serif" }}
-                >
-                  World-Class Academic Infrastructure &amp; Research Spaces
-                </motion.h3>
-              </div>
-
-              <motion.p 
-                initial={{ opacity: 0, y: 16 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: '-20px' }}
-                transition={{ duration: 0.72, delay: 0.08, ease: easeCurve }}
-                className="text-base text-slate-600 dark:text-slate-300 leading-relaxed font-sans"
-              >
-                Spread across an expansive architectural footprint on Airport Road, UCP Bahawalpur integrates digital lecture theatres, advanced computing laboratories, high-speed fiber connectivity, and dedicated faculty research lounges. Every space is purposefully designed to cultivate disciplined inquiry, critical analysis, and collaborative scholarship.
-              </motion.p>
-            </div>
+          {/* 1. MAIN HEADING (Top) */}
+          <div className="mb-[40px]">
+            <h3 
+              className="text-[24px] sm:text-[28px] font-bold text-[#111111] dark:text-white uppercase tracking-[0.5px] leading-tight text-left"
+              style={{ fontFamily: "'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" }}
+            >
+              WHY JOIN CONSTITUENT COLLEGE UCP CAMPUS BAHAWALPUR?
+            </h3>
+            {/* Small red line below heading: 50px width, 3px height, color #b01e23 */}
+            <div 
+              className="w-[50px] h-[3px] bg-[#b01e23] mt-3" 
+              aria-hidden="true" 
+            />
           </div>
 
-          {/* Right Column: Campus Grounds Visual & Narrative (Harvard Editorial Style) */}
-          <div className="lg:col-span-5 flex flex-col space-y-5">
-            {/* Full-Bleed Edge-to-Edge Image (No Frame, No Shadow) */}
-            <div className="relative overflow-hidden rounded-xl w-full aspect-[16/9]">
-              <img 
-                src="https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-05%20at%202.46.10%20AM.jpeg"
-                alt="University of Central Punjab Bahawalpur Campus Central Lawns and Academic Complex"
-                loading="lazy"
-                decoding="async"
-                className="w-full h-full object-cover object-center block"
-                onError={(e) => {
-                  const target = e.target as HTMLImageElement;
-                  target.src = '/assets/campus/central_lawn_academic_complex.jpg';
-                }}
-              />
-            </div>
-
-            {/* Pure Harvard Editorial Text — No Frame, No Background Box, Just Text */}
-            <div className="space-y-3 pt-1">
-              <div className="overflow-hidden">
-                <motion.h3 
-                  initial={{ y: '100%', opacity: 0 }}
-                  whileInView={{ y: 0, opacity: 1 }}
-                  viewport={{ once: true, margin: '-30px' }}
-                  transition={{ duration: 0.75, ease: [0.16, 1, 0.3, 1] }}
-                  className="font-serif text-2xl sm:text-3xl font-normal text-[#092242] dark:text-white tracking-tight leading-snug"
-                  style={{ fontFamily: "'Playfair Display', 'Cormorant Garamond', Georgia, serif" }}
+          {/* 2. ITEMS LIST (9 items in same order, NUST style) */}
+          <div className="space-y-[10px]">
+            {WHY_JOIN_ITEMS.map((item, index) => {
+              const Icon = item.icon;
+              return (
+                <div
+                  key={index}
+                  className="group flex items-center h-[68px] px-[22px] py-[20px] bg-white dark:bg-[#0c1626] border-l-[4px] border-transparent hover:border-[#b01e23] hover:bg-[#f8f9ff] dark:hover:bg-slate-800/50 hover:translate-x-[6px] transition-all duration-300 ease-out cursor-default select-none shadow-none"
                 >
-                  Central Lawns &amp; Academic Complex
-                </motion.h3>
-              </div>
+                  {/* Left: 44px circular icon background #eef1f8 */}
+                  <div className="w-[44px] h-[44px] rounded-full bg-[#eef1f8] dark:bg-slate-800 flex items-center justify-center shrink-0 group-hover:bg-[#b01e23]/10 transition-colors duration-300">
+                    <Icon size={20} className="text-[#092242] dark:text-slate-200 group-hover:text-[#b01e23] transition-colors duration-300" />
+                  </div>
 
-              <motion.p 
-                initial={{ opacity: 0, y: 16 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: '-20px' }}
-                transition={{ duration: 0.72, delay: 0.08, ease: easeCurve }}
-                className="text-base text-slate-600 dark:text-slate-300 leading-relaxed font-sans"
-              >
-                The Bahawalpur campus grounds combine expansive manicured lawns with modern academic pavilions, providing peaceful student gathering areas and outdoor study spaces designed to support intellectual focus and community life.
-              </motion.p>
-            </div>
+                  {/* Font size 16px, font weight 600, uppercase, color #111 */}
+                  <span 
+                    className="ml-[18px] text-[15px] sm:text-[16px] font-semibold uppercase text-[#111111] dark:text-white tracking-wide truncate group-hover:text-[#b01e23] dark:group-hover:text-red-400 transition-colors duration-300"
+                    style={{ fontFamily: "'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" }}
+                  >
+                    {item.text}
+                  </span>
+                </div>
+              );
+            })}
           </div>
 
         </div>

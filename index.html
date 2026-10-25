@@ -50,73 +50,7 @@
     <link rel="preload" as="image" href="./assets/campus/hero_campus_night_flagship.webp" type="image/webp" fetchpriority="high" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <script>
-      // Cleanly filter harmless Vite HMR WebSocket connection logs in sandbox iframe environment
-      (function() {
-        if (typeof window === 'undefined') return;
-
-        function isWsMsg(item) {
-          if (!item) return false;
-          var str = '';
-          if (typeof item === 'string') {
-            str = item;
-          } else if (item instanceof Error) {
-            str = (item.message || '') + ' ' + (item.stack || '');
-          } else if (typeof item === 'object') {
-            try {
-              str = (item.message || '') + ' ' + (item.reason || '') + ' ' + JSON.stringify(item);
-            } catch (e) {
-              str = String(item);
-            }
-          } else {
-            str = String(item);
-          }
-          return str.indexOf('WebSocket') !== -1 || 
-                 str.indexOf('closed without opened') !== -1 || 
-                 str.indexOf('[vite] connecting') !== -1 ||
-                 str.indexOf('[vite] failed to connect') !== -1 ||
-                 str.indexOf('vite:ws') !== -1;
-        }
-
-        window.addEventListener('unhandledrejection', function(event) {
-          if (isWsMsg(event.reason)) {
-            event.preventDefault();
-            if (typeof event.stopImmediatePropagation === 'function') {
-              event.stopImmediatePropagation();
-            }
-          }
-        }, true);
-
-        window.addEventListener('error', function(event) {
-          if (isWsMsg(event.message || event.error)) {
-            event.preventDefault();
-            if (typeof event.stopImmediatePropagation === 'function') {
-              event.stopImmediatePropagation();
-            }
-          }
-        }, true);
-
-        var filterMethod = function(origFn) {
-          if (!origFn) return function() {};
-          return function() {
-            for (var i = 0; i < arguments.length; i++) {
-              if (isWsMsg(arguments[i])) return;
-            }
-            return origFn.apply(console, arguments);
-          };
-        };
-
-        console.log = filterMethod(console.log);
-        console.info = filterMethod(console.info);
-        console.warn = filterMethod(console.warn);
-        console.error = filterMethod(console.error);
-        console.debug = filterMethod(console.debug);
-      })();
-    </script>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+Pro:ital,wght@0,400;0,600;0,700;0,800;0,900;1,400;1,600;1,700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;0,8..60,800&family=Source+Sans+3:ital,wght@0,300;0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700;800&family=Montserrat:wght@700;800;900&family=Poppins:wght@700;800&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,600&family=UnifrakturMaguntia&family=MedievalSharp&display=swap" media="print" onload="this.media='all'" />
-    <noscript>
-      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+Pro:ital,wght@0,400;0,600;0,700;0,800;0,900;1,400;1,600;1,700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;0,8..60,800&family=Source+Sans+3:ital,wght@0,300;0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700;800&family=Montserrat:wght@700;800;900&family=Poppins:wght@700;800&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,600&family=UnifrakturMaguntia&family=MedievalSharp&display=swap" />
-    </noscript>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+Pro:ital,wght@0,400;0,600;0,700;0,800;0,900;1,400;1,600;1,700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;0,8..60,800&family=Source+Sans+3:ital,wght@0,300;0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700;800&family=Montserrat:wght@700;800;900&family=Poppins:wght@700;800&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,600&family=UnifrakturMaguntia&family=MedievalSharp&display=swap" />
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -255,16 +189,6 @@
         }
       ]
     }
-    </script>
-    <script>
-      (function() {
-        try {
-          var canLink = document.getElementById('canonical-url');
-          if (canLink && window.location.hostname && window.location.hostname !== 'localhost' && window.location.hostname !== '127.0.0.1') {
-            canLink.href = window.location.origin + window.location.pathname;
-          }
-        } catch (e) {}
-      })();
     </script>
   </head>
   <body class="overflow-x-hidden w-full max-w-full">
