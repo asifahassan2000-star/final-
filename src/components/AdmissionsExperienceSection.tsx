@@ -76,10 +76,15 @@ export const AdmissionsExperienceSection: React.FC<AdmissionsExperienceSectionPr
           <div className="lg:col-span-7">
             <div className="group relative overflow-hidden rounded-2xl border border-slate-200 dark:border-[#1e3256] bg-white dark:bg-[#0d1e38] shadow-md">
               <div className="relative aspect-[16/10] sm:aspect-[16/9] w-full overflow-hidden">
-                <img decoding="async" src="/assets/campus/4_admissions_entrance_red_carpet.jpg"
-                  alt="Begin Your Journey - Welcoming Red Carpet Entrance to UCP Bahawalpur Campus"
+                <img decoding="async" 
+                  src="https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-05%20at%202.46.14%20AM.jpeg"
+                  alt="Begin Your Journey - Welcoming Entrance to UCP Bahawalpur Campus"
                   loading="lazy"
                   className="w-full h-full object-cover object-center scale-100 group-hover:scale-105 transition-transform duration-700 ease-out"
+                  onError={(e) => {
+                    const target = e.target as HTMLImageElement;
+                    target.src = '/assets/campus/4_admissions_entrance_red_carpet.jpg';
+                  }}
                 />
               </div>
             </div>

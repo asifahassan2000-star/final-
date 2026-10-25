@@ -712,35 +712,35 @@ export const OurLegacyPage: React.FC<OurLegacyPageProps> = ({
           4. THE STORY OF BAHAWALPUR
           Sophisticated timeline with verified historical information
           ========================================================================= */}
-      <section id="bahawalpur-story" className="py-20 lg:py-24 bg-white border-b border-slate-200">
+      <section id="bahawalpur-story" className="py-20 lg:py-24 bg-white dark:bg-[#07192F] border-b border-slate-200 dark:border-white/10 transition-colors">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           
           <div className="text-center max-w-2xl mx-auto mb-16">
             <span 
               data-reveal="heading" 
               data-reveal-delay="0"
-              className="text-xs font-bold text-[#a30f16] tracking-wider uppercase flex items-center justify-center gap-1.5"
+              className="text-xs font-bold text-[#a30f16] dark:text-[#ff4a60] tracking-wider uppercase flex items-center justify-center gap-1.5"
             >
               <Calendar size={14} /> Chronological Perspective
             </span>
             <h2 
               data-reveal="heading" 
               data-reveal-delay="80"
-              className="text-3xl sm:text-4xl font-extrabold text-[#092242] tracking-tight mt-1"
+              className="text-3xl sm:text-4xl font-extrabold text-[#092242] dark:text-white tracking-tight mt-1"
             >
               The Story of Bahawalpur
             </h2>
             <p 
               data-reveal="paragraph" 
               data-reveal-delay="120"
-              className="text-slate-600 text-sm sm:text-base mt-2"
+              className="text-slate-600 dark:text-slate-300 text-sm sm:text-base mt-2"
             >
               A documented historical progression from princely state sovereignty to regional center of learning and commerce.
             </p>
           </div>
 
           {/* Timeline Process with Framer Motion Alternating Slide */}
-          <div className="relative border-l-2 border-[#092242]/20 ml-4 sm:ml-8 space-y-12 sm:space-y-16 pl-6 sm:pl-10">
+          <div className="relative border-l-2 border-[#092242]/20 dark:border-amber-400/30 ml-4 sm:ml-8 space-y-12 sm:space-y-16 pl-6 sm:pl-10">
             {bahawalpurPeriods.map((item, idx) => (
               <motion.div 
                 key={item.period}
@@ -751,15 +751,15 @@ export const OurLegacyPage: React.FC<OurLegacyPageProps> = ({
                 className="relative group"
               >
                 {/* Timeline Node Point */}
-                <div className="absolute -left-[31px] sm:-left-[47px] top-1.5 w-6 h-6 sm:w-7 sm:h-7 rounded-full bg-[#092242] border-4 border-white shadow-md flex items-center justify-center text-amber-300">
+                <div className="absolute -left-[31px] sm:-left-[47px] top-1.5 w-6 h-6 sm:w-7 sm:h-7 rounded-full bg-[#092242] dark:bg-[#071326] border-4 border-white dark:border-amber-400 shadow-md flex items-center justify-center text-amber-300">
                   <span className="text-[10px] font-extrabold">{idx + 1}</span>
                 </div>
 
                 {/* Timeline Card */}
                 <div className={`p-6 sm:p-8 rounded-3xl border shadow-xs hover:shadow-lg transition-all duration-300 ${
                   item.period === 'The Nawab Era'
-                    ? 'bg-gradient-to-br from-amber-50/60 via-white to-slate-50/80 border-amber-300/80 shadow-md ring-1 ring-amber-200/50'
-                    : 'bg-slate-50 hover:bg-white border-slate-200/90'
+                    ? 'bg-gradient-to-br from-amber-50/60 via-white to-slate-50/80 border-amber-300/80 shadow-md ring-1 ring-amber-200/50 dark:bg-gradient-to-br dark:from-[#091833] dark:via-[#0e2347] dark:to-[#071326] dark:border-amber-400 dark:border-2 dark:ring-2 dark:ring-yellow-300/60 dark:shadow-[0_0_40px_rgba(245,158,11,0.28)]'
+                    : 'bg-slate-50 hover:bg-white border-slate-200/90 dark:bg-[#0B1A30]/75 dark:hover:bg-[#0B1A30] dark:border-white/10'
                 }`}>
                   {item.period === 'The Nawab Era' ? (
                     <div className="flex flex-col md:flex-row items-center md:items-start gap-6 sm:gap-8">
@@ -780,10 +780,10 @@ export const OurLegacyPage: React.FC<OurLegacyPageProps> = ({
                           title="Click to view full-length archival portrait of the Nawab of Bahawalpur"
                         >
                           {/* Outer Gold Halo Ring */}
-                          <div className="absolute -inset-2 rounded-full bg-gradient-to-tr from-amber-500/40 via-amber-300/30 to-amber-500/40 blur-sm group-hover/nawab:blur-md transition-all duration-300" />
+                          <div className="absolute -inset-2 rounded-full bg-gradient-to-tr from-amber-500/40 via-amber-300/30 to-amber-500/40 blur-sm group-hover/nawab:blur-md transition-all duration-300 dark:from-yellow-400/70 dark:via-amber-300/60 dark:to-yellow-500/70 dark:blur-md" />
                           
                           {/* Big Size Circle Frame */}
-                          <div className="relative w-44 h-44 sm:w-52 sm:h-52 md:w-56 md:h-56 rounded-full overflow-hidden border-4 border-white shadow-2xl ring-4 ring-amber-400 bg-amber-100 flex items-center justify-center transition-transform duration-500 group-hover/nawab:scale-103">
+                          <div className="relative w-44 h-44 sm:w-52 sm:h-52 md:w-56 md:h-56 rounded-full overflow-hidden border-4 border-white dark:border-amber-300 shadow-2xl ring-4 ring-amber-400 dark:ring-amber-300 bg-amber-100 dark:bg-amber-950 flex items-center justify-center transition-transform duration-500 group-hover/nawab:scale-103">
                             <img 
                               src={nawabFaceSquareImg} 
                               alt="His Highness The Nawab of Bahawalpur" 
@@ -801,13 +801,13 @@ export const OurLegacyPage: React.FC<OurLegacyPageProps> = ({
                           </div>
 
                           {/* Royal Insignia Ribbon Badge */}
-                          <div className="absolute -bottom-2.5 left-1/2 -translate-x-1/2 bg-[#092242] text-amber-300 text-[10px] sm:text-[11px] font-bold px-3.5 py-0.5 rounded-full border border-amber-400/80 shadow-lg whitespace-nowrap uppercase tracking-wider flex items-center gap-1">
+                          <div className="absolute -bottom-2.5 left-1/2 -translate-x-1/2 bg-[#092242] dark:bg-[#071326] text-amber-300 text-[10px] sm:text-[11px] font-bold px-3.5 py-0.5 rounded-full border border-amber-400/80 shadow-lg whitespace-nowrap uppercase tracking-wider flex items-center gap-1 dark:shadow-[0_0_12px_rgba(251,191,36,0.4)]">
                             <ShieldCheck size={12} className="text-amber-400" />
                             <span>Nawab of Bahawalpur</span>
                           </div>
                         </div>
 
-                        <span className="text-[11px] text-slate-500 font-serif italic mt-4 text-center">
+                        <span className="text-[11px] text-slate-500 dark:text-amber-300/80 font-serif italic mt-4 text-center">
                           Abbasi Dynasty • Princely State
                         </span>
                       </div>
@@ -815,25 +815,25 @@ export const OurLegacyPage: React.FC<OurLegacyPageProps> = ({
                       {/* Nawab Era Text Content */}
                       <div className="flex-1 text-center md:text-left">
                         <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1 mb-2">
-                          <h3 className="text-2xl sm:text-3xl font-serif font-extrabold text-[#092242]">
+                          <h3 className="text-2xl sm:text-3xl font-serif font-extrabold text-[#092242] dark:text-[#60A5FA] dark:drop-shadow-[0_2px_12px_rgba(96,165,250,0.5)]">
                             {item.period}
                           </h3>
-                          <span className="text-xs font-bold text-amber-800 bg-amber-100/80 px-3 py-1 rounded-full border border-amber-300 self-center sm:self-auto">
+                          <span className="text-xs font-bold text-amber-800 bg-amber-100/80 dark:text-yellow-300 dark:bg-amber-950/80 px-3 py-1 rounded-full border border-amber-300 dark:border-amber-400/70 self-center sm:self-auto dark:shadow-[0_0_12px_rgba(245,158,11,0.3)]">
                             {item.tagline}
                           </span>
                         </div>
                         
-                        <p className="text-slate-700 text-sm sm:text-base leading-relaxed mt-3 font-normal">
+                        <p className="text-slate-700 dark:text-[#93C5FD] text-sm sm:text-base leading-relaxed mt-3 font-normal">
                           {item.description}
                         </p>
 
-                        <div className="mt-5 pt-4 border-t border-amber-200/70 grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
-                          <div className="bg-white/80 p-3 rounded-xl border border-amber-200/60 text-slate-700">
-                            <strong className="text-[#092242] font-serif block mb-0.5">Sovereignty & Governance</strong>
+                        <div className="mt-5 pt-4 border-t border-amber-200/70 dark:border-amber-400/30 grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
+                          <div className="bg-white/80 dark:bg-[#071326]/90 p-3 rounded-xl border border-amber-200/60 dark:border-amber-400/40 text-slate-700 dark:text-blue-100/90 dark:shadow-inner">
+                            <strong className="text-[#092242] dark:text-[#60A5FA] font-serif block mb-0.5">Sovereignty & Governance</strong>
                             <span>Distinguished administrative independence with visionary statecraft in Southern Punjab.</span>
                           </div>
-                          <div className="bg-white/80 p-3 rounded-xl border border-amber-200/60 text-slate-700">
-                            <strong className="text-[#092242] font-serif block mb-0.5">Monumental Architecture</strong>
+                          <div className="bg-white/80 dark:bg-[#071326]/90 p-3 rounded-xl border border-amber-200/60 dark:border-amber-400/40 text-slate-700 dark:text-blue-100/90 dark:shadow-inner">
+                            <strong className="text-[#092242] dark:text-[#60A5FA] font-serif block mb-0.5">Monumental Architecture</strong>
                             <span>Royal patronage that built Noor Mahal, Darbar Mahal, and majestic civic endowments.</span>
                           </div>
                         </div>
@@ -844,21 +844,21 @@ export const OurLegacyPage: React.FC<OurLegacyPageProps> = ({
                       {/* Modern Bahawalpur Text Content */}
                       <div className="flex-1">
                         <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1 mb-2">
-                          <h3 className="text-xl sm:text-2xl font-serif font-extrabold text-[#092242]">
+                          <h3 className="text-xl sm:text-2xl font-serif font-extrabold text-[#092242] dark:text-blue-300">
                             {item.period}
                           </h3>
-                          <span className="text-xs font-bold text-amber-700 bg-amber-50 px-2.5 py-0.5 rounded border border-amber-200 self-start sm:self-auto">
+                          <span className="text-xs font-bold text-amber-700 bg-amber-50 dark:text-amber-300 dark:bg-amber-950/60 px-2.5 py-0.5 rounded border border-amber-200 dark:border-amber-400/40 self-start sm:self-auto">
                             {item.tagline}
                           </span>
                         </div>
                         
-                        <p className="text-slate-700 text-sm sm:text-base leading-relaxed mt-3">
+                        <p className="text-slate-700 dark:text-slate-300 text-sm sm:text-base leading-relaxed mt-3">
                           {item.description}
                         </p>
 
-                        <div className="mt-4 pt-3 border-t border-slate-200/80 flex items-center justify-between text-xs text-slate-500">
-                          <span className="font-medium text-slate-600">Planned Urban Infrastructure & Modern Campus Growth</span>
-                          <span className="text-[11px] text-slate-400">Southern Punjab Growth Hub</span>
+                        <div className="mt-4 pt-3 border-t border-slate-200/80 dark:border-white/10 flex items-center justify-between text-xs text-slate-500 dark:text-slate-400">
+                          <span className="font-medium text-slate-600 dark:text-slate-300">Planned Urban Infrastructure & Modern Campus Growth</span>
+                          <span className="text-[11px] text-slate-400 dark:text-slate-500">Southern Punjab Growth Hub</span>
                         </div>
                       </div>
 
@@ -875,7 +875,7 @@ export const OurLegacyPage: React.FC<OurLegacyPageProps> = ({
                             image: MODERN_BAHAWALPUR_IMG,
                             fallbackImage: MODERN_BAHAWALPUR_FALLBACK
                           })}
-                          className="group/modern relative overflow-hidden rounded-2xl cursor-pointer bg-slate-100 shadow-xs hover:shadow-md transition-all duration-300"
+                          className="group/modern relative overflow-hidden rounded-2xl cursor-pointer bg-slate-100 dark:bg-slate-800 shadow-xs hover:shadow-md transition-all duration-300"
                           title="Click to view full image"
                         >
                           <img 
@@ -893,7 +893,7 @@ export const OurLegacyPage: React.FC<OurLegacyPageProps> = ({
                             <span>View Full</span>
                           </div>
                         </div>
-                        <p className="text-[11px] text-slate-500 mt-2 text-center lg:text-left">
+                        <p className="text-[11px] text-slate-500 dark:text-slate-400 mt-2 text-center lg:text-left">
                           Modern architectural master planning & infrastructure — Bahawalpur
                         </p>
                       </div>
@@ -901,15 +901,15 @@ export const OurLegacyPage: React.FC<OurLegacyPageProps> = ({
                   ) : (
                     <div>
                       <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1 mb-2">
-                        <h3 className="text-xl sm:text-2xl font-serif font-extrabold text-[#092242]">
+                        <h3 className="text-xl sm:text-2xl font-serif font-extrabold text-[#092242] dark:text-blue-300">
                           {item.period}
                         </h3>
-                        <span className="text-xs font-bold text-amber-700 bg-amber-50 px-2.5 py-0.5 rounded border border-amber-200">
+                        <span className="text-xs font-bold text-amber-700 bg-amber-50 dark:text-amber-300 dark:bg-amber-950/60 px-2.5 py-0.5 rounded border border-amber-200 dark:border-amber-400/40">
                           {item.tagline}
                         </span>
                       </div>
                       
-                      <p className="text-slate-700 text-sm sm:text-base leading-relaxed mt-3">
+                      <p className="text-slate-700 dark:text-slate-300 text-sm sm:text-base leading-relaxed mt-3">
                         {item.description}
                       </p>
                     </div>
@@ -1637,7 +1637,7 @@ export const OurLegacyPage: React.FC<OurLegacyPageProps> = ({
           onClick={() => setSelectedGalleryItem(null)}
         >
           <div 
-            className="bg-white rounded-3xl max-w-4xl w-full overflow-hidden shadow-2xl border border-slate-300 relative text-slate-900 max-h-[92vh] flex flex-col"
+            className="bg-white dark:bg-[#07192F] rounded-3xl max-w-4xl w-full overflow-hidden shadow-2xl border border-slate-300 dark:border-amber-400/50 relative text-slate-900 dark:text-white max-h-[92vh] flex flex-col"
             onClick={(e) => e.stopPropagation()}
           >
             <button
@@ -1671,42 +1671,42 @@ export const OurLegacyPage: React.FC<OurLegacyPageProps> = ({
                 </div>
 
                 {/* Archival Details Panel */}
-                <div className="md:w-1/2 p-6 sm:p-8 flex flex-col justify-between space-y-6 bg-white overflow-y-auto">
+                <div className="md:w-1/2 p-6 sm:p-8 flex flex-col justify-between space-y-6 bg-white dark:bg-[#081a33] overflow-y-auto">
                   <div className="space-y-4">
                     <div>
-                      <span className="text-[10px] font-bold uppercase tracking-wider text-amber-800 bg-amber-100 px-2.5 py-0.5 rounded border border-amber-300">
+                      <span className="text-[10px] font-bold uppercase tracking-wider text-amber-800 bg-amber-100 dark:text-yellow-300 dark:bg-amber-950/80 px-2.5 py-0.5 rounded border border-amber-300 dark:border-amber-400/60">
                         {selectedGalleryItem.year}
                       </span>
-                      <h3 className="text-2xl sm:text-3xl font-serif font-extrabold text-[#092242] mt-2">
+                      <h3 className="text-2xl sm:text-3xl font-serif font-extrabold text-[#092242] dark:text-[#60A5FA] mt-2">
                         {selectedGalleryItem.name}
                       </h3>
-                      <p className="text-xs text-slate-500 font-medium mt-0.5">
+                      <p className="text-xs text-slate-500 dark:text-slate-400 font-medium mt-0.5">
                         {selectedGalleryItem.subtitle}
                       </p>
                     </div>
 
                     <div>
-                      <h4 className="text-xs font-bold uppercase tracking-wider text-slate-400 mb-1">
+                      <h4 className="text-xs font-bold uppercase tracking-wider text-slate-400 dark:text-slate-400 mb-1">
                         Historical & Sovereign Record
                       </h4>
-                      <p className="text-sm text-slate-700 leading-relaxed">
+                      <p className="text-sm text-slate-700 dark:text-slate-200 leading-relaxed">
                         {selectedGalleryItem.description}
                       </p>
                     </div>
 
-                    <div className="bg-amber-50/80 rounded-2xl p-4 border border-amber-200">
-                      <h5 className="text-xs font-bold text-amber-900 uppercase tracking-wider mb-1 flex items-center gap-1.5">
-                        <ShieldCheck size={14} className="text-amber-700 shrink-0" />
+                    <div className="bg-amber-50/80 dark:bg-gradient-to-br dark:from-[#091833] dark:via-[#0e2347] dark:to-[#071326] rounded-2xl p-4 border border-amber-200 dark:border-amber-400 dark:ring-1 dark:ring-yellow-300/50 dark:shadow-[0_0_25px_rgba(245,158,11,0.22)]">
+                      <h5 className="text-xs font-bold text-amber-900 dark:text-[#60A5FA] uppercase tracking-wider mb-1 flex items-center gap-1.5 dark:drop-shadow-[0_0_8px_rgba(96,165,250,0.5)]">
+                        <ShieldCheck size={14} className="text-amber-700 dark:text-amber-400 shrink-0" />
                         Cultural & Educational Significance
                       </h5>
-                      <p className="text-xs text-amber-950 leading-relaxed">
+                      <p className="text-xs text-amber-950 dark:text-[#93C5FD] leading-relaxed font-normal">
                         {selectedGalleryItem.significance}
                       </p>
                     </div>
                   </div>
 
-                  <div className="pt-4 border-t border-slate-100 flex items-center justify-between">
-                    <span className="text-[11px] text-slate-400 font-mono">
+                  <div className="pt-4 border-t border-slate-100 dark:border-white/10 flex items-center justify-between">
+                    <span className="text-[11px] text-slate-400 dark:text-slate-400 font-mono">
                       Bahawalpur State Archives
                     </span>
                     <button
@@ -1739,27 +1739,27 @@ export const OurLegacyPage: React.FC<OurLegacyPageProps> = ({
                   </div>
                 </div>
 
-                <div className="p-6 space-y-4">
+                <div className="p-6 space-y-4 bg-white dark:bg-[#081a33]">
                   <div>
-                    <h4 className="text-xs font-bold uppercase tracking-wider text-slate-400 mb-1">
+                    <h4 className="text-xs font-bold uppercase tracking-wider text-slate-400 dark:text-slate-400 mb-1">
                       Architectural & Historical Record
                     </h4>
-                    <p className="text-sm text-slate-700 leading-relaxed">
+                    <p className="text-sm text-slate-700 dark:text-slate-200 leading-relaxed">
                       {selectedGalleryItem.description}
                     </p>
                   </div>
 
-                  <div className="bg-amber-50 rounded-xl p-4 border border-amber-200/80">
-                    <h5 className="text-xs font-bold text-amber-900 uppercase tracking-wider mb-1 flex items-center gap-1.5">
-                      <ShieldCheck size={14} className="text-amber-700" />
+                  <div className="bg-amber-50 dark:bg-gradient-to-br dark:from-[#091833] dark:via-[#0e2347] dark:to-[#071326] rounded-xl p-4 border border-amber-200/80 dark:border-amber-400 dark:ring-1 dark:ring-yellow-300/50 dark:shadow-[0_0_25px_rgba(245,158,11,0.22)]">
+                    <h5 className="text-xs font-bold text-amber-900 dark:text-[#60A5FA] uppercase tracking-wider mb-1 flex items-center gap-1.5 dark:drop-shadow-[0_0_8px_rgba(96,165,250,0.5)]">
+                      <ShieldCheck size={14} className="text-amber-700 dark:text-amber-400" />
                       Cultural Significance to Bahawalpur
                     </h5>
-                    <p className="text-xs text-amber-950 leading-relaxed">
+                    <p className="text-xs text-amber-950 dark:text-[#93C5FD] leading-relaxed font-normal">
                       {selectedGalleryItem.significance}
                     </p>
                   </div>
 
-                  <div className="flex justify-end pt-2">
+                  <div className="flex justify-end pt-2 border-t border-slate-100 dark:border-white/10">
                     <button
                       onClick={() => setSelectedGalleryItem(null)}
                       className="bg-[#092242] text-white hover:bg-[#a30f16] px-5 py-2 rounded-xl text-xs font-bold transition-colors cursor-pointer"

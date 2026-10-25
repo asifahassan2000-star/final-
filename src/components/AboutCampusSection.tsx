@@ -182,14 +182,14 @@ export const AboutCampusSection: React.FC<AboutCampusSectionProps> = ({
             {/* Full-Bleed Edge-to-Edge Image (No Frame, No Shadow) */}
             <div className="relative overflow-hidden rounded-xl w-full aspect-[16/9]">
               <img 
-                src="/assets/campus/central_lawn_academic_complex.jpg"
+                src="https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-05%20at%202.46.10%20AM.jpeg"
                 alt="University of Central Punjab Bahawalpur Campus Central Lawns and Academic Complex"
                 loading="lazy"
                 decoding="async"
                 className="w-full h-full object-cover object-center block"
                 onError={(e) => {
                   const target = e.target as HTMLImageElement;
-                  target.src = '/images/pr54WNFV_Whats-App-Image-2026-10-10-at-7-16-33-AM.jpg';
+                  target.src = '/assets/campus/central_lawn_academic_complex.jpg';
                 }}
               />
             </div>

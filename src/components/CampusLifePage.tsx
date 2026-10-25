@@ -506,17 +506,20 @@ export const CampusLifePage: React.FC<CampusLifePageProps> = ({
           - Directly below header with clean, tight spacing
       ======================================================================= */}
       <section className="bg-[#FFFFFF] dark:bg-[#07192F] pt-6 sm:pt-8 lg:pt-10 pb-8 sm:pb-12 px-4 sm:px-6 lg:px-12 text-center border-b border-[#EAEAEA] dark:border-white/10">
-        <div className="max-w-5xl mx-auto space-y-6">
-          <span className="text-[12px] font-sans uppercase tracking-[0.2em] text-[#B31B1B] font-bold block">
+        <div className="max-w-5xl mx-auto space-y-4 text-center">
+          <span className="text-[12px] font-sans uppercase tracking-[0.2em] text-[#B31B1B] font-bold block text-center">
             Collegiate Chronicle · Southern Punjab
           </span>
 
-          <h1 className="font-['Source_Serif_4','Source_Serif_Pro','Times_New_Roman',serif] font-normal text-[36px] sm:text-[48px] lg:text-[56px] text-[#0A1931] dark:text-white tracking-tight leading-tight">
+          <h1 
+            style={{ color: '#002855', borderColor: '#D4AF37' }}
+            className="font-bold text-4xl text-[#002855] text-center tracking-tight inline-block pb-2 border-b-4 border-[#D4AF37]"
+          >
             Campus Life &amp; Events
           </h1>
 
-          <p className="font-sans text-[18px] sm:text-[20px] leading-[1.8] text-slate-600 dark:text-slate-300 font-normal max-w-2xl mx-auto">
-            Official chronological chronicle of collegiate milestones, academic symposiums, excursions, and student traditions at University of Central Punjab (UCP) Bahawalpur.
+          <p className="font-sans text-base sm:text-lg text-slate-600 dark:text-slate-300 font-normal max-w-2xl mx-auto text-center">
+            Celebrating moments, achievements, and excellence at UCP Bahawalpur
           </p>
 
           {/* Minimal Year Segment Selector & Search */}
