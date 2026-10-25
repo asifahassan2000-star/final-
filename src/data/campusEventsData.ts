@@ -1496,7 +1496,7 @@ export const CAMPUS_EVENTS_DATA: CampusEvent[] = [
         caption: 'Graduating seniors sharing memorable moments with faculty mentors'
       },
       {
-        src: 'https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-05%20at%202.38.55%20AM.jpeg',
+        src: 'https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-22%20at%209.54.08%20PM.png',
         fallbackSrc: '/assets/campus-life-new/campus-13.jpg',
         alt: 'Presentation of personalized honorary titles and sashes',
         caption: 'Honoring senior achievers with bespoke sashes, titles, and mementos'
@@ -1526,16 +1526,16 @@ export const CAMPUS_EVENTS_DATA: CampusEvent[] = [
         caption: 'Celebrating the legacy, resilience, and bright futures of UCP graduates'
       },
       {
-        src: 'https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-05%20at%202.38.54%20AM%20(1).jpeg',
+        src: 'https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-22%20at%209.54.07%20PM.png',
         fallbackSrc: '/assets/leadership/leadership-official-gathering.jpg',
         alt: 'Faculty blessings and farewell speeches for outgoing batch',
         caption: 'Professors imparting final words of wisdom and professional blessings'
       },
       {
-        src: 'https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-05%20at%202.38.52%20AM%20(1).jpeg',
-        fallbackSrc: '/assets/campus-life-new/campus-14.jpg',
-        alt: 'Graduating students gathering for group photos at Farewell Party',
-        caption: 'Senior students celebrating their milestone achievement at UCP'
+        src: 'https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-13%20at%2012.53.34%20AM.jpeg',
+        fallbackSrc: '/assets/leadership/leadership-official-gathering.jpg',
+        alt: 'Farewell gathering and leadership assembly with graduating batch',
+        caption: 'Senior valedictory gathering celebrating academic excellence and leadership'
       },
       {
         src: 'https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-05%20at%202.38.57%20AM.jpeg',

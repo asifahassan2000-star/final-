@@ -22,6 +22,20 @@ const isProd = process.env.NODE_ENV === 'production';
 
 app.use(express.json());
 
+// Security headers aligning with vercel.json for Grade A+ security rating (CSP, HSTS, X-Frame-Options, etc.)
+app.use((_req, res, next) => {
+  res.setHeader(
+    'Content-Security-Policy',
+    "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https:; style-src 'self' 'unsafe-inline' https:; img-src 'self' data: https:; font-src 'self' data: https:;"
+  );
+  res.setHeader('X-Frame-Options', 'DENY');
+  res.setHeader('X-Content-Type-Options', 'nosniff');
+  res.setHeader('Strict-Transport-Security', 'max-age=63072000; includeSubDomains; preload');
+  res.setHeader('Referrer-Policy', 'strict-origin-when-cross-origin');
+  res.setHeader('Permissions-Policy', 'camera=(), microphone=(), geolocation=()');
+  next();
+});
+
 // In development, prevent stale caching so changes reflect immediately on screen; in production, use edge caching
 app.use((req, res, next) => {
   if (isProd) {
