@@ -2,10 +2,13 @@ import React, { useState, useRef, useEffect, useCallback } from 'react';
 import { 
   X, Send, RefreshCw, Bot, 
   ExternalLink, Zap, Sparkles,
-  Maximize2, Minimize2
+  Maximize2, Minimize2, ChevronLeft, ChevronRight
 } from 'lucide-react';
-import { getInstantBotResponse, searchUcpKnowledge } from '../utils/ucpBotKnowledge';
+import { getInstantBotResponse, QUICK_ACTION_RESPONSES, BotResponse } from '../utils/ucpBotKnowledge';
 import { UcpRobotMascot } from './UcpRobotMascot';
+
+// In-memory cache for instant repeated query responses (0ms)
+const queryCache = new Map<string, BotResponse>();
 
 interface Message {
   id: string;
@@ -18,6 +21,27 @@ interface Message {
 }
 
 const INITIAL_MESSAGES: Message[] = [];
+
+export interface QuickActionItem {
+  id: string;
+  label: string;
+  icon: string;
+  query: string;
+}
+
+export const QUICK_ACTIONS: QuickActionItem[] = [
+  { id: 'fee', label: 'View Fee', icon: '💰', query: 'What is the fee structure and semester installment breakdown at UCP Bahawalpur?' },
+  { id: 'admissions', label: 'Admissions', icon: '📝', query: 'How can I apply for admission at UCP Bahawalpur and what is the process?' },
+  { id: 'faculty', label: 'Faculty', icon: '👨‍🏫', query: 'Tell me about the faculty members, professors, and teaching staff at UCP Bahawalpur.' },
+  { id: 'leadership', label: 'Leadership', icon: '🏛️', query: 'Who are the campus leaders, principal, and administrators of UCP Bahawalpur?' },
+  { id: 'programmes', label: 'Programmes', icon: '🎓', query: 'What degree programmes and associate degrees are offered at UCP Bahawalpur?' },
+  { id: 'scholarship', label: 'Scholarship', icon: '🏆', query: 'What merit scholarships, PGC alumni discounts, and concessions are available?' },
+  { id: 'scope', label: 'Scope of All Programmes', icon: '📈', query: 'What is the career scope, future demand, and job opportunities for all programmes?' },
+  { id: 'eligibility', label: 'Eligibility', icon: '📋', query: 'What is the admission eligibility criteria and minimum percentage required?' },
+  { id: 'legacy', label: 'Legacy', icon: '⭐', query: 'Tell me about the legacy, history, and achievements of UCP and Punjab Group of Colleges.' },
+  { id: 'adp-ai', label: 'ADP AI', icon: '🤖', query: 'Tell me about the ADP Artificial Intelligence degree programme curriculum and career paths.' },
+  { id: 'facilities', label: 'Facilities', icon: '🔬', query: 'What computing labs, transport buses, library, and campus facilities are available?' }
+];
 
 // Typewriter / Typing animation component for smooth text reveal
 const TypingMessageText: React.FC<{
@@ -78,12 +102,39 @@ const TypingMessageText: React.FC<{
   );
 };
 
-export const UcpChatbot: React.FC = () => {
+interface UcpChatbotProps {
+  onNavigate?: (url: string, options?: { programId?: string; category?: string; sectionId?: string }) => void;
+}
+
+export const UcpChatbot: React.FC<UcpChatbotProps> = ({ onNavigate }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [isExpanded, setIsExpanded] = useState(false);
   const [messages, setMessages] = useState<Message[]>(INITIAL_MESSAGES);
   const [inputValue, setInputValue] = useState('');
   const [isLoading, setIsLoading] = useState(false);
+
+  const handleActionClick = (url: string) => {
+    if (!url) return;
+    setIsOpen(false);
+
+    if (onNavigate) {
+      onNavigate(url);
+      return;
+    }
+
+    if (typeof window !== 'undefined') {
+      if (url.startsWith('http://') || url.startsWith('https://')) {
+        window.open(url, '_blank', 'noopener,noreferrer');
+        return;
+      }
+      if (typeof (window as any).__ucpNavigate === 'function') {
+        (window as any).__ucpNavigate(url);
+      } else {
+        window.dispatchEvent(new CustomEvent('ucp-navigate', { detail: { url } }));
+        window.location.hash = url.startsWith('#') ? url : `#${url}`;
+      }
+    }
+  };
 
   // Mascot interactive animation states
   const [isWaving, setIsWaving] = useState(false);
@@ -95,7 +146,17 @@ export const UcpChatbot: React.FC = () => {
 
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
+  const quickActionsRef = useRef<HTMLDivElement>(null);
   const greetingTimerRef = useRef<NodeJS.Timeout | null>(null);
+
+  const handleScrollQuickActions = (direction: 'left' | 'right') => {
+    if (quickActionsRef.current) {
+      quickActionsRef.current.scrollBy({
+        left: direction === 'left' ? -220 : 220,
+        behavior: 'smooth'
+      });
+    }
+  };
 
   // 1. Natural blinking loop (every 3.6 to 5 seconds)
   useEffect(() => {
@@ -213,7 +274,7 @@ export const UcpChatbot: React.FC = () => {
     }
   };
 
-  const handleSendMessage = async (textToSend?: string) => {
+  const handleSendMessage = async (textToSend?: string, quickActionId?: string) => {
     const query = (textToSend || inputValue).trim();
     if (!query || isLoading) return;
 
@@ -223,9 +284,10 @@ export const UcpChatbot: React.FC = () => {
 
     // Mascot acknowledgement bounce when user sends a message
     setIsBouncing(true);
-    setTimeout(() => setIsBouncing(false), 400);
+    setTimeout(() => setIsBouncing(false), 350);
 
     const userMsgId = `user-${Date.now()}`;
+    const botMsgId = `bot-${Date.now() + 1}`;
     const currentTime = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
 
     const newMessages: Message[] = [
@@ -237,16 +299,88 @@ export const UcpChatbot: React.FC = () => {
         time: currentTime
       }
     ];
-    setMessages(newMessages);
-    setIsLoading(true);
 
     const conversationHistory = newMessages.slice(-6).map((m) => ({
       role: m.sender === 'user' ? ('user' as const) : ('model' as const),
       text: m.text
     }));
 
-    // Step 1: Check for affirmative response to "Would you like me to open admission form?"
     const lowerQuery = query.toLowerCase().trim();
+
+    // Helper: Stream instant response rapidly to UI (0ms network delay, smooth 200ms typewriter)
+    const deliverInstantResponse = (botResponse: BotResponse) => {
+      setIsLoading(false);
+      const fullText = botResponse.reply;
+      const respActionLink = botResponse.actionLink;
+      const respSuggestions = botResponse.suggestions;
+
+      // Add empty bot message
+      setMessages([
+        ...newMessages,
+        {
+          id: botMsgId,
+          sender: 'bot',
+          text: '',
+          time: currentTime,
+          isStreaming: true
+        }
+      ]);
+
+      // Ultra-fast character chunk streaming (14-20 chars every 12ms)
+      const step = Math.max(14, Math.ceil(fullText.length / 22));
+      let currentLen = 0;
+
+      const interval = setInterval(() => {
+        currentLen += step;
+        if (currentLen >= fullText.length) {
+          clearInterval(interval);
+          setMessages((prev) =>
+            prev.map((m) =>
+              m.id === botMsgId
+                ? {
+                    ...m,
+                    text: fullText,
+                    isStreaming: false,
+                    actionLink: respActionLink,
+                    suggestions: respSuggestions
+                  }
+                : m
+            )
+          );
+          setIsHappy(true);
+          setIsBouncing(true);
+          setTimeout(() => {
+            setIsHappy(false);
+            setIsBouncing(false);
+          }, 1200);
+        } else {
+          const slice = fullText.slice(0, currentLen);
+          setMessages((prev) =>
+            prev.map((m) =>
+              m.id === botMsgId
+                ? { ...m, text: slice, isStreaming: true }
+                : m
+            )
+          );
+        }
+      }, 12);
+    };
+
+    // 1. Direct Quick Action ID or Quick Action Query matching (INSTANT 0ms)
+    const matchedQuickAction = QUICK_ACTIONS.find(
+      (qa) =>
+        qa.id === quickActionId ||
+        qa.query.toLowerCase() === lowerQuery ||
+        qa.label.toLowerCase() === lowerQuery ||
+        qa.id === lowerQuery
+    );
+
+    if (matchedQuickAction && QUICK_ACTION_RESPONSES[matchedQuickAction.id]) {
+      deliverInstantResponse(QUICK_ACTION_RESPONSES[matchedQuickAction.id]);
+      return;
+    }
+
+    // 2. Affirmative response to "Would you like me to open admission form?"
     const isAffirmative = /^(yes|open|open form|open admission|open admission form|yes please|sure|please open|haan|khol do|admissions form)/i.test(lowerQuery);
     const hasAdmissionContext = conversationHistory.some(m => 
       m.text.toLowerCase().includes('open admission form') || 
@@ -257,125 +391,174 @@ export const UcpChatbot: React.FC = () => {
       if (typeof window !== 'undefined') {
         window.open('https://admissions.ucpcolleges.pgc.edu/login?returnUrl=%2Flogin%3FreturnUrl%3D%252F', '_blank');
       }
-      setMessages((prev) => [
-        ...prev,
-        {
-          id: `bot-${Date.now()}`,
-          sender: 'bot',
-          text: "Opening the official UCP online admission portal for you right now 📝✨ Best of luck with your application!",
-          time: currentTime,
-          actionLink: { label: "Open Admission Portal 🚀", url: "https://admissions.ucpcolleges.pgc.edu/login?returnUrl=%2Flogin%3FreturnUrl%3D%252F" },
-          suggestions: ["Eligibility Criteria 📋", "Fee Structure 💰", "Degree Programmes 🎓"],
-          isStreaming: true
-        }
-      ]);
-      setIsLoading(false);
-      setIsHappy(true);
-      setIsBouncing(true);
-      setTimeout(() => {
-        setIsHappy(false);
-        setIsBouncing(false);
-      }, 1500);
-      return;
-    }
-
-    // Step 2: FIRST SEARCH IN ucp-knowledge.js (TRAINED LOGIC - NO API NEEDED FIRST)
-    const { match, confidence } = searchUcpKnowledge(query);
-
-    if (match && confidence >= 20) {
-      let botReplyText = match.answer;
-      let actionLink = match.actionLink;
-      let suggestions = match.suggestions;
-
-      // If someone asks admission, also ask "Would you like me to open admission form?"
-      if (match.isAdmissionRelated && !botReplyText.includes("open admission form")) {
-        botReplyText += "\n\nWould you like me to open admission form?";
-      }
-
-      setMessages((prev) => [
-        ...prev,
-        {
-          id: `bot-${Date.now()}`,
-          sender: 'bot',
-          text: botReplyText,
-          time: currentTime,
-          actionLink,
-          suggestions,
-          isStreaming: true
-        }
-      ]);
-      setIsLoading(false);
-      setIsHappy(true);
-      setIsBouncing(true);
-      setTimeout(() => {
-        setIsHappy(false);
-        setIsBouncing(false);
-      }, 1500);
-      return;
-    }
-
-    // Step 3: GEMINI FOR ALL WORLD QUESTIONS & BACKUP
-    let botReplyText = '';
-    let actionLink: { label: string; url: string } | undefined;
-    let suggestions: string[] | undefined;
-
-    try {
-      const controller = new AbortController();
-      const timeoutId = setTimeout(() => controller.abort(), 25000);
-
-      const response = await fetch('/api/chat', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          message: query,
-          history: conversationHistory
-        }),
-        signal: controller.signal
+      deliverInstantResponse({
+        reply: "Opening the official UCP online admission portal for you right now 📝✨ Best of luck with your application!",
+        actionLink: { label: "Open Admission Portal 🚀", url: "https://admissions.ucpcolleges.pgc.edu/login?returnUrl=%2Flogin%3FreturnUrl%3D%252F" },
+        suggestions: ["Eligibility Criteria 📋", "Fee Structure 💰", "Degree Programmes 🎓"],
+        isOfflineMatch: true
       });
-      clearTimeout(timeoutId);
-
-      if (response.ok) {
-        const data = await response.json();
-        if (data.success && data.reply) {
-          botReplyText = data.reply;
-          suggestions = data.suggestions;
-          actionLink = data.actionLink;
-        }
-      }
-    } catch {
-      // Live API call timed out or network error
+      return;
     }
 
-    // Step 4: If Gemini API fails or key breaks, show friendly message:
-    if (!botReplyText) {
-      const localResult = getInstantBotResponse(query);
-      botReplyText = localResult.reply;
-      actionLink = localResult.actionLink;
-      suggestions = localResult.suggestions;
+    // 3. Developer / Builder attribution question (INSTANT 0ms)
+    const isDevQuery = /who (made|developed|created|built|coded|designed) (you|this website|the website|website)|who is (your|the) (developer|creator|maker|founder)|developer of (this )?website|website developer|founder of (this )?website|who founded this website/i.test(lowerQuery);
+    if (isDevQuery) {
+      deliverInstantResponse({
+        reply: "I and this entire website of UCP Bahawalpur campus were developed and built by Asifa, a student of AI at UCP Bahawalpur! 🎓✨",
+        suggestions: ["Degree Programmes 🎓", "Fee Structure 💰", "Admissions 📝"],
+        isOfflineMatch: true
+      });
+      return;
     }
 
-    const botMsgId = `bot-${Date.now()}`;
-    setMessages((prev) => [
-      ...prev,
+    // 4. Instant Knowledge Match for UCP Campus questions (INSTANT 0ms)
+    const instantCheck = getInstantBotResponse(query);
+    if (instantCheck.isOfflineMatch) {
+      deliverInstantResponse(instantCheck);
+      return;
+    }
+
+    // 5. In-memory Cache check (INSTANT 0ms for repeated queries)
+    const cached = queryCache.get(lowerQuery);
+    if (cached) {
+      deliverInstantResponse(cached);
+      return;
+    }
+
+    // 6. For open-ended general queries: Fast streaming from server with timeout protection
+    setMessages([
+      ...newMessages,
       {
         id: botMsgId,
         sender: 'bot',
-        text: botReplyText,
-        time: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
-        actionLink,
-        suggestions,
+        text: '',
+        time: currentTime,
         isStreaming: true
       }
     ]);
+    setIsLoading(true);
+
+    let streamedText = '';
+    let actionLink: { label: string; url: string } | undefined;
+    let suggestions: string[] | undefined;
+
+    const controller = new AbortController();
+    const abortTimeout = setTimeout(() => {
+      controller.abort();
+    }, 4000);
+
+    try {
+      const response = await fetch('/api/chat/stream', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        signal: controller.signal,
+        body: JSON.stringify({
+          message: query,
+          history: conversationHistory
+        })
+      });
+
+      clearTimeout(abortTimeout);
+
+      if (response.ok && response.body) {
+        const reader = response.body.getReader();
+        const decoder = new TextDecoder();
+        let buffer = '';
+
+        while (true) {
+          const { done, value } = await reader.read();
+          if (done) break;
+
+          buffer += decoder.decode(value, { stream: true });
+          const lines = buffer.split('\n\n');
+          buffer = lines.pop() || '';
+
+          for (const line of lines) {
+            const trimmed = line.trim();
+            if (trimmed.startsWith('data: ')) {
+              const dataStr = trimmed.slice(6).trim();
+              if (dataStr === '[DONE]') {
+                break;
+              }
+              try {
+                const parsed = JSON.parse(dataStr);
+                if (parsed.text) {
+                  streamedText += parsed.text;
+                  setIsLoading(false); // First token arrived, hide typing indicator
+                }
+                if (parsed.suggestions) suggestions = parsed.suggestions;
+                if (parsed.actionLink) actionLink = parsed.actionLink;
+              } catch {
+                if (dataStr && dataStr !== '[DONE]') {
+                  streamedText += dataStr;
+                  setIsLoading(false);
+                }
+              }
+
+              // Update the streaming message in real-time
+              setMessages((prev) =>
+                prev.map((m) =>
+                  m.id === botMsgId
+                    ? { ...m, text: streamedText, isStreaming: true }
+                    : m
+                )
+              );
+            }
+          }
+        }
+      }
+    } catch (err) {
+      console.warn('Streaming notice or abort timeout:', err);
+    } finally {
+      clearTimeout(abortTimeout);
+    }
+
+    // Step 7: Fallback if no streamed tokens were received
+    if (!streamedText.trim()) {
+      const fallback = getInstantBotResponse(query);
+      streamedText = fallback.reply;
+      suggestions = fallback.suggestions;
+      actionLink = fallback.actionLink;
+    }
+
+    // Auto-detect admission queries for helpful quick action button
+    const lowerReply = streamedText.toLowerCase();
+    if (lowerReply.includes('admission') || lowerQuery.includes('admission') || lowerQuery.includes('apply')) {
+      if (!actionLink) {
+        actionLink = { label: "Open Admission Portal 🚀", url: "https://admissions.ucpcolleges.pgc.edu/login?returnUrl=%2Flogin%3FreturnUrl%3D%252F" };
+      }
+    }
+
+    // Cache completed result for 0ms repeat queries
+    queryCache.set(lowerQuery, {
+      reply: streamedText,
+      suggestions,
+      actionLink,
+      isOfflineMatch: false
+    });
+
+    setMessages((prev) =>
+      prev.map((m) =>
+        m.id === botMsgId
+          ? {
+              ...m,
+              text: streamedText,
+              isStreaming: false,
+              suggestions,
+              actionLink
+            }
+          : m
+      )
+    );
     setIsLoading(false);
 
-    // Mascot responds happily upon receiving answer: happy eyes & joyful bounce
+    // Mascot celebration bounce
     setIsHappy(true);
     setIsBouncing(true);
     setTimeout(() => {
       setIsHappy(false);
       setIsBouncing(false);
-    }, 1800);
+    }, 1500);
   };
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
@@ -389,6 +572,48 @@ export const UcpChatbot: React.FC = () => {
     setMessages(INITIAL_MESSAGES);
     setIsHappy(true);
     setTimeout(() => setIsHappy(false), 1200);
+  };
+
+  const renderFormattedText = (text: string) => {
+    if (!text) return null;
+    const linkRegex = /\[([^\]]+)\]\(([^)]+)\)/g;
+    if (!linkRegex.test(text)) {
+      return text;
+    }
+
+    const parts: React.ReactNode[] = [];
+    let lastIdx = 0;
+    linkRegex.lastIndex = 0;
+    let m: RegExpExecArray | null;
+
+    while ((m = linkRegex.exec(text)) !== null) {
+      const [full, label, url] = m;
+      const idx = m.index;
+      if (idx > lastIdx) {
+        parts.push(text.slice(lastIdx, idx));
+      }
+      parts.push(
+        <button
+          key={`link-${idx}`}
+          type="button"
+          onClick={(e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            handleActionClick(url);
+          }}
+          className="inline-flex items-center gap-0.5 text-[#0A1931] font-semibold underline underline-offset-2 hover:text-[#1E3A66] cursor-pointer"
+        >
+          {label}
+        </button>
+      );
+      lastIdx = idx + full.length;
+    }
+
+    if (lastIdx < text.length) {
+      parts.push(text.slice(lastIdx));
+    }
+
+    return parts;
   };
 
   return (
@@ -564,28 +789,33 @@ export const UcpChatbot: React.FC = () => {
                           : 'bg-white text-slate-800 border border-slate-200 shadow-xs font-sans'
                       }`}
                     >
-                      {msg.sender === 'bot' && isLatestBot ? (
-                        <TypingMessageText 
-                          fullText={msg.text} 
-                          isAnimated={true}
-                          onDone={() => {
-                            msg.isStreaming = false;
-                          }} 
-                        />
+                      {msg.sender === 'bot' ? (
+                        <span>
+                          {renderFormattedText(msg.text)}
+                          {msg.isStreaming && (
+                            <span className="inline-block w-1.5 h-3.5 bg-[#0A1931] ml-0.5 animate-pulse align-middle" />
+                          )}
+                        </span>
                       ) : (
                         msg.text
                       )}
 
-                      {/* Action link */}
+                      {/* Action link button - Opens exact page and section */}
                       {msg.actionLink && (
-                        <div className="mt-2.5 pt-2 border-t border-slate-100">
-                          <a
-                            href={msg.actionLink.url}
-                            onClick={() => setIsOpen(false)}
-                            className="inline-flex items-center gap-1 text-[11px] font-semibold text-[#0A1931] hover:underline"
+                        <div className="mt-3 pt-2.5 border-t border-slate-100 flex items-center">
+                          <button
+                            type="button"
+                            onClick={(e) => {
+                              e.preventDefault();
+                              e.stopPropagation();
+                              handleActionClick(msg.actionLink!.url);
+                            }}
+                            className="inline-flex items-center gap-1.5 px-3.5 py-2 bg-[#0A1931] hover:bg-[#1E3A66] text-white rounded-lg text-[12px] font-semibold tracking-tight shadow-2xs hover:shadow-xs transition-all active:scale-98 cursor-pointer group"
+                            title={`Open ${msg.actionLink.label}`}
                           >
-                            {msg.actionLink.label} <ExternalLink size={12} />
-                          </a>
+                            <span>{msg.actionLink.label}</span>
+                            <ExternalLink size={12} className="group-hover:translate-x-0.5 transition-transform" />
+                          </button>
                         </div>
                       )}
                     </div>
@@ -629,41 +859,57 @@ export const UcpChatbot: React.FC = () => {
             <div ref={messagesEndRef} />
           </div>
 
-          {/* Quick Pill Strip */}
-          <div className="px-3 py-1.5 bg-slate-50 border-t border-slate-200 flex items-center gap-1.5 overflow-x-auto text-[11px] scrollbar-none">
-            <span className="text-slate-400 flex items-center gap-1 shrink-0 text-[10px] font-mono font-semibold">
-              <Zap size={11} className="text-amber-500" /> Quick:
-            </span>
-            <button
-              onClick={() => handleSendMessage("What degree programs are offered?")}
-              className="px-2 py-0.5 bg-white border border-slate-200 text-slate-700 rounded-md whitespace-nowrap hover:bg-slate-100 hover:border-[#0A1931] cursor-pointer font-sans"
+          {/* Quick Actions Horizontal Scrollable Strip */}
+          <div className="bg-slate-50 border-t border-slate-200 px-3 py-2">
+            <div className="flex items-center justify-between gap-1 mb-1.5 px-0.5">
+              <div className="flex items-center gap-1.5 text-[10px] font-mono font-semibold uppercase tracking-wider text-slate-500 select-none">
+                <Sparkles size={11} className="text-amber-500 fill-amber-500 animate-pulse" />
+                <span>Quick Actions</span>
+              </div>
+              <div className="hidden sm:flex items-center gap-1">
+                <button
+                  type="button"
+                  onClick={() => handleScrollQuickActions('left')}
+                  className="w-5 h-5 rounded flex items-center justify-center bg-white hover:bg-slate-200 border border-slate-300 text-slate-600 cursor-pointer transition-colors"
+                  aria-label="Scroll quick actions left"
+                  title="Scroll left"
+                >
+                  <ChevronLeft size={12} />
+                </button>
+                <button
+                  type="button"
+                  onClick={() => handleScrollQuickActions('right')}
+                  className="w-5 h-5 rounded flex items-center justify-center bg-white hover:bg-slate-200 border border-slate-300 text-slate-600 cursor-pointer transition-colors"
+                  aria-label="Scroll quick actions right"
+                  title="Scroll right"
+                >
+                  <ChevronRight size={12} />
+                </button>
+              </div>
+            </div>
+
+            <div 
+              ref={quickActionsRef}
+              className="flex items-center gap-1.5 overflow-x-auto scrollbar-none py-0.5 scroll-smooth select-none -mx-1 px-1 touch-pan-x"
             >
-              Programs
-            </button>
-            <button
-              onClick={() => handleSendMessage("Tell me about ADP Artificial Intelligence")}
-              className="px-2 py-0.5 bg-white border border-slate-200 text-slate-700 rounded-md whitespace-nowrap hover:bg-slate-100 hover:border-[#0A1931] cursor-pointer font-sans"
-            >
-              ADP AI
-            </button>
-            <button
-              onClick={() => handleSendMessage("What is the fee structure?")}
-              className="px-2 py-0.5 bg-white border border-slate-200 text-slate-700 rounded-md whitespace-nowrap hover:bg-slate-100 hover:border-[#0A1931] cursor-pointer font-sans"
-            >
-              Fees
-            </button>
-            <button
-              onClick={() => handleSendMessage("How much scholarship can I get?")}
-              className="px-2 py-0.5 bg-white border border-slate-200 text-slate-700 rounded-md whitespace-nowrap hover:bg-slate-100 hover:border-[#0A1931] cursor-pointer font-sans"
-            >
-              Scholarships
-            </button>
-            <button
-              onClick={() => handleSendMessage("What is the admission eligibility?")}
-              className="px-2 py-0.5 bg-white border border-slate-200 text-slate-700 rounded-md whitespace-nowrap hover:bg-slate-100 hover:border-[#0A1931] cursor-pointer font-sans"
-            >
-              Eligibility
-            </button>
+              {QUICK_ACTIONS.map((item) => (
+                <button
+                  key={item.id}
+                  type="button"
+                  onClick={() => handleSendMessage(item.query, item.id)}
+                  disabled={isLoading}
+                  className="inline-flex items-center gap-1.5 px-2.5 py-1 bg-white hover:bg-[#0A1931] text-slate-700 hover:text-white border border-slate-200 hover:border-[#0A1931] rounded-lg text-xs font-medium whitespace-nowrap transition-all duration-150 shadow-2xs hover:shadow-xs active:scale-95 cursor-pointer shrink-0 group disabled:opacity-50 disabled:pointer-events-none font-sans"
+                  title={item.query}
+                >
+                  <span className="text-[12px] group-hover:scale-110 transition-transform leading-none">
+                    {item.icon}
+                  </span>
+                  <span className="text-[11.5px] font-semibold leading-tight">
+                    {item.label}
+                  </span>
+                </button>
+              ))}
+            </div>
           </div>
 
           {/* ChatGPT-style neat rectangular input bar */}
@@ -713,7 +959,7 @@ export const UcpChatbot: React.FC = () => {
             className={`relative mr-2 sm:mr-3.5 cursor-pointer select-none ${
               greetingState === 'exiting' ? 'ucp-speech-bubble-exit' : 'ucp-speech-bubble-enter'
             }`}
-            title="Click to chat with UCP Virtual Assistant"
+            title="Click to chat with UCP Assistant"
             role="alert"
           >
             {/* Elegant Formal Card Container */}
@@ -740,7 +986,7 @@ export const UcpChatbot: React.FC = () => {
               <div>
                 <div className="flex items-center gap-1.5 text-[10px] font-mono uppercase tracking-wider text-slate-500 dark:text-slate-400 font-medium leading-none mb-1">
                   <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
-                  <span>UCP Virtual Assistant</span>
+                  <span>UCP Assistant · Virtual Assistant</span>
                 </div>
                 <p className="text-xs sm:text-[13px] font-medium text-slate-800 dark:text-slate-100 leading-snug">
                   How may we assist you today?
@@ -771,7 +1017,7 @@ export const UcpChatbot: React.FC = () => {
               ? 'w-10 h-10 sm:w-16 sm:h-16 bg-[#0A1931] hover:bg-[#12284C] text-white shadow-xl rotate-90 scale-95 border border-slate-500'
               : 'w-10 h-10 sm:w-[82px] sm:h-[82px] lg:w-[88px] lg:h-[88px] bg-gradient-to-b from-[#0F223F] via-[#0A1931] to-[#061121] text-white hover:scale-105 active:scale-95 border-2 border-slate-600/80 hover:border-slate-300 shadow-[0_12px_40px_rgba(10,25,49,0.5)] ucp-robot-halo'
           } ${!isOpen && !isWaving ? 'ucp-robot-float' : ''} ${isBouncing ? 'ucp-robot-bounce' : ''}`}
-          aria-label={isOpen ? "Close UCP Assistant" : "Open UCP Assistant — Campus AI Chatbot"}
+          aria-label={isOpen ? "Close UCP Assistant" : "Open UCP Assistant — Campus Assistant"}
           title={isOpen ? "Close UCP Assistant" : "Chat with UCP Assistant"}
         >
           {isOpen ? (

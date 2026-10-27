@@ -99,43 +99,175 @@ app.get('/sitemap.xml', (_req, res) => {
   res.sendFile(path.resolve(__dirname, 'public/sitemap.xml'));
 });
 
-const SYSTEM_INSTRUCTION = `You are 'UCP Assistant', the official, friendly campus guide for University of Central Punjab (UCP) Bahawalpur Campus.
+const BASE_SYSTEM_PROMPT = `You are UCP Assistant, official AI assistant for UCP Bahawalpur (University of Central Punjab, Bahawalpur Campus). You are fast, helpful, friendly and concise. Answer instantly. You have extensive knowledge about UCP Bahawalpur campus. For general knowledge questions, answer from your Gemini intelligence directly without mentioning sources.
 
-CAPABILITIES:
-- You are a knowledgeable, helpful senior university student who can answer ANY QUESTION in the world (science, technology, programming, mathematics, history, world facts, geography, writing, study methods, motivation, general queries) accurately and engagingly!
-- You ALSO possess complete authoritative knowledge about UCP Bahawalpur Campus (programs, fees, admissions, scholarships, leadership, campus life).
+CRITICAL DEVELOPER & WEBSITE BUILDER ATTRIBUTION:
+- When someone asks who made this website, who developed this website, who built this website, who created this website, who is the founder or developer of this website, OR asks who made/developed/built you (the AI assistant), answer:
+"I and this entire website of UCP Bahawalpur campus were developed and built by Asifa, a student of AI at UCP Bahawalpur! 🎓✨"
+- STRICT RULE: ONLY mention Asifa's name when someone specifically asks who built/developed you or who built/developed/founded this website. In all other conversations and questions (admissions, programs, campus life, fees, faculty, general knowledge, etc.), NEVER mention Asifa or bring up the developer unprompted.`;
 
-STYLE & RULES:
-- Tone: Warm, approachable, helpful, encouraging (like a smart, friendly senior student).
-- Keep answers concise and readable (2 to 4 sentences or clear bullet points) using simple, natural English.
-- NEVER say "As an AI", "As a language model", or "As an artificial intelligence". Speak naturally.
-- When someone asks who you are or your name: "I'm UCP Assistant, your official campus guide for UCP Bahawalpur! 🎓"
-- DEVELOPER RULE: ONLY when someone explicitly asks "who is your developer", "who made you", or "who created you", answer: "I was developed by Asifa, a student of AI at UCP! 😊🎓". Under NO other circumstance should you ever mention Asifa's name.
-- ADMISSION RULE: If the user asks about UCP admissions, applying, or eligibility, always conclude with: "Would you like me to open admission form?"
-- Never state an exact total count of programs like "27 programs" or "25 programs". Refer to them naturally as degree programmes, BS programmes, or associate degrees (ADP).
-
-UCP BAHAWALPUR KNOWLEDGE:
+const UCP_CAMPUS_FACTS = `
+UCP Bahawalpur Campus Knowledge:
 - Location: Constituent College, UCP Campus, Airport Road, Bahawalpur, Punjab, Pakistan.
 - Degrees Offered: BS Computer Science, ADP Artificial Intelligence (75 CH), ADP Software Engineering, ADP Cyber Security, ADP Data Science, BBA (Honors), BS Business Analytics, BS Accounting & Finance, BS Biotechnology, BS Biochemistry, BS Chemistry, BS Physics, BS Mathematics, BS Zoology, BS English, BS Psychology, ADS Pre-Medical, ADS Math/Physics. Note: 5-year LLB is offered at parent UCP Lahore campus with guidance available here.
-- Eligibility: Minimum 50% marks in Intermediate (FSc, ICS, FA, I.Com, A-Levels).
+- Eligibility: Minimum 50% marks in Intermediate (FSc Pre-Medical, FSc Pre-Engineering, ICS, FA, I.Com, A-Levels).
 - Fee Structure: Tuition Rs. 4,100 to Rs. 6,800/credit hour. Admission fee Rs. 9,000, Registration fee Rs. 2,500. Easy semester installment plans.
 - Scholarships: Up to 50% Merit Scholarships based on intermediate marks, 25% PGC alumni discount, 25% kinship discount for siblings, sports and need-based financial aid.
 - Leadership: Founder & Chairman Mian Amer Mahmood; Director PGC & UCP Bahawalpur Cluster Prof. Hamid Iqbal; Principal Prof. Dr. Aurangzaib Virk; Executive Director Prof. Sohail Afzal.
+- Faculty & Academics: Distinguished PhD and MPhil faculty members, published researchers, and seasoned industry mentors across Computing, Business, Natural Sciences, and Humanities faculties dedicated to interactive learning and practical projects.
+- Legacy & Heritage: UCP Bahawalpur is a constituent campus of the University of Central Punjab and Pakistan's largest educational network — Punjab Group of Colleges (PGC), serving with academic excellence since 1985 with over 2,000,000 alumni worldwide.
+- Scope of All Programmes:
+  * Computing & AI (BSCS, ADP AI, ADP SE, Cyber Security, Data Science): Exceptional industry demand in software engineering, machine learning, cloud architecture, cybersecurity defense, and remote global tech careers.
+  * Business & Management (BBA, Business Analytics, Accounting & Finance): High-growth pathways in commercial banking, corporate finance, market intelligence, fintech, and entrepreneurship.
+  * Natural & Life Sciences (Biotech, Biochemistry, Chemistry, Physics, Math, Zoology): Flourishing opportunities in pharmaceutical research, clinical pathology, environmental testing, scientific laboratories, and postgraduate academia.
+  * Humanities & Social Sciences (English, Psychology): Rewarding career paths in clinical counseling, corporate HR, digital content strategy, civil services (CSS/PMS), and educational leadership.
 - Facilities: GPU computing labs, science labs, high-tech digital library, air-conditioned bus transport across Bahawalpur, sports grounds, cafeteria.
-- Contact: Phone 062-2202030 / 062-2202050, Toll-free Helpline 0800-00827, Email info@ucp.edu.pk, timing Mon-Fri 9:00 AM - 5:00 PM.`;
+- Exact Navigation Links: When recommending or providing links, use the exact routes:
+  * Degree Programmes: #programmes (e.g. [Explore Programmes](#programmes))
+  * Fee Structure: #fee-structure (e.g. [Fee Structure](#fee-structure))
+  * Scholarships: #scholarships (e.g. [Scholarships](#scholarships))
+  * Faculty: #faculty (e.g. [Meet Faculty](#faculty))
+  * Campus Facilities: #facilities (e.g. [Campus Facilities](#facilities))
+  * Legacy & Heritage: #legacy (e.g. [Our Legacy](#legacy))
+  * Campus Life: #campus-life (e.g. [Campus Life](#campus-life))
+  * Online Admission Portal: https://admissions.ucpcolleges.pgc.edu/login?returnUrl=%2Flogin%3FreturnUrl%3D%252F
+- Admissions rule: If asking about admissions, mention online admission portal is open and offer guidance.
+- Developer & Website Builder rule: ONLY when someone asks who built/made you or who made/built/developed/founded this website, state: "I and this entire website of UCP Bahawalpur campus were developed and built by Asifa, a student of AI at UCP Bahawalpur! 🎓✨". Never mention Asifa unless specifically asked.
+`;
+
+function isUcpSpecificQuery(text: string): boolean {
+  if (!text) return false;
+  const t = text.toLowerCase();
+  const ucpTerms = [
+    'ucp', 'bahawalpur', 'bwp', 'campus', 'admission', 'apply', 'applying',
+    'eligibility', 'intermediate', 'fsc', 'ics', 'fee', 'fees', 'tuition',
+    'installment', 'scholarship', 'merit', 'kinship', 'pgc', 'punjab group',
+    'mian amer', 'aurangzaib', 'hamid iqbal', 'sohail afzal', 'adp', 'adp ai',
+    'adp cs', 'adp se', 'degree', 'transport', 'hostel', 'cafeteria', 'library',
+    'principal', 'faculty', 'constituent college', 'airport road',
+    'who made this website', 'who built this website', 'who developed this website',
+    'developer of website', 'website developer', 'founder of this website', 'who built you',
+    'who made you', 'who created you', 'who developed you', 'who is your developer',
+    'leadership', 'legacy', 'scope', 'professors', 'professor', 'teachers', 'programmes', 'programs'
+  ];
+  return ucpTerms.some(term => t.includes(term));
+}
 
 // 1. Health & Status endpoint
-app.get('/api/chat/status', (req, res) => {
+app.get('/api/chat/status', (_req, res) => {
   const hasEnvKey = !!(process.env.GEMINI_API_KEY || process.env.API_KEY || process.env.VITE_GEMINI_API_KEY);
   res.json({
     status: 'ok',
     hasKey: hasEnvKey,
-    model: 'gemini-3.8-flash',
+    model: 'gemini-flash',
     botName: 'UCP Assistant'
   });
 });
 
-// 2. Chat completion endpoint
+// 2. High-speed SSE Streaming endpoint (Instant token streaming like ChatGPT)
+app.post('/api/chat/stream', async (req, res) => {
+  res.setHeader('Content-Type', 'text/event-stream; charset=utf-8');
+  res.setHeader('Cache-Control', 'no-cache, no-transform');
+  res.setHeader('Connection', 'keep-alive');
+  res.setHeader('X-Accel-Buffering', 'no');
+  if (typeof (res as any).flushHeaders === 'function') {
+    (res as any).flushHeaders();
+  }
+
+  const { message, history } = req.body;
+  if (!message || typeof message !== 'string') {
+    res.write(`data: ${JSON.stringify({ error: 'Message is required' })}\n\n`);
+    res.write('data: [DONE]\n\n');
+    return res.end();
+  }
+
+  const apiKey = process.env.GEMINI_API_KEY || process.env.API_KEY || process.env.VITE_GEMINI_API_KEY;
+  if (!apiKey) {
+    const instantFallback = getInstantBotResponse(message);
+    res.write(`data: ${JSON.stringify({ text: instantFallback.reply, suggestions: instantFallback.suggestions, actionLink: instantFallback.actionLink })}\n\n`);
+    res.write('data: [DONE]\n\n');
+    return res.end();
+  }
+
+  // Only augment with offline campus knowledge if user specifically asks about UCP Bahawalpur
+  const isUcp = isUcpSpecificQuery(message);
+  const systemInstruction = isUcp
+    ? `${BASE_SYSTEM_PROMPT}\n\n${UCP_CAMPUS_FACTS}`
+    : BASE_SYSTEM_PROMPT;
+
+  const contents: Array<{ role: 'user' | 'model'; parts: Array<{ text: string }> }> = [];
+  if (Array.isArray(history) && history.length > 0) {
+    for (const item of history.slice(-6)) {
+      if (item.role === 'user' || item.role === 'model') {
+        contents.push({
+          role: item.role,
+          parts: [{ text: item.text }]
+        });
+      }
+    }
+  }
+  contents.push({
+    role: 'user',
+    parts: [{ text: message }]
+  });
+
+  const ai = new GoogleGenAI({
+    apiKey,
+    httpOptions: {
+      headers: {
+        'User-Agent': 'aistudio-build',
+      }
+    }
+  });
+
+  // Ultra-fast Flash-Lite models for lowest latency (<1.5s)
+  const candidateModels = ['gemini-flash-lite-latest', 'gemini-3.5-flash-lite', 'gemini-3.1-flash-lite'];
+  let streamedSuccessfully = false;
+
+  for (const model of candidateModels) {
+    try {
+      // Race stream initialization with 3.5s timeout so user never waits long
+      const responseStreamPromise = ai.models.generateContentStream({
+        model,
+        contents,
+        config: {
+          systemInstruction,
+          temperature: 0.7,
+        }
+      });
+
+      const timeoutPromise = new Promise<never>((_, reject) =>
+        setTimeout(() => reject(new Error('Model response timeout after 3500ms')), 3500)
+      );
+
+      const responseStream = await Promise.race([responseStreamPromise, timeoutPromise]);
+
+      for await (const chunk of responseStream) {
+        const text = chunk.text;
+        if (text) {
+          res.write(`data: ${JSON.stringify({ text })}\n\n`);
+          if (typeof (res as any).flush === 'function') {
+            (res as any).flush();
+          }
+        }
+      }
+      streamedSuccessfully = true;
+      break;
+    } catch (err: any) {
+      console.warn(`[Gemini stream with ${model} warning]:`, err?.message || err);
+    }
+  }
+
+  if (!streamedSuccessfully) {
+    const instantFallback = getInstantBotResponse(message);
+    res.write(`data: ${JSON.stringify({ text: instantFallback.reply, suggestions: instantFallback.suggestions, actionLink: instantFallback.actionLink })}\n\n`);
+  }
+
+  res.write('data: [DONE]\n\n');
+  res.end();
+});
+
+// 3. Fallback Standard JSON Chat completion endpoint
 app.post('/api/chat', async (req, res) => {
   try {
     const { message, history, apiKey: customKey } = req.body;
@@ -144,23 +276,6 @@ app.post('/api/chat', async (req, res) => {
       return res.status(400).json({ error: 'Message is required' });
     }
 
-    // Step 1: FIRST search in ucp-knowledge.js for campus-specific queries (NO API NEEDED)
-    const { match, confidence } = searchUcpKnowledge(message);
-    if (match && confidence >= 20) {
-      let reply = match.answer;
-      if (match.isAdmissionRelated && !reply.includes("open admission form")) {
-        reply += "\n\nWould you like me to open admission form?";
-      }
-      return res.json({
-        success: true,
-        reply,
-        suggestions: match.suggestions,
-        actionLink: match.actionLink,
-        source: 'local-knowledge'
-      });
-    }
-
-    // Step 2: GEMINI FOR ALL WORLD QUESTIONS & BACKUP
     const apiKey = customKey || process.env.GEMINI_API_KEY || process.env.API_KEY || process.env.VITE_GEMINI_API_KEY;
     if (!apiKey) {
       const instantRes = getInstantBotResponse(message);
@@ -172,74 +287,60 @@ app.post('/api/chat', async (req, res) => {
       });
     }
 
-    const withTimeout = (promise: Promise<any>, ms: number) => {
-      let timeoutId: NodeJS.Timeout;
-      return Promise.race([
-        promise,
-        new Promise((_, reject) => {
-          timeoutId = setTimeout(() => reject(new Error('AI response timed out')), ms);
-        })
-      ]).finally(() => clearTimeout(timeoutId));
-    };
+    const isUcp = isUcpSpecificQuery(message);
+    const systemInstruction = isUcp
+      ? `${BASE_SYSTEM_PROMPT}\n\n${UCP_CAMPUS_FACTS}`
+      : BASE_SYSTEM_PROMPT;
 
+    const contents: Array<{ role: 'user' | 'model'; parts: Array<{ text: string }> }> = [];
+    if (Array.isArray(history) && history.length > 0) {
+      for (const item of history.slice(-6)) {
+        if (item.role === 'user' || item.role === 'model') {
+          contents.push({
+            role: item.role,
+            parts: [{ text: item.text }]
+          });
+        }
+      }
+    }
+    contents.push({
+      role: 'user',
+      parts: [{ text: message }]
+    });
+
+    const ai = new GoogleGenAI({ 
+      apiKey,
+      httpOptions: {
+        headers: {
+          'User-Agent': 'aistudio-build',
+        }
+      }
+    });
+
+    const candidateModels = ['gemini-flash-lite-latest', 'gemini-3.5-flash-lite', 'gemini-3.1-flash-lite'];
     let replyText = '';
 
-    try {
-      const ai = new GoogleGenAI({ 
-        apiKey,
-        httpOptions: {
-          headers: {
-            'User-Agent': 'aistudio-build',
+    for (const model of candidateModels) {
+      try {
+        const responsePromise = ai.models.generateContent({
+          model,
+          contents,
+          config: {
+            systemInstruction,
+            temperature: 0.7,
           }
+        });
+        const timeoutPromise = new Promise<never>((_, reject) =>
+          setTimeout(() => reject(new Error('Model timeout after 3500ms')), 3500)
+        );
+        const response = await Promise.race([responsePromise, timeoutPromise]);
+        if (response?.text) {
+          replyText = response.text;
+          break;
         }
-      });
-
-      // Format multi-turn conversation contents
-      const contents: Array<{ role: 'user' | 'model'; parts: Array<{ text: string }> }> = [];
-
-      if (Array.isArray(history) && history.length > 0) {
-        for (const item of history.slice(-6)) {
-          if (item.role === 'user' || item.role === 'model') {
-            contents.push({
-              role: item.role,
-              parts: [{ text: item.text }]
-            });
-          }
-        }
+      } catch (callErr: any) {
+        console.warn(`[Gemini JSON with ${model} warning]:`, callErr?.message || callErr);
       }
-
-      contents.push({
-        role: 'user',
-        parts: [{ text: message }]
-      });
-
-      // Call Gemini model with 20-second timeout and automatic 503 retry
-      for (let attempt = 0; attempt < 2; attempt++) {
-        try {
-          const response = await withTimeout(ai.models.generateContent({
-            model: 'gemini-3.8-flash',
-            contents,
-            config: {
-              systemInstruction: SYSTEM_INSTRUCTION,
-              temperature: 0.7,
-            }
-          }), 18000);
-
-          if (response?.text) {
-            replyText = response.text;
-            break;
-          }
-        } catch (callErr: any) {
-          const is503 = callErr?.status === 503 || (callErr?.message && callErr.message.includes('503'));
-          if (is503 && attempt === 0) {
-            await new Promise(r => setTimeout(r, 1200));
-            continue;
-          }
-          console.warn('[Gemini Call Warning]:', callErr?.message || callErr);
-        }
-      }
-    } catch (err: any) {
-      console.warn('[Gemini Global Error]:', err?.message || err);
     }
 
     if (!replyText || replyText.trim().length === 0) {
@@ -256,7 +357,7 @@ app.post('/api/chat', async (req, res) => {
       success: true,
       reply: replyText
     });
-  } catch (err) {
+  } catch (_err) {
     const instantFallback = getInstantBotResponse(req.body?.message || '');
     return res.json({
       success: true,

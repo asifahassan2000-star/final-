@@ -21,8 +21,8 @@ export const UCP_KNOWLEDGE_BASE = [
   // 1. DEVELOPER / CREATOR (CRITICAL: Only trigger when asked who made / developed it)
   {
     id: "developer-info",
-    question: "who is your developer / who made you",
-    answer: "I was developed by Asifa, a student of AI at UCP! 😊🎓",
+    question: "who is your developer / who made you / who made this website / who is founder of this website",
+    answer: "I and this entire website of UCP Bahawalpur campus were developed and built by Asifa, a student of AI at UCP Bahawalpur! 🎓✨",
     keywords: [
       "who made you",
       "who is your developer",
@@ -34,7 +34,22 @@ export const UCP_KNOWLEDGE_BASE = [
       "who is developer",
       "developer name",
       "your maker",
-      "who coded you"
+      "who coded you",
+      "who made this website",
+      "who developed this website",
+      "who built this website",
+      "who created this website",
+      "developer of this website",
+      "developer of website",
+      "website developer",
+      "website creator",
+      "who made the website",
+      "who built the website",
+      "who developed the website",
+      "founder of this website",
+      "founder of website",
+      "who is founder of this website",
+      "who is the founder of this website"
     ],
     category: "creator",
     isDeveloperRelated: true,
@@ -45,7 +60,7 @@ export const UCP_KNOWLEDGE_BASE = [
   {
     id: "bot-identity",
     question: "what is your name / who are you",
-    answer: "Hello! I'm UCP Assistant, your official 24/7 campus guide for UCP Bahawalpur! 🎓 How can I help you today?",
+    answer: "Hello! I'm UCP Assistant, your official guide for UCP Bahawalpur! 🎓 How can I help you today?",
     keywords: [
       "who are you",
       "what is your name",
@@ -54,7 +69,8 @@ export const UCP_KNOWLEDGE_BASE = [
       "tell me about yourself",
       "ucp assistant",
       "ucp bot",
-      "what can you do"
+      "what can you do",
+      "assistant"
     ],
     category: "identity",
     suggestions: ["Degree Programmes 🎓", "Fee Structure 💰", "Scholarships 🏆", "How to Apply 📝"]
@@ -64,7 +80,7 @@ export const UCP_KNOWLEDGE_BASE = [
   {
     id: "greetings",
     question: "greetings and hello",
-    answer: "Hey there! Welcome to UCP Bahawalpur. I'm UCP Assistant 🎓 How can I assist you with programs, admissions, or fees today?",
+    answer: "Hey there! Welcome to UCP Bahawalpur. I'm UCP Assistant 🎓 How can I assist you today?",
     keywords: [
       "hi",
       "hello",
@@ -120,7 +136,7 @@ export const UCP_KNOWLEDGE_BASE = [
       "what courses"
     ],
     category: "academics",
-    actionLink: { label: "Explore All Programmes", url: "#academics" },
+    actionLink: { label: "Explore All Programmes 📚", url: "#programmes" },
     suggestions: ["BS Computer Science 💻", "ADP AI 🤖", "BBA 📊", "Fee Structure 💰"]
   },
 
@@ -186,7 +202,7 @@ export const UCP_KNOWLEDGE_BASE = [
     ],
     category: "academics",
     isAdmissionRelated: true,
-    actionLink: { label: "View BSCS Details", url: "#academics" },
+    actionLink: { label: "View BSCS Details 💻", url: "#programmes?category=Computing%20%26%20Technology&program=bs-computer-science" },
     suggestions: ["BSCS Fee 💰", "ADP Computer Science 🖥️", "Open Admission Form 📝"]
   },
 
@@ -204,7 +220,7 @@ export const UCP_KNOWLEDGE_BASE = [
       "machine learning"
     ],
     category: "academics",
-    actionLink: { label: "View ADP AI Curriculum", url: "#academics" },
+    actionLink: { label: "View ADP AI Curriculum 🤖", url: "#programmes?category=Computing%20%26%20Technology&program=adp-artificial-intelligence" },
     suggestions: ["ADP AI Fee 💰", "BS Computer Science 💻", "How to Apply 📝"]
   },
 
@@ -221,7 +237,7 @@ export const UCP_KNOWLEDGE_BASE = [
       "se program"
     ],
     category: "academics",
-    actionLink: { label: "View ADP SE Details", url: "#academics" },
+    actionLink: { label: "View ADP SE Details 💻", url: "#programmes?category=Computing%20%26%20Technology&program=adp-software-engineering" },
     suggestions: ["Computing Fee 💰", "BSCS Details 💻", "Admissions 📝"]
   },
 
@@ -239,7 +255,7 @@ export const UCP_KNOWLEDGE_BASE = [
       "big data"
     ],
     category: "academics",
-    actionLink: { label: "Explore Computing Programs", url: "#academics" },
+    actionLink: { label: "Explore Computing Programs 💻", url: "#programmes?category=Computing%20%26%20Technology" },
     suggestions: ["Fee Structure 💰", "BS Computer Science 💻", "Apply Now 📝"]
   },
 
@@ -258,7 +274,7 @@ export const UCP_KNOWLEDGE_BASE = [
     ],
     category: "academics",
     isAdmissionRelated: true,
-    actionLink: { label: "View BBA Curriculum", url: "#academics" },
+    actionLink: { label: "View BBA Curriculum 📊", url: "#programmes?category=Business&program=bba" },
     suggestions: ["BBA Fee 💰", "Accounting & Finance 📊", "Open Admission Form 📝"]
   },
 
@@ -278,7 +294,7 @@ export const UCP_KNOWLEDGE_BASE = [
       "acca"
     ],
     category: "academics",
-    actionLink: { label: "View Accounting & Finance", url: "#academics" },
+    actionLink: { label: "View Accounting & Finance 💼", url: "#programmes?category=Business&program=bs-accounting-finance" },
     suggestions: ["Fee Structure 💰", "BBA Details 📊", "Apply Online 📝"]
   },
 
@@ -294,7 +310,7 @@ export const UCP_KNOWLEDGE_BASE = [
       "analytics"
     ],
     category: "academics",
-    actionLink: { label: "View Business Analytics", url: "#academics" },
+    actionLink: { label: "View Business Analytics 📉", url: "#programmes?category=Business&program=bs-business-analytics" },
     suggestions: ["Fee Breakdown 💰", "BBA 📊", "Apply Now 📝"]
   },
 
@@ -318,7 +334,7 @@ export const UCP_KNOWLEDGE_BASE = [
       "pre medical"
     ],
     category: "academics",
-    actionLink: { label: "View Science Degrees", url: "#academics" },
+    actionLink: { label: "View Science Degrees 🧬", url: "#programmes?category=Science" },
     suggestions: ["Biotech Details 🧬", "Science Fee 💰", "Admissions 📝"]
   },
 
@@ -339,7 +355,7 @@ export const UCP_KNOWLEDGE_BASE = [
       "social sciences"
     ],
     category: "academics",
-    actionLink: { label: "View Humanities Degrees", url: "#academics" },
+    actionLink: { label: "View Humanities Degrees 📚", url: "#programmes?category=Humanities%20%26%20Social%20Sciences" },
     suggestions: ["BS Psychology 🧠", "BS English 📖", "Fee Details 💵"]
   },
 
@@ -640,8 +656,98 @@ export const UCP_KNOWLEDGE_BASE = [
       "what is ucp"
     ],
     category: "about",
-    actionLink: { label: "Explore Our Legacy", url: "#welcome-ucp-section" },
+    actionLink: { label: "Explore Our Legacy ⭐", url: "#legacy" },
     suggestions: ["Degree Programmes 🎓", "Admissions 📝", "Location 📍"]
+  },
+
+  // 31. CAMPUS LEADERSHIP
+  {
+    id: "leadership-all",
+    question: "who are the leaders and administrators of UCP Bahawalpur",
+    answer: "UCP Bahawalpur is led by a visionary team:\n• Founder & Chairman: Mian Amer Mahmood (Punjab Group of Colleges)\n• Director PGC & UCP Cluster: Prof. Hamid Iqbal\n• Principal: Prof. Dr. Aurangzaib Virk (PhD Strategic Management)\n• Executive Director: Prof. Sohail Afzal\nThey ensure international academic standards, state-of-the-art facilities, and student growth 🏛️.",
+    keywords: [
+      "leadership",
+      "leaders",
+      "administration",
+      "administrators",
+      "management",
+      "head of campus",
+      "who runs ucp",
+      "campus leaders",
+      "leadership team"
+    ],
+    category: "leadership",
+    actionLink: { label: "View Leadership Profiles 👔", url: "#leadership" },
+    suggestions: ["Principal Message 🎓", "Faculty Details 👨‍🏫", "Admissions 📝"]
+  },
+
+  // 32. LEGACY & HERITAGE
+  {
+    id: "legacy-heritage",
+    question: "tell me about the legacy and history of UCP and Punjab Group of Colleges",
+    answer: "UCP Bahawalpur carries the proud legacy of Pakistan's largest educational network — Punjab Group of Colleges (PGC), founded in 1985 by Mian Amer Mahmood. With over 2,000,000 alumni worldwide and 40+ years of academic excellence, UCP is the premier destination for higher education in South Punjab ⭐.",
+    keywords: [
+      "legacy",
+      "history",
+      "heritage",
+      "legacy of ucp",
+      "history of ucp",
+      "pgc legacy",
+      "punjab group history",
+      "achievements",
+      "background"
+    ],
+    category: "about",
+    actionLink: { label: "Explore Campus Legacy ⭐", url: "#legacy" },
+    suggestions: ["Campus Leadership 🏛️", "Degree Programmes 🎓", "Admissions 📝"]
+  },
+
+  // 33. FACILITIES & CAMPUS INFRASTRUCTURE
+  {
+    id: "facilities-campus",
+    question: "what facilities, computing labs, buses, and library are available",
+    answer: "UCP Bahawalpur boasts modern, purpose-built campus facilities:\n• High-Performance GPU Computing Labs for AI & Software Engineering\n• Specialized Physics, Chemistry, and Biotech Research Labs\n• High-Tech Digital Library with international journal access\n• Dedicated Fleet of Air-Conditioned Buses covering all Bahawalpur routes\n• Cafeteria, Sports Grounds, and 24/7 CCTV-secured campus 🔬🚌.",
+    keywords: [
+      "facilities",
+      "facility",
+      "campus facilities",
+      "computing labs",
+      "computer labs",
+      "labs",
+      "library",
+      "transport",
+      "buses",
+      "bus service",
+      "cafeteria",
+      "sports grounds",
+      "gym",
+      "infrastructure"
+    ],
+    category: "campus",
+    actionLink: { label: "Explore Campus Facilities 🚌", url: "#facilities" },
+    suggestions: ["Degree Programmes 🎓", "Admissions 📝", "Contact Campus 📞"]
+  },
+
+  // 34. SCOPE OF ALL PROGRAMMES
+  {
+    id: "program-scope",
+    question: "what is the career scope and future demand for all programmes",
+    answer: "All UCP Bahawalpur degrees offer exceptional industry demand:\n• Computing & AI (BSCS, ADP AI, SE, Cyber, Data Science): High-paying careers in AI development, cloud architecture, cybersecurity defense, and remote global tech roles.\n• Business (BBA, Business Analytics, Accounting): Rapid growth in corporate banking, fintech, and multinational management.\n• Sciences (Biotech, Biochemistry, Physics, Math): Flourishing pathways in pharma R&D, clinical testing, and overseas master's scholarships.\n• Humanities (Psychology, English): High demand in clinical counseling, corporate HR, digital strategy, and civil services (CSS/PMS) 📈✨.",
+    keywords: [
+      "scope",
+      "career scope",
+      "scope of all programmes",
+      "future demand",
+      "career opportunities",
+      "job market",
+      "jobs",
+      "careers",
+      "scope of degrees",
+      "market demand"
+    ],
+    category: "academics",
+    actionLink: { label: "Explore Degree Catalog 🚀", url: "#programmes" },
+    suggestions: ["Degree Programmes 🎓", "Eligibility Criteria 📋", "Open Admission Form 📝"]
   }
 ];
 
@@ -658,13 +764,19 @@ const UCP_DOMAIN_KEYWORDS = [
   'ucp', 'bahawalpur', 'bwp', 'punjab group', 'pgc',
   'program', 'programs', 'programme', 'programmes', 'degree', 'degrees',
   'admission', 'admissions', 'apply', 'applying', 'enroll', 'enrollment', 'eligibility',
-  'fee', 'fees', 'tuition', 'installment', 'installments', 'dues',
+  'fee', 'fees', 'tuition', 'installment', 'installments', 'dues', 'view fee',
   'scholarship', 'scholarships', 'concession', 'concessions', 'kinship',
   'bscs', 'bs cs', 'bba', 'adp', 'ads', 'fms', 'foit', 'fost', 'fhss', 'llb',
   'bs english', 'bs psychology', 'bs physics', 'bs math', 'bs chemistry', 'bs biotech', 'bs zoology',
   'adp ai', 'adp cs', 'adp se', 'adp cyber', 'adp data',
   'director', 'principal', 'chairman', 'mian amer', 'mian amir', 'hamid iqbal', 'aurangzaib', 'aurangzeb', 'sohail afzal',
-  'faculty members', 'airport road', 'helpline', '062-2202030', '0800-00827'
+  'faculty', 'faculty members', 'professors', 'professor', 'teachers', 'lecturers', 'instructor',
+  'leadership', 'leaders', 'administration', 'administrators', 'management',
+  'legacy', 'heritage', 'history',
+  'facilities', 'facility', 'labs', 'lab', 'computing', 'transport', 'bus', 'buses', 'library', 'cafeteria', 'sports',
+  'scope', 'career', 'careers', 'jobs', 'demand',
+  'airport road', 'helpline', '062-2202030', '0800-00827',
+  'developer', 'founder'
 ];
 
 /**
@@ -679,8 +791,8 @@ export function searchUcpKnowledge(query) {
   const cleanQuery = query.toLowerCase().trim();
 
   // 1. SPECIFIC CHECK: Developer / Creator
-  // Rule: ONLY trigger if specifically asked who made/developed/created you!
-  const isDeveloperQuery = /who (made|developed|created|built|coded|designed) you|who is (your|the) (developer|creator|maker)|developer name/i.test(cleanQuery);
+  // Rule: ONLY trigger if specifically asked who made/developed/created you or the website!
+  const isDeveloperQuery = /who (made|developed|created|built|coded|designed) (you|this website|the website|website)|who is (your|the) (developer|creator|maker|founder)|developer of (this )?website|website developer|founder of (this )?website|who founded this website/i.test(cleanQuery);
   if (isDeveloperQuery) {
     const devItem = UCP_KNOWLEDGE_BASE.find(item => item.id === "developer-info");
     if (devItem) return { match: devItem, confidence: 100 };

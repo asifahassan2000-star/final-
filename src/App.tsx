@@ -78,17 +78,21 @@ const getPageFromHash = (): PageId => {
   if (pathname === 'developer' || pathname === 'asifa' || pathname.startsWith('developer') || pathname.startsWith('asifa')) return 'developer';
   if (pathname === 'campus-facilities' || pathname === 'facilities') return 'campus-facilities';
   if (pathname === 'about-us' || pathname === 'about') return 'about-us';
-  const hash = (window.location.hash || '').replace(/^#\/?/, '').toLowerCase();
+  
+  const rawHash = (window.location.hash || '').replace(/^#\/?/, '').toLowerCase();
+  // Strip query parameters if present (e.g. #programmes?category=...)
+  const hash = rawHash.split('?')[0].split('#')[0].trim();
+  
   if (hash === 'developer' || hash === 'asifa') return 'developer';
-  if (hash === 'campus-facilities' || hash === 'facilities') return 'campus-facilities';
+  if (hash === 'campus-facilities' || hash === 'facilities' || hash === 'facility' || hash === 'labs') return 'campus-facilities';
   if (hash === 'about-us' || hash === 'about') return 'about-us';
-  if (hash === 'programmes' || hash === 'programs') return 'programmes';
-  if (hash === 'faculty') return 'faculty';
-  if (hash === 'legacy') return 'legacy';
-  if (hash === 'campus-life' || hash === 'campuslife') return 'campus-life';
-  if (hash === 'scholarships') return 'scholarships';
-  if (hash === 'fee-structure' || hash === 'fees') return 'fee-structure';
-  if (hash === 'calendar') return 'calendar';
+  if (hash === 'programmes' || hash === 'programs' || hash === 'academics' || hash === 'academic' || hash === 'courses' || hash === 'degrees') return 'programmes';
+  if (hash === 'faculty' || hash === 'teachers' || hash === 'professors') return 'faculty';
+  if (hash === 'legacy' || hash === 'history') return 'legacy';
+  if (hash === 'campus-life' || hash === 'campuslife' || hash === 'student-life') return 'campus-life';
+  if (hash === 'scholarships' || hash === 'scholarship') return 'scholarships';
+  if (hash === 'fee-structure' || hash === 'fees' || hash === 'fee' || hash === 'fee-calculator' || hash === 'tuition') return 'fee-structure';
+  if (hash === 'calendar' || hash === 'academic-calendar') return 'calendar';
   if (hash === 'cnn-academy') return 'cnn-academy';
   return 'home';
 };
@@ -265,22 +269,6 @@ export default function App() {
     return () => window.removeEventListener('keydown', handleSecretTyping);
   }, []);
 
-  // Synchronize browser history and hash for back/forward navigation and direct refreshes
-  useEffect(() => {
-    const handleHashSync = () => {
-      const pageFromHash = getPageFromHash();
-      setCurrentPage(pageFromHash);
-      scrollToTopInstant();
-    };
-
-    window.addEventListener('hashchange', handleHashSync);
-    window.addEventListener('popstate', handleHashSync);
-    return () => {
-      window.removeEventListener('hashchange', handleHashSync);
-      window.removeEventListener('popstate', handleHashSync);
-    };
-  }, []);
-
   const handleOpenProgrammesPage = (progId?: string, category?: string) => {
     setSelectedProgrammeId(progId || null);
     setSelectedProgrammeCategory(category || null);
@@ -333,6 +321,49 @@ export default function App() {
     navigateToPage('about-us');
   };
 
+  const handleOpenFacultyPage = (cat: string = 'all') => {
+    setFacultyCategory(cat);
+    setSelectedProgrammeId(null);
+    navigateToPage('faculty');
+  };
+
+  const handleOpenLegacyPage = () => {
+    setSelectedProgrammeId(null);
+    navigateToPage('legacy');
+  };
+
+  const handleBackToHome = () => {
+    setSelectedProgrammeId(null);
+    navigateToPage('home');
+  };
+
+  const handleScrollTo = (sectionId: string) => {
+    if (currentPage !== 'home') {
+      navigateToPage('home');
+      setSelectedProgrammeId(null);
+      setTimeout(() => {
+        if (sectionId === 'top') {
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+          return;
+        }
+        const elem = document.getElementById(sectionId);
+        if (elem) {
+          elem.scrollIntoView({ behavior: 'smooth' });
+        }
+      }, 100);
+      return;
+    }
+
+    if (sectionId === 'top') {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      return;
+    }
+    const elem = document.getElementById(sectionId);
+    if (elem) {
+      elem.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   const handleOpenApply = (progName?: string) => {
     if (progName) {
       setPreselectedProgramName(progName);
@@ -347,6 +378,142 @@ export default function App() {
   const handleOpenFee = () => {
     handleOpenFeeStructurePage();
   };
+
+  const handleUniversalNavigate = (target: string, options?: { programId?: string; category?: string; sectionId?: string }) => {
+    if (!target) return;
+    const cleanTarget = target.trim();
+
+    // External URL
+    if (cleanTarget.startsWith('http://') || cleanTarget.startsWith('https://')) {
+      window.open(cleanTarget, '_blank', 'noopener,noreferrer');
+      return;
+    }
+
+    // Parse path or hash
+    const rawTarget = cleanTarget.replace(/^#\/?/, '').replace(/^\/+/, '');
+    const [baseTarget, queryStr] = rawTarget.split('?');
+    const params = new URLSearchParams(queryStr || '');
+    const progId = options?.programId || params.get('program') || params.get('prog') || undefined;
+    const category = options?.category || params.get('category') || params.get('cat') || undefined;
+    const norm = baseTarget.toLowerCase();
+
+    if (['programmes', 'programs', 'academics', 'academic', 'courses', 'degrees'].includes(norm)) {
+      handleOpenProgrammesPage(progId, category);
+      return;
+    }
+
+    if (['fee-structure', 'fees', 'fee', 'tuition', 'fee-calculator'].includes(norm)) {
+      handleOpenFeeStructurePage();
+      return;
+    }
+
+    if (['scholarships', 'scholarship'].includes(norm)) {
+      handleOpenScholarshipsPage(options?.sectionId);
+      return;
+    }
+
+    if (['faculty', 'teachers', 'professors'].includes(norm)) {
+      handleOpenFacultyPage('all');
+      return;
+    }
+
+    if (['campus-facilities', 'facilities', 'facility', 'labs'].includes(norm)) {
+      handleOpenCampusFacilitiesPage();
+      return;
+    }
+
+    if (['campus-life', 'campuslife', 'student-life'].includes(norm)) {
+      handleOpenCampusLifePage();
+      return;
+    }
+
+    if (['legacy', 'history'].includes(norm)) {
+      handleOpenLegacyPage();
+      return;
+    }
+
+    if (['calendar', 'academic-calendar'].includes(norm)) {
+      handleOpenCalendarPage();
+      return;
+    }
+
+    if (['about-us', 'about'].includes(norm)) {
+      handleOpenAboutUsPage();
+      return;
+    }
+
+    if (['developer', 'asifa'].includes(norm)) {
+      navigateToPage('developer');
+      return;
+    }
+
+    if (['leadership', 'leadership-section', 'chairman', 'chairman-section'].includes(norm)) {
+      handleScrollTo('leadership-section');
+      return;
+    }
+
+    if (['admissions', 'admissions-section'].includes(norm)) {
+      handleScrollTo('admissions-section');
+      return;
+    }
+
+    if (['apply', 'admission-form', 'portal'].includes(norm)) {
+      handleOpenApply();
+      return;
+    }
+
+    // General scroll fallback to matching DOM element
+    handleScrollTo(baseTarget);
+  };
+
+  // Synchronize browser history and hash for back/forward navigation and direct refreshes
+  useEffect(() => {
+    const handleHashSync = () => {
+      const rawHash = (window.location.hash || '').replace(/^#\/?/, '');
+      const [baseHash, queryStr] = rawHash.split('?');
+      const params = new URLSearchParams(queryStr || '');
+      const prog = params.get('program') || params.get('prog');
+      const cat = params.get('category') || params.get('cat');
+
+      if (prog) setSelectedProgrammeId(prog);
+      if (cat) setSelectedProgrammeCategory(cat);
+
+      const pageFromHash = getPageFromHash();
+      setCurrentPage(pageFromHash);
+      scrollToTopInstant();
+
+      const norm = baseHash.toLowerCase();
+      if (norm === 'leadership' || norm === 'leadership-section') {
+        setTimeout(() => {
+          document.getElementById('leadership-section')?.scrollIntoView({ behavior: 'smooth' });
+        }, 150);
+      } else if (norm === 'admissions' || norm === 'admissions-section') {
+        setTimeout(() => {
+          document.getElementById('admissions-section')?.scrollIntoView({ behavior: 'smooth' });
+        }, 150);
+      }
+    };
+
+    const handleCustomNavigate = (e: Event) => {
+      const customEvent = e as CustomEvent;
+      const detail = customEvent?.detail;
+      if (!detail) return;
+      const target = typeof detail === 'string' ? detail : detail.url;
+      handleUniversalNavigate(target, typeof detail === 'object' ? detail : undefined);
+    };
+
+    (window as any).__ucpNavigate = handleUniversalNavigate;
+    window.addEventListener('hashchange', handleHashSync);
+    window.addEventListener('popstate', handleHashSync);
+    window.addEventListener('ucp-navigate', handleCustomNavigate);
+
+    return () => {
+      window.removeEventListener('hashchange', handleHashSync);
+      window.removeEventListener('popstate', handleHashSync);
+      window.removeEventListener('ucp-navigate', handleCustomNavigate);
+      delete (window as any).__ucpNavigate;
+    };
+  }, []);
 
   const handleOpenPortal = () => {
     window.open(
@@ -394,49 +561,6 @@ export default function App() {
       return;
     }
     setSelectedInfoModal(type);
-  };
-
-  const handleOpenFacultyPage = (cat: string = 'all') => {
-    setFacultyCategory(cat);
-    setSelectedProgrammeId(null);
-    navigateToPage('faculty');
-  };
-
-  const handleOpenLegacyPage = () => {
-    setSelectedProgrammeId(null);
-    navigateToPage('legacy');
-  };
-
-  const handleBackToHome = () => {
-    setSelectedProgrammeId(null);
-    navigateToPage('home');
-  };
-
-  const handleScrollTo = (sectionId: string) => {
-    if (currentPage !== 'home') {
-      navigateToPage('home');
-      setSelectedProgrammeId(null);
-      setTimeout(() => {
-        if (sectionId === 'top') {
-          window.scrollTo({ top: 0, behavior: 'smooth' });
-          return;
-        }
-        const elem = document.getElementById(sectionId);
-        if (elem) {
-          elem.scrollIntoView({ behavior: 'smooth' });
-        }
-      }, 100);
-      return;
-    }
-
-    if (sectionId === 'top') {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-      return;
-    }
-    const elem = document.getElementById(sectionId);
-    if (elem) {
-      elem.scrollIntoView({ behavior: 'smooth' });
-    }
   };
 
   const handleSelectFaculty = (facultyId: string) => {
@@ -740,7 +864,9 @@ export default function App() {
 
       {/* Official 24/7 UCP Bot (Instant Knowledge + Gemini AI) & Modals */}
       <Suspense fallback={null}>
-        {currentPage !== 'developer' && mountChat && <UcpChatbot />}
+        {currentPage !== 'developer' && mountChat && (
+          <UcpChatbot onNavigate={handleUniversalNavigate} />
+        )}
 
         {/* Modal Dialogs */}
         <ApplyModal
