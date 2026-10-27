@@ -1,9 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
 import { 
   ArrowRight, Calendar, Compass, MapPin, CheckCircle2, 
-  Phone, Mail, Navigation, Clock, ExternalLink, ShieldCheck, Bus,
-  Layers, Map as MapIcon
+  Phone, Mail, Navigation, Clock, ExternalLink, ShieldCheck, Bus
 } from 'lucide-react';
 import { UCP_CONTACT } from '../data/ucpData';
 
@@ -21,7 +20,6 @@ export const AdmissionsExperienceSection: React.FC<AdmissionsExperienceSectionPr
   onOpenApply,
   onOpenFee,
 }) => {
-  const [mapType, setMapType] = useState<'map' | 'satellite'>('map');
 
   return (
     <section 
@@ -196,50 +194,31 @@ export const AdmissionsExperienceSection: React.FC<AdmissionsExperienceSectionPr
 
               {/* Minimal Text Action Links — Pure text, no borders */}
               <div className="flex items-center gap-5 text-xs font-medium">
-                <div className="flex items-center gap-3 text-slate-600 dark:text-slate-400">
-                  <button
-                    type="button"
-                    onClick={() => setMapType('map')}
-                    className={`cursor-pointer transition-colors ${
-                      mapType === 'map'
-                        ? 'text-[#a30f16] dark:text-[#ef4444] font-bold underline underline-offset-4'
-                        : 'hover:text-slate-900 dark:hover:text-white'
-                    }`}
-                  >
-                    Street Map
-                  </button>
-                  <span className="text-slate-300 dark:text-slate-700">·</span>
-                  <button
-                    type="button"
-                    onClick={() => setMapType('satellite')}
-                    className={`cursor-pointer transition-colors ${
-                      mapType === 'satellite'
-                        ? 'text-[#a30f16] dark:text-[#ef4444] font-bold underline underline-offset-4'
-                        : 'hover:text-slate-900 dark:hover:text-white'
-                    }`}
-                  >
-                    Topographic / Campus Area
-                  </button>
+                <div className="hidden sm:flex items-center gap-2 text-slate-500 dark:text-slate-400 font-mono text-[11px]">
+                  <span>{UCP_COORDINATES}</span>
+                  <span>·</span>
+                  <span>Plus Code: {UCP_PLUS_CODE}</span>
                 </div>
 
                 <a
                   href={GOOGLE_MAPS_PIN_URL}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-[#a30f16] dark:text-[#ef4444] hover:underline font-bold inline-flex items-center gap-1"
+                  className="text-[#a30f16] dark:text-[#ef4444] hover:underline font-bold inline-flex items-center gap-1.5 py-1"
                 >
                   <span>Open in Google Maps</span>
-                  <ExternalLink size={12} />
+                  <ExternalLink size={13} />
                 </a>
               </div>
             </div>
 
-            {/* Fullscreen Big Borderless Interactive Map with Campus Marker */}
-            <div className="relative w-screen left-1/2 -translate-x-1/2 overflow-hidden border-0 bg-slate-100 dark:bg-slate-950 h-[560px] sm:h-[660px] lg:h-[760px] shadow-2xl">
+            {/* Clean, Fast-Loading Interactive Map — Pure Map, Zero Clutter */}
+            <div className="relative w-screen left-1/2 -translate-x-1/2 overflow-hidden border-t border-b border-slate-200 dark:border-white/10 bg-[#e5e3df] h-[520px] sm:h-[620px] lg:h-[720px] shadow-xl">
+              {/* Pure Interactive Map Iframe displaying UCP Bahawalpur Campus & surrounding road network */}
               <iframe
                 title="University of Central Punjab Bahawalpur Campus Map"
-                src={`https://www.openstreetmap.org/export/embed.html?bbox=71.6700%2C29.3450%2C71.7150%2C29.3700&layer=${mapType === 'satellite' ? 'hot' : 'mapnik'}&marker=29.3581%2C71.6943`}
-                className="w-full h-full border-0 block"
+                src="https://www.openstreetmap.org/export/embed.html?bbox=71.6660%2C29.3400%2C71.7220%2C29.3740&layer=mapnik&marker=29.3581%2C71.6943"
+                className="w-full h-full border-0 block bg-[#e5e3df]"
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
                 style={{ border: 0, width: '100%', height: '100%' }}

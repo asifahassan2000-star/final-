@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
+import { motion } from 'framer-motion';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { 
@@ -142,7 +143,6 @@ export const WelcomeUcpSection: React.FC<WelcomeUcpSectionProps> = ({
   }, [isWelcomeSectionInView]);
 
   useEffect(() => {
-    const timer = setTimeout(() => setIsHeaderVisible(true), 150);
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
@@ -150,13 +150,12 @@ export const WelcomeUcpSection: React.FC<WelcomeUcpSectionProps> = ({
           observer.disconnect();
         }
       },
-      { threshold: 0.1, rootMargin: '60px' }
+      { threshold: 0.1, rootMargin: '0px 0px -10% 0px' }
     );
     if (headerRef.current) {
       observer.observe(headerRef.current);
     }
     return () => {
-      clearTimeout(timer);
       observer.disconnect();
     };
   }, []);
@@ -234,69 +233,76 @@ export const WelcomeUcpSection: React.FC<WelcomeUcpSectionProps> = ({
         <div id="guiding-force" className="absolute -top-12" aria-hidden="true" />
 
         {/* -------------------------------------------------------------------
-            TOP CENTER HEADING — "Our Guiding Force" (with smooth text animation)
+            TOP CENTER HEADING — "Our Guiding Force" (with smooth text animation from below to upward)
             ------------------------------------------------------------------- */}
-        <div ref={headerRef} className="relative z-10 max-w-5xl xl:max-w-6xl mx-auto px-4 sm:px-6 text-center mb-14 sm:mb-18">
-          <h2
+        <motion.div 
+          ref={headerRef} 
+          initial={{ opacity: 0, y: 36 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.15 }}
+          transition={{ duration: 0.82, ease: [0.22, 1, 0.36, 1] }}
+          className="relative z-10 max-w-5xl xl:max-w-6xl mx-auto px-4 sm:px-6 text-center mb-14 sm:mb-18"
+        >
+          <motion.h2
             id="guiding-force-heading"
+            initial={{ opacity: 0, y: 28 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.15 }}
+            transition={{ duration: 0.78, ease: [0.22, 1, 0.36, 1] }}
             className="font-['Source_Serif_4','Source_Serif_Pro','Georgia',serif] text-[30px] sm:text-[36px] lg:text-[42px] font-bold tracking-tight leading-tight text-[#0B1A3A] dark:text-white"
           >
             <span className="inline-flex items-center justify-center flex-wrap gap-x-2 sm:gap-x-3">
-              <span
-                className="inline-block transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] text-[#0B1A3A] dark:text-white hover:text-[#C8102E] dark:hover:text-[#F3D368] animate-guiding-word-1 transition-colors cursor-default"
-                style={{
-                  opacity: 1,
-                  transform: isHeaderVisible ? 'translateY(0)' : 'translateY(8px)',
-                }}
+              <motion.span
+                initial={{ opacity: 0, y: 22 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.7, delay: 0.06, ease: [0.22, 1, 0.36, 1] }}
+                className="inline-block text-[#0B1A3A] dark:text-white hover:text-[#C8102E] dark:hover:text-[#F3D368] transition-colors cursor-default"
               >
                 Our
-              </span>
-              <span
-                className="inline-block transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] text-[#C8102E] dark:text-[#F3D368] font-extrabold animate-guiding-word-2 transition-colors cursor-default"
-                style={{
-                  opacity: 1,
-                  transform: isHeaderVisible ? 'translateY(0)' : 'translateY(8px)',
-                  transitionDelay: '90ms',
-                }}
+              </motion.span>
+              <motion.span
+                initial={{ opacity: 0, y: 22 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.7, delay: 0.14, ease: [0.22, 1, 0.36, 1] }}
+                className="inline-block text-[#C8102E] dark:text-[#F3D368] font-extrabold transition-colors cursor-default"
               >
                 Guiding
-              </span>
-              <span
-                className="inline-block transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] text-[#0B1A3A] dark:text-white hover:text-[#C8102E] dark:hover:text-[#F3D368] animate-guiding-word-3 transition-colors cursor-default"
-                style={{
-                  opacity: 1,
-                  transform: isHeaderVisible ? 'translateY(0)' : 'translateY(8px)',
-                  transitionDelay: '180ms',
-                }}
+              </motion.span>
+              <motion.span
+                initial={{ opacity: 0, y: 22 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.7, delay: 0.22, ease: [0.22, 1, 0.36, 1] }}
+                className="inline-block text-[#0B1A3A] dark:text-white hover:text-[#C8102E] dark:hover:text-[#F3D368] transition-colors cursor-default"
               >
                 Force
-              </span>
+              </motion.span>
             </span>
-          </h2>
+          </motion.h2>
           
-          {/* Gold Underline 60px #D4AF37 */}
-          <div 
-            className="w-[64px] h-[3.5px] mx-auto mt-3.5 mb-5 rounded-full transition-all duration-700 ease-out origin-center bg-[#D4AF37] dark:bg-[#E5C158] shadow-sm"
-            style={{ 
-              transform: isHeaderVisible ? 'scaleX(1)' : 'scaleX(0.2)',
-              opacity: isHeaderVisible ? 1 : 0.4,
-              transitionDelay: '260ms'
-            }}
+          {/* Gold Underline 64px #D4AF37 */}
+          <motion.div 
+            initial={{ opacity: 0, scaleX: 0.2 }}
+            whileInView={{ opacity: 1, scaleX: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.75, delay: 0.28, ease: [0.22, 1, 0.36, 1] }}
+            className="w-[64px] h-[3.5px] mx-auto mt-3.5 mb-5 rounded-full origin-center bg-[#D4AF37] dark:bg-[#E5C158] shadow-sm"
             aria-hidden="true"
           />
 
-          {/* Sub-heading SEO optimized Paragraph: Prominent, dark, high contrast, desktop-optimized */}
-          <p 
-            className="text-[#0B1A3A] dark:text-slate-100 text-lg sm:text-xl lg:text-[23px] xl:text-[25px] font-sans font-medium leading-relaxed sm:leading-[1.65] max-w-4xl xl:max-w-5xl mx-auto transition-all duration-700 ease-out text-center tracking-normal sm:tracking-tight"
-            style={{
-              opacity: isHeaderVisible ? 1 : 0,
-              transform: isHeaderVisible ? 'translateY(0)' : 'translateY(10px)',
-              transitionDelay: '340ms',
-            }}
+          {/* Sub-heading SEO optimized Paragraph: Prominent, high contrast, smooth upward animation */}
+          <motion.p 
+            initial={{ opacity: 0, y: 32 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.85, delay: 0.34, ease: [0.22, 1, 0.36, 1] }}
+            className="text-[#0B1A3A] dark:text-slate-100 text-lg sm:text-xl lg:text-[23px] xl:text-[25px] font-sans font-medium leading-relaxed sm:leading-[1.65] max-w-4xl xl:max-w-5xl mx-auto text-center tracking-normal sm:tracking-tight"
           >
             The vision and leadership behind UCP&apos;s journey is led by our esteemed Chairman Mian Amer Mahmood and Executive Director Prof. Sohail Afzal. Under their dynamic leadership, the University of Central Punjab Bahawalpur Campus is committed to academic excellence, innovation, and holistic development. Their strategic guidance and unwavering commitment to quality education continue to inspire students, faculty, and the entire UCP community to achieve greater heights and shape future leaders of Pakistan.
-          </p>
-        </div>
+          </motion.p>
+        </motion.div>
 
         {/* -------------------------------------------------------------------
             DESKTOP VIEW (>= 768px): Kept EXACTLY as is
@@ -355,47 +361,50 @@ export const WelcomeUcpSection: React.FC<WelcomeUcpSectionProps> = ({
                 </div>
               </div>
 
-              {/* Identity & Tag (with text animation) */}
-              <div className="text-center mt-5 sm:mt-6 flex flex-col items-center">
-                <span 
-                  className="inline-block px-3 py-1 text-[11px] sm:text-xs font-bold uppercase tracking-[0.18em] rounded-none mb-1.5 font-sans transition-all duration-600 ease-out bg-[#0B1A3A] dark:bg-[#0e2248] text-[#D4AF37] dark:text-[#F3D368] border border-[#0B1A3A] dark:border-[#D4AF37]/30"
-                  style={{ 
-                    opacity: isHeaderVisible ? 1 : 0,
-                    transform: isHeaderVisible ? 'translateY(0)' : 'translateY(10px)',
-                    transitionDelay: '380ms',
-                  }}
-                >
+              {/* Identity & Tag (with smooth text animation from below to upward on scroll) */}
+              <motion.div 
+                initial={{ opacity: 0, y: 32 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.2 }}
+                transition={{ duration: 0.8, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
+                className="text-center mt-5 sm:mt-6 flex flex-col items-center"
+              >
+                <span className="inline-block px-3 py-1 text-[11px] sm:text-xs font-bold uppercase tracking-[0.18em] rounded-none mb-1.5 font-sans bg-[#0B1A3A] dark:bg-[#0e2248] text-[#D4AF37] dark:text-[#F3D368] border border-[#0B1A3A] dark:border-[#D4AF37]/30">
                   Chairman, UCP
                 </span>
                 <h3 className="font-['Source_Serif_4','Source_Serif_Pro','Georgia',serif] text-2xl sm:text-3xl font-bold text-[#0B1A3A] dark:text-white tracking-tight uppercase">
                   {['Mian', 'Amer', 'Mahmood'].map((word, idx) => (
-                    <span
+                    <motion.span
                       key={idx}
-                      className="inline-block transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] mr-[0.25em] last:mr-0"
-                      style={{
-                        opacity: isHeaderVisible ? 1 : 0,
-                        transform: isHeaderVisible ? 'translateY(0)' : 'translateY(14px)',
-                        transitionDelay: `${420 + idx * 80}ms`,
-                      }}
+                      initial={{ opacity: 0, y: 20 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.65, delay: 0.16 + idx * 0.08, ease: [0.22, 1, 0.36, 1] }}
+                      className="inline-block mr-[0.25em] last:mr-0"
                     >
                       {word}
-                    </span>
+                    </motion.span>
                   ))}
                 </h3>
-                <p 
-                  className="text-xs sm:text-sm font-semibold text-slate-500 dark:text-slate-400 tracking-[0.14em] uppercase font-sans mt-0.5 transition-all duration-600 ease-out"
-                  style={{
-                    opacity: isHeaderVisible ? 1 : 0,
-                    transform: isHeaderVisible ? 'translateY(0)' : 'translateY(8px)',
-                    transitionDelay: '640ms',
-                  }}
+                <motion.p 
+                  initial={{ opacity: 0, y: 18 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.75, delay: 0.38, ease: [0.22, 1, 0.36, 1] }}
+                  className="text-xs sm:text-sm font-semibold text-slate-500 dark:text-slate-400 tracking-[0.14em] uppercase font-sans mt-0.5"
                 >
                   Founder, Punjab Group of Colleges &amp; UCP · Hilal-e-Imtiaz
-                </p>
-              </div>
+                </motion.p>
+              </motion.div>
 
-              {/* Welcome Message (Shortened to 4 Lines inside clean unboxed layout) */}
-              <div className="relative mt-6 max-w-xl mx-auto">
+              {/* Welcome Message (with smooth text animation from below to upward) */}
+              <motion.div 
+                initial={{ opacity: 0, y: 34 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.2 }}
+                transition={{ duration: 0.85, delay: 0.25, ease: [0.22, 1, 0.36, 1] }}
+                className="relative mt-6 max-w-xl mx-auto"
+              >
                 <span 
                   className="font-serif text-4xl sm:text-5xl leading-none select-none float-left mr-2.5 -mt-1 text-[#D4AF37] dark:text-[#E5C158]"
                   aria-hidden="true"
@@ -405,11 +414,17 @@ export const WelcomeUcpSection: React.FC<WelcomeUcpSectionProps> = ({
                 <p className="font-['Source_Serif_4','Source_Serif_Pro','Georgia',serif] text-base sm:text-[17px] text-[#1E293B] dark:text-slate-200 leading-[1.78] italic text-justify">
                   We are truly humbled by the trust of millions and take pride in uplifting our social fabric by educating the youth and mentoring them for a better future. Our journey of over 38 years is a reflection of our commitment towards creating a better tomorrow for our society through continuously improving education standards across Pakistan.
                 </p>
-              </div>
+              </motion.div>
             </div>
 
-            {/* Bottom Action Link */}
-            <div className="pt-4 border-t border-slate-200/80 dark:border-white/10 flex items-center justify-center text-xs font-sans max-w-xl mx-auto w-full">
+            {/* Bottom Action Link (smooth scroll arrival) */}
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 0.75, delay: 0.35, ease: [0.22, 1, 0.36, 1] }}
+              className="pt-4 border-t border-slate-200/80 dark:border-white/10 flex items-center justify-center text-xs font-sans max-w-xl mx-auto w-full"
+            >
               <button
                 type="button"
                 onClick={() => setIsChairmanProfileOpen(true)}
@@ -421,7 +436,7 @@ export const WelcomeUcpSection: React.FC<WelcomeUcpSectionProps> = ({
                 </span>
                 <ArrowUpRight size={14} className="text-[#C8102E] dark:text-[#D4AF37] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
               </button>
-            </div>
+            </motion.div>
           </div>
 
           {/* =================================================================
@@ -476,47 +491,50 @@ export const WelcomeUcpSection: React.FC<WelcomeUcpSectionProps> = ({
                 </div>
               </div>
 
-              {/* Identity & Tag (with text animation) */}
-              <div className="text-center mt-5 sm:mt-6 flex flex-col items-center">
-                <span 
-                  className="inline-block px-3 py-1 text-[11px] sm:text-xs font-bold uppercase tracking-[0.18em] rounded-none mb-1.5 font-sans transition-all duration-600 ease-out bg-[#0B1A3A] dark:bg-[#0e2248] text-[#D4AF37] dark:text-[#F3D368] border border-[#0B1A3A] dark:border-[#D4AF37]/30"
-                  style={{ 
-                    opacity: isHeaderVisible ? 1 : 0,
-                    transform: isHeaderVisible ? 'translateY(0)' : 'translateY(10px)',
-                    transitionDelay: '460ms',
-                  }}
-                >
+              {/* Identity & Tag (with smooth text animation from below to upward on scroll) */}
+              <motion.div 
+                initial={{ opacity: 0, y: 32 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.2 }}
+                transition={{ duration: 0.8, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
+                className="text-center mt-5 sm:mt-6 flex flex-col items-center"
+              >
+                <span className="inline-block px-3 py-1 text-[11px] sm:text-xs font-bold uppercase tracking-[0.18em] rounded-none mb-1.5 font-sans bg-[#0B1A3A] dark:bg-[#0e2248] text-[#D4AF37] dark:text-[#F3D368] border border-[#0B1A3A] dark:border-[#D4AF37]/30">
                   Executive Director, PGC
                 </span>
                 <h3 className="font-['Source_Serif_4','Source_Serif_Pro','Georgia',serif] text-2xl sm:text-3xl font-bold text-[#0B1A3A] dark:text-white tracking-tight uppercase">
                   {['Prof.', 'Sohail', 'Afzal'].map((word, idx) => (
-                    <span
+                    <motion.span
                       key={idx}
-                      className="inline-block transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] mr-[0.25em] last:mr-0"
-                      style={{
-                        opacity: isHeaderVisible ? 1 : 0,
-                        transform: isHeaderVisible ? 'translateY(0)' : 'translateY(14px)',
-                        transitionDelay: `${500 + idx * 80}ms`,
-                      }}
+                      initial={{ opacity: 0, y: 20 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.65, delay: 0.2 + idx * 0.08, ease: [0.22, 1, 0.36, 1] }}
+                      className="inline-block mr-[0.25em] last:mr-0"
                     >
                       {word}
-                    </span>
+                    </motion.span>
                   ))}
                 </h3>
-                <p 
-                  className="text-xs sm:text-sm font-semibold text-slate-500 dark:text-slate-400 tracking-[0.14em] uppercase font-sans mt-0.5 transition-all duration-600 ease-out"
-                  style={{
-                    opacity: isHeaderVisible ? 1 : 0,
-                    transform: isHeaderVisible ? 'translateY(0)' : 'translateY(8px)',
-                    transitionDelay: '720ms',
-                  }}
+                <motion.p 
+                  initial={{ opacity: 0, y: 18 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.75, delay: 0.42, ease: [0.22, 1, 0.36, 1] }}
+                  className="text-xs sm:text-sm font-semibold text-slate-500 dark:text-slate-400 tracking-[0.14em] uppercase font-sans mt-0.5"
                 >
                   Executive Director, PGC · Academic Excellence Awardee
-                </p>
-              </div>
+                </motion.p>
+              </motion.div>
 
-              {/* Message (Shortened to 4 Lines inside clean unboxed layout) */}
-              <div className="relative mt-6 max-w-xl mx-auto">
+              {/* Message (with smooth text animation from below to upward) */}
+              <motion.div 
+                initial={{ opacity: 0, y: 34 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.2 }}
+                transition={{ duration: 0.85, delay: 0.28, ease: [0.22, 1, 0.36, 1] }}
+                className="relative mt-6 max-w-xl mx-auto"
+              >
                 <span 
                   className="font-serif text-4xl sm:text-5xl leading-none select-none float-left mr-2.5 -mt-1 text-[#D4AF37] dark:text-[#E5C158]"
                   aria-hidden="true"
@@ -526,11 +544,17 @@ export const WelcomeUcpSection: React.FC<WelcomeUcpSectionProps> = ({
                 <p className="font-['Source_Serif_4','Source_Serif_Pro','Georgia',serif] text-base sm:text-[17px] text-[#1E293B] dark:text-slate-200 leading-[1.78] italic text-justify">
                   At UCP we are not just means to education but a family that cares, grooms and helps unlock the true potential of our students. We are in a constant relentless pursuit to help provide a better future to our youth and build a society that is wise, intelligent and educated so that every student can shine in every aspect of life.
                 </p>
-              </div>
+              </motion.div>
             </div>
 
-            {/* Bottom Action Link */}
-            <div className="pt-4 border-t border-slate-200/80 dark:border-white/10 flex items-center justify-center text-xs font-sans max-w-xl mx-auto w-full">
+            {/* Bottom Action Link (smooth scroll arrival) */}
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 0.75, delay: 0.38, ease: [0.22, 1, 0.36, 1] }}
+              className="pt-4 border-t border-slate-200/80 dark:border-white/10 flex items-center justify-center text-xs font-sans max-w-xl mx-auto w-full"
+            >
               <button
                 type="button"
                 onClick={() => setIsSohailProfileOpen(true)}
@@ -542,7 +566,7 @@ export const WelcomeUcpSection: React.FC<WelcomeUcpSectionProps> = ({
                 </span>
                 <ArrowUpRight size={14} className="text-[#C8102E] dark:text-[#D4AF37] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
               </button>
-            </div>
+            </motion.div>
           </div>
 
         </div>
@@ -551,7 +575,13 @@ export const WelcomeUcpSection: React.FC<WelcomeUcpSectionProps> = ({
             Native momentum scroll, snap-center, 85% card width with 1.15 peek,
             96x96 circular portraits with gold border, clamped bio, and navy pill button
             =================================================================== */}
-        <div className="block md:hidden relative z-10 w-full overflow-hidden select-none">
+        <motion.div 
+          initial={{ opacity: 0, y: 36 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.15 }}
+          transition={{ duration: 0.82, ease: [0.22, 1, 0.36, 1] }}
+          className="block md:hidden relative z-10 w-full overflow-hidden select-none"
+        >
           <div
             ref={welcomeCarouselRef}
             onScroll={handleWelcomeMobileScroll}
@@ -698,7 +728,7 @@ export const WelcomeUcpSection: React.FC<WelcomeUcpSectionProps> = ({
               />
             ))}
           </div>
-        </div>
+        </motion.div>
       </section>
 
       {/* =======================================================================

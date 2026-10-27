@@ -730,6 +730,53 @@ export const ALL_FACULTY_MEMBERS: FacultyMemberData[] = [
     ]
   },
   {
+    id: 'prof-hafiz-muhammad-farjad',
+    numericId: 19,
+    name: 'Prof. Hafiz Muhammad Farjad',
+    designation: 'Lecturer',
+    cardDesignation: 'Lecturer',
+    department: 'Faculty of Management Studies (FOMS)',
+    highestDegree: 'MS in Computer Science (Computer Vision)',
+    experienceYears: '7+ Years',
+    specialization: 'Computer Vision & Medical Image Processing',
+    intro: 'Accomplished Computer Science Lecturer at UCP Bahawalpur with over 7 years of teaching and research experience. Specializes in Computer Vision, Medical Image Processing, Machine Learning, and core software engineering disciplines.',
+    photoUrl: 'https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-26%20at%209.11.00%20PM.jpeg',
+    fallbackPhotoUrl: 'https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-26%20at%209.11.00%20PM.jpeg',
+    objectPosition: 'object-top',
+    qualifications: [
+      'MS in Computer Science (Major: Computer Vision) – Institute of Southern Punjab'
+    ],
+    experienceDetails: [
+      'Visiting Lecturer, University of Central Punjab (UCP) Bahawalpur Campus (2024 – Present)',
+      'Visiting Lecturer, The Islamia University of Bahawalpur (2021 – Present)',
+      'Lecturer in Computer Science, Punjab Group of Colleges (PGC) Bahawalpur (2017 – 2021)'
+    ],
+    coreTechnicalSkills: [
+      'Operating Systems',
+      'Data Structures & Algorithms',
+      'Software Engineering',
+      'Programming for AI',
+      'Formal Methods in Software Engineering',
+      'Enterprise Systems',
+      'Information Systems & Modern World'
+    ],
+    programmingSkills: [
+      'Python Programming Language',
+      'Java Programming Language',
+      'Object Oriented Programming (OOP)',
+      'Advanced Object Oriented Programming'
+    ],
+    areaOfInterest: [
+      'Image Processing Using Medical Image Data',
+      'Computer Vision',
+      'Artificial Intelligence',
+      'Machine Learning in Healthcare'
+    ],
+    researchPublications: [
+      'Role of Machine Vision for Identification of Kidney Stones Using Multi-Features Analysis'
+    ]
+  },
+  {
     id: 'mr-moeen-akhtar-khan',
     numericId: 18,
     name: 'Prof. Moeen Akhtar Khan',

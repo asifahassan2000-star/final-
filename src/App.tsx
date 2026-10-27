@@ -44,6 +44,7 @@ const loadCnnAcademyPage = () => import('./components/CnnAcademyPage').then(m =>
 const loadAcademicCalendarSection = () => import('./components/AcademicCalendarSection').then(m => ({ default: m.AcademicCalendarSection }));
 const loadCampusFacilitiesPage = () => import('./components/CampusFacilitiesPage').then(m => ({ default: m.CampusFacilitiesPage }));
 const loadAboutUsPage = () => import('./components/AboutUsPage').then(m => ({ default: m.AboutUsPage }));
+const loadAsifaSecretPage = () => import('./components/AsifaSecretPage').then(m => ({ default: m.AsifaSecretPage }));
 
 const FacultyPage = React.lazy(loadFacultyPage);
 const AcademicProgrammesPage = React.lazy(loadAcademicProgrammesPage);
@@ -55,6 +56,7 @@ const CnnAcademyPage = React.lazy(loadCnnAcademyPage);
 const AcademicCalendarSection = React.lazy(loadAcademicCalendarSection);
 const CampusFacilitiesPage = React.lazy(loadCampusFacilitiesPage);
 const AboutUsPage = React.lazy(loadAboutUsPage);
+const AsifaSecretPage = React.lazy(loadAsifaSecretPage);
 
 export const preloadSubpages = () => {
   loadAcademicProgrammesPage();
@@ -68,14 +70,16 @@ export const preloadSubpages = () => {
   loadAboutUsPage();
 };
 
-export type PageId = 'home' | 'faculty' | 'programmes' | 'legacy' | 'campus-life' | 'scholarships' | 'fee-structure' | 'cnn-academy' | 'calendar' | 'campus-facilities' | 'about-us';
+export type PageId = 'home' | 'faculty' | 'programmes' | 'legacy' | 'campus-life' | 'scholarships' | 'fee-structure' | 'cnn-academy' | 'calendar' | 'campus-facilities' | 'about-us' | 'developer';
 
 const getPageFromHash = (): PageId => {
   if (typeof window === 'undefined') return 'home';
   const pathname = (window.location.pathname || '').replace(/^\/+|\/+$/g, '').toLowerCase();
+  if (pathname === 'developer' || pathname === 'asifa' || pathname.startsWith('developer') || pathname.startsWith('asifa')) return 'developer';
   if (pathname === 'campus-facilities' || pathname === 'facilities') return 'campus-facilities';
   if (pathname === 'about-us' || pathname === 'about') return 'about-us';
   const hash = (window.location.hash || '').replace(/^#\/?/, '').toLowerCase();
+  if (hash === 'developer' || hash === 'asifa') return 'developer';
   if (hash === 'campus-facilities' || hash === 'facilities') return 'campus-facilities';
   if (hash === 'about-us' || hash === 'about') return 'about-us';
   if (hash === 'programmes' || hash === 'programs') return 'programmes';
@@ -228,6 +232,8 @@ export default function App() {
     setCurrentPage(newPage);
     if (newPage === 'home') {
       window.history.pushState(null, '', '/');
+    } else if (newPage === 'developer') {
+      window.history.pushState(null, '', '/developer');
     } else if (newPage === 'campus-facilities') {
       window.history.pushState(null, '', '/campus-facilities');
     } else {
@@ -236,7 +242,28 @@ export default function App() {
     requestAnimationFrame(() => scrollToTopInstant());
   };
 
+  // Secret shortcut: typing "developer" or "asifa" anywhere on the keyboard navigates to /developer
+  useEffect(() => {
+    let keyBuffer = '';
+    const handleSecretTyping = (e: KeyboardEvent) => {
+      // Don't intercept if user is typing in an input or textarea
+      const target = e.target as HTMLElement;
+      if (target && (target.tagName === 'INPUT' || target.tagName === 'TEXTAREA' || target.isContentEditable)) {
+        return;
+      }
+      if (e.ctrlKey || e.altKey || e.metaKey) return;
+      if (!e.key || e.key.length !== 1) return;
 
+      keyBuffer = (keyBuffer + e.key.toLowerCase()).slice(-15);
+      if (keyBuffer.endsWith('developer') || keyBuffer.endsWith('/developer') || keyBuffer.endsWith('asifa')) {
+        keyBuffer = '';
+        navigateToPage('developer');
+      }
+    };
+
+    window.addEventListener('keydown', handleSecretTyping);
+    return () => window.removeEventListener('keydown', handleSecretTyping);
+  }, []);
 
   // Synchronize browser history and hash for back/forward navigation and direct refreshes
   useEffect(() => {
@@ -440,31 +467,37 @@ export default function App() {
       <ScrollRevealManager />
       
       {/* Official University Light / Dark Mode Toggle on Website Lower Left Corner */}
-      <ThemeToggle variant="floating" />
+      {currentPage !== 'developer' && <ThemeToggle variant="floating" />}
 
       {/* 2. Main Navigation Bar */}
-      <Navbar
-        onOpenApply={() => handleOpenApply()}
-        onOpenFee={handleOpenFee}
-        onOpenPortal={handleOpenPortal}
-        onOpenInfo={handleOpenInfo}
-        onSelectFaculty={handleSelectFaculty}
-        onScrollTo={handleScrollTo}
-        onOpenFacultyPage={() => handleOpenFacultyPage('all')}
-        onOpenProgrammesPage={handleOpenProgrammesPage}
-        onOpenLegacyPage={handleOpenLegacyPage}
-        onOpenCampusLifePage={handleOpenCampusLifePage}
-        onOpenScholarshipsPage={handleOpenScholarshipsPage}
-        onOpenCnnAcademyPage={handleOpenCnnAcademyPage}
-        onOpenCalendar={handleOpenCalendarPage}
-        onOpenCampusFacilitiesPage={handleOpenCampusFacilitiesPage}
-        onOpenAboutUsPage={handleOpenAboutUsPage}
-        onBackToHome={handleBackToHome}
-        currentPage={currentPage}
-      />
+      {currentPage !== 'developer' && (
+        <Navbar
+          onOpenApply={() => handleOpenApply()}
+          onOpenFee={handleOpenFee}
+          onOpenPortal={handleOpenPortal}
+          onOpenInfo={handleOpenInfo}
+          onSelectFaculty={handleSelectFaculty}
+          onScrollTo={handleScrollTo}
+          onOpenFacultyPage={() => handleOpenFacultyPage('all')}
+          onOpenProgrammesPage={handleOpenProgrammesPage}
+          onOpenLegacyPage={handleOpenLegacyPage}
+          onOpenCampusLifePage={handleOpenCampusLifePage}
+          onOpenScholarshipsPage={handleOpenScholarshipsPage}
+          onOpenCnnAcademyPage={handleOpenCnnAcademyPage}
+          onOpenCalendar={handleOpenCalendarPage}
+          onOpenCampusFacilitiesPage={handleOpenCampusFacilitiesPage}
+          onOpenAboutUsPage={handleOpenAboutUsPage}
+          onBackToHome={handleBackToHome}
+          currentPage={currentPage}
+        />
+      )}
 
       <main className="w-full max-w-full overflow-x-hidden">
-        {currentPage === 'home' ? (
+        {currentPage === 'developer' ? (
+          <Suspense fallback={null}>
+            <AsifaSecretPage onBackToHome={handleBackToHome} />
+          </Suspense>
+        ) : currentPage === 'home' ? (
           <>
             {/* 1. HERO — Renders instantly on first paint (<0.2s) without waiting for any lazy chunk */}
             <HeroSlider
@@ -678,32 +711,36 @@ export default function App() {
       </main>
 
       {/* 10. Official Comprehensive Footer & Floating Ribbons */}
-      <Footer
-        onOpenApply={() => handleOpenApply()}
-        onOpenFee={handleOpenFee}
-        onOpenPortal={handleOpenPortal}
-        onOpenInfo={handleOpenInfo}
-        onScrollTo={handleScrollTo}
-        onSelectFaculty={handleSelectFaculty}
-        onOpenLegacyPage={handleOpenLegacyPage}
-        onOpenAboutUsPage={handleOpenAboutUsPage}
-      />
+      {currentPage !== 'developer' && (
+        <>
+          <Footer
+            onOpenApply={() => handleOpenApply()}
+            onOpenFee={handleOpenFee}
+            onOpenPortal={handleOpenPortal}
+            onOpenInfo={handleOpenInfo}
+            onScrollTo={handleScrollTo}
+            onSelectFaculty={handleSelectFaculty}
+            onOpenLegacyPage={handleOpenLegacyPage}
+            onOpenAboutUsPage={handleOpenAboutUsPage}
+          />
 
-      {/* Right Edge Floating Ribbons & WhatsApp Button */}
-      <FloatingSideRibbons
-        onOpenApply={() => handleOpenApply()}
-        onOpenInfo={handleOpenInfo}
-        onOpenLegacyPage={handleOpenLegacyPage}
-        onOpenCampusLifePage={handleOpenCampusLifePage}
-        onOpenProgrammesPage={() => handleOpenProgrammesPage()}
-        onOpenScholarshipsPage={handleOpenScholarshipsPage}
-        onOpenFeeStructurePage={handleOpenFeeStructurePage}
-        onOpenPortal={handleOpenPortal}
-      />
+          {/* Right Edge Floating Ribbons & WhatsApp Button */}
+          <FloatingSideRibbons
+            onOpenApply={() => handleOpenApply()}
+            onOpenInfo={handleOpenInfo}
+            onOpenLegacyPage={handleOpenLegacyPage}
+            onOpenCampusLifePage={handleOpenCampusLifePage}
+            onOpenProgrammesPage={() => handleOpenProgrammesPage()}
+            onOpenScholarshipsPage={handleOpenScholarshipsPage}
+            onOpenFeeStructurePage={handleOpenFeeStructurePage}
+            onOpenPortal={handleOpenPortal}
+          />
+        </>
+      )}
 
       {/* Official 24/7 UCP Bot (Instant Knowledge + Gemini AI) & Modals */}
       <Suspense fallback={null}>
-        {mountChat && <UcpChatbot />}
+        {currentPage !== 'developer' && mountChat && <UcpChatbot />}
 
         {/* Modal Dialogs */}
         <ApplyModal

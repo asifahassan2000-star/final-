@@ -103,41 +103,41 @@ export const FacilitiesSection: React.FC<FacilitiesSectionProps> = ({
               </h3>
             </div>
 
-            {/* Main Grand Staircase Card (Full Bleed 16:9, Edge-to-Edge) */}
-            <div className="bg-white dark:bg-[#0d1e38] rounded-xl border border-slate-200 dark:border-[#1e3256] overflow-hidden mb-6 shadow-xs transition-colors">
-              <div className="relative w-full aspect-[16/9] overflow-hidden bg-slate-900">
+            {/* Main Grand Staircase Card (Proper Image — No White Margin, No Frame on Sides) */}
+            <div 
+              className="rounded-xl overflow-hidden mb-6 shadow-sm hover:shadow-md transition-shadow cursor-pointer group border-0 bg-transparent"
+              onClick={() => setSelectedImage({
+                src: '/assets/facilities/grand_staircase_central_atrium.jpg',
+                fallback: '/images/tPJpr2Hc_image-13.jpg',
+                title: 'Campus Grand Staircase & Central Atrium'
+              })}
+            >
+              <div className="relative w-full aspect-[16/9] overflow-hidden rounded-xl bg-slate-900">
                 <img decoding="async" src="/assets/facilities/grand_staircase_central_atrium.jpg"
                   alt="Campus Grand Staircase and Central Atrium"
                   loading="lazy"
-                  className="w-full h-full object-cover object-center block"
+                  className="w-full h-full object-cover object-center block group-hover:scale-102 transition-transform duration-500"
                   onError={(e) => {
                     const target = e.target as HTMLImageElement;
                     target.src = '/images/tPJpr2Hc_image-13.jpg';
                   }}
                 />
-              </div>
-              <div className="p-4 sm:p-5 border-t border-slate-100 dark:border-white/10">
-                <h4 className="text-sm sm:text-base font-semibold text-slate-900 dark:text-white">
-                  Grand Staircase & Central Atrium
-                </h4>
-                <p className="mt-1 text-xs sm:text-sm text-slate-500 dark:text-slate-300 leading-relaxed font-sans">
-                  Open multi-level architectural staircase and spacious central atrium designed with natural light.
-                </p>
+                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors pointer-events-none" />
               </div>
             </div>
 
-            {/* 2 Grid Cards: Campus Reception Hall and Vertical Corridor (Full Size Visible) */}
+            {/* 2 Grid Cards: Campus Reception Hall and Vertical Corridor (No Side Frame) */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-start">
-              {/* Reception Hall Card (Clean image, wording removed, full size visible) */}
+              {/* Reception Hall Card (Clean image, no frame on sides) */}
               <div 
-                className="bg-white dark:bg-[#0d1e38] rounded-xl border border-slate-200 dark:border-[#1e3256] overflow-hidden shadow-xs hover:shadow-md transition-shadow cursor-pointer group"
+                className="rounded-xl overflow-hidden shadow-xs hover:shadow-md transition-shadow cursor-pointer group border-0 bg-transparent"
                 onClick={() => setSelectedImage({
                   src: '/assets/campus/campus-reception-hall.jpg',
                   fallback: '/images/Z9LT1K2_image-34.jpg',
                   title: 'Campus Reception & Central Hall'
                 })}
               >
-                <div className="relative w-full aspect-[880/1189] overflow-hidden bg-slate-950">
+                <div className="relative w-full aspect-[880/1189] overflow-hidden rounded-xl bg-slate-950">
                   <img decoding="async" src="/assets/campus/campus-reception-hall.jpg"
                     alt="Campus Reception & Central Hall"
                     loading="lazy"
@@ -151,16 +151,16 @@ export const FacilitiesSection: React.FC<FacilitiesSectionProps> = ({
                 </div>
               </div>
 
-              {/* Corridor Card: Frame adjusted to natural ~9:16 vertical image size, Full Size Visible */}
+              {/* Corridor Card (Clean image, no frame on sides) */}
               <div 
-                className="bg-white dark:bg-[#0d1e38] rounded-xl border border-slate-200 dark:border-[#1e3256] overflow-hidden shadow-xs hover:shadow-md transition-shadow cursor-pointer group"
+                className="rounded-xl overflow-hidden shadow-xs hover:shadow-md transition-shadow cursor-pointer group border-0 bg-transparent"
                 onClick={() => setSelectedImage({
                   src: '/assets/campus/corridor-portrait-9-16.jpg',
                   fallback: '/images/0jL07ssr_image-33.jpg',
                   title: 'Sunlit Campus Corridors & Walkways'
                 })}
               >
-                <div className="relative w-full aspect-[848/1258] overflow-hidden bg-slate-950">
+                <div className="relative w-full aspect-[848/1258] overflow-hidden rounded-xl bg-slate-950">
                   <img decoding="async" src="/assets/campus/corridor-portrait-9-16.jpg"
                     alt="Campus Corridors and Walkways"
                     loading="lazy"
