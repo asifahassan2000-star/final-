@@ -249,11 +249,11 @@ Campus Phone: 062-2202030 / 062-2202050
     return (
       <div className="bg-[#fcfbf9] text-stone-900 dark:bg-[#080f1d] dark:text-[#f8fafc] min-h-screen">
         {/* Navigation Breadcrumb & Back Bar */}
-        <div className="bg-white border-b border-stone-200 sticky top-16 z-30 shadow-xs">
+        <div className="bg-white dark:bg-[#071322] border-0 sticky top-16 z-30 shadow-xs">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3.5 flex items-center justify-between">
             <button
               onClick={handleCloseDetail}
-              className="inline-flex items-center gap-2 text-xs font-semibold text-stone-700 hover:text-[#092242] transition-colors focus:outline-none"
+              className="inline-flex items-center gap-2 text-xs font-semibold text-stone-700 dark:text-stone-300 hover:text-[#092242] dark:hover:text-white transition-colors focus:outline-none"
             >
               <ArrowLeft size={15} />
               <span>Back to All Programmes</span>
@@ -264,13 +264,13 @@ Campus Phone: 062-2202030 / 062-2202050
               <span className="hidden sm:inline text-stone-300">/</span>
               <span>{prog.level}</span>
               <span className="text-stone-300">/</span>
-              <span className="font-semibold text-stone-800">{prog.degree}</span>
+              <span className="font-semibold text-stone-800 dark:text-stone-200">{prog.degree}</span>
             </div>
           </div>
         </div>
 
         {/* 1. PROGRAMME HERO (Natural photographic background with deep neutral contrast overlay) */}
-        <section className="relative bg-[#0A1931] text-white overflow-hidden border-b border-slate-800">
+        <section className="relative bg-[#0A1931] text-white overflow-hidden border-0">
           {/* Full-width continuous background image with Ken-Burns animation, anchored right for clear visibility */}
           <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none select-none">
             <img loading="lazy" decoding="async" src={prog.image}
@@ -637,7 +637,7 @@ Campus Phone: 062-2202030 / 062-2202050
     <div id="academic-programmes-section" className="bg-[#fcfbf9] text-stone-900 dark:bg-[#080f1d] dark:text-[#f8fafc] min-h-screen">
       
       {/* Editorial University Header (Deep neutral campus quadrangle hero with natural photographic tones) */}
-      <section className="relative bg-[#0A1931] text-white border-b border-slate-800 py-16 sm:py-24 overflow-hidden">
+      <section className="relative bg-[#0A1931] text-white border-0 py-16 sm:py-24 overflow-hidden">
         {/* Full-width continuous background image with Ken-Burns animation, anchored right */}
         <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none select-none">
           <img loading="lazy" decoding="async" src="/assets/campus/13_hero_sunset_campus.jpg"
@@ -674,8 +674,8 @@ Campus Phone: 062-2202030 / 062-2202050
         </div>
       </section>
 
-      {/* Search & Academic Navigation Filter System — Placed at the top in place of the unnecessary upper bar */}
-      <div className="bg-white dark:bg-[#071322] border-b border-stone-200 dark:border-white/10 py-3.5 px-4 sm:px-6 lg:px-8 font-sans">
+      {/* Search & Academic Navigation Filter System — Placed at the top without bottom border */}
+      <div className="bg-white dark:bg-[#071322] border-0 py-3.5 px-4 sm:px-6 lg:px-8 font-sans">
         <div className="max-w-7xl mx-auto space-y-3">
           
           {/* Minimal Search Bar */}

@@ -92,35 +92,11 @@ app.get('/robots.txt', (_req, res) => {
   res.sendFile(path.resolve(__dirname, 'public/robots.txt'));
 });
 
-app.get('/sitemap.xml', (req, res) => {
-  res.setHeader('Content-Type', 'application/xml; charset=utf-8');
-  res.setHeader('Access-Control-Allow-Origin', '*');
-  res.setHeader('Cache-Control', 'public, max-age=3600, s-maxage=86400');
-  
-  const host = (req.headers.host || '').toLowerCase();
-  const filePath = host.includes('ucp.edu.pk')
-    ? path.resolve(__dirname, 'public/sitemap-ucp.xml')
-    : path.resolve(__dirname, 'public/sitemap.xml');
-
-  if (fs.existsSync(filePath)) {
-    res.sendFile(filePath);
-  } else {
-    res.sendFile(path.resolve(__dirname, 'public/sitemap.xml'));
-  }
-});
-
-app.get('/sitemap-vercel.xml', (_req, res) => {
+app.get('/sitemap.xml', (_req, res) => {
   res.setHeader('Content-Type', 'application/xml; charset=utf-8');
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Cache-Control', 'public, max-age=3600, s-maxage=86400');
   res.sendFile(path.resolve(__dirname, 'public/sitemap.xml'));
-});
-
-app.get('/sitemap-ucp.xml', (_req, res) => {
-  res.setHeader('Content-Type', 'application/xml; charset=utf-8');
-  res.setHeader('Access-Control-Allow-Origin', '*');
-  res.setHeader('Cache-Control', 'public, max-age=3600, s-maxage=86400');
-  res.sendFile(path.resolve(__dirname, 'public/sitemap-ucp.xml'));
 });
 
 const SYSTEM_INSTRUCTION = `You are 'UCP Assistant', the official, friendly campus guide for University of Central Punjab (UCP) Bahawalpur Campus.

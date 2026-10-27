@@ -482,6 +482,50 @@ export const CampusLife: React.FC<CampusLifeProps> = ({ onOpenCampusLifePage }) 
 
     {/* UCP ELITE STUDENT NETWORK — Volunteer Team Members Section */}
     <UcpEliteNetworkSection />
+
+    {/* =======================================================================
+        CAMPUS LIFE GRAND FINALE BANNER: Full-size Flagship Campus Panorama
+        With user-requested high-resolution image & inspiring signature line
+    ======================================================================= */}
+    <section 
+      className="relative w-full py-20 sm:py-28 lg:py-36 px-6 sm:px-10 lg:px-16 overflow-hidden bg-slate-950 flex items-center justify-center min-h-[480px] sm:min-h-[560px] lg:min-h-[620px] border-t border-slate-200 dark:border-white/10"
+      style={{
+        backgroundImage: `linear-gradient(to bottom, rgba(10, 25, 49, 0.45), rgba(3, 7, 18, 0.72)), url('https://ik.imagekit.io/Muffins/image_ca8f0122.jpeg')`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat',
+      }}
+    >
+      <div className="relative z-10 max-w-4xl mx-auto text-center space-y-6">
+        <span className="inline-block px-4 py-1.5 rounded-full text-[11px] sm:text-xs font-mono font-bold uppercase tracking-[0.22em] bg-white/15 text-amber-300 border border-amber-300/30 backdrop-blur-md drop-shadow-md">
+          Life Beyond the Classroom · UCP Bahawalpur
+        </span>
+
+        <h3 
+          className="text-3xl sm:text-4xl lg:text-[46px] font-serif font-bold text-white tracking-tight leading-[1.18] drop-shadow-lg"
+          style={{ fontFamily: "'Cormorant Garamond', 'Libre Baskerville', Georgia, serif" }}
+        >
+          Where Ambition Meets Belonging, and Every Moment Becomes a Cherished Legacy.
+        </h3>
+
+        <p className="font-sans text-[17px] sm:text-[19px] leading-[1.8] text-slate-100/95 max-w-2xl mx-auto drop-shadow-md">
+          From vibrant cultural celebrations and spirited sports tournaments to quiet study breakthroughs and lifelong friendships — your journey at UCP Bahawalpur shapes who you become.
+        </p>
+
+        {onOpenCampusLifePage && (
+          <div className="flex flex-wrap items-center justify-center gap-3.5 pt-3">
+            <button
+              type="button"
+              onClick={onOpenCampusLifePage}
+              className="bg-[#C8102E] hover:bg-[#a00c24] text-white rounded-full px-7 py-3 text-xs sm:text-sm font-semibold uppercase tracking-[0.12em] font-sans transition-all cursor-pointer shadow-lg hover:shadow-xl hover:scale-105 active:scale-95 inline-flex items-center gap-2"
+            >
+              <span>Explore All Events &amp; Campus Chronicle</span>
+              <ArrowRight size={15} />
+            </button>
+          </div>
+        )}
+      </div>
+    </section>
     </>
   );
 };

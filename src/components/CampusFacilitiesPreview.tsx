@@ -109,19 +109,15 @@ export const CampusFacilitiesPreview: React.FC<CampusFacilitiesPreviewProps> = (
           </div>
 
           {/* Right Column (40% image): Campus Image */}
-          <div className="lg:col-span-5 flex items-center justify-center w-full">
-            <div 
-              className="relative w-full h-[320px] rounded-[12px] overflow-hidden border border-slate-200/80 dark:border-white/10"
-              style={{
-                boxShadow: '0 8px 24px rgba(0,0,0,0.08)'
-              }}
-            >
+          <div className="lg:col-span-5 flex items-center justify-center w-full p-0 m-0">
+            <div className="relative w-full h-[320px] sm:h-[350px] lg:h-[380px] rounded-2xl overflow-hidden border-0 bg-transparent p-0 m-0 shadow-none">
               <img
                 src="https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-05%20at%202.46.10%20AM.jpeg?updatedAt=1792916356622"
                 alt="University of Central Punjab Bahawalpur Campus Facilities"
                 loading="lazy"
                 decoding="async"
-                className="w-full h-[320px] object-cover object-center block"
+                className="w-full h-full object-cover object-center block border-0 p-0 m-0"
+                style={{ width: '100%', height: '100%', objectFit: 'cover' }}
                 onError={(e) => {
                   (e.target as HTMLImageElement).src = 'https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&w=1200&q=80';
                 }}

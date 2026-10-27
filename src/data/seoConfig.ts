@@ -22,9 +22,9 @@ export const DEFAULT_OG_IMAGE = './assets/campus/hero_campus_night_flagship.webp
 
 export const SEO_PAGES_CONFIG: Record<string, PageSeoConfig> = {
   home: {
-    title: 'UCP Bahawalpur Campus | University of Central Punjab BWP - Official Admissions & Programs',
-    description: 'Official website of UCP Bahawalpur Campus (University of Central Punjab BWP). Explore admissions, fee structures, merit scholarships, BS & ADP academic degree programs, faculty, and vibrant campus life in Bahawalpur.',
-    keywords: 'ucp bahawalpur campus, ucp bwp campus, ucp bahawalpur, ucp bwp, university of central punjab bahawalpur, ucp admissions, ucp fee structure, ucp scholarships, best university in bahawalpur',
+    title: 'Constituent College UCP Campus Bahawalpur | UCP Bahawalpur',
+    description: 'Official website of Constituent College UCP Campus Bahawalpur (University of Central Punjab BWP). Explore admissions, fee structures, merit scholarships, BS & ADP academic degree programs, faculty, and vibrant campus life in Bahawalpur.',
+    keywords: 'constituent college ucp campus bahawalpur, ucp bahawalpur, ucp bwp, ucp bahawalpur campus, university of central punjab bahawalpur, ucp admissions, ucp fee structure, ucp scholarships, best university in bahawalpur',
     canonicalPath: '/',
     ogType: 'website',
     ogImage: DEFAULT_OG_IMAGE,

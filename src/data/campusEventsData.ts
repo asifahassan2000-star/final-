@@ -3,6 +3,9 @@ export interface CampusEventImage {
   fallbackSrc?: string;
   alt: string;
   caption?: string;
+  zoom?: boolean | number;
+  objectPosition?: string;
+  className?: string;
 }
 
 export interface CampusEvent {
@@ -1484,12 +1487,6 @@ export const CAMPUS_EVENTS_DATA: CampusEvent[] = [
     ],
     images: [
       {
-        src: 'https://ik.imagekit.io/Muffins/image%20(3).png',
-        fallbackSrc: '/assets/campus-life-new/campus-13.jpg',
-        alt: 'Farewell Party 2026 celebratory visual and senior batch honours',
-        caption: 'Farewell Party 2026 — Senior valedictory honours and celebratory banquet moments'
-      },
-      {
         src: 'https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-05%20at%202.38.54%20AM.jpeg',
         fallbackSrc: '/assets/campus-life-new/campus-14.jpg',
         alt: 'Graduating seniors and faculty celebration at Farewell Party 2026',
@@ -1514,16 +1511,10 @@ export const CAMPUS_EVENTS_DATA: CampusEvent[] = [
         caption: 'Graduates cherishing collegiate friendships and campus memories'
       },
       {
-        src: 'https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-05%20at%202.38.56%20AM%20(1).jpeg',
+        src: 'https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-13%20at%2012.54.54%20AM.jpeg?updatedAt=1792667369796',
         fallbackSrc: '/assets/campus-life-new/campus-14.jpg',
         alt: 'Seniors and peers sharing laughter and nostalgia during banquet',
         caption: 'Heartwarming memories and peer camaraderie at the farewell gala'
-      },
-      {
-        src: 'https://ik.imagekit.io/Muffins/image%20(5).png',
-        fallbackSrc: '/assets/campus-life-new/campus-13.jpg',
-        alt: 'Official commemorative tribute visual celebrating the graduating class',
-        caption: 'Celebrating the legacy, resilience, and bright futures of UCP graduates'
       },
       {
         src: 'https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-22%20at%209.54.07%20PM.png',
@@ -1550,7 +1541,7 @@ export const CAMPUS_EVENTS_DATA: CampusEvent[] = [
         caption: 'Distributing commemorative mementos and honorary recognitions'
       },
       {
-        src: 'https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-05%20at%202.38.55%20AM%20(2).jpeg',
+        src: 'https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-05%20at%202.38.54%20AM%20(1).jpeg?updatedAt=1792658060310',
         fallbackSrc: '/assets/campus-life-new/campus-13.jpg',
         alt: 'Faculty and student leaders sharing commemorative moments',
         caption: 'Mentorship and gratitude as students prepare for professional careers'
@@ -1560,6 +1551,33 @@ export const CAMPUS_EVENTS_DATA: CampusEvent[] = [
         fallbackSrc: '/assets/campus-life-new/campus-14.jpg',
         alt: 'Final graduating batch group photo at Farewell Party 2026',
         caption: 'Final batch milestone — Stepping forward with pride, resilience, and lifelong friendships'
+      },
+      {
+        src: 'https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-05%20at%202.38.55%20AM.jpeg?updatedAt=1792658053996',
+        fallbackSrc: '/assets/campus-life-new/campus-13.jpg',
+        alt: 'Farewell Party 2026 celebrations and memorable moments',
+        caption: 'Graduating batch celebration, peer bonding, and festive farewell gala moments'
+      },
+      {
+        src: 'https://ik.imagekit.io/Muffins/761795457_122132660373107611_6643597811308529408_n.jpg',
+        fallbackSrc: '/assets/campus-life-new/campus-13.jpg',
+        alt: 'Farewell Party 2026 senior batch celebration and stage ceremony',
+        caption: 'Farewell Party 2026 — Graduating seniors celebrating valedictory moments on campus',
+        zoom: 1.18
+      },
+      {
+        src: 'https://ik.imagekit.io/Muffins/762867835_122132660589107611_432291504362489143_n.jpg',
+        fallbackSrc: '/assets/campus-life-new/campus-14.jpg',
+        alt: 'Farewell Party 2026 commemorative faculty and student gathering',
+        caption: 'Farewell Party 2026 — Faculty mentors and graduating cohort sharing memories',
+        zoom: 1.18
+      },
+      {
+        src: 'https://ik.imagekit.io/Muffins/762916798_122132658873107611_8992386777448027616_n.jpg',
+        fallbackSrc: '/assets/campus-life-new/campus-13.jpg',
+        alt: 'Farewell Party 2026 celebration banquet and peer camaraderie',
+        caption: 'Farewell Party 2026 — Heartfelt celebrations and stepping into professional futures',
+        zoom: 1.18
       }
     ]
   },
@@ -1715,6 +1733,13 @@ export const CAMPUS_EVENTS_DATA: CampusEvent[] = [
         src: 'https://ik.imagekit.io/Muffins/image%20-%202026-10-23T104414.704.png',
         alt: 'Honoring outstanding innovations and student project teams at Exhibition 2026',
         caption: 'Recognizing outstanding student innovation teams and capstone achievements'
+      },
+      {
+        src: 'https://ik.imagekit.io/Muffins/758750944_122132475279107611_8181385474221243320_n.jpg',
+        fallbackSrc: '/assets/events/project-exhibition-top.jpg',
+        alt: 'Annual Project Exhibition 2026 capstone presentation and tech demonstration',
+        caption: 'Annual Project Exhibition 2026 — Student innovation showcase and prototype demonstration',
+        zoom: 1.18
       }
     ]
   },

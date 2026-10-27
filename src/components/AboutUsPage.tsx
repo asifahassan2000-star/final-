@@ -704,25 +704,34 @@ export const AboutUsPage: React.FC<AboutUsPageProps> = ({
 
       {/* =======================================================================
           CLOSING SECTION: Academic Signature & Action Links
+          With high-impact campus background image (image_ca8f0122.jpeg)
       ======================================================================= */}
-      <section className="bg-white dark:bg-[#080f1d] py-16 sm:py-20 lg:py-24 px-6 lg:px-12 border-t border-slate-200 dark:border-slate-800 transition-colors duration-200">
-        <div className="max-w-4xl mx-auto text-center space-y-6">
-          <span className="text-[12px] font-sans uppercase tracking-[0.2em] text-[#B31B1B] font-bold block">
+      <section 
+        className="relative py-20 sm:py-28 lg:py-32 px-6 lg:px-12 border-t border-slate-200 dark:border-slate-800 transition-colors duration-200 overflow-hidden bg-slate-950 flex items-center justify-center min-h-[460px]"
+        style={{
+          backgroundImage: `linear-gradient(to bottom, rgba(7, 16, 32, 0.52), rgba(3, 7, 18, 0.70)), url('https://ik.imagekit.io/Muffins/image_ca8f0122.jpeg')`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat',
+        }}
+      >
+        <div className="relative z-10 max-w-4xl mx-auto text-center space-y-6">
+          <span className="text-[12px] font-sans uppercase tracking-[0.24em] text-amber-300 font-bold block drop-shadow-sm">
             Constituent College · Bahawalpur
           </span>
-          <h3 className="font-['Source_Serif_4','Source_Serif_Pro','Times_New_Roman',serif] text-2xl sm:text-3xl font-normal text-slate-900 dark:text-white">
+          <h3 className="font-['Source_Serif_4','Source_Serif_Pro','Times_New_Roman',serif] text-3xl sm:text-4xl lg:text-[46px] font-medium text-white tracking-tight leading-[1.15] drop-shadow-md">
             Begin Your Academic Journey at UCP Bahawalpur
           </h3>
-          <p className="font-sans text-[16px] leading-[1.8] text-slate-600 dark:text-slate-400 max-w-xl mx-auto">
+          <p className="font-sans text-[17px] sm:text-[19px] leading-[1.8] text-slate-100 max-w-2xl mx-auto drop-shadow-sm">
             Discover accredited degree programs in Computer Science, Business, Media, Life Sciences, and Social Sciences backed by generous scholarships.
           </p>
 
-          <div className="flex flex-wrap items-center justify-center gap-3 pt-2">
+          <div className="flex flex-wrap items-center justify-center gap-3 pt-3">
             {onOpenApply && (
               <button
                 type="button"
                 onClick={onOpenApply}
-                className="bg-[#B31B1B] hover:bg-[#8C1515] text-white rounded-full px-6 py-2.5 text-xs font-semibold uppercase tracking-[0.1em] font-sans transition-colors cursor-pointer shadow-xs"
+                className="bg-[#B31B1B] hover:bg-[#d02424] text-white rounded-full px-7 py-3 text-xs sm:text-sm font-semibold uppercase tracking-[0.12em] font-sans transition-all cursor-pointer shadow-lg hover:shadow-xl hover:scale-105 active:scale-95"
               >
                 Apply Online
               </button>
@@ -731,7 +740,7 @@ export const AboutUsPage: React.FC<AboutUsPageProps> = ({
               <button
                 type="button"
                 onClick={onOpenProgrammesPage}
-                className="bg-transparent hover:bg-slate-50 dark:hover:bg-slate-800 text-slate-900 dark:text-slate-100 border border-slate-300 dark:border-slate-700 rounded-full px-6 py-2.5 text-xs font-semibold uppercase tracking-[0.1em] font-sans transition-colors cursor-pointer"
+                className="bg-white/15 hover:bg-white/25 text-white border border-white/40 hover:border-white rounded-full px-6 py-2.5 text-xs sm:text-sm font-semibold uppercase tracking-[0.1em] font-sans transition-all cursor-pointer backdrop-blur-md"
               >
                 View Programmes
               </button>
@@ -740,7 +749,7 @@ export const AboutUsPage: React.FC<AboutUsPageProps> = ({
               <button
                 type="button"
                 onClick={onOpenFacultyPage}
-                className="bg-transparent hover:bg-slate-50 dark:hover:bg-slate-800 text-[#092242] dark:text-blue-300 border border-[#092242]/30 dark:border-blue-400/30 rounded-full px-6 py-2.5 text-xs font-semibold uppercase tracking-[0.1em] font-sans transition-colors cursor-pointer"
+                className="bg-white/15 hover:bg-white/25 text-white border border-white/40 hover:border-white rounded-full px-6 py-2.5 text-xs sm:text-sm font-semibold uppercase tracking-[0.1em] font-sans transition-all cursor-pointer backdrop-blur-md"
               >
                 Our Faculty
               </button>
@@ -748,7 +757,7 @@ export const AboutUsPage: React.FC<AboutUsPageProps> = ({
             <button
               type="button"
               onClick={onBackToHome}
-              className="text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white px-4 py-2 text-xs font-medium font-sans transition-colors cursor-pointer"
+              className="text-white/85 hover:text-white px-4 py-2 text-xs sm:text-sm font-medium font-sans transition-colors cursor-pointer drop-shadow-sm hover:underline"
             >
               ← Back to Portal Home
             </button>

@@ -207,7 +207,13 @@ const MinimalEventItem: React.FC<MinimalEventItemProps> = ({ event, onOpenLightb
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.45 }}
-              className="w-full h-full object-cover object-center transition-transform duration-700 ease-out group-hover:scale-102"
+              style={{
+                transform: activeImage.zoom 
+                  ? `scale(${typeof activeImage.zoom === 'number' ? activeImage.zoom : 1.18})` 
+                  : undefined,
+                objectPosition: activeImage.objectPosition || 'center',
+              }}
+              className={`w-full h-full object-cover object-center transition-transform duration-700 ease-out group-hover:scale-102 ${activeImage.className || ''}`}
               onError={(e) => {
                 if (activeImage.fallbackSrc) {
                   (e.target as HTMLImageElement).src = activeImage.fallbackSrc;
@@ -267,7 +273,13 @@ const MinimalEventItem: React.FC<MinimalEventItemProps> = ({ event, onOpenLightb
                       src={img.src} 
                       alt=""
                       loading="lazy"
-                      className="w-full h-full object-cover"
+                      style={{
+                        transform: img.zoom 
+                          ? `scale(${typeof img.zoom === 'number' ? img.zoom : 1.18})` 
+                          : undefined,
+                        objectPosition: img.objectPosition || 'center',
+                      }}
+                      className={`w-full h-full object-cover ${img.className || ''}`}
                       onError={(e) => {
                         if (img.fallbackSrc) (e.target as HTMLImageElement).src = img.fallbackSrc;
                       }}
@@ -313,6 +325,7 @@ const MinimalEventItem: React.FC<MinimalEventItemProps> = ({ event, onOpenLightb
 // =========================================================================
 export const CampusLifePage: React.FC<CampusLifePageProps> = ({
   onBackToHome,
+  onOpenApply,
   onOpenProgrammesPage,
 }) => {
   // Navigation & Filtering States
@@ -430,14 +443,14 @@ export const CampusLifePage: React.FC<CampusLifePageProps> = ({
       "@graph": [
         {
           "@type": "WebPage",
-          "@id": "https://ucp.edu.pk/campus-life#webpage",
-          "url": "https://ucp.edu.pk/campus-life",
+          "@id": "https://ucp-bahawalpur-campus.vercel.app/campus-life#webpage",
+          "url": "https://ucp-bahawalpur-campus.vercel.app/campus-life",
           "name": "Campus Life & Events Archive (2025–2026) | UCP Bahawalpur",
           "description": "Chronological official archive of 22 collegiate events at University of Central Punjab Bahawalpur Campus.",
           "isPartOf": {
             "@type": "WebSite",
             "name": "University of Central Punjab (UCP) Bahawalpur",
-            "url": "https://ucp.edu.pk"
+            "url": "https://ucp-bahawalpur-campus.vercel.app"
           }
         },
         {
@@ -447,13 +460,13 @@ export const CampusLifePage: React.FC<CampusLifePageProps> = ({
               "@type": "ListItem",
               "position": 1,
               "name": "Home",
-              "item": "https://ucp.edu.pk"
+              "item": "https://ucp-bahawalpur-campus.vercel.app"
             },
             {
               "@type": "ListItem",
               "position": 2,
               "name": "Campus Life & Events",
-              "item": "https://ucp.edu.pk/campus-life"
+              "item": "https://ucp-bahawalpur-campus.vercel.app/campus-life"
             }
           ]
         },
@@ -474,7 +487,7 @@ export const CampusLifePage: React.FC<CampusLifePageProps> = ({
               "name": "University of Central Punjab (UCP) Bahawalpur Campus",
               "address": {
                 "@type": "PostalAddress",
-                "streetAddress": "Airport Road",
+                "streetAddress": "Bahawalpur Campus",
                 "addressLocality": "Bahawalpur",
                 "addressRegion": "Punjab",
                 "addressCountry": "PK"
@@ -484,7 +497,7 @@ export const CampusLifePage: React.FC<CampusLifePageProps> = ({
             "organizer": {
               "@type": "CollegeOrUniversity",
               "name": "University of Central Punjab (UCP) Bahawalpur Campus",
-              "url": "https://ucp.edu.pk"
+              "url": "https://ucp-bahawalpur-campus.vercel.app"
             }
           }))
         }
@@ -502,36 +515,43 @@ export const CampusLifePage: React.FC<CampusLifePageProps> = ({
       />
 
       {/* =======================================================================
-          HERO SECTION: Big Centered "Campus Life & Events" on Clean White
-          - Directly below header with clean, tight spacing
-      ======================================================================= */}
-      <section className="bg-[#FFFFFF] dark:bg-[#07192F] pt-6 sm:pt-8 lg:pt-10 pb-8 sm:pb-12 px-4 sm:px-6 lg:px-12 text-center border-b border-[#EAEAEA] dark:border-white/10">
-        <div className="max-w-5xl mx-auto space-y-4 text-center">
-          <span className="text-[12px] font-sans uppercase tracking-[0.2em] text-[#B31B1B] font-bold block text-center">
+          HERO SECTION: Big Centered "Campus Life & Events" with Campus Panorama Background
+          ======================================================================= */}
+      <section 
+        className="relative pt-8 sm:pt-12 lg:pt-16 pb-10 sm:pb-14 px-4 sm:px-6 lg:px-12 text-center border-b border-slate-200 dark:border-white/10 overflow-hidden bg-slate-950"
+        style={{
+          backgroundImage: `linear-gradient(to bottom, rgba(5, 16, 36, 0.62), rgba(7, 25, 47, 0.82)), url('https://ik.imagekit.io/Muffins/image%20(2).png?updatedAt=1792655277317')`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat',
+        }}
+      >
+        <div className="relative z-10 max-w-5xl mx-auto space-y-4 text-center">
+          <span className="text-[12px] font-sans uppercase tracking-[0.22em] text-amber-300 font-bold block text-center drop-shadow-sm">
             Collegiate Chronicle · Southern Punjab
           </span>
 
           <h1 
-            style={{ color: '#002855', borderColor: '#D4AF37' }}
-            className="font-bold text-4xl text-[#002855] text-center tracking-tight inline-block pb-2 border-b-4 border-[#D4AF37]"
+            style={{ color: '#FFFFFF', borderColor: '#D4AF37' }}
+            className="font-bold text-4xl sm:text-5xl text-white text-center tracking-tight inline-block pb-2 border-b-4 border-[#D4AF37] drop-shadow-md"
           >
             Campus Life &amp; Events
           </h1>
 
-          <p className="font-sans text-base sm:text-lg text-slate-600 dark:text-slate-300 font-normal max-w-2xl mx-auto text-center">
+          <p className="font-sans text-base sm:text-lg text-slate-100 font-normal max-w-2xl mx-auto text-center drop-shadow-sm">
             Celebrating moments, achievements, and excellence at UCP Bahawalpur
           </p>
 
           {/* Minimal Year Segment Selector & Search */}
-          <div className="pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 max-w-4xl mx-auto border-t border-[#EAEAEA] dark:border-white/10">
+          <div className="pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 max-w-4xl mx-auto border-t border-white/20">
             {/* 2025 and 2026 Switcher */}
-            <div className="flex items-center gap-1.5 p-1 bg-slate-100 dark:bg-[#0A1931] rounded-full w-fit">
+            <div className="flex items-center gap-1.5 p-1 bg-white/15 dark:bg-black/40 backdrop-blur-md rounded-full w-fit border border-white/20">
               <button
                 onClick={() => setSelectedYear('all')}
                 className={`px-4 py-1.5 rounded-full text-xs sm:text-[13px] font-semibold transition-all cursor-pointer ${
                   selectedYear === 'all'
                     ? 'bg-[#B31B1B] text-white shadow-xs'
-                    : 'text-slate-600 dark:text-slate-400 hover:text-[#0A1931] dark:hover:text-white'
+                    : 'text-white/80 hover:text-white'
                 }`}
               >
                 All Events ({CAMPUS_EVENTS_DATA.length})
@@ -541,7 +561,7 @@ export const CampusLifePage: React.FC<CampusLifePageProps> = ({
                 className={`px-4 py-1.5 rounded-full text-xs sm:text-[13px] font-semibold transition-all cursor-pointer ${
                   selectedYear === '2025'
                     ? 'bg-[#B31B1B] text-white shadow-xs'
-                    : 'text-slate-600 dark:text-slate-400 hover:text-[#0A1931] dark:hover:text-white'
+                    : 'text-white/80 hover:text-white'
                 }`}
               >
                 2025 Events ({EVENTS_2025.length})
@@ -551,7 +571,7 @@ export const CampusLifePage: React.FC<CampusLifePageProps> = ({
                 className={`px-4 py-1.5 rounded-full text-xs sm:text-[13px] font-semibold transition-all cursor-pointer ${
                   selectedYear === '2026'
                     ? 'bg-[#B31B1B] text-white shadow-xs'
-                    : 'text-slate-600 dark:text-slate-400 hover:text-[#0A1931] dark:hover:text-white'
+                    : 'text-white/80 hover:text-white'
                 }`}
               >
                 2026 Events ({EVENTS_2026.length})
@@ -560,19 +580,19 @@ export const CampusLifePage: React.FC<CampusLifePageProps> = ({
 
             {/* Quick Keyword Search Filter */}
             <div className="relative w-full sm:w-72">
-              <Search size={15} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400" />
+              <Search size={15} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-300" />
               <input
                 type="text"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 placeholder="Search events, workshops..."
-                className="w-full pl-9 pr-8 py-2 text-xs sm:text-sm rounded-full border border-slate-300 dark:border-white/20 bg-white dark:bg-white/5 text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-[#B31B1B] transition-all font-sans"
+                className="w-full pl-9 pr-8 py-2 text-xs sm:text-sm rounded-full border border-white/30 bg-white/90 dark:bg-black/50 text-slate-900 dark:text-white placeholder-slate-500 dark:placeholder-slate-300 focus:outline-none focus:ring-2 focus:ring-[#B31B1B] transition-all font-sans backdrop-blur-sm"
               />
               {searchQuery && (
                 <button
                   type="button"
                   onClick={() => setSearchQuery('')}
-                  className="absolute right-3 top-1/2 -translate-y-1/2 text-xs text-slate-400 hover:text-slate-600 dark:hover:text-white cursor-pointer"
+                  className="absolute right-3 top-1/2 -translate-y-1/2 text-xs text-slate-500 hover:text-slate-800 dark:text-slate-300 dark:hover:text-white cursor-pointer"
                 >
                   ✕
                 </button>
@@ -700,6 +720,70 @@ export const CampusLifePage: React.FC<CampusLifePageProps> = ({
 
       </main>
 
+      {/* =======================================================================
+          CAMPUS LIFE GRAND FINALE SECTION: Full-size Flagship Campus Panorama
+          With user-requested high-resolution image & inspiring signature line
+      ======================================================================= */}
+      <section 
+        className="relative w-full py-24 sm:py-32 lg:py-40 px-6 sm:px-10 lg:px-16 overflow-hidden bg-slate-950 flex items-center justify-center min-h-[520px] sm:min-h-[600px] lg:min-h-[660px] border-t border-slate-200 dark:border-white/10"
+        style={{
+          backgroundImage: `linear-gradient(to bottom, rgba(10, 25, 49, 0.45), rgba(3, 7, 18, 0.72)), url('https://ik.imagekit.io/Muffins/image_ca8f0122.jpeg')`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat',
+        }}
+      >
+        <motion.div 
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.85, ease: [0.16, 1, 0.3, 1] }}
+          className="relative z-10 max-w-4xl mx-auto text-center space-y-6"
+        >
+          {/* Golden Badge */}
+          <span className="inline-block px-4 py-1.5 rounded-full text-[11px] sm:text-xs font-mono font-bold uppercase tracking-[0.22em] bg-white/15 text-amber-300 border border-amber-300/30 backdrop-blur-md drop-shadow-md">
+            Life Beyond the Classroom · UCP Bahawalpur
+          </span>
+
+          {/* The One Best Line written in best way */}
+          <h2 
+            className="text-3xl sm:text-4xl lg:text-[50px] font-serif font-bold text-white tracking-tight leading-[1.18] drop-shadow-lg"
+            style={{ fontFamily: "'Cormorant Garamond', 'Libre Baskerville', Georgia, serif" }}
+          >
+            Where Ambition Meets Belonging, and Every Moment Becomes a Cherished Legacy.
+          </h2>
+
+          <p className="font-sans text-[17px] sm:text-[19px] leading-[1.8] text-slate-100/95 max-w-2xl mx-auto drop-shadow-md">
+            From vibrant cultural celebrations and spirited sports tournaments to quiet late-night study breakthroughs and lifelong friendships — your journey at UCP Bahawalpur shapes who you become.
+          </p>
+
+          {/* Action CTAs */}
+          <div className="flex flex-wrap items-center justify-center gap-3.5 pt-4">
+            <button
+              type="button"
+              onClick={onOpenApply}
+              className="bg-[#C8102E] hover:bg-[#a00c24] text-white rounded-full px-7 py-3 text-xs sm:text-sm font-semibold uppercase tracking-[0.12em] font-sans transition-all cursor-pointer shadow-lg hover:shadow-xl hover:scale-105 active:scale-95"
+            >
+              Apply Online
+            </button>
+            <button
+              type="button"
+              onClick={onOpenProgrammesPage}
+              className="bg-white/15 hover:bg-white/25 text-white border border-white/40 hover:border-white rounded-full px-6 py-2.5 text-xs sm:text-sm font-semibold uppercase tracking-[0.1em] font-sans transition-all cursor-pointer backdrop-blur-md"
+            >
+              Explore Programmes
+            </button>
+            <button
+              type="button"
+              onClick={onBackToHome}
+              className="text-white/85 hover:text-white px-4 py-2 text-xs sm:text-sm font-medium font-sans transition-colors cursor-pointer drop-shadow-sm hover:underline"
+            >
+              ← Back to Portal Home
+            </button>
+          </div>
+        </motion.div>
+      </section>
+
       {/* 4. Minimal Clean Fullscreen Lightbox */}
       <AnimatePresence>
         {activeLightbox && currentLightboxEvent && currentLightboxImage && (
@@ -761,7 +845,13 @@ export const CampusLifePage: React.FC<CampusLifePageProps> = ({
               <img 
                 src={currentLightboxImage.src}
                 alt={currentLightboxImage.alt}
-                className="max-h-[75vh] max-w-full w-auto h-auto object-contain rounded-lg"
+                style={{
+                  transform: currentLightboxImage.zoom 
+                    ? `scale(${typeof currentLightboxImage.zoom === 'number' ? currentLightboxImage.zoom : 1.15})` 
+                    : undefined,
+                  objectPosition: currentLightboxImage.objectPosition || 'center',
+                }}
+                className={`max-h-[75vh] max-w-full w-auto h-auto object-contain rounded-lg ${currentLightboxImage.className || ''}`}
                 onError={(e) => {
                   if (currentLightboxImage.fallbackSrc) {
                     (e.target as HTMLImageElement).src = currentLightboxImage.fallbackSrc;

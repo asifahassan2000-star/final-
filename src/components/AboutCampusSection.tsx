@@ -154,7 +154,7 @@ export const AboutCampusSection: React.FC<AboutCampusSectionProps> = ({
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Header with Framer Motion Mask Reveal */}
-        <div className="max-w-3xl mb-0">
+        <div className="w-full mb-0">
           <div className="flex items-center gap-3 mb-3">
             <span className="text-xs font-bold uppercase tracking-[0.22em] text-[#a30f16] dark:text-amber-400">
               OUR CAMPUS · BAHAWALPUR
@@ -176,15 +176,37 @@ export const AboutCampusSection: React.FC<AboutCampusSectionProps> = ({
             </motion.h2>
           </div>
 
-          <motion.p 
-            initial={{ opacity: 0, y: 18 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: '-20px' }}
-            transition={{ duration: 0.75, delay: 0.1, ease: easeCurve }}
-            className="mt-4 text-base sm:text-lg text-slate-600 dark:text-slate-300 leading-relaxed font-sans max-w-3xl"
-          >
-            UCP Constituent Colleges are academic units owned, maintained, and administered directly by the University of Central Punjab, Lahore. Our colleges across Punjab provide students the opportunity to earn HEC-recognized Bachelor's and Associate Degree Programs (ADP) with an official UCP Lahore degree.
-          </motion.p>
+          <div className="mt-6 space-y-6 text-lg sm:text-[20px] lg:text-[21.5px] text-slate-600 dark:text-slate-300 leading-relaxed font-sans w-full">
+            <motion.p 
+              initial={{ opacity: 0, y: 18 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: '-20px' }}
+              transition={{ duration: 0.75, delay: 0.1, ease: easeCurve }}
+              className="text-[19px] sm:text-[21px] lg:text-[22.5px] leading-relaxed text-slate-700 dark:text-slate-200"
+            >
+              <strong>Constituent College UCP Campus Bahawalpur (UCP BWP)</strong> is an official academic constituent unit owned, maintained, and administered directly by the University of Central Punjab, Lahore. As part of Pakistan's largest educational network—the Punjab Group of Colleges (PGC)—the Bahawalpur campus enables students across Southern Punjab to earn an official HEC-recognized UCP Lahore degree close to home, without the burden of hostel fees or relocation expenses.
+            </motion.p>
+
+            <motion.p 
+              initial={{ opacity: 0, y: 18 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: '-20px' }}
+              transition={{ duration: 0.75, delay: 0.15, ease: easeCurve }}
+              className="text-[17.5px] sm:text-[19.5px] lg:text-[21px] leading-relaxed text-slate-600 dark:text-slate-300"
+            >
+              Academic offerings at UCP Bahawalpur span market-driven four-year Bachelor of Science (BS) and two-year Associate Degree Programs (ADP). Disciplines include Computer Science, Artificial Intelligence, Software Engineering, Cyber Security, Data Science, BBA (Honors), Business Analytics, Accounting &amp; Finance, Biotechnology, Biochemistry, Chemistry, Physics, Mathematics, Zoology, English, and Psychology. All degree programs adhere to the centralized curriculum and academic evaluation standards set by UCP Lahore.
+            </motion.p>
+
+            <motion.p 
+              initial={{ opacity: 0, y: 18 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: '-20px' }}
+              transition={{ duration: 0.75, delay: 0.2, ease: easeCurve }}
+              className="text-[17.5px] sm:text-[19.5px] lg:text-[21px] leading-relaxed text-slate-600 dark:text-slate-300"
+            >
+              The purpose-built campus in Bahawalpur features advanced computing and robotics facilities, state-of-the-art natural science labs, an extensive digital library, air-conditioned lecture halls, dedicated student societies, and comprehensive fleet transport. Eligible students benefit from merit scholarships covering up to 50% tuition, 25% PGC alumni concessions, kinship discounts, and flexible semester fee installment plans.
+            </motion.p>
+          </div>
         </div>
 
         {/* =========================================================================

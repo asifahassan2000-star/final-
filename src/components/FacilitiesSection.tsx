@@ -20,6 +20,7 @@ export const FacilitiesSection: React.FC<FacilitiesSectionProps> = ({
   const [activeTab, setActiveTab] = useState<'all' | 'environment' | 'library' | 'computer' | 'science'>('all');
   const [isLibraryExpanded, setIsLibraryExpanded] = useState(false);
   const [isComputerExpanded, setIsComputerExpanded] = useState(false);
+  const [isLabGuidanceExpanded, setIsLabGuidanceExpanded] = useState(false);
   const [isScienceExpanded, setIsScienceExpanded] = useState(false);
   const [selectedImage, setSelectedImage] = useState<{
     src: string;
@@ -105,21 +106,22 @@ export const FacilitiesSection: React.FC<FacilitiesSectionProps> = ({
 
             {/* Main Grand Staircase Card (Proper Image — No White Margin, No Frame on Sides) */}
             <div 
-              className="rounded-xl overflow-hidden mb-6 shadow-sm hover:shadow-md transition-shadow cursor-pointer group border-0 bg-transparent"
+              className="rounded-xl overflow-hidden mb-6 cursor-pointer group border-0 bg-transparent p-0 m-0 shadow-none"
               onClick={() => setSelectedImage({
-                src: '/assets/facilities/grand_staircase_central_atrium.jpg',
-                fallback: '/images/tPJpr2Hc_image-13.jpg',
+                src: 'https://ik.imagekit.io/Muffins/image%20(13).png',
+                fallback: '/assets/facilities/grand_staircase_central_atrium.jpg',
                 title: 'Campus Grand Staircase & Central Atrium'
               })}
             >
-              <div className="relative w-full aspect-[16/9] overflow-hidden rounded-xl bg-slate-900">
-                <img decoding="async" src="/assets/facilities/grand_staircase_central_atrium.jpg"
+              <div className="relative w-full aspect-[16/9] overflow-hidden rounded-xl bg-transparent p-0 m-0 border-0">
+                <img decoding="async" src="https://ik.imagekit.io/Muffins/image%20(13).png"
                   alt="Campus Grand Staircase and Central Atrium"
                   loading="lazy"
                   className="w-full h-full object-cover object-center block group-hover:scale-102 transition-transform duration-500"
+                  style={{ width: '100%', height: '100%', objectFit: 'cover' }}
                   onError={(e) => {
                     const target = e.target as HTMLImageElement;
-                    target.src = '/images/tPJpr2Hc_image-13.jpg';
+                    target.src = '/assets/facilities/grand_staircase_central_atrium.jpg';
                   }}
                 />
                 <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors pointer-events-none" />
@@ -132,19 +134,19 @@ export const FacilitiesSection: React.FC<FacilitiesSectionProps> = ({
               <div 
                 className="rounded-xl overflow-hidden shadow-xs hover:shadow-md transition-shadow cursor-pointer group border-0 bg-transparent"
                 onClick={() => setSelectedImage({
-                  src: '/assets/campus/campus-reception-hall.jpg',
-                  fallback: '/images/Z9LT1K2_image-34.jpg',
+                  src: 'https://ik.imagekit.io/Muffins/image%20(34).png?updatedAt=1792833201127',
+                  fallback: '/assets/campus/campus-reception-hall.jpg',
                   title: 'Campus Reception & Central Hall'
                 })}
               >
                 <div className="relative w-full aspect-[880/1189] overflow-hidden rounded-xl bg-slate-950">
-                  <img decoding="async" src="/assets/campus/campus-reception-hall.jpg"
+                  <img decoding="async" src="https://ik.imagekit.io/Muffins/image%20(34).png?updatedAt=1792833201127"
                     alt="Campus Reception & Central Hall"
                     loading="lazy"
                     className="w-full h-full object-cover object-center block group-hover:scale-102 transition-transform duration-500"
                     onError={(e) => {
                       const target = e.target as HTMLImageElement;
-                      target.src = '/images/Z9LT1K2_image-34.jpg';
+                      target.src = '/assets/campus/campus-reception-hall.jpg';
                     }}
                   />
                   <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors pointer-events-none" />
@@ -155,19 +157,19 @@ export const FacilitiesSection: React.FC<FacilitiesSectionProps> = ({
               <div 
                 className="rounded-xl overflow-hidden shadow-xs hover:shadow-md transition-shadow cursor-pointer group border-0 bg-transparent"
                 onClick={() => setSelectedImage({
-                  src: '/assets/campus/corridor-portrait-9-16.jpg',
-                  fallback: '/images/0jL07ssr_image-33.jpg',
+                  src: 'https://ik.imagekit.io/Muffins/image%20(33).png?updatedAt=1792833197988',
+                  fallback: '/assets/campus/corridor-portrait-9-16.jpg',
                   title: 'Sunlit Campus Corridors & Walkways'
                 })}
               >
                 <div className="relative w-full aspect-[848/1258] overflow-hidden rounded-xl bg-slate-950">
-                  <img decoding="async" src="/assets/campus/corridor-portrait-9-16.jpg"
+                  <img decoding="async" src="https://ik.imagekit.io/Muffins/image%20(33).png?updatedAt=1792833197988"
                     alt="Campus Corridors and Walkways"
                     loading="lazy"
                     className="w-full h-full object-cover object-center block group-hover:scale-102 transition-transform duration-500"
                     onError={(e) => {
                       const target = e.target as HTMLImageElement;
-                      target.src = '/images/0jL07ssr_image-33.jpg';
+                      target.src = '/assets/campus/corridor-portrait-9-16.jpg';
                     }}
                   />
                   <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors pointer-events-none" />
@@ -219,13 +221,13 @@ export const FacilitiesSection: React.FC<FacilitiesSectionProps> = ({
               <div 
                 className="relative w-full aspect-[16/9] overflow-hidden bg-slate-900 cursor-pointer"
                 onClick={() => setSelectedImage({
-                  src: '/assets/facilities/library-main-large-new.jpg',
+                  src: 'https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-12%20at%204.10.57%20AM.jpeg?updatedAt=1793025595502',
                   fallback: '/images/q3RfST0D_Whats-App-Image-2026-10-12-at-4-10-57-AM.jpg',
                   title: 'Central Library Main Reading Hall',
                   caption: 'Spacious quiet reading hall equipped with dedicated study tables and reference materials.'
                 })}
               >
-                <img decoding="async" src="/assets/facilities/library-main-large-new.jpg"
+                <img decoding="async" src="https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-12%20at%204.10.57%20AM.jpeg?updatedAt=1793025595502"
                   alt="Central Library Main Reading Hall"
                   loading="lazy"
                   className="w-full h-full object-cover object-center block transition-transform duration-500 ease-out group-hover:scale-102"
@@ -374,16 +376,25 @@ export const FacilitiesSection: React.FC<FacilitiesSectionProps> = ({
             {/* 2 Grid Cards: Computer Lab 1 (Landscape) & Computer Lab 2 (Vertical 9:16 Frame) */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-start">
               <div className="bg-white dark:bg-[#0d1e38] rounded-xl border border-slate-200 dark:border-[#1e3256] overflow-hidden shadow-xs hover:shadow-md transition-shadow">
-                <div className="relative w-full aspect-[16/9] overflow-hidden bg-slate-900">
-                  <img decoding="async" src="/assets/facilities/comp-lab-1.jpg"
+                <div 
+                  className="relative w-full aspect-[16/9] overflow-hidden bg-slate-900 cursor-pointer group"
+                  onClick={() => setSelectedImage({
+                    src: 'https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-09%20at%206.42.28%20AM.jpeg',
+                    fallback: '/assets/facilities/comp-lab-1.jpg',
+                    title: 'Software Development & Algorithmic Computing Suite',
+                    caption: 'High-density workstation laboratory dedicated to software engineering and data structures.'
+                  })}
+                >
+                  <img decoding="async" src="https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-09%20at%206.42.28%20AM.jpeg"
                     alt="Computer Laboratory Workstations"
                     loading="lazy"
-                    className="w-full h-full object-cover object-center block"
+                    className="w-full h-full object-cover object-center block group-hover:scale-102 transition-transform duration-500"
                     onError={(e) => {
                       const target = e.target as HTMLImageElement;
-                      target.src = '/images/XZypYYCk_Whats-App-Image-2026-10-09-at-6-42-28-AM.jpg';
+                      target.src = '/assets/facilities/comp-lab-1.jpg';
                     }}
                   />
+                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors pointer-events-none" />
                 </div>
                 <div className="p-4 sm:p-5 border-t border-slate-100 dark:border-white/10 space-y-1.5">
                   <div className="flex items-center justify-between">
@@ -395,68 +406,153 @@ export const FacilitiesSection: React.FC<FacilitiesSectionProps> = ({
                     </span>
                   </div>
                   <h4 className="text-sm sm:text-base font-semibold text-slate-900 dark:text-white">
-                    Software Development & Algorithmic Computing Suite
+                    Software Development &amp; Algorithmic Computing Suite
                   </h4>
                   <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed font-sans">
                     High-density workstation laboratory dedicated to object-oriented programming, data structures, enterprise application development, and database architecture with gigabit campus networking.
                   </p>
 
-                  {/* Additional Lab Photo: Student Workstation Suite */}
-                  <div className="pt-3.5 mt-3.5 border-t border-slate-100 dark:border-white/10">
-                    <div 
-                      className="relative w-full aspect-[4/3] rounded-lg overflow-hidden bg-slate-900 border border-slate-200 dark:border-[#1e3256] shadow-2xs group cursor-pointer"
-                      onClick={() => setSelectedImage({
-                        src: '/assets/facilities/comp-lab-3.jpg',
-                        fallback: '/images/PZ48d5XF_Whats-App-Image-2026-10-17-at-3-35-03-AM.jpg',
-                        title: 'Computer Laboratory & Student Workstation Suite',
-                        caption: 'High-density computational workstations equipped for advanced programming, software development, and machine learning.'
-                      })}
-                    >
-                      <img decoding="async" src="/assets/facilities/comp-lab-3.jpg"
-                        alt="High-Performance Computing Lab Workstations"
-                        loading="lazy"
-                        className="w-full h-full object-cover object-center block group-hover:scale-102 transition-transform duration-500"
-                        onError={(e) => {
-                          (e.target as HTMLImageElement).src = '/images/PZ48d5XF_Whats-App-Image-2026-10-17-at-3-35-03-AM.jpg';
-                        }}
-                      />
-                      <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors pointer-events-none" />
+                  {/* Additional Lab Photos: Workstation Suites & Computing Architecture */}
+                  <div className="pt-3.5 mt-3.5 border-t border-slate-100 dark:border-white/10 space-y-3.5">
+                    {/* Image 2: Student Workstations (Kept Unchanged) */}
+                    <div>
+                      <div 
+                        className="relative w-full aspect-[4/3] rounded-lg overflow-hidden bg-slate-900 border border-slate-200 dark:border-[#1e3256] shadow-2xs group cursor-pointer"
+                        onClick={() => setSelectedImage({
+                          src: '/assets/facilities/comp-lab-3.jpg',
+                          fallback: '/images/PZ48d5XF_Whats-App-Image-2026-10-17-at-3-35-03-AM.jpg',
+                          title: 'Computer Laboratory & Student Workstation Suite',
+                          caption: 'High-density computational workstations equipped for advanced programming, software development, and machine learning.'
+                        })}
+                      >
+                        <img decoding="async" src="/assets/facilities/comp-lab-3.jpg"
+                          alt="High-Performance Computing Lab Workstations"
+                          loading="lazy"
+                          className="w-full h-full object-cover object-center block group-hover:scale-102 transition-transform duration-500"
+                          onError={(e) => {
+                            (e.target as HTMLImageElement).src = '/images/PZ48d5XF_Whats-App-Image-2026-10-17-at-3-35-03-AM.jpg';
+                          }}
+                        />
+                        <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors pointer-events-none" />
+                      </div>
+                      <div className="mt-1.5 flex items-center justify-between text-[11px] font-mono text-slate-500 dark:text-slate-400">
+                        <span>COMPUTING SUITE</span>
+                        <span className="text-[#a30f16] dark:text-amber-400 font-medium">STUDENT WORKSTATIONS</span>
+                      </div>
                     </div>
-                    <div className="mt-2 flex items-center justify-between text-[11px] font-mono text-slate-500 dark:text-slate-400">
-                      <span>COMPUTING SUITE</span>
-                      <span className="text-[#a30f16] dark:text-amber-400 font-medium">STUDENT WORKSTATIONS</span>
+
+                    {/* Image 3: Systems & Computational Research Suite (Clean image without blue frame) */}
+                    <div>
+                      <div 
+                        className="relative w-full rounded-lg overflow-hidden bg-transparent border-0 p-0 m-0 shadow-none group cursor-pointer"
+                        onClick={() => setSelectedImage({
+                          src: 'https://ik.imagekit.io/Muffins/image%20(6).png',
+                          fallback: '/assets/facilities/comp-lab-2.jpg',
+                          title: 'Advanced AI & Computational Research Suite',
+                          caption: 'High-performance computing terminals and cloud architectures for machine learning and systems research.'
+                        })}
+                      >
+                        <img decoding="async" src="https://ik.imagekit.io/Muffins/image%20(6).png"
+                          alt="Advanced AI & Computational Research Suite"
+                          loading="lazy"
+                          className="w-full h-auto object-cover object-center block group-hover:scale-102 transition-transform duration-500 rounded-lg"
+                          style={{ width: '100%', display: 'block' }}
+                          onError={(e) => {
+                            (e.target as HTMLImageElement).src = '/assets/facilities/comp-lab-2.jpg';
+                          }}
+                        />
+                        <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors pointer-events-none rounded-lg" />
+                      </div>
+                      <div className="mt-1.5 flex items-center justify-between text-[11px] font-mono text-slate-500 dark:text-slate-400">
+                        <span>RESEARCH LAB</span>
+                        <span className="text-[#a30f16] dark:text-amber-400 font-medium">SYSTEMS &amp; AI SUITE</span>
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
 
               <div className="bg-white dark:bg-[#0d1e38] rounded-xl border border-slate-200 dark:border-[#1e3256] overflow-hidden shadow-xs hover:shadow-md transition-shadow">
-                <div className="relative w-full aspect-[9/16] overflow-hidden bg-slate-900">
-                  <img decoding="async" src="/assets/facilities/comp-lab-2.jpg"
+                <div 
+                  className="relative w-full aspect-[9/16] overflow-hidden bg-slate-900 cursor-pointer group"
+                  onClick={() => setSelectedImage({
+                    src: 'https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-09%20at%206.51.57%20AM.jpeg',
+                    fallback: '/assets/facilities/comp-lab-2.jpg',
+                    title: 'Artificial Intelligence, Cloud & Cyber Defense Lab',
+                    caption: 'Specialized computational laboratory configured for machine learning pipelines and cybersecurity simulations.'
+                  })}
+                >
+                  <img decoding="async" src="https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-09%20at%206.51.57%20AM.jpeg"
                     alt="IT and Computing Lab"
                     loading="lazy"
-                    className="w-full h-full object-cover object-center block"
+                    className="w-full h-full object-cover object-center block group-hover:scale-102 transition-transform duration-500"
                     onError={(e) => {
                       const target = e.target as HTMLImageElement;
-                      target.src = '/images/JwR6L6CZ_Whats-App-Image-2026-10-09-at-6-51-57-AM.jpg';
+                      target.src = '/assets/facilities/comp-lab-2.jpg';
                     }}
                   />
+                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors pointer-events-none" />
                 </div>
-                <div className="p-4 sm:p-5 border-t border-slate-100 dark:border-white/10 space-y-1.5">
+                <div className="p-4 sm:p-6 border-t border-slate-100 dark:border-white/10 space-y-4">
                   <div className="flex items-center justify-between">
                     <span className="text-[11px] font-mono uppercase font-bold tracking-wider text-[#a30f16] dark:text-amber-400">
-                      AI & Data Science Suite
+                      Computing Mission &amp; Standards
                     </span>
                     <span className="text-[10px] font-medium text-slate-500 dark:text-slate-300 bg-slate-100 dark:bg-[#14284c] px-2 py-0.5 rounded-full border border-slate-200 dark:border-[#1e3256]">
-                      Workstation Lab 2
+                      HEC / NCEAC Aligned
                     </span>
                   </div>
-                  <h4 className="text-sm sm:text-base font-semibold text-slate-900 dark:text-white">
-                    Artificial Intelligence, Cloud & Cyber Defense Lab
-                  </h4>
-                  <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed font-sans">
-                    Specialized computational laboratory configured for machine learning pipelines, deep neural network training, cybersecurity simulations, and scalable cloud-connected software environments.
-                  </p>
+
+                  <div>
+                    <h4 className="text-base sm:text-lg font-semibold text-slate-900 dark:text-white leading-snug">
+                      Hands-On Technical Mastery: Academic Computing Standards &amp; Lab Guidance
+                    </h4>
+                    <p className="mt-2 text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed font-sans">
+                      At Constituent College UCP Campus Bahawalpur, computing education bridges theoretical concepts directly with intensive laboratory application. Anchored in the university's founding mission to empower youth across Southern Punjab with market-competitive technical skills, our computer laboratories enforce structured practical learning frameworks across all degree programs, including BS Computer Science, BS Software Engineering, BS Artificial Intelligence, BS Cyber Security, and BS Data Science.
+                    </p>
+
+                    <button
+                      type="button"
+                      onClick={() => setIsLabGuidanceExpanded(!isLabGuidanceExpanded)}
+                      className="mt-3 inline-flex items-center gap-1.5 text-xs font-semibold text-[#2563EB] dark:text-cyan-400 hover:text-[#1d4ed8] dark:hover:text-cyan-300 cursor-pointer"
+                    >
+                      <span>{isLabGuidanceExpanded ? 'Show less' : 'Learn more'}</span>
+                      <span className={`transform transition-transform duration-200 ${isLabGuidanceExpanded ? 'rotate-90' : ''}`}>→</span>
+                    </button>
+                  </div>
+
+                  {/* Structured Practical Guidance Points inside Learn More */}
+                  {isLabGuidanceExpanded && (
+                    <div className="space-y-2.5 pt-3 mt-3 border-t border-slate-100 dark:border-white/10 text-xs sm:text-[13px] font-sans">
+                      <div className="flex items-start gap-2.5">
+                        <span className="w-1.5 h-1.5 rounded-full bg-[#a30f16] dark:bg-amber-400 mt-1.5 shrink-0" />
+                        <p className="text-slate-700 dark:text-slate-200">
+                          <strong className="text-slate-900 dark:text-white font-semibold">1:1 Individual Workstation Policy:</strong> Every student receives an assigned individual workstation during scheduled lab blocks, ensuring direct code authoring, compiler execution, and algorithmic problem-solving without shared screens.
+                        </p>
+                      </div>
+
+                      <div className="flex items-start gap-2.5">
+                        <span className="w-1.5 h-1.5 rounded-full bg-[#a30f16] dark:bg-amber-400 mt-1.5 shrink-0" />
+                        <p className="text-slate-700 dark:text-slate-200">
+                          <strong className="text-slate-900 dark:text-white font-semibold">Supervised Practicals &amp; Code Reviews:</strong> Certified laboratory instructors and faculty mentors guide weekly programming sessions, providing interactive debugging support, clean code audits, and Git version control practices.
+                        </p>
+                      </div>
+
+                      <div className="flex items-start gap-2.5">
+                        <span className="w-1.5 h-1.5 rounded-full bg-[#a30f16] dark:bg-amber-400 mt-1.5 shrink-0" />
+                        <p className="text-slate-700 dark:text-slate-200">
+                          <strong className="text-slate-900 dark:text-white font-semibold">Standardized Toolchains:</strong> Workstations feature Linux and Windows dual-boot environments configured with Python, C++, Java, Node.js, SQL database servers, Docker runtimes, and machine learning libraries matching contemporary industry toolchains.
+                        </p>
+                      </div>
+
+                      <div className="flex items-start gap-2.5">
+                        <span className="w-1.5 h-1.5 rounded-full bg-[#a30f16] dark:bg-amber-400 mt-1.5 shrink-0" />
+                        <p className="text-slate-700 dark:text-slate-200">
+                          <strong className="text-slate-900 dark:text-white font-semibold">Open-Lab Coding Hours:</strong> Extended lab access is provided outside formal lecture schedules to support student hackathons, coding society challenges, and final-year capstone software projects.
+                        </p>
+                      </div>
+                    </div>
+                  )}
                 </div>
               </div>
             </div>
@@ -502,17 +598,25 @@ export const FacilitiesSection: React.FC<FacilitiesSectionProps> = ({
 
             {/* 2 Grid Cards: Science Lab 1 (Ratio 1408:1279) & Science Lab 2 (Ratio 1600:892) in Full Size Proper Ratio */}
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 items-start">
-              <div className="bg-white dark:bg-[#0d1e38] rounded-xl border border-slate-200 dark:border-[#1e3256] overflow-hidden shadow-xs hover:shadow-md transition-shadow">
+              <div 
+                className="bg-white dark:bg-[#0d1e38] rounded-xl border border-slate-200 dark:border-[#1e3256] overflow-hidden shadow-xs hover:shadow-md transition-shadow cursor-pointer group"
+                onClick={() => setSelectedImage({
+                  src: 'https://ik.imagekit.io/Muffins/image%20(9).png',
+                  fallback: '/assets/facilities/science_lab_1.jpg',
+                  title: 'Chemical Synthesis & Instrumental Analysis Laboratory'
+                })}
+              >
                 <div className="relative w-full aspect-[1408/1279] overflow-hidden bg-slate-950">
-                  <img decoding="async" src="/assets/facilities/science_lab_1.jpg"
+                  <img decoding="async" src="https://ik.imagekit.io/Muffins/image%20(9).png"
                     alt="Advanced Experimental Chemistry and Physical Science Laboratory"
                     loading="lazy"
-                    className="w-full h-full object-cover object-center block"
+                    className="w-full h-full object-cover object-center block group-hover:scale-102 transition-transform duration-500"
                     onError={(e) => {
                       const target = e.target as HTMLImageElement;
-                      target.src = '/images/Mksk66Y7_image-9.jpg';
+                      target.src = '/assets/facilities/science_lab_1.jpg';
                     }}
                   />
+                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors pointer-events-none" />
                 </div>
                 <div className="p-4 sm:p-5 border-t border-slate-100 dark:border-white/10 space-y-2">
                   <div className="flex items-center justify-between">
@@ -532,17 +636,25 @@ export const FacilitiesSection: React.FC<FacilitiesSectionProps> = ({
                 </div>
               </div>
 
-              <div className="bg-white dark:bg-[#0d1e38] rounded-xl border border-slate-200 dark:border-[#1e3256] overflow-hidden shadow-xs hover:shadow-md transition-shadow">
+              <div 
+                className="bg-white dark:bg-[#0d1e38] rounded-xl border border-slate-200 dark:border-[#1e3256] overflow-hidden shadow-xs hover:shadow-md transition-shadow cursor-pointer group"
+                onClick={() => setSelectedImage({
+                  src: 'https://ik.imagekit.io/Muffins/image%20(10).png',
+                  fallback: '/assets/facilities/science_lab_2.jpg',
+                  title: 'Biotechnology, Cell Genetics & Diagnostic Microscopy Suite'
+                })}
+              >
                 <div className="relative w-full aspect-[1600/892] overflow-hidden bg-slate-950">
-                  <img decoding="async" src="/assets/facilities/science_lab_2.jpg"
+                  <img decoding="async" src="https://ik.imagekit.io/Muffins/image%20(10).png"
                     alt="Life Sciences, Biotechnology and Molecular Biology Research Laboratory"
                     loading="lazy"
-                    className="w-full h-full object-cover object-center block"
+                    className="w-full h-full object-cover object-center block group-hover:scale-102 transition-transform duration-500"
                     onError={(e) => {
                       const target = e.target as HTMLImageElement;
-                      target.src = '/images/jPMt5k22_image-10.jpg';
+                      target.src = '/assets/facilities/science_lab_2.jpg';
                     }}
                   />
+                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors pointer-events-none" />
                 </div>
                 <div className="p-4 sm:p-5 border-t border-slate-100 dark:border-white/10 space-y-2">
                   <div className="flex items-center justify-between">

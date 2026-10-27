@@ -72,13 +72,14 @@ export const AdmissionsExperienceSection: React.FC<AdmissionsExperienceSectionPr
         >
           {/* Entrance Red Carpet Welcome Image */}
           <div className="lg:col-span-7">
-            <div className="group relative overflow-hidden rounded-2xl border border-slate-200 dark:border-[#1e3256] bg-white dark:bg-[#0d1e38] shadow-md">
-              <div className="relative aspect-[16/10] sm:aspect-[16/9] w-full overflow-hidden">
+            <div className="group relative overflow-hidden rounded-2xl border-0 bg-transparent p-0 m-0 shadow-none">
+              <div className="relative aspect-[16/10] sm:aspect-[16/9] w-full h-full overflow-hidden p-0 m-0 bg-transparent border-0">
                 <img decoding="async" 
                   src="https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-05%20at%202.46.14%20AM.jpeg"
                   alt="Begin Your Journey - Welcoming Entrance to UCP Bahawalpur Campus"
                   loading="lazy"
-                  className="w-full h-full object-cover object-center scale-100 group-hover:scale-105 transition-transform duration-700 ease-out"
+                  className="w-full h-full object-cover object-center block scale-100 group-hover:scale-105 transition-transform duration-700 ease-out"
+                  style={{ width: '100%', height: '100%', objectFit: 'cover' }}
                   onError={(e) => {
                     const target = e.target as HTMLImageElement;
                     target.src = '/assets/campus/4_admissions_entrance_red_carpet.jpg';
