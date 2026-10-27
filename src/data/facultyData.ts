@@ -263,7 +263,7 @@ export const ALL_FACULTY_MEMBERS: FacultyMemberData[] = [
   {
     id: 'dr-abdul-raouf',
     numericId: 7,
-    name: 'Dr. Abdul Raouf',
+    name: 'Dr. Abdul Raouf Malik',
     designation: 'Assistant Professor',
     department: 'Department of Physics & Biomedical Sciences',
     highestDegree: 'Ph.D. in Physics',
