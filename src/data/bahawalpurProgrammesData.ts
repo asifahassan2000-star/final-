@@ -35,7 +35,7 @@ export interface BahawalpurProgramme {
   feePerCreditHour: number;
   totalFee: number;
   yearlyAverage: number;
-  image: string;
+  image: string | any;
   shortDescription: string;
   about: string;
   whatYouWillLearn: string[];

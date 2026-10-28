@@ -104,23 +104,16 @@ export const HeroSlider: React.FC<HeroSliderProps> = ({
   };
 
   // Resolve slide image (handling local asset references)
-  const getSlideImage = (slide: typeof HERO_SLIDES[0]) => {
-    if (slide.image) {
-      return slide.image;
+  const getSlideImage = (slide: typeof HERO_SLIDES[0]): string => {
+    let raw: any = slide.image;
+    if (!raw) {
+      if (slide.id === 'bahawalpur-excellence') raw = '/assets/campus/hero_campus_night_flagship.webp';
+      else if (slide.id === 'campus-tomorrow') raw = ucpBuildingBlueprintImg;
+      else if (slide.id === 'discover-future') raw = '/assets/facilities/comp-lab-1.jpg';
+      else if (slide.id === 'next-generation') raw = '/assets/hero/hero-journey-community.jpg';
     }
-    if (slide.id === 'bahawalpur-excellence') {
-      return slide.image || '/assets/campus/hero_campus_night_flagship.webp';
-    }
-    if (slide.id === 'campus-tomorrow') {
-      return slide.image || ucpBuildingBlueprintImg;
-    }
-    if (slide.id === 'discover-future') {
-      return '/assets/facilities/comp-lab-1.jpg';
-    }
-    if (slide.id === 'next-generation') {
-      return slide.image || '/assets/hero/hero-journey-community.jpg';
-    }
-    return slide.image;
+    if (typeof raw === 'object' && raw?.src) return raw.src;
+    return typeof raw === 'string' ? raw : String(raw || '');
   };
 
   const handleAction = (actionKey: string) => {

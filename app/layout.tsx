@@ -1,7 +1,8 @@
 import type { Metadata, Viewport } from 'next';
 import React from 'react';
-import { Analytics } from '@vercel/analytics/next';
 import '../src/index.css';
+
+export const dynamic = 'force-static';
 
 export const metadata: Metadata = {
   title: 'UCP Bahawalpur Campus Life | University of Central Punjab',
@@ -19,15 +20,15 @@ export const metadata: Metadata = {
     'UCP Scholarships',
   ],
   authors: [{ name: 'University of Central Punjab Bahawalpur Campus' }],
-  metadataBase: new URL('https://ucp.edu.pk'),
+  metadataBase: new URL('https://asifahassan2000-star.github.io/final'),
   alternates: {
-    canonical: 'https://ucp.edu.pk',
+    canonical: 'https://asifahassan2000-star.github.io/final',
   },
   openGraph: {
     title: 'UCP Bahawalpur Campus Life | University of Central Punjab',
     description:
       'Explore Campus Life at the University of Central Punjab (UCP) Bahawalpur Campus. Discover 22+ vibrant student events, environmental stewardship initiatives, student societies, state-of-the-art facilities, and undergraduate academic excellence.',
-    url: 'https://ucp.edu.pk',
+    url: 'https://asifahassan2000-star.github.io/final',
     siteName: 'UCP Bahawalpur Campus Life',
     locale: 'en_PK',
     type: 'website',
@@ -75,7 +76,6 @@ export default function RootLayout({
       </head>
       <body className="bg-white text-slate-900 antialiased selection:bg-[#0A1931] selection:text-white min-h-screen">
         {children}
-        <Analytics />
       </body>
     </html>
   );

@@ -15,7 +15,7 @@ export interface PageSeoConfig {
   schema?: Record<string, any>;
 }
 
-export const BASE_SITE_URL = 'https://ucp-bahawalpur-campus.vercel.app';
+export const BASE_SITE_URL = 'https://asifahassan2000-star.github.io/final';
 export const OFFICIAL_DOMAIN = 'https://ucp.edu.pk';
 export const SITE_NAME = 'UCP Bahawalpur Campus | University of Central Punjab';
 export const DEFAULT_OG_IMAGE = './assets/campus/hero_campus_night_flagship.webp';

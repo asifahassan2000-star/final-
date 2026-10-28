@@ -5,7 +5,7 @@ User-agent: *
 Allow: /
 
 # Canonical XML Sitemap (Strictly matching host domain to satisfy Search Console)
-Sitemap: https://ucp-bahawalpur-campus.vercel.app/sitemap.xml
+Sitemap: https://asifahassan2000-star.github.io/final/sitemap.xml
 
 # Explicit Bot Directives
 User-agent: Googlebot

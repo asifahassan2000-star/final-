@@ -138,13 +138,15 @@ export const ALL_FACULTY_MEMBERS: FacultyMemberData[] = [
     experienceYears: '27 Years',
     specialization: 'Academic Coordination, Event Management, Faculty Affairs, Institutional Operation',
     intro: 'Ms. Uzma Zulqarnain is an Assistant Professor and a PhD Scholar in Education with 27 years of rich academic and administrative experience. She efficiently manages university-wide events, faculty affairs, and academic operations. Known for her exceptional organizational skills and dedication, she plays a pivotal role in ensuring smooth academic and institutional excellence.',
-    photoUrl: '/assets/faculty/prof_uzma_zulqurnain.webp',
-    fallbackPhotoUrl: '/images/20rgrjKf_image-40.jpg',
+    photoUrl: 'https://ik.imagekit.io/Muffins/image%20(40).png',
+    fallbackPhotoUrl: 'https://ik.imagekit.io/Muffins/image%20(40).png',
     objectPosition: 'object-center',
     imageTransform: 'scale-[1.28] origin-center',
     qualifications: [
       'PhD Scholar (Education) - PhD in Progress',
-      'M.Phil in Education',
+      'M.Phil Educational Training',
+      'M.Ed',
+      'M.Sc Zoology',
       'Master of Arts (M.A.)'
     ],
     experienceDetails: [
@@ -266,16 +268,16 @@ export const ALL_FACULTY_MEMBERS: FacultyMemberData[] = [
     name: 'Dr. Abdul Raouf Malik',
     designation: 'Assistant Professor',
     department: 'Department of Physics & Biomedical Sciences',
-    highestDegree: 'Ph.D. in Physics',
+    highestDegree: 'Ph.D. in Medical Physics',
     experienceYears: '15 Years',
-    specialization: 'Materials Characterization, Nanoparticles Synthesis, Cancer Diagnosis & Biomedical Applications',
-    intro: 'Assistant Professor of Physics with 15 years of higher education experience. Recipient of prestigious national research honors including the HEC IRSIP Award, focusing on cutting-edge nanotechnology and oncology diagnosis.',
-    photoUrl: 'https://ik.imagekit.io/Muffins/image%20(29).png',
-    fallbackPhotoUrl: '/assets/faculty/dr-abdul-raouf.jpg',
+    specialization: 'Medical Physics, Biomedical Applications, Materials Characterization, Nanoparticles Synthesis & Cancer Diagnosis',
+    intro: 'Assistant Professor with PhD in Medical Physics and MPhil in Biomedical Physics with 15 years of higher education experience. Recipient of prestigious national research honors including the HEC IRSIP Award, focusing on cutting-edge nanotechnology and oncology diagnosis.',
+    photoUrl: 'https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-27%20at%2010.28.06%20PM.png',
+    fallbackPhotoUrl: 'https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-27%20at%2010.28.06%20PM.png',
     objectPosition: 'object-top',
     qualifications: [
-      'Ph.D. in Physics',
-      'M.Phil in Physics (Solid State & Nanomaterials)',
+      'Ph.D. in Medical Physics',
+      'M.Phil in Biomedical Physics',
       'M.Sc. in Physics'
     ],
     achievements: [
@@ -703,9 +705,9 @@ export const ALL_FACULTY_MEMBERS: FacultyMemberData[] = [
     ]
   },
   {
-    id: 'prof-huzaira-akram',
+    id: 'prof-huzaira-akmal',
     numericId: 17,
-    name: 'Prof. Huzaira Akram',
+    name: 'Prof. Huzaira Akmal',
     designation: 'Lecturer',
     department: 'Department of English & Humanities',
     highestDegree: 'M. Phil English',
@@ -811,6 +813,45 @@ export const ALL_FACULTY_MEMBERS: FacultyMemberData[] = [
       'Pedagogical Delivery & Teaching Methodology',
       'Research on Problem of Early Education in Pakistan',
       'Language Proficiency & Communication Skills'
+    ]
+  },
+  {
+    id: 'mr-ikram-ul-haq-aarbi',
+    numericId: 19,
+    name: 'Ikram Ul Haq Aarbi',
+    designation: 'Lecturer',
+    cardDesignation: 'Lecturer',
+    department: 'Department of English & Humanities',
+    highestDegree: 'M.A (English) • M.A (TEFL)',
+    experienceYears: '24 Years',
+    specialization: 'English Language Teaching (ELT) & TEFL',
+    intro: 'Accomplished Lecturer in English at UCP Bahawalpur with 24 years of teaching experience, holding dual Master’s degrees in English and TEFL along with a Postgraduate Diploma in ELT and French certification.',
+    photoUrl: 'https://ik.imagekit.io/Muffins/image%20-%202026-10-28T114145.181.png',
+    fallbackPhotoUrl: 'https://ik.imagekit.io/Muffins/image%20-%202026-10-28T114145.181.png',
+    objectPosition: 'object-top',
+    qualifications: [
+      'M.A (English) IUB',
+      'M.A (TEFL) AIOU ISLAMABAD',
+      'PGD ELT University of the Punjab Lahore',
+      'Certificate in French, NUML Islamabad'
+    ],
+    experienceDetails: [
+      '24 Yrs of teaching experience',
+      'Lecturer in English, University of Central Punjab (UCP) Bahawalpur',
+      'Pedagogy in English Literature, TEFL Methodology, and Applied Language Skills'
+    ],
+    areaOfInterest: [
+      'Teaching English as a Foreign Language (TEFL)',
+      'English Language Teaching (ELT)',
+      'Applied Linguistics & Pedagogical Grammar',
+      'French Language Communication'
+    ],
+    coreTechnicalSkills: [
+      'TEFL & ELT Pedagogical Methodologies',
+      'English Language & Literature Instruction',
+      'Grammar, Syntax & Phonetics Training',
+      'French Language Competency',
+      'Academic Evaluation & Student Mentorship'
     ]
   }
 ];

@@ -15,6 +15,13 @@ import nawabFullLengthImg from '../assets/images/nawab_of_bahawalpur.jpg';
 import nawabFaceSquareImg from '../assets/images/nawab_face_square.jpg';
 const NAWAB_BAHAWALPUR_URL = '/images/FbztWRNC_9ada4ca53a44a4a1bf356cbc4d1a84b4.jpg';
 
+const toSrc = (img: any): string => {
+  if (!img) return '';
+  if (typeof img === 'string') return img;
+  if (typeof img === 'object' && img.src) return img.src;
+  return String(img);
+};
+
 // Authentic visual record of the Cholistan Desert (Rohi)
 const CHOLISTAN_DESERT_IMG = '/images/4nqfrP2k_caption.jpg';
 const CHOLISTAN_DESERT_FALLBACK = '/images/7dfzm2Qh_caption.jpg';
@@ -54,7 +61,7 @@ const UCP_BWP_BUILDING_PHOTOS = [
     title: 'UCP Bahawalpur Purpose-Built Campus Facility',
     tag: 'Flagship Architecture',
     image: '/assets/campus/13_hero_sunset_campus.jpg',
-    fallback: ucpBuildingBlueprintImg
+    fallback: toSrc(ucpBuildingBlueprintImg)
   },
   {
     id: 'bwp-facade',
@@ -534,14 +541,14 @@ export const OurLegacyPage: React.FC<OurLegacyPageProps> = ({
                     year: 'Princely State of Bahawalpur',
                     description: 'His Highness the Nawab of Bahawalpur governed the sovereign princely state of Bahawalpur with visionary statecraft, creating modern hospitals, judicial courts, monumental palaces, and renowned educational endowments.',
                     significance: 'Spearheaded royal investments into regional education and institutional welfare that continue to shape the character of Bahawalpur today.',
-                    image: nawabFullLengthImg,
+                    image: toSrc(nawabFullLengthImg),
                     fallbackImage: NAWAB_BAHAWALPUR_URL
                   })}
                   className="w-20 h-20 sm:w-24 sm:h-24 rounded-full overflow-hidden shrink-0 border-2 border-white shadow-lg ring-2 ring-amber-400 bg-amber-100 cursor-pointer group/nawab-sm relative"
                   title="Click to view full archival portrait of the Nawab of Bahawalpur"
                 >
                   <img 
-                    src={nawabFaceSquareImg} 
+                    src={toSrc(nawabFaceSquareImg)} 
                     alt="His Highness The Nawab of Bahawalpur" 
                     referrerPolicy="no-referrer"
                     onError={(e) => {
@@ -773,7 +780,7 @@ export const OurLegacyPage: React.FC<OurLegacyPageProps> = ({
                             year: 'Historic Nawab State of Bahawalpur',
                             description: 'A foundational period marked by the establishment and sovereignty of the Bahawalpur State under the Abbasi dynasty. The Nawabs established strong administrative systems, promoted trade, and invested heavily in monumental architecture, creating a distinctive civic and cultural identity.',
                             significance: 'Preserved an enlightened sovereign era in Southern Punjab characterized by peace, prosperity, and royal patronage of architecture and scholarship.',
-                            image: nawabFullLengthImg,
+                            image: toSrc(nawabFullLengthImg),
                             fallbackImage: NAWAB_BAHAWALPUR_URL
                           })}
                           className="relative group/nawab cursor-pointer"
@@ -785,7 +792,7 @@ export const OurLegacyPage: React.FC<OurLegacyPageProps> = ({
                           {/* Big Size Circle Frame */}
                           <div className="relative w-44 h-44 sm:w-52 sm:h-52 md:w-56 md:h-56 rounded-full overflow-hidden border-4 border-white dark:border-amber-300 shadow-2xl ring-4 ring-amber-400 dark:ring-amber-300 bg-amber-100 dark:bg-amber-950 flex items-center justify-center transition-transform duration-500 group-hover/nawab:scale-103">
                             <img 
-                              src={nawabFaceSquareImg} 
+                              src={toSrc(nawabFaceSquareImg)} 
                               alt="His Highness The Nawab of Bahawalpur" 
                               referrerPolicy="no-referrer"
                               onError={(e) => {
@@ -1402,7 +1409,7 @@ export const OurLegacyPage: React.FC<OurLegacyPageProps> = ({
                   referrerPolicy="no-referrer"
                   className="w-full h-[480px] sm:h-[560px] object-cover object-center group-hover:scale-104 transition-transform duration-700 ease-out"
                   onError={(e) => {
-                    (e.target as HTMLImageElement).src = UCP_BWP_BUILDING_PHOTOS[selectedBwpBuildingIdx].fallback;
+                    (e.target as HTMLImageElement).src = toSrc(UCP_BWP_BUILDING_PHOTOS[selectedBwpBuildingIdx].fallback);
                   }}
                 />
                 
@@ -1456,7 +1463,7 @@ export const OurLegacyPage: React.FC<OurLegacyPageProps> = ({
                         referrerPolicy="no-referrer"
                         className="w-full h-full object-cover group-hover/thumb:scale-105 transition-transform duration-300"
                         onError={(e) => {
-                          (e.target as HTMLImageElement).src = bPhoto.fallback;
+                          (e.target as HTMLImageElement).src = toSrc(bPhoto.fallback);
                         }}
                       />
                     </div>
