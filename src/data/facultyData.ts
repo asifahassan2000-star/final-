@@ -814,6 +814,45 @@ export const ALL_FACULTY_MEMBERS: FacultyMemberData[] = [
       'Research on Problem of Early Education in Pakistan',
       'Language Proficiency & Communication Skills'
     ]
+  },
+  {
+    id: 'mr-ikram-ul-haq-aarbi',
+    numericId: 19,
+    name: 'Ikram Ul Haq Aarbi',
+    designation: 'Lecturer',
+    cardDesignation: 'Lecturer',
+    department: 'Department of English & Humanities',
+    highestDegree: 'M.A (English) • M.A (TEFL)',
+    experienceYears: '24 Years',
+    specialization: 'English Language Teaching (ELT) & TEFL',
+    intro: 'Accomplished Lecturer in English at UCP Bahawalpur with 24 years of teaching experience, holding dual Master’s degrees in English and TEFL along with a Postgraduate Diploma in ELT and French certification.',
+    photoUrl: 'https://ik.imagekit.io/Muffins/image%20-%202026-10-28T114145.181.png',
+    fallbackPhotoUrl: 'https://ik.imagekit.io/Muffins/image%20-%202026-10-28T114145.181.png',
+    objectPosition: 'object-top',
+    qualifications: [
+      'M.A (English) IUB',
+      'M.A (TEFL) AIOU ISLAMABAD',
+      'PGD ELT University of the Punjab Lahore',
+      'Certificate in French, NUML Islamabad'
+    ],
+    experienceDetails: [
+      '24 Yrs of teaching experience',
+      'Lecturer in English, University of Central Punjab (UCP) Bahawalpur',
+      'Pedagogy in English Literature, TEFL Methodology, and Applied Language Skills'
+    ],
+    areaOfInterest: [
+      'Teaching English as a Foreign Language (TEFL)',
+      'English Language Teaching (ELT)',
+      'Applied Linguistics & Pedagogical Grammar',
+      'French Language Communication'
+    ],
+    coreTechnicalSkills: [
+      'TEFL & ELT Pedagogical Methodologies',
+      'English Language & Literature Instruction',
+      'Grammar, Syntax & Phonetics Training',
+      'French Language Competency',
+      'Academic Evaluation & Student Mentorship'
+    ]
   }
 ];
 
