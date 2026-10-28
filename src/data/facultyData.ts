@@ -144,7 +144,9 @@ export const ALL_FACULTY_MEMBERS: FacultyMemberData[] = [
     imageTransform: 'scale-[1.28] origin-center',
     qualifications: [
       'PhD Scholar (Education) - PhD in Progress',
-      'M.Phil in Education',
+      'M.Phil Educational Training',
+      'M.Ed',
+      'M.Sc Zoology',
       'Master of Arts (M.A.)'
     ],
     experienceDetails: [
@@ -266,16 +268,16 @@ export const ALL_FACULTY_MEMBERS: FacultyMemberData[] = [
     name: 'Dr. Abdul Raouf Malik',
     designation: 'Assistant Professor',
     department: 'Department of Physics & Biomedical Sciences',
-    highestDegree: 'Ph.D. in Physics',
+    highestDegree: 'Ph.D. in Medical Physics',
     experienceYears: '15 Years',
-    specialization: 'Materials Characterization, Nanoparticles Synthesis, Cancer Diagnosis & Biomedical Applications',
-    intro: 'Assistant Professor of Physics with 15 years of higher education experience. Recipient of prestigious national research honors including the HEC IRSIP Award, focusing on cutting-edge nanotechnology and oncology diagnosis.',
-    photoUrl: 'https://ik.imagekit.io/Muffins/image%20(29).png',
-    fallbackPhotoUrl: '/assets/faculty/dr-abdul-raouf.jpg',
+    specialization: 'Medical Physics, Biomedical Applications, Materials Characterization, Nanoparticles Synthesis & Cancer Diagnosis',
+    intro: 'Assistant Professor with PhD in Medical Physics and MPhil in Biomedical Physics with 15 years of higher education experience. Recipient of prestigious national research honors including the HEC IRSIP Award, focusing on cutting-edge nanotechnology and oncology diagnosis.',
+    photoUrl: 'https://ik.imagekit.io/Muffins/image%20-%202026-10-28T100548.614.png',
+    fallbackPhotoUrl: 'https://ik.imagekit.io/Muffins/image%20-%202026-10-28T100548.614.png',
     objectPosition: 'object-top',
     qualifications: [
-      'Ph.D. in Physics',
-      'M.Phil in Physics (Solid State & Nanomaterials)',
+      'Ph.D. in Medical Physics',
+      'M.Phil in Biomedical Physics',
       'M.Sc. in Physics'
     ],
     achievements: [
