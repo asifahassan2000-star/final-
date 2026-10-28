@@ -7,7 +7,7 @@ const isGitHubPages = Boolean(process.env.GITHUB_ACTIONS || process.env.GITHUB_P
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  output: 'export',
+  output: isGitHubPages ? 'export' : undefined,
   // On GitHub Pages, repository is hosted at /final; on Vercel and production hosting, hosted at root /
   basePath: isGitHubPages ? '/final' : '',
   assetPrefix: isGitHubPages ? '/final/' : undefined,

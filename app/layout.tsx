@@ -1,8 +1,7 @@
 import type { Metadata, Viewport } from 'next';
+import { headers } from 'next/headers';
 import React from 'react';
 import '../src/index.css';
-
-export const dynamic = 'force-static';
 
 export const metadata: Metadata = {
   title: 'UCP Bahawalpur Campus Life | University of Central Punjab',
@@ -59,11 +58,19 @@ export const viewport: Viewport = {
   themeColor: '#0A1931',
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  let nonce: string | undefined;
+  try {
+    const headersList = await headers();
+    nonce = headersList.get('x-nonce') ?? undefined;
+  } catch {
+    // Fallback for static environments
+  }
+
   return (
     <html lang="en" className="scroll-smooth">
       <head>
