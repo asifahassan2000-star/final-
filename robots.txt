@@ -1,0 +1,19 @@
+User-Agent: *
+Allow: /
+Disallow: /api/
+
+User-Agent: Googlebot
+User-Agent: Googlebot-Image
+User-Agent: Bingbot
+User-Agent: GPTBot
+User-Agent: ChatGPT-User
+User-Agent: PerplexityBot
+User-Agent: ClaudeBot
+User-Agent: Google-Extended
+User-Agent: Applebot-Extended
+User-Agent: cohere-ai
+User-Agent: OAI-SearchBot
+Allow: /
+
+Sitemap: https://asifahassan2000-star.github.io/final/sitemap.xml
+Sitemap: https://ucp.edu.pk/sitemap.xml
