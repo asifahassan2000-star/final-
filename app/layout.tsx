@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from 'next';
 import { headers } from 'next/headers';
 import React from 'react';
+import { ThemeProvider } from '../src/context/ThemeContext';
 import '../src/index.css';
 
 export const metadata: Metadata = {
@@ -82,7 +83,9 @@ export default async function RootLayout({
         />
       </head>
       <body className="bg-white text-slate-900 antialiased selection:bg-[#0A1931] selection:text-white min-h-screen">
-        {children}
+        <ThemeProvider>
+          {children}
+        </ThemeProvider>
       </body>
     </html>
   );
