@@ -293,10 +293,10 @@ export const AboutUsPage: React.FC<AboutUsPageProps> = ({
                   <AnimatedCounter target={25} suffix="+" duration={0.9} />
                 </div>
                 <div className="font-sans text-xs sm:text-[13px] uppercase tracking-[0.1em] font-bold text-[#092242] dark:text-blue-300">
-                  Academic Programs
+                  Academic Programmes
                 </div>
                 <p className="font-sans text-[13px] text-slate-500 dark:text-slate-400 leading-normal">
-                  Chartered BS &amp; ADP Programs
+                  Chartered BS &amp; ADP Programmes
                 </p>
               </div>
 

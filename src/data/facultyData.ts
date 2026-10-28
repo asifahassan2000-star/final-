@@ -138,8 +138,8 @@ export const ALL_FACULTY_MEMBERS: FacultyMemberData[] = [
     experienceYears: '27 Years',
     specialization: 'Academic Coordination, Event Management, Faculty Affairs, Institutional Operation',
     intro: 'Ms. Uzma Zulqarnain is an Assistant Professor and a PhD Scholar in Education with 27 years of rich academic and administrative experience. She efficiently manages university-wide events, faculty affairs, and academic operations. Known for her exceptional organizational skills and dedication, she plays a pivotal role in ensuring smooth academic and institutional excellence.',
-    photoUrl: '/assets/faculty/prof_uzma_zulqurnain.webp',
-    fallbackPhotoUrl: '/images/20rgrjKf_image-40.jpg',
+    photoUrl: 'https://ik.imagekit.io/Muffins/image%20(40).png',
+    fallbackPhotoUrl: 'https://ik.imagekit.io/Muffins/image%20(40).png',
     objectPosition: 'object-center',
     imageTransform: 'scale-[1.28] origin-center',
     qualifications: [
@@ -272,8 +272,8 @@ export const ALL_FACULTY_MEMBERS: FacultyMemberData[] = [
     experienceYears: '15 Years',
     specialization: 'Medical Physics, Biomedical Applications, Materials Characterization, Nanoparticles Synthesis & Cancer Diagnosis',
     intro: 'Assistant Professor with PhD in Medical Physics and MPhil in Biomedical Physics with 15 years of higher education experience. Recipient of prestigious national research honors including the HEC IRSIP Award, focusing on cutting-edge nanotechnology and oncology diagnosis.',
-    photoUrl: 'https://ik.imagekit.io/Muffins/image%20-%202026-10-28T100548.614.png',
-    fallbackPhotoUrl: 'https://ik.imagekit.io/Muffins/image%20-%202026-10-28T100548.614.png',
+    photoUrl: 'https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-27%20at%2010.28.06%20PM.png',
+    fallbackPhotoUrl: 'https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-27%20at%2010.28.06%20PM.png',
     objectPosition: 'object-top',
     qualifications: [
       'Ph.D. in Medical Physics',
@@ -705,9 +705,9 @@ export const ALL_FACULTY_MEMBERS: FacultyMemberData[] = [
     ]
   },
   {
-    id: 'prof-huzaira-akram',
+    id: 'prof-huzaira-akmal',
     numericId: 17,
-    name: 'Prof. Huzaira Akram',
+    name: 'Prof. Huzaira Akmal',
     designation: 'Lecturer',
     department: 'Department of English & Humanities',
     highestDegree: 'M. Phil English',
