@@ -75,6 +75,8 @@ export const Image: React.FC<ImageProps> = ({
           isLoaded ? 'opacity-100' : 'opacity-90'
         } ${className}`}
         style={{
+          width: '100%',
+          height: '100%',
           ...style,
         }}
         {...rest}

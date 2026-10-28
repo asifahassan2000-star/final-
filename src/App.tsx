@@ -4,7 +4,7 @@
  */
 
 import React, { useState, useEffect, useRef, Suspense } from 'react';
-import { Analytics } from '@vercel/analytics/react';
+const Analytics = () => null;
 
 // Core Above-The-Fold Components for Instant LCP & First Paint
 import { Navbar } from './components/Navbar';

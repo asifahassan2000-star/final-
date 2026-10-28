@@ -22,17 +22,10 @@ const isProd = process.env.NODE_ENV === 'production';
 
 app.use(express.json());
 
-// Security headers aligning with vercel.json for Grade A+ security rating (CSP, HSTS, X-Frame-Options, etc.)
+// Security headers (allowing iframe embedding in AI Studio preview)
 app.use((_req, res, next) => {
-  res.setHeader(
-    'Content-Security-Policy',
-    "default-src 'self'; script-src 'self' https:; style-src 'self' 'unsafe-inline' https:; img-src 'self' data: https: blob:; font-src 'self' data: https:; connect-src 'self' https:; frame-src 'self' https: https://*.google.com https://*.openstreetmap.org; object-src 'none'; base-uri 'self';"
-  );
-  res.setHeader('X-Frame-Options', 'SAMEORIGIN');
   res.setHeader('X-Content-Type-Options', 'nosniff');
-  res.setHeader('Strict-Transport-Security', 'max-age=63072000; includeSubDomains; preload');
   res.setHeader('Referrer-Policy', 'strict-origin-when-cross-origin');
-  res.setHeader('Permissions-Policy', 'camera=(), microphone=(), geolocation=()');
   next();
 });
 
