@@ -1,6 +1,8 @@
 import type { MetadataRoute } from 'next';
 
-const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://final-five-jade-31.vercel.app';
+export const dynamic = 'force-static';
+
+const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://asifahassan2000-star.github.io/final';
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const currentDate = new Date();

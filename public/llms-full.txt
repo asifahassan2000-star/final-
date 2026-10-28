@@ -12,7 +12,7 @@
 - **Physical Campus**: Constituent College, UCP Campus, Airport Road, Bahawalpur, Punjab, Pakistan.
 - **Coordinates**: Latitude 29.3544° N, Longitude 71.6918° E
 - **Postal Code**: 63100
-- **Official Domains**: https://ucp.edu.pk / https://final-five-jade-31.vercel.app
+- **Official Domains**: https://ucp.edu.pk / https://asifahassan2000-star.github.io/final
 - **Toll-Free Phone**: 0800-00827
 - **Direct Phone Numbers**: +92 62 2202030, +92 62 2202050
 - **Email Contact**: info@ucp.edu.pk, admissions@ucp.edu.pk

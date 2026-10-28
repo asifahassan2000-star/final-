@@ -14,7 +14,7 @@ University of Central Punjab (UCP) Bahawalpur Campus is a constituent college of
 - **Phone Lines**: +92 62 2202030 / +92 62 2202050
 - **Official Email**: info@ucp.edu.pk
 - **Official Portal**: https://ucp.edu.pk
-- **Live Mirror / Vercel Domain**: https://final-five-jade-31.vercel.app
+- **Live Mirror / Domain**: https://asifahassan2000-star.github.io/final
 
 ---
 
