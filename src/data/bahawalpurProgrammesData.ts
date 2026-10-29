@@ -111,7 +111,7 @@ export const OFFICIAL_BAHAWALPUR_PROGRAMMES: BahawalpurProgramme[] = [
     feePerCreditHour: 5900,
     totalFee: 790300,
     yearlyAverage: 197575,
-    image: '/images/TXgwt6f_Chat-GPT-Image-Sep-27-2026-07-07-56-AM.png',
+    image: 'https://ik.imagekit.io/Muffins/Business-Adm.png?updatedAt=1793273174499',
     shortDescription: 'Comprehensive foundation in corporate management, marketing, finance, and enterprise leadership.',
     about: 'The Bachelor of Business Administration (BBA) is a four-year professional degree designed to cultivate leadership, ethical decision-making, and organizational acumen. Students study core management principles, market dynamics, and corporate financial practices necessary for dynamic business environments.',
     whatYouWillLearn: [
@@ -351,7 +351,7 @@ export const OFFICIAL_BAHAWALPUR_PROGRAMMES: BahawalpurProgramme[] = [
     feePerCreditHour: 5000,
     totalFee: 646500,
     yearlyAverage: 161625,
-    image: '/images/MkxJ7Nzy_Chat-GPT-Image-Sep-26-2026-09-44-35-AM.png',
+    image: 'https://ik.imagekit.io/Muffins/Quantum-Entanglement-Particle-Pair-Concept.webp',
     shortDescription: 'Fundamental principles governing matter, energy, mechanics, electromagnetism, and modern quantum theory.',
     about: 'The BS Physics programme investigates fundamental physical laws spanning classical mechanics, electromagnetic theory, thermodynamics, quantum phenomena, and solid-state physics. Students gain deep mathematical insight and experimental laboratory validation capabilities.',
     whatYouWillLearn: [
@@ -543,7 +543,7 @@ export const OFFICIAL_BAHAWALPUR_PROGRAMMES: BahawalpurProgramme[] = [
     feePerCreditHour: 5300,
     totalFee: 679300,
     yearlyAverage: 169825,
-    image: '/images/2Ys8Y5H3_shutterstock-2475273911-scaled.jpg',
+    image: 'https://ik.imagekit.io/Muffins/360_F_1146454775_ZN9j3EP1tLvVuiwzYWn4k5tSr16cvS3x.jpg',
     shortDescription: 'Pure and applied mathematical structures, numerical calculus, differential equations, and quantitative reasoning.',
     about: 'The BS Mathematics programme delivers rigorous training in pure mathematical theory and applied quantitative techniques. Coursework emphasizes real analysis, abstract algebra, differential equations, numerical computation, and mathematical modelling of complex physical phenomena.',
     whatYouWillLearn: [
@@ -643,7 +643,7 @@ export const OFFICIAL_BAHAWALPUR_PROGRAMMES: BahawalpurProgramme[] = [
     feePerCreditHour: 4400,
     totalFee: 288700,
     yearlyAverage: 144350,
-    image: '/images/chP4mYWB_What-s-the-Difference-Between-a-Psychiatrist-and-Psychologist.webp',
+    image: 'https://ik.imagekit.io/Muffins/Understanding_counselling_psychology________________________________________________________________________________________.webp?updatedAt=1793272235206',
     shortDescription: 'Two-year foundational study in human behaviour, psychological principles, and counselling concepts.',
     about: 'The Associate Degree in Psychology provides a focused two-year introduction to foundational behavioural science, interpersonal dynamics, human development, and introductory assessment techniques. It establishes academic readiness for professional work or continuing university study.',
     whatYouWillLearn: [
@@ -687,7 +687,7 @@ export const OFFICIAL_BAHAWALPUR_PROGRAMMES: BahawalpurProgramme[] = [
     feePerCreditHour: 4400,
     totalFee: 301900,
     yearlyAverage: 150950,
-    image: '/images/xdLNTjf_360-F-310395027-i-VFf-VOCWFUONEIo-Ri-Tk7-Wq-U7-GLTOf3-QE.jpg',
+    image: 'https://ik.imagekit.io/Muffins/images.jpg?updatedAt=1793272251425',
     shortDescription: 'Core academic skills in English comprehension, composition, literary surveys, and spoken communication.',
     about: 'The Associate Degree in English emphasizes practical English language proficiency, grammatical precision, academic reading, and introductory literary appreciation. It equips students with the written and verbal communication tools required in modern professional offices.',
     whatYouWillLearn: [
@@ -731,7 +731,7 @@ export const OFFICIAL_BAHAWALPUR_PROGRAMMES: BahawalpurProgramme[] = [
     feePerCreditHour: 4900,
     totalFee: 325100,
     yearlyAverage: 162550,
-    image: '/images/cKT5qwbp_What-is-business-analytics-Getty-Images-1281224851-e1708028042563.webp',
+    image: 'https://ik.imagekit.io/Muffins/images%20(1).jpg?updatedAt=1793272249785',
     shortDescription: 'Practical introduction to data-driven business decisions, spreadsheet modelling, and reporting.',
     about: 'The ADP in Business Analytics trains students in business data gathering, spreadsheet automation, introductory SQL, and commercial metrics. It prepares students for immediate administrative support roles or advancement into university analytics degrees.',
     whatYouWillLearn: [
@@ -775,7 +775,7 @@ export const OFFICIAL_BAHAWALPUR_PROGRAMMES: BahawalpurProgramme[] = [
     feePerCreditHour: 4900,
     totalFee: 334900,
     yearlyAverage: 167450,
-    image: '/images/Ps0SNKc7_images-1.jpg',
+    image: 'https://ik.imagekit.io/Muffins/business-administration-certificate-scaled.jpg?updatedAt=1793272260977',
     shortDescription: 'Fundamental commercial education in enterprise management, office operations, and basic accounting.',
     about: 'The ADP in Business Administration introduces core commercial concepts including management principles, marketing fundamentals, business communication, and basic bookkeeping. It prepares students for versatile office administration careers.',
     whatYouWillLearn: [
@@ -819,7 +819,7 @@ export const OFFICIAL_BAHAWALPUR_PROGRAMMES: BahawalpurProgramme[] = [
     feePerCreditHour: 4500,
     totalFee: 326500,
     yearlyAverage: 163250,
-    image: '/images/35mFgXjT_7052877-13ab.webp',
+    image: 'https://ik.imagekit.io/Muffins/images%20(2).jpg?updatedAt=1793273171854',
     shortDescription: 'Laboratory-grounded training in biological procedures, laboratory safety, and basic biotechnology tools.',
     about: 'The ADP Biotechnology provides two years of foundational laboratory education in basic genetics, cellular biology, microbiological safety, and tissue culture principles, providing direct technical preparation for lab assistant roles or bachelor’s study.',
     whatYouWillLearn: [
@@ -863,7 +863,7 @@ export const OFFICIAL_BAHAWALPUR_PROGRAMMES: BahawalpurProgramme[] = [
     feePerCreditHour: 4900,
     totalFee: 334900,
     yearlyAverage: 167450,
-    image: '/images/xS78W5ZT_accounting-and-finance.jpg',
+    image: 'https://ik.imagekit.io/Muffins/accounting.webp?updatedAt=1793273171995',
     shortDescription: 'Essential bookkeeping, financial accounting protocols, ledger maintenance, and banking fundamentals.',
     about: 'The ADP in Accounting & Finance covers double-entry bookkeeping, ledger reconciliation, cost estimation, basic taxation, and banking transactions. It is designed to prepare reliable accounts assistants for commercial firms.',
     whatYouWillLearn: [
@@ -907,7 +907,7 @@ export const OFFICIAL_BAHAWALPUR_PROGRAMMES: BahawalpurProgramme[] = [
     feePerCreditHour: 6300,
     totalFee: 484000,
     yearlyAverage: 242000,
-    image: '/images/nqtHPF6p_Online-Learning-South-Asia-Learning-Indoor-Getty-Images-1071652068.webp',
+    image: 'https://ik.imagekit.io/Muffins/OnlineLearning_SouthAsia_Learning_Indoor_GettyImages-1071652068.jpg?updatedAt=1793273172106',
     shortDescription: 'Foundational programming, logic development, web essentials, and relational database systems.',
     about: 'The ADP in Computer Science delivers core computational concepts including procedural and object-oriented programming, database management, computer networks, and fundamental web development within a focused 2-year schedule.',
     whatYouWillLearn: [
@@ -951,7 +951,7 @@ export const OFFICIAL_BAHAWALPUR_PROGRAMMES: BahawalpurProgramme[] = [
     feePerCreditHour: 4500,
     totalFee: 331000,
     yearlyAverage: 165500,
-    image: '/images/GfDX6Zg7_pngtree-laboratory-plant-research-image-21361714.webp',
+    image: 'https://ik.imagekit.io/Muffins/endofbotany.jpg?updatedAt=1793273172064',
     shortDescription: 'Classical two-year Associate Degree in Science integrating zoological, botanical, and chemical disciplines.',
     about: 'The Associate Degree in Science (ADS) combining Zoology, Botany, and Chemistry represents the traditional pre-medical/biological sciences foundation. Students acquire comprehensive training across animal biology, plant physiology, and fundamental chemistry.',
     whatYouWillLearn: [
@@ -995,7 +995,7 @@ export const OFFICIAL_BAHAWALPUR_PROGRAMMES: BahawalpurProgramme[] = [
     feePerCreditHour: 4500,
     totalFee: 326500,
     yearlyAverage: 163250,
-    image: '/images/wN2rcm0p_creative-concept-hand-holding-light-bulb-with-planets-mathematical-formulas-representing-idea-genera.jpg',
+    image: 'https://ik.imagekit.io/Muffins/pngtree-mathematical-representation-of-quantum-physics-image_21182772.webp?updatedAt=1793273172056',
     shortDescription: 'Traditional physical science foundation combining calculus, mechanics, linear algebra, and experimental physics.',
     about: 'The Associate Degree in Science (ADS) in Mathematics A, Mathematics B, and Physics delivers rigorous analytical preparation. It integrates pure and applied calculus, differential equations, and laboratory physics experiments for science-driven students.',
     whatYouWillLearn: [
@@ -1039,7 +1039,7 @@ export const OFFICIAL_BAHAWALPUR_PROGRAMMES: BahawalpurProgramme[] = [
     feePerCreditHour: 6800,
     totalFee: 514700,
     yearlyAverage: 257350,
-    image: '/images/rf2T1y2M_images.jpg',
+    image: 'https://ik.imagekit.io/Muffins/Aug-21-software-engineering-program-opt.jpg?updatedAt=1793273171951',
     shortDescription: 'Practical instruction in the software development lifecycle, code construction, and testing practices.',
     about: 'The ADP in Software Engineering emphasizes software construction, requirements documentation, quality assurance testing, and modular programming. Students build practical competency in building robust, maintainable codebases.',
     whatYouWillLearn: [
@@ -1174,7 +1174,7 @@ export const OFFICIAL_BAHAWALPUR_PROGRAMMES: BahawalpurProgramme[] = [
     feePerCreditHour: 6800,
     totalFee: 541900,
     yearlyAverage: 270950,
-    image: '/images/LDnggNLM_FUq-HEVVUs-AAb-ZB0.jpg',
+    image: 'https://ik.imagekit.io/Muffins/images%20(3).jpg?updatedAt=1793273171961',
     shortDescription: 'Focused curriculum in data extraction, statistical summaries, analytical visualization, and database query.',
     about: 'The ADP in Data Science trains students in data harvesting, exploratory statistical analysis, data visualization, and database querying. It develops the analytical aptitude needed to assist corporate and research organizations in interpreting data.',
     whatYouWillLearn: [
