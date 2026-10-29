@@ -1,19 +1,33 @@
-User-Agent: *
-Allow: /
-Disallow: /api/
+# Robots.txt for UCP Bahawalpur Campus (University of Central Punjab Bahawalpur)
+# Allows search engine crawlers and AI search agents for indexation and retrieval
 
-User-Agent: Googlebot
-User-Agent: Googlebot-Image
-User-Agent: Bingbot
-User-Agent: GPTBot
-User-Agent: ChatGPT-User
-User-Agent: PerplexityBot
-User-Agent: ClaudeBot
-User-Agent: Google-Extended
-User-Agent: Applebot-Extended
-User-Agent: cohere-ai
-User-Agent: OAI-SearchBot
+User-agent: *
+Allow: /
+Disallow: /developer
+Disallow: /asifa
+
+# Explicit Googlebot Directives
+User-agent: Googlebot
 Allow: /
 
-Sitemap: https://asifahassan2000-star.github.io/final/sitemap.xml
-Sitemap: https://ucp.edu.pk/sitemap.xml
+User-agent: Googlebot-Image
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Applebot
+Allow: /
+
+User-agent: GPTBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+# Canonical XML Sitemaps
+Sitemap: https://ucp-bahawalpur-campus.vercel.app/sitemap.xml
+Sitemap: https://ucp-bahawalpur-campus.vercel.app/sitemap-ucp.xml

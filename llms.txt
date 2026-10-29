@@ -13,20 +13,20 @@ University of Central Punjab (UCP) Bahawalpur Campus is a constituent college of
 - **Helpline (Toll-Free)**: 0800-00827
 - **Phone Lines**: +92 62 2202030 / +92 62 2202050
 - **Official Email**: info@ucp.edu.pk
-- **Official Portal**: https://ucp.edu.pk
-- **Live Mirror / Domain**: https://asifahassan2000-star.github.io/final
+- **Parent University Portal (Lahore)**: https://ucp.edu.pk
+- **Live Campus Website (Bahawalpur)**: https://ucp-bahawalpur-campus.vercel.app
 
 ---
 
 ## Core Navigation & Page Links
-- [Admissions Portal](https://ucp.edu.pk/): Online admission application, eligibility checker, prospectus download, and intake schedules.
-- [Academic Programmes](https://ucp.edu.pk/?page=programmes): Full catalogue of 4-year BS and 2-year ADP degree offerings with credit hours and course structures.
-- [Distinguished Faculty](https://ucp.edu.pk/?page=faculty): Comprehensive faculty directories across Computer Science, Business & Management, Life Sciences, and Physical Sciences.
-- [Official Fee Structure](https://ucp.edu.pk/?page=fee-structure): Tuition per credit hour, admission charges, registration dues, and flexible installment plans.
-- [Scholarships & Financial Aid](https://ucp.edu.pk/?page=scholarships): Merit concessions up to 50%, 25% PGC alumni discount, kinship concessions, and sports quotas.
-- [Campus Life & Societies](https://ucp.edu.pk/?page=campus-life): Co-curricular societies, hackathons, sports galas, cultural festivals, and student achievements.
-- [Institutional Legacy](https://ucp.edu.pk/?page=legacy): History of Punjab Group of Colleges and UCP's academic journey shaping leaders since 1985.
-- [Full LLM Knowledge Dossier](https://ucp.edu.pk/llms-full.txt): Complete unabridged text data including course outlines and detailed leadership biographies.
+- [Admissions Portal](https://ucp-bahawalpur-campus.vercel.app/): Online admission application, eligibility checker, prospectus download, and intake schedules.
+- [Academic Programmes](https://ucp-bahawalpur-campus.vercel.app/?page=programmes): Full catalogue of 4-year BS and 2-year ADP degree offerings with credit hours and course structures.
+- [Distinguished Faculty](https://ucp-bahawalpur-campus.vercel.app/?page=faculty): Comprehensive faculty directories across Computer Science, Business & Management, Life Sciences, and Physical Sciences.
+- [Official Fee Structure](https://ucp-bahawalpur-campus.vercel.app/?page=fee-structure): Tuition per credit hour, admission charges, registration dues, and flexible installment plans.
+- [Scholarships & Financial Aid](https://ucp-bahawalpur-campus.vercel.app/?page=scholarships): Merit concessions up to 50%, 25% PGC alumni discount, kinship concessions, and sports quotas.
+- [Campus Life & Societies](https://ucp-bahawalpur-campus.vercel.app/?page=campus-life): Co-curricular societies, hackathons, sports galas, cultural festivals, and student achievements.
+- [Institutional Legacy](https://ucp-bahawalpur-campus.vercel.app/?page=legacy): History of Punjab Group of Colleges and UCP's academic journey shaping leaders since 1985.
+- [Full LLM Knowledge Dossier](https://ucp-bahawalpur-campus.vercel.app/llms-full.txt): Complete unabridged text data including course outlines and detailed leadership biographies.
 
 ---
 
