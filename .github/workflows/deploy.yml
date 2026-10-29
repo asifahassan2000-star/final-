@@ -34,12 +34,7 @@ jobs:
           NODE_ENV: production
         run: |
           npm run build
-          if [ -d "dist" ]; then
-            touch dist/.nojekyll
-          fi
-          if [ -d "out" ]; then
-            touch out/.nojekyll
-          fi
+          touch dist/.nojekyll
 
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4

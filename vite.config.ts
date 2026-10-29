@@ -8,8 +8,11 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 export default defineConfig(() => {
+  const isGitHubPages = Boolean(process.env.GITHUB_ACTIONS || process.env.GITHUB_PAGES);
+  const basePath = process.env.VITE_BASE || (isGitHubPages ? '/final/' : '/');
+
   return {
-    base: './',
+    base: basePath,
     plugins: [react(), tailwindcss()],
     resolve: {
       alias: {

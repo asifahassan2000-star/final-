@@ -77,6 +77,47 @@ if (typeof window !== 'undefined') {
       canLink.href = window.location.origin + window.location.pathname;
     }
   } catch {}
+
+  // Automatically resolve root-relative asset URLs (/assets/..., /images/...) under subpath deployments like GitHub Pages (/final/)
+  const rawBase = import.meta.env.BASE_URL || '/';
+  const subpathPrefix = rawBase !== '/' ? rawBase.replace(/\/$/, '') : '';
+
+  if (subpathPrefix) {
+    const patchAssetUrl = (url: string): string => {
+      if (typeof url !== 'string') return url;
+      if (url.startsWith('/assets/') || url.startsWith('/images/')) {
+        return subpathPrefix + url;
+      }
+      const origin = window.location.origin;
+      if (url.startsWith(origin + '/assets/') || url.startsWith(origin + '/images/')) {
+        return url.replace(origin, origin + subpathPrefix);
+      }
+      return url;
+    };
+
+    // Patch HTMLImageElement src property setter
+    const origImgSrc = Object.getOwnPropertyDescriptor(HTMLImageElement.prototype, 'src');
+    if (origImgSrc && origImgSrc.set) {
+      const origSet = origImgSrc.set;
+      Object.defineProperty(HTMLImageElement.prototype, 'src', {
+        set(val: string) {
+          origSet.call(this, patchAssetUrl(val));
+        },
+        get: origImgSrc.get,
+        configurable: true,
+        enumerable: true,
+      });
+    }
+
+    // Patch setAttribute for both src and href
+    const origSetAttr = Element.prototype.setAttribute;
+    Element.prototype.setAttribute = function (name: string, value: string) {
+      if (typeof value === 'string' && (name === 'src' || name === 'href')) {
+        value = patchAssetUrl(value);
+      }
+      return origSetAttr.call(this, name, value);
+    };
+  }
 }
 
 createRoot(document.getElementById('root')!).render(
