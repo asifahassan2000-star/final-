@@ -2,7 +2,7 @@ import type { MetadataRoute } from 'next';
 
 export const dynamic = 'force-static';
 
-const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://asifahassan2000-star.github.io/final';
+const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://ucp-bahawalpur-campus.vercel.app';
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const currentDate = new Date();

@@ -1,13 +1,12 @@
-# Robots.txt for Constituent College UCP Campus Bahawalpur
+# Robots.txt for UCP Bahawalpur Campus (University of Central Punjab Bahawalpur)
 # Allows search engine crawlers and AI search agents for indexation and retrieval
 
 User-agent: *
 Allow: /
+Disallow: /developer
+Disallow: /asifa
 
-# Canonical XML Sitemap (Strictly matching host domain to satisfy Search Console)
-Sitemap: https://asifahassan2000-star.github.io/final/sitemap.xml
-
-# Explicit Bot Directives
+# Explicit Googlebot Directives
 User-agent: Googlebot
 Allow: /
 
@@ -28,3 +27,6 @@ Allow: /
 
 User-agent: ClaudeBot
 Allow: /
+
+# Canonical XML Sitemap
+Sitemap: https://ucp-bahawalpur-campus.vercel.app/sitemap.xml

@@ -15,6 +15,12 @@ interface FooterProps {
   onSelectFaculty: (facultyId: string) => void;
   onOpenLegacyPage?: () => void;
   onOpenAboutUsPage?: () => void;
+  onOpenProgrammesPage?: () => void;
+  onOpenScholarshipsPage?: () => void;
+  onOpenCampusFacilitiesPage?: () => void;
+  onOpenCampusLifePage?: () => void;
+  onOpenFacultyPage?: () => void;
+  onOpenCalendar?: () => void;
 }
 
 export const Footer: React.FC<FooterProps> = ({
@@ -26,6 +32,12 @@ export const Footer: React.FC<FooterProps> = ({
   onSelectFaculty,
   onOpenLegacyPage,
   onOpenAboutUsPage,
+  onOpenProgrammesPage,
+  onOpenScholarshipsPage,
+  onOpenCampusFacilitiesPage,
+  onOpenCampusLifePage,
+  onOpenFacultyPage,
+  onOpenCalendar,
 }) => {
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -117,23 +129,143 @@ export const Footer: React.FC<FooterProps> = ({
             
             <ul className="text-[13px] text-slate-300 space-y-2 font-sans">
               <li>
-                <button 
-                  onClick={onOpenApply}
+                <a 
+                  href="https://admissions.ucpcolleges.pgc.edu/login?returnUrl=%2Flogin%3FreturnUrl%3D%252F"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="group w-full text-left transition-colors duration-200 flex items-center gap-2 hover:text-white cursor-pointer"
                 >
                   <span className="text-slate-400 font-bold group-hover:text-white transition-colors">›</span>
                   <span className="font-medium group-hover:underline">Apply Online (Admissions)</span>
-                </button>
+                </a>
               </li>
 
               <li>
-                <button 
-                  onClick={onOpenFee}
+                <a 
+                  href="#programmes"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    if (onOpenProgrammesPage) onOpenProgrammesPage();
+                    else onOpenFee();
+                  }}
                   className="group w-full text-left transition-colors duration-200 flex items-center gap-2 hover:text-white cursor-pointer"
                 >
                   <span className="text-slate-400 font-bold group-hover:text-white transition-colors">›</span>
-                  <span className="group-hover:underline">Programs &amp; Fee Structure</span>
-                </button>
+                  <span className="group-hover:underline">Academic Programs (BS &amp; ADP)</span>
+                </a>
+              </li>
+
+              <li>
+                <a 
+                  href="#fee-structure"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    onOpenFee();
+                  }}
+                  className="group w-full text-left transition-colors duration-200 flex items-center gap-2 hover:text-white cursor-pointer"
+                >
+                  <span className="text-slate-400 font-bold group-hover:text-white transition-colors">›</span>
+                  <span className="group-hover:underline">Fee Structure &amp; Schedules</span>
+                </a>
+              </li>
+
+              <li>
+                <a 
+                  href="#scholarships"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    if (onOpenScholarshipsPage) onOpenScholarshipsPage();
+                  }}
+                  className="group w-full text-left transition-colors duration-200 flex items-center gap-2 hover:text-white cursor-pointer"
+                >
+                  <span className="text-slate-400 font-bold group-hover:text-white transition-colors">›</span>
+                  <span className="group-hover:underline">Scholarships &amp; Financial Aid</span>
+                </a>
+              </li>
+
+              <li>
+                <a 
+                  href="#campus-facilities"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    if (onOpenCampusFacilitiesPage) onOpenCampusFacilitiesPage();
+                  }}
+                  className="group w-full text-left transition-colors duration-200 flex items-center gap-2 hover:text-white cursor-pointer"
+                >
+                  <span className="text-slate-400 font-bold group-hover:text-white transition-colors">›</span>
+                  <span className="group-hover:underline">Campus Facilities &amp; Labs</span>
+                </a>
+              </li>
+
+              <li>
+                <a 
+                  href="#faculty"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    if (onOpenFacultyPage) onOpenFacultyPage();
+                  }}
+                  className="group w-full text-left transition-colors duration-200 flex items-center gap-2 hover:text-white cursor-pointer"
+                >
+                  <span className="text-slate-400 font-bold group-hover:text-white transition-colors">›</span>
+                  <span className="group-hover:underline">Faculty &amp; Administration</span>
+                </a>
+              </li>
+
+              <li>
+                <a 
+                  href="#campus-life"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    if (onOpenCampusLifePage) onOpenCampusLifePage();
+                  }}
+                  className="group w-full text-left transition-colors duration-200 flex items-center gap-2 hover:text-white cursor-pointer"
+                >
+                  <span className="text-slate-400 font-bold group-hover:text-white transition-colors">›</span>
+                  <span className="group-hover:underline">Campus Life &amp; Events</span>
+                </a>
+              </li>
+
+              <li>
+                <a 
+                  href="#calendar"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    if (onOpenCalendar) onOpenCalendar();
+                    else onOpenInfo('academic-calendar');
+                  }}
+                  className="group w-full text-left transition-colors duration-200 flex items-center gap-2 hover:text-white cursor-pointer"
+                >
+                  <span className="text-slate-400 font-bold group-hover:text-white transition-colors">›</span>
+                  <span className="group-hover:underline">Academic Calendar (Fall 2026)</span>
+                </a>
+              </li>
+
+              <li>
+                <a 
+                  href="#about-us"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    if (onOpenAboutUsPage) onOpenAboutUsPage();
+                  }}
+                  className="group w-full text-left transition-colors duration-200 flex items-center gap-2 hover:text-white cursor-pointer"
+                >
+                  <span className="text-slate-400 font-bold group-hover:text-white transition-colors">›</span>
+                  <span className="group-hover:underline">About Us (Our Story &amp; Vision)</span>
+                </a>
+              </li>
+
+              <li>
+                <a 
+                  href="#legacy"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    if (onOpenLegacyPage) onOpenLegacyPage();
+                  }}
+                  className="group w-full text-left transition-colors duration-200 flex items-center gap-2 hover:text-white cursor-pointer"
+                >
+                  <span className="text-slate-400 font-bold group-hover:text-white transition-colors">›</span>
+                  <span className="group-hover:underline">Our Legacy &amp; Campus History</span>
+                </a>
               </li>
 
               <li>
@@ -147,54 +279,6 @@ export const Footer: React.FC<FooterProps> = ({
                   <span className="group-hover:underline">Student Portal (mcom.pgc.edu.pk)</span>
                 </a>
               </li>
-
-              <li>
-                <a 
-                  href="https://ucpcolleges.pgc.edu/scholarship/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group w-full text-left transition-colors duration-200 flex items-center gap-2 hover:text-white cursor-pointer"
-                >
-                  <span className="text-slate-400 font-bold group-hover:text-white transition-colors">›</span>
-                  <span className="group-hover:underline">Scholarships &amp; Concessions</span>
-                </a>
-              </li>
-
-              <li>
-                <button 
-                  type="button"
-                  onClick={() => onOpenInfo('academic-calendar')}
-                  className="group w-full text-left transition-colors duration-200 flex items-center gap-2 hover:text-white cursor-pointer"
-                >
-                  <span className="text-slate-400 font-bold group-hover:text-white transition-colors">›</span>
-                  <span className="group-hover:underline">Academic Calendar</span>
-                </button>
-              </li>
-
-              {onOpenAboutUsPage && (
-                <li>
-                  <button 
-                    onClick={onOpenAboutUsPage}
-                    className="group w-full text-left transition-colors duration-200 flex items-center gap-2 hover:text-white cursor-pointer"
-                  >
-                    <span className="text-slate-400 font-bold group-hover:text-white transition-colors">›</span>
-                    <span className="group-hover:underline">About Us (Our Story &amp; Vision)</span>
-                  </button>
-                </li>
-              )}
-
-              {onOpenLegacyPage && (
-                <li>
-                  <button 
-                    onClick={onOpenLegacyPage}
-                    className="group w-full text-left transition-colors duration-200 flex items-center gap-2 hover:text-white cursor-pointer"
-                  >
-                    <span className="text-slate-400 font-bold group-hover:text-white transition-colors">›</span>
-                    <span className="group-hover:underline">Our Legacy &amp; Campus History</span>
-                  </button>
-                </li>
-              )}
-
             </ul>
           </div>
 

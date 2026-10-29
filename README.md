@@ -1,6 +1,6 @@
 # 🏛️ University of Central Punjab (UCP) — Bahawalpur Campus Flagship Portal
 
-[![Production Deployment](https://img.shields.io/badge/Vercel-Live%20Deployment-black?style=for-the-badge&logo=vercel)](https://final-five-jade-31.vercel.app/)
+[![Production Deployment](https://img.shields.io/badge/Vercel-Live%20Deployment-black?style=for-the-badge&logo=vercel)](https://ucp-bahawalpur-campus.vercel.app/)
 [![React 19](https://img.shields.io/badge/React-19.0.1-61DAFB?style=for-the-badge&logo=react&logoColor=black)](https://react.dev/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-7.0.2-3178C6?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
 [![Vite](https://img.shields.io/badge/Vite-8.3.0-646CFF?style=for-the-badge&logo=vite&logoColor=white)](https://vitejs.dev/)
@@ -10,7 +10,7 @@
 
 > **Official web portal and digital academic ecosystem for the University of Central Punjab (UCP) Bahawalpur Campus** — Constituent College of UCP Lahore, chartered under the Punjab Group of Colleges (PGC). Engineered to deliver an Ivy League–grade editorial digital presence with zero compromise on performance, security, and search engine discoverability.
 
-🌐 **Live URL:** [https://final-five-jade-31.vercel.app](https://final-five-jade-31.vercel.app)  
+🌐 **Live URL:** [https://ucp-bahawalpur-campus.vercel.app](https://ucp-bahawalpur-campus.vercel.app)  
 📍 **Campus Location:** Constituent College, UCP Campus, Airport Road, Bahawalpur, Punjab, Pakistan  
 📞 **Admissions Helpline:** 062-2202030 / 062-2202050 | Toll-Free: 0800-00827  
 

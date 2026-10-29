@@ -15,16 +15,16 @@ export interface PageSeoConfig {
   schema?: Record<string, any>;
 }
 
-export const BASE_SITE_URL = 'https://asifahassan2000-star.github.io/final';
+export const BASE_SITE_URL = 'https://ucp-bahawalpur-campus.vercel.app';
 export const OFFICIAL_DOMAIN = 'https://ucp.edu.pk';
 export const SITE_NAME = 'UCP Bahawalpur Campus | University of Central Punjab';
 export const DEFAULT_OG_IMAGE = './assets/campus/hero_campus_night_flagship.webp';
 
 export const SEO_PAGES_CONFIG: Record<string, PageSeoConfig> = {
   home: {
-    title: 'Constituent College UCP Campus Bahawalpur | UCP Bahawalpur',
-    description: 'Official website of Constituent College UCP Campus Bahawalpur (University of Central Punjab BWP). Explore admissions, fee structures, merit scholarships, BS & ADP academic degree programs, faculty, and vibrant campus life in Bahawalpur.',
-    keywords: 'constituent college ucp campus bahawalpur, ucp bahawalpur, ucp bwp, ucp bahawalpur campus, university of central punjab bahawalpur, ucp admissions, ucp fee structure, ucp scholarships, best university in bahawalpur',
+    title: 'UCP Bahawalpur Campus | Programs, Admissions & Fees',
+    description: 'Official portal of UCP Bahawalpur Campus (UCP BWP), located on Airport Road, Bahawalpur. Explore recognized BS & ADP degree programs, online admissions, fee structure, scholarships, and modern campus facilities.',
+    keywords: 'ucp bahawalpur campus, ucp bwp, university of central punjab bahawalpur, ucp admissions, ucp fee structure, ucp scholarships, bs computer science bahawalpur, adp artificial intelligence bahawalpur, best university in bahawalpur',
     canonicalPath: '/',
     ogType: 'website',
     ogImage: DEFAULT_OG_IMAGE,
@@ -34,14 +34,14 @@ export const SEO_PAGES_CONFIG: Record<string, PageSeoConfig> = {
       '@context': 'https://schema.org',
       '@type': 'CollegeOrUniversity',
       name: 'University of Central Punjab Bahawalpur Campus',
-      alternateName: ['UCP Bahawalpur', 'UCP BWP', 'Constituent College UCP Campus Bahawalpur'],
+      alternateName: ['UCP Bahawalpur', 'UCP BWP', 'Constituent College UCP Campus Bahawalpur', 'University of Central Punjab Bahawalpur'],
       url: BASE_SITE_URL,
       logo: `${BASE_SITE_URL}/assets/ucp-official-logo.png`,
       image: `${BASE_SITE_URL}/assets/campus/hero_campus_night_flagship.webp`,
       description: 'Official UCP Bahawalpur Campus offering recognized undergraduate BS and Associate Degree (ADP) programs.',
       address: {
         '@type': 'PostalAddress',
-        streetAddress: 'Main Campus, Baghdad-ul-Jadeed Road',
+        streetAddress: 'Constituent College, UCP Campus, Airport Road',
         addressLocality: 'Bahawalpur',
         addressRegion: 'Punjab',
         postalCode: '63100',
@@ -52,8 +52,8 @@ export const SEO_PAGES_CONFIG: Record<string, PageSeoConfig> = {
         latitude: '29.3544',
         longitude: '71.6918',
       },
-      telephone: '+92-62-2889844',
-      email: 'info@ucp.edu.pk',
+      telephone: '+92-62-2202030',
+      email: 'Principal.bahawalpur@ucp.edu.pk',
     },
   },
 

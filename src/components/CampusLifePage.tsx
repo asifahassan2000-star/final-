@@ -443,14 +443,14 @@ export const CampusLifePage: React.FC<CampusLifePageProps> = ({
       "@graph": [
         {
           "@type": "WebPage",
-          "@id": "https://asifahassan2000-star.github.io/final/campus-life#webpage",
-          "url": "https://asifahassan2000-star.github.io/final/campus-life",
+          "@id": "https://ucp-bahawalpur-campus.vercel.app/campus-life#webpage",
+          "url": "https://ucp-bahawalpur-campus.vercel.app/campus-life",
           "name": "Campus Life & Events Archive (2025–2026) | UCP Bahawalpur",
           "description": "Chronological official archive of 22 collegiate events at University of Central Punjab Bahawalpur Campus.",
           "isPartOf": {
             "@type": "WebSite",
             "name": "University of Central Punjab (UCP) Bahawalpur",
-            "url": "https://asifahassan2000-star.github.io/final"
+            "url": "https://ucp-bahawalpur-campus.vercel.app"
           }
         },
         {
@@ -460,13 +460,13 @@ export const CampusLifePage: React.FC<CampusLifePageProps> = ({
               "@type": "ListItem",
               "position": 1,
               "name": "Home",
-              "item": "https://asifahassan2000-star.github.io/final"
+              "item": "https://ucp-bahawalpur-campus.vercel.app"
             },
             {
               "@type": "ListItem",
               "position": 2,
               "name": "Campus Life & Events",
-              "item": "https://asifahassan2000-star.github.io/final/campus-life"
+              "item": "https://ucp-bahawalpur-campus.vercel.app/campus-life"
             }
           ]
         },
@@ -497,7 +497,7 @@ export const CampusLifePage: React.FC<CampusLifePageProps> = ({
             "organizer": {
               "@type": "CollegeOrUniversity",
               "name": "University of Central Punjab (UCP) Bahawalpur Campus",
-              "url": "https://asifahassan2000-star.github.io/final"
+              "url": "https://ucp-bahawalpur-campus.vercel.app"
             }
           }))
         }

@@ -12,6 +12,7 @@ import { HeroSlider } from './components/HeroSlider';
 import { ThemeToggle } from './components/ThemeToggle';
 import { ClickGlowManager } from './components/ClickGlowManager';
 import { ScrollRevealManager } from './components/ScrollReveal';
+import { SeoHead } from './components/SeoHead';
 import type { InfoModalType } from './components/UcpInfoModal';
 import { Program, NewsEventItem } from './types';
 import { FACULTIES, UCP_CONTACT } from './data/ucpData';
@@ -78,48 +79,60 @@ const getPageFromHash = (): PageId => {
   const pathSegments = pathname.split('/').filter(Boolean);
   const lastPathSegment = pathSegments[pathSegments.length - 1] || '';
 
-  if (
-    pathname === 'developer' ||
-    pathname === 'asifa' ||
-    lastPathSegment === 'developer' ||
-    lastPathSegment === 'asifa' ||
-    pathname.startsWith('developer') ||
-    pathname.startsWith('asifa') ||
-    pathname.includes('/developer') ||
-    pathname.includes('/asifa')
-  ) {
-    return 'developer';
-  }
-  if (pathname === 'campus-facilities' || pathname === 'facilities' || lastPathSegment === 'campus-facilities' || lastPathSegment === 'facilities') return 'campus-facilities';
-  if (pathname === 'about-us' || pathname === 'about' || lastPathSegment === 'about-us' || lastPathSegment === 'about') return 'about-us';
-  
   const rawHash = (window.location.hash || '').replace(/^#\/?/, '').toLowerCase();
   // Strip query parameters if present (e.g. #programmes?category=...)
   const hash = rawHash.split('?')[0].split('#')[0].trim();
   const hashSegments = hash.split('/').filter(Boolean);
   const lastHashSegment = hashSegments[hashSegments.length - 1] || '';
 
-  if (
-    hash === 'developer' ||
-    hash === 'asifa' ||
-    lastHashSegment === 'developer' ||
-    lastHashSegment === 'asifa' ||
-    hash.includes('developer') ||
-    hash.includes('asifa')
-  ) {
-    return 'developer';
-  }
-  if (hash === 'campus-facilities' || hash === 'facilities' || hash === 'facility' || hash === 'labs') return 'campus-facilities';
-  if (hash === 'about-us' || hash === 'about') return 'about-us';
-  if (hash === 'programmes' || hash === 'programs' || hash === 'academics' || hash === 'academic' || hash === 'courses' || hash === 'degrees') return 'programmes';
-  if (hash === 'faculty' || hash === 'teachers' || hash === 'professors') return 'faculty';
-  if (hash === 'legacy' || hash === 'history') return 'legacy';
-  if (hash === 'campus-life' || hash === 'campuslife' || hash === 'student-life') return 'campus-life';
-  if (hash === 'scholarships' || hash === 'scholarship') return 'scholarships';
-  if (hash === 'fee-structure' || hash === 'fees' || hash === 'fee' || hash === 'fee-calculator' || hash === 'tuition') return 'fee-structure';
-  if (hash === 'calendar' || hash === 'academic-calendar') return 'calendar';
-  if (hash === 'cnn-academy') return 'cnn-academy';
-  return 'home';
+  const matchTarget = (target: string): PageId | null => {
+    if (!target) return null;
+    if (
+      target === 'developer' ||
+      target === 'asifa' ||
+      target.startsWith('developer') ||
+      target.startsWith('asifa') ||
+      target.includes('developer') ||
+      target.includes('asifa')
+    ) {
+      return 'developer';
+    }
+    if (target === 'campus-facilities' || target === 'facilities' || target === 'facility' || target === 'labs') return 'campus-facilities';
+    if (target === 'about-us' || target === 'about') return 'about-us';
+    if (target === 'programmes' || target === 'programs' || target === 'academics' || target === 'academic' || target === 'courses' || target === 'degrees') return 'programmes';
+    if (target === 'faculty' || target === 'teachers' || target === 'professors') return 'faculty';
+    if (target === 'legacy' || target === 'our-legacy' || target === 'history') return 'legacy';
+    if (target === 'campus-life' || target === 'campuslife' || target === 'student-life') return 'campus-life';
+    if (target === 'scholarships' || target === 'scholarship') return 'scholarships';
+    if (target === 'fee-structure' || target === 'fees' || target === 'fee' || target === 'fee-calculator' || target === 'tuition') return 'fee-structure';
+    if (target === 'calendar' || target === 'academic-calendar') return 'calendar';
+    if (target === 'cnn-academy') return 'cnn-academy';
+    return null;
+  };
+
+  return (
+    matchTarget(lastPathSegment) ||
+    matchTarget(pathname) ||
+    matchTarget(lastHashSegment) ||
+    matchTarget(hash) ||
+    'home'
+  );
+};
+
+const getInitialProgramParam = (): string | null => {
+  if (typeof window === 'undefined') return null;
+  const rawHash = window.location.hash || '';
+  const hashQuery = rawHash.includes('?') ? rawHash.split('?')[1] : '';
+  const hashParams = new URLSearchParams(hashQuery);
+  return hashParams.get('program') || hashParams.get('prog') || null;
+};
+
+const getInitialCategoryParam = (): string | null => {
+  if (typeof window === 'undefined') return null;
+  const rawHash = window.location.hash || '';
+  const hashQuery = rawHash.includes('?') ? rawHash.split('?')[1] : '';
+  const hashParams = new URLSearchParams(hashQuery);
+  return hashParams.get('category') || hashParams.get('cat') || null;
 };
 
 // Lazy-loaded Modals & Chatbot for zero upfront overhead
@@ -132,11 +145,11 @@ const UcpInfoModal = React.lazy(() => import('./components/UcpInfoModal').then(m
 const UcpChatbot = React.lazy(() => import('./components/UcpChatbot').then(m => ({ default: m.UcpChatbot })));
 
 export default function App() {
-  // Navigation / Page state initialized from URL hash for direct access and refresh
+  // Navigation / Page state initialized from URL hash or query for direct access and refresh
   const [currentPage, setCurrentPage] = useState<PageId>(getPageFromHash);
   const [facultyCategory, setFacultyCategory] = useState<string>('all');
-  const [selectedProgrammeId, setSelectedProgrammeId] = useState<string | null>(null);
-  const [selectedProgrammeCategory, setSelectedProgrammeCategory] = useState<string | null>(null);
+  const [selectedProgrammeId, setSelectedProgrammeId] = useState<string | null>(getInitialProgramParam);
+  const [selectedProgrammeCategory, setSelectedProgrammeCategory] = useState<string | null>(getInitialCategoryParam);
   const [scholarshipSectionId, setScholarshipSectionId] = useState<string | null>(null);
 
   // Modal states
@@ -496,9 +509,9 @@ export default function App() {
     const handleHashSync = () => {
       const rawHash = (window.location.hash || '').replace(/^#\/?/, '');
       const [baseHash, queryStr] = rawHash.split('?');
-      const params = new URLSearchParams(queryStr || '');
-      const prog = params.get('program') || params.get('prog');
-      const cat = params.get('category') || params.get('cat');
+      const hashParams = new URLSearchParams(queryStr || '');
+      const prog = hashParams.get('program') || hashParams.get('prog');
+      const cat = hashParams.get('category') || hashParams.get('cat');
 
       if (prog) setSelectedProgrammeId(prog);
       if (cat) setSelectedProgrammeCategory(cat);
@@ -609,6 +622,9 @@ export default function App() {
 
   return (
     <div id="top" className="min-h-screen bg-white text-slate-900 dark:bg-[#080f1d] dark:text-[#f8fafc] font-sans selection:bg-[#a30f16] selection:text-white transition-colors duration-200 overflow-x-hidden w-full max-w-full">
+      {/* Centralized SEO & Social Metadata Head Manager */}
+      <SeoHead pageId={currentPage} />
+
       {/* Interactive Click Glow & Highlight Manager for all text and images */}
       <ClickGlowManager />
       
@@ -871,6 +887,12 @@ export default function App() {
             onSelectFaculty={handleSelectFaculty}
             onOpenLegacyPage={handleOpenLegacyPage}
             onOpenAboutUsPage={handleOpenAboutUsPage}
+            onOpenProgrammesPage={handleOpenProgrammesPage}
+            onOpenScholarshipsPage={handleOpenScholarshipsPage}
+            onOpenCampusFacilitiesPage={handleOpenCampusFacilitiesPage}
+            onOpenCampusLifePage={handleOpenCampusLifePage}
+            onOpenFacultyPage={() => handleOpenFacultyPage('all')}
+            onOpenCalendar={handleOpenCalendarPage}
           />
 
           {/* Right Edge Floating Ribbons & WhatsApp Button */}

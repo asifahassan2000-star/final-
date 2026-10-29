@@ -1,110 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
 
-  <!-- Core Institutional Pages for ucp-bahawalpur-campus.vercel.app -->
+  <!-- Primary Canonical Production URL for UCP Bahawalpur Campus -->
   <url>
-    <loc>https://asifahassan2000-star.github.io/final/</loc>
-    <lastmod>2026-10-27T00:00:00+00:00</lastmod>
+    <loc>https://ucp-bahawalpur-campus.vercel.app/</loc>
+    <lastmod>2026-10-29T00:00:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.00</priority>
-  </url>
-
-  <url>
-    <loc>https://asifahassan2000-star.github.io/final/?page=programmes</loc>
-    <lastmod>2026-10-27T00:00:00+00:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.95</priority>
-  </url>
-
-  <url>
-    <loc>https://asifahassan2000-star.github.io/final/?page=faculty</loc>
-    <lastmod>2026-10-27T00:00:00+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.90</priority>
-  </url>
-
-  <url>
-    <loc>https://asifahassan2000-star.github.io/final/?page=campus-facilities</loc>
-    <lastmod>2026-10-27T00:00:00+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.90</priority>
-  </url>
-
-  <url>
-    <loc>https://asifahassan2000-star.github.io/final/?page=fee-structure</loc>
-    <lastmod>2026-10-27T00:00:00+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.90</priority>
-  </url>
-
-  <url>
-    <loc>https://asifahassan2000-star.github.io/final/?page=scholarships</loc>
-    <lastmod>2026-10-27T00:00:00+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.90</priority>
-  </url>
-
-  <url>
-    <loc>https://asifahassan2000-star.github.io/final/?page=campus-life</loc>
-    <lastmod>2026-10-27T00:00:00+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.88</priority>
-  </url>
-
-  <url>
-    <loc>https://asifahassan2000-star.github.io/final/?page=about-us</loc>
-    <lastmod>2026-10-27T00:00:00+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.88</priority>
-  </url>
-
-  <url>
-    <loc>https://asifahassan2000-star.github.io/final/?page=academic-calendar</loc>
-    <lastmod>2026-10-27T00:00:00+00:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.85</priority>
-  </url>
-
-  <url>
-    <loc>https://asifahassan2000-star.github.io/final/?page=our-legacy</loc>
-    <lastmod>2026-10-27T00:00:00+00:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.85</priority>
-  </url>
-
-  <url>
-    <loc>https://asifahassan2000-star.github.io/final/?page=cnn-academy</loc>
-    <lastmod>2026-10-27T00:00:00+00:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.85</priority>
-  </url>
-
-  <url>
-    <loc>https://asifahassan2000-star.github.io/final/#programmes</loc>
-    <lastmod>2026-10-27T00:00:00+00:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.92</priority>
-  </url>
-
-  <url>
-    <loc>https://asifahassan2000-star.github.io/final/#faculty</loc>
-    <lastmod>2026-10-27T00:00:00+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.88</priority>
-  </url>
-
-  <url>
-    <loc>https://asifahassan2000-star.github.io/final/#campus-facilities</loc>
-    <lastmod>2026-10-27T00:00:00+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.88</priority>
-  </url>
-
-  <url>
-    <loc>https://asifahassan2000-star.github.io/final/#campus-life</loc>
-    <lastmod>2026-10-27T00:00:00+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.88</priority>
+    <image:image>
+      <image:loc>https://ucp-bahawalpur-campus.vercel.app/assets/campus/hero_campus_night_flagship.webp</image:loc>
+      <image:title>University of Central Punjab UCP Bahawalpur Campus Flagship Building</image:title>
+      <image:caption>Official UCP Bahawalpur Campus portal on Airport Road, Bahawalpur</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://ucp-bahawalpur-campus.vercel.app/assets/ucp-official-logo.png</image:loc>
+      <image:title>UCP Official Logo</image:title>
+    </image:image>
   </url>
 
 </urlset>

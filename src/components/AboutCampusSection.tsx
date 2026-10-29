@@ -184,7 +184,7 @@ export const AboutCampusSection: React.FC<AboutCampusSectionProps> = ({
               transition={{ duration: 0.75, delay: 0.1, ease: easeCurve }}
               className="text-[19px] sm:text-[21px] lg:text-[22.5px] leading-relaxed text-slate-700 dark:text-slate-200"
             >
-              <strong>Constituent College UCP Campus Bahawalpur (UCP BWP)</strong> is an official academic constituent unit owned, maintained, and administered directly by the University of Central Punjab, Lahore. As part of Pakistan's largest educational network—the Punjab Group of Colleges (PGC)—the Bahawalpur campus enables students across Southern Punjab to earn an official HEC-recognized UCP Lahore degree close to home, without the burden of hostel fees or relocation expenses.
+              <strong>UCP Bahawalpur Campus</strong>, also widely known as <strong>UCP BWP</strong> (Constituent College UCP Campus Bahawalpur), is the official collegiate campus of the <strong>University of Central Punjab Bahawalpur</strong>, located on Airport Road, Bahawalpur. As part of Pakistan's largest educational network—the Punjab Group of Colleges (PGC)—the campus empowers students across Southern Punjab to pursue prestigious, HEC-recognized undergraduate BS and Associate Degree (ADP) programs close to home, with world-class faculty, cutting-edge computing labs, and guaranteed merit scholarships.
             </motion.p>
 
             <motion.p 

@@ -5,31 +5,31 @@ import { ThemeProvider } from '../src/context/ThemeContext';
 import '../src/index.css';
 
 export const metadata: Metadata = {
-  title: 'University of Central Punjab - Bahawalpur Campus | UCP Bahawalpur',
+  title: 'UCP Bahawalpur Campus | Programs, Admissions & Fees',
   description:
-    'Official website of the University of Central Punjab (UCP) Bahawalpur Campus, featuring comprehensive academics, faculties, online admissions, student portal, campus life, research, and facilities.',
+    'Official portal of UCP Bahawalpur Campus (UCP BWP), located on Airport Road, Bahawalpur. Explore recognized BS & ADP degree programs, online admissions, fee structure, scholarships, and modern campus facilities.',
   keywords: [
-    'UCP',
-    'UCP Bahawalpur',
-    'UCP Campus Life',
+    'UCP Bahawalpur Campus',
+    'UCP BWP',
     'University of Central Punjab Bahawalpur',
     'UCP Admissions',
     'UCP Programs',
-    'Environmental Stewardship',
     'UCP Fee Structure',
     'UCP Scholarships',
+    'BS Computer Science Bahawalpur',
+    'ADP Artificial Intelligence Bahawalpur',
   ],
   authors: [{ name: 'University of Central Punjab Bahawalpur Campus' }],
-  metadataBase: new URL('https://asifahassan2000-star.github.io/final'),
+  metadataBase: new URL('https://ucp-bahawalpur-campus.vercel.app'),
   alternates: {
-    canonical: 'https://asifahassan2000-star.github.io/final',
+    canonical: 'https://ucp-bahawalpur-campus.vercel.app',
   },
   openGraph: {
-    title: 'UCP Bahawalpur Campus Life | University of Central Punjab',
+    title: 'UCP Bahawalpur Campus | Programs, Admissions & Fees',
     description:
-      'Explore Campus Life at the University of Central Punjab (UCP) Bahawalpur Campus. Discover 22+ vibrant student events, environmental stewardship initiatives, student societies, state-of-the-art facilities, and undergraduate academic excellence.',
-    url: 'https://asifahassan2000-star.github.io/final',
-    siteName: 'UCP Bahawalpur Campus Life',
+      'Official portal of UCP Bahawalpur Campus (UCP BWP), located on Airport Road, Bahawalpur. Explore recognized BS & ADP degree programs, online admissions, fee structure, scholarships, and modern campus facilities.',
+    url: 'https://ucp-bahawalpur-campus.vercel.app',
+    siteName: 'UCP Bahawalpur Campus',
     locale: 'en_PK',
     type: 'website',
     images: [
@@ -43,9 +43,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'UCP Bahawalpur Campus Life | University of Central Punjab',
+    title: 'UCP Bahawalpur Campus | Programs, Admissions & Fees',
     description:
-      'Explore Campus Life at the University of Central Punjab (UCP) Bahawalpur Campus. Discover 22+ vibrant student events, environmental stewardship initiatives, student societies, state-of-the-art facilities, and undergraduate academic excellence.',
+      'Official portal of UCP Bahawalpur Campus (UCP BWP), located on Airport Road, Bahawalpur. Explore recognized BS & ADP degree programs, online admissions, fee structure, scholarships, and modern campus facilities.',
     images: ['/assets/campus/hero_campus_night_flagship.webp'],
   },
   icons: {
