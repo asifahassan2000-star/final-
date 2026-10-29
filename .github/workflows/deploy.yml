@@ -34,10 +34,15 @@ jobs:
           NODE_ENV: production
         run: |
           npm run build
-          touch out/.nojekyll
+          if [ -d "dist" ]; then
+            touch dist/.nojekyll
+          fi
+          if [ -d "out" ]; then
+            touch out/.nojekyll
+          fi
 
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
         with:
-          folder: out
+          folder: dist
           branch: gh-pages
