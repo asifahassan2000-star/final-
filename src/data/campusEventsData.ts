@@ -1332,7 +1332,7 @@ export const CAMPUS_EVENTS_DATA: CampusEvent[] = [
       },
       {
         src: 'https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-20%20at%201.35.18%20AM.jpeg?updatedAt=1792580311777',
-        fallbackSrc: '/assets/campus-life-new/campus-28.jpg',
+        fallbackSrc: '/assets/campus-life-new/campus-27.jpg',
         alt: 'Students and families celebrating Mothers Day together in decorated campus hall',
         caption: 'Family celebrations and heartwarming bonding moments during the annual tribute'
       },

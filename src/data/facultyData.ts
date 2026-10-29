@@ -99,13 +99,14 @@ export const ALL_FACULTY_MEMBERS: FacultyMemberData[] = [
   {
     id: 'dr-abbas-haider',
     numericId: 5,
-    name: 'Dr. Abbas Haider',
+    name: 'Dr. M. Abbas Haider Khan',
     designation: 'Assistant Professor',
+    cardDesignation: 'Assistant Professor',
     department: 'Department of Social Sciences',
     highestDegree: 'Ph.D. in History',
-    experienceYears: 'Eight Years',
-    specialization: 'Historical Research, South Asian History & Social Sciences',
-    intro: 'Assistant Professor in Social Sciences with 8 years of university teaching and scholarly research in history.',
+    experienceYears: '8 Years',
+    specialization: 'Assistant Professor in Social Science with 8 years of university teaching and scholarly research in History, Political Science, Philosophy, Sociology, Anthropology and Mass Communication.',
+    intro: 'Assistant Professor in Social Science with 8 years of university teaching and scholarly research in History, Political Science, Philosophy, Sociology, Anthropology and Mass Communication.',
     photoUrl: 'https://ik.imagekit.io/Muffins/image%20-%202026-10-22T163817.930.png',
     fallbackPhotoUrl: 'https://ik.imagekit.io/Muffins/image%20-%202026-10-22T163817.930.png',
     objectPosition: 'object-top',
@@ -115,12 +116,31 @@ export const ALL_FACULTY_MEMBERS: FacultyMemberData[] = [
       'Master of Arts (M.A.) in History'
     ],
     experienceDetails: [
-      'Eight Years of University Teaching and Social Sciences Research'
+      '8 Years of University Teaching and Scholarly Research in Social Sciences',
+      'Academic Instruction in History, Political Science, Philosophy, Sociology, Anthropology & Mass Communication'
+    ],
+    areaOfInterest: [
+      'History',
+      'Political Science',
+      'Philosophy',
+      'Sociology',
+      'Anthropology',
+      'Mass Communication'
     ],
     coreTechnicalSkills: [
-      'Historical Research & Historiography',
-      'Social Sciences & Regional History',
-      'Archival Analysis & Academic Pedagogy'
+      'Scholarly Research & University Pedagogy in Social Sciences',
+      'History, Historiography & Archival Research',
+      'Political Science & Sociological Inquiry',
+      'Philosophy & Anthropological Studies',
+      'Mass Communication & Media Discourse'
+    ],
+    managementLeadershipSkills: [
+      'Interdisciplinary Social Sciences Curriculum Design',
+      'Higher Education Student Research Advising & Academic Mentorship'
+    ],
+    achievements: [
+      '8 Years of University Teaching and Interdisciplinary Scholarly Research',
+      'Excellence in Social Sciences Instruction Across Multiple Disciplines'
     ]
   },
 
@@ -947,8 +967,8 @@ export const ADMINISTRATION_MEMBERS: FacultyMemberData[] = [
     experienceYears: '10 Years',
     specialization: 'Student Portal Management, Academic Database Administration & IT Support',
     intro: 'Senior systems and portal administrator with 10 years of proven experience managing student information systems, academic credentials, online portal services, and student technical assistance.',
-    photoUrl: '/assets/admin/mr-hafiz-nadeem.jpg',
-    fallbackPhotoUrl: '/images/MkL1TDt1_Whats-App-Image-2026-10-15-at-10-47-27-PM.jpg',
+    photoUrl: 'https://ik.imagekit.io/Muffins/image%20-%202026-10-29T155246.221.png',
+    fallbackPhotoUrl: 'https://ik.imagekit.io/Muffins/image%20-%202026-10-29T155246.221.png',
     objectPosition: 'object-center',
     qualifications: [
       'B.Sc Sciences',

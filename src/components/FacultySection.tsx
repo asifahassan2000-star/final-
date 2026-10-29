@@ -15,7 +15,7 @@ interface FacultySectionProps {
 // Featured Faculty on Homepage in Strict Sequence: Professor -> Associate Professor -> Assistant Professor
 const FEATURED_FACULTY_HOMEPAGE_IDS = [
   'dr-abdul-kareem',     // 1. Professor: Dr. Abdul Kareem Khan
-  'dr-abbas-haider',     // 2. Associate Professor: Dr. Abbas Haider
+  'dr-abbas-haider',     // 2. Assistant Professor: Dr. M. Abbas Haider Khan
   'prof-uzma-zulqurnai', // 3. Assistant Professor: Uzma Zulqurnain
   'prof-abeer-aslam',    // 4. Assistant Professor: Abeer Aslam (shown on homepage in place of Malik Allah Rakha)
 ];

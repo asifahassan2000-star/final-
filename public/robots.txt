@@ -28,5 +28,6 @@ Allow: /
 User-agent: ClaudeBot
 Allow: /
 
-# Canonical XML Sitemap
+# Canonical XML Sitemaps
 Sitemap: https://ucp-bahawalpur-campus.vercel.app/sitemap.xml
+Sitemap: https://ucp-bahawalpur-campus.vercel.app/sitemap-ucp.xml

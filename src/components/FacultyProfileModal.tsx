@@ -142,7 +142,7 @@ export const FacultyProfileModal: React.FC<FacultyProfileModalProps> = ({
                   </li>
                   <li className="flex items-start gap-2">
                     <span className="w-1.5 h-1.5 rounded-full bg-[#C5A059] shrink-0 mt-1" />
-                    <span className="line-clamp-2">{specializationBullet}</span>
+                    <span className="line-clamp-3 sm:line-clamp-4" title={specializationBullet}>{specializationBullet}</span>
                   </li>
                 </ul>
               </div>

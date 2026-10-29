@@ -92,6 +92,13 @@ app.get('/sitemap.xml', (_req, res) => {
   res.sendFile(path.resolve(__dirname, 'public/sitemap.xml'));
 });
 
+app.get('/sitemap-ucp.xml', (_req, res) => {
+  res.setHeader('Content-Type', 'application/xml; charset=utf-8');
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Cache-Control', 'public, max-age=3600, s-maxage=86400');
+  res.sendFile(path.resolve(__dirname, 'public/sitemap-ucp.xml'));
+});
+
 const BASE_SYSTEM_PROMPT = `You are UCP Assistant, official AI assistant for UCP Bahawalpur (University of Central Punjab, Bahawalpur Campus). You are fast, helpful, friendly and concise. Answer instantly. You have extensive knowledge about UCP Bahawalpur campus. For general knowledge questions, answer from your Gemini intelligence directly without mentioning sources.
 
 CRITICAL DEVELOPER & WEBSITE BUILDER ATTRIBUTION:
