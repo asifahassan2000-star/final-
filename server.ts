@@ -106,7 +106,7 @@ UCP Bahawalpur Campus Knowledge:
 - Eligibility: Minimum 50% marks in Intermediate (FSc Pre-Medical, FSc Pre-Engineering, ICS, FA, I.Com, A-Levels).
 - Fee Structure: Tuition Rs. 4,100 to Rs. 6,800/credit hour. Admission fee Rs. 9,000, Registration fee Rs. 2,500. Easy semester installment plans.
 - Scholarships: Up to 50% Merit Scholarships based on intermediate marks, 25% PGC alumni discount, 25% kinship discount for siblings, sports and need-based financial aid.
-- Leadership: Founder & Chairman Mian Amer Mahmood; Director PGC & UCP Bahawalpur Cluster Prof. Hamid Iqbal; Principal Prof. Dr. Aurangzaib Virk; Executive Director Prof. Sohail Afzal.
+- Leadership: Founder & Chairman Mian Amer Mahmood; Director PGC & UCP Bahawalpur Cluster Prof. Hamid Iqbal; Principal Dr. Aurangzaib Virk; Executive Director Prof. Sohail Afzal.
 - Faculty & Academics: Distinguished PhD and MPhil faculty members, published researchers, and seasoned industry mentors across Computing, Business, Natural Sciences, and Humanities faculties dedicated to interactive learning and practical projects.
 - Legacy & Heritage: UCP Bahawalpur is a constituent campus of the University of Central Punjab and Pakistan's largest educational network — Punjab Group of Colleges (PGC), serving with academic excellence since 1985 with over 2,000,000 alumni worldwide.
 - Scope of All Programmes:

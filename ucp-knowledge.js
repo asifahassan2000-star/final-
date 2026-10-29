@@ -508,8 +508,8 @@ export const UCP_KNOWLEDGE_BASE = [
   // 24. PRINCIPAL MESSAGE (PROF. DR. AURANGZAIB VIRK)
   {
     id: "principal-message",
-    question: "who is the Principal / Principal message / Prof. Dr. Aurangzaib Virk",
-    answer: "Prof. Dr. Aurangzaib Virk is the Principal of UCP Bahawalpur Campus. He holds a PhD in Strategic Management and is dedicated to environmental sustainability, strong student mentorship, and academic excellence 🎓.",
+    question: "who is the Principal / Principal message / Dr. Aurangzaib Virk",
+    answer: "Dr. Aurangzaib Virk is the Principal of UCP Bahawalpur Campus. He holds a PhD in Strategic Management and is dedicated to environmental sustainability, strong student mentorship, and academic excellence 🎓.",
     keywords: [
       "principal",
       "principal message",
@@ -664,7 +664,7 @@ export const UCP_KNOWLEDGE_BASE = [
   {
     id: "leadership-all",
     question: "who are the leaders and administrators of UCP Bahawalpur",
-    answer: "UCP Bahawalpur is led by a visionary team:\n• Founder & Chairman: Mian Amer Mahmood (Punjab Group of Colleges)\n• Director PGC & UCP Cluster: Prof. Hamid Iqbal\n• Principal: Prof. Dr. Aurangzaib Virk (PhD Strategic Management)\n• Executive Director: Prof. Sohail Afzal\nThey ensure international academic standards, state-of-the-art facilities, and student growth 🏛️.",
+    answer: "UCP Bahawalpur is led by a visionary team:\n• Founder & Chairman: Mian Amer Mahmood (Punjab Group of Colleges)\n• Director PGC & UCP Cluster: Prof. Hamid Iqbal\n• Principal: Dr. Aurangzaib Virk (PhD Strategic Management)\n• Executive Director: Prof. Sohail Afzal\nThey ensure international academic standards, state-of-the-art facilities, and student growth 🏛️.",
     keywords: [
       "leadership",
       "leaders",

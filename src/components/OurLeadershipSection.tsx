@@ -84,7 +84,7 @@ const LEADERSHIP_PROFILES: LeaderProfile[] = [
   },
   {
     id: 'prof-dr-aurangzaib-virk',
-    name: 'Prof. Dr. Aurangzaib Virk',
+    name: 'Dr. Aurangzaib Virk',
     designation: 'Principal, UCP Bahawalpur Campus',
     secondaryDesignation: 'Principal, UCP Bahawalpur Campus',
     officialRole: 'Principal, UCP Bahawalpur Campus',

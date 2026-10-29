@@ -54,7 +54,7 @@ export const ALL_FACULTY_MEMBERS: FacultyMemberData[] = [
   {
     id: 'dr-abdul-kareem',
     numericId: 2,
-    name: 'Prof. Dr. Abdul Kareem',
+    name: 'Dr. Abdul Kareem Khan',
     designation: 'Professor',
     department: 'Quality Enhancement Cell & Department of Physics',
     highestDegree: 'Ph.D. in Physics (Nuclear Medicine)',
@@ -99,7 +99,7 @@ export const ALL_FACULTY_MEMBERS: FacultyMemberData[] = [
   {
     id: 'dr-abbas-haider',
     numericId: 5,
-    name: 'Prof. Dr. Abbas Haider',
+    name: 'Dr. Abbas Haider',
     designation: 'Assistant Professor',
     department: 'Department of Social Sciences',
     highestDegree: 'Ph.D. in History',
@@ -130,7 +130,7 @@ export const ALL_FACULTY_MEMBERS: FacultyMemberData[] = [
   {
     id: 'prof-uzma-zulqurnai',
     numericId: 1,
-    name: 'Prof. Uzma Zulqurnain',
+    name: 'Uzma Zulqurnain',
     designation: 'Assistant Professor',
     cardDesignation: 'Assistant Professor',
     department: 'Department of Humanities & Social Sciences',
@@ -181,7 +181,7 @@ export const ALL_FACULTY_MEMBERS: FacultyMemberData[] = [
   {
     id: 'prof-abeer-aslam',
     numericId: 12,
-    name: 'Prof. Abeer Aslam',
+    name: 'Abeer Aslam',
     designation: 'Assistant Professor',
     department: 'Department of English & Humanities',
     highestDegree: 'PhD Scholar English Linguistics (contd)',
@@ -331,7 +331,7 @@ export const ALL_FACULTY_MEMBERS: FacultyMemberData[] = [
   {
     id: 'prof-khizer-hayat',
     numericId: 9,
-    name: 'Prof. Khizer Hayat',
+    name: 'Khizer Hayat',
     designation: 'Assistant Professor — Commerce & Business Studies',
     cardDesignation: 'Assistant Professor',
     department: 'Faculty of Management Sciences (Commerce & Business Studies)',
@@ -377,7 +377,7 @@ export const ALL_FACULTY_MEMBERS: FacultyMemberData[] = [
   {
     id: 'prof-ali-shan',
     numericId: 10,
-    name: 'Prof. Rao Ali Shan',
+    name: 'Rao Ali Shan',
     designation: 'Assistant Professor',
     department: 'Department of Computer Science & Artificial Intelligence',
     highestDegree: 'Ph.D. in Artificial Intelligence (AI) — Lincoln University Malaysia, 2022 (CGPA: 3.73)',
@@ -461,7 +461,7 @@ export const ALL_FACULTY_MEMBERS: FacultyMemberData[] = [
   {
     id: 'prof-malik-allah-rakha',
     numericId: 18,
-    name: 'Prof. Malik Allah Rakha',
+    name: 'Malik Allah Rakha',
     designation: 'Lecturer',
     department: 'Faculty of Science & Technology • Department of Mathematics',
     highestDegree: 'M.Phil in Mathematics',
@@ -499,7 +499,7 @@ export const ALL_FACULTY_MEMBERS: FacultyMemberData[] = [
   {
     id: 'prof-aliya-batool',
     numericId: 16,
-    name: 'Prof. Aliya Batool',
+    name: 'Aliya Batool',
     designation: 'Lecturer',
     department: 'Department of Computer Science & Information Technology',
     highestDegree: 'Ph.D. Scholar (Computer Science / IT)',
@@ -572,7 +572,7 @@ export const ALL_FACULTY_MEMBERS: FacultyMemberData[] = [
   {
     id: 'prof-iqra-shabbir',
     numericId: 15,
-    name: 'Prof. Iqra Shabbir',
+    name: 'Iqra Shabbir',
     designation: 'Lecturer',
     department: 'Faculty of Management Sciences • Department of Economics',
     highestDegree: 'M.Phil in Economics',
@@ -608,7 +608,7 @@ export const ALL_FACULTY_MEMBERS: FacultyMemberData[] = [
   {
     id: 'prof-usman-kazmi',
     numericId: 11,
-    name: 'Prof. Syed M. Usman Ali Kazmi',
+    name: 'Syed M. Usman Ali Kazmi',
     designation: 'Lecturer',
     department: 'Department of Computer Science & Information Technology',
     highestDegree: 'MSCS (Master of Science in Computer Science)',
@@ -637,7 +637,7 @@ export const ALL_FACULTY_MEMBERS: FacultyMemberData[] = [
   {
     id: 'prof-marriam-gill',
     numericId: 13,
-    name: 'Prof. Marriam Gill',
+    name: 'Marriam Gill',
     designation: 'Lecturer',
     department: 'Department of Computer Science',
     highestDegree: 'MSCS (Computer Science) • Ph.D. Scholar (Islamia University Bahawalpur)',
@@ -666,7 +666,7 @@ export const ALL_FACULTY_MEMBERS: FacultyMemberData[] = [
   {
     id: 'prof-humra-owj',
     numericId: 14,
-    name: 'Prof. Humra Owj',
+    name: 'Humra Owj',
     designation: 'Lecturer',
     department: 'Department of Information Technology & Computer Science',
     highestDegree: 'MS in Information Technology • BS in Information Technology',
@@ -707,7 +707,7 @@ export const ALL_FACULTY_MEMBERS: FacultyMemberData[] = [
   {
     id: 'prof-huzaira-akmal',
     numericId: 17,
-    name: 'Prof. Huzaira Akmal',
+    name: 'Huzaira Akmal',
     designation: 'Lecturer',
     department: 'Department of English & Humanities',
     highestDegree: 'M. Phil English',
@@ -734,7 +734,7 @@ export const ALL_FACULTY_MEMBERS: FacultyMemberData[] = [
   {
     id: 'prof-hafiz-muhammad-farjad',
     numericId: 19,
-    name: 'Prof. Hafiz Muhammad Farjad',
+    name: 'Hafiz Muhammad Farjad',
     designation: 'Lecturer',
     cardDesignation: 'Lecturer',
     department: 'Faculty of Management Studies (FOMS)',
@@ -781,7 +781,7 @@ export const ALL_FACULTY_MEMBERS: FacultyMemberData[] = [
   {
     id: 'mr-moeen-akhtar-khan',
     numericId: 18,
-    name: 'Prof. Moeen Akhtar Khan',
+    name: 'Moeen Akhtar Khan',
     designation: 'Lecturer',
     cardDesignation: 'Lecturer',
     department: 'Department of English & Humanities',

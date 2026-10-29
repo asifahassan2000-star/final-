@@ -51,7 +51,7 @@ export const QUICK_ACTION_RESPONSES: Record<string, BotResponse> = {
     isOfflineMatch: true
   },
   leadership: {
-    reply: "🏛️ **Campus Leadership & Administration**:\n• **Founder & Chairman**: Mian Amer Mahmood (Punjab Group of Colleges)\n• **Director PGC & UCP Cluster**: Prof. Hamid Iqbal\n• **Principal UCP Bahawalpur**: Prof. Dr. Aurangzaib Virk (PhD Strategic Management)\n• **Executive Director**: Prof. Sohail Afzal\nOur visionary leaders are committed to elevating higher education standards across South Punjab!",
+    reply: "🏛️ **Campus Leadership & Administration**:\n• **Founder & Chairman**: Mian Amer Mahmood (Punjab Group of Colleges)\n• **Director PGC & UCP Cluster**: Prof. Hamid Iqbal\n• **Principal UCP Bahawalpur**: Dr. Aurangzaib Virk (PhD Strategic Management)\n• **Executive Director**: Prof. Sohail Afzal\nOur visionary leaders are committed to elevating higher education standards across South Punjab!",
     actionLink: { label: "View Campus Leadership 👔", url: "#leadership" },
     suggestions: ["Principal Message 🎓", "Faculty Details 👨‍🏫", "Admissions 📝"],
     isOfflineMatch: true

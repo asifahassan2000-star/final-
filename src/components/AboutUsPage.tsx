@@ -491,7 +491,7 @@ export const AboutUsPage: React.FC<AboutUsPageProps> = ({
                   <div className="relative w-full max-w-[195px] sm:max-w-[215px] aspect-[3/4] bg-[#F5F5F5] dark:bg-slate-900 rounded-[8px] overflow-hidden border border-slate-200 dark:border-slate-800 shadow-sm hover:shadow-md transition-all duration-300">
                     <img
                       src="https://ik.imagekit.io/Muffins/image%20-%202026-10-23T154101.204.png"
-                      alt="Prof. Dr. Aurangzaib Virk"
+                      alt="Dr. Aurangzaib Virk"
                       className="w-full h-full object-cover object-[center_14%] group-hover:scale-104 transition-transform duration-500"
                       onError={(e) => {
                         (e.currentTarget as HTMLImageElement).src = '/assets/campus/prof_aurangzaib_virk.png';
@@ -500,7 +500,7 @@ export const AboutUsPage: React.FC<AboutUsPageProps> = ({
                     {/* Name minimal small on image at bottom */}
                     <div className="absolute inset-x-0 bottom-0 p-2.5 sm:p-3 bg-gradient-to-t from-black/95 via-black/60 to-transparent text-white pointer-events-none">
                       <div className="font-['Source_Serif_4','Source_Serif_Pro','Times_New_Roman',serif] text-[12.5px] sm:text-[14px] font-medium leading-tight text-white tracking-tight">
-                        Prof. Dr. Aurangzaib Virk
+                        Dr. Aurangzaib Virk
                       </div>
                       <div className="text-[9.5px] sm:text-[10px] uppercase tracking-[0.06em] text-white/85 font-sans leading-tight mt-0.5 truncate">
                         Principal, UCP
