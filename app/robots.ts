@@ -2,7 +2,7 @@ import type { MetadataRoute } from 'next';
 
 export const dynamic = 'force-static';
 
-const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://ucp-bahawalpur-campus.vercel.app';
+const BASE_URL = 'https://ucp-bahawalpur-campus.vercel.app';
 
 export default function robots(): MetadataRoute.Robots {
   return {
@@ -10,13 +10,14 @@ export default function robots(): MetadataRoute.Robots {
       {
         userAgent: '*',
         allow: '/',
-        disallow: ['/api/'],
+        disallow: ['/developer', '/asifa', '/api/'],
       },
       {
         userAgent: [
           'Googlebot',
           'Googlebot-Image',
           'Bingbot',
+          'Applebot',
           'GPTBot',
           'ChatGPT-User',
           'PerplexityBot',
