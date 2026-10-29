@@ -58,6 +58,33 @@ const AnimatedCounter: React.FC<{
   );
 };
 
+const CORE_VALUES = [
+  {
+    title: 'Integrity',
+    desc: 'We put honesty and ethical responsibility at the core of everything we do.',
+  },
+  {
+    title: 'Respect',
+    desc: 'We treat everyone with dignity and value the wisdom and expertise of the people that surround us.',
+  },
+  {
+    title: 'Tolerance',
+    desc: 'We accept the existence of different views, ideas, and people even if we may disagree with them.',
+  },
+  {
+    title: 'Commitment',
+    desc: 'We are passionate and determined to work hard in order to achieve our goals.',
+  },
+  {
+    title: 'Service',
+    desc: 'We believe in helping our community and working together to empower each other.',
+  },
+  {
+    title: 'Creativity',
+    desc: 'We celebrate innovation and encourage new ways to think.',
+  },
+];
+
 export const AboutUsPage: React.FC<AboutUsPageProps> = ({
   onBackToHome,
   onOpenApply,
@@ -597,105 +624,73 @@ export const AboutUsPage: React.FC<AboutUsPageProps> = ({
               - H2: "Core values that define us"
               - Small red pill button
           - Right Column:
-              - P: Large sans-serif text 19px, line-height 1.8, font-weight 400
-              - 6 Core value cards with refined dual accent styling
+              - P: Large sans-serif text 20px, line-height 1.8, font-weight 400
+              - 6 Core values with clean border-l-[4px] crimson line and subtle scroll entrance
       ======================================================================= */}
       <section className="bg-white dark:bg-[#080f1d] py-20 lg:py-[120px] px-6 lg:px-12 border-b border-slate-200 dark:border-slate-800 transition-colors duration-200">
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
             
-            {/* Left Column: Sticky top 150px */}
+            {/* Left Column: Sticky top 150px with smooth scroll reveal */}
             <div className="lg:col-span-5 lg:sticky lg:top-[150px] space-y-5">
-              <h2 className="font-['Source_Serif_4','Source_Serif_Pro','Times_New_Roman',serif] text-[28px] sm:text-[32px] font-normal text-slate-900 dark:text-white leading-snug tracking-tight">
-                Core values that define us
-              </h2>
-              <div>
-                <button
-                  type="button"
-                  onClick={onOpenFacilitiesPage}
-                  className="bg-[#B31B1B] hover:bg-[#8C1515] text-white rounded-full px-4 py-1.5 text-[11px] font-medium uppercase tracking-[1px] font-sans transition-colors cursor-pointer inline-flex items-center gap-1.5"
-                >
-                  <span>Campus Life &amp; Facilities</span>
-                  <ArrowRight size={12} />
-                </button>
-              </div>
-            </div>
-
-            {/* Right Column: Scrolling Core Values with Big Typography & High-Priority Red Accents */}
-            <div className="lg:col-span-7 space-y-8">
               <motion.div
-                initial={{ opacity: 0, y: 30 }}
+                initial={{ opacity: 0, y: 16 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.2 }}
-                transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-                className="space-y-8"
+                viewport={{ once: true, amount: 0.3 }}
+                transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+                className="space-y-5"
               >
-                <p className="font-sans text-[20px] sm:text-[22px] leading-[1.8] text-slate-800 dark:text-slate-200 font-normal max-w-[650px] text-left">
-                  At UCP Bahawalpur, every academic curriculum, scientific inquiry, and student mentorship initiative is anchored in six foundational core values:
-                </p>
-
-                <div className="space-y-8 text-left max-w-[650px]">
-                  {/* 1. Integrity */}
-                  <div className="border-l-[4px] border-[#B31B1B] pl-5 sm:pl-6 py-1 bg-gradient-to-r from-red-50/40 dark:from-red-950/20 to-transparent">
-                    <h4 className="font-['Source_Serif_4','Source_Serif_Pro','Times_New_Roman',serif] text-[22px] sm:text-[25px] font-bold text-slate-900 dark:text-white tracking-tight">
-                      Integrity
-                    </h4>
-                    <p className="font-sans text-[19px] sm:text-[20px] leading-[1.7] text-slate-700 dark:text-slate-300 mt-1.5 font-normal">
-                      We put honesty and ethical responsibility at the core of everything we do.
-                    </p>
-                  </div>
-
-                  {/* 2. Respect */}
-                  <div className="border-l-[4px] border-[#B31B1B] pl-5 sm:pl-6 py-1 bg-gradient-to-r from-red-50/40 dark:from-red-950/20 to-transparent">
-                    <h4 className="font-['Source_Serif_4','Source_Serif_Pro','Times_New_Roman',serif] text-[22px] sm:text-[25px] font-bold text-slate-900 dark:text-white tracking-tight">
-                      Respect
-                    </h4>
-                    <p className="font-sans text-[19px] sm:text-[20px] leading-[1.7] text-slate-700 dark:text-slate-300 mt-1.5 font-normal">
-                      We treat everyone with dignity and value the wisdom and expertise of the people that surround us.
-                    </p>
-                  </div>
-
-                  {/* 3. Tolerance */}
-                  <div className="border-l-[4px] border-[#B31B1B] pl-5 sm:pl-6 py-1 bg-gradient-to-r from-red-50/40 dark:from-red-950/20 to-transparent">
-                    <h4 className="font-['Source_Serif_4','Source_Serif_Pro','Times_New_Roman',serif] text-[22px] sm:text-[25px] font-bold text-slate-900 dark:text-white tracking-tight">
-                      Tolerance
-                    </h4>
-                    <p className="font-sans text-[19px] sm:text-[20px] leading-[1.7] text-slate-700 dark:text-slate-300 mt-1.5 font-normal">
-                      We accept the existence of different views, ideas, and people even if we may disagree with them.
-                    </p>
-                  </div>
-
-                  {/* 4. Commitment */}
-                  <div className="border-l-[4px] border-[#B31B1B] pl-5 sm:pl-6 py-1 bg-gradient-to-r from-red-50/40 dark:from-red-950/20 to-transparent">
-                    <h4 className="font-['Source_Serif_4','Source_Serif_Pro','Times_New_Roman',serif] text-[22px] sm:text-[25px] font-bold text-slate-900 dark:text-white tracking-tight">
-                      Commitment
-                    </h4>
-                    <p className="font-sans text-[19px] sm:text-[20px] leading-[1.7] text-slate-700 dark:text-slate-300 mt-1.5 font-normal">
-                      We are passionate and determined to work hard in order to achieve our goals.
-                    </p>
-                  </div>
-
-                  {/* 5. Service */}
-                  <div className="border-l-[4px] border-[#B31B1B] pl-5 sm:pl-6 py-1 bg-gradient-to-r from-red-50/40 dark:from-red-950/20 to-transparent">
-                    <h4 className="font-['Source_Serif_4','Source_Serif_Pro','Times_New_Roman',serif] text-[22px] sm:text-[25px] font-bold text-slate-900 dark:text-white tracking-tight">
-                      Service
-                    </h4>
-                    <p className="font-sans text-[19px] sm:text-[20px] leading-[1.7] text-slate-700 dark:text-slate-300 mt-1.5 font-normal">
-                      We believe in helping our community and working together to empower each other.
-                    </p>
-                  </div>
-
-                  {/* 6. Creativity */}
-                  <div className="border-l-[4px] border-[#B31B1B] pl-5 sm:pl-6 py-1 bg-gradient-to-r from-red-50/40 dark:from-red-950/20 to-transparent">
-                    <h4 className="font-['Source_Serif_4','Source_Serif_Pro','Times_New_Roman',serif] text-[22px] sm:text-[25px] font-bold text-slate-900 dark:text-white tracking-tight">
-                      Creativity
-                    </h4>
-                    <p className="font-sans text-[19px] sm:text-[20px] leading-[1.7] text-slate-700 dark:text-slate-300 mt-1.5 font-normal">
-                      We celebrate innovation and encourage new ways to think.
-                    </p>
-                  </div>
+                <h2 className="font-['Source_Serif_4','Source_Serif_Pro','Times_New_Roman',serif] text-[28px] sm:text-[32px] font-normal text-slate-900 dark:text-white leading-snug tracking-tight">
+                  Core values that define us
+                </h2>
+                <div>
+                  <button
+                    type="button"
+                    onClick={onOpenFacilitiesPage}
+                    className="bg-[#B31B1B] hover:bg-[#8C1515] text-white rounded-full px-4 py-1.5 text-[11px] font-medium uppercase tracking-[1px] font-sans transition-colors cursor-pointer inline-flex items-center gap-1.5"
+                  >
+                    <span>Campus Life &amp; Facilities</span>
+                    <ArrowRight size={12} />
+                  </button>
                 </div>
               </motion.div>
+            </div>
+
+            {/* Right Column: Scrolling Core Values with Smooth Text Animations */}
+            <div className="lg:col-span-7 space-y-8">
+              <motion.p
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.2 }}
+                transition={{ duration: 0.65, ease: [0.16, 1, 0.3, 1] }}
+                className="font-sans text-[20px] sm:text-[22px] leading-[1.8] text-slate-800 dark:text-slate-200 font-normal max-w-[650px] text-left"
+              >
+                At UCP Bahawalpur, every academic curriculum, scientific inquiry, and student mentorship initiative is anchored in six foundational core values:
+              </motion.p>
+
+              <div className="space-y-8 text-left max-w-[650px]">
+                {CORE_VALUES.map((val, idx) => (
+                  <motion.div
+                    key={val.title}
+                    initial={{ opacity: 0, y: 22 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, amount: 0.25 }}
+                    transition={{
+                      duration: 0.55,
+                      delay: idx * 0.08,
+                      ease: [0.16, 1, 0.3, 1],
+                    }}
+                    className="border-l-[4px] border-[#B31B1B] pl-5 sm:pl-6 py-1 bg-gradient-to-r from-red-50/40 dark:from-red-950/20 to-transparent"
+                  >
+                    <h4 className="font-['Source_Serif_4','Source_Serif_Pro','Times_New_Roman',serif] text-[22px] sm:text-[25px] font-bold text-slate-900 dark:text-white tracking-tight">
+                      {val.title}
+                    </h4>
+                    <p className="font-sans text-[19px] sm:text-[20px] leading-[1.7] text-slate-700 dark:text-slate-300 mt-1.5 font-normal">
+                      {val.desc}
+                    </p>
+                  </motion.div>
+                ))}
+              </div>
             </div>
 
           </div>

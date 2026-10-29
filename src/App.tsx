@@ -75,15 +75,40 @@ export type PageId = 'home' | 'faculty' | 'programmes' | 'legacy' | 'campus-life
 const getPageFromHash = (): PageId => {
   if (typeof window === 'undefined') return 'home';
   const pathname = (window.location.pathname || '').replace(/^\/+|\/+$/g, '').toLowerCase();
-  if (pathname === 'developer' || pathname === 'asifa' || pathname.startsWith('developer') || pathname.startsWith('asifa')) return 'developer';
-  if (pathname === 'campus-facilities' || pathname === 'facilities') return 'campus-facilities';
-  if (pathname === 'about-us' || pathname === 'about') return 'about-us';
+  const pathSegments = pathname.split('/').filter(Boolean);
+  const lastPathSegment = pathSegments[pathSegments.length - 1] || '';
+
+  if (
+    pathname === 'developer' ||
+    pathname === 'asifa' ||
+    lastPathSegment === 'developer' ||
+    lastPathSegment === 'asifa' ||
+    pathname.startsWith('developer') ||
+    pathname.startsWith('asifa') ||
+    pathname.includes('/developer') ||
+    pathname.includes('/asifa')
+  ) {
+    return 'developer';
+  }
+  if (pathname === 'campus-facilities' || pathname === 'facilities' || lastPathSegment === 'campus-facilities' || lastPathSegment === 'facilities') return 'campus-facilities';
+  if (pathname === 'about-us' || pathname === 'about' || lastPathSegment === 'about-us' || lastPathSegment === 'about') return 'about-us';
   
   const rawHash = (window.location.hash || '').replace(/^#\/?/, '').toLowerCase();
   // Strip query parameters if present (e.g. #programmes?category=...)
   const hash = rawHash.split('?')[0].split('#')[0].trim();
-  
-  if (hash === 'developer' || hash === 'asifa') return 'developer';
+  const hashSegments = hash.split('/').filter(Boolean);
+  const lastHashSegment = hashSegments[hashSegments.length - 1] || '';
+
+  if (
+    hash === 'developer' ||
+    hash === 'asifa' ||
+    lastHashSegment === 'developer' ||
+    lastHashSegment === 'asifa' ||
+    hash.includes('developer') ||
+    hash.includes('asifa')
+  ) {
+    return 'developer';
+  }
   if (hash === 'campus-facilities' || hash === 'facilities' || hash === 'facility' || hash === 'labs') return 'campus-facilities';
   if (hash === 'about-us' || hash === 'about') return 'about-us';
   if (hash === 'programmes' || hash === 'programs' || hash === 'academics' || hash === 'academic' || hash === 'courses' || hash === 'degrees') return 'programmes';
