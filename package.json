@@ -13,7 +13,8 @@
   "scripts": {
     "dev": "tsx server.ts",
     "start": "node server.ts",
-    "build": "NODE_ENV=production next build",
+    "build": "vite build",
+    "build:next": "next build",
     "preview": "vite preview",
     "clean": "rm -rf dist out server.js",
     "lint": "tsc --noEmit"

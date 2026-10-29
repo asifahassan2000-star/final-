@@ -5,9 +5,9 @@ import { ThemeProvider } from '../src/context/ThemeContext';
 import '../src/index.css';
 
 export const metadata: Metadata = {
-  title: 'UCP Bahawalpur Campus Life | University of Central Punjab',
+  title: 'University of Central Punjab - Bahawalpur Campus | UCP Bahawalpur',
   description:
-    'Explore Campus Life at the University of Central Punjab (UCP) Bahawalpur Campus. Discover 22+ vibrant student events, environmental stewardship initiatives, student societies, state-of-the-art facilities, and undergraduate academic excellence.',
+    'Official website of the University of Central Punjab (UCP) Bahawalpur Campus, featuring comprehensive academics, faculties, online admissions, student portal, campus life, research, and facilities.',
   keywords: [
     'UCP',
     'UCP Bahawalpur',

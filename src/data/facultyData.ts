@@ -902,7 +902,7 @@ export const ADMINISTRATION_MEMBERS: FacultyMemberData[] = [
   {
     id: 'admin-miss-alisha-tariq',
     numericId: 102,
-    name: 'Miss Alisha Tariq',
+    name: 'Alisha Tariq',
     designation: 'Graphic Designer',
     department: 'Media, Creative Branding & Design Operations',
     highestDegree: 'Masters in Computer Science (MCS)',
@@ -940,7 +940,7 @@ export const ADMINISTRATION_MEMBERS: FacultyMemberData[] = [
   {
     id: 'admin-mr-hafiz-nadeem',
     numericId: 103,
-    name: 'Mr. Hafiz Nadeem',
+    name: 'Hafiz Nadeem',
     designation: 'Portal Manager',
     department: 'Student Information Systems & Portal Management',
     highestDegree: 'B.Sc Sciences',
