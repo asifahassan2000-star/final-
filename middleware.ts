@@ -1,6 +1,14 @@
 import { NextRequest, NextResponse } from 'next/server';
 
 export function middleware(request: NextRequest) {
+  // Skip prefetch requests
+  if (
+    request.headers.get('next-router-prefetch') ||
+    request.headers.get('purpose') === 'prefetch'
+  ) {
+    return NextResponse.next();
+  }
+
   // Generate a cryptographically secure, unpredictable per-request nonce
   const nonce = Buffer.from(crypto.randomUUID()).toString('base64');
 
@@ -45,12 +53,6 @@ export const config = {
      * - _next/image (image optimization files)
      * - favicon.ico, images, assets (public static assets)
      */
-    {
-      source: '/((?!_next/static|_next/image|assets/|images/|favicon.ico|.*\\.(?:jpg|jpeg|gif|png|webp|avif|svg|ico|pdf|txt|xml)$).*)',
-      missing: [
-        { type: 'header', key: 'next-router-prefetch' },
-        { type: 'header', key: 'purpose', value: 'prefetch' },
-      ],
-    },
+    '/((?!_next/static|_next/image|assets/|images/|favicon.ico|.*\\.(?:jpg|jpeg|gif|png|webp|avif|svg|ico|pdf|txt|xml)$).*)',
   ],
 };
