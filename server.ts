@@ -35,7 +35,7 @@ app.use((req, res, next) => {
     if (req.path.startsWith('/images/') || req.path.startsWith('/assets/')) {
       res.setHeader('Cache-Control', 'public, max-age=31536000, immutable');
     } else if (!req.path.startsWith('/api/')) {
-      res.setHeader('Cache-Control', 'public, max-age=0, s-maxage=3600, stale-while-revalidate=86400');
+      res.setHeader('Cache-Control', 'public, max-age=0, must-revalidate');
     }
   } else {
     res.setHeader('Cache-Control', 'no-store, no-cache, must-revalidate, proxy-revalidate');
