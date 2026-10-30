@@ -38,9 +38,9 @@ type CategoryFilter =
 
 // Comprehensive verified images for all 25 academic programmes
 const PROGRAMME_IMAGE_MAP: Record<string, string> = {
-  'bs-business-analytics': '/images/Ld75Vg2t_i-Stock-1311598658.jpg',
+  'bs-business-analytics': 'https://ik.imagekit.io/Muffins/analytics-hero-1600x900.jpg',
   'bba': 'https://ik.imagekit.io/Muffins/Business-Adm.png?updatedAt=1793273174499',
-  'bs-accounting-finance': '/images/p6MpMGDn_shutterstock-527098861-1-scaled.avif',
+  'bs-accounting-finance': 'https://ik.imagekit.io/Muffins/AdobeStock_589427987.jpeg',
   'bs-computer-science': '/images/V0QdQKgG_images-1.jpg',
   'bs-psychology': '/images/zWQVBLTD_shutterstock-158110544-scaled.jpg',
   'bs-english': '/images/cKvTywH6_360-F-409187796-W9bg-IQAKZYs-Wkc9g-Xt-Pbs5h-YAWXd6z1-T.jpg',
@@ -61,11 +61,33 @@ const PROGRAMME_IMAGE_MAP: Record<string, string> = {
   'ads-math-physics': 'https://ik.imagekit.io/Muffins/pngtree-mathematical-representation-of-quantum-physics-image_21182772.webp?updatedAt=1793273172056',
   'adp-software-engineering': 'https://ik.imagekit.io/Muffins/Aug-21-software-engineering-program-opt.jpg?updatedAt=1793273171951',
   'adp-software-development': 'https://ik.imagekit.io/Muffins/Aug-21-software-engineering-program-opt.jpg?updatedAt=1793273171951',
-  'adp-cyber-security': '/images/DPDbZQ7K_images.jpg',
-  'bs-cyber-security': '/images/DPDbZQ7K_images.jpg',
-  'bs-cyber': '/images/DPDbZQ7K_images.jpg',
-  'adp-artificial-intelligence': '/images/bMFsfmxh_hand-holding-ai-globe.jpg',
+  'adp-cyber-security': 'https://ik.imagekit.io/Muffins/shutterstock_2510584693-1.jpg',
+  'bs-cyber-security': 'https://ik.imagekit.io/Muffins/shutterstock_2510584693-1.jpg',
+  'bs-cyber': 'https://ik.imagekit.io/Muffins/shutterstock_2510584693-1.jpg',
+  'adp-artificial-intelligence': 'https://ik.imagekit.io/Muffins/images%20(5).jpg',
+  'adp-ai': 'https://ik.imagekit.io/Muffins/images%20(5).jpg',
   'adp-data-science': 'https://ik.imagekit.io/Muffins/images%20(3).jpg?updatedAt=1793273171961',
+};
+
+const getProgrammeImageCustomClass = (progId: string): string => {
+  switch (progId) {
+    case 'bs-business-analytics':
+      return 'scale-[1.08] group-hover:scale-[1.14] object-center origin-center';
+    case 'bba':
+      return 'scale-[1.16] group-hover:scale-[1.22] object-center origin-center';
+    case 'adp-english':
+      return 'scale-[1.12] group-hover:scale-[1.18] object-center origin-center';
+    case 'adp-business-analytics':
+      return 'scale-[1.10] group-hover:scale-[1.16] object-center origin-center';
+    case 'adp-biotechnology':
+      return 'scale-[1.09] group-hover:scale-[1.15] object-center origin-center';
+    case 'adp-computer-science':
+      return 'scale-[1.08] group-hover:scale-[1.14] object-center origin-center';
+    case 'adp-business-administration':
+      return 'scale-105 group-hover:scale-110 object-[center_35%] origin-center';
+    default:
+      return 'group-hover:scale-105 object-center';
+  }
 };
 
 const resolveProgrammeImageSrc = (prog: BahawalpurProgramme | { id: string; image?: any }): string => {
@@ -799,8 +821,8 @@ Campus Phone: 062-2202030 / 062-2202050
                   onClick={() => handleSelectProgramme(prog)}
                   className="group bg-white rounded-2xl border border-stone-200 overflow-hidden shadow-xs hover:shadow-md transition-all duration-200 cursor-pointer flex flex-col"
                 >
-                  {/* Card Image */}
-                  <div className="relative aspect-16/10 bg-stone-100 dark:bg-stone-800 overflow-hidden">
+                  {/* Card Image Frame */}
+                  <div className="relative w-full aspect-[16/10] bg-stone-100 dark:bg-stone-800 overflow-hidden m-0 p-0 leading-none">
                     <img
                       src={resolveProgrammeImageSrc(prog)}
                       alt={prog.name}
@@ -808,11 +830,11 @@ Campus Phone: 062-2202030 / 062-2202050
                       decoding="async"
                       referrerPolicy="no-referrer"
                       onError={(e) => handleProgrammeImgError(e, prog.id)}
-                      className={`w-full h-full object-cover group-hover:scale-103 transition-transform duration-300 ${
-                        prog.id === 'adp-business-administration' ? 'object-[center_35%]' : 'object-center'
-                      }`}
+                      className={`block w-full h-full object-cover transition-transform duration-500 ease-out m-0 p-0 align-bottom select-none ${getProgrammeImageCustomClass(
+                        prog.id
+                      )}`}
                     />
-                    <div className="absolute top-3 left-3 bg-[#092242]/90 text-white text-[11px] font-mono px-2 py-0.5 rounded tracking-wide font-semibold">
+                    <div className="absolute top-3 left-3 bg-[#092242]/90 text-white text-[11px] font-mono px-2 py-0.5 rounded tracking-wide font-semibold shadow-xs">
                       {prog.degree}
                     </div>
                   </div>
@@ -883,8 +905,8 @@ Campus Phone: 062-2202030 / 062-2202050
                   onClick={() => handleSelectProgramme(prog)}
                   className="group bg-white rounded-2xl border border-stone-200 overflow-hidden shadow-xs hover:shadow-md transition-all duration-200 cursor-pointer flex flex-col"
                 >
-                  {/* Card Image */}
-                  <div className="relative aspect-16/10 bg-stone-100 dark:bg-stone-800 overflow-hidden">
+                  {/* Card Image Frame */}
+                  <div className="relative w-full aspect-[16/10] bg-stone-100 dark:bg-stone-800 overflow-hidden m-0 p-0 leading-none">
                     <img
                       src={resolveProgrammeImageSrc(prog)}
                       alt={prog.name}
@@ -892,11 +914,11 @@ Campus Phone: 062-2202030 / 062-2202050
                       decoding="async"
                       referrerPolicy="no-referrer"
                       onError={(e) => handleProgrammeImgError(e, prog.id)}
-                      className={`w-full h-full object-cover group-hover:scale-103 transition-transform duration-300 ${
-                        prog.id === 'adp-business-administration' ? 'object-[center_35%]' : 'object-center'
-                      }`}
+                      className={`block w-full h-full object-cover transition-transform duration-500 ease-out m-0 p-0 align-bottom select-none ${getProgrammeImageCustomClass(
+                        prog.id
+                      )}`}
                     />
-                    <div className="absolute top-3 left-3 bg-[#092242]/90 text-white text-[11px] font-mono px-2 py-0.5 rounded tracking-wide font-semibold">
+                    <div className="absolute top-3 left-3 bg-[#092242]/90 text-white text-[11px] font-mono px-2 py-0.5 rounded tracking-wide font-semibold shadow-xs">
                       {prog.degree}
                     </div>
                   </div>

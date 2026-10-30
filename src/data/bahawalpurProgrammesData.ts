@@ -63,7 +63,7 @@ export const OFFICIAL_BAHAWALPUR_PROGRAMMES: BahawalpurProgramme[] = [
     feePerCreditHour: 5900,
     totalFee: 796200,
     yearlyAverage: 199050,
-    image: '/images/Ld75Vg2t_i-Stock-1311598658.jpg',
+    image: 'https://ik.imagekit.io/Muffins/analytics-hero-1600x900.jpg',
     shortDescription: 'Combines data analytics, statistical modelling, and strategic business decision-making.',
     about: 'The BS Business Analytics programme equips students with quantitative modelling, predictive intelligence, and analytical decision-making skills. The curriculum bridges business strategy with modern analytical tools, enabling students to convert complex commercial data into actionable institutional insights.',
     whatYouWillLearn: [
@@ -159,7 +159,7 @@ export const OFFICIAL_BAHAWALPUR_PROGRAMMES: BahawalpurProgramme[] = [
     feePerCreditHour: 5900,
     totalFee: 754900,
     yearlyAverage: 188725,
-    image: '/images/p6MpMGDn_shutterstock-527098861-1-scaled.avif',
+    image: 'https://ik.imagekit.io/Muffins/AdobeStock_589427987.jpeg',
     shortDescription: 'Rigorous training in financial reporting, corporate governance, auditing, and investment analysis.',
     about: 'The BS Accounting & Finance programme delivers intensive academic and professional grounding in financial reporting standards, regulatory taxation, corporate financial management, and auditing practices. It builds strong analytical foundations for modern financial systems.',
     whatYouWillLearn: [
@@ -1083,7 +1083,7 @@ export const OFFICIAL_BAHAWALPUR_PROGRAMMES: BahawalpurProgramme[] = [
     feePerCreditHour: 6800,
     totalFee: 521500,
     yearlyAverage: 260750,
-    image: '/images/DPDbZQ7K_images.jpg',
+    image: 'https://ik.imagekit.io/Muffins/shutterstock_2510584693-1.jpg',
     shortDescription: 'Core technical training in network protection, security vulnerability scanning, and digital defence protocols.',
     about: 'The ADP in Cyber Security provides practical training in secure network architectures, operating system hardening, digital threat awareness, and vulnerability assessments. It prepares students for vital entry-level digital defence support roles.',
     whatYouWillLearn: [
@@ -1128,7 +1128,7 @@ export const OFFICIAL_BAHAWALPUR_PROGRAMMES: BahawalpurProgramme[] = [
     feePerCreditHour: 6800,
     totalFee: 521500,
     yearlyAverage: 260750,
-    image: '/images/bMFsfmxh_hand-holding-ai-globe.jpg',
+    image: 'https://ik.imagekit.io/Muffins/images%20(5).jpg',
     shortDescription: 'A two-years and four-semesters degree programme that covers machine learning, algorithms, and intelligent systems development. It opens gateways to the future of smart technologies and automation.',
     about: 'A two-years and four-semesters degree programme that covers machine learning, algorithms, and intelligent systems development. It opens gateways to the future of smart technologies and automation.',
     whatYouWillLearn: [

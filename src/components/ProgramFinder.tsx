@@ -15,11 +15,11 @@ import {
 
 // Official course fallback images provided by user
 const COURSE_FALLBACK_URLS: Record<string, string> = {
-  'bs-business-analytics': '/images/Ld75Vg2t_i-Stock-1311598658.jpg',
+  'bs-business-analytics': 'https://ik.imagekit.io/Muffins/analytics-hero-1600x900.jpg',
   'bba': 'https://ik.imagekit.io/Muffins/Business-Adm.png?updatedAt=1793273174499',
-  'bs-accounting-finance': '/images/p6MpMGDn_shutterstock-527098861-1-scaled.avif',
+  'bs-accounting-finance': 'https://ik.imagekit.io/Muffins/AdobeStock_589427987.jpeg',
   'bs-computer-science': '/images/V0QdQKgG_images-1.jpg',
-  'bs-cyber-security': '/images/DPDbZQ7K_images.jpg',
+  'bs-cyber-security': 'https://ik.imagekit.io/Muffins/shutterstock_2510584693-1.jpg',
   'bs-psychology': '/images/zWQVBLTD_shutterstock-158110544-scaled.jpg',
   'bs-english': '/images/cKvTywH6_360-F-409187796-W9bg-IQAKZYs-Wkc9g-Xt-Pbs5h-YAWXd6z1-T.jpg',
   'bs-physics': 'https://ik.imagekit.io/Muffins/Quantum-Entanglement-Particle-Pair-Concept.webp',
@@ -39,8 +39,9 @@ const COURSE_FALLBACK_URLS: Record<string, string> = {
   'ads-math-physics': 'https://ik.imagekit.io/Muffins/pngtree-mathematical-representation-of-quantum-physics-image_21182772.webp?updatedAt=1793273172056',
   'adp-software-engineering': 'https://ik.imagekit.io/Muffins/Aug-21-software-engineering-program-opt.jpg?updatedAt=1793273171951',
   'adp-software-development': 'https://ik.imagekit.io/Muffins/Aug-21-software-engineering-program-opt.jpg?updatedAt=1793273171951',
-  'adp-cyber-security': '/images/DPDbZQ7K_images.jpg',
-  'adp-artificial-intelligence': '/images/bMFsfmxh_hand-holding-ai-globe.jpg',
+  'adp-cyber-security': 'https://ik.imagekit.io/Muffins/shutterstock_2510584693-1.jpg',
+  'adp-artificial-intelligence': 'https://ik.imagekit.io/Muffins/images%20(5).jpg',
+  'adp-ai': 'https://ik.imagekit.io/Muffins/images%20(5).jpg',
   'adp-data-science': 'https://ik.imagekit.io/Muffins/images%20(3).jpg?updatedAt=1793273171961',
 };
 
@@ -120,6 +121,37 @@ export const ProgramFinder: React.FC<ProgramFinderProps> = ({
       return matchesSearch && matchesCat;
     });
   }, [modalSearchQuery, modalCategory]);
+
+  // Lock background scroll when modal is open
+  useEffect(() => {
+    if (!isModalOpen) return;
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        setIsModalOpen(false);
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    const originalBodyOverflow = document.body.style.overflow;
+    const originalHtmlOverflow = document.documentElement.style.overflow;
+    const originalBodyTouchAction = document.body.style.touchAction;
+    const originalBodyPaddingRight = document.body.style.paddingRight;
+
+    const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
+    if (scrollbarWidth > 0) {
+      document.body.style.paddingRight = `${scrollbarWidth}px`;
+    }
+    document.body.style.overflow = 'hidden';
+    document.documentElement.style.overflow = 'hidden';
+    document.body.style.touchAction = 'none';
+
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+      document.body.style.overflow = originalBodyOverflow;
+      document.documentElement.style.overflow = originalHtmlOverflow;
+      document.body.style.touchAction = originalBodyTouchAction;
+      document.body.style.paddingRight = originalBodyPaddingRight;
+    };
+  }, [isModalOpen]);
 
   // Auto drift animation: moves -30px every 3s infinitely, pauses on hover
   useEffect(() => {
@@ -404,7 +436,11 @@ export const ProgramFinder: React.FC<ProgramFinderProps> = ({
           ========================================================================= */}
       <AnimatePresence>
         {isModalOpen && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 overflow-y-auto">
+          <div 
+            className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 overflow-hidden overscroll-contain"
+            onWheel={(e) => e.stopPropagation()}
+            onTouchMove={(e) => e.stopPropagation()}
+          >
             {/* Modal Backdrop */}
             <motion.div
               initial={{ opacity: 0 }}
@@ -412,7 +448,7 @@ export const ProgramFinder: React.FC<ProgramFinderProps> = ({
               exit={{ opacity: 0 }}
               transition={{ duration: 0.3 }}
               onClick={() => setIsModalOpen(false)}
-              className="fixed inset-0 bg-black/60 backdrop-blur-xl cursor-pointer"
+              className="fixed inset-0 bg-black/65 backdrop-blur-md cursor-pointer select-none"
               aria-hidden="true"
             />
 
@@ -427,7 +463,9 @@ export const ProgramFinder: React.FC<ProgramFinderProps> = ({
               }}
               exit={{ scale: 0.94, y: 20, opacity: 0, transition: { duration: 0.2 } }}
               onClick={(e) => e.stopPropagation()}
-              className="relative w-full max-w-6xl max-h-[88vh] bg-white rounded-[24px] shadow-2xl z-10 overflow-y-auto border border-[#E5E7EB] p-5 sm:p-8 lg:p-10 text-[#0F2C61]"
+              onWheel={(e) => e.stopPropagation()}
+              tabIndex={-1}
+              className="relative w-full max-w-6xl max-h-[88vh] bg-white rounded-[24px] shadow-2xl z-10 overflow-y-auto overscroll-contain border border-[#E5E7EB] p-5 sm:p-8 lg:p-10 text-[#0F2C61] focus:outline-none"
               role="dialog"
               aria-modal="true"
             >

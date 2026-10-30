@@ -29,7 +29,7 @@ export const FacultyProfileModal: React.FC<FacultyProfileModalProps> = ({
     }
   }, [isOpen, faculty?.id]);
 
-  // Close on Escape key
+  // Close on Escape key and robust background scroll lock
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === 'Escape') {
@@ -38,23 +38,38 @@ export const FacultyProfileModal: React.FC<FacultyProfileModalProps> = ({
     };
     if (isOpen) {
       document.addEventListener('keydown', handleKeyDown);
+      const originalBodyOverflow = document.body.style.overflow;
+      const originalHtmlOverflow = document.documentElement.style.overflow;
+      const originalBodyTouchAction = document.body.style.touchAction;
+      const originalBodyPaddingRight = document.body.style.paddingRight;
+
+      const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
+      if (scrollbarWidth > 0) {
+        document.body.style.paddingRight = `${scrollbarWidth}px`;
+      }
       document.body.style.overflow = 'hidden';
+      document.documentElement.style.overflow = 'hidden';
+      document.body.style.touchAction = 'none';
+
+      return () => {
+        document.removeEventListener('keydown', handleKeyDown);
+        document.body.style.overflow = originalBodyOverflow;
+        document.documentElement.style.overflow = originalHtmlOverflow;
+        document.body.style.touchAction = originalBodyTouchAction;
+        document.body.style.paddingRight = originalBodyPaddingRight;
+      };
     }
-    return () => {
-      document.removeEventListener('keydown', handleKeyDown);
-      document.body.style.overflow = '';
-    };
   }, [isOpen, onClose]);
 
   if (!faculty) return null;
 
-  // Derive concise 3 left bullets (Education & Expertise)
+  // Derive concise left bullets (Education & Expertise)
   const degreeBullet = faculty.highestDegree;
-  const specializationBullet = faculty.specialization 
-    ? faculty.specialization 
-    : faculty.intro
-    ? faculty.intro.replace(/^(Specializes in|Focuses on|Conducts advanced investigations into|Supervises|Researches|Expert in)\s+/i, '').split('.')[0]
-    : 'Advanced Higher Education Pedagogy';
+  const specializationBullet = faculty.academicPillarBullet 
+    || faculty.specialization 
+    || (faculty.intro
+      ? faculty.intro.replace(/^(Specializes in|Focuses on|Conducts advanced investigations into|Supervises|Researches|Expert in)\s+/i, '').split('.')[0]
+      : 'Advanced Higher Education Pedagogy');
   const divisionBullet = faculty.department || 'Academic Division of Advanced Studies';
 
   // Derive concise 3 right bullets (Experience & Research)
@@ -68,7 +83,11 @@ export const FacultyProfileModal: React.FC<FacultyProfileModalProps> = ({
   return (
     <AnimatePresence>
       {isOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-5 md:p-6 overflow-y-auto">
+        <div 
+          className="fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-4 md:p-6 overflow-hidden overscroll-contain"
+          onWheel={(e) => e.stopPropagation()}
+          onTouchMove={(e) => e.stopPropagation()}
+        >
           {/* Backdrop */}
           <motion.div
             initial={{ opacity: 0 }}
@@ -76,7 +95,7 @@ export const FacultyProfileModal: React.FC<FacultyProfileModalProps> = ({
             exit={{ opacity: 0 }}
             transition={{ duration: 0.35 }}
             onClick={onClose}
-            className="fixed inset-0 bg-black/60 backdrop-blur-xl cursor-pointer"
+            className="fixed inset-0 bg-black/65 backdrop-blur-md cursor-pointer select-none"
             aria-hidden="true"
           />
 
@@ -96,7 +115,9 @@ export const FacultyProfileModal: React.FC<FacultyProfileModalProps> = ({
               transition: { duration: 0.22, ease: [0.22, 1, 0.36, 1] } 
             }}
             onClick={(e) => e.stopPropagation()}
-            className="relative w-full max-w-[880px] max-h-[90vh] bg-white rounded-[26px] shadow-2xl z-10 overflow-y-auto border border-slate-100 p-5 sm:p-8 md:p-10 text-slate-800"
+            onWheel={(e) => e.stopPropagation()}
+            tabIndex={-1}
+            className="relative w-full max-w-[880px] max-h-[88vh] sm:max-h-[90vh] bg-white rounded-[26px] shadow-2xl z-10 overflow-y-auto overscroll-contain border border-slate-100 p-5 sm:p-8 md:p-10 text-slate-800 focus:outline-none"
             role="dialog"
             aria-modal="true"
             aria-labelledby="faculty-modal-name"
@@ -142,7 +163,7 @@ export const FacultyProfileModal: React.FC<FacultyProfileModalProps> = ({
                   </li>
                   <li className="flex items-start gap-2">
                     <span className="w-1.5 h-1.5 rounded-full bg-[#C5A059] shrink-0 mt-1" />
-                    <span className="line-clamp-3 sm:line-clamp-4" title={specializationBullet}>{specializationBullet}</span>
+                    <span className="leading-snug" title={specializationBullet}>{specializationBullet}</span>
                   </li>
                 </ul>
               </div>
@@ -184,22 +205,33 @@ export const FacultyProfileModal: React.FC<FacultyProfileModalProps> = ({
                 </div>
 
                 <ul className="space-y-2.5 font-sans text-xs text-slate-600 leading-snug">
-                  <li className="flex items-start gap-2">
-                    <span className="w-1.5 h-1.5 rounded-full bg-[#0F2C61] shrink-0 mt-1" />
-                    <span className="font-semibold text-[#0F2C61]">{faculty.experienceYears || 'Higher Education Teaching'}</span>
-                  </li>
-                  {faculty.experienceDetails && faculty.experienceDetails.length > 0 ? (
+                  {faculty.id === 'dr-abbas-haider' && faculty.experienceDetails && faculty.experienceDetails.length >= 2 ? (
                     faculty.experienceDetails.slice(0, 2).map((exp, idx) => (
                       <li key={idx} className="flex items-start gap-2">
                         <span className="w-1.5 h-1.5 rounded-full bg-[#0F2C61] shrink-0 mt-1" />
-                        <span className="line-clamp-2">{exp}</span>
+                        <span className={idx === 0 ? "font-semibold text-slate-800" : "leading-snug text-slate-600"}>{exp}</span>
                       </li>
                     ))
                   ) : (
-                    <li className="flex items-start gap-2">
-                      <span className="w-1.5 h-1.5 rounded-full bg-[#0F2C61] shrink-0 mt-1" />
-                      <span className="line-clamp-2">{faculty.department}</span>
-                    </li>
+                    <>
+                      <li className="flex items-start gap-2">
+                        <span className="w-1.5 h-1.5 rounded-full bg-[#0F2C61] shrink-0 mt-1" />
+                        <span className="font-semibold text-[#0F2C61]">{faculty.experienceYears || 'Higher Education Teaching'}</span>
+                      </li>
+                      {faculty.experienceDetails && faculty.experienceDetails.length > 0 ? (
+                        faculty.experienceDetails.slice(0, 2).map((exp, idx) => (
+                          <li key={idx} className="flex items-start gap-2">
+                            <span className="w-1.5 h-1.5 rounded-full bg-[#0F2C61] shrink-0 mt-1" />
+                            <span className="line-clamp-2">{exp}</span>
+                          </li>
+                        ))
+                      ) : (
+                        <li className="flex items-start gap-2">
+                          <span className="w-1.5 h-1.5 rounded-full bg-[#0F2C61] shrink-0 mt-1" />
+                          <span className="line-clamp-2">{faculty.department}</span>
+                        </li>
+                      )}
+                    </>
                   )}
                 </ul>
               </div>
@@ -327,10 +359,10 @@ export const FacultyProfileModal: React.FC<FacultyProfileModalProps> = ({
 
                     <div className="p-4 rounded-xl border border-slate-200/80 bg-white">
                       <span className="text-[10px] font-mono uppercase tracking-wider text-slate-400 block mb-1">
-                        Core Academic Specialization
+                        Research Area
                       </span>
                       <p className="text-xs sm:text-sm font-semibold text-[#0F2C61]">
-                        {faculty.specialization || 'Academic Pedagogy & Research'}
+                        {faculty.researchArea || faculty.specialization || 'Academic Pedagogy & Research'}
                       </p>
                     </div>
                   </div>
@@ -611,10 +643,20 @@ export const FacultyProfileModal: React.FC<FacultyProfileModalProps> = ({
 
             </div>
 
-            {/* Bottom Subtle Note */}
-            <div className="mt-8 pt-4 border-t border-slate-100 flex flex-col sm:flex-row items-center justify-between gap-2 text-[11px] text-slate-400 font-sans">
-              <span>University of Central Punjab • Bahawalpur Campus</span>
-              <span>Official Academic Registry Dossier</span>
+            {/* Bottom Footer with Minimal Close Profile Button */}
+            <div className="mt-8 pt-5 border-t border-slate-200 flex flex-col sm:flex-row items-center justify-between gap-3 text-[11px] text-slate-500 font-sans">
+              <div className="flex items-center gap-2 order-2 sm:order-1">
+                <span className="w-1.5 h-1.5 rounded-full bg-[#C5A059]" />
+                <span>University of Central Punjab • Bahawalpur Campus Dossier</span>
+              </div>
+              <button
+                type="button"
+                onClick={onClose}
+                className="inline-flex items-center justify-center gap-1.5 px-4 py-2 rounded-full text-xs font-semibold bg-slate-100 hover:bg-slate-200 text-slate-700 hover:text-slate-900 transition-colors cursor-pointer border border-slate-200 hover:border-slate-300 shadow-xs active:scale-95 order-1 sm:order-2 shrink-0"
+              >
+                <X size={14} className="text-slate-500" />
+                <span>Close Profile</span>
+              </button>
             </div>
           </motion.div>
         </div>

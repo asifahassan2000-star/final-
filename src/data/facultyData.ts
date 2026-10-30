@@ -8,6 +8,8 @@ export interface FacultyMemberData {
   highestDegree: string;
   experienceYears?: string;
   specialization?: string;
+  academicPillarBullet?: string;
+  researchArea?: string;
   intro?: string;
   photoUrl: string;
   fallbackPhotoUrl: string;
@@ -105,7 +107,9 @@ export const ALL_FACULTY_MEMBERS: FacultyMemberData[] = [
     department: 'Department of Social Sciences',
     highestDegree: 'Ph.D. in History',
     experienceYears: '8 Years',
-    specialization: 'Assistant Professor in Social Science with 8 years of university teaching and scholarly research in History, Political Science, Philosophy, Sociology, Anthropology and Mass Communication.',
+    specialization: 'scholarly research in History, Political Science, Philosophy, Sociology, Anthropology and Mass Communication.',
+    academicPillarBullet: 'scholarly research in History, Political Science, Philosophy, Sociology, Anthropology and Mass Communication.',
+    researchArea: 'Historical research on democracy in pakistan and globalized world',
     intro: 'Assistant Professor in Social Science with 8 years of university teaching and scholarly research in History, Political Science, Philosophy, Sociology, Anthropology and Mass Communication.',
     photoUrl: 'https://ik.imagekit.io/Muffins/image%20-%202026-10-22T163817.930.png',
     fallbackPhotoUrl: 'https://ik.imagekit.io/Muffins/image%20-%202026-10-22T163817.930.png',
@@ -117,15 +121,7 @@ export const ALL_FACULTY_MEMBERS: FacultyMemberData[] = [
     ],
     experienceDetails: [
       '8 Years of University Teaching and Scholarly Research in Social Sciences',
-      'Academic Instruction in History, Political Science, Philosophy, Sociology, Anthropology & Mass Communication'
-    ],
-    areaOfInterest: [
-      'History',
-      'Political Science',
-      'Philosophy',
-      'Sociology',
-      'Anthropology',
-      'Mass Communication'
+      'Academic Instruction in History, Political Science, Philosophy'
     ],
     coreTechnicalSkills: [
       'Scholarly Research & University Pedagogy in Social Sciences',
@@ -133,14 +129,6 @@ export const ALL_FACULTY_MEMBERS: FacultyMemberData[] = [
       'Political Science & Sociological Inquiry',
       'Philosophy & Anthropological Studies',
       'Mass Communication & Media Discourse'
-    ],
-    managementLeadershipSkills: [
-      'Interdisciplinary Social Sciences Curriculum Design',
-      'Higher Education Student Research Advising & Academic Mentorship'
-    ],
-    achievements: [
-      '8 Years of University Teaching and Interdisciplinary Scholarly Research',
-      'Excellence in Social Sciences Instruction Across Multiple Disciplines'
     ]
   },
 
@@ -166,8 +154,7 @@ export const ALL_FACULTY_MEMBERS: FacultyMemberData[] = [
       'PhD Scholar (Education) - PhD in Progress',
       'M.Phil Educational Training',
       'M.Ed',
-      'M.Sc Zoology',
-      'Master of Arts (M.A.)'
+      'M.Sc Zoology'
     ],
     experienceDetails: [
       '27 Years of Rich Academic and Administrative Experience',

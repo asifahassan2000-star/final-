@@ -160,7 +160,7 @@ export const WelcomeUcpSection: React.FC<WelcomeUcpSectionProps> = ({
     };
   }, []);
 
-  // Lock body scroll and handle ESC key for modals
+  // Lock body & html scroll and handle ESC key for modals
   useEffect(() => {
     if (!isChairmanProfileOpen && !isSohailProfileOpen) return;
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -170,11 +170,25 @@ export const WelcomeUcpSection: React.FC<WelcomeUcpSectionProps> = ({
       }
     };
     window.addEventListener('keydown', handleKeyDown);
-    const originalOverflow = document.body.style.overflow;
+    const originalBodyOverflow = document.body.style.overflow;
+    const originalHtmlOverflow = document.documentElement.style.overflow;
+    const originalBodyTouchAction = document.body.style.touchAction;
+    const originalBodyPaddingRight = document.body.style.paddingRight;
+
+    const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
+    if (scrollbarWidth > 0) {
+      document.body.style.paddingRight = `${scrollbarWidth}px`;
+    }
     document.body.style.overflow = 'hidden';
+    document.documentElement.style.overflow = 'hidden';
+    document.body.style.touchAction = 'none';
+
     return () => {
       window.removeEventListener('keydown', handleKeyDown);
-      document.body.style.overflow = originalOverflow;
+      document.body.style.overflow = originalBodyOverflow;
+      document.documentElement.style.overflow = originalHtmlOverflow;
+      document.body.style.touchAction = originalBodyTouchAction;
+      document.body.style.paddingRight = originalBodyPaddingRight;
     };
   }, [isChairmanProfileOpen, isSohailProfileOpen]);
 
@@ -736,15 +750,18 @@ export const WelcomeUcpSection: React.FC<WelcomeUcpSectionProps> = ({
           ======================================================================= */}
       {isChairmanProfileOpen && (
         <div 
-          className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-5 md:p-6 overflow-y-auto bg-black/75 backdrop-blur-xs animate-in fade-in duration-200"
+          className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-5 md:p-6 overflow-hidden overscroll-contain bg-black/75 backdrop-blur-xs animate-in fade-in duration-200"
           role="dialog"
           aria-modal="true"
           aria-labelledby="chairman-profile-title"
           onClick={() => setIsChairmanProfileOpen(false)}
+          onWheel={(e) => e.stopPropagation()}
+          onTouchMove={(e) => e.stopPropagation()}
         >
           <div 
-            className="relative w-full max-w-4xl bg-white dark:bg-[#0c1a30] border-2 border-[#0A1931] dark:border-[#D4AF37]/40 shadow-2xl rounded-none my-auto max-h-[92vh] flex flex-col overflow-hidden text-slate-800 dark:text-slate-100"
+            className="relative w-full max-w-4xl bg-white dark:bg-[#0c1a30] border-2 border-[#0A1931] dark:border-[#D4AF37]/40 shadow-2xl rounded-none my-auto max-h-[90vh] flex flex-col overflow-hidden overscroll-contain text-slate-800 dark:text-slate-100"
             onClick={(e) => e.stopPropagation()}
+            onWheel={(e) => e.stopPropagation()}
           >
             {/* Modal Header */}
             <div className="bg-[#0A1931] text-white px-5 sm:px-7 py-4 flex items-center justify-between border-b border-white/10 shrink-0">
@@ -771,7 +788,7 @@ export const WelcomeUcpSection: React.FC<WelcomeUcpSectionProps> = ({
             </div>
 
             {/* Modal Scrollable Body */}
-            <div className="overflow-y-auto p-5 sm:p-8 space-y-6 font-sans">
+            <div className="overflow-y-auto overscroll-contain p-5 sm:p-8 space-y-6 font-sans">
               <div className="flex flex-col sm:flex-row items-center sm:items-start gap-6 pb-6 border-b border-slate-200 dark:border-white/10">
                 <div className="w-32 sm:w-36 aspect-square shrink-0 rounded-full border-2 border-[#D4AF37] overflow-hidden bg-[#0A1931] shadow-md ring-4 ring-slate-100 dark:ring-slate-800">
                   <img
@@ -884,15 +901,18 @@ export const WelcomeUcpSection: React.FC<WelcomeUcpSectionProps> = ({
           ======================================================================= */}
       {isSohailProfileOpen && (
         <div 
-          className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-5 md:p-6 overflow-y-auto bg-black/75 backdrop-blur-xs animate-in fade-in duration-200"
+          className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-5 md:p-6 overflow-hidden overscroll-contain bg-black/75 backdrop-blur-xs animate-in fade-in duration-200"
           role="dialog"
           aria-modal="true"
           aria-labelledby="sohail-profile-title"
           onClick={() => setIsSohailProfileOpen(false)}
+          onWheel={(e) => e.stopPropagation()}
+          onTouchMove={(e) => e.stopPropagation()}
         >
           <div 
-            className="relative w-full max-w-4xl bg-white dark:bg-[#0c1a30] border-2 border-[#0A1931] dark:border-[#D4AF37]/40 shadow-2xl rounded-none my-auto max-h-[92vh] flex flex-col overflow-hidden text-slate-800 dark:text-slate-100"
+            className="relative w-full max-w-4xl bg-white dark:bg-[#0c1a30] border-2 border-[#0A1931] dark:border-[#D4AF37]/40 shadow-2xl rounded-none my-auto max-h-[90vh] flex flex-col overflow-hidden overscroll-contain text-slate-800 dark:text-slate-100"
             onClick={(e) => e.stopPropagation()}
+            onWheel={(e) => e.stopPropagation()}
           >
             {/* Modal Header */}
             <div className="bg-[#0A1931] text-white px-5 sm:px-7 py-4 flex items-center justify-between border-b border-white/10 shrink-0">
@@ -919,7 +939,7 @@ export const WelcomeUcpSection: React.FC<WelcomeUcpSectionProps> = ({
             </div>
 
             {/* Modal Scrollable Body */}
-            <div className="overflow-y-auto p-5 sm:p-8 space-y-6 font-sans">
+            <div className="overflow-y-auto overscroll-contain p-5 sm:p-8 space-y-6 font-sans">
               <div className="flex flex-col sm:flex-row items-center sm:items-start gap-6 pb-6 border-b border-slate-200 dark:border-white/10">
                 <div className="w-32 sm:w-36 aspect-square shrink-0 rounded-full border-2 border-[#D4AF37] overflow-hidden bg-[#0A1931] shadow-md ring-4 ring-slate-100 dark:ring-slate-800">
                   <img
