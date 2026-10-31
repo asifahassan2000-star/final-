@@ -22,16 +22,6 @@
     
     <!-- Self-referencing Canonical URL for ucp-bahawalpur-campus.vercel.app to fix Google Search Console indexing -->
     <link rel="canonical" id="canonical-url" href="https://ucp-bahawalpur-campus.vercel.app/" />
-    <script>
-      (function() {
-        try {
-          var canElem = document.getElementById('canonical-url');
-          if (canElem && window.location.origin) {
-            canElem.href = window.location.origin + window.location.pathname;
-          }
-        } catch(e) {}
-      })();
-    </script>
     
     <!-- LLM Context & AI Agent Discovery (llms.txt standard - https://llmstxt.org) -->
     <link rel="alternate" type="text/plain" href="/llms.txt" title="LLM Context (llms.txt)" />
@@ -41,20 +31,20 @@
     <!-- OpenGraph & Social Media SEO -->
     <meta property="og:site_name" content="UCP Bahawalpur Campus" />
     <meta property="og:title" content="UCP Bahawalpur Campus | University of Central Punjab" />
-    <meta property="og:description" content="Explore the University of Central Punjab (UCP) Bahawalpur Campus, including academic programs, admissions, fee structure,campus facilities, student life and contact information." />
+    <meta property="og:description" content="Explore the University of Central Punjab (UCP) Bahawalpur Campus, including academic programs, admissions, fee structure, campus facilities, student life and contact information." />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://ucp-bahawalpur-campus.vercel.app/" />
-    <meta property="og:image" content="./assets/campus/hero_campus_night_flagship.webp" />
+    <meta property="og:image" content="https://ucp-bahawalpur-campus.vercel.app/assets/campus/hero_campus_night_flagship.webp" />
     <meta property="og:image:alt" content="University of Central Punjab - Bahawalpur Campus" />
     <meta property="og:locale" content="en_PK" />
     
     <!-- Twitter Cards SEO -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="UCP Bahawalpur Campus | University of Central Punjab" />
-    <meta name="twitter:description" content="Explore the University of Central Punjab (UCP) Bahawalpur Campus, including academic programs, admissions, fee structure,campus facilities, student life and contact information." />
-    <meta name="twitter:image" content="./assets/campus/hero_campus_night_flagship.webp" />
+    <meta name="twitter:description" content="Explore the University of Central Punjab (UCP) Bahawalpur Campus, including academic programs, admissions, fee structure, campus facilities, student life and contact information." />
+    <meta name="twitter:image" content="https://ucp-bahawalpur-campus.vercel.app/assets/campus/hero_campus_night_flagship.webp" />
     <meta name="twitter:image:alt" content="UCP Bahawalpur Campus" />
-    <link rel="icon" type="image/png" href="./assets/ucp-official-logo.png" />
+    <link rel="icon" type="image/png" href="https://ucp-bahawalpur-campus.vercel.app/assets/ucp-official-logo.png" />
     <!-- Preconnect & Preload Critical Hero Slide 0 Image for Instant Paint (<0.3s) -->
     <link rel="preconnect" href="https://ik.imagekit.io" crossorigin />
     <link rel="dns-prefetch" href="https://ik.imagekit.io" />
@@ -72,7 +62,7 @@
       "@context": "https://schema.org",
       "@graph": [
         {
-          "@type": ["CollegeOrUniversity", "EducationalOrganization", "LocalBusiness"],
+          "@type": ["CollegeOrUniversity", "EducationalOrganization"],
           "@id": "https://ucp-bahawalpur-campus.vercel.app/#university",
           "name": "University of Central Punjab Bahawalpur Campus",
           "legalName": "University of Central Punjab Bahawalpur Campus",
@@ -100,6 +90,18 @@
           },
           "image": "https://ucp-bahawalpur-campus.vercel.app/assets/campus/hero_campus_night_flagship.webp",
           "description": "Official portal of UCP Bahawalpur (UCP BWP) — University of Central Punjab Bahawalpur Campus, offering world-class BS and ADP academic degrees, admissions, state-of-the-art facilities, and faculty excellence in Southern Punjab.",
+          "parentOrganization": {
+            "@type": "CollegeOrUniversity",
+            "name": "University of Central Punjab",
+            "alternateName": "UCP Lahore",
+            "url": "https://ucp.edu.pk",
+            "parentOrganization": {
+              "@type": "EducationalOrganization",
+              "name": "Punjab Group of Colleges",
+              "alternateName": "PGC",
+              "url": "https://pgc.edu"
+            }
+          },
           "address": {
             "@type": "PostalAddress",
             "streetAddress": "Constituent College, UCP Campus, Airport Road",
@@ -114,11 +116,26 @@
             "longitude": "71.6918"
           },
           "telephone": "+92-62-2202030",
-          "email": "info@ucp.edu.pk",
+          "email": "Principal.bahawalpur@ucp.edu.pk",
+          "contactPoint": [
+            {
+              "@type": "ContactPoint",
+              "telephone": "+92-62-2202030",
+              "contactType": "admissions",
+              "areaServed": "PK",
+              "availableLanguage": ["English", "Urdu"]
+            },
+            {
+              "@type": "ContactPoint",
+              "telephone": "+92-62-2202050",
+              "contactType": "student affairs",
+              "areaServed": "PK",
+              "availableLanguage": ["English", "Urdu"]
+            }
+          ],
           "sameAs": [
             "https://www.facebook.com/profile.php?id=61583228356324",
             "https://maps.app.goo.gl/ud9Sz3ZLR7zt9aiT7",
-            "https://bit.ly/ucpbahawalpur",
             "https://ucp.edu.pk"
           ],
           "department": [
@@ -153,7 +170,7 @@
           "@type": "WebSite",
           "@id": "https://ucp-bahawalpur-campus.vercel.app/#website",
           "url": "https://ucp-bahawalpur-campus.vercel.app/",
-          "name": "UCP Bahawalpur Campus",
+          "name": "UCP Bahawalpur Campus | University of Central Punjab",
           "alternateName": [
             "UCP Bahawalpur",
             "UCP BWP",
@@ -164,6 +181,60 @@
             "@id": "https://ucp-bahawalpur-campus.vercel.app/#university"
           },
           "inLanguage": "en-PK"
+        },
+        {
+          "@type": "BreadcrumbList",
+          "@id": "https://ucp-bahawalpur-campus.vercel.app/#breadcrumbs",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Home",
+              "item": "https://ucp-bahawalpur-campus.vercel.app/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Academic Programmes",
+              "item": "https://ucp-bahawalpur-campus.vercel.app/programmes"
+            },
+            {
+              "@type": "ListItem",
+              "position": 3,
+              "name": "Fee Structure",
+              "item": "https://ucp-bahawalpur-campus.vercel.app/fee-structure"
+            },
+            {
+              "@type": "ListItem",
+              "position": 4,
+              "name": "Scholarships",
+              "item": "https://ucp-bahawalpur-campus.vercel.app/scholarships"
+            },
+            {
+              "@type": "ListItem",
+              "position": 5,
+              "name": "Campus Facilities",
+              "item": "https://ucp-bahawalpur-campus.vercel.app/campus-facilities"
+            },
+            {
+              "@type": "ListItem",
+              "position": 6,
+              "name": "Faculty Directory",
+              "item": "https://ucp-bahawalpur-campus.vercel.app/faculty"
+            },
+            {
+              "@type": "ListItem",
+              "position": 7,
+              "name": "Campus Life",
+              "item": "https://ucp-bahawalpur-campus.vercel.app/campus-life"
+            },
+            {
+              "@type": "ListItem",
+              "position": 8,
+              "name": "About Us",
+              "item": "https://ucp-bahawalpur-campus.vercel.app/about-us"
+            }
+          ]
         },
         {
           "@type": "FAQPage",
@@ -182,7 +253,7 @@
               "name": "What programs are offered at UCP Bahawalpur (UCP BWP)?",
               "acceptedAnswer": {
                 "@type": "Answer",
-                "text": "UCP Bahawalpur offers 4-year BS degrees (Computer Science, Software Engineering, Artificial Intelligence, BBA, Biotechnology, English, Psychology) and 2-year Associate Degree Programs (ADP Computer Science, ADP Business Administration, ADP Commerce)."
+                "text": "UCP Bahawalpur offers 4-year BS degrees (Computer Science, Software Engineering, Artificial Intelligence, BBA, Biotechnology, English, Psychology) and 2-year Associate Degree Programs (ADP Computer Science, ADP Business Administration, ADP Commerce, ADP Artificial Intelligence)."
               }
             },
             {
@@ -198,7 +269,31 @@
               "name": "Are scholarships available at UCP Bahawalpur?",
               "acceptedAnswer": {
                 "@type": "Answer",
-                "text": "Yes, UCP Bahawalpur offers up to 100% merit-based scholarships, PGC alumni fee concessions, kinship discounts, sports talent scholarships, and need-based financial aid."
+                "text": "Yes, UCP Bahawalpur offers up to 50% merit-based scholarships based on Intermediate exam marks and semester CGPA, 25% PGC alumni fee concessions, 25% kinship discounts, sports talent scholarships, and need-based financial aid."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "What is the fee structure at UCP Bahawalpur Campus?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Tuition fees are structured transparently per credit hour, generally ranging from Rs. 4,100 to Rs. 6,800 depending on the degree discipline. Flexible semester installment plans and merit fee concessions are available."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Is UCP Bahawalpur Campus an official constituent college of UCP?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Yes, UCP Bahawalpur Campus is an official constituent collegiate campus of the University of Central Punjab (UCP), Lahore, operating under the Punjab Group of Colleges (PGC). Degrees are officially recognized by the Higher Education Commission (HEC) of Pakistan."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "What are the eligibility requirements for BS admissions at UCP Bahawalpur?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Eligibility for 4-year undergraduate BS programs requires Intermediate (FSc Pre-Engineering, Pre-Medical, ICS, FA, I.Com, or equivalent A-Levels) with a minimum of 50% marks from a recognized board."
               }
             }
           ]
@@ -212,7 +307,7 @@
       <div style="padding: 24px; max-width: 1200px; margin: 0 auto; font-family: sans-serif; line-height: 1.6; color: #1e293b;">
         <header>
           <h1>UCP Bahawalpur Campus | University of Central Punjab</h1>
-          <p><strong>Explore the University of Central Punjab (UCP) Bahawalpur Campus, including academic programs, admissions, fee structure,campus facilities, student life and contact information.</strong></p>
+          <p><strong>Explore the University of Central Punjab (UCP) Bahawalpur Campus, including academic programs, admissions, fee structure, campus facilities, student life and contact information.</strong></p>
           <nav aria-label="Main Navigation">
             <p><strong>Quick Links:</strong> 
               <a href="#programmes">Academic Programs</a> | 

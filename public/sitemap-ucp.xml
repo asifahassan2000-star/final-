@@ -1,123 +1,131 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
-        xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
-        http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd
-        http://www.google.com/schemas/sitemap-image/1.1
-        http://www.google.com/schemas/sitemap-image/1.1/sitemap-image.xsd">
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
 
-  <!-- Core Pages -->
+  <!-- 1. Homepage & Flagship Campus Portal -->
   <url>
     <loc>https://ucp-bahawalpur-campus.vercel.app/</loc>
-    <lastmod>2026-10-29T00:00:00+00:00</lastmod>
+    <lastmod>2026-10-31T00:00:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.00</priority>
     <image:image>
       <image:loc>https://ucp-bahawalpur-campus.vercel.app/assets/campus/hero_campus_night_flagship.webp</image:loc>
       <image:title>University of Central Punjab UCP Bahawalpur Campus Flagship Building</image:title>
+      <image:caption>Official UCP Bahawalpur Campus portal on Airport Road, Bahawalpur</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://ucp-bahawalpur-campus.vercel.app/assets/ucp-official-logo.png</image:loc>
+      <image:title>UCP Official Logo</image:title>
+      <image:caption>University of Central Punjab Official Seal</image:caption>
     </image:image>
   </url>
+
+  <!-- 2. Academic Programmes (BS & ADP) -->
   <url>
     <loc>https://ucp-bahawalpur-campus.vercel.app/programmes</loc>
-    <lastmod>2026-10-29T00:00:00+00:00</lastmod>
+    <lastmod>2026-10-31T00:00:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.95</priority>
+    <image:image>
+      <image:loc>https://ucp-bahawalpur-campus.vercel.app/assets/campus/computer_science_ai_lab.webp</image:loc>
+      <image:title>UCP Bahawalpur Academic Programmes and Computing Labs</image:title>
+    </image:image>
   </url>
+
+  <!-- 3. Faculty Directory -->
   <url>
     <loc>https://ucp-bahawalpur-campus.vercel.app/faculty</loc>
-    <lastmod>2026-10-29T00:00:00+00:00</lastmod>
+    <lastmod>2026-10-31T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.95</priority>
+    <image:image>
+      <image:loc>https://ucp-bahawalpur-campus.vercel.app/assets/campus/faculty_office_mentorship.webp</image:loc>
+      <image:title>UCP Bahawalpur Faculty Directory and Professors</image:title>
+    </image:image>
+  </url>
+
+  <!-- 4. Fee Structure & Tuition -->
+  <url>
+    <loc>https://ucp-bahawalpur-campus.vercel.app/fee-structure</loc>
+    <lastmod>2026-10-31T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.95</priority>
   </url>
-  <url>
-    <loc>https://ucp-bahawalpur-campus.vercel.app/fee-structure</loc>
-    <lastmod>2026-10-29T00:00:00+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.90</priority>
-  </url>
+
+  <!-- 5. Scholarships & Financial Aid -->
   <url>
     <loc>https://ucp-bahawalpur-campus.vercel.app/scholarships</loc>
-    <lastmod>2026-10-29T00:00:00+00:00</lastmod>
+    <lastmod>2026-10-31T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.90</priority>
+    <priority>0.95</priority>
+    <image:image>
+      <image:loc>https://ucp-bahawalpur-campus.vercel.app/assets/campus/convocation_hall_ceremony.webp</image:loc>
+      <image:title>UCP Bahawalpur Scholarships and Academic Honors</image:title>
+    </image:image>
   </url>
+
+  <!-- 6. Campus Facilities & Labs -->
+  <url>
+    <loc>https://ucp-bahawalpur-campus.vercel.app/campus-facilities</loc>
+    <lastmod>2026-10-31T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.95</priority>
+    <image:image>
+      <image:loc>https://ucp-bahawalpur-campus.vercel.app/assets/campus/central_library_modern.webp</image:loc>
+      <image:title>UCP Bahawalpur Central Library and High-Tech Labs</image:title>
+    </image:image>
+  </url>
+
+  <!-- 7. Campus Life & Student Societies -->
   <url>
     <loc>https://ucp-bahawalpur-campus.vercel.app/campus-life</loc>
-    <lastmod>2026-10-29T00:00:00+00:00</lastmod>
+    <lastmod>2026-10-31T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.90</priority>
     <image:image>
       <image:loc>https://ucp-bahawalpur-campus.vercel.app/assets/campus-life/jeep-rally-main.jpg</image:loc>
-      <image:title>UCP Bahawalpur Campus Life</image:title>
+      <image:title>UCP Bahawalpur Campus Life and Student Activities</image:title>
     </image:image>
   </url>
-  <url>
-    <loc>https://ucp-bahawalpur-campus.vercel.app/campus-facilities</loc>
-    <lastmod>2026-10-29T00:00:00+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.90</priority>
-  </url>
+
+  <!-- 8. About Us & Leadership -->
   <url>
     <loc>https://ucp-bahawalpur-campus.vercel.app/about-us</loc>
-    <lastmod>2026-10-29T00:00:00+00:00</lastmod>
+    <lastmod>2026-10-31T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.85</priority>
+    <priority>0.90</priority>
   </url>
+
+  <!-- 9. Institutional Legacy -->
   <url>
     <loc>https://ucp-bahawalpur-campus.vercel.app/legacy</loc>
-    <lastmod>2026-10-29T00:00:00+00:00</lastmod>
+    <lastmod>2026-10-31T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+    <image:image>
+      <image:loc>https://ucp-bahawalpur-campus.vercel.app/assets/campus/historic_founders_hall.webp</image:loc>
+      <image:title>UCP Bahawalpur 40-Year Educational Legacy</image:title>
+    </image:image>
+  </url>
+
+  <!-- 10. Academic Calendar -->
+  <url>
+    <loc>https://ucp-bahawalpur-campus.vercel.app/calendar</loc>
+    <lastmod>2026-10-31T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
   </url>
-  <url>
-    <loc>https://ucp-bahawalpur-campus.vercel.app/calendar</loc>
-    <lastmod>2026-10-29T00:00:00+00:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.80</priority>
-  </url>
+
+  <!-- 11. CNN Academy International Partnership -->
   <url>
     <loc>https://ucp-bahawalpur-campus.vercel.app/cnn-academy</loc>
-    <lastmod>2026-10-29T00:00:00+00:00</lastmod>
+    <lastmod>2026-10-31T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.80</priority>
+    <priority>0.85</priority>
+    <image:image>
+      <image:loc>https://ucp-bahawalpur-campus.vercel.app/assets/campus/broadcast_media_studio.webp</image:loc>
+      <image:title>UCP Bahawalpur CNN Academy Media Partnership</image:title>
+    </image:image>
   </url>
 
-  <!-- Degree Programmes -->
-  <url><loc>https://ucp-bahawalpur-campus.vercel.app/programmes?program=bs-computer-science</loc><lastmod>2026-10-29T00:00:00+00:00</lastmod><priority>0.90</priority></url>
-  <url><loc>https://ucp-bahawalpur-campus.vercel.app/programmes?program=bba</loc><lastmod>2026-10-29T00:00:00+00:00</lastmod><priority>0.88</priority></url>
-  <url><loc>https://ucp-bahawalpur-campus.vercel.app/programmes?program=bs-business-analytics</loc><lastmod>2026-10-29T00:00:00+00:00</lastmod><priority>0.88</priority></url>
-  <url><loc>https://ucp-bahawalpur-campus.vercel.app/programmes?program=bs-accounting-finance</loc><lastmod>2026-10-29T00:00:00+00:00</lastmod><priority>0.88</priority></url>
-  <url><loc>https://ucp-bahawalpur-campus.vercel.app/programmes?program=bs-biotechnology</loc><lastmod>2026-10-29T00:00:00+00:00</lastmod><priority>0.85</priority></url>
-  <url><loc>https://ucp-bahawalpur-campus.vercel.app/programmes?program=bs-biochemistry</loc><lastmod>2026-10-29T00:00:00+00:00</lastmod><priority>0.85</priority></url>
-  <url><loc>https://ucp-bahawalpur-campus.vercel.app/programmes?program=bs-chemistry</loc><lastmod>2026-10-29T00:00:00+00:00</lastmod><priority>0.85</priority></url>
-  <url><loc>https://ucp-bahawalpur-campus.vercel.app/programmes?program=bs-physics</loc><lastmod>2026-10-29T00:00:00+00:00</lastmod><priority>0.85</priority></url>
-  <url><loc>https://ucp-bahawalpur-campus.vercel.app/programmes?program=bs-mathematics</loc><lastmod>2026-10-29T00:00:00+00:00</lastmod><priority>0.85</priority></url>
-  <url><loc>https://ucp-bahawalpur-campus.vercel.app/programmes?program=bs-zoology</loc><lastmod>2026-10-29T00:00:00+00:00</lastmod><priority>0.85</priority></url>
-  <url><loc>https://ucp-bahawalpur-campus.vercel.app/programmes?program=bs-english</loc><lastmod>2026-10-29T00:00:00+00:00</lastmod><priority>0.85</priority></url>
-  <url><loc>https://ucp-bahawalpur-campus.vercel.app/programmes?program=bs-psychology</loc><lastmod>2026-10-29T00:00:00+00:00</lastmod><priority>0.85</priority></url>
-  <url><loc>https://ucp-bahawalpur-campus.vercel.app/programmes?program=adp-artificial-intelligence</loc><lastmod>2026-10-29T00:00:00+00:00</lastmod><priority>0.88</priority></url>
-  <url><loc>https://ucp-bahawalpur-campus.vercel.app/programmes?program=adp-software-engineering</loc><lastmod>2026-10-29T00:00:00+00:00</lastmod><priority>0.88</priority></url>
-  <url><loc>https://ucp-bahawalpur-campus.vercel.app/programmes?program=adp-cyber-security</loc><lastmod>2026-10-29T00:00:00+00:00</lastmod><priority>0.88</priority></url>
-  <url><loc>https://ucp-bahawalpur-campus.vercel.app/programmes?program=adp-data-science</loc><lastmod>2026-10-29T00:00:00+00:00</lastmod><priority>0.88</priority></url>
-  <url><loc>https://ucp-bahawalpur-campus.vercel.app/programmes?program=adp-computer-science</loc><lastmod>2026-10-29T00:00:00+00:00</lastmod><priority>0.85</priority></url>
-  <url><loc>https://ucp-bahawalpur-campus.vercel.app/programmes?program=adp-business-administration</loc><lastmod>2026-10-29T00:00:00+00:00</lastmod><priority>0.85</priority></url>
-  <url><loc>https://ucp-bahawalpur-campus.vercel.app/programmes?program=adp-business-analytics</loc><lastmod>2026-10-29T00:00:00+00:00</lastmod><priority>0.85</priority></url>
-  <url><loc>https://ucp-bahawalpur-campus.vercel.app/programmes?program=adp-accounting-finance</loc><lastmod>2026-10-29T00:00:00+00:00</lastmod><priority>0.85</priority></url>
-  <url><loc>https://ucp-bahawalpur-campus.vercel.app/programmes?program=adp-biotechnology</loc><lastmod>2026-10-29T00:00:00+00:00</lastmod><priority>0.82</priority></url>
-  <url><loc>https://ucp-bahawalpur-campus.vercel.app/programmes?program=adp-english</loc><lastmod>2026-10-29T00:00:00+00:00</lastmod><priority>0.82</priority></url>
-  <url><loc>https://ucp-bahawalpur-campus.vercel.app/programmes?program=adp-psychology</loc><lastmod>2026-10-29T00:00:00+00:00</lastmod><priority>0.82</priority></url>
-  <url><loc>https://ucp-bahawalpur-campus.vercel.app/programmes?program=ads-math-physics</loc><lastmod>2026-10-29T00:00:00+00:00</lastmod><priority>0.82</priority></url>
-  <url><loc>https://ucp-bahawalpur-campus.vercel.app/programmes?program=ads-zoology-botany-chemistry</loc><lastmod>2026-10-29T00:00:00+00:00</lastmod><priority>0.82</priority></url>
-
-  <!-- Faculty -->
-  <url><loc>https://ucp-bahawalpur-campus.vercel.app/faculty?id=prof-uzma-zulqurnai</loc><lastmod>2026-10-29T00:00:00+00:00</lastmod><priority>0.85</priority></url>
-  <url><loc>https://ucp-bahawalpur-campus.vercel.app/faculty?id=dr-abdul-kareem</loc><lastmod>2026-10-29T00:00:00+00:00</lastmod><priority>0.85</priority></url>
-  <url><loc>https://ucp-bahawalpur-campus.vercel.app/faculty?id=dr-abbas-haider</loc><lastmod>2026-10-29T00:00:00+00:00</lastmod><priority>0.82</priority></url>
-  <url><loc>https://ucp-bahawalpur-campus.vercel.app/faculty?id=prof-abeer-aslam</loc><lastmod>2026-10-29T00:00:00+00:00</lastmod><priority>0.82</priority></url>
-  <url><loc>https://ucp-bahawalpur-campus.vercel.app/faculty?id=dr-mushtaq</loc><lastmod>2026-10-29T00:00:00+00:00</lastmod><priority>0.82</priority></url>
-  <url><loc>https://ucp-bahawalpur-campus.vercel.app/faculty?id=dr-abdul-raouf</loc><lastmod>2026-10-29T00:00:00+00:00</lastmod><priority>0.82</priority></url>
-  <url><loc>https://ucp-bahawalpur-campus.vercel.app/faculty?id=dr-m-tahir</loc><lastmod>2026-10-29T00:00:00+00:00</lastmod><priority>0.82</priority></url>
-  <url><loc>https://ucp-bahawalpur-campus.vercel.app/faculty?id=prof-khizer-hayat</loc><lastmod>2026-10-29T00:00:00+00:00</lastmod><priority>0.80</priority></url>
-  <url><loc>https://ucp-bahawalpur-campus.vercel.app/faculty?id=prof-ali-shan</loc><lastmod>2026-10-29T00:00:00+00:00</lastmod><priority>0.80</priority></url>
 </urlset>

@@ -65,20 +65,17 @@ export function useSeoMetadata(pageId: string, overrides?: Partial<PageSeoConfig
     const robotsContent = config.robots || 'index, follow';
     setMetaTag('robots', robotsContent);
 
-    // 4. Canonical URL resolution
+    // 4. Canonical URL resolution (Strictly enforces canonical production domain)
     let canonical = document.querySelector('link[rel="canonical"]') as HTMLLinkElement | null;
     if (!canonical) {
       canonical = document.createElement('link');
       canonical.setAttribute('rel', 'canonical');
       document.head.appendChild(canonical);
     }
-    const origin = window.location.origin && window.location.origin !== 'null'
-      ? window.location.origin
-      : BASE_SITE_URL;
     const cleanPath = config.canonicalPath.startsWith('/')
       ? config.canonicalPath
       : `/${config.canonicalPath}`;
-    const fullCanonicalUrl = `${origin}${cleanPath === '/' ? '' : cleanPath}`;
+    const fullCanonicalUrl = `${BASE_SITE_URL}${cleanPath === '/' ? '' : cleanPath}`;
     canonical.setAttribute('href', fullCanonicalUrl);
 
     // 5. OpenGraph Tags
@@ -91,7 +88,7 @@ export function useSeoMetadata(pageId: string, overrides?: Partial<PageSeoConfig
     const ogImg = config.ogImage || DEFAULT_OG_IMAGE;
     const resolvedOgImg = ogImg.startsWith('http')
       ? ogImg
-      : `${origin}${ogImg.startsWith('.') ? ogImg.slice(1) : ogImg.startsWith('/') ? ogImg : `/${ogImg}`}`;
+      : `${BASE_SITE_URL}${ogImg.startsWith('.') ? ogImg.slice(1) : ogImg.startsWith('/') ? ogImg : `/${ogImg}`}`;
     setPropertyTag('og:image', resolvedOgImg);
     if (config.ogImageAlt) {
       setPropertyTag('og:image:alt', config.ogImageAlt);
