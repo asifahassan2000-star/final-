@@ -184,7 +184,7 @@ export const AboutCampusSection: React.FC<AboutCampusSectionProps> = ({
               transition={{ duration: 0.75, delay: 0.1, ease: easeCurve }}
               className="text-[19px] sm:text-[21px] lg:text-[22.5px] leading-relaxed text-slate-700 dark:text-slate-200"
             >
-              <strong>UCP Bahawalpur Campus</strong>, also widely known as <strong>UCP BWP</strong> (Constituent College UCP Campus Bahawalpur), is the official collegiate campus of the <strong>University of Central Punjab Bahawalpur</strong>, located on Airport Road, Bahawalpur. As part of Pakistan's largest educational network—the Punjab Group of Colleges (PGC)—the campus empowers students across Southern Punjab to pursue prestigious, HEC-recognized undergraduate BS and Associate Degree (ADP) programs close to home, with world-class faculty, cutting-edge computing labs, and guaranteed merit scholarships.
+              <strong>UCP Bahawalpur Campus</strong>, also widely known as <strong>UCP BWP</strong> (Constituent College), is the official collegiate campus of the <strong>University of Central Punjab</strong>. As part of Pakistan's largest educational network—the Punjab Group of Colleges (PGC)—the campus empowers students across Southern Punjab to pursue prestigious, HEC-recognized undergraduate BS and Associate Degree (ADP) programs close to home, with world-class faculty, cutting-edge computing labs, and guaranteed merit scholarships.
             </motion.p>
 
             <motion.p 
