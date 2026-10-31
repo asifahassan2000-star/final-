@@ -22,8 +22,8 @@ export const DEFAULT_OG_IMAGE = './assets/campus/hero_campus_night_flagship.webp
 
 export const SEO_PAGES_CONFIG: Record<string, PageSeoConfig> = {
   home: {
-    title: 'UCP Bahawalpur Campus | Programs, Admissions & Fees',
-    description: 'Official portal of UCP Bahawalpur Campus (UCP BWP), located on Airport Road, Bahawalpur. Explore recognized BS & ADP degree programs, online admissions, fee structure, scholarships, and modern campus facilities.',
+    title: 'UCP Bahawalpur Campus | University of Central Punjab',
+    description: 'Explore the University of Central Punjab (UCP) Bahawalpur Campus, including academic programs, admissions, fee structure,campus facilities, student life and contact information.',
     keywords: 'ucp bahawalpur campus, ucp bwp, university of central punjab bahawalpur, ucp admissions, ucp fee structure, ucp scholarships, bs computer science bahawalpur, adp artificial intelligence bahawalpur, best university in bahawalpur',
     canonicalPath: '/',
     ogType: 'website',
