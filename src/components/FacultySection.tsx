@@ -64,7 +64,7 @@ const MobileFacultyCarousel: React.FC<{
             <div className="w-full aspect-[3/4] rounded-lg overflow-hidden bg-slate-100 border border-slate-200/90 shadow-2xs relative">
               <img decoding="async" src={faculty.photoUrl}
                 alt={faculty.name}
-                className={`w-full h-full object-cover ${faculty.objectPosition || 'object-top'} ${faculty.imageTransform || ''}`}
+                className={`absolute inset-0 w-full h-full object-cover ${faculty.objectPosition || 'object-top'} ${faculty.imageTransform || ''}`}
                 loading="lazy"
                 onError={(e) => {
                   (e.target as HTMLImageElement).src = faculty.fallbackPhotoUrl;
@@ -222,10 +222,11 @@ export const FacultySection: React.FC<FacultySectionProps> = ({
               >
                 <div className="w-full">
                   {/* Strict Equal Aspect-[4/5] Portrait Frame */}
-                  <div className="w-full aspect-[4/5] rounded-xl sm:rounded-2xl overflow-hidden bg-slate-100 border border-slate-200/90 shadow-2xs group-hover:shadow-md group-hover:border-[#0F2C61] transition-all duration-300 relative">
+                  <div className="w-full aspect-[4/5] rounded-xl sm:rounded-2xl overflow-hidden bg-slate-900 border border-slate-200/90 shadow-2xs group-hover:shadow-md group-hover:border-[#0F2C61] transition-all duration-300 relative">
                     <img src={member.photoUrl}
                       alt={member.name}
-                      className={`w-full h-full object-cover ${member.objectPosition || 'object-top'} ${member.imageTransform || ''} transition-transform duration-500 ease-out ${member.imageTransform ? 'group-hover:scale-[1.33]' : 'group-hover:scale-105'}`}
+                      style={{ objectFit: 'cover' }}
+                      className={`absolute inset-0 w-full h-full object-cover ${member.objectPosition || 'object-top'} ${member.imageTransform || ''} transition-transform duration-500 ease-out ${member.imageTransform ? 'group-hover:scale-[1.33]' : 'group-hover:scale-105'}`}
                       loading="lazy"
                       decoding="async"
                       onError={(e) => {

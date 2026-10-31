@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { 
   Building2, Landmark, GraduationCap, Award, ChevronDown, 
@@ -133,9 +133,18 @@ export const OurLegacyPage: React.FC<OurLegacyPageProps> = ({
   onOpenProgrammesPage,
   onOpenFee,
 }) => {
+  const videoRef = useRef<HTMLVideoElement>(null);
   const [selectedGalleryItem, setSelectedGalleryItem] = useState<HeritageItem | null>(null);
   const [activeMilestoneTab, setActiveMilestoneTab] = useState<number>(0);
   const [selectedBwpBuildingIdx, setSelectedBwpBuildingIdx] = useState<number>(0);
+
+  useEffect(() => {
+    if (videoRef.current) {
+      videoRef.current.defaultMuted = true;
+      videoRef.current.muted = true;
+      videoRef.current.play().catch(() => {});
+    }
+  }, []);
 
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
@@ -334,24 +343,23 @@ export const OurLegacyPage: React.FC<OurLegacyPageProps> = ({
           ========================================================================= */}
       <section 
         id="legacy-hero" 
-        className="relative min-h-[88vh] flex items-center justify-center overflow-hidden bg-[#092242] text-white select-none"
+        className="relative min-h-[88vh] flex items-center justify-center overflow-hidden bg-black text-white select-none"
       >
-        {/* Real Campus Photograph Background */}
+        {/* Real Campus Video Background */}
         <div className="absolute inset-0 z-0">
-          <img 
-            src={UCP_BWP_BUILDING_4} 
-            alt="UCP Bahawalpur Campus Architecture" 
-            referrerPolicy="no-referrer"
-            className="w-full h-full object-cover object-center scale-105 transition-transform duration-10000 opacity-90"
-            onError={(e) => {
-              (e.target as HTMLImageElement).src = UCP_BWP_BUILDING_4_FALLBACK;
-            }}
+          <video 
+            ref={videoRef}
+            src="https://ik.imagekit.io/Muffins/Cinematic,%20ultra-realistic%20architectural%20footage%20of%20the%20actual%20UCP%20Bahawalpur%20Campus%20building%20based%20precisely%20on%20the%20provided%20reference%20image.%20Begin%20with%20a%20smooth,%20slow%20camera%20push-in%20toward%20the%20building,%20followed%20by%20.mp4"
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload="auto"
+            className="w-full h-full object-cover object-center"
           />
-          {/* Slightly less dark blue overlay so background image is comfortably visible */}
-          <div className="absolute inset-0 bg-[#092242]/45 mix-blend-multiply" />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#092242]/90 via-[#092242]/45 to-[#092242]/65" />
-          {/* Subtle architectural grid pattern */}
-          <div className="absolute inset-0 bg-[radial-gradient(#ffffff0a_1px,transparent_1px)] [background-size:24px_24px] pointer-events-none" />
+          {/* Neutral translucent overlay with NO blue color so text is readable while video is crystal clear */}
+          <div className="absolute inset-0 bg-black/25" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/35" />
         </div>
 
         {/* Hero Content */}
@@ -384,24 +392,24 @@ export const OurLegacyPage: React.FC<OurLegacyPageProps> = ({
             From the royal heritage of Bahawalpur to a new generation of educational opportunity.
           </p>
 
-          {/* Visual Journey Step Chips */}
+          {/* Visual Journey Step Chips (Borderless clean text with no blurry box) */}
           <div 
             data-reveal="card" 
             data-reveal-delay="360"
-            className="mt-10 flex flex-wrap items-center justify-center gap-2 sm:gap-3 text-xs sm:text-sm font-semibold text-slate-300 bg-white/5 border border-white/10 rounded-2xl p-3 sm:p-4 backdrop-blur-sm max-w-4xl"
+            className="mt-8 flex flex-wrap items-center justify-center gap-2 sm:gap-3 text-xs sm:text-sm font-semibold text-slate-200 max-w-4xl drop-shadow-md"
           >
             <span className="text-amber-400 font-bold uppercase tracking-wider">BAHAWALPUR</span>
-            <span className="text-slate-500">→</span>
+            <span className="text-slate-400">→</span>
             <span className="text-amber-300/90 uppercase tracking-wider">HERITAGE</span>
-            <span className="text-slate-500">→</span>
+            <span className="text-slate-400">→</span>
             <span className="text-slate-200 uppercase tracking-wider">EDUCATION</span>
-            <span className="text-slate-500">→</span>
+            <span className="text-slate-400">→</span>
             <span className="text-white uppercase tracking-wider">PGC</span>
-            <span className="text-slate-500">→</span>
+            <span className="text-slate-400">→</span>
             <span className="text-white uppercase tracking-wider">UCP</span>
-            <span className="text-slate-500">→</span>
-            <span className="bg-[#a30f16] text-white px-2.5 py-0.5 rounded font-bold uppercase tracking-wider">UCP BAHAWALPUR</span>
-            <span className="text-slate-500">→</span>
+            <span className="text-slate-400">→</span>
+            <span className="text-amber-300 font-extrabold uppercase tracking-wider">UCP BAHAWALPUR</span>
+            <span className="text-slate-400">→</span>
             <span className="text-emerald-400 font-bold uppercase tracking-wider">FUTURE</span>
           </div>
 
@@ -409,7 +417,7 @@ export const OurLegacyPage: React.FC<OurLegacyPageProps> = ({
           <div 
             data-reveal="card" 
             data-reveal-delay="500"
-            className="mt-10 flex flex-wrap items-center justify-center gap-3"
+            className="mt-8 flex flex-wrap items-center justify-center gap-4"
           >
             <button
               onClick={() => scrollToSection('bahawalpur-heritage')}
@@ -421,9 +429,9 @@ export const OurLegacyPage: React.FC<OurLegacyPageProps> = ({
 
             <button
               onClick={() => scrollToSection('pgc-beginning')}
-              className="bg-white/10 hover:bg-white/20 text-white border border-white/25 px-5 py-2.5 rounded-xl font-semibold text-xs sm:text-sm transition-all duration-200 backdrop-blur-sm cursor-pointer"
+              className="text-white hover:text-amber-300 font-semibold text-xs sm:text-sm px-4 py-2.5 transition-colors duration-200 cursor-pointer drop-shadow-md underline decoration-white/40 hover:decoration-amber-300 underline-offset-4"
             >
-              Educational Milestones (1985–Present)
+              Educational Milestones (1985–Present) →
             </button>
           </div>
 

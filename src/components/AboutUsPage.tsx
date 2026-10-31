@@ -95,11 +95,19 @@ export const AboutUsPage: React.FC<AboutUsPageProps> = ({
   onOpenFacultyPage,
 }) => {
   const [scrollY, setScrollY] = useState(0);
-  // Ensure view starts at the absolute top on mount
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  // Ensure view starts at the absolute top on mount and start looping video
   useEffect(() => {
     window.scrollTo({ top: 0, left: 0, behavior: 'instant' as ScrollBehavior });
     document.documentElement.scrollTop = 0;
     document.body.scrollTop = 0;
+
+    if (videoRef.current) {
+      videoRef.current.defaultMuted = true;
+      videoRef.current.muted = true;
+      videoRef.current.play().catch(() => {});
+    }
 
     const handleScroll = () => {
       setScrollY(window.scrollY);
@@ -146,17 +154,15 @@ export const AboutUsPage: React.FC<AboutUsPageProps> = ({
             transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
             className="relative w-full max-w-[1400px] mx-auto rounded-[14px] overflow-hidden shadow-2xl border border-slate-200 dark:border-slate-800 bg-slate-900 aspect-[16/9] sm:aspect-[2/1] max-h-[720px] group"
           >
-            <img
-              src="https://ik.imagekit.io/Muffins/image%20-%202026-10-24T122141.678.png"
-              alt="University of Central Punjab Bahawalpur Campus Flagship View"
-              style={{
-                transform: `scale(${1 + Math.min(scrollY * 0.00035, 0.12)})`,
-                transition: 'transform 0.15s ease-out',
-              }}
-              className="w-full h-full object-cover object-center will-change-transform group-hover:scale-102 transition-transform duration-700"
-              onError={(e) => {
-                (e.currentTarget as HTMLImageElement).src = '/assets/campus/hero_campus_night_flagship.webp';
-              }}
+            <video
+              ref={videoRef}
+              src="https://ik.imagekit.io/Muffins/Create%20a%20realistic%20cinematic%20architectural%20time-lapse%20video%20from%20the%20provided%20photograph%20of%20UCP%20Bahawalpur%20Campus.%20Keep%20the%20entire%20university%20building%20perfectly%20stable,%20unchanged,%20and%20photorealistic%20as%20the%20clear%20hero%20.mp4"
+              autoPlay
+              muted
+              loop
+              playsInline
+              preload="auto"
+              className="w-full h-full object-cover object-center"
             />
             {/* Elegant vignette overlay with no extra text components */}
             <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent pointer-events-none" />

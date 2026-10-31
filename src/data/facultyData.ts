@@ -195,9 +195,10 @@ export const ALL_FACULTY_MEMBERS: FacultyMemberData[] = [
     experienceYears: '15+ Years',
     specialization: 'Applied Linguistics, English Pedagogy, Reading, Academic Writing & Web-Based Research',
     intro: 'And language and literature at UCP, currently PhD scholar in linguistics. Professional experience 15+. Specialized in university-level English teaching, functional English communication skills, reading comprehension, essay structuring, and advanced linguistic studies.',
-    photoUrl: 'https://ik.imagekit.io/Muffins/image%20(22).png',
+    photoUrl: 'https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-31%20at%204.50.47%20AM.jpeg',
     fallbackPhotoUrl: '/assets/faculty/prof-abeer-aslam.jpg',
-    objectPosition: 'object-top',
+    objectPosition: 'object-center',
+    imageTransform: 'scale-[1.25] origin-center',
     qualifications: [
       'PhD Scholar English Linguistics (contd)',
       'M.Phil in English Linguistics',
