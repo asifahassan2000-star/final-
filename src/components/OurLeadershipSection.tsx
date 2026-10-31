@@ -15,6 +15,7 @@ import {
   ExternalLink
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { optimizeImageUrl } from '../utils/mediaOptimizer';
 
 export interface LeadershipPortfolioItem {
   role: string;
@@ -384,7 +385,7 @@ export const OurLeadershipSection: React.FC<OurLeadershipSectionProps> = () => {
                 >
                   <div className="w-56 h-56 sm:w-64 sm:h-64 lg:w-72 lg:h-72 xl:w-80 xl:h-80 rounded-full overflow-hidden border-[3px] border-[#D4AF37] dark:border-[#D4AF37] shadow-2xl bg-[#0B1A3A] ring-4 ring-white dark:ring-[#080f1d] relative">
                     <img
-                      src={leader.portraitUrl}
+                      src={optimizeImageUrl(leader.portraitUrl, { format: 'webp', quality: 80, width: 640 })}
                       alt={`${leader.name}, ${leader.designation}`}
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                       style={{
@@ -541,7 +542,7 @@ export const OurLeadershipSection: React.FC<OurLeadershipSectionProps> = () => {
                   >
                     <div className="w-48 h-48 xs:w-52 xs:h-52 rounded-full overflow-hidden border-[3px] border-[#D4AF37] dark:border-[#D4AF37] shadow-2xl bg-[#0B1A3A] ring-4 ring-white dark:ring-[#080f1d] relative">
                       <img
-                        src={leader.portraitUrl}
+                        src={optimizeImageUrl(leader.portraitUrl, { format: 'webp', quality: 80, width: 500 })}
                         alt={leader.name}
                         className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                         style={{
@@ -688,7 +689,7 @@ export const OurLeadershipSection: React.FC<OurLeadershipSectionProps> = () => {
                 <div className="flex flex-col sm:flex-row items-center sm:items-start gap-6 pb-6 border-b border-slate-200">
                   <div className="w-32 h-32 sm:w-40 sm:h-40 rounded-full shrink-0 border-[3px] border-[#D4AF37] ring-4 ring-slate-100 dark:ring-slate-800 overflow-hidden bg-[#0B1A3A] shadow-xl relative">
                     <img
-                      src={selectedLeader.portraitUrl}
+                      src={optimizeImageUrl(selectedLeader.portraitUrl, { format: 'webp', quality: 85, width: 600 })}
                       alt={selectedLeader.name}
                       style={{
                         width: '100%',

@@ -7,6 +7,7 @@ import {
   Users, Layers, Globe, Eye, X, ZoomIn
 } from 'lucide-react';
 import { UCP_CONTACT } from '../data/ucpData';
+import { optimizeVideoUrl, optimizeImageUrl } from '../utils/mediaOptimizer';
 
 
 
@@ -350,6 +351,7 @@ export const OurLegacyPage: React.FC<OurLegacyPageProps> = ({
           <video 
             ref={videoRef}
             src="https://ik.imagekit.io/Muffins/Cinematic,%20ultra-realistic%20architectural%20footage%20of%20the%20actual%20UCP%20Bahawalpur%20Campus%20building%20based%20precisely%20on%20the%20provided%20reference%20image.%20Begin%20with%20a%20smooth,%20slow%20camera%20push-in%20toward%20the%20building,%20followed%20by%20.mp4"
+            poster="https://ik.imagekit.io/Muffins/Cinematic,%20ultra-realistic%20architectural%20footage%20of%20the%20actual%20UCP%20Bahawalpur%20Campus%20building%20based%20precisely%20on%20the%20provided%20reference%20image.%20Begin%20with%20a%20smooth,%20slow%20camera%20push-in%20toward%20the%20building,%20followed%20by%20.mp4/ik-thumbnail.jpg?tr=w-1280,f-webp,q-80"
             autoPlay
             muted
             loop

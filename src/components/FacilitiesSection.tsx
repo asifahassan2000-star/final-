@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { 
   Building2, Cpu, BookOpen, Microscope, ArrowRight, Maximize2, X
 } from 'lucide-react';
+import { optimizeImageUrl } from '../utils/mediaOptimizer';
 
 interface FacilitiesSectionProps {
   onOpenApply?: () => void;
@@ -114,7 +115,7 @@ export const FacilitiesSection: React.FC<FacilitiesSectionProps> = ({
               })}
             >
               <div className="relative w-full aspect-[16/9] overflow-hidden rounded-xl bg-transparent p-0 m-0 border-0">
-                <img decoding="async" src="https://ik.imagekit.io/Muffins/image%20(13).png"
+                <img decoding="async" src={optimizeImageUrl("https://ik.imagekit.io/Muffins/image%20(13).png", { format: 'webp', quality: 80, width: 800 })}
                   alt="Campus Grand Staircase and Central Atrium"
                   loading="lazy"
                   className="w-full h-full object-cover object-center block group-hover:scale-102 transition-transform duration-500"
@@ -140,7 +141,7 @@ export const FacilitiesSection: React.FC<FacilitiesSectionProps> = ({
                 })}
               >
                 <div className="relative w-full aspect-[880/1189] overflow-hidden rounded-xl bg-slate-950">
-                  <img decoding="async" src="https://ik.imagekit.io/Muffins/image%20(34).png?updatedAt=1792833201127"
+                  <img decoding="async" src={optimizeImageUrl("https://ik.imagekit.io/Muffins/image%20(34).png?updatedAt=1792833201127", { format: 'webp', quality: 80, width: 800 })}
                     alt="Campus Reception & Central Hall"
                     loading="lazy"
                     className="w-full h-full object-cover object-center block group-hover:scale-102 transition-transform duration-500"
@@ -163,7 +164,7 @@ export const FacilitiesSection: React.FC<FacilitiesSectionProps> = ({
                 })}
               >
                 <div className="relative w-full aspect-[848/1258] overflow-hidden rounded-xl bg-slate-950">
-                  <img decoding="async" src="https://ik.imagekit.io/Muffins/image%20(33).png?updatedAt=1792833197988"
+                  <img decoding="async" src={optimizeImageUrl("https://ik.imagekit.io/Muffins/image%20(33).png?updatedAt=1792833197988", { format: 'webp', quality: 80, width: 800 })}
                     alt="Campus Corridors and Walkways"
                     loading="lazy"
                     className="w-full h-full object-cover object-center block group-hover:scale-102 transition-transform duration-500"
@@ -227,7 +228,7 @@ export const FacilitiesSection: React.FC<FacilitiesSectionProps> = ({
                   caption: 'Spacious quiet reading hall equipped with dedicated study tables and reference materials.'
                 })}
               >
-                <img decoding="async" src="https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-12%20at%204.10.57%20AM.jpeg?updatedAt=1793025595502"
+                <img decoding="async" src={optimizeImageUrl("https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-12%20at%204.10.57%20AM.jpeg?updatedAt=1793025595502", { format: 'webp', quality: 80, width: 800 })}
                   alt="Central Library Main Reading Hall"
                   loading="lazy"
                   className="w-full h-full object-cover object-center block transition-transform duration-500 ease-out group-hover:scale-102"
@@ -305,7 +306,7 @@ export const FacilitiesSection: React.FC<FacilitiesSectionProps> = ({
                     caption: 'Organized shelves with curriculum textbooks, reference guides, and journals.'
                   })}
                 >
-                  <img decoding="async" src="https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-12%20at%205.10.51%20AM.jpeg"
+                  <img decoding="async" src={optimizeImageUrl("https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-12%20at%205.10.51%20AM.jpeg", { format: 'webp', quality: 80, width: 800 })}
                     alt="Central Library Reference Section and Book Collections"
                     loading="lazy"
                     className="w-full h-full object-cover object-center block transition-transform duration-500 ease-out group-hover:scale-102"
@@ -385,7 +386,7 @@ export const FacilitiesSection: React.FC<FacilitiesSectionProps> = ({
                     caption: 'High-density workstation laboratory dedicated to software engineering and data structures.'
                   })}
                 >
-                  <img decoding="async" src="https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-09%20at%206.42.28%20AM.jpeg"
+                  <img decoding="async" src={optimizeImageUrl("https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-09%20at%206.42.28%20AM.jpeg", { format: 'webp', quality: 80, width: 800 })}
                     alt="Computer Laboratory Workstations"
                     loading="lazy"
                     className="w-full h-full object-cover object-center block group-hover:scale-102 transition-transform duration-500"
@@ -452,7 +453,7 @@ export const FacilitiesSection: React.FC<FacilitiesSectionProps> = ({
                           caption: 'High-performance computing terminals and cloud architectures for machine learning and systems research.'
                         })}
                       >
-                        <img decoding="async" src="https://ik.imagekit.io/Muffins/image%20(6).png"
+                        <img decoding="async" src={optimizeImageUrl("https://ik.imagekit.io/Muffins/image%20(6).png", { format: 'webp', quality: 80, width: 800 })}
                           alt="Advanced AI & Computational Research Suite"
                           loading="lazy"
                           className="w-full h-auto object-cover object-center block group-hover:scale-102 transition-transform duration-500 rounded-lg"
@@ -482,7 +483,7 @@ export const FacilitiesSection: React.FC<FacilitiesSectionProps> = ({
                     caption: 'Specialized computational laboratory configured for machine learning pipelines and cybersecurity simulations.'
                   })}
                 >
-                  <img decoding="async" src="https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-09%20at%206.51.57%20AM.jpeg"
+                  <img decoding="async" src={optimizeImageUrl("https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-09%20at%206.51.57%20AM.jpeg", { format: 'webp', quality: 80, width: 800 })}
                     alt="IT and Computing Lab"
                     loading="lazy"
                     className="w-full h-full object-cover object-center block group-hover:scale-102 transition-transform duration-500"
@@ -607,7 +608,7 @@ export const FacilitiesSection: React.FC<FacilitiesSectionProps> = ({
                 })}
               >
                 <div className="relative w-full aspect-[1408/1279] overflow-hidden bg-slate-950">
-                  <img decoding="async" src="https://ik.imagekit.io/Muffins/image%20(9).png"
+                  <img decoding="async" src={optimizeImageUrl("https://ik.imagekit.io/Muffins/image%20(9).png", { format: 'webp', quality: 80, width: 800 })}
                     alt="Advanced Experimental Chemistry and Physical Science Laboratory"
                     loading="lazy"
                     className="w-full h-full object-cover object-center block group-hover:scale-102 transition-transform duration-500"
@@ -645,7 +646,7 @@ export const FacilitiesSection: React.FC<FacilitiesSectionProps> = ({
                 })}
               >
                 <div className="relative w-full aspect-[1600/892] overflow-hidden bg-slate-950">
-                  <img decoding="async" src="https://ik.imagekit.io/Muffins/image%20(10).png"
+                  <img decoding="async" src={optimizeImageUrl("https://ik.imagekit.io/Muffins/image%20(10).png", { format: 'webp', quality: 80, width: 800 })}
                     alt="Life Sciences, Biotechnology and Molecular Biology Research Laboratory"
                     loading="lazy"
                     className="w-full h-full object-cover object-center block group-hover:scale-102 transition-transform duration-500"
@@ -744,7 +745,7 @@ export const FacilitiesSection: React.FC<FacilitiesSectionProps> = ({
             </div>
 
             <div className="relative bg-slate-950 max-h-[70vh] flex items-center justify-center overflow-hidden">
-              <img loading="lazy" decoding="async" src={selectedImage.src}
+              <img loading="lazy" decoding="async" src={optimizeImageUrl(selectedImage.src, { format: 'webp', quality: 85, width: 1440 })}
                 alt={selectedImage.title}
                 className="max-h-[70vh] w-auto max-w-full object-contain mx-auto"
                 onError={(e) => {

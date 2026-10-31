@@ -7,7 +7,7 @@ import fs from 'fs';
 import dotenv from 'dotenv';
 import { GoogleGenAI } from '@google/genai';
 import { searchUcpKnowledge, UCP_KNOWLEDGE_BASE } from './ucp-knowledge.js';
-import { getInstantBotResponse } from './src/utils/ucpBotKnowledge.js';
+import { getInstantBotResponse, getAttributionResponse } from './src/utils/ucpBotKnowledge.js';
 
 dotenv.config();
 
@@ -101,10 +101,25 @@ app.get('/sitemap-ucp.xml', (_req, res) => {
 
 const BASE_SYSTEM_PROMPT = `You are UCP Assistant, official AI assistant for UCP Bahawalpur (University of Central Punjab, Bahawalpur Campus). You are fast, helpful, friendly and concise. Answer instantly. You have extensive knowledge about UCP Bahawalpur campus. For general knowledge questions, answer from your Gemini intelligence directly without mentioning sources.
 
-CRITICAL DEVELOPER & WEBSITE BUILDER ATTRIBUTION:
-- When someone asks who made this website, who developed this website, who built this website, who created this website, who is the founder or developer of this website, OR asks who made/developed/built you (the AI assistant), answer:
-"I and this entire website of UCP Bahawalpur campus were developed and built by Asifa, a student of AI at UCP Bahawalpur! 🎓✨"
-- STRICT RULE: ONLY mention Asifa's name when someone specifically asks who built/developed you or who built/developed/founded this website. In all other conversations and questions (admissions, programs, campus life, fees, faculty, general knowledge, etc.), NEVER mention Asifa or bring up the developer unprompted.`;
+CRITICAL DEVELOPER, CREATOR & OFFICIAL REPRESENTATIVE ATTRIBUTION RULES:
+When someone asks these specific questions or related questions about the developer, creator, website, chatbot, or official status, give the EXACT corresponding response:
+
+1. Who developed this website? (or questions asking who designed/built/made/created this website or the site's developer):
+"This website was designed and developed by Asifa, an AI student at UCP Bahawalpur."
+
+2. Who created you? (or questions asking who made/built/created you):
+"I’m the UCP Bahawalpur AI Assistant, developed by Asifa to help visitors access campus information quickly and easily."
+
+3. Who is your developer? (or questions asking who is your developer/coder):
+"My developer is Asifa, an AI student at UCP Bahawalpur."
+
+4. Who made this chatbot? (or questions asking who made/developed/built this chatbot or bot):
+"This AI chatbot was created by Asifa to provide helpful information and assistance to UCP Bahawalpur visitors."
+
+5. Are you an official UCP representative? (or questions asking if you are official, a real person, or human university representative):
+"I’m an AI assistant for the UCP Bahawalpur Campus website. I provide information to help visitors, but I’m not a human university representative."
+
+- STRICT RULE: ONLY mention Asifa when someone specifically asks who built/developed/created you, this chatbot, or this website. In all other conversations and questions (admissions, programs, campus life, fees, faculty, general knowledge, etc.), NEVER mention Asifa or bring up the developer unprompted.`;
 
 const UCP_CAMPUS_FACTS = `
 UCP Bahawalpur Campus Knowledge:
@@ -132,7 +147,7 @@ UCP Bahawalpur Campus Knowledge:
   * Campus Life: #campus-life (e.g. [Campus Life](#campus-life))
   * Online Admission Portal: https://admissions.ucpcolleges.pgc.edu/login?returnUrl=%2Flogin%3FreturnUrl%3D%252F
 - Admissions rule: If asking about admissions, mention online admission portal is open and offer guidance.
-- Developer & Website Builder rule: ONLY when someone asks who built/made you or who made/built/developed/founded this website, state: "I and this entire website of UCP Bahawalpur campus were developed and built by Asifa, a student of AI at UCP Bahawalpur! 🎓✨". Never mention Asifa unless specifically asked.
+- Developer, Creator & Attribution rule: ONLY when someone asks who built/made/created you, who made this chatbot, or who made/built/developed/founded this website, provide the exact enhanced responses. Never mention Asifa unless specifically asked.
 `;
 
 function isUcpSpecificQuery(text: string): boolean {
@@ -148,6 +163,8 @@ function isUcpSpecificQuery(text: string): boolean {
     'who made this website', 'who built this website', 'who developed this website',
     'developer of website', 'website developer', 'founder of this website', 'who built you',
     'who made you', 'who created you', 'who developed you', 'who is your developer',
+    'who made this chatbot', 'who made the chatbot', 'who created this chatbot',
+    'official ucp representative', 'official representative', 'are you official', 'are you human',
     'leadership', 'legacy', 'scope', 'professors', 'professor', 'teachers', 'programmes', 'programs'
   ];
   return ucpTerms.some(term => t.includes(term));
@@ -177,6 +194,13 @@ app.post('/api/chat/stream', async (req, res) => {
   const { message, history } = req.body;
   if (!message || typeof message !== 'string') {
     res.write(`data: ${JSON.stringify({ error: 'Message is required' })}\n\n`);
+    res.write('data: [DONE]\n\n');
+    return res.end();
+  }
+
+  const attribution = getAttributionResponse(message);
+  if (attribution) {
+    res.write(`data: ${JSON.stringify({ text: attribution.reply, suggestions: attribution.suggestions, actionLink: attribution.actionLink })}\n\n`);
     res.write('data: [DONE]\n\n');
     return res.end();
   }

@@ -173,7 +173,7 @@ export const FacultyProfileModal: React.FC<FacultyProfileModalProps> = ({
                 <div className="w-[140px] h-[140px] sm:w-[155px] sm:h-[155px] rounded-2xl overflow-hidden shadow-lg ring-3 ring-[#C5A059]/40 ring-offset-4 ring-offset-white bg-slate-100 shrink-0">
                   <img decoding="async" src={faculty.photoUrl}
                     alt={faculty.name}
-                    className={`w-full h-full object-cover ${faculty.objectPosition || 'object-top'}`}
+                    className={`w-full h-full object-cover ${faculty.objectPosition || 'object-top'} ${faculty.imageTransform || ''}`}
                     loading="eager"
                     onError={(e) => {
                       (e.target as HTMLImageElement).src = faculty.fallbackPhotoUrl;

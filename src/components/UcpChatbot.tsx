@@ -4,7 +4,7 @@ import {
   ExternalLink, Zap, Sparkles,
   Maximize2, Minimize2, ChevronLeft, ChevronRight
 } from 'lucide-react';
-import { getInstantBotResponse, QUICK_ACTION_RESPONSES, BotResponse } from '../utils/ucpBotKnowledge';
+import { getInstantBotResponse, getAttributionResponse, QUICK_ACTION_RESPONSES, BotResponse } from '../utils/ucpBotKnowledge';
 import { UcpRobotMascot } from './UcpRobotMascot';
 
 // In-memory cache for instant repeated query responses (0ms)
@@ -400,14 +400,10 @@ export const UcpChatbot: React.FC<UcpChatbotProps> = ({ onNavigate }) => {
       return;
     }
 
-    // 3. Developer / Builder attribution question (INSTANT 0ms)
-    const isDevQuery = /who (made|developed|created|built|coded|designed) (you|this website|the website|website)|who is (your|the) (developer|creator|maker|founder)|developer of (this )?website|website developer|founder of (this )?website|who founded this website/i.test(lowerQuery);
-    if (isDevQuery) {
-      deliverInstantResponse({
-        reply: "I and this entire website of UCP Bahawalpur campus were developed and built by Asifa, a student of AI at UCP Bahawalpur! 🎓✨",
-        suggestions: ["Degree Programmes 🎓", "Fee Structure 💰", "Admissions 📝"],
-        isOfflineMatch: true
-      });
+    // 3. Developer / Builder / Representative attribution question (INSTANT 0ms)
+    const attributionCheck = getAttributionResponse(query);
+    if (attributionCheck) {
+      deliverInstantResponse(attributionCheck);
       return;
     }
 

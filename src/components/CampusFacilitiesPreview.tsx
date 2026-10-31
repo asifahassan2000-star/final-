@@ -1,5 +1,6 @@
 import React from 'react';
 import { ArrowRight, Building2, BookOpen, Cpu, Microscope, ShieldCheck } from 'lucide-react';
+import { optimizeImageUrl } from '../utils/mediaOptimizer';
 
 interface CampusFacilitiesPreviewProps {
   onOpenFacilitiesPage: () => void;
@@ -112,7 +113,7 @@ export const CampusFacilitiesPreview: React.FC<CampusFacilitiesPreviewProps> = (
           <div className="lg:col-span-5 flex items-center justify-center w-full p-0 m-0">
             <div className="relative w-full h-[320px] sm:h-[350px] lg:h-[380px] rounded-2xl overflow-hidden border-0 bg-transparent p-0 m-0 shadow-none">
               <img
-                src="https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-05%20at%202.46.10%20AM.jpeg?updatedAt=1792916356622"
+                src={optimizeImageUrl("https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-05%20at%202.46.10%20AM.jpeg?updatedAt=1792916356622", { format: 'webp', quality: 80, width: 800 })}
                 alt="University of Central Punjab Bahawalpur Campus Facilities"
                 loading="lazy"
                 decoding="async"

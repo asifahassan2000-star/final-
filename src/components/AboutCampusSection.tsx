@@ -18,6 +18,7 @@ import {
   ArrowRightLeft,
   TrendingUp
 } from 'lucide-react';
+import { optimizeImageUrl } from '../utils/mediaOptimizer';
 
 const WHY_JOIN_ITEMS = [
   {
@@ -334,7 +335,7 @@ export const AboutCampusSection: React.FC<AboutCampusSectionProps> = ({
               >
                 <div className="relative w-full aspect-[4/3] rounded-2xl overflow-hidden bg-slate-100 dark:bg-slate-900 shadow-sm border border-slate-200/80 dark:border-white/10 transition-all duration-300">
                   <img
-                    src={item.src}
+                    src={optimizeImageUrl(item.src, { format: 'webp', quality: 80, width: 800 })}
                     alt={item.title}
                     loading="lazy"
                     decoding="async"
@@ -408,7 +409,7 @@ export const AboutCampusSection: React.FC<AboutCampusSectionProps> = ({
                 <div>
                   {/* Photo Frame */}
                   <div className="relative w-full aspect-[16/10] rounded-xl overflow-hidden bg-slate-100 dark:bg-slate-900 mb-3 shadow-xs border border-slate-200/80 dark:border-white/10">
-                    <img src={item.src}
+                    <img src={optimizeImageUrl(item.src, { format: 'webp', quality: 80, width: 800 })}
                       alt={item.title}
                       loading="lazy"
                       decoding="async"
@@ -488,7 +489,7 @@ export const AboutCampusSection: React.FC<AboutCampusSectionProps> = ({
               </div>
 
               <div className="relative bg-slate-950 max-h-[70vh] flex items-center justify-center overflow-hidden">
-                <img loading="lazy" decoding="async" src={activePhoto.src}
+                <img loading="lazy" decoding="async" src={optimizeImageUrl(activePhoto.src, { format: 'webp', quality: 85, width: 1440 })}
                   alt={activePhoto.title}
                   className="max-h-[70vh] w-auto max-w-full object-contain mx-auto"
                   onError={(e) => {

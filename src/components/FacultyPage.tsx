@@ -10,6 +10,7 @@ import {
   ADMINISTRATION_MEMBERS, 
   FacultyMemberData 
 } from '../data/facultyData';
+import { optimizeImageUrl } from '../utils/mediaOptimizer';
 
 export type FacultySlot = FacultyMemberData;
 export const OFFICIAL_FACULTY_MEMBERS = ALL_FACULTY_MEMBERS;
@@ -196,11 +197,14 @@ export const FacultyPage: React.FC<FacultyPageProps> = ({
                     className="group flex flex-col items-center text-center cursor-pointer p-2 sm:p-2.5 rounded-2xl bg-white hover:bg-slate-50/70 border border-slate-100 hover:border-slate-300 shadow-2xs hover:shadow-md transition-all duration-300"
                   >
                     {/* Official Portrait Frame */}
-                    <div className="w-full aspect-[4/5] rounded-xl sm:rounded-2xl overflow-hidden bg-slate-900 border border-slate-200/90 shadow-2xs group-hover:shadow-xs group-hover:border-[#C5A059]/60 transition-all duration-300 relative">
-                      <img src={faculty.photoUrl}
+                    <div 
+                      style={{ aspectRatio: '4/5', background: '#f1f5f9' }}
+                      className="w-full aspect-[4/5] rounded-xl sm:rounded-2xl overflow-hidden bg-[#f1f5f9] border border-slate-200/90 shadow-2xs group-hover:shadow-xs group-hover:border-[#C5A059]/60 transition-all duration-300 relative p-0 m-0"
+                    >
+                      <img src={optimizeImageUrl(faculty.photoUrl, { format: 'webp', quality: 82, width: 640 })}
                         alt={faculty.name}
-                        style={{ objectFit: 'cover' }}
-                        className={`absolute inset-0 w-full h-full object-cover ${faculty.objectPosition || 'object-top'} ${faculty.imageTransform || ''} transition-transform duration-500 ease-out ${faculty.imageTransform ? 'group-hover:scale-[1.34]' : 'group-hover:scale-105'}`}
+                        style={{ objectFit: 'cover', objectPosition: 'top center', background: '#f1f5f9' }}
+                        className={`absolute inset-0 w-full h-full object-cover block m-0 p-0 ${faculty.objectPosition || 'object-top'} ${faculty.imageTransform || ''} transition-transform duration-500 ease-out ${faculty.id === 'prof-abeer-aslam' ? '' : (faculty.imageTransform ? 'group-hover:scale-[1.34]' : 'group-hover:scale-105')}`}
                         loading="lazy"
                         decoding="async"
                         onError={(e) => {
@@ -286,12 +290,16 @@ export const FacultyPage: React.FC<FacultyPageProps> = ({
                   >
                     <div className="w-full">
                       {/* Photo Container: EXACT SAME 4:5 IMAGE RATIO & SIZING AS FACULTY */}
-                      <div className="w-full aspect-[4/5] rounded-xl sm:rounded-2xl overflow-hidden bg-slate-100 border border-slate-200/90 shadow-2xs group-hover:shadow-xs group-hover:border-[#C5A059]/60 transition-all duration-300 relative">
-                        <img src={admin.photoUrl}
+                      <div 
+                        style={{ aspectRatio: '4/5', background: '#f1f5f9' }}
+                        className="w-full aspect-[4/5] rounded-xl sm:rounded-2xl overflow-hidden bg-[#f1f5f9] border border-slate-200/90 shadow-2xs group-hover:shadow-xs group-hover:border-[#C5A059]/60 transition-all duration-300 relative p-0 m-0"
+                      >
+                        <img src={optimizeImageUrl(admin.photoUrl, { format: 'webp', quality: 82, width: 640 })}
                           alt={admin.name}
                           loading="lazy"
                           decoding="async"
-                          className={`absolute inset-0 w-full h-full object-cover ${admin.objectPosition || 'object-top'} ${admin.imageTransform || ''} transition-transform duration-500 ease-out ${admin.imageTransform ? 'group-hover:scale-[1.19]' : 'group-hover:scale-105'}`}
+                          style={{ objectFit: 'cover', objectPosition: 'top center', background: '#f1f5f9' }}
+                          className={`absolute inset-0 w-full h-full object-cover block m-0 p-0 ${admin.objectPosition || 'object-top'} ${admin.imageTransform || ''} transition-transform duration-500 ease-out ${admin.imageTransform ? 'group-hover:scale-[1.19]' : 'group-hover:scale-105'}`}
                           onError={(e) => {
                             (e.target as HTMLImageElement).src = admin.fallbackPhotoUrl;
                           }}

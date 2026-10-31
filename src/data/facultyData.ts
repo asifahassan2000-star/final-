@@ -66,6 +66,7 @@ export const ALL_FACULTY_MEMBERS: FacultyMemberData[] = [
     photoUrl: 'https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-12%20at%209.45.57%20PM.jpeg',
     fallbackPhotoUrl: 'https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-12%20at%209.45.57%20PM.jpeg',
     objectPosition: 'object-top',
+    imageTransform: 'scale-[1.25] origin-top',
     qualifications: [
       'Ph.D. in Physics (Nuclear Medicine)',
       'M.Phil in Medical & Radiation Physics',
@@ -195,10 +196,9 @@ export const ALL_FACULTY_MEMBERS: FacultyMemberData[] = [
     experienceYears: '15+ Years',
     specialization: 'Applied Linguistics, English Pedagogy, Reading, Academic Writing & Web-Based Research',
     intro: 'And language and literature at UCP, currently PhD scholar in linguistics. Professional experience 15+. Specialized in university-level English teaching, functional English communication skills, reading comprehension, essay structuring, and advanced linguistic studies.',
-    photoUrl: 'https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-31%20at%204.50.47%20AM.jpeg',
-    fallbackPhotoUrl: '/assets/faculty/prof-abeer-aslam.jpg',
-    objectPosition: 'object-center',
-    imageTransform: 'scale-[1.25] origin-center',
+    photoUrl: 'https://ik.imagekit.io/Muffins/image%20-%202026-10-31T212003.914.png',
+    fallbackPhotoUrl: 'https://ik.imagekit.io/Muffins/image%20-%202026-10-31T212003.914.png',
+    objectPosition: 'object-top',
     qualifications: [
       'PhD Scholar English Linguistics (contd)',
       'M.Phil in English Linguistics',
@@ -283,6 +283,7 @@ export const ALL_FACULTY_MEMBERS: FacultyMemberData[] = [
     photoUrl: 'https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-27%20at%2010.28.06%20PM.png',
     fallbackPhotoUrl: 'https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-27%20at%2010.28.06%20PM.png',
     objectPosition: 'object-top',
+    imageTransform: 'scale-[1.25] origin-top',
     qualifications: [
       'Ph.D. in Medical Physics',
       'M.Phil in Biomedical Physics',
@@ -837,6 +838,7 @@ export const ALL_FACULTY_MEMBERS: FacultyMemberData[] = [
     photoUrl: 'https://ik.imagekit.io/Muffins/image%20-%202026-10-28T114145.181.png',
     fallbackPhotoUrl: 'https://ik.imagekit.io/Muffins/image%20-%202026-10-28T114145.181.png',
     objectPosition: 'object-top',
+    imageTransform: 'scale-[1.25] origin-top',
     qualifications: [
       'M.A (English) IUB',
       'M.A (TEFL) AIOU ISLAMABAD',
@@ -918,8 +920,9 @@ export const ADMINISTRATION_MEMBERS: FacultyMemberData[] = [
     specialization: 'Graphic Design, Visual Branding, Digital Media & UI/UX Design',
     intro: 'Creative design professional holding a Masters in Computer Science with 5 years of rich experience in visual branding, digital assets, multimedia presentations, and campus marketing collateral.',
     photoUrl: 'https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-17%20at%203.27.42%20AM.jpeg',
-    fallbackPhotoUrl: '/images/vvTJ4GPy_Whats-App-Image-2026-10-17-at-3-27-42-AM.jpg',
+    fallbackPhotoUrl: 'https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-17%20at%203.27.42%20AM.jpeg',
     objectPosition: 'object-top',
+    imageTransform: 'scale-[1.25] origin-top',
     qualifications: [
       'Masters in Computer Science (MCS)',
       'Advanced Visual Communication & Graphic Arts',

@@ -6,6 +6,7 @@ import {
 import { FadingStackLightbox } from './FadingStackLightbox';
 import { UcpEliteNetworkSection } from './UcpEliteNetworkSection';
 import { CAMPUS_EVENTS_DATA } from '../data/campusEventsData';
+import { optimizeImageUrl } from '../utils/mediaOptimizer';
 
 export interface EventMarqueeMoment {
   id: string;
@@ -238,7 +239,7 @@ export const CampusLife: React.FC<CampusLifeProps> = ({ onOpenCampusLifePage }) 
                 className="relative w-full aspect-[3/2] overflow-hidden rounded-[28px_16px_36px_16px] border border-[#0A1931]/10 bg-slate-900 shadow-[0_16px_40px_rgba(10,25,49,0.07)] cursor-pointer hover:brightness-105 transition-all duration-300"
               >
                 <img decoding="async" key={currentCorridorImg}
-                  src={currentCorridorImg}
+                  src={optimizeImageUrl(currentCorridorImg, { format: 'webp', quality: 80, width: 900 })}
                   alt="Student Life - Best vibes of students singing at Cholistan Haveli during evening session at UCP Bahawalpur"
                   loading="lazy"
                   className="w-full h-full object-cover object-center transition-all duration-1000 ease-out group-hover:scale-[1.02] animate-in fade-in"
@@ -390,7 +391,7 @@ export const CampusLife: React.FC<CampusLifeProps> = ({ onOpenCampusLifePage }) 
                     }}
                   >
                     <img 
-                      src={item.imageSrc}
+                      src={optimizeImageUrl(item.imageSrc, { format: 'webp', quality: 78, width: 640 })}
                       alt={item.alt}
                       loading="lazy"
                       decoding="async"
@@ -435,7 +436,7 @@ export const CampusLife: React.FC<CampusLifeProps> = ({ onOpenCampusLifePage }) 
                     aria-hidden="true"
                   >
                     <img 
-                      src={item.imageSrc}
+                      src={optimizeImageUrl(item.imageSrc, { format: 'webp', quality: 78, width: 640 })}
                       alt={item.alt}
                       loading="lazy"
                       decoding="async"

@@ -17,6 +17,7 @@ import {
   BahawalpurProgramme 
 } from '../data/bahawalpurProgrammesData';
 import { SemesterCurriculumTable } from './SemesterCurriculumTable';
+import { optimizeImageUrl } from '../utils/mediaOptimizer';
 
 interface AcademicProgrammesPageProps {
   onBackToHome?: () => void;
@@ -91,11 +92,11 @@ const getProgrammeImageCustomClass = (progId: string): string => {
 };
 
 const resolveProgrammeImageSrc = (prog: BahawalpurProgramme | { id: string; image?: any }): string => {
-  if (PROGRAMME_IMAGE_MAP[prog.id]) return PROGRAMME_IMAGE_MAP[prog.id];
-  const raw = prog.image;
-  if (typeof raw === 'string' && raw && !raw.includes('[object')) return raw;
-  if (raw && typeof raw === 'object' && typeof raw.src === 'string') return raw.src;
-  return '/hero-featured-campus.jpg';
+  let url = '/hero-featured-campus.jpg';
+  if (PROGRAMME_IMAGE_MAP[prog.id]) url = PROGRAMME_IMAGE_MAP[prog.id];
+  else if (typeof prog.image === 'string' && prog.image && !prog.image.includes('[object')) url = prog.image;
+  else if (prog.image && typeof prog.image === 'object' && typeof prog.image.src === 'string') url = prog.image.src;
+  return optimizeImageUrl(url, { format: 'webp', quality: 80, width: 800 });
 };
 
 const handleProgrammeImgError = (e: React.SyntheticEvent<HTMLImageElement, Event>, progId: string) => {

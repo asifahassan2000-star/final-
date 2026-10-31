@@ -6,6 +6,7 @@ import { HERO_SLIDES } from '../data/ucpData';
 import ucpBwpBuilding5Local from '../assets/images/ucp_bwp_building_5.jpg';
 import heroCampusHighlightImg from '../assets/images/hero_campus_highlight.jpg';
 import ucpBuildingBlueprintImg from '../assets/images/ucp_building_blueprint.jpg';
+import { optimizeImageUrl } from '../utils/mediaOptimizer';
 
 interface HeroSliderProps {
   onOpenApply: () => void;
@@ -103,7 +104,7 @@ export const HeroSlider: React.FC<HeroSliderProps> = ({
     touchEndXRef.current = null;
   };
 
-  // Resolve slide image (handling local asset references)
+  // Resolve slide image (handling local asset references and WebP optimization)
   const getSlideImage = (slide: typeof HERO_SLIDES[0]): string => {
     let raw: any = slide.image;
     if (!raw) {
@@ -112,8 +113,8 @@ export const HeroSlider: React.FC<HeroSliderProps> = ({
       else if (slide.id === 'discover-future') raw = '/assets/facilities/comp-lab-1.jpg';
       else if (slide.id === 'next-generation') raw = '/assets/hero/hero-journey-community.jpg';
     }
-    if (typeof raw === 'object' && raw?.src) return raw.src;
-    return typeof raw === 'string' ? raw : String(raw || '');
+    const finalUrl = (typeof raw === 'object' && raw?.src) ? raw.src : (typeof raw === 'string' ? raw : String(raw || ''));
+    return optimizeImageUrl(finalUrl, { format: 'webp', quality: 85, width: 1920 });
   };
 
   const handleAction = (actionKey: string) => {

@@ -2,6 +2,7 @@ import React, { useEffect, useState, useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { ArrowLeft, ArrowRight, ExternalLink } from 'lucide-react';
 import ucpBwpBuilding5Local from '../assets/images/ucp_bwp_building_5.jpg';
+import { optimizeImageUrl, optimizeVideoUrl } from '../utils/mediaOptimizer';
 
 interface AboutUsPageProps {
   onBackToHome: () => void;
@@ -147,16 +148,13 @@ export const AboutUsPage: React.FC<AboutUsPageProps> = ({
           </motion.div>
 
           {/* Full-width Big Image with Rounded Corners 14px & Parallax Zoom & Scroll Reveal */}
-          <motion.div 
-            initial={{ opacity: 0, scale: 0.98, y: 24 }}
-            whileInView={{ opacity: 1, scale: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.2 }}
-            transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
+          <div 
             className="relative w-full max-w-[1400px] mx-auto rounded-[14px] overflow-hidden shadow-2xl border border-slate-200 dark:border-slate-800 bg-slate-900 aspect-[16/9] sm:aspect-[2/1] max-h-[720px] group"
           >
             <video
               ref={videoRef}
               src="https://ik.imagekit.io/Muffins/Create%20a%20realistic%20cinematic%20architectural%20time-lapse%20video%20from%20the%20provided%20photograph%20of%20UCP%20Bahawalpur%20Campus.%20Keep%20the%20entire%20university%20building%20perfectly%20stable,%20unchanged,%20and%20photorealistic%20as%20the%20clear%20hero%20.mp4"
+              poster="https://ik.imagekit.io/Muffins/Create%20a%20realistic%20cinematic%20architectural%20time-lapse%20video%20from%20the%20provided%20photograph%20of%20UCP%20Bahawalpur%20Campus.%20Keep%20the%20entire%20university%20building%20perfectly%20stable,%20unchanged,%20and%20photorealistic%20as%20the%20clear%20hero%20.mp4/ik-thumbnail.jpg?tr=w-1280,f-webp,q-80"
               autoPlay
               muted
               loop
@@ -166,7 +164,7 @@ export const AboutUsPage: React.FC<AboutUsPageProps> = ({
             />
             {/* Elegant vignette overlay with no extra text components */}
             <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent pointer-events-none" />
-          </motion.div>
+          </div>
         </div>
       </section>
 
@@ -436,8 +434,10 @@ export const AboutUsPage: React.FC<AboutUsPageProps> = ({
                 >
                   <div className="relative w-full max-w-[195px] sm:max-w-[215px] aspect-[3/4] bg-[#F5F5F5] dark:bg-slate-900 rounded-[8px] overflow-hidden border border-slate-200 dark:border-slate-800 shadow-sm hover:shadow-md transition-all duration-300">
                     <img
-                      src="https://ik.imagekit.io/Muffins/image%20-%202026-10-23T213740.120.png"
+                      src={optimizeImageUrl("https://ik.imagekit.io/Muffins/image%20-%202026-10-23T213740.120.png", { format: 'webp', quality: 80, width: 440 })}
                       alt="Mian Amer Mahmood"
+                      loading="lazy"
+                      decoding="async"
                       className="w-full h-full object-cover object-[center_top] group-hover:scale-104 transition-transform duration-500"
                       onError={(e) => {
                         (e.currentTarget as HTMLImageElement).src = '/assets/welcome/mian-amer-mahmood.png';
@@ -465,8 +465,10 @@ export const AboutUsPage: React.FC<AboutUsPageProps> = ({
                 >
                   <div className="relative w-full max-w-[195px] sm:max-w-[215px] aspect-[3/4] bg-[#F5F5F5] dark:bg-slate-900 rounded-[8px] overflow-hidden border border-slate-200 dark:border-slate-800 shadow-sm hover:shadow-md transition-all duration-300">
                     <img
-                      src="https://ik.imagekit.io/Muffins/image%20-%202026-10-24T140135.933.png"
+                      src={optimizeImageUrl("https://ik.imagekit.io/Muffins/image%20-%202026-10-24T140135.933.png", { format: 'webp', quality: 80, width: 440 })}
                       alt="Prof. Sohail Afzal"
+                      loading="lazy"
+                      decoding="async"
                       className="w-full h-full object-cover object-[center_top] group-hover:scale-104 transition-transform duration-500"
                       onError={(e) => {
                         (e.currentTarget as HTMLImageElement).src = 'https://ik.imagekit.io/Muffins/image%20-%202026-10-24T140135.933.png';
@@ -494,8 +496,10 @@ export const AboutUsPage: React.FC<AboutUsPageProps> = ({
                 >
                   <div className="relative w-full max-w-[195px] sm:max-w-[215px] aspect-[3/4] bg-[#F5F5F5] dark:bg-slate-900 rounded-[8px] overflow-hidden border border-slate-200 dark:border-slate-800 shadow-sm hover:shadow-md transition-all duration-300">
                     <img
-                      src="https://ik.imagekit.io/Muffins/image%20-%202026-10-23T154255.281.png"
+                      src={optimizeImageUrl("https://ik.imagekit.io/Muffins/image%20-%202026-10-23T154255.281.png", { format: 'webp', quality: 80, width: 440 })}
                       alt="Prof. Hamid Iqbal"
+                      loading="lazy"
+                      decoding="async"
                       className="w-full h-full object-cover object-[center_top] group-hover:scale-104 transition-transform duration-500"
                       onError={(e) => {
                         (e.currentTarget as HTMLImageElement).src = '/assets/leadership/prof_hamid_iqbal_director.png';
@@ -523,8 +527,10 @@ export const AboutUsPage: React.FC<AboutUsPageProps> = ({
                 >
                   <div className="relative w-full max-w-[195px] sm:max-w-[215px] aspect-[3/4] bg-[#F5F5F5] dark:bg-slate-900 rounded-[8px] overflow-hidden border border-slate-200 dark:border-slate-800 shadow-sm hover:shadow-md transition-all duration-300">
                     <img
-                      src="https://ik.imagekit.io/Muffins/image%20-%202026-10-23T154101.204.png"
+                      src={optimizeImageUrl("https://ik.imagekit.io/Muffins/image%20-%202026-10-23T154101.204.png", { format: 'webp', quality: 80, width: 440 })}
                       alt="Dr. Aurangzaib Virk"
+                      loading="lazy"
+                      decoding="async"
                       className="w-full h-full object-cover object-[center_14%] group-hover:scale-104 transition-transform duration-500"
                       onError={(e) => {
                         (e.currentTarget as HTMLImageElement).src = '/assets/campus/prof_aurangzaib_virk.png';

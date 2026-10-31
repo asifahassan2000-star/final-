@@ -13,6 +13,7 @@ import {
   EVENTS_2025, 
   EVENTS_2026 
 } from '../data/campusEventsData';
+import { optimizeImageUrl } from '../utils/mediaOptimizer';
 
 interface CampusLifePageProps {
   onBackToHome: () => void;
@@ -199,7 +200,7 @@ const MinimalEventItem: React.FC<MinimalEventItemProps> = ({ event, onOpenLightb
           <AnimatePresence mode="wait">
             <motion.img
               key={`${event.id}-${activeIdx}`}
-              src={activeImage.src}
+              src={optimizeImageUrl(activeImage.src, { format: 'webp', quality: 80, width: 1080 })}
               alt={activeImage.alt}
               loading="lazy"
               decoding="async"
@@ -270,7 +271,7 @@ const MinimalEventItem: React.FC<MinimalEventItemProps> = ({ event, onOpenLightb
                     title={img.caption || `View photo ${imgIdx + 1}`}
                   >
                     <img 
-                      src={img.src} 
+                      src={optimizeImageUrl(img.src, { format: 'webp', quality: 75, width: 240 })} 
                       alt=""
                       loading="lazy"
                       style={{
@@ -843,7 +844,7 @@ export const CampusLifePage: React.FC<CampusLifePageProps> = ({
               </button>
 
               <img 
-                src={currentLightboxImage.src}
+                src={optimizeImageUrl(currentLightboxImage.src, { format: 'webp', quality: 85, width: 1440 })}
                 alt={currentLightboxImage.alt}
                 style={{
                   transform: currentLightboxImage.zoom 

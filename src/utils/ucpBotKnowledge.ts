@@ -101,20 +101,87 @@ export const QUICK_ACTION_RESPONSES: Record<string, BotResponse> = {
 };
 
 /**
+ * Developer, Creator & Official Representative Attribution matcher.
+ * Provides refined, precise responses based on the specific question asked.
+ */
+export function getAttributionResponse(userQuery: string): BotResponse | null {
+  const q = (userQuery || '').toLowerCase().trim();
+  const cleanQ = q.replace(/[?!.,;:()'"]/g, '').trim();
+
+  // 5. Are you an official UCP representative?
+  const isOfficialQuery = /official (ucp )?representative|an official representative|official representative|are you (an? )?official|are you officially|are you a (real )?human|are you a (real )?person|are you human|real human|real person/i.test(cleanQ);
+  if (isOfficialQuery) {
+    return {
+      reply: "I’m an AI assistant for the UCP Bahawalpur Campus website. I provide information to help visitors, but I’m not a human university representative.",
+      suggestions: ["Degree Programmes 🎓", "Fee Structure 💰", "Admissions 📝"],
+      isOfflineMatch: true
+    };
+  }
+
+  // 4. Who made this chatbot?
+  const isChatbotQuery = /who (made|developed|created|built|coded|designed) (this |the )?(chatbot|chat bot|bot)|(chatbot|chat bot|bot) (developer|creator|maker)|who is the (developer|creator) of (this |the )?(chatbot|chat bot|bot)/i.test(cleanQ);
+  if (isChatbotQuery) {
+    return {
+      reply: "This AI chatbot was created by Asifa to provide helpful information and assistance to UCP Bahawalpur visitors.",
+      suggestions: ["Degree Programmes 🎓", "Fee Structure 💰", "Admissions 📝"],
+      isOfflineMatch: true
+    };
+  }
+
+  // 1. Who developed this website?
+  const isWebsiteQuery = /who (developed|designed|built|made|created|coded) (this |the )?website|who (developed|designed|built|made|created|coded) this site|developer of (this |the )?website|website developer|website creator|founder of (this |the )?website|who founded this website/i.test(cleanQ);
+  if (isWebsiteQuery) {
+    return {
+      reply: "This website was designed and developed by Asifa, an AI student at UCP Bahawalpur.",
+      suggestions: ["Degree Programmes 🎓", "Fee Structure 💰", "Admissions 📝"],
+      isOfflineMatch: true
+    };
+  }
+
+  // 3. Who is your developer?
+  const isYourDevQuery = /who is (your|the) developer|who (is|are) your developers|your developer|who developed you|my developer|developer name/i.test(cleanQ);
+  if (isYourDevQuery) {
+    return {
+      reply: "My developer is Asifa, an AI student at UCP Bahawalpur.",
+      suggestions: ["Degree Programmes 🎓", "Fee Structure 💰", "Admissions 📝"],
+      isOfflineMatch: true
+    };
+  }
+
+  // 2. Who created you?
+  const isWhoCreatedYou = /who (created|made|built|designed|coded|invented) you|who is your (creator|maker|founder)/i.test(cleanQ);
+  if (isWhoCreatedYou) {
+    return {
+      reply: "I’m the UCP Bahawalpur AI Assistant, developed by Asifa to help visitors access campus information quickly and easily.",
+      suggestions: ["Degree Programmes 🎓", "Fee Structure 💰", "Admissions 📝"],
+      isOfflineMatch: true
+    };
+  }
+
+  // Generic fallback if someone asks a related developer question
+  const isGenericDev = /who (made|developed|created|built|coded|designed) (you|this)|(your|the) developer/i.test(cleanQ);
+  if (isGenericDev) {
+    return {
+      reply: "My developer is Asifa, an AI student at UCP Bahawalpur.",
+      suggestions: ["Degree Programmes 🎓", "Fee Structure 💰", "Admissions 📝"],
+      isOfflineMatch: true
+    };
+  }
+
+  return null;
+}
+
+/**
  * Searches the offline trained UCP Knowledge Base.
  * Returns a short, friendly response in senior-student style.
  */
 export function getInstantBotResponse(userQuery: string): BotResponse {
   const q = (userQuery || '').toLowerCase().trim();
 
-  // 1. Check Developer / Builder query specifically
-  const isDevQuery = /who (made|developed|created|built|coded|designed) (you|this website|the website|website)|who is (your|the) (developer|creator|maker|founder)|developer of (this )?website|website developer|founder of (this )?website|who founded this website/i.test(q);
-  if (isDevQuery) {
-    return {
-      reply: "I and this entire website of UCP Bahawalpur campus were developed and built by Asifa, a student of AI at UCP Bahawalpur! 🎓✨",
-      suggestions: ["Degree Programmes 🎓", "Fee Structure 💰", "Admissions 📝"],
-      isOfflineMatch: true
-    };
+  // 1. Check Developer / Builder / Representative queries specifically
+  const attribution = getAttributionResponse(userQuery);
+  if (attribution) {
+    return attribution;
   }
 
   // 2. Direct Quick Action lookup by key or key terms

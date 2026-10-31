@@ -18,27 +18,18 @@
  */
 
 export const UCP_KNOWLEDGE_BASE = [
-  // 1. DEVELOPER / CREATOR (CRITICAL: Only trigger when asked who made / developed it)
+  // 1. DEVELOPER / CREATOR / REPRESENTATIVE ATTRIBUTIONS
   {
-    id: "developer-info",
-    question: "who is your developer / who made you / who made this website / who is founder of this website",
-    answer: "I and this entire website of UCP Bahawalpur campus were developed and built by Asifa, a student of AI at UCP Bahawalpur! 🎓✨",
+    id: "website-developer",
+    question: "who developed this website / who designed this website",
+    answer: "This website was designed and developed by Asifa, an AI student at UCP Bahawalpur.",
     keywords: [
-      "who made you",
-      "who is your developer",
-      "who developed you",
-      "who created you",
-      "who built you",
-      "who designed you",
-      "who is your creator",
-      "who is developer",
-      "developer name",
-      "your maker",
-      "who coded you",
-      "who made this website",
       "who developed this website",
+      "who designed this website",
       "who built this website",
+      "who made this website",
       "who created this website",
+      "who coded this website",
       "developer of this website",
       "developer of website",
       "website developer",
@@ -53,6 +44,88 @@ export const UCP_KNOWLEDGE_BASE = [
     ],
     category: "creator",
     isDeveloperRelated: true,
+    suggestions: ["Degree Programmes 🎓", "Fee Structure 💰", "Admissions 📝"]
+  },
+  {
+    id: "who-created-you",
+    question: "who created you / who made you",
+    answer: "I’m the UCP Bahawalpur AI Assistant, developed by Asifa to help visitors access campus information quickly and easily.",
+    keywords: [
+      "who created you",
+      "who made you",
+      "who built you",
+      "who designed you",
+      "who coded you",
+      "who invented you",
+      "who is your creator",
+      "who is your maker"
+    ],
+    category: "creator",
+    isDeveloperRelated: true,
+    suggestions: ["Degree Programmes 🎓", "Fee Structure 💰", "Admissions 📝"]
+  },
+  {
+    id: "who-is-your-developer",
+    question: "who is your developer / who developed you",
+    answer: "My developer is Asifa, an AI student at UCP Bahawalpur.",
+    keywords: [
+      "who is your developer",
+      "who's your developer",
+      "who is the developer",
+      "your developer",
+      "who developed you",
+      "who is your author",
+      "developer name",
+      "who is developer"
+    ],
+    category: "creator",
+    isDeveloperRelated: true,
+    suggestions: ["Degree Programmes 🎓", "Fee Structure 💰", "Admissions 📝"]
+  },
+  {
+    id: "who-made-chatbot",
+    question: "who made this chatbot / who created this bot",
+    answer: "This AI chatbot was created by Asifa to provide helpful information and assistance to UCP Bahawalpur visitors.",
+    keywords: [
+      "who made this chatbot",
+      "who made the chatbot",
+      "who made chatbot",
+      "who created this chatbot",
+      "who developed this chatbot",
+      "who built this chatbot",
+      "who designed this chatbot",
+      "who coded this chatbot",
+      "who made this bot",
+      "who created this bot",
+      "who developed this bot",
+      "who built this bot",
+      "chatbot developer",
+      "bot developer",
+      "bot maker"
+    ],
+    category: "creator",
+    isDeveloperRelated: true,
+    suggestions: ["Degree Programmes 🎓", "Fee Structure 💰", "Admissions 📝"]
+  },
+  {
+    id: "official-representative",
+    question: "are you an official ucp representative / are you a human",
+    answer: "I’m an AI assistant for the UCP Bahawalpur Campus website. I provide information to help visitors, but I’m not a human university representative.",
+    keywords: [
+      "are you an official ucp representative",
+      "are you an official representative",
+      "are you official representative",
+      "are you official",
+      "are you official ucp",
+      "are you a human",
+      "are you a real person",
+      "are you a real human",
+      "are you human",
+      "are you a human representative",
+      "official representative",
+      "official ucp representative"
+    ],
+    category: "identity",
     suggestions: ["Degree Programmes 🎓", "Fee Structure 💰", "Admissions 📝"]
   },
 
@@ -790,11 +863,40 @@ export function searchUcpKnowledge(query) {
 
   const cleanQuery = query.toLowerCase().trim();
 
-  // 1. SPECIFIC CHECK: Developer / Creator
-  // Rule: ONLY trigger if specifically asked who made/developed/created you or the website!
+  // 1. SPECIFIC CHECK: Developer / Creator / Representative
+  // Official representative
+  if (/official (ucp )?representative|an official representative|official representative|are you (an? )?official|are you officially|are you a (real )?human|are you a (real )?person|are you human|real human|real person/i.test(cleanQuery)) {
+    const item = UCP_KNOWLEDGE_BASE.find(i => i.id === "official-representative");
+    if (item) return { match: item, confidence: 100 };
+  }
+
+  // Who made this chatbot?
+  if (/who (made|developed|created|built|coded|designed) (this |the )?(chatbot|chat bot|bot)|(chatbot|chat bot|bot) (developer|creator|maker)|who is the (developer|creator) of (this |the )?(chatbot|chat bot|bot)/i.test(cleanQuery)) {
+    const item = UCP_KNOWLEDGE_BASE.find(i => i.id === "who-made-chatbot");
+    if (item) return { match: item, confidence: 100 };
+  }
+
+  // Who developed this website?
+  if (/who (developed|designed|built|made|created|coded) (this |the )?website|who (developed|designed|built|made|created|coded) this site|developer of (this |the )?website|website developer|website creator|founder of (this |the )?website|who founded this website/i.test(cleanQuery)) {
+    const item = UCP_KNOWLEDGE_BASE.find(i => i.id === "website-developer");
+    if (item) return { match: item, confidence: 100 };
+  }
+
+  // Who is your developer?
+  if (/who is (your|the) developer|who (is|are) your developers|your developer|who developed you|my developer|developer name/i.test(cleanQuery)) {
+    const item = UCP_KNOWLEDGE_BASE.find(i => i.id === "who-is-your-developer");
+    if (item) return { match: item, confidence: 100 };
+  }
+
+  // Who created you?
+  if (/who (created|made|built|designed|coded|invented) you|who is your (creator|maker|founder)/i.test(cleanQuery)) {
+    const item = UCP_KNOWLEDGE_BASE.find(i => i.id === "who-created-you");
+    if (item) return { match: item, confidence: 100 };
+  }
+
   const isDeveloperQuery = /who (made|developed|created|built|coded|designed) (you|this website|the website|website)|who is (your|the) (developer|creator|maker|founder)|developer of (this )?website|website developer|founder of (this )?website|who founded this website/i.test(cleanQuery);
   if (isDeveloperQuery) {
-    const devItem = UCP_KNOWLEDGE_BASE.find(item => item.id === "developer-info");
+    const devItem = UCP_KNOWLEDGE_BASE.find(item => item.id === "who-is-your-developer" || item.id === "website-developer");
     if (devItem) return { match: devItem, confidence: 100 };
   }
 

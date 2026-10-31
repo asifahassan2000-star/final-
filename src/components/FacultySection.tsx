@@ -4,6 +4,7 @@ import { ArrowRight } from 'lucide-react';
 import { FacultyProfileModal } from './FacultyProfileModal';
 import { FacultyStickyGallery } from './FacultyStickyGallery';
 import { ALL_FACULTY_MEMBERS, ADMINISTRATION_MEMBERS, FacultyMemberData } from '../data/facultyData';
+import { optimizeImageUrl } from '../utils/mediaOptimizer';
 
 export type FacultyMember = FacultyMemberData;
 export const FACULTY_MEMBERS = ALL_FACULTY_MEMBERS;
@@ -61,10 +62,14 @@ const MobileFacultyCarousel: React.FC<{
             onClick={() => onSelect(faculty)}
             className="group flex flex-col items-center text-center cursor-pointer transition-transform duration-300"
           >
-            <div className="w-full aspect-[3/4] rounded-lg overflow-hidden bg-slate-100 border border-slate-200/90 shadow-2xs relative">
-              <img decoding="async" src={faculty.photoUrl}
+            <div 
+              style={{ aspectRatio: '4/5', background: '#f1f5f9' }}
+              className="w-full aspect-[4/5] rounded-lg overflow-hidden bg-[#f1f5f9] border border-slate-200/90 shadow-2xs relative p-0 m-0"
+            >
+              <img decoding="async" src={optimizeImageUrl(faculty.photoUrl, { format: 'webp', quality: 80, width: 360 })}
                 alt={faculty.name}
-                className={`absolute inset-0 w-full h-full object-cover ${faculty.objectPosition || 'object-top'} ${faculty.imageTransform || ''}`}
+                style={{ objectFit: 'cover', objectPosition: 'top center', background: '#f1f5f9' }}
+                className={`absolute inset-0 w-full h-full object-cover block m-0 p-0 ${faculty.objectPosition || 'object-top'} ${faculty.imageTransform || ''}`}
                 loading="lazy"
                 onError={(e) => {
                   (e.target as HTMLImageElement).src = faculty.fallbackPhotoUrl;
@@ -222,11 +227,14 @@ export const FacultySection: React.FC<FacultySectionProps> = ({
               >
                 <div className="w-full">
                   {/* Strict Equal Aspect-[4/5] Portrait Frame */}
-                  <div className="w-full aspect-[4/5] rounded-xl sm:rounded-2xl overflow-hidden bg-slate-900 border border-slate-200/90 shadow-2xs group-hover:shadow-md group-hover:border-[#0F2C61] transition-all duration-300 relative">
-                    <img src={member.photoUrl}
+                  <div 
+                    style={{ aspectRatio: '4/5', background: '#f1f5f9' }}
+                    className="w-full aspect-[4/5] rounded-xl sm:rounded-2xl overflow-hidden bg-[#f1f5f9] border border-slate-200/90 shadow-2xs group-hover:shadow-md group-hover:border-[#0F2C61] transition-all duration-300 relative p-0 m-0"
+                  >
+                    <img src={optimizeImageUrl(member.photoUrl, { format: 'webp', quality: 82, width: 640 })}
                       alt={member.name}
-                      style={{ objectFit: 'cover' }}
-                      className={`absolute inset-0 w-full h-full object-cover ${member.objectPosition || 'object-top'} ${member.imageTransform || ''} transition-transform duration-500 ease-out ${member.imageTransform ? 'group-hover:scale-[1.33]' : 'group-hover:scale-105'}`}
+                      style={{ objectFit: 'cover', objectPosition: 'top center', background: '#f1f5f9' }}
+                      className={`absolute inset-0 w-full h-full object-cover block m-0 p-0 ${member.objectPosition || 'object-top'} ${member.imageTransform || ''} transition-transform duration-500 ease-out ${member.id === 'prof-abeer-aslam' ? '' : (member.imageTransform ? 'group-hover:scale-[1.33]' : 'group-hover:scale-105')}`}
                       loading="lazy"
                       decoding="async"
                       onError={(e) => {
