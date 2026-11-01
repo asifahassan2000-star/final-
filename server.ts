@@ -20,7 +20,8 @@ const app = express();
 const PORT = 3000;
 const isProd = process.env.NODE_ENV === 'production';
 
-app.use(express.json());
+app.use(express.json({ limit: '25mb' }));
+app.use(express.urlencoded({ extended: true, limit: '25mb' }));
 
 // Security headers (allowing iframe embedding in AI Studio preview)
 app.use((_req, res, next) => {
@@ -221,6 +222,153 @@ function isUcpSpecificQuery(text: string): boolean {
   ];
   return ucpTerms.some(term => t.includes(term));
 }
+
+// 0. High-Accuracy Multilingual Speech-to-Text Transcription endpoint (English + Roman Urdu)
+app.post('/api/speech/transcribe', async (req, res) => {
+  try {
+    const { audioData, mimeType = 'audio/webm', languageHint = 'multilingual' } = req.body;
+
+    if (!audioData || typeof audioData !== 'string') {
+      return res.status(400).json({ success: false, error: 'No audio data received.' });
+    }
+
+    // Strip data URL scheme if present (e.g., data:audio/webm;base64,...)
+    const base64Audio = audioData.replace(/^data:[^;]+;base64,/, '').trim();
+    if (!base64Audio) {
+      return res.status(400).json({ success: false, error: 'Empty audio buffer provided.' });
+    }
+
+    const apiKey = process.env.GEMINI_API_KEY || process.env.API_KEY || process.env.VITE_GEMINI_API_KEY;
+    if (!apiKey) {
+      return res.status(500).json({ success: false, error: 'Server transcription key not configured.' });
+    }
+
+    const ai = new GoogleGenAI({
+      apiKey,
+      httpOptions: {
+        headers: {
+          'User-Agent': 'aistudio-build',
+        }
+      }
+    });
+
+    // Normalize mimeType for multimodal audio ingest
+    let normalizedMime = (mimeType.split(';')[0] || 'audio/webm').trim().toLowerCase();
+    if (normalizedMime === 'audio/x-m4a') normalizedMime = 'audio/mp4';
+
+    const systemInstruction = `You are an expert multilingual speech-to-text transcriber for Pakistani university students at UCP Bahawalpur (University of Central Punjab).
+
+MANDATORY RULES:
+1. FAITHFUL TRANSCRIPTION: Transcribe the actual words spoken in the audio. NEVER hallucinate, speculate, or fabricate questions.
+2. NO SPEECH RULE: If the audio contains silence, ambient static, clicks, breathing, or no discernible human speech, output exactly: [NO_SPEECH].
+3. SPOKEN ENGLISH: Write spoken English in clean, proper English spelling.
+4. SPOKEN URDU: Write spoken Urdu strictly in ROMAN URDU (Latin script / English alphabet). NEVER use Arabic Urdu script (e.g. write "admission kab shuru honge", NEVER "ایڈمیشن کب شروع ہوں گے").
+5. CODE-SWITCHING: Accurately preserve natural English and Roman Urdu code-switching within the same sentence (e.g. "UCP Bahawalpur me admission criteria kya hai", "BSCS ki semester fee kitni hai").
+6. NO TRANSLATION: Do NOT translate Roman Urdu into English. Retain Roman Urdu words as Roman Urdu.
+7. UCP CAMPUS VOCABULARY REFERENCE: UCP, Bahawalpur, PGC, BSCS, ADP, Software Engineering, AI, Cyber Security, Data Science, BBA, Dr. Aurangzaib Virk, Prof. Hamid Iqbal, Mian Amer Mahmood, admissions, fee structure, scholarships, library card, calendar.
+8. OUTPUT FORMAT: Return ONLY the transcribed sentence or [NO_SPEECH]. Do not include explanations, timestamps, or quotes.`;
+
+    const contents = [
+      {
+        role: 'user',
+        parts: [
+          {
+            inlineData: {
+              mimeType: normalizedMime,
+              data: base64Audio
+            }
+          },
+          {
+            text: languageHint === 'en-US'
+              ? 'Transcribe this spoken English audio. If there is no speech, output: [NO_SPEECH]'
+              : 'Transcribe this spoken audio in Roman Urdu (Latin script) and English. If there is no speech, output: [NO_SPEECH]'
+          }
+        ]
+      }
+    ];
+
+    const candidateModels = ['gemini-flash-lite-latest', 'gemini-3.1-flash-lite', 'gemini-3.5-flash-lite'];
+    let rawText = '';
+
+    for (const model of candidateModels) {
+      try {
+        const responsePromise = ai.models.generateContent({
+          model,
+          contents,
+          config: {
+            systemInstruction,
+            temperature: 0.1, // low temperature for precise, non-hallucinatory transcription
+          }
+        });
+
+        const timeoutPromise = new Promise<never>((_, reject) =>
+          setTimeout(() => reject(new Error('Transcription timeout after 7500ms')), 7500)
+        );
+
+        const response = await Promise.race([responsePromise, timeoutPromise]);
+        if (response?.text) {
+          rawText = response.text.trim();
+          break;
+        }
+      } catch (err: any) {
+        console.warn(`[Transcription with ${model} warning]:`, err?.message || err);
+      }
+    }
+
+    // Check for [NO_SPEECH] indicator
+    if (!rawText || rawText.includes('[NO_SPEECH]') || rawText === '""' || rawText === "''") {
+      return res.json({
+        success: true,
+        text: ''
+      });
+    }
+
+    // Clean up any extraneous tags like <noise>, <laughter>, [silence], etc.
+    let cleanedText = rawText
+      .replace(/\[NO_SPEECH\]/gi, '')
+      .replace(/<[^>]+>/g, '')
+      .replace(/\[(noise|silence|background noise|inaudible)\]/gi, '')
+      .replace(/^["']|["']$/g, '')
+      .trim();
+
+    // Secondary check: If any Arabic/Urdu script was produced (e.g. [\u0600-\u06FF]), transliterate to Roman Urdu
+    const hasUrduScript = /[\u0600-\u06FF\u0750-\u077F\uFB50-\uFDFF\uFE70-\uFEFF]/.test(cleanedText);
+    if (hasUrduScript) {
+      try {
+        const translitRes = await ai.models.generateContent({
+          model: 'gemini-flash-lite-latest',
+          contents: `Transliterate all Urdu script words in the following text into standard Roman Urdu (Latin script / English alphabet).
+CRITICAL RULES:
+- Keep all English words in English (e.g. UCP, Bahawalpur, BSCS, admission, library).
+- Do not translate the meaning into English.
+- Return ONLY the transliterated sentence with Latin letters, no comments or markdown.
+
+Text: ${cleanedText}`,
+          config: { temperature: 0.1 }
+        });
+        if (translitRes?.text) {
+          cleanedText = translitRes.text.trim().replace(/^["']|["']$/g, '');
+        }
+      } catch (translitErr) {
+        console.warn('[Transliteration pass error]:', translitErr);
+      }
+    }
+
+    // Replace any trailing Urdu full stop '۔' with standard '.'
+    cleanedText = cleanedText.replace(/۔/g, '.').trim();
+
+    return res.json({
+      success: true,
+      text: cleanedText
+    });
+  } catch (error: any) {
+    console.error('Audio transcription endpoint error:', error);
+    return res.status(500).json({
+      success: false,
+      error: error?.message || 'Failed to transcribe audio'
+    });
+  }
+});
 
 // 1. Health & Status endpoint
 app.get('/api/chat/status', (_req, res) => {
