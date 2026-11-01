@@ -3,6 +3,22 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script>
+      // Suppress benign Vite HMR WebSocket connection closures in iframe/cloud preview
+      window.addEventListener('unhandledrejection', function(event) {
+        var reason = event.reason;
+        var msg = (reason && (reason.message || reason.toString())) || '';
+        if (msg.includes('WebSocket') || msg.includes('ws') || msg.includes('closed without opened')) {
+          event.preventDefault();
+        }
+      });
+      window.addEventListener('error', function(event) {
+        var msg = (event.message || '');
+        if (msg.includes('WebSocket') || msg.includes('closed without opened')) {
+          event.preventDefault();
+        }
+      });
+    </script>
     <title>UCP Bahawalpur Campus | University of Central Punjab</title>
     <meta name="description" content="Explore the University of Central Punjab (UCP) Bahawalpur Campus, including academic programs, admissions, fee structure,campus facilities, student life and contact information." />
     <meta name="keywords" content="ucp bahawalpur campus, ucp bwp, university of central punjab bahawalpur, ucp admissions, ucp fee structure, ucp scholarships, constituent college ucp campus bahawalpur, bs computer science bahawalpur, adp artificial intelligence bahawalpur, bba bahawalpur, best university in bahawalpur" />

@@ -287,7 +287,7 @@ MANDATORY RULES:
       }
     ];
 
-    const candidateModels = ['gemini-flash-lite-latest', 'gemini-3.1-flash-lite', 'gemini-3.5-flash-lite'];
+    const candidateModels = ['gemini-3.5-transcribe', 'gemini-3.1-flash-lite', 'gemini-flash-lite-latest'];
     let rawText = '';
 
     for (const model of candidateModels) {

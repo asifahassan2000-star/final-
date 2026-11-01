@@ -24,11 +24,13 @@ if (typeof window !== 'undefined') {
       str = String(item);
     }
     return (
-      str.indexOf('WebSocket') !== -1 ||
-      str.indexOf('closed without opened') !== -1 ||
-      str.indexOf('[vite] connecting') !== -1 ||
-      str.indexOf('[vite] failed to connect') !== -1 ||
-      str.indexOf('vite:ws') !== -1
+      str.toLowerCase().includes('websocket') ||
+      str.toLowerCase().includes('closed without opened') ||
+      str.toLowerCase().includes('[vite] connecting') ||
+      str.toLowerCase().includes('[vite] failed to connect') ||
+      str.toLowerCase().includes('vite:ws') ||
+      str.toLowerCase().includes('requested device not found') ||
+      str.toLowerCase().includes('microphone start error')
     );
   };
 

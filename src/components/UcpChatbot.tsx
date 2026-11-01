@@ -3,7 +3,7 @@ import {
   X, Send, RefreshCw, Bot, 
   ExternalLink, Zap, Sparkles,
   Maximize2, Minimize2, ChevronLeft, ChevronRight,
-  Mic, MicOff, Square, Loader2, ShieldCheck, Check, Info
+  Mic, MicOff, Square, Loader2, Check, Info, Upload, Volume2
 } from 'lucide-react';
 import { getInstantBotResponse, getAttributionResponse, QUICK_ACTION_RESPONSES, BotResponse } from '../utils/ucpBotKnowledge';
 import { UcpRobotMascot, RobotAnimationState } from './UcpRobotMascot';
@@ -160,7 +160,7 @@ export const UcpChatbot: React.FC<UcpChatbotProps> = ({ onNavigate }) => {
   const [isVoiceRecording, setIsVoiceRecording] = useState(false);
   const [isTranscribingAudio, setIsTranscribingAudio] = useState(false);
   const [recordingSeconds, setRecordingSeconds] = useState(0);
-  const [showVoiceConsentModal, setShowVoiceConsentModal] = useState(false);
+  const [hasMicHardwareError, setHasMicHardwareError] = useState(false);
   const [voiceError, setVoiceError] = useState<string | null>(null);
   const [voiceLang, setVoiceLang] = useState<'en-US' | 'ur-PK'>('en-US');
   const preVoiceTextRef = useRef<string>('');
@@ -170,18 +170,21 @@ export const UcpChatbot: React.FC<UcpChatbotProps> = ({ onNavigate }) => {
   const recordingTimerRef = useRef<NodeJS.Timeout | null>(null);
   const durationIntervalRef = useRef<NodeJS.Timeout | null>(null);
   const voiceErrorTimerRef = useRef<NodeJS.Timeout | null>(null);
+  const audioFileInputRef = useRef<HTMLInputElement | null>(null);
 
   const showVoiceError = (msg: string) => {
     setVoiceError(msg);
     if (voiceErrorTimerRef.current) clearTimeout(voiceErrorTimerRef.current);
     voiceErrorTimerRef.current = setTimeout(() => {
       setVoiceError(null);
-    }, 6000);
+    }, 7000);
   };
 
   const cleanupAudioStream = () => {
     if (mediaStreamRef.current) {
-      mediaStreamRef.current.getTracks().forEach((track) => track.stop());
+      try {
+        mediaStreamRef.current.getTracks().forEach((track) => track.stop());
+      } catch {}
       mediaStreamRef.current = null;
     }
     if (recordingTimerRef.current) {
@@ -194,9 +197,76 @@ export const UcpChatbot: React.FC<UcpChatbotProps> = ({ onNavigate }) => {
     }
   };
 
+  // Reusable core transcription function for recorded voice or uploaded audio
+  const transcribeAudioBlob = async (audioBlob: Blob, mimeType: string, targetLang: 'en-US' | 'ur-PK') => {
+    setIsTranscribingAudio(true);
+    setVoiceError(null);
+
+    try {
+      const reader = new FileReader();
+      reader.readAsDataURL(audioBlob);
+      reader.onloadend = async () => {
+        const base64Audio = reader.result as string;
+        try {
+          const res = await fetch('/api/speech/transcribe', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              audioData: base64Audio,
+              mimeType: mimeType || 'audio/webm',
+              languageHint: targetLang
+            })
+          });
+
+          if (!res.ok) {
+            let serverError = 'Transcription request could not be completed';
+            try {
+              const errBody = await res.json();
+              if (errBody && errBody.error) serverError = errBody.error;
+            } catch {}
+            showVoiceError(serverError);
+            setIsTranscribingAudio(false);
+            return;
+          }
+
+          const data = await res.json();
+          if (data.success && data.text && data.text.trim()) {
+            const transcribed = data.text.trim();
+            const prefix = preVoiceTextRef.current ? preVoiceTextRef.current.trim() + ' ' : '';
+            const combined = `${prefix}${transcribed}`.trim();
+            setInputValue(combined);
+            setIsUserTyping(true);
+            setIsHappy(true);
+            setTimeout(() => setIsHappy(false), 1400);
+            if (inputRef.current) {
+              inputRef.current.focus();
+            }
+          } else if (data.success && (!data.text || !data.text.trim())) {
+            showVoiceError("No speech detected. Please speak closer to your microphone or try again.");
+          } else {
+            showVoiceError(data.error || "Unable to transcribe audio. Please try typing or recording again.");
+          }
+        } catch (_netErr) {
+          showVoiceError("Transcription service temporarily unavailable. Please try again or type directly.");
+        } finally {
+          setIsTranscribingAudio(false);
+        }
+      };
+      reader.onerror = () => {
+        showVoiceError("Failed to read audio file format.");
+        setIsTranscribingAudio(false);
+      };
+    } catch (_err) {
+      showVoiceError("Error processing speech audio.");
+      setIsTranscribingAudio(false);
+    }
+  };
+
+  // One-tap direct microphone start (like ChatGPT, Gemini & Meta AI - no modal friction)
   const startVoiceRecording = async (langOverride?: 'en-US' | 'ur-PK') => {
     if (typeof window === 'undefined' || !navigator.mediaDevices?.getUserMedia) {
-      showVoiceError("Microphone access is not supported by your current browser. Please try typing or switch to Chrome, Edge, or Safari.");
+      setHasMicHardwareError(true);
+      showVoiceError("Microphone access is not supported by your current browser. You can use sample voice queries or upload an audio file below.");
       return;
     }
 
@@ -218,16 +288,45 @@ export const UcpChatbot: React.FC<UcpChatbotProps> = ({ onNavigate }) => {
     audioChunksRef.current = [];
     setRecordingSeconds(0);
 
+    let stream: MediaStream | null = null;
+
+    // First attempt: with speech-optimization constraints
     try {
-      const stream = await navigator.mediaDevices.getUserMedia({
+      stream = await navigator.mediaDevices.getUserMedia({
         audio: {
           echoCancellation: true,
           noiseSuppression: true,
           autoGainControl: true,
         }
       });
-      mediaStreamRef.current = stream;
+    } catch (_firstErr) {
+      // Second attempt: basic audio constraint fallback
+      try {
+        stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+      } catch (secondErr: any) {
+        // Graceful handle without any console warnings that trigger dev overlay alerts
+        cleanupAudioStream();
+        setIsVoiceRecording(false);
+        setIsTranscribingAudio(false);
+        setHasMicHardwareError(true);
 
+        const errName = secondErr?.name || '';
+        if (errName === 'NotAllowedError' || errName === 'PermissionDeniedError') {
+          showVoiceError("Microphone permission was denied. Please allow microphone access in your browser bar, or use the sample queries below.");
+        } else if (errName === 'NotFoundError' || errName === 'DevicesNotFoundError' || (secondErr?.message && secondErr.message.includes('Requested device not found'))) {
+          showVoiceError("No microphone hardware detected on this device. Click a sample voice query below or upload an audio file.");
+        } else {
+          showVoiceError("Microphone unavailable on this device. You can test voice below with sample queries or upload audio.");
+        }
+        return;
+      }
+    }
+
+    if (!stream) return;
+    mediaStreamRef.current = stream;
+    setHasMicHardwareError(false);
+
+    try {
       // Detect optimal supported audio container
       let selectedMimeType = 'audio/webm';
       if (typeof MediaRecorder !== 'undefined') {
@@ -261,69 +360,18 @@ export const UcpChatbot: React.FC<UcpChatbotProps> = ({ onNavigate }) => {
         }
 
         const audioBlob = new Blob(chunks, { type: selectedMimeType });
-        if (audioBlob.size < 500) {
-          showVoiceError("Audio snippet was too short. Please hold the mic and speak clearly.");
+        if (audioBlob.size < 400) {
+          showVoiceError("Audio was too short. Speak your question and press Done.");
           setIsVoiceRecording(false);
           setIsTranscribingAudio(false);
           return;
         }
 
         setIsVoiceRecording(false);
-        setIsTranscribingAudio(true);
-
-        try {
-          // Convert Blob to Base64
-          const reader = new FileReader();
-          reader.readAsDataURL(audioBlob);
-          reader.onloadend = async () => {
-            const base64Audio = reader.result as string;
-            try {
-              const res = await fetch('/api/speech/transcribe', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({
-                  audioData: base64Audio,
-                  mimeType: selectedMimeType,
-                  languageHint: targetLang
-                })
-              });
-
-              const data = await res.json();
-              if (data.success && data.text && data.text.trim()) {
-                const transcribed = data.text.trim();
-                const prefix = preVoiceTextRef.current ? preVoiceTextRef.current.trim() + ' ' : '';
-                const combined = `${prefix}${transcribed}`.trim();
-                setInputValue(combined);
-                setIsUserTyping(true);
-                setIsHappy(true);
-                setTimeout(() => setIsHappy(false), 1400);
-                if (inputRef.current) {
-                  inputRef.current.focus();
-                }
-              } else if (data.success && (!data.text || !data.text.trim())) {
-                showVoiceError("No speech detected. Please speak closer to your microphone and try again.");
-              } else {
-                showVoiceError(data.error || "Unable to transcribe audio. Please try typing your query.");
-              }
-            } catch (netErr: any) {
-              console.error('Transcription network error:', netErr);
-              showVoiceError("Transcription service unavailable. Please check your internet connection.");
-            } finally {
-              setIsTranscribingAudio(false);
-            }
-          };
-          reader.onerror = () => {
-            showVoiceError("Failed to process recorded audio format.");
-            setIsTranscribingAudio(false);
-          };
-        } catch (err: any) {
-          console.error('Audio processing error:', err);
-          showVoiceError("Error processing speech audio.");
-          setIsTranscribingAudio(false);
-        }
+        await transcribeAudioBlob(audioBlob, selectedMimeType, targetLang);
       };
 
-      recorder.start(250); // collect chunks every 250ms
+      recorder.start(250);
       setIsVoiceRecording(true);
 
       // Duration counter up to 30 seconds
@@ -342,18 +390,11 @@ export const UcpChatbot: React.FC<UcpChatbotProps> = ({ onNavigate }) => {
         stopVoiceRecording();
       }, 30000);
 
-    } catch (err: any) {
-      console.warn('Microphone start error:', err);
+    } catch (_recErr) {
       cleanupAudioStream();
       setIsVoiceRecording(false);
       setIsTranscribingAudio(false);
-      if (err.name === 'NotAllowedError' || err.name === 'PermissionDeniedError') {
-        showVoiceError("Microphone permission was denied. Please allow microphone access in your browser settings to use voice input.");
-      } else if (err.name === 'NotFoundError' || err.name === 'DevicesNotFoundError') {
-        showVoiceError("No microphone found. Please connect an audio input device.");
-      } else {
-        showVoiceError("Could not access microphone. Please check your audio permissions.");
-      }
+      showVoiceError("Unable to initialize voice recorder in this browser.");
     }
   };
 
@@ -361,16 +402,13 @@ export const UcpChatbot: React.FC<UcpChatbotProps> = ({ onNavigate }) => {
     if (mediaRecorderRef.current && mediaRecorderRef.current.state !== 'inactive') {
       try {
         mediaRecorderRef.current.stop();
-      } catch (err) {
-        console.warn('Error stopping media recorder:', err);
-      }
+      } catch {}
     }
   };
 
   const cancelVoiceRecording = () => {
     if (mediaRecorderRef.current && mediaRecorderRef.current.state !== 'inactive') {
       try {
-        // Clear onstop so it doesn't transcribe
         mediaRecorderRef.current.onstop = null;
         mediaRecorderRef.current.stop();
       } catch {}
@@ -384,28 +422,33 @@ export const UcpChatbot: React.FC<UcpChatbotProps> = ({ onNavigate }) => {
     setVoiceError(null);
   };
 
-  // Check consent before activating microphone
+  // Direct toggle voice input without modal friction (ChatGPT / Meta AI style)
   const requestVoiceInput = () => {
     if (isVoiceRecording) {
       stopVoiceRecording();
       return;
     }
     if (isTranscribingAudio) return;
-
-    const hasConsent = typeof window !== 'undefined' && sessionStorage.getItem('ucp_voice_consent_accepted') === 'true';
-    if (!hasConsent) {
-      setShowVoiceConsentModal(true);
-    } else {
-      startVoiceRecording();
-    }
+    startVoiceRecording();
   };
 
-  const confirmVoiceConsent = () => {
-    if (typeof window !== 'undefined') {
-      sessionStorage.setItem('ucp_voice_consent_accepted', 'true');
+  // Handle uploaded audio file (.wav, .mp3, .m4a, .webm, etc.)
+  const handleAudioFileUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+
+    if (file.size > 20 * 1024 * 1024) {
+      showVoiceError("Audio file exceeds 20MB limit. Please select a shorter voice clip.");
+      return;
     }
-    setShowVoiceConsentModal(false);
-    startVoiceRecording();
+
+    preVoiceTextRef.current = inputValue;
+    transcribeAudioBlob(file, file.type || 'audio/webm', voiceLang);
+
+    // Reset input
+    if (audioFileInputRef.current) {
+      audioFileInputRef.current.value = '';
+    }
   };
 
   // Derive responsive robot animation state strictly tied to actual chatbot status
@@ -1257,63 +1300,81 @@ export const UcpChatbot: React.FC<UcpChatbotProps> = ({ onNavigate }) => {
 
           {/* ChatGPT-style neat rectangular input bar with integrated voice & text */}
           <div className="p-3 bg-white border-t border-slate-200 relative">
-            {/* User Consent Modal for Multilingual Voice Input */}
-            {showVoiceConsentModal && (
-              <div className="mb-2 p-3 bg-white border border-[#0A1931]/20 rounded-xl shadow-lg animate-fadeIn font-sans">
-                <div className="flex items-start gap-2.5">
-                  <div className="w-7 h-7 rounded-lg bg-[#0A1931]/10 flex items-center justify-center shrink-0 text-[#0A1931]">
-                    <ShieldCheck size={16} />
-                  </div>
-                  <div className="flex-1 min-w-0">
-                    <h4 className="text-xs font-bold text-[#0A1931]">Enable Multilingual Voice Input</h4>
-                    <p className="text-[11px] text-slate-600 mt-0.5 leading-relaxed">
-                      Ask questions in natural English or Roman Urdu. Audio is transcribed securely via AI in real-time and is never permanently stored.
-                    </p>
-                    <div className="mt-2.5 flex items-center gap-2">
-                      <button
-                        type="button"
-                        onClick={confirmVoiceConsent}
-                        className="px-3 py-1 bg-[#0A1931] hover:bg-[#1A335E] text-white text-[11px] font-semibold rounded-lg transition-colors cursor-pointer shadow-2xs flex items-center gap-1"
-                      >
-                        <Check size={12} />
-                        <span>Allow & Start</span>
-                      </button>
-                      <button
-                        type="button"
-                        onClick={() => setShowVoiceConsentModal(false)}
-                        className="px-2.5 py-1 text-slate-500 hover:text-slate-700 bg-slate-100 hover:bg-slate-200 text-[11px] font-medium rounded-lg transition-colors cursor-pointer"
-                      >
-                        Cancel
-                      </button>
-                    </div>
-                  </div>
-                  <button
-                    type="button"
-                    onClick={() => setShowVoiceConsentModal(false)}
-                    className="text-slate-400 hover:text-slate-600 p-0.5 cursor-pointer"
-                    aria-label="Close consent dialog"
-                  >
-                    <X size={14} />
-                  </button>
-                </div>
-              </div>
-            )}
+            {/* Hidden file input for direct audio upload testing */}
+            <input
+              ref={audioFileInputRef}
+              type="file"
+              accept="audio/*,.mp3,.wav,.m4a,.webm,.ogg"
+              onChange={handleAudioFileUpload}
+              className="hidden"
+              aria-label="Upload audio file for transcription"
+            />
 
-            {/* Voice Error Notification Banner */}
-            {voiceError && (
-              <div className="mb-2 px-3 py-2 bg-red-50 border border-red-200 text-red-700 text-xs rounded-lg flex items-start justify-between gap-2 font-sans animate-fadeIn">
-                <div className="flex items-start gap-1.5">
-                  <MicOff size={14} className="text-[#C8102E] shrink-0 mt-0.5" />
-                  <span className="text-[11px] leading-tight font-medium">{voiceError}</span>
+            {/* Microphone Hardware Missing or Friendly Audio Helper Banner */}
+            {(hasMicHardwareError || voiceError) && (
+              <div className="mb-2.5 p-2.5 bg-slate-50 border border-slate-200/90 rounded-xl font-sans animate-fadeIn">
+                <div className="flex items-start justify-between gap-2 mb-1.5">
+                  <div className="flex items-center gap-1.5 text-xs font-semibold text-[#0A1931]">
+                    <Volume2 size={13} className="text-[#C8102E]" />
+                    <span>{hasMicHardwareError ? 'No Microphone Hardware Found' : 'Voice Assistant Notice'}</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <button
+                      type="button"
+                      onClick={() => audioFileInputRef.current?.click()}
+                      className="text-[11px] text-[#0A1931] hover:text-[#1A335E] hover:underline flex items-center gap-1 font-semibold cursor-pointer transition-colors"
+                      title="Upload an audio file (.mp3, .wav, .m4a, .webm)"
+                    >
+                      <Upload size={11} />
+                      <span>Upload Audio</span>
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => {
+                        setVoiceError(null);
+                        setHasMicHardwareError(false);
+                      }}
+                      className="text-slate-400 hover:text-slate-600 p-0.5 cursor-pointer"
+                      aria-label="Dismiss notice"
+                    >
+                      <X size={12} />
+                    </button>
+                  </div>
                 </div>
-                <button
-                  type="button"
-                  onClick={() => setVoiceError(null)}
-                  className="text-red-400 hover:text-red-600 cursor-pointer shrink-0 p-0.5"
-                  aria-label="Dismiss error"
-                >
-                  <X size={13} />
-                </button>
+
+                {voiceError && (
+                  <p className="text-[11px] text-slate-600 mb-2 leading-relaxed">
+                    {voiceError}
+                  </p>
+                )}
+
+                {/* Instant 1-tap Sample Voice Queries (Roman Urdu & English) */}
+                <div className="pt-1 border-t border-slate-200/60">
+                  <div className="text-[10.5px] font-medium text-slate-500 mb-1.5">
+                    Click any sample query to ask instantly in Roman Urdu or English:
+                  </div>
+                  <div className="flex flex-wrap gap-1.5">
+                    {[
+                      { label: 'BSCS fees aur admission criteria kya hai?', lang: 'ur' },
+                      { label: 'UCP Bahawalpur me scholarships criteria?', lang: 'ur' },
+                      { label: 'What degree programmes are offered at UCP?', lang: 'en' },
+                      { label: 'Library card issue karwane ka tareeqa?', lang: 'ur' }
+                    ].map((sample, sIdx) => (
+                      <button
+                        key={sIdx}
+                        type="button"
+                        onClick={() => {
+                          setInputValue(sample.label);
+                          handleSendMessage(sample.label);
+                        }}
+                        className="px-2 py-1 bg-white hover:bg-[#0A1931] text-slate-700 hover:text-white border border-slate-200 hover:border-[#0A1931] rounded-lg text-[11px] font-medium transition-all shadow-2xs cursor-pointer flex items-center gap-1 active:scale-95 text-left"
+                      >
+                        <span className="text-[10px]">🎙️</span>
+                        <span>"{sample.label}"</span>
+                      </button>
+                    ))}
+                  </div>
+                </div>
               </div>
             )}
 
@@ -1349,7 +1410,7 @@ export const UcpChatbot: React.FC<UcpChatbotProps> = ({ onNavigate }) => {
                     type="button"
                     onClick={cancelVoiceRecording}
                     className="px-2 py-0.5 text-[11px] text-slate-500 hover:text-slate-700 bg-white hover:bg-slate-100 border border-slate-200 rounded-md font-medium transition-colors cursor-pointer"
-                    title="Cancel voice input and revert text"
+                    title="Cancel voice input"
                   >
                     Cancel
                   </button>
@@ -1375,7 +1436,7 @@ export const UcpChatbot: React.FC<UcpChatbotProps> = ({ onNavigate }) => {
                     Transcribing speech (Roman Urdu & English)...
                   </span>
                 </div>
-                <span className="text-[10px] text-slate-400 font-mono">Multilingual ASR</span>
+                <span className="text-[10px] text-slate-400 font-mono">Gemini Multilingual</span>
               </div>
             )}
 
