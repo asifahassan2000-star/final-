@@ -204,7 +204,7 @@ export const FacultyPage: React.FC<FacultyPageProps> = ({
                       <img src={optimizeImageUrl(faculty.photoUrl, { format: 'webp', quality: 82, width: 640 })}
                         alt={faculty.name}
                         style={{ objectFit: 'cover', objectPosition: 'top center', background: '#f1f5f9' }}
-                        className={`absolute inset-0 w-full h-full object-cover block m-0 p-0 ${faculty.objectPosition || 'object-top'} ${faculty.imageTransform || ''} transition-transform duration-500 ease-out ${faculty.id === 'prof-abeer-aslam' ? '' : (faculty.imageTransform ? 'group-hover:scale-[1.34]' : 'group-hover:scale-105')}`}
+                        className={`absolute inset-0 w-full h-full object-cover block m-0 p-0 ${faculty.objectPosition || 'object-top'} ${faculty.imageTransform || ''} transition-transform duration-500 ease-out ${faculty.imageTransform ? 'group-hover:scale-[1.34]' : 'group-hover:scale-105'}`}
                         loading="lazy"
                         decoding="async"
                         onError={(e) => {

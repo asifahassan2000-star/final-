@@ -2,7 +2,8 @@ import React, { useState, useRef, useEffect, useCallback } from 'react';
 import { 
   X, Send, RefreshCw, Bot, 
   ExternalLink, Zap, Sparkles,
-  Maximize2, Minimize2, ChevronLeft, ChevronRight
+  Maximize2, Minimize2, ChevronLeft, ChevronRight,
+  Mic, MicOff, Square
 } from 'lucide-react';
 import { getInstantBotResponse, getAttributionResponse, QUICK_ACTION_RESPONSES, BotResponse } from '../utils/ucpBotKnowledge';
 import { UcpRobotMascot, RobotAnimationState } from './UcpRobotMascot';
@@ -155,16 +156,170 @@ export const UcpChatbot: React.FC<UcpChatbotProps> = ({ onNavigate }) => {
   const [isUnavailableState, setIsUnavailableState] = useState(false);
   const typingTimerRef = useRef<NodeJS.Timeout | null>(null);
 
+  // Professional Voice Input & Speech Recognition States (English, Urdu & Roman Urdu)
+  const [isVoiceRecording, setIsVoiceRecording] = useState(false);
+  const [voiceError, setVoiceError] = useState<string | null>(null);
+  const [voiceLang, setVoiceLang] = useState<'en-US' | 'ur-PK'>('en-US');
+  const [, setInterimTranscript] = useState('');
+  const preVoiceTextRef = useRef<string>('');
+  const recognitionInstanceRef = useRef<any>(null);
+  const voiceErrorTimerRef = useRef<NodeJS.Timeout | null>(null);
+
+  const showVoiceError = (msg: string) => {
+    setVoiceError(msg);
+    if (voiceErrorTimerRef.current) clearTimeout(voiceErrorTimerRef.current);
+    voiceErrorTimerRef.current = setTimeout(() => {
+      setVoiceError(null);
+    }, 6000);
+  };
+
+  const startVoiceRecording = (langOverride?: 'en-US' | 'ur-PK') => {
+    const targetLang = langOverride || voiceLang;
+    const SpeechRecognition = typeof window !== 'undefined'
+      ? (window as any).SpeechRecognition || (window as any).webkitSpeechRecognition
+      : null;
+
+    if (!SpeechRecognition) {
+      showVoiceError("Speech recognition is not supported in this browser. Please type your query or try Google Chrome, Microsoft Edge, or Safari.");
+      return;
+    }
+
+    // Stop any existing instance cleanly
+    if (recognitionInstanceRef.current) {
+      try {
+        recognitionInstanceRef.current.abort();
+      } catch {}
+      recognitionInstanceRef.current = null;
+    }
+
+    setVoiceError(null);
+    preVoiceTextRef.current = inputValue;
+
+    try {
+      const recognition = new SpeechRecognition();
+      recognition.continuous = true;
+      recognition.interimResults = true;
+      recognition.lang = targetLang;
+
+      recognition.onstart = () => {
+        setIsVoiceRecording(true);
+        setInterimTranscript('');
+      };
+
+      recognition.onresult = (event: any) => {
+        let interim = '';
+        let final = '';
+
+        for (let i = 0; i < event.results.length; i++) {
+          const item = event.results[i];
+          const transcriptPart = item[0]?.transcript || '';
+          if (item.isFinal) {
+            final += transcriptPart + ' ';
+          } else {
+            interim += transcriptPart;
+          }
+        }
+
+        const prefix = preVoiceTextRef.current ? preVoiceTextRef.current.trim() + ' ' : '';
+        const speechOutput = (final + interim).trim();
+        const combined = `${prefix}${speechOutput}`.trim();
+        if (combined) {
+          setInputValue(combined);
+          setIsUserTyping(true);
+        }
+        setInterimTranscript(interim);
+      };
+
+      recognition.onerror = (event: any) => {
+        console.warn('SpeechRecognition error:', event.error);
+        if (event.error === 'not-allowed' || event.error === 'permission-denied') {
+          showVoiceError("Microphone access was denied. Please allow microphone permissions in your browser address bar.");
+        } else if (event.error === 'no-speech') {
+          showVoiceError("No speech detected. Please speak closer to your microphone.");
+        } else if (event.error === 'network') {
+          showVoiceError("Network issue during speech recognition. Please verify your internet connection.");
+        } else if (event.error === 'audio-capture') {
+          showVoiceError("No microphone found. Please connect a microphone and try again.");
+        } else if (event.error !== 'aborted') {
+          showVoiceError(`Voice recognition: ${event.error}. Please try again or type your message.`);
+        }
+        setIsVoiceRecording(false);
+        setInterimTranscript('');
+      };
+
+      recognition.onend = () => {
+        setIsVoiceRecording(false);
+        setInterimTranscript('');
+      };
+
+      recognitionInstanceRef.current = recognition;
+      recognition.start();
+    } catch (err) {
+      console.error('Speech recognition start failed:', err);
+      showVoiceError("Unable to activate speech recognition. Please try typing your query.");
+      setIsVoiceRecording(false);
+    }
+  };
+
+  const stopVoiceRecording = () => {
+    if (recognitionInstanceRef.current) {
+      try {
+        recognitionInstanceRef.current.stop();
+      } catch {}
+      recognitionInstanceRef.current = null;
+    }
+    setIsVoiceRecording(false);
+    setInterimTranscript('');
+    if (inputRef.current) {
+      inputRef.current.focus();
+    }
+  };
+
+  const cancelVoiceRecording = () => {
+    if (recognitionInstanceRef.current) {
+      try {
+        recognitionInstanceRef.current.abort();
+      } catch {}
+      recognitionInstanceRef.current = null;
+    }
+    setInputValue(preVoiceTextRef.current);
+    setIsVoiceRecording(false);
+    setInterimTranscript('');
+    setVoiceError(null);
+  };
+
   // Derive responsive robot animation state strictly tied to actual chatbot status
   const currentRobotState: RobotAnimationState = (() => {
     if (isUnavailableState) return 'unavailable';
     if (isSuccessState || isHappy) return 'success';
     if (isStreamingActive) return 'responding';
     if (isLoading) return 'thinking';
+    if (isVoiceRecording) return 'listening';
     if (isUserTyping) return 'typing';
     if (isInputFocused) return 'listening';
     return 'idle';
   })();
+
+  // Clean up recognition sessions on unmount or chat toggle
+  useEffect(() => {
+    return () => {
+      if (recognitionInstanceRef.current) {
+        try {
+          recognitionInstanceRef.current.abort();
+        } catch {}
+        recognitionInstanceRef.current = null;
+      }
+      if (voiceErrorTimerRef.current) {
+        clearTimeout(voiceErrorTimerRef.current);
+      }
+    };
+  }, []);
+
+  useEffect(() => {
+    if (!isOpen && isVoiceRecording) {
+      cancelVoiceRecording();
+    }
+  }, [isOpen]);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const val = e.target.value;
@@ -211,8 +366,13 @@ export const UcpChatbot: React.FC<UcpChatbotProps> = ({ onNavigate }) => {
     };
   }, []);
 
-  // 2. Beautiful visitor entrance greeting & waving sequence on the home page
+  // 2. Beautiful visitor entrance greeting & waving sequence on the home page (RUNS ONCE AT START)
+  const hasGreetedRef = useRef(false);
+
   useEffect(() => {
+    if (hasGreetedRef.current) return;
+    hasGreetedRef.current = true;
+
     // Step 1: Mascot rises into view when visitor arrives (600ms)
     const timer1 = setTimeout(() => {
       setGreetingState('entering');
@@ -227,7 +387,7 @@ export const UcpChatbot: React.FC<UcpChatbotProps> = ({ onNavigate }) => {
       setTimeout(() => setIsBouncing(false), 500);
     }, 950);
 
-    // Step 3: Beautiful, welcoming wave continues for 3.6s, then arm gently rests
+    // Step 3: Welcoming wave continues for 3.6s, then arm gently rests (one-time greeting at start)
     const timer3 = setTimeout(() => {
       setIsWaving(false);
       setIsHappy(false);
@@ -243,27 +403,14 @@ export const UcpChatbot: React.FC<UcpChatbotProps> = ({ onNavigate }) => {
       setGreetingState('hidden');
     }, 8950);
 
-    // Step 6: Periodic friendly wave every 40s if the visitor is browsing on home page
-    const periodicWaveInterval = setInterval(() => {
-      if (!isOpen) {
-        setIsWaving(true);
-        setIsHappy(true);
-        setTimeout(() => {
-          setIsWaving(false);
-          setIsHappy(false);
-        }, 2400);
-      }
-    }, 40000);
-
     return () => {
       clearTimeout(timer1);
       clearTimeout(timer2);
       clearTimeout(timer3);
       clearTimeout(timer4);
       clearTimeout(timer5);
-      clearInterval(periodicWaveInterval);
     };
-  }, [isOpen]);
+  }, []);
 
   // 3. Auto-scroll to bottom of conversation
   useEffect(() => {
@@ -318,6 +465,10 @@ export const UcpChatbot: React.FC<UcpChatbotProps> = ({ onNavigate }) => {
   };
 
   const handleSendMessage = async (textToSend?: string, quickActionId?: string) => {
+    if (isVoiceRecording) {
+      stopVoiceRecording();
+    }
+
     const query = (textToSend || inputValue).trim();
     if (!query || isLoading) return;
 
@@ -983,9 +1134,114 @@ export const UcpChatbot: React.FC<UcpChatbotProps> = ({ onNavigate }) => {
             </div>
           </div>
 
-          {/* ChatGPT-style neat rectangular input bar */}
+          {/* ChatGPT-style neat rectangular input bar with integrated voice & text */}
           <div className="p-3 bg-white border-t border-slate-200">
-            <div className="flex items-center gap-2">
+            {/* Voice Error Notification Banner */}
+            {voiceError && (
+              <div className="mb-2 px-3 py-2 bg-red-50 border border-red-200 text-red-700 text-xs rounded-lg flex items-start justify-between gap-2 font-sans animate-fadeIn">
+                <div className="flex items-start gap-1.5">
+                  <MicOff size={14} className="text-[#C8102E] shrink-0 mt-0.5" />
+                  <span className="text-[11px] leading-tight font-medium">{voiceError}</span>
+                </div>
+                <button
+                  type="button"
+                  onClick={() => setVoiceError(null)}
+                  className="text-red-400 hover:text-red-600 cursor-pointer shrink-0 p-0.5"
+                  aria-label="Dismiss error"
+                >
+                  <X size={13} />
+                </button>
+              </div>
+            )}
+
+            {/* Active Voice Listening Banner with animated sound wave bars */}
+            {isVoiceRecording && (
+              <div className="mb-2 px-3 py-1.5 bg-[#0A1931]/5 border border-[#0A1931]/15 rounded-xl flex items-center justify-between gap-2 font-sans animate-fadeIn">
+                <div className="flex items-center gap-2">
+                  <span className="relative flex h-2.5 w-2.5">
+                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
+                    <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-[#C8102E]"></span>
+                  </span>
+                  <span className="text-[11px] font-semibold text-[#0A1931] tracking-tight">
+                    {voiceLang === 'ur-PK' ? 'سن رہے ہیں (اردو)... بولیں' : 'Listening... Speak clearly'}
+                  </span>
+                  {/* Animated sound wave frequency bars */}
+                  <div className="flex items-center gap-0.5 h-4 px-1" aria-hidden="true">
+                    <span className="w-0.5 h-2 bg-[#C8102E] rounded-full ucp-sound-wave-bar" style={{ animationDelay: '0ms' }} />
+                    <span className="w-0.5 h-3.5 bg-[#0A1931] rounded-full ucp-sound-wave-bar" style={{ animationDelay: '150ms' }} />
+                    <span className="w-0.5 h-5 bg-[#C5A059] rounded-full ucp-sound-wave-bar" style={{ animationDelay: '300ms' }} />
+                    <span className="w-0.5 h-3 bg-[#0A1931] rounded-full ucp-sound-wave-bar" style={{ animationDelay: '450ms' }} />
+                    <span className="w-0.5 h-1.5 bg-[#C8102E] rounded-full ucp-sound-wave-bar" style={{ animationDelay: '600ms' }} />
+                  </div>
+                </div>
+
+                {/* Cancel & Done controls */}
+                <div className="flex items-center gap-1.5">
+                  <button
+                    type="button"
+                    onClick={cancelVoiceRecording}
+                    className="px-2 py-0.5 text-[11px] text-slate-500 hover:text-slate-700 bg-white hover:bg-slate-100 border border-slate-200 rounded-md font-medium transition-colors cursor-pointer"
+                    title="Cancel voice input and revert text"
+                  >
+                    Cancel
+                  </button>
+                  <button
+                    type="button"
+                    onClick={stopVoiceRecording}
+                    className="px-2 py-0.5 text-[11px] text-white bg-[#0A1931] hover:bg-[#1A335E] rounded-md font-semibold transition-colors cursor-pointer flex items-center gap-1 shadow-2xs"
+                    title="Finish voice recording & keep transcription"
+                  >
+                    <Square size={9} className="fill-current" />
+                    <span>Done</span>
+                  </button>
+                </div>
+              </div>
+            )}
+
+            {/* Input Row: Language Switcher + Text Input + Mic + Send */}
+            <div className="flex items-center gap-1.5">
+              {/* Language toggle pill: English or Urdu */}
+              <div 
+                className="flex items-center bg-slate-100 p-0.5 rounded-lg border border-slate-200 text-[10px] font-semibold text-slate-600 select-none shrink-0"
+                title="Select Voice Language"
+              >
+                <button
+                  type="button"
+                  onClick={() => {
+                    setVoiceLang('en-US');
+                    if (isVoiceRecording) {
+                      startVoiceRecording('en-US');
+                    }
+                  }}
+                  className={`px-1.5 py-1 rounded transition-all cursor-pointer ${
+                    voiceLang === 'en-US'
+                      ? 'bg-white text-[#0A1931] shadow-2xs font-bold'
+                      : 'text-slate-400 hover:text-slate-700'
+                  }`}
+                  title="Speech language: English (en-US)"
+                >
+                  EN
+                </button>
+                <button
+                  type="button"
+                  onClick={() => {
+                    setVoiceLang('ur-PK');
+                    if (isVoiceRecording) {
+                      startVoiceRecording('ur-PK');
+                    }
+                  }}
+                  className={`px-1.5 py-1 rounded transition-all cursor-pointer font-serif ${
+                    voiceLang === 'ur-PK'
+                      ? 'bg-white text-[#0A1931] shadow-2xs font-bold'
+                      : 'text-slate-400 hover:text-slate-700'
+                  }`}
+                  title="Speech language: Urdu / Roman Urdu (ur-PK)"
+                >
+                  اردو
+                </button>
+              </div>
+
+              {/* Editable Input Field */}
               <input
                 ref={inputRef}
                 type="text"
@@ -997,21 +1253,64 @@ export const UcpChatbot: React.FC<UcpChatbotProps> = ({ onNavigate }) => {
                   setIsUserTyping(false);
                 }}
                 onKeyDown={handleKeyDown}
-                placeholder="Message UCP Assistant..."
+                placeholder={
+                  isVoiceRecording
+                    ? (voiceLang === 'ur-PK' ? "بولیں... آواز سنی جا رہی ہے" : "Listening... Speak your question now")
+                    : "Message UCP Assistant..."
+                }
                 disabled={isLoading}
-                className="flex-1 px-3.5 py-2 text-xs bg-slate-50 border border-slate-300 rounded-xl focus:outline-none focus:border-[#0A1931] focus:bg-white text-slate-800 placeholder-slate-400 font-sans transition-all"
+                className={`flex-1 px-3 py-2 text-xs bg-slate-50 border rounded-xl focus:outline-none focus:bg-white text-slate-800 placeholder-slate-400 font-sans transition-all ${
+                  isVoiceRecording
+                    ? 'border-[#C8102E] ring-1 ring-[#C8102E]/20 bg-red-50/20'
+                    : 'border-slate-300 focus:border-[#0A1931]'
+                }`}
               />
+
+              {/* Microphone Voice Button */}
               <button
+                type="button"
+                onClick={() => {
+                  if (isVoiceRecording) {
+                    stopVoiceRecording();
+                  } else {
+                    startVoiceRecording();
+                  }
+                }}
+                disabled={isLoading}
+                className={`relative w-9 h-9 rounded-xl flex items-center justify-center transition-all cursor-pointer shrink-0 active:scale-95 ${
+                  isVoiceRecording
+                    ? 'bg-[#C8102E] text-white shadow-md ucp-mic-recording-pulse'
+                    : 'bg-slate-100 hover:bg-[#0A1931] hover:text-white text-slate-600 border border-slate-200 hover:border-[#0A1931]'
+                }`}
+                aria-label={isVoiceRecording ? "Stop voice recording" : "Start voice recording"}
+                title={isVoiceRecording ? "Stop recording (Keep text)" : `Voice input in ${voiceLang === 'ur-PK' ? 'Urdu' : 'English'} (Speak to UCP Assistant)`}
+              >
+                {isVoiceRecording ? (
+                  <Square size={13} className="fill-current animate-pulse" />
+                ) : (
+                  <Mic size={15} />
+                )}
+              </button>
+
+              {/* Send Button */}
+              <button
+                type="button"
                 onClick={() => handleSendMessage()}
                 disabled={!inputValue.trim() || isLoading}
                 className="w-9 h-9 rounded-xl bg-[#0A1931] hover:bg-[#163566] disabled:opacity-40 text-white flex items-center justify-center transition-all cursor-pointer shadow-xs disabled:cursor-not-allowed shrink-0 active:scale-95"
                 aria-label="Send Message"
+                title="Send message"
               >
                 <Send size={15} />
               </button>
             </div>
+
+            {/* Footer indicators */}
             <div className="mt-1.5 flex items-center justify-between text-[10px] text-slate-400 px-0.5 font-sans">
-              <span>Instant Verified Responses</span>
+              <span className="flex items-center gap-1">
+                <span className={`w-1.5 h-1.5 rounded-full inline-block ${isVoiceRecording ? 'bg-red-500 animate-ping' : 'bg-emerald-500'}`} />
+                <span>{isVoiceRecording ? 'Recording active' : 'Voice & Text Ready'}</span>
+              </span>
               <span>UCP Bahawalpur</span>
             </div>
           </div>
@@ -1088,16 +1387,6 @@ export const UcpChatbot: React.FC<UcpChatbotProps> = ({ onNavigate }) => {
         <button
           id="ucp-assistant-floating-launcher"
           onClick={handleToggleChat}
-          onMouseEnter={() => {
-            if (!isOpen && !isWaving) {
-              setIsWaving(true);
-              setIsHappy(true);
-              setTimeout(() => {
-                setIsWaving(false);
-                setIsHappy(false);
-              }, 2200);
-            }
-          }}
           className={`group relative rounded-full flex items-center justify-center transition-all duration-300 cursor-pointer focus:outline-none focus:ring-4 focus:ring-[#0A1931]/25 select-none ${
             isOpen
               ? 'w-10 h-10 sm:w-16 sm:h-16 bg-[#0A1931] hover:bg-[#12284C] text-white shadow-xl rotate-90 scale-95 border border-slate-500'
@@ -1120,6 +1409,7 @@ export const UcpChatbot: React.FC<UcpChatbotProps> = ({ onNavigate }) => {
                 state={currentRobotState}
                 isWaving={isWaving}
                 showTorso={true}
+                interactive={!isOpen}
               />
             </div>
           )}

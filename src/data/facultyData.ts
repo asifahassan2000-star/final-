@@ -196,8 +196,8 @@ export const ALL_FACULTY_MEMBERS: FacultyMemberData[] = [
     experienceYears: '15+ Years',
     specialization: 'Applied Linguistics, English Pedagogy, Reading, Academic Writing & Web-Based Research',
     intro: 'And language and literature at UCP, currently PhD scholar in linguistics. Professional experience 15+. Specialized in university-level English teaching, functional English communication skills, reading comprehension, essay structuring, and advanced linguistic studies.',
-    photoUrl: 'https://ik.imagekit.io/Muffins/image%20-%202026-10-31T212003.914.png',
-    fallbackPhotoUrl: 'https://ik.imagekit.io/Muffins/image%20-%202026-10-31T212003.914.png',
+    photoUrl: 'https://ik.imagekit.io/Muffins/image%20-%202026-10-31T212003.914.png?updatedAt=1793463609763',
+    fallbackPhotoUrl: 'https://ik.imagekit.io/Muffins/image%20-%202026-10-31T212003.914.png?updatedAt=1793463609763',
     objectPosition: 'object-top',
     qualifications: [
       'PhD Scholar English Linguistics (contd)',
