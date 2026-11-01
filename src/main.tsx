@@ -28,9 +28,7 @@ if (typeof window !== 'undefined') {
       str.toLowerCase().includes('closed without opened') ||
       str.toLowerCase().includes('[vite] connecting') ||
       str.toLowerCase().includes('[vite] failed to connect') ||
-      str.toLowerCase().includes('vite:ws') ||
-      str.toLowerCase().includes('requested device not found') ||
-      str.toLowerCase().includes('microphone start error')
+      str.toLowerCase().includes('vite:ws')
     );
   };
 

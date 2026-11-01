@@ -854,37 +854,7 @@ html:not(.reveal-ready) .quote-premium-scroll .quote-accent-bar {
   animation: ucpListeningNavyGlow 2.4s ease-in-out infinite;
 }
 
-/* Animated Voice Recording Sound Waves */
-@keyframes ucpSoundWavePulse {
-  0%, 100% {
-    height: 6px;
-    opacity: 0.55;
-  }
-  50% {
-    height: 22px;
-    opacity: 1;
-  }
-}
 
-.ucp-sound-wave-bar {
-  animation: ucpSoundWavePulse 0.85s ease-in-out infinite;
-}
-
-@keyframes ucpMicPulseRing {
-  0% {
-    box-shadow: 0 0 0 0 rgba(200, 16, 46, 0.5);
-  }
-  70% {
-    box-shadow: 0 0 0 10px rgba(200, 16, 46, 0);
-  }
-  100% {
-    box-shadow: 0 0 0 0 rgba(200, 16, 46, 0);
-  }
-}
-
-.ucp-mic-recording-pulse {
-  animation: ucpMicPulseRing 1.5s cubic-bezier(0.4, 0, 0.6, 1) infinite;
-}
 
 @keyframes ucpSuccessNod {
   0% { transform: translateY(0) rotate(0deg); }
