@@ -696,6 +696,334 @@ export const UCP_KNOWLEDGE_BASE = [
     suggestions: ["Transport Routes 🚍", "Location Map 📍", "Admissions 📝"]
   },
 
+  // 28b. LIBRARY CARD & MEMBERSHIP PROCEDURE
+  {
+    id: "library-card-procedure",
+    question: "How can I get a library card at UCP Bahawalpur? / Library Membership Registration",
+    answer: "To get your Library Card at UCP Bahawalpur:\n1. Visit the Photoshop shop located at UCP Bahawalpur and ask for the Library Membership Form.\n2. Fill out the form with your required information.\n3. Bring two recent passport-size photographs. Attach one to the form.\n4. Submit the completed form to the Chairman of the Library at the university library.\n5. Give your second photograph separately to the Chairman.\n6. The Chairman will provide your library card with your photograph on it.\n\nImportant: Bring both passport-size photographs. One is attached to the form, and the other is submitted separately.\n\nSource: UCP Bahawalpur – Student-provided library card procedure.",
+    keywords: [
+      "library card",
+      "get a library card",
+      "how can i get a library card",
+      "how can i get a library card at ucp bahawalpur",
+      "make my library card",
+      "how can i make my library card",
+      "library membership form",
+      "where can i get a library membership form",
+      "library card kahan se banega",
+      "library card banwane ka kya procedure hai",
+      "library card procedure",
+      "i want to become a library member",
+      "become a library member",
+      "where do i submit my library card form",
+      "submit my library card form",
+      "how many passport-size photographs are required",
+      "passport-size photographs",
+      "photographs required",
+      "can i get a library card as a ucp student",
+      "register for the university library",
+      "how do i register for the university library",
+      "library registration",
+      "library card banwane ke liye kya documents chahiye",
+      "library documents",
+      "photoshop shop",
+      "chairman of the library"
+    ],
+    category: "Library & Student Services",
+    actionLink: { label: "Campus Facilities 📚", url: "#facilities" },
+    suggestions: ["Book Borrowing Rules 📚", "How many books can I borrow? 📖", "Campus Facilities 🔬"]
+  },
+
+  // 28c. BOOK BORROWING RULES & REGULATIONS
+  {
+    id: "library-borrowing-rules",
+    question: "Book Borrowing Rules / Library Membership & Book Borrowing – UCP Bahawalpur",
+    answer: "Library Membership & Book Borrowing – UCP Bahawalpur\n\nStudents can obtain their library card by following the library registration procedure.\n\nBook borrowing rules:\n• A maximum of two books can be borrowed at a time.\n• All borrowed books must be returned at the end of each semester.\n• Books must be returned in their original condition without damage.\n• Students are responsible for keeping borrowed books safe and maintaining their condition.\n\nImportant: Make sure to return all borrowed books before the semester ends.",
+    keywords: [
+      "book borrowing",
+      "book borrowing rules",
+      "library borrowing",
+      "how many books can i borrow",
+      "how many books can i borrow at once",
+      "can i issue three books from the library",
+      "do i have to return books after every semester",
+      "when should i return my library books",
+      "can i keep library books during semester breaks",
+      "what happens if i damage a library book",
+      "damage a library book",
+      "library se aik waqt mein kitni books mil sakti hain",
+      "semester khatam hone par books wapas karni hoti hain",
+      "books wapas",
+      "library rules",
+      "borrow two books",
+      "maximum of two books",
+      "return all borrowed books"
+    ],
+    category: "Library & Student Services",
+    actionLink: { label: "Campus Facilities 📚", url: "#facilities" },
+    suggestions: ["How to Get Library Card 💳", "Campus Facilities 🔬", "Degree Programmes 🎓"]
+  },
+
+  // =========================================================================
+  // 28d. ACADEMIC CALENDAR FALL 2026 KNOWLEDGE BASE (OCTOBER 2026 – MARCH 2027)
+  // =========================================================================
+  {
+    id: "calendar-fall-2026-overview",
+    question: "UCP Academic Calendar Fall 2026 / Important Dates, Midterms, Finals & Schedule",
+    answer: "📅 **UCP Academic Calendar – Fall 2026 (October 2026 – March 2027)**\n\n• **Registration Period**: 22 October 2026 – 14 November 2026 (No registration after 14 Nov; un-registered students cannot attend classes)\n• **Commencement of Classes**: 16 November 2026 (Monday)\n• **Midterm Examinations**: 11 January 2027 – 16 January 2027 (Makeup exams NOT allowed)\n• **Course Withdrawal Deadline**: 20 February 2027 (Saturday)\n• **Last Day of Classes**: 13 March 2027 (Saturday)\n• **Final Examinations**: 15 March 2027 – 26 March 2027\n• **Submission of Results**: 29 March 2027 (Monday)\n• **Notification of Grades**: 31 March 2027 (Wednesday)\n• **Spring 2027 Registration**: 1 April 2027 – 10 April 2027\n• **Spring 2027 Classes Begin**: 12 April 2027 (Monday)\n\n*Attendance Rule*: Minimum 80% attendance is strictly compulsory.\nSource: Official Academic Calendar Fall-2026.",
+    keywords: [
+      "academic calendar",
+      "calendar",
+      "fall 2026 calendar",
+      "semester calendar",
+      "dates",
+      "schedule",
+      "fall 2026 schedule",
+      "calendar fall 2026",
+      "academic schedule",
+      "calendar ucp",
+      "ucp calendar",
+      "what is the academic calendar",
+      "academic calendar fall 2026"
+    ],
+    category: "Academic Calendar",
+    actionLink: { label: "View Academic Calendar 📅", url: "#calendar" },
+    suggestions: ["Midterms Schedule 📝", "Final Exams Schedule 📑", "Attendance Requirement 📋"]
+  },
+
+  {
+    id: "calendar-semester-dates",
+    question: "When does Fall 2026 semester begin, start of classes, and registration period?",
+    answer: "📅 **Fall 2026 Semester Dates & Registration**:\n• **Classes Commence**: 16 November 2026 (Monday).\n• **Registration Period**: 22 October 2026 to 14 November 2026.\n• **Last Date for Registration**: 14 November 2026.\n• **Late Registration**: Registration after 14 November 2026 is strictly NOT allowed.\n• **Class Attendance**: Students without registration are not allowed to attend classes.\n• **Semester Period**: October 2026 to March 2027.\n\nSource: Academic Calendar Fall-2026, lines 4–7.",
+    keywords: [
+      "when does fall 2026 semester begin",
+      "when do classes start",
+      "fall 2026 classes start",
+      "fall semester ki classes kab start hongi",
+      "classes kab start hongi",
+      "classes start date",
+      "commence of classes",
+      "fall 2026 registration",
+      "registration start",
+      "registration ki last date kya hai",
+      "last date for registration",
+      "late registration ho sakti hai",
+      "can i register after 14 november",
+      "attend classes without registration",
+      "semester dates",
+      "what is the fall 2026 semester period",
+      "classes ka last day kab hai",
+      "when is the last day of fall 2026 classes"
+    ],
+    category: "Academic Calendar",
+    actionLink: { label: "View Academic Calendar 📅", url: "#calendar" },
+    suggestions: ["Midterm Exams 📝", "Final Exams 📑", "Spring 2027 Registration 🌱"]
+  },
+
+  {
+    id: "calendar-midterm-exams",
+    question: "When will Fall 2026 midterm exams start and what is the schedule?",
+    answer: "📝 **Fall 2026 Midterm Examinations**:\n• **Midterm Exam Period**: 11 January 2027 (Monday) to 16 January 2027 (Saturday).\n• **Examination Schedule**: 11–16 January 2027.\n• **Makeup Examinations**: Makeup examinations are strictly NOT allowed according to the official academic calendar. If you miss your midterm, contact your academic administration/department for clarification regarding your situation.\n\nSource: Academic Calendar Fall-2026, lines 9 and 37–38.",
+    keywords: [
+      "midterm exams",
+      "midterm examination",
+      "mids kab honge",
+      "midterm dates",
+      "when will midterm exams start",
+      "when will midterm exams end",
+      "when will fall 2026 midterm exams start",
+      "what is the midterm examination schedule",
+      "midterm schedule",
+      "makeup exam",
+      "makeup exams",
+      "makeup exam de sakte hain",
+      "can i take a makeup exam if i miss my midterm",
+      "are makeup examinations allowed",
+      "missed midterm",
+      "makeup examinations",
+      "mids dates",
+      "mids"
+    ],
+    category: "Academic Calendar",
+    actionLink: { label: "View Academic Calendar 📅", url: "#calendar" },
+    suggestions: ["Final Exams Schedule 📑", "Attendance Policy 📋", "Results Announcement 📊"]
+  },
+
+  {
+    id: "calendar-final-exams",
+    question: "When will final examinations start and what is the final exam schedule?",
+    answer: "📑 **Fall 2026 Final Examinations**:\n• **Final Exam Period**: 15 March 2027 (Monday) to 26 March 2027 (Friday).\n• **Examination Schedule**: 15–26 March 2027.\n• **Last Day of Classes**: 13 March 2027 (Saturday).\n• **Makeup Examinations**: Makeup examinations are strictly NOT allowed according to the official academic calendar. Contact the academic administration for clarification.\n\nSource: Academic Calendar Fall-2026, lines 14 and 37–38.",
+    keywords: [
+      "final examinations",
+      "finals kis date se hain",
+      "final exams start",
+      "when will final examinations start",
+      "when will final examinations end",
+      "what is the final examination period",
+      "finals dates",
+      "aur finals",
+      "finals kab hain",
+      "makeup exam final",
+      "can i take a makeup exam if i miss my final",
+      "final exam schedule",
+      "when does the final examination period finish"
+    ],
+    category: "Academic Calendar",
+    actionLink: { label: "View Academic Calendar 📅", url: "#calendar" },
+    suggestions: ["Results Date 📊", "Midterm Exams 📝", "Spring 2027 Registration 🌱"]
+  },
+
+  {
+    id: "calendar-attendance",
+    question: "What is the minimum attendance requirement and is 80% attendance compulsory?",
+    answer: "📋 **Attendance Policy & Requirements**:\n• **Minimum Attendance Required**: Students must maintain at least 80% attendance throughout the semester.\n• **Is 80% Compulsory?**: Yes. A minimum of 80% attendance is strictly compulsory.\n• **Attendance Tracking**: Students are responsible for keeping track of their own attendance.\n• **Exam Eligibility**: The academic calendar specifies an 80% minimum attendance threshold. Contact your department administration for clarification about individual eligibility.\n\nSource: Academic Calendar Fall-2026, lines 33–35.",
+    keywords: [
+      "attendance requirement",
+      "minimum attendance requirement",
+      "attendance kitni honi chahiye",
+      "80 percent attendance zaroori hai",
+      "80% attendance",
+      "is 80% attendance compulsory",
+      "is attendance compulsory",
+      "how much attendance should i maintain",
+      "who is responsible for tracking attendance",
+      "can i attend exams with less than 80% attendance",
+      "attendance policy",
+      "attendance rules",
+      "attendance"
+    ],
+    category: "Academic Calendar",
+    actionLink: { label: "View Academic Calendar 📅", url: "#calendar" },
+    suggestions: ["Midterms Schedule 📝", "Course Withdrawal ⚠️", "Final Exams 📑"]
+  },
+
+  {
+    id: "calendar-holidays",
+    question: "What are the important holidays during Fall 2026 semester?",
+    answer: "🏖️ **Official Holidays – Fall 2026 Semester**:\n• **Quaid-e-Azam Day**: 25 December 2026 (Friday)\n• **Kashmir Day**: 5 February 2027 (Friday)\n• **Eid Holidays**: 10–12 March 2027 (Wednesday–Friday - No classes)\n• **Pakistan Resolution Day**: 23 March 2027 (Tuesday)\n• **Government Holidays**: Gazetted holidays will be observed according to official government announcements.\n\nSource: Academic Calendar Fall-2026, lines 8–15 and 21.",
+    keywords: [
+      "holidays",
+      "quaid-e-azam day",
+      "when is quaid-e-azam day",
+      "kashmir day",
+      "when is kashmir day",
+      "kashmir day ki chutti kab hai",
+      "eid holidays",
+      "when are eid holidays",
+      "eid ki chuttiyan kab hain",
+      "will there be classes during eid holidays",
+      "pakistan resolution day",
+      "when is pakistan resolution day",
+      "are government holidays included in the academic calendar",
+      "chuttiyan",
+      "gazetted holidays"
+    ],
+    category: "Academic Calendar",
+    actionLink: { label: "View Academic Calendar 📅", url: "#calendar" },
+    suggestions: ["Semester Dates 📅", "Midterm Exams 📝", "Final Exams 📑"]
+  },
+
+  {
+    id: "calendar-course-withdrawal",
+    question: "When is the last date to withdraw a course in Fall 2026?",
+    answer: "⚠️ **Course Withdrawal Deadline**:\n• **Last Date to Withdraw a Course**: 20 February 2027 (Saturday).\n• Please make sure to consult your academic advisor before withdrawing from any course.\n\nSource: Academic Calendar Fall-2026, line 11.",
+    keywords: [
+      "withdraw a course",
+      "course withdrawal",
+      "when is the last date to withdraw a course",
+      "last date to withdraw a course",
+      "course withdraw karne ki last date kya hai",
+      "course drop",
+      "withdraw deadline"
+    ],
+    category: "Academic Calendar",
+    actionLink: { label: "View Academic Calendar 📅", url: "#calendar" },
+    suggestions: ["Attendance Policy 📋", "Final Exams 📑", "Results Date 📊"]
+  },
+
+  {
+    id: "calendar-results-grades",
+    question: "When will Fall 2026 results and grades be announced?",
+    answer: "📊 **Fall 2026 Results & Grade Notifications**:\n• **Last Day of Classes**: 13 March 2027 (Saturday)\n• **Final Examination Period Finishes**: 26 March 2027\n• **Submission of Results**: 29 March 2027 (Monday)\n• **Notification / Announcement of Grades**: 31 March 2027 (Wednesday)\n• **Students Receive Grades**: The official grade notification date is 31 March 2027.\n\nSource: Academic Calendar Fall-2026, lines 13–17.",
+    keywords: [
+      "result kab announce hoga",
+      "grades kab upload honge",
+      "when will fall 2026 results be submitted",
+      "when will grades be announced",
+      "when will students receive their grades",
+      "grade notification date",
+      "submission of results",
+      "results announcement",
+      "fall 2026 result",
+      "grades"
+    ],
+    category: "Academic Calendar",
+    actionLink: { label: "View Academic Calendar 📅", url: "#calendar" },
+    suggestions: ["Spring 2027 Registration 🌱", "Final Exams Schedule 📑", "Academic Calendar 📅"]
+  },
+
+  {
+    id: "calendar-spring-2027",
+    question: "When does Spring 2027 semester begin and when is registration?",
+    answer: "🌱 **Spring 2027 Semester Schedule**:\n• **Spring 2027 Registration**: 1 April 2027 to 10 April 2027.\n• **Registration Closes**: 10 April 2027.\n• **Spring 2027 Classes Commence**: 12 April 2027 (Monday).\n\nSource: Academic Calendar Fall-2026, lines 18–19.",
+    keywords: [
+      "spring 2027",
+      "spring semester kab start hoga",
+      "when does the spring 2027 semester begin",
+      "when is spring 2027 registration",
+      "when does spring 2027 registration close",
+      "when do spring 2027 classes commence",
+      "spring semester dates",
+      "spring registration"
+    ],
+    category: "Academic Calendar",
+    actionLink: { label: "View Academic Calendar 📅", url: "#calendar" },
+    suggestions: ["Fall 2026 Results 📊", "Academic Calendar 📅", "Fee Structure 💰"]
+  },
+
+  {
+    id: "calendar-working-days",
+    question: "How many total days and teaching days are in the Fall 2026 semester schedule?",
+    answer: "🗓️ **Fall 2026 Semester Working Schedule**:\n• **Total Days in Working Schedule**: 118 days\n• **Sundays Included**: 16 Sundays\n• **Holidays in Working Schedule**: 5 holidays\n• **Total Teaching Days**: 97 teaching days\n  - November 2026: 13 teaching days\n  - December 2026: 26 teaching days\n  - January 2027: 26 teaching days\n  - February 2027: 23 teaching days\n  - March 2027: 9 teaching days\n\nSource: Academic Calendar Fall-2026, Semester Working Table, lines 23–30.",
+    keywords: [
+      "working days",
+      "teaching days",
+      "semester mein kitne teaching days hain",
+      "how many total days are included in the semester working schedule",
+      "how many sundays are included",
+      "how many holidays are listed in the working schedule",
+      "how many total teaching days are there",
+      "how many teaching days are in november",
+      "how many teaching days are in december",
+      "how many teaching days are in january",
+      "how many teaching days are in february",
+      "how many teaching days are in march",
+      "semester working schedule"
+    ],
+    category: "Academic Calendar",
+    actionLink: { label: "View Academic Calendar 📅", url: "#calendar" },
+    suggestions: ["Semester Dates 📅", "Midterm Exams 📝", "Holidays 🏖️"]
+  },
+
+  {
+    id: "calendar-university-instructions",
+    question: "What are the university policies on campus trips, extracurriculars and makeup classes?",
+    answer: "🏛️ **University Activities & Special Instructions**:\n• **Student Trips & Extracurriculars**: Student trips and extracurricular activities should NOT be arranged at the expense of scheduled classes. Scheduled teaching sessions must be completed.\n• **Missed Sessions**: If campus activities are arranged, the Campus Principal is responsible for completing the required sessions through makeup classes.\n• **Calendar Modifications**: The calendar states that there will be no change in the calendar for any individual campus.\n\nSource: Academic Calendar Fall-2026, lines 42–44.",
+    keywords: [
+      "can campuses arrange student trips during classes",
+      "can extracurricular activities replace regular classes",
+      "who is responsible for completing missed sessions",
+      "can the academic calendar be changed for an individual campus",
+      "student trips during classes",
+      "extracurricular activities classes",
+      "makeup classes principal",
+      "university instructions calendar"
+    ],
+    category: "Academic Calendar",
+    actionLink: { label: "View Academic Calendar 📅", url: "#calendar" },
+    suggestions: ["Attendance Policy 📋", "Semester Dates 📅", "Campus Life 🎪"]
+  },
+
   // 29. CONTINUATION / LATERAL ENTRY FROM ADP TO BS
   {
     id: "adp-to-bs-progression",
@@ -847,6 +1175,8 @@ const UCP_DOMAIN_KEYWORDS = [
   'leadership', 'leaders', 'administration', 'administrators', 'management',
   'legacy', 'heritage', 'history',
   'facilities', 'facility', 'labs', 'lab', 'computing', 'transport', 'bus', 'buses', 'library', 'cafeteria', 'sports',
+  'library card', 'library membership', 'membership form', 'borrow', 'borrowing', 'photoshop', 'photographs', 'books', 'book',
+  'calendar', 'academic calendar', 'midterm', 'midterms', 'mids', 'final exam', 'final exams', 'finals', 'quaid-e-azam day', 'kashmir day', 'eid holidays', 'pakistan resolution day', 'resolution day', 'attendance', '80%', '80 percent', 'spring 2027', 'course withdraw', 'withdraw a course', 'teaching days', 'working days', 'semester dates',
   'scope', 'career', 'careers', 'jobs', 'demand',
   'airport road', 'helpline', '062-2202030', '0800-00827',
   'developer', 'founder'
@@ -898,6 +1228,91 @@ export function searchUcpKnowledge(query) {
   if (isDeveloperQuery) {
     const devItem = UCP_KNOWLEDGE_BASE.find(item => item.id === "who-is-your-developer" || item.id === "website-developer");
     if (devItem) return { match: devItem, confidence: 100 };
+  }
+
+  // Check Library Card / Membership procedure
+  const isLibraryCardQuery = /library card|membership form|library member|library registration|library form|card kahan se banega|card banwane|photographs.*library|documents.*library card|library card form/i.test(cleanQuery);
+  if (isLibraryCardQuery) {
+    const item = UCP_KNOWLEDGE_BASE.find(i => i.id === "library-card-procedure");
+    if (item) return { match: item, confidence: 100 };
+  }
+
+  // Check Library Book Borrowing rules
+  const isLibraryBorrowQuery = (/borrow|borrowing|how many books|issue.*books|return.*books|books.*return|damage.*book|kitni books|books wapas/i.test(cleanQuery) && (cleanQuery.includes('library') || cleanQuery.includes('book') || cleanQuery.includes('semester'))) ||
+    /library.*rules|rules.*library/i.test(cleanQuery);
+  if (isLibraryBorrowQuery) {
+    const item = UCP_KNOWLEDGE_BASE.find(i => i.id === "library-borrowing-rules");
+    if (item) return { match: item, confidence: 100 };
+  }
+
+  // =========================================================================
+  // ACADEMIC CALENDAR FALL 2026 DIRECT MATCHER (English, Urdu & Roman Urdu)
+  // =========================================================================
+
+  // 1. Midterm exams & makeup midterms
+  if (/(midterm|mid-term|mids kab|mid exam|mids dates|mids honge|when will.*midterm|midterm examination|makeup exam|makeup examinations|miss.*midterm)/i.test(cleanQuery)) {
+    const item = UCP_KNOWLEDGE_BASE.find(i => i.id === "calendar-midterm-exams");
+    if (item) return { match: item, confidence: 100 };
+  }
+
+  // 2. Final exams & exam period
+  if (/(final exam|final exams|finals kis date|finals kab|aur finals|final schedule|when will final|final examination period|when will final examinations start|when will final examinations end|makeup exam.*final|miss my final)/i.test(cleanQuery)) {
+    const item = UCP_KNOWLEDGE_BASE.find(i => i.id === "calendar-final-exams");
+    if (item) return { match: item, confidence: 100 };
+  }
+
+  // 3. Attendance policy & 80% rule
+  if (/(attendance|80 percent attendance|80% attendance|attendance kitni|attendance compulsory|minimum attendance|tracking attendance|attendance requirement|80 percent attendance zaroori hai)/i.test(cleanQuery)) {
+    const item = UCP_KNOWLEDGE_BASE.find(i => i.id === "calendar-attendance");
+    if (item) return { match: item, confidence: 100 };
+  }
+
+  // 4. Results & grade announcement
+  if (/(result kab|grades kab|grades upload|results announced|grade notification|grade.*notif|when will.*grades|submission of results|receive.*grades|when will.*results|result announcement|grades be notified)/i.test(cleanQuery)) {
+    const item = UCP_KNOWLEDGE_BASE.find(i => i.id === "calendar-results-grades");
+    if (item) return { match: item, confidence: 100 };
+  }
+
+  // 5. Holidays (Eid, Kashmir Day, Quaid-e-Azam Day, Pakistan Day, Public/Gazetted Holidays)
+  if (/(holiday|holidays|public holiday|gazetted holiday|eid ki chutti|kashmir day|quaid-e-azam day|eid holidays|resolution day|pakistan resolution day|chuttiyan|kashmir day ki chutti|when are eid holidays|classes during eid|chutti kab hai)/i.test(cleanQuery)) {
+    const item = UCP_KNOWLEDGE_BASE.find(i => i.id === "calendar-holidays");
+    if (item) return { match: item, confidence: 100 };
+  }
+
+  // 6. Course withdrawal deadline
+  if (/(course withdraw|withdraw a course|course drop|withdraw karne ki last date|last date to withdraw a course|last date.*withdraw|withdraw.*deadline)/i.test(cleanQuery)) {
+    const item = UCP_KNOWLEDGE_BASE.find(i => i.id === "calendar-course-withdrawal");
+    if (item) return { match: item, confidence: 100 };
+  }
+
+  // 7. Spring 2027 semester & registration
+  if (/(spring 2027|spring semester kab|spring semester start|spring 2027 registration|spring 2027 classes|when is spring 2027)/i.test(cleanQuery)) {
+    const item = UCP_KNOWLEDGE_BASE.find(i => i.id === "calendar-spring-2027");
+    if (item) return { match: item, confidence: 100 };
+  }
+
+  // 8. Teaching & working days count
+  if (/(teaching days|working days|working schedule|kitne teaching days|how many sundays|total days.*working schedule|teaching days are in|how many total working days)/i.test(cleanQuery)) {
+    const item = UCP_KNOWLEDGE_BASE.find(i => i.id === "calendar-working-days");
+    if (item) return { match: item, confidence: 100 };
+  }
+
+  // 9. University activities, student trips & makeup classes
+  if (/(student trips|trips during classes|extracurricular.*classes|makeup classes.*principal|calendar be changed for an individual campus|student tours)/i.test(cleanQuery)) {
+    const item = UCP_KNOWLEDGE_BASE.find(i => i.id === "calendar-university-instructions");
+    if (item) return { match: item, confidence: 100 };
+  }
+
+  // 10. Semester dates, commencement of classes & registration
+  if (/(classes.*start|classes.*commence|start.*classes|semester period|register after 14 november|registration.*last date|last date.*registration|registration start|late registration|attend classes without registration|classes ka last day|last day of.*classes|semester begin|fall 2026 semester begin|when does.*semester)/i.test(cleanQuery)) {
+    const item = UCP_KNOWLEDGE_BASE.find(i => i.id === "calendar-semester-dates");
+    if (item) return { match: item, confidence: 100 };
+  }
+
+  // 11. General academic calendar overview
+  if (/(academic calendar|ucp calendar|fall 2026 calendar|semester calendar|fall calendar)/i.test(cleanQuery)) {
+    const item = UCP_KNOWLEDGE_BASE.find(i => i.id === "calendar-fall-2026-overview");
+    if (item) return { match: item, confidence: 100 };
   }
 
   // 2. Exact match for basic greetings

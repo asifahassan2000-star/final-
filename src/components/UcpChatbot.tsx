@@ -5,7 +5,8 @@ import {
   Maximize2, Minimize2, ChevronLeft, ChevronRight
 } from 'lucide-react';
 import { getInstantBotResponse, getAttributionResponse, QUICK_ACTION_RESPONSES, BotResponse } from '../utils/ucpBotKnowledge';
-import { UcpRobotMascot } from './UcpRobotMascot';
+import { UcpRobotMascot, RobotAnimationState } from './UcpRobotMascot';
+import { ChatMessageMarkdown } from './ChatMessageMarkdown';
 
 // In-memory cache for instant repeated query responses (0ms)
 const queryCache = new Map<string, BotResponse>();
@@ -32,6 +33,7 @@ export interface QuickActionItem {
 export const QUICK_ACTIONS: QuickActionItem[] = [
   { id: 'fee', label: 'View Fee', icon: '💰', query: 'What is the fee structure and semester installment breakdown at UCP Bahawalpur?' },
   { id: 'admissions', label: 'Admissions', icon: '📝', query: 'How can I apply for admission at UCP Bahawalpur and what is the process?' },
+  { id: 'library', label: 'Library & Card', icon: '📚', query: 'How can I get a library card at UCP Bahawalpur and what are the book borrowing rules?' },
   { id: 'faculty', label: 'Faculty', icon: '👨‍🏫', query: 'Tell me about the faculty members, professors, and teaching staff at UCP Bahawalpur.' },
   { id: 'leadership', label: 'Leadership', icon: '🏛️', query: 'Who are the campus leaders, principal, and administrators of UCP Bahawalpur?' },
   { id: 'programmes', label: 'Programmes', icon: '🎓', query: 'What degree programmes and associate degrees are offered at UCP Bahawalpur?' },
@@ -40,6 +42,7 @@ export const QUICK_ACTIONS: QuickActionItem[] = [
   { id: 'eligibility', label: 'Eligibility', icon: '📋', query: 'What is the admission eligibility criteria and minimum percentage required?' },
   { id: 'legacy', label: 'Legacy', icon: '⭐', query: 'Tell me about the legacy, history, and achievements of UCP and Punjab Group of Colleges.' },
   { id: 'adp-ai', label: 'ADP AI', icon: '🤖', query: 'Tell me about the ADP Artificial Intelligence degree programme curriculum and career paths.' },
+  { id: 'calendar', label: 'Academic Calendar', icon: '📅', query: 'What are the official dates for Fall 2026 semester, midterms, finals, holidays, and results?' },
   { id: 'facilities', label: 'Facilities', icon: '🔬', query: 'What computing labs, transport buses, library, and campus facilities are available?' }
 ];
 
@@ -144,6 +147,39 @@ export const UcpChatbot: React.FC<UcpChatbotProps> = ({ onNavigate }) => {
   const [greetingState, setGreetingState] = useState<'hidden' | 'entering' | 'visible' | 'exiting'>('hidden');
   const [hasDismissedGreeting, setHasDismissedGreeting] = useState(false);
 
+  // Real Chatbot Status States (Listening, Typing, Thinking, Responding, Success, Unavailable)
+  const [isInputFocused, setIsInputFocused] = useState(false);
+  const [isUserTyping, setIsUserTyping] = useState(false);
+  const [isStreamingActive, setIsStreamingActive] = useState(false);
+  const [isSuccessState, setIsSuccessState] = useState(false);
+  const [isUnavailableState, setIsUnavailableState] = useState(false);
+  const typingTimerRef = useRef<NodeJS.Timeout | null>(null);
+
+  // Derive responsive robot animation state strictly tied to actual chatbot status
+  const currentRobotState: RobotAnimationState = (() => {
+    if (isUnavailableState) return 'unavailable';
+    if (isSuccessState || isHappy) return 'success';
+    if (isStreamingActive) return 'responding';
+    if (isLoading) return 'thinking';
+    if (isUserTyping) return 'typing';
+    if (isInputFocused) return 'listening';
+    return 'idle';
+  })();
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const val = e.target.value;
+    setInputValue(val);
+    if (val.trim().length > 0) {
+      setIsUserTyping(true);
+      if (typingTimerRef.current) clearTimeout(typingTimerRef.current);
+      typingTimerRef.current = setTimeout(() => {
+        setIsUserTyping(false);
+      }, 1100);
+    } else {
+      setIsUserTyping(false);
+    }
+  };
+
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
   const quickActionsRef = useRef<HTMLDivElement>(null);
@@ -175,46 +211,49 @@ export const UcpChatbot: React.FC<UcpChatbotProps> = ({ onNavigate }) => {
     };
   }, []);
 
-  // 2. Intelligent, Snapchat-style greeting sequence on initial entrance
+  // 2. Beautiful visitor entrance greeting & waving sequence on the home page
   useEffect(() => {
-    // Only run if not previously dismissed in session
-    const sessionDismissed = typeof window !== 'undefined' && sessionStorage.getItem('ucp_greeting_seen');
-    if (sessionDismissed) {
-      return;
-    }
-
-    // Step 1: Mascot rises into view after initial page mount (800ms)
+    // Step 1: Mascot rises into view when visitor arrives (600ms)
     const timer1 = setTimeout(() => {
       setGreetingState('entering');
-    }, 850);
+    }, 600);
 
-    // Step 2 & 3: Speech bubble pops in and Robot waves energetically (1200ms)
+    // Step 2: Speech bubble appears and Robot waves hand beautifully to greet visitor (950ms)
     const timer2 = setTimeout(() => {
       setGreetingState('visible');
       setIsWaving(true);
+      setIsHappy(true);
       setIsBouncing(true);
       setTimeout(() => setIsBouncing(false), 500);
-    }, 1250);
+    }, 950);
 
-    // Step 4: Settle wave after 2.4s of friendly waving
+    // Step 3: Beautiful, welcoming wave continues for 3.6s, then arm gently rests
     const timer3 = setTimeout(() => {
       setIsWaving(false);
-    }, 3800);
+      setIsHappy(false);
+    }, 4500);
 
-    // Step 5 & 6: Gentle bounce and smooth exit after user has had time to read (6.8s)
+    // Step 4: Gracefully fade greeting bubble after visitor has read it (8.5s)
     const timer4 = setTimeout(() => {
-      setIsBouncing(true);
       setGreetingState('exiting');
-      setTimeout(() => setIsBouncing(false), 450);
-    }, 7600);
+    }, 8500);
 
-    // Step 7: Settle into hidden idle
+    // Step 5: Settle into idle state (8.9s)
     const timer5 = setTimeout(() => {
       setGreetingState('hidden');
-      if (typeof window !== 'undefined') {
-        sessionStorage.setItem('ucp_greeting_seen', 'true');
+    }, 8950);
+
+    // Step 6: Periodic friendly wave every 40s if the visitor is browsing on home page
+    const periodicWaveInterval = setInterval(() => {
+      if (!isOpen) {
+        setIsWaving(true);
+        setIsHappy(true);
+        setTimeout(() => {
+          setIsWaving(false);
+          setIsHappy(false);
+        }, 2400);
       }
-    }, 8100);
+    }, 40000);
 
     return () => {
       clearTimeout(timer1);
@@ -222,8 +261,9 @@ export const UcpChatbot: React.FC<UcpChatbotProps> = ({ onNavigate }) => {
       clearTimeout(timer3);
       clearTimeout(timer4);
       clearTimeout(timer5);
+      clearInterval(periodicWaveInterval);
     };
-  }, []);
+  }, [isOpen]);
 
   // 3. Auto-scroll to bottom of conversation
   useEffect(() => {
@@ -232,18 +272,21 @@ export const UcpChatbot: React.FC<UcpChatbotProps> = ({ onNavigate }) => {
     }
   }, [messages, isOpen, isLoading]);
 
-  // 4. Focus input when chat opens & dismiss greeting
+  // 4. Wave hand at start, focus input & dismiss greeting
   useEffect(() => {
     if (isOpen) {
       setGreetingState('hidden');
-      setIsWaving(false);
+      setIsWaving(true);
       setIsHappy(true);
-      const happyTimer = setTimeout(() => setIsHappy(false), 1400);
+      const waveTimer = setTimeout(() => {
+        setIsWaving(false);
+        setIsHappy(false);
+      }, 2600);
       const focusTimer = setTimeout(() => {
         inputRef.current?.focus();
       }, 150);
       return () => {
-        clearTimeout(happyTimer);
+        clearTimeout(waveTimer);
         clearTimeout(focusTimer);
       };
     }
@@ -279,6 +322,8 @@ export const UcpChatbot: React.FC<UcpChatbotProps> = ({ onNavigate }) => {
     if (!query || isLoading) return;
 
     setInputValue('');
+    setIsUserTyping(false);
+    if (typingTimerRef.current) clearTimeout(typingTimerRef.current);
     setGreetingState('hidden');
     setIsWaving(false);
 
@@ -310,6 +355,7 @@ export const UcpChatbot: React.FC<UcpChatbotProps> = ({ onNavigate }) => {
     // Helper: Stream instant response rapidly to UI (0ms network delay, smooth 200ms typewriter)
     const deliverInstantResponse = (botResponse: BotResponse) => {
       setIsLoading(false);
+      setIsStreamingActive(true);
       const fullText = botResponse.reply;
       const respActionLink = botResponse.actionLink;
       const respSuggestions = botResponse.suggestions;
@@ -334,6 +380,7 @@ export const UcpChatbot: React.FC<UcpChatbotProps> = ({ onNavigate }) => {
         currentLen += step;
         if (currentLen >= fullText.length) {
           clearInterval(interval);
+          setIsStreamingActive(false);
           setMessages((prev) =>
             prev.map((m) =>
               m.id === botMsgId
@@ -347,12 +394,14 @@ export const UcpChatbot: React.FC<UcpChatbotProps> = ({ onNavigate }) => {
                 : m
             )
           );
+          setIsSuccessState(true);
           setIsHappy(true);
           setIsBouncing(true);
           setTimeout(() => {
+            setIsSuccessState(false);
             setIsHappy(false);
             setIsBouncing(false);
-          }, 1200);
+          }, 1600);
         } else {
           const slice = fullText.slice(0, currentLen);
           setMessages((prev) =>
@@ -480,7 +529,8 @@ export const UcpChatbot: React.FC<UcpChatbotProps> = ({ onNavigate }) => {
                 const parsed = JSON.parse(dataStr);
                 if (parsed.text) {
                   streamedText += parsed.text;
-                  setIsLoading(false); // First token arrived, hide typing indicator
+                  setIsLoading(false); // First token arrived, stop thinking
+                  setIsStreamingActive(true); // Now actively responding
                 }
                 if (parsed.suggestions) suggestions = parsed.suggestions;
                 if (parsed.actionLink) actionLink = parsed.actionLink;
@@ -488,6 +538,7 @@ export const UcpChatbot: React.FC<UcpChatbotProps> = ({ onNavigate }) => {
                 if (dataStr && dataStr !== '[DONE]') {
                   streamedText += dataStr;
                   setIsLoading(false);
+                  setIsStreamingActive(true);
                 }
               }
 
@@ -505,8 +556,13 @@ export const UcpChatbot: React.FC<UcpChatbotProps> = ({ onNavigate }) => {
       }
     } catch (err) {
       console.warn('Streaming notice or abort timeout:', err);
+      setIsUnavailableState(true);
+      setTimeout(() => {
+        setIsUnavailableState(false);
+      }, 2200);
     } finally {
       clearTimeout(abortTimeout);
+      setIsStreamingActive(false);
     }
 
     // Step 7: Fallback if no streamed tokens were received
@@ -547,14 +603,26 @@ export const UcpChatbot: React.FC<UcpChatbotProps> = ({ onNavigate }) => {
       )
     );
     setIsLoading(false);
+    setIsStreamingActive(false);
 
-    // Mascot celebration bounce
-    setIsHappy(true);
-    setIsBouncing(true);
-    setTimeout(() => {
-      setIsHappy(false);
-      setIsBouncing(false);
-    }, 1500);
+    // Check if query was unavailable or successfully delivered
+    const hasErrorIndicator = !streamedText.trim() || streamedText.toLowerCase().includes("could not find") || streamedText.toLowerCase().includes("sorry, i couldn't");
+    if (hasErrorIndicator) {
+      setIsUnavailableState(true);
+      setTimeout(() => {
+        setIsUnavailableState(false);
+      }, 2200);
+    } else {
+      // Robot success nod & friendly expression
+      setIsSuccessState(true);
+      setIsHappy(true);
+      setIsBouncing(true);
+      setTimeout(() => {
+        setIsSuccessState(false);
+        setIsHappy(false);
+        setIsBouncing(false);
+      }, 1600);
+    }
   };
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
@@ -634,9 +702,8 @@ export const UcpChatbot: React.FC<UcpChatbotProps> = ({ onNavigate }) => {
               <div className="relative w-10 h-10 rounded-xl bg-[#071326] border border-[#1E3A66] flex items-center justify-center p-0.5 overflow-hidden shrink-0 shadow-inner">
                 <UcpRobotMascot 
                   size={36} 
-                  isBlinking={isBlinking} 
-                  isThinking={isLoading} 
-                  isHappy={isHappy} 
+                  state={currentRobotState}
+                  isWaving={isWaving}
                   showTorso={false} 
                 />
               </div>
@@ -694,75 +761,84 @@ export const UcpChatbot: React.FC<UcpChatbotProps> = ({ onNavigate }) => {
           {/* Messages Thread / Center ChatGPT Start Screen */}
           <div className="flex-1 overflow-y-auto p-4 space-y-3.5 bg-[#FAFBFD] text-xs flex flex-col">
             {messages.length === 0 ? (
-              <div className="flex-1 flex flex-col items-center justify-center p-3 text-center my-auto animate-in fade-in zoom-in-95 duration-200">
-                {/* Robot Icon / Mascot */}
-                <div className="relative w-15 h-15 rounded-2xl bg-gradient-to-b from-[#0F223F] to-[#0A1931] border border-slate-700/60 shadow-lg flex items-center justify-center mb-3.5 p-1">
+              <div className="flex-1 flex flex-col items-center justify-center p-4 text-center my-auto animate-in fade-in duration-200 select-none max-w-lg mx-auto">
+                {/* Minimal Waving Mascot */}
+                <div className="relative w-14 h-14 rounded-full bg-slate-100/80 border border-slate-200/90 flex items-center justify-center mb-3 shadow-2xs">
                   <UcpRobotMascot 
-                    size={48} 
-                    isBlinking={isBlinking} 
-                    isHappy={isHappy} 
+                    size={46} 
+                    state={currentRobotState}
+                    isWaving={isWaving}
                     showTorso={false} 
                   />
-                  <div className="absolute -top-1 -right-1 px-1.5 py-0.5 bg-[#0A1931] text-slate-300 text-[9px] font-mono font-medium rounded-full border border-slate-600">
-                    AI
-                  </div>
                 </div>
 
-                {/* Big One Center Message like ChatGPT */}
-                <h2 className="font-['Inter',system-ui,-apple-system,sans-serif] text-xl sm:text-2xl font-bold text-[#0A1931] tracking-tight leading-tight m-0">
-                  Hi, how can I help you today?
+                {/* Professional Minimal Welcome */}
+                <h2 className="font-sans text-lg sm:text-xl font-bold text-[#0A1931] tracking-tight leading-snug m-0">
+                  Hi, how can I help you?
                 </h2>
-                <p className="font-sans text-xs text-slate-500 mt-2 max-w-[310px] leading-relaxed">
-                  Ask me anything about degree programs, admissions, fee structure, scholarships, or campus facilities at UCP Bahawalpur.
+                <p className="font-sans text-xs text-slate-500 mt-1 max-w-[340px] leading-relaxed">
+                  Ask about degree programmes, admissions, fee structures, scholarships, or the Fall 2026 academic calendar.
                 </p>
 
-                {/* ChatGPT-style Quick Prompt Cards (Responsive 4 columns on large modal) */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2.5 w-full mt-6 text-left font-sans">
+                {/* Minimal, professional prompt pills (clean & restrained, not big boxes) */}
+                <div className="flex flex-wrap items-center justify-center gap-1.5 mt-5 max-w-md">
                   <button
                     type="button"
-                    onClick={() => handleSendMessage("What degree programs are offered?")}
-                    className="p-2.5 bg-white hover:bg-slate-50 border border-slate-200 hover:border-[#0A1931] rounded-xl text-left transition-all shadow-2xs group cursor-pointer"
+                    onClick={() => handleSendMessage("What degree programmes are offered at UCP Bahawalpur?")}
+                    className="px-3 py-1.5 bg-white hover:bg-slate-50 border border-slate-200 hover:border-[#0A1931] rounded-lg text-xs font-medium text-slate-700 transition-colors cursor-pointer shadow-2xs flex items-center gap-1.5 font-sans"
                   >
-                    <span className="block text-sm mb-0.5">🎓</span>
-                    <span className="font-semibold text-xs text-slate-800 block group-hover:text-[#0A1931] leading-tight">Degree Programs</span>
-                    <span className="text-[10px] text-slate-400 block mt-0.5">BS &amp; ADP options</span>
+                    <span>🎓</span>
+                    <span>Degree Programmes</span>
                   </button>
 
                   <button
                     type="button"
-                    onClick={() => handleSendMessage("Tell me about ADP Artificial Intelligence")}
-                    className="p-2.5 bg-white hover:bg-slate-50 border border-slate-200 hover:border-[#0A1931] rounded-xl text-left transition-all shadow-2xs group cursor-pointer"
+                    onClick={() => handleSendMessage("What is the fee structure and installment breakdown?")}
+                    className="px-3 py-1.5 bg-white hover:bg-slate-50 border border-slate-200 hover:border-[#0A1931] rounded-lg text-xs font-medium text-slate-700 transition-colors cursor-pointer shadow-2xs flex items-center gap-1.5 font-sans"
                   >
-                    <span className="block text-sm mb-0.5">🤖</span>
-                    <span className="font-semibold text-xs text-slate-800 block group-hover:text-[#0A1931] leading-tight">ADP AI</span>
-                    <span className="text-[10px] text-slate-400 block mt-0.5">75 CH AI curriculum</span>
+                    <span>💰</span>
+                    <span>Fee Breakdown</span>
                   </button>
 
                   <button
                     type="button"
-                    onClick={() => handleSendMessage("What is the fee structure and installments?")}
-                    className="p-2.5 bg-white hover:bg-slate-50 border border-slate-200 hover:border-[#0A1931] rounded-xl text-left transition-all shadow-2xs group cursor-pointer"
+                    onClick={() => handleSendMessage("What are the official dates for Fall 2026 academic calendar?")}
+                    className="px-3 py-1.5 bg-white hover:bg-slate-50 border border-slate-200 hover:border-[#0A1931] rounded-lg text-xs font-medium text-slate-700 transition-colors cursor-pointer shadow-2xs flex items-center gap-1.5 font-sans"
                   >
-                    <span className="block text-sm mb-0.5">💰</span>
-                    <span className="font-semibold text-xs text-slate-800 block group-hover:text-[#0A1931] leading-tight">Fee Structure</span>
-                    <span className="text-[10px] text-slate-400 block mt-0.5">Installment breakdown</span>
+                    <span>📅</span>
+                    <span>Academic Calendar</span>
                   </button>
 
                   <button
                     type="button"
-                    onClick={() => handleSendMessage("What scholarships are available?")}
-                    className="p-2.5 bg-white hover:bg-slate-50 border border-slate-200 hover:border-[#0A1931] rounded-xl text-left transition-all shadow-2xs group cursor-pointer"
+                    onClick={() => handleSendMessage("How can I apply for admission at UCP Bahawalpur?")}
+                    className="px-3 py-1.5 bg-white hover:bg-slate-50 border border-slate-200 hover:border-[#0A1931] rounded-lg text-xs font-medium text-slate-700 transition-colors cursor-pointer shadow-2xs flex items-center gap-1.5 font-sans"
                   >
-                    <span className="block text-sm mb-0.5">🏆</span>
-                    <span className="font-semibold text-xs text-slate-800 block group-hover:text-[#0A1931] leading-tight">Scholarships</span>
-                    <span className="text-[10px] text-slate-400 block mt-0.5">Up to 50% on merit</span>
+                    <span>📝</span>
+                    <span>Admissions Process</span>
+                  </button>
+
+                  <button
+                    type="button"
+                    onClick={() => handleSendMessage("What merit scholarships and fee concessions are available?")}
+                    className="px-3 py-1.5 bg-white hover:bg-slate-50 border border-slate-200 hover:border-[#0A1931] rounded-lg text-xs font-medium text-slate-700 transition-colors cursor-pointer shadow-2xs flex items-center gap-1.5 font-sans"
+                  >
+                    <span>🏆</span>
+                    <span>Scholarships</span>
+                  </button>
+
+                  <button
+                    type="button"
+                    onClick={() => handleSendMessage("How can I get a library card and what are the borrowing rules?")}
+                    className="px-3 py-1.5 bg-white hover:bg-slate-50 border border-slate-200 hover:border-[#0A1931] rounded-lg text-xs font-medium text-slate-700 transition-colors cursor-pointer shadow-2xs flex items-center gap-1.5 font-sans"
+                  >
+                    <span>📚</span>
+                    <span>Library Services</span>
                   </button>
                 </div>
               </div>
             ) : (
-              messages.map((msg, index) => {
-                const isLatestBot = msg.sender === 'bot' && index === messages.length - 1 && msg.isStreaming;
-
+              messages.map((msg) => {
                 return (
                   <div
                     key={msg.id}
@@ -779,21 +855,20 @@ export const UcpChatbot: React.FC<UcpChatbotProps> = ({ onNavigate }) => {
 
                     {/* Message Bubble - Neat Rectangle ChatGPT-style (Wide and comfortable) */}
                     <div
-                      className={`max-w-[95%] sm:max-w-[92%] rounded-xl px-4 py-3 leading-relaxed whitespace-pre-wrap break-words text-[13.5px] sm:text-[14px] ${
+                      className={`max-w-[95%] sm:max-w-[92%] rounded-xl px-4 py-3 leading-relaxed break-words text-[13.5px] sm:text-[14px] ${
                         msg.sender === 'user'
-                          ? 'bg-[#0A1931] text-white font-sans shadow-xs'
+                          ? 'bg-[#0A1931] text-white font-sans shadow-xs whitespace-pre-wrap'
                           : 'bg-white text-slate-800 border border-slate-200 shadow-xs font-sans'
                       }`}
                     >
                       {msg.sender === 'bot' ? (
-                        <span>
-                          {renderFormattedText(msg.text)}
-                          {msg.isStreaming && (
-                            <span className="inline-block w-1.5 h-3.5 bg-[#0A1931] ml-0.5 animate-pulse align-middle" />
-                          )}
-                        </span>
+                        <ChatMessageMarkdown
+                          content={msg.text}
+                          isStreaming={msg.isStreaming}
+                          onActionClick={handleActionClick}
+                        />
                       ) : (
-                        msg.text
+                        <span className="whitespace-pre-wrap">{msg.text}</span>
                       )}
 
                       {/* Action link button - Opens exact page and section */}
@@ -839,10 +914,10 @@ export const UcpChatbot: React.FC<UcpChatbotProps> = ({ onNavigate }) => {
             {isLoading && (
               <div className="flex items-center gap-2.5 text-slate-500 text-xs px-2 py-1">
                 <div className="w-6 h-6 rounded-md bg-[#0A1931] flex items-center justify-center text-white shrink-0">
-                  <UcpRobotMascot size={22} isThinking={true} showTorso={false} />
+                  <UcpRobotMascot size={22} state="thinking" showTorso={false} />
                 </div>
                 <div className="flex items-center gap-1.5 font-sans text-[11px] text-slate-500">
-                  <span>UCP Assistant is typing</span>
+                  <span>UCP Assistant is thinking</span>
                   <span className="inline-flex gap-0.5">
                     <span className="w-1 h-1 rounded-full bg-[#0A1931] animate-bounce" style={{ animationDelay: '0ms' }} />
                     <span className="w-1 h-1 rounded-full bg-slate-400 animate-bounce" style={{ animationDelay: '150ms' }} />
@@ -915,7 +990,12 @@ export const UcpChatbot: React.FC<UcpChatbotProps> = ({ onNavigate }) => {
                 ref={inputRef}
                 type="text"
                 value={inputValue}
-                onChange={(e) => setInputValue(e.target.value)}
+                onChange={handleInputChange}
+                onFocus={() => setIsInputFocused(true)}
+                onBlur={() => {
+                  setIsInputFocused(false);
+                  setIsUserTyping(false);
+                }}
                 onKeyDown={handleKeyDown}
                 placeholder="Message UCP Assistant..."
                 disabled={isLoading}
@@ -978,17 +1058,17 @@ export const UcpChatbot: React.FC<UcpChatbotProps> = ({ onNavigate }) => {
                 <X size={9} />
               </button>
 
-              {/* Formal Academic Greeting Content */}
+              {/* Minimal Professional Greeting Content */}
               <div>
                 <div className="flex items-center gap-1.5 text-[10px] font-mono uppercase tracking-wider text-slate-500 dark:text-slate-400 font-medium leading-none mb-1">
                   <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
-                  <span>UCP Assistant · Virtual Assistant</span>
+                  <span>UCP Assistant · Online</span>
                 </div>
-                <p className="text-xs sm:text-[13px] font-medium text-slate-800 dark:text-slate-100 leading-snug">
-                  How may we assist you today?
+                <p className="text-xs sm:text-[13px] font-semibold text-[#0A1931] dark:text-white leading-snug">
+                  Hi, how can I help you?
                 </p>
                 <p className="text-[10px] sm:text-[11px] font-normal text-slate-500 dark:text-slate-400 pt-0.5 leading-tight">
-                  Admissions · Programmes · Scholarships
+                  Admissions · Fees · Programmes
                 </p>
               </div>
 
@@ -1008,6 +1088,16 @@ export const UcpChatbot: React.FC<UcpChatbotProps> = ({ onNavigate }) => {
         <button
           id="ucp-assistant-floating-launcher"
           onClick={handleToggleChat}
+          onMouseEnter={() => {
+            if (!isOpen && !isWaving) {
+              setIsWaving(true);
+              setIsHappy(true);
+              setTimeout(() => {
+                setIsWaving(false);
+                setIsHappy(false);
+              }, 2200);
+            }
+          }}
           className={`group relative rounded-full flex items-center justify-center transition-all duration-300 cursor-pointer focus:outline-none focus:ring-4 focus:ring-[#0A1931]/25 select-none ${
             isOpen
               ? 'w-10 h-10 sm:w-16 sm:h-16 bg-[#0A1931] hover:bg-[#12284C] text-white shadow-xl rotate-90 scale-95 border border-slate-500'
@@ -1021,16 +1111,14 @@ export const UcpChatbot: React.FC<UcpChatbotProps> = ({ onNavigate }) => {
             <X size={20} className="text-white drop-shadow-md" />
           ) : (
             /* Large Visible Cute Robot Mascot */
-            <div className={`relative w-full h-full flex items-center justify-center p-1 sm:p-1.5 ${!isWaving ? 'ucp-robot-tilt' : ''}`}>
+            <div className={`relative w-full h-full flex items-center justify-center p-1 sm:p-1.5 ${!isWaving && currentRobotState === 'idle' ? 'ucp-robot-tilt' : ''}`}>
               
               {/* Mascot Vector Illustration peeking inside circular badge */}
               <UcpRobotMascot 
                 size={74}
                 className="w-8 h-8 sm:w-[74px] sm:h-[74px] lg:w-[80px] lg:h-[80px] transition-transform duration-200 group-hover:scale-105"
+                state={currentRobotState}
                 isWaving={isWaving}
-                isBlinking={isBlinking}
-                isThinking={isLoading}
-                isHappy={isHappy}
                 showTorso={true}
               />
             </div>

@@ -112,8 +112,8 @@ export const ALL_FACULTY_MEMBERS: FacultyMemberData[] = [
     academicPillarBullet: 'scholarly research in History, Political Science, Philosophy, Sociology, Anthropology and Mass Communication.',
     researchArea: 'Historical research on democracy in pakistan and globalized world',
     intro: 'Assistant Professor in Social Science with 8 years of university teaching and scholarly research in History, Political Science, Philosophy, Sociology, Anthropology and Mass Communication.',
-    photoUrl: 'https://ik.imagekit.io/Muffins/image%20-%202026-10-22T163817.930.png',
-    fallbackPhotoUrl: 'https://ik.imagekit.io/Muffins/image%20-%202026-10-22T163817.930.png',
+    photoUrl: 'https://ik.imagekit.io/Muffins/image%20-%202026-11-01T191154.246.png',
+    fallbackPhotoUrl: 'https://ik.imagekit.io/Muffins/image%20-%202026-11-01T191154.246.png',
     objectPosition: 'object-top',
     qualifications: [
       'Ph.D. in History',

@@ -137,7 +137,43 @@ UCP Bahawalpur Campus Knowledge:
   * Natural & Life Sciences (Biotech, Biochemistry, Chemistry, Physics, Math, Zoology): Flourishing opportunities in pharmaceutical research, clinical pathology, environmental testing, scientific laboratories, and postgraduate academia.
   * Humanities & Social Sciences (English, Psychology): Rewarding career paths in clinical counseling, corporate HR, digital content strategy, civil services (CSS/PMS), and educational leadership.
 - Facilities: GPU computing labs, science labs, high-tech digital library, air-conditioned bus transport across Bahawalpur, sports grounds, cafeteria.
+- Library & Student Services (UCP Bahawalpur Library):
+  * How to get a Library Card:
+    1. Visit the Photoshop shop located at UCP Bahawalpur and ask for the Library Membership Form.
+    2. Fill out the form with your required information.
+    3. Bring two recent passport-size photographs. Attach one to the form.
+    4. Submit the completed form to the Chairman of the Library at the university library.
+    5. Give your second photograph separately to the Chairman.
+    6. The Chairman will provide your library card with your photograph on it.
+    *Important*: Bring both passport-size photographs. One is attached to the form, and the other is submitted separately.
+  * Book Borrowing Rules:
+    1. Students are allowed to borrow a maximum of two books at a time.
+    2. Students must return all borrowed books at the end of each semester.
+    3. All books must be returned in good condition without any damage.
+    4. Students are responsible for keeping borrowed books safe and maintaining their condition.
+    *Important*: Make sure to return all borrowed books before the semester ends.
+- Academic Calendar (Fall 2026 – October 2026 to March 2027, Center for Professional Studies / UCP):
+  * Semester Period: October 2026 to March 2027.
+  * Registration: 22 October 2026 to 14 November 2026. Late registration after 14 November 2026 is strictly NOT allowed. Students without registration are not allowed to attend classes.
+  * Classes Commencement: 16 November 2026 (Monday).
+  * Midterm Examinations: 11 January 2027 (Monday) to 16 January 2027 (Saturday).
+  * Makeup Examinations: Makeup exams are strictly NOT allowed according to the calendar. For missed exams, students must contact academic administration.
+  * Attendance Requirement: Minimum 80% attendance is strictly compulsory throughout the semester. Students are responsible for tracking their own attendance.
+  * Important Holidays:
+    - Quaid-e-Azam Day: 25 December 2026 (Friday)
+    - Kashmir Day: 5 February 2027 (Friday)
+    - Eid Holidays: 10–12 March 2027 (Wednesday to Friday - No classes)
+    - Pakistan Resolution Day: 23 March 2027 (Tuesday)
+    - Government gazetted holidays observed per official announcements.
+  * Course Withdrawal Deadline: 20 February 2027 (Saturday).
+  * Last Day of Classes: 13 March 2027 (Saturday).
+  * Final Examinations: 15 March 2027 (Monday) to 26 March 2027 (Friday).
+  * Results & Grades: Submission of results on 29 March 2027; Official Notification of Grades to students on 31 March 2027.
+  * Spring 2027 Semester: Registration from 1 April to 10 April 2027; Classes commence on 12 April 2027 (Monday).
+  * Semester Working Days: Total 118 days (16 Sundays, 5 holidays, 97 teaching days; Nov: 13, Dec: 26, Jan: 26, Feb: 23, Mar: 9).
+  * University Instructions: Student trips and extracurricular activities must not be arranged at the expense of regular classes; Principal is responsible for makeup sessions; no calendar changes for individual campus.
 - Exact Navigation Links: When recommending or providing links, use the exact routes:
+  * Academic Calendar: #calendar (e.g. [Academic Calendar](#calendar))
   * Degree Programmes: #programmes (e.g. [Explore Programmes](#programmes))
   * Fee Structure: #fee-structure (e.g. [Fee Structure](#fee-structure))
   * Scholarships: #scholarships (e.g. [Scholarships](#scholarships))
@@ -148,6 +184,18 @@ UCP Bahawalpur Campus Knowledge:
   * Online Admission Portal: https://admissions.ucpcolleges.pgc.edu/login?returnUrl=%2Flogin%3FreturnUrl%3D%252F
 - Admissions rule: If asking about admissions, mention online admission portal is open and offer guidance.
 - Developer, Creator & Attribution rule: ONLY when someone asks who built/made/created you, who made this chatbot, or who made/built/developed/founded this website, provide the exact enhanced responses. Never mention Asifa unless specifically asked.
+
+RESPONSE FORMATTING & PRESENTATION RULES (ChatGPT-Style Clean Markdown):
+1. Use clear, relevant Markdown headings (## or ###) whenever an answer contains multiple topics or sections.
+2. Highlight important words, dates, deadlines, fees, percentages, requirements and key facts using **bold text**.
+3. Use bullet points (- item) for lists, facilities, requirements, features and important info.
+4. Use numbered lists (1. item) for step-by-step procedures, instructions and sequences.
+5. Use short, readable paragraphs with proper line spacing. Never output long walls of text.
+6. Use Markdown tables when comparing information, fee structures or academic schedules (e.g. | Event | Date |). Ensure headers and columns align neatly.
+7. Use blockquotes (> notice) only for genuinely important notices, warnings or rules.
+8. For simple questions, give a short, direct answer without unnecessary headings.
+9. For detailed questions, organize the answer into logical sections with clear headings.
+10. Use emojis sparingly and only when they improve clarity. Maintain a distinguished university identity.
 `;
 
 function isUcpSpecificQuery(text: string): boolean {
@@ -159,6 +207,10 @@ function isUcpSpecificQuery(text: string): boolean {
     'installment', 'scholarship', 'merit', 'kinship', 'pgc', 'punjab group',
     'mian amer', 'aurangzaib', 'hamid iqbal', 'sohail afzal', 'adp', 'adp ai',
     'adp cs', 'adp se', 'degree', 'transport', 'hostel', 'cafeteria', 'library',
+    'library card', 'membership form', 'borrow', 'borrowing', 'books', 'book', 'photoshop',
+    'calendar', 'academic calendar', 'midterm', 'midterms', 'mids', 'final exam', 'final exams',
+    'finals', 'attendance', '80%', 'quaid-e-azam', 'kashmir day', 'eid holidays', 'resolution day',
+    'course withdraw', 'withdraw', 'teaching days', 'working days', 'spring 2027', 'grades', 'results',
     'principal', 'faculty', 'constituent college', 'airport road',
     'who made this website', 'who built this website', 'who developed this website',
     'developer of website', 'website developer', 'founder of this website', 'who built you',

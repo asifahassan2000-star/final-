@@ -97,6 +97,18 @@ export const QUICK_ACTION_RESPONSES: Record<string, BotResponse> = {
     actionLink: { label: "Explore Campus Facilities 🚌", url: "#facilities" },
     suggestions: ["Degree Programmes 🎓", "Admissions 📝", "Contact Helpline 📞"],
     isOfflineMatch: true
+  },
+  library: {
+    reply: "📚 **Library Membership & Book Borrowing – UCP Bahawalpur**:\n\nStudents can obtain their library card by following the library registration procedure.\n\n**To get your Library Card**:\n1. Visit the Photoshop shop at UCP Bahawalpur for the Library Membership Form.\n2. Fill out the form and attach one recent passport-size photo.\n3. Submit to the Chairman of the Library along with your second photo.\n4. The Chairman will issue your library card with your photo.\n\n**Book Borrowing Rules**:\n• A maximum of two books can be borrowed at a time.\n• All borrowed books must be returned at the end of each semester.\n• Books must be returned in their original condition without damage.\n• Students are responsible for keeping borrowed books safe.\n\n*Important*: Bring both photographs (one attached to form, one submitted separately) and make sure to return all borrowed books before the semester ends.",
+    actionLink: { label: "Campus Facilities 📚", url: "#facilities" },
+    suggestions: ["How to Get Library Card 💳", "Book Borrowing Rules 📖", "Campus Facilities 🔬"],
+    isOfflineMatch: true
+  },
+  calendar: {
+    reply: "📅 **UCP Academic Calendar – Fall 2026 (Oct 2026 – Mar 2027)**:\n\n• **Registration**: 22 Oct – 14 Nov 2026 (No late registration after 14 Nov)\n• **Classes Commence**: 16 Nov 2026 (Monday)\n• **Midterm Exams**: 11–16 Jan 2027 (Makeup exams NOT allowed)\n• **Course Withdrawal Deadline**: 20 Feb 2027\n• **Last Day of Classes**: 13 Mar 2027\n• **Final Exams**: 15–26 Mar 2027\n• **Submission of Results**: 29 Mar 2027\n• **Grades Notification**: 31 Mar 2027\n• **Spring 2027 Registration**: 1–10 April 2027\n• **Spring 2027 Classes Begin**: 12 April 2027\n\n*Attendance Rule*: Minimum 80% attendance is strictly compulsory.",
+    actionLink: { label: "View Academic Calendar 📅", url: "#calendar" },
+    suggestions: ["Midterms Schedule 📝", "Final Exams Schedule 📑", "Attendance Policy 📋"],
+    isOfflineMatch: true
   }
 };
 
@@ -184,6 +196,35 @@ export function getInstantBotResponse(userQuery: string): BotResponse {
     return attribution;
   }
 
+  // Library card & membership questions (exact instant matcher)
+  const isLibraryCard = /library card|membership form|library member|library registration|library form|card kahan se banega|card banwane|photographs.*library|documents.*library card|library card form/i.test(q);
+  if (isLibraryCard) {
+    const item = UCP_KNOWLEDGE_BASE.find((i: any) => i.id === "library-card-procedure");
+    if (item) {
+      return {
+        reply: item.answer,
+        suggestions: item.suggestions || ["Book Borrowing Rules 📚", "How many books can I borrow? 📖", "Campus Facilities 🔬"],
+        actionLink: item.actionLink,
+        isOfflineMatch: true
+      };
+    }
+  }
+
+  // Library book borrowing rules (exact instant matcher)
+  const isLibraryBorrowing = (/borrow|borrowing|how many books|issue.*books|return.*books|books.*return|damage.*book|kitni books|books wapas/i.test(q) && (q.includes('library') || q.includes('book') || q.includes('semester'))) ||
+    /library.*rules|rules.*library/i.test(q);
+  if (isLibraryBorrowing) {
+    const item = UCP_KNOWLEDGE_BASE.find((i: any) => i.id === "library-borrowing-rules");
+    if (item) {
+      return {
+        reply: item.answer,
+        suggestions: item.suggestions || ["How to Get Library Card 💳", "Campus Facilities 🔬", "Degree Programmes 🎓"],
+        actionLink: item.actionLink,
+        isOfflineMatch: true
+      };
+    }
+  }
+
   // 2. Direct Quick Action lookup by key or key terms
   if (q.includes('fee') || q === 'view fee') return QUICK_ACTION_RESPONSES.fee;
   if (q.includes('scholarship') || q.includes('concession')) return QUICK_ACTION_RESPONSES.scholarship;
@@ -193,6 +234,8 @@ export function getInstantBotResponse(userQuery: string): BotResponse {
   if (q.includes('legacy') || q.includes('heritage') || q.includes('history of ucp')) return QUICK_ACTION_RESPONSES.legacy;
   if (q.includes('adp ai') || q.includes('artificial intelligence')) return QUICK_ACTION_RESPONSES['adp-ai'];
   if (q.includes('facilities') || q.includes('facility') || q.includes('bus') || q.includes('transport') || q.includes('lab')) return QUICK_ACTION_RESPONSES.facilities;
+  if (q === 'library' || q.includes('library')) return QUICK_ACTION_RESPONSES.library;
+  if (q === 'calendar' || q === 'academic calendar' || q === 'view calendar' || q.includes('academic calendar')) return QUICK_ACTION_RESPONSES.calendar;
   if (q.includes('eligibility') || q.includes('criteria') || q.includes('requirement')) return QUICK_ACTION_RESPONSES.eligibility;
   if (q.includes('program') || q.includes('degree') || q.includes('courses')) return QUICK_ACTION_RESPONSES.programmes;
   if (q.includes('admission') || q.includes('apply')) return QUICK_ACTION_RESPONSES.admissions;

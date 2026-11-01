@@ -707,6 +707,11 @@ html:not(.reveal-ready) .quote-premium-scroll .quote-accent-bar {
   transform-origin: 76px 74px;
 }
 
+.ucp-arm-rest {
+  transition: transform 0.45s cubic-bezier(0.2, 0.8, 0.2, 1);
+  transform-origin: 76px 74px;
+}
+
 @keyframes ucpRobotFloat {
   0%, 100% {
     transform: translateY(0px);
@@ -735,6 +740,54 @@ html:not(.reveal-ready) .quote-premium-scroll .quote-accent-bar {
 .ucp-robot-tilt {
   animation: ucpRobotHeadTilt 6s ease-in-out infinite;
   transform-origin: center bottom;
+}
+
+@keyframes ucpRespondingCadence {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(1.2px) rotate(0.8deg);
+  }
+}
+
+.ucp-robot-responding {
+  animation: ucpRespondingCadence 1.1s ease-in-out infinite;
+  transform-origin: 55px 68px;
+}
+
+@keyframes ucpListeningNavyGlow {
+  0%, 100% {
+    filter: drop-shadow(0 0 2px rgba(30, 58, 102, 0.4));
+  }
+  50% {
+    filter: drop-shadow(0 0 6px rgba(56, 189, 248, 0.7)) drop-shadow(0 0 10px rgba(10, 25, 49, 0.5));
+  }
+}
+
+.ucp-robot-listening-aura {
+  animation: ucpListeningNavyGlow 2.4s ease-in-out infinite;
+}
+
+@keyframes ucpSuccessNod {
+  0% { transform: translateY(0) rotate(0deg); }
+  40% { transform: translateY(2px) rotate(0.8deg); }
+  75% { transform: translateY(-0.5px) rotate(-0.4deg); }
+  100% { transform: translateY(0) rotate(0deg); }
+}
+
+.ucp-robot-success-nod {
+  animation: ucpSuccessNod 0.65s cubic-bezier(0.2, 0.8, 0.2, 1) 1;
+  transform-origin: 55px 68px;
+}
+
+@keyframes ucpThinkingScan {
+  0%, 100% { opacity: 0.35; transform: scale(0.9); }
+  50% { opacity: 1; transform: scale(1.15); }
+}
+
+.ucp-thinking-scan {
+  animation: ucpThinkingScan 1.4s ease-in-out infinite;
 }
 
 @keyframes ucpSpeechBubblePop {
@@ -805,6 +858,10 @@ html:not(.reveal-ready) .quote-premium-scroll .quote-accent-bar {
   .ucp-waving-arm-active,
   .ucp-robot-float,
   .ucp-robot-tilt,
+  .ucp-robot-responding,
+  .ucp-robot-listening-aura,
+  .ucp-robot-success-nod,
+  .ucp-thinking-scan,
   .ucp-speech-bubble-enter,
   .ucp-robot-bounce,
   .ucp-robot-halo {
