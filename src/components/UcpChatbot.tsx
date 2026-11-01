@@ -202,12 +202,15 @@ export const UcpChatbot: React.FC<UcpChatbotProps> = ({ onNavigate }) => {
     setIsTranscribingAudio(true);
     setVoiceError(null);
 
+    console.log(`[Diagnostic STT] Initiating transcription: Blob size=${audioBlob.size} bytes, MIME type=${mimeType}, Language=${targetLang}`);
+
     try {
       const reader = new FileReader();
       reader.readAsDataURL(audioBlob);
       reader.onloadend = async () => {
         const base64Audio = reader.result as string;
         try {
+          console.log(`[Diagnostic STT] Dispatching POST /api/speech/transcribe (payload length: ${base64Audio.length} chars)`);
           const res = await fetch('/api/speech/transcribe', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
@@ -218,22 +221,47 @@ export const UcpChatbot: React.FC<UcpChatbotProps> = ({ onNavigate }) => {
             })
           });
 
+          console.log(`[Diagnostic STT] Server HTTP response status: ${res.status}`);
+
           if (!res.ok) {
-            let serverError = 'Transcription request could not be completed';
+            let serverError = `Transcription request failed (HTTP ${res.status})`;
             try {
               const errBody = await res.json();
-              if (errBody && errBody.error) serverError = errBody.error;
+              if (errBody && errBody.error) {
+                serverError = errBody.error;
+              }
             } catch {}
-            showVoiceError(serverError);
+
+            console.warn(`[Diagnostic STT] Server returned error status ${res.status}:`, serverError);
+
+            if (res.status === 429) {
+              showVoiceError("Gemini transcription quota reached. Please wait a few seconds or type directly.");
+            } else if (res.status === 400) {
+              showVoiceError(serverError || "Audio recording could not be processed. Please try speaking again.");
+            } else if (res.status === 401 || res.status === 403) {
+              showVoiceError("Gemini API authentication failed. Please check server configuration.");
+            } else if (res.status === 404) {
+              showVoiceError("Transcription service model unavailable.");
+            } else {
+              showVoiceError(serverError);
+            }
             setIsTranscribingAudio(false);
             return;
           }
 
           const data = await res.json();
+          console.log('[Diagnostic STT] Response payload parsed successfully:', {
+            success: data.success,
+            hasText: !!(data.text && data.text.trim()),
+            textLength: data.text ? data.text.length : 0
+          });
+
           if (data.success && data.text && data.text.trim()) {
             const transcribed = data.text.trim();
             const prefix = preVoiceTextRef.current ? preVoiceTextRef.current.trim() + ' ' : '';
             const combined = `${prefix}${transcribed}`.trim();
+
+            console.log(`[Diagnostic STT] Updating frontend input with transcribed text (${transcribed.length} chars)`);
             setInputValue(combined);
             setIsUserTyping(true);
             setIsHappy(true);
@@ -241,22 +269,28 @@ export const UcpChatbot: React.FC<UcpChatbotProps> = ({ onNavigate }) => {
             if (inputRef.current) {
               inputRef.current.focus();
             }
+            console.log('[Diagnostic STT] Frontend input update complete.');
           } else if (data.success && (!data.text || !data.text.trim())) {
+            console.log('[Diagnostic STT] Server reported no speech detected in audio.');
             showVoiceError("No speech detected. Please speak closer to your microphone or try again.");
           } else {
+            console.warn('[Diagnostic STT] Unexpected server response structure:', data);
             showVoiceError(data.error || "Unable to transcribe audio. Please try typing or recording again.");
           }
-        } catch (_netErr) {
-          showVoiceError("Transcription service temporarily unavailable. Please try again or type directly.");
+        } catch (netErr: any) {
+          console.error('[Diagnostic STT] Network communication error:', netErr?.message || netErr);
+          showVoiceError("Transcription service connection error. Please try again or type directly.");
         } finally {
           setIsTranscribingAudio(false);
         }
       };
       reader.onerror = () => {
+        console.error('[Diagnostic STT] FileReader failed to read audio Blob.');
         showVoiceError("Failed to read audio file format.");
         setIsTranscribingAudio(false);
       };
-    } catch (_err) {
+    } catch (err: any) {
+      console.error('[Diagnostic STT] Processing exception:', err?.message || err);
       showVoiceError("Error processing speech audio.");
       setIsTranscribingAudio(false);
     }
@@ -341,6 +375,7 @@ export const UcpChatbot: React.FC<UcpChatbotProps> = ({ onNavigate }) => {
         }
       }
 
+      console.log(`[Diagnostic STT] MediaRecorder selected MIME type: ${selectedMimeType}`);
       const recorder = new MediaRecorder(stream, { mimeType: selectedMimeType });
       mediaRecorderRef.current = recorder;
 
@@ -354,13 +389,17 @@ export const UcpChatbot: React.FC<UcpChatbotProps> = ({ onNavigate }) => {
         cleanupAudioStream();
         const chunks = audioChunksRef.current;
         if (chunks.length === 0) {
+          console.warn('[Diagnostic STT] Recording stopped with 0 audio chunks.');
           setIsVoiceRecording(false);
           setIsTranscribingAudio(false);
           return;
         }
 
         const audioBlob = new Blob(chunks, { type: selectedMimeType });
+        console.log(`[Diagnostic STT] Recording stopped. Total audio Blob size: ${audioBlob.size} bytes, MIME type: ${audioBlob.type}`);
+
         if (audioBlob.size < 400) {
+          console.warn(`[Diagnostic STT] Audio Blob too small (${audioBlob.size} bytes < 400 bytes). Aborting.`);
           showVoiceError("Audio was too short. Speak your question and press Done.");
           setIsVoiceRecording(false);
           setIsTranscribingAudio(false);
@@ -372,6 +411,7 @@ export const UcpChatbot: React.FC<UcpChatbotProps> = ({ onNavigate }) => {
       };
 
       recorder.start(250);
+      console.log('[Diagnostic STT] MediaRecorder started recording (timeslice: 250ms).');
       setIsVoiceRecording(true);
 
       // Duration counter up to 30 seconds

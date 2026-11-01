@@ -223,27 +223,41 @@ function isUcpSpecificQuery(text: string): boolean {
   return ucpTerms.some(term => t.includes(term));
 }
 
-// 0. High-Accuracy Multilingual Speech-to-Text Transcription endpoint (English + Roman Urdu)
+// 0. High-Accuracy Multilingual Speech-to-Text Transcription endpoint using gemini-3.5-transcribe
 app.post('/api/speech/transcribe', async (req, res) => {
+  let tempFilePath: string | null = null;
+  let uploadedFileName: string | null = null;
+  let aiClient: GoogleGenAI | null = null;
+
   try {
     const { audioData, mimeType = 'audio/webm', languageHint = 'multilingual' } = req.body;
 
     if (!audioData || typeof audioData !== 'string') {
-      return res.status(400).json({ success: false, error: 'No audio data received.' });
+      console.warn('[Diagnostic STT] Request rejected: missing or invalid audioData');
+      return res.status(400).json({ success: false, status: 400, error: 'No audio data received.' });
     }
 
     // Strip data URL scheme if present (e.g., data:audio/webm;base64,...)
     const base64Audio = audioData.replace(/^data:[^;]+;base64,/, '').trim();
     if (!base64Audio) {
-      return res.status(400).json({ success: false, error: 'Empty audio buffer provided.' });
+      console.warn('[Diagnostic STT] Request rejected: empty base64 buffer');
+      return res.status(400).json({ success: false, status: 400, error: 'Empty audio buffer provided.' });
+    }
+
+    const audioBuffer = Buffer.from(base64Audio, 'base64');
+    const audioSize = audioBuffer.length;
+    if (audioSize < 100) {
+      console.warn(`[Diagnostic STT] Request rejected: audio payload too small (${audioSize} bytes)`);
+      return res.status(400).json({ success: false, status: 400, error: 'Audio recording was too short or empty.' });
     }
 
     const apiKey = process.env.GEMINI_API_KEY || process.env.API_KEY || process.env.VITE_GEMINI_API_KEY;
     if (!apiKey) {
-      return res.status(500).json({ success: false, error: 'Server transcription key not configured.' });
+      console.error('[Diagnostic STT] Gemini API key not found in server environment');
+      return res.status(500).json({ success: false, status: 500, error: 'Server transcription API key is not configured.' });
     }
 
-    const ai = new GoogleGenAI({
+    aiClient = new GoogleGenAI({
       apiKey,
       httpOptions: {
         headers: {
@@ -252,78 +266,139 @@ app.post('/api/speech/transcribe', async (req, res) => {
       }
     });
 
-    // Normalize mimeType for multimodal audio ingest
+    // Normalize mimeType for Google GenAI ingest
     let normalizedMime = (mimeType.split(';')[0] || 'audio/webm').trim().toLowerCase();
     if (normalizedMime === 'audio/x-m4a') normalizedMime = 'audio/mp4';
 
-    const systemInstruction = `You are an expert multilingual speech-to-text transcriber for Pakistani university students at UCP Bahawalpur (University of Central Punjab).
+    console.log(`[Diagnostic STT] Audio received - Size: ${audioSize} bytes | MIME: ${normalizedMime} | LangHint: ${languageHint}`);
 
-MANDATORY RULES:
-1. FAITHFUL TRANSCRIPTION: Transcribe the actual words spoken in the audio. NEVER hallucinate, speculate, or fabricate questions.
-2. NO SPEECH RULE: If the audio contains silence, ambient static, clicks, breathing, or no discernible human speech, output exactly: [NO_SPEECH].
-3. SPOKEN ENGLISH: Write spoken English in clean, proper English spelling.
-4. SPOKEN URDU: Write spoken Urdu strictly in ROMAN URDU (Latin script / English alphabet). NEVER use Arabic Urdu script (e.g. write "admission kab shuru honge", NEVER "ایڈمیشن کب شروع ہوں گے").
-5. CODE-SWITCHING: Accurately preserve natural English and Roman Urdu code-switching within the same sentence (e.g. "UCP Bahawalpur me admission criteria kya hai", "BSCS ki semester fee kitni hai").
-6. NO TRANSLATION: Do NOT translate Roman Urdu into English. Retain Roman Urdu words as Roman Urdu.
-7. UCP CAMPUS VOCABULARY REFERENCE: UCP, Bahawalpur, PGC, BSCS, ADP, Software Engineering, AI, Cyber Security, Data Science, BBA, Dr. Aurangzaib Virk, Prof. Hamid Iqbal, Mian Amer Mahmood, admissions, fee structure, scholarships, library card, calendar.
-8. OUTPUT FORMAT: Return ONLY the transcribed sentence or [NO_SPEECH]. Do not include explanations, timestamps, or quotes.`;
+    // Determine extension for temporary file
+    let fileExt = 'webm';
+    if (normalizedMime.includes('wav')) fileExt = 'wav';
+    else if (normalizedMime.includes('mp4') || normalizedMime.includes('m4a')) fileExt = 'mp4';
+    else if (normalizedMime.includes('ogg')) fileExt = 'ogg';
+    else if (normalizedMime.includes('mp3') || normalizedMime.includes('mpeg')) fileExt = 'mp3';
 
-    const contents = [
-      {
-        role: 'user',
-        parts: [
-          {
-            inlineData: {
-              mimeType: normalizedMime,
-              data: base64Audio
-            }
-          },
-          {
-            text: languageHint === 'en-US'
-              ? 'Transcribe this spoken English audio. If there is no speech, output: [NO_SPEECH]'
-              : 'Transcribe this spoken audio in Roman Urdu (Latin script) and English. If there is no speech, output: [NO_SPEECH]'
-          }
-        ]
+    tempFilePath = path.join('/tmp', `stt_${Date.now()}_${Math.random().toString(36).substring(2, 7)}.${fileExt}`);
+    await fs.promises.writeFile(tempFilePath, audioBuffer);
+
+    // Step 4: Upload audio to Google's Files API
+    let fileUri: string | null = null;
+    try {
+      console.log(`[Diagnostic STT] Uploading audio to Google Files API...`);
+      const uploadRes = await aiClient.files.upload({
+        file: tempFilePath,
+        mimeType: normalizedMime,
+      });
+      if (uploadRes?.uri) {
+        fileUri = uploadRes.uri;
+        uploadedFileName = uploadRes.name || null;
+        console.log(`[Diagnostic STT] Google Files API upload success. URI: ${fileUri} | Name: ${uploadedFileName}`);
       }
-    ];
-
-    const candidateModels = ['gemini-3.5-transcribe', 'gemini-3.1-flash-lite', 'gemini-flash-lite-latest'];
-    let rawText = '';
-
-    for (const model of candidateModels) {
-      try {
-        const responsePromise = ai.models.generateContent({
-          model,
-          contents,
-          config: {
-            systemInstruction,
-            temperature: 0.1, // low temperature for precise, non-hallucinatory transcription
-          }
-        });
-
-        const timeoutPromise = new Promise<never>((_, reject) =>
-          setTimeout(() => reject(new Error('Transcription timeout after 7500ms')), 7500)
-        );
-
-        const response = await Promise.race([responsePromise, timeoutPromise]);
-        if (response?.text) {
-          rawText = response.text.trim();
-          break;
-        }
-      } catch (err: any) {
-        console.warn(`[Transcription with ${model} warning]:`, err?.message || err);
-      }
+    } catch (uploadErr: any) {
+      const uploadStatus = uploadErr?.status || 500;
+      console.warn(`[Diagnostic STT] Google Files API upload attempt failed (HTTP ${uploadStatus}). Will attempt inline audio fallback.`);
     }
 
-    // Check for [NO_SPEECH] indicator
+    // Step 5: Gemini Interactions API request with model: 'gemini-3.5-transcribe'
+    console.log('[Diagnostic STT] Invoking Gemini Interactions API with model: gemini-3.5-transcribe');
+    const inputPayload = fileUri
+      ? [
+          {
+            type: 'audio',
+            uri: fileUri,
+            mime_type: normalizedMime,
+          }
+        ]
+      : [
+          {
+            type: 'audio',
+            data: base64Audio,
+            mime_type: normalizedMime,
+          }
+        ];
+
+    let interaction: any;
+    try {
+      interaction = await aiClient.interactions.create({
+        model: 'gemini-3.5-transcribe',
+        input: inputPayload,
+      });
+    } catch (modelErr: any) {
+      console.warn(`[Diagnostic STT] Primary gemini-3.5-transcribe interaction failed: ${modelErr?.status || 'unknown'}: ${modelErr?.message || modelErr}`);
+
+      // If gemini-3.5-transcribe fails with 429 quota or unsupported, attempt fallback to gemini-3.1-flash-lite
+      if (modelErr?.status === 429) {
+        throw modelErr;
+      }
+
+      console.log('[Diagnostic STT] Attempting resilient fallback with gemini-3.1-flash-lite...');
+      const fallbackContents = [
+        {
+          role: 'user',
+          parts: [
+            {
+              inlineData: {
+                mimeType: normalizedMime,
+                data: base64Audio
+              }
+            },
+            {
+              text: 'Transcribe the spoken audio verbatim in Latin script (English or Roman Urdu). If there is no speech, output: [NO_SPEECH]'
+            }
+          ]
+        }
+      ];
+
+      const fallbackRes = await aiClient.models.generateContent({
+        model: 'gemini-3.1-flash-lite',
+        contents: fallbackContents,
+        config: { temperature: 0.1 }
+      });
+
+      const fallbackText = fallbackRes?.text?.trim() || '';
+      console.log(`[Diagnostic STT] Fallback model transcribed ${fallbackText.length} characters.`);
+      interaction = {
+        status: 'completed',
+        output_text: fallbackText,
+        steps: []
+      };
+    }
+
+    console.log(`[Diagnostic STT] Gemini request finished. Interaction status: ${interaction?.status || 'unknown'}`);
+
+    // Step 6: Successful response handling and extraction of interaction.output_text
+    let rawText = '';
+    if (typeof interaction?.output_text === 'string') {
+      rawText = interaction.output_text.trim();
+    }
+
+    // If output_text was null/undefined, inspect chronological model_output steps
+    if (!rawText && Array.isArray(interaction?.steps)) {
+      for (const step of interaction.steps) {
+        if (step.type === 'model_output' && Array.isArray(step.content)) {
+          for (const item of step.content) {
+            if (item.type === 'text' && typeof item.text === 'string') {
+              rawText += item.text;
+            }
+          }
+        }
+      }
+      rawText = rawText.trim();
+    }
+
+    console.log(`[Diagnostic STT] output_text extracted: ${!!rawText} (length: ${rawText.length})`);
+
+    // Check for [NO_SPEECH] indicator or empty transcript
     if (!rawText || rawText.includes('[NO_SPEECH]') || rawText === '""' || rawText === "''") {
+      console.log('[Diagnostic STT] No speech detected in audio file.');
       return res.json({
         success: true,
         text: ''
       });
     }
 
-    // Clean up any extraneous tags like <noise>, <laughter>, [silence], etc.
+    // Clean up extraneous tags like <noise>, <laughter>, [silence], etc.
     let cleanedText = rawText
       .replace(/\[NO_SPEECH\]/gi, '')
       .replace(/<[^>]+>/g, '')
@@ -331,11 +406,11 @@ MANDATORY RULES:
       .replace(/^["']|["']$/g, '')
       .trim();
 
-    // Secondary check: If any Arabic/Urdu script was produced (e.g. [\u0600-\u06FF]), transliterate to Roman Urdu
+    // Transliterate Arabic/Urdu script to Roman Urdu if necessary
     const hasUrduScript = /[\u0600-\u06FF\u0750-\u077F\uFB50-\uFDFF\uFE70-\uFEFF]/.test(cleanedText);
-    if (hasUrduScript) {
+    if (hasUrduScript && aiClient) {
       try {
-        const translitRes = await ai.models.generateContent({
+        const translitRes = await aiClient.models.generateContent({
           model: 'gemini-flash-lite-latest',
           contents: `Transliterate all Urdu script words in the following text into standard Roman Urdu (Latin script / English alphabet).
 CRITICAL RULES:
@@ -350,7 +425,7 @@ Text: ${cleanedText}`,
           cleanedText = translitRes.text.trim().replace(/^["']|["']$/g, '');
         }
       } catch (translitErr) {
-        console.warn('[Transliteration pass error]:', translitErr);
+        console.warn('[Diagnostic STT] Transliteration pass error:', translitErr);
       }
     }
 
@@ -362,11 +437,46 @@ Text: ${cleanedText}`,
       text: cleanedText
     });
   } catch (error: any) {
-    console.error('Audio transcription endpoint error:', error);
-    return res.status(500).json({
+    const statusCode = error?.status || 500;
+    const rawErrorMessage = error?.message || 'Failed to transcribe audio';
+
+    console.error(`[Diagnostic STT Error] HTTP ${statusCode}:`, rawErrorMessage);
+
+    // Provide clean, human-actionable error messages corresponding to HTTP status
+    let userMessage = 'Transcription request could not be completed.';
+    if (statusCode === 429 || rawErrorMessage.includes('quota') || rawErrorMessage.includes('rate limit')) {
+      userMessage = 'Gemini transcription rate limit reached. Please wait a moment and try again.';
+    } else if (statusCode === 400) {
+      userMessage = 'Audio recording format was invalid or could not be decoded.';
+    } else if (statusCode === 401 || statusCode === 403) {
+      userMessage = 'Gemini API authentication failed. Please check server settings.';
+    } else if (statusCode === 404) {
+      userMessage = 'Transcription model is currently unavailable.';
+    } else if (statusCode >= 500) {
+      userMessage = 'Gemini transcription service error. Please try again.';
+    }
+
+    return res.status(statusCode).json({
       success: false,
-      error: error?.message || 'Failed to transcribe audio'
+      status: statusCode,
+      error: userMessage
     });
+  } finally {
+    // Clean up temporary local audio file
+    if (tempFilePath) {
+      try {
+        if (fs.existsSync(tempFilePath)) {
+          await fs.promises.unlink(tempFilePath);
+        }
+      } catch {}
+    }
+    // Clean up Google Files API uploaded asset if created
+    if (uploadedFileName && aiClient) {
+      try {
+        await aiClient.files.delete({ name: uploadedFileName });
+        console.log(`[Diagnostic STT] Cleaned up temporary Files API asset: ${uploadedFileName}`);
+      } catch {}
+    }
   }
 });
 
