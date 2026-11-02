@@ -482,7 +482,7 @@ export const UcpChatbot: React.FC<UcpChatbotProps> = ({ onNavigate }) => {
     const controller = new AbortController();
     const abortTimeout = setTimeout(() => {
       controller.abort();
-    }, 4000);
+    }, 15000);
 
     try {
       const response = await fetch('/api/chat/stream', {
@@ -548,16 +548,36 @@ export const UcpChatbot: React.FC<UcpChatbotProps> = ({ onNavigate }) => {
       }
     } catch (err) {
       console.warn('Streaming notice or abort timeout:', err);
-      setIsUnavailableState(true);
-      setTimeout(() => {
-        setIsUnavailableState(false);
-      }, 2200);
     } finally {
       clearTimeout(abortTimeout);
       setIsStreamingActive(false);
     }
 
-    // Step 7: Fallback if no streamed tokens were received
+    // Step 7: Fallback to standard JSON endpoint if no streamed tokens were received
+    if (!streamedText.trim()) {
+      try {
+        const jsonRes = await fetch('/api/chat', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            message: query,
+            history: conversationHistory
+          })
+        });
+        if (jsonRes.ok) {
+          const data = await jsonRes.json();
+          if (data?.reply) {
+            streamedText = data.reply;
+            if (data.suggestions) suggestions = data.suggestions;
+            if (data.actionLink) actionLink = data.actionLink;
+          }
+        }
+      } catch (err) {
+        console.warn('JSON fallback error:', err);
+      }
+    }
+
+    // Step 8: Offline campus fallback if still empty
     if (!streamedText.trim()) {
       const fallback = getInstantBotResponse(query);
       streamedText = fallback.reply;

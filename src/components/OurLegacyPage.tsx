@@ -140,11 +140,33 @@ export const OurLegacyPage: React.FC<OurLegacyPageProps> = ({
   const [selectedBwpBuildingIdx, setSelectedBwpBuildingIdx] = useState<number>(0);
 
   useEffect(() => {
-    if (videoRef.current) {
-      videoRef.current.defaultMuted = true;
-      videoRef.current.muted = true;
-      videoRef.current.play().catch(() => {});
+    const video = videoRef.current;
+    if (video) {
+      video.defaultMuted = true;
+      video.muted = true;
+      video.setAttribute('muted', '');
+      video.setAttribute('playsinline', '');
+      video.setAttribute('webkit-playsinline', '');
+      video.setAttribute('autoplay', '');
+      video.setAttribute('loop', '');
+      video.play().catch(() => {});
     }
+
+    const ensurePlay = () => {
+      if (videoRef.current && videoRef.current.paused) {
+        videoRef.current.play().catch(() => {});
+      }
+    };
+
+    window.addEventListener('scroll', ensurePlay, { passive: true, once: true });
+    window.addEventListener('click', ensurePlay, { passive: true, once: true });
+    window.addEventListener('touchstart', ensurePlay, { passive: true, once: true });
+
+    return () => {
+      window.removeEventListener('scroll', ensurePlay);
+      window.removeEventListener('click', ensurePlay);
+      window.removeEventListener('touchstart', ensurePlay);
+    };
   }, []);
 
   const scrollToSection = (id: string) => {
@@ -356,8 +378,18 @@ export const OurLegacyPage: React.FC<OurLegacyPageProps> = ({
             muted
             loop
             playsInline
+            controls={false}
+            disablePictureInPicture
+            disableRemotePlayback
+            controlsList="nodownload nofullscreen noremoteplayback noplaybackrate"
             preload="auto"
-            className="w-full h-full object-cover object-center"
+            onCanPlay={() => videoRef.current?.play().catch(() => {})}
+            onLoadedData={() => videoRef.current?.play().catch(() => {})}
+            onEnded={() => videoRef.current?.play().catch(() => {})}
+            onPause={() => videoRef.current?.play().catch(() => {})}
+            className="w-full h-full object-cover object-center pointer-events-none select-none"
+            tabIndex={-1}
+            aria-hidden="true"
           />
           {/* Neutral translucent overlay with NO blue color so text is readable while video is crystal clear */}
           <div className="absolute inset-0 bg-black/25" />

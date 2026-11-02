@@ -104,17 +104,38 @@ export const AboutUsPage: React.FC<AboutUsPageProps> = ({
     document.documentElement.scrollTop = 0;
     document.body.scrollTop = 0;
 
-    if (videoRef.current) {
-      videoRef.current.defaultMuted = true;
-      videoRef.current.muted = true;
-      videoRef.current.play().catch(() => {});
+    const video = videoRef.current;
+    if (video) {
+      video.defaultMuted = true;
+      video.muted = true;
+      video.setAttribute('muted', '');
+      video.setAttribute('playsinline', '');
+      video.setAttribute('webkit-playsinline', '');
+      video.setAttribute('autoplay', '');
+      video.setAttribute('loop', '');
+      video.play().catch(() => {});
     }
+
+    const ensurePlay = () => {
+      if (videoRef.current && videoRef.current.paused) {
+        videoRef.current.play().catch(() => {});
+      }
+    };
+
+    window.addEventListener('scroll', ensurePlay, { passive: true, once: true });
+    window.addEventListener('click', ensurePlay, { passive: true, once: true });
+    window.addEventListener('touchstart', ensurePlay, { passive: true, once: true });
 
     const handleScroll = () => {
       setScrollY(window.scrollY);
     };
     window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', ensurePlay);
+      window.removeEventListener('click', ensurePlay);
+      window.removeEventListener('touchstart', ensurePlay);
+      window.removeEventListener('scroll', handleScroll);
+    };
   }, []);
 
   return (
@@ -159,8 +180,18 @@ export const AboutUsPage: React.FC<AboutUsPageProps> = ({
               muted
               loop
               playsInline
+              controls={false}
+              disablePictureInPicture
+              disableRemotePlayback
+              controlsList="nodownload nofullscreen noremoteplayback noplaybackrate"
               preload="auto"
-              className="w-full h-full object-cover object-center"
+              onCanPlay={() => videoRef.current?.play().catch(() => {})}
+              onLoadedData={() => videoRef.current?.play().catch(() => {})}
+              onEnded={() => videoRef.current?.play().catch(() => {})}
+              onPause={() => videoRef.current?.play().catch(() => {})}
+              className="w-full h-full object-cover object-center pointer-events-none select-none"
+              tabIndex={-1}
+              aria-hidden="true"
             />
             {/* Elegant vignette overlay with no extra text components */}
             <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent pointer-events-none" />

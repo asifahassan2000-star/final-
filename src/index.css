@@ -146,6 +146,18 @@ video, canvas, svg {
   max-width: 100%;
 }
 
+/* Ensure no browser-native controls or play overlays appear on autoplay hero videos */
+video::-webkit-media-controls {
+  display: none !important;
+}
+video::-webkit-media-controls-start-playback-button {
+  display: none !important;
+  -webkit-appearance: none;
+}
+video::-webkit-media-controls-enclosure {
+  display: none !important;
+}
+
 /* Mobile diamond gallery reset: on screens < 768px, remove rotate-45, make them straight stacked vertical cards width 100%, height 250px, no overlap */
 @media (max-width: 767px) {
   .diamond-card,

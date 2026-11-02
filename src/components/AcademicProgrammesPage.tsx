@@ -1,4 +1,4 @@
-import React, { useState, useMemo, useRef } from 'react';
+import React, { useState, useMemo, useRef, useEffect } from 'react';
 import { 
   Search, 
   ArrowRight, 
@@ -135,6 +135,51 @@ export const AcademicProgrammesPage: React.FC<AcademicProgrammesPageProps> = ({
   });
 
   const detailFeeRef = useRef<HTMLDivElement>(null);
+
+  // Sync category changes and scroll to exact section (BS programmes, ADP programmes, or All)
+  useEffect(() => {
+    let targetCat: CategoryFilter = 'All';
+    let targetSectionId: string | null = null;
+
+    if (initialCategory) {
+      if (initialCategory === 'Undergraduate' || initialCategory === 'bs' || initialCategory === 'bs-programmes') {
+        targetCat = 'Undergraduate';
+        targetSectionId = 'bs-programmes';
+      } else if (initialCategory === 'Associate Degree' || initialCategory === 'adp' || initialCategory === 'adp-programmes') {
+        targetCat = 'Associate Degree';
+        targetSectionId = 'adp-programmes';
+      } else if (['Business', 'Computing & Technology', 'Science', 'Humanities & Social Sciences'].includes(initialCategory)) {
+        targetCat = initialCategory as CategoryFilter;
+      } else {
+        targetCat = 'All';
+        targetSectionId = 'academic-programmes-section';
+      }
+    } else {
+      targetCat = 'All';
+    }
+
+    setSelectedCategory(targetCat);
+
+    if (initialSelectedId) {
+      const found = OFFICIAL_BAHAWALPUR_PROGRAMMES.find((p) => p.id === initialSelectedId);
+      setActiveProgramme(found || null);
+    } else {
+      setActiveProgramme(null);
+    }
+
+    // Scroll to section when requested
+    if (targetSectionId) {
+      const scrollTimer = setTimeout(() => {
+        const el = document.getElementById(targetSectionId);
+        if (el) {
+          el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        } else {
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+      }, 100);
+      return () => clearTimeout(scrollTimer);
+    }
+  }, [initialCategory, initialSelectedId]);
 
   // Category navigation tabs
   const categoryTabs: CategoryFilter[] = [
@@ -800,7 +845,7 @@ Campus Phone: 062-2202030 / 062-2202050
 
         {/* 01. UNDERGRADUATE PROGRAMMES SECTION */}
         {undergraduateList.length > 0 && (
-          <section className="space-y-6">
+          <section id="bs-programmes" className="space-y-6 scroll-mt-28">
             <div className="border-b border-stone-200 pb-3 flex items-baseline justify-between">
               <div>
                 <span className="text-xs font-mono text-[#b8121a] font-bold uppercase tracking-widest block">
@@ -884,7 +929,7 @@ Campus Phone: 062-2202030 / 062-2202050
 
         {/* 02. ASSOCIATE DEGREE PROGRAMMES SECTION */}
         {associateList.length > 0 && (
-          <section className="space-y-6 pt-4">
+          <section id="adp-programmes" className="space-y-6 pt-4 scroll-mt-28">
             <div className="border-b border-stone-200 pb-3 flex items-baseline justify-between">
               <div>
                 <span className="text-xs font-mono text-[#b8121a] font-bold uppercase tracking-widest block">

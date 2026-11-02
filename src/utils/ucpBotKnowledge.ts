@@ -225,56 +225,50 @@ export function getInstantBotResponse(userQuery: string): BotResponse {
     }
   }
 
-  // 2. Direct Quick Action lookup by key or key terms
-  if (q.includes('fee') || q === 'view fee') return QUICK_ACTION_RESPONSES.fee;
-  if (q.includes('scholarship') || q.includes('concession')) return QUICK_ACTION_RESPONSES.scholarship;
-  if (q.includes('faculty') || q.includes('professor') || q.includes('teacher')) return QUICK_ACTION_RESPONSES.faculty;
-  if (q.includes('leadership') || q.includes('principal') || q.includes('director')) return QUICK_ACTION_RESPONSES.leadership;
-  if (q.includes('scope') || q.includes('career scope')) return QUICK_ACTION_RESPONSES.scope;
-  if (q.includes('legacy') || q.includes('heritage') || q.includes('history of ucp')) return QUICK_ACTION_RESPONSES.legacy;
-  if (q.includes('adp ai') || q.includes('artificial intelligence')) return QUICK_ACTION_RESPONSES['adp-ai'];
-  if (q.includes('facilities') || q.includes('facility') || q.includes('bus') || q.includes('transport') || q.includes('lab')) return QUICK_ACTION_RESPONSES.facilities;
-  if (q === 'library' || q.includes('library')) return QUICK_ACTION_RESPONSES.library;
-  if (q === 'calendar' || q === 'academic calendar' || q === 'view calendar' || q.includes('academic calendar')) return QUICK_ACTION_RESPONSES.calendar;
-  if (q.includes('eligibility') || q.includes('criteria') || q.includes('requirement')) return QUICK_ACTION_RESPONSES.eligibility;
-  if (q.includes('program') || q.includes('degree') || q.includes('courses')) return QUICK_ACTION_RESPONSES.programmes;
-  if (q.includes('admission') || q.includes('apply')) return QUICK_ACTION_RESPONSES.admissions;
+  // 2. Direct exact matches for UCP Campus intents (Only when query explicitly targets UCP Bahawalpur campus / admissions / fee / calendar / etc.)
+  const hasUcpContext = /ucp|bahawalpur|bwp|campus|punjab group|pgc/i.test(q);
 
-  // 3. Search through trained knowledge base
-  const { match, confidence } = searchUcpKnowledge(q);
+  if (hasUcpContext) {
+    if (/fee|tuition|installment|challan|dues/i.test(q)) return QUICK_ACTION_RESPONSES.fee;
+    if (/scholarship|concession|kinship|discount|financial aid/i.test(q)) return QUICK_ACTION_RESPONSES.scholarship;
+    if (/faculty|professor|teacher|dean|dr\./i.test(q)) return QUICK_ACTION_RESPONSES.faculty;
+    if (/leadership|principal|director|chairman|mian amer|aurangzaib/i.test(q)) return QUICK_ACTION_RESPONSES.leadership;
+    if (/scope|career scope|job market/i.test(q)) return QUICK_ACTION_RESPONSES.scope;
+    if (/legacy|heritage|history of ucp/i.test(q)) return QUICK_ACTION_RESPONSES.legacy;
+    if (/adp ai|artificial intelligence/i.test(q)) return QUICK_ACTION_RESPONSES['adp-ai'];
+    if (/facilities|facility|transport|bus|hostel|labs/i.test(q)) return QUICK_ACTION_RESPONSES.facilities;
+    if (/library/i.test(q)) return QUICK_ACTION_RESPONSES.library;
+    if (/calendar|midterm|final exam|semester date/i.test(q)) return QUICK_ACTION_RESPONSES.calendar;
+    if (/eligibility|criteria|percentage|minimum marks/i.test(q)) return QUICK_ACTION_RESPONSES.eligibility;
+    if (/programme|program|degree|course/i.test(q)) return QUICK_ACTION_RESPONSES.programmes;
+    if (/admission|apply|portal|form/i.test(q)) return QUICK_ACTION_RESPONSES.admissions;
 
-  if (match && confidence >= 20) {
-    let reply = match.answer;
+    // Search through trained knowledge base if explicit campus context exists
+    const { match, confidence } = searchUcpKnowledge(q);
+    if (match && confidence >= 30) {
+      let reply = match.answer;
+      if (match.isAdmissionRelated && !reply.includes("open admission form")) {
+        reply += "\n\nWould you like me to open admission form?";
+      }
 
-    if (match.isAdmissionRelated && !reply.includes("open admission form")) {
-      reply += "\n\nWould you like me to open admission form?";
+      return {
+        reply,
+        suggestions: match.suggestions || ["Degree Programmes 🎓", "Fee Structure 💰", "Open Admission Form 📝"],
+        actionLink: match.actionLink,
+        isOfflineMatch: true
+      };
     }
-
-    return {
-      reply,
-      suggestions: match.suggestions || ["Degree Programmes 🎓", "Fee Structure 💰", "Open Admission Form 📝"],
-      actionLink: match.actionLink,
-      isOfflineMatch: true
-    };
   }
 
-  // 4. Fallback for greetings if query was very short
-  if (/^(hi|hello|hey|salam|aoa|hola)/i.test(q)) {
-    return {
-      reply: "Hello! I am UCP Assistant, your official guide for UCP Bahawalpur. How can I help you today?",
-      suggestions: ["Degree Programmes 🎓", "Fee Structure 💰", "Scholarships 🏆", "Admissions 📝"],
-      isOfflineMatch: false
-    };
-  }
-
-  // 5. Direct friendly response without mentioning sources or offline knowledge
+  // 3. For all other queries (science, coding, math, history, world facts, general advice):
+  // Return isOfflineMatch: false so it dynamically streams from Gemini API in real-time!
   return {
-    reply: "How can I help you? Feel free to ask about degree programmes (BS Computer Science, ADP Artificial Intelligence, BBA, Sciences), fee structure, merit scholarships, or admissions at UCP Bahawalpur.",
+    reply: "How can I help you? I can answer questions on programming, science, mathematics, world history, and UCP Bahawalpur campus information!",
     suggestions: [
-      "BS Computer Science 💻",
-      "ADP Artificial Intelligence 🤖",
+      "Degree Programmes 🎓",
       "Fee & Scholarships 💰",
-      "Open Admission Form 📝"
+      "Explain Quantum Physics ⚛️",
+      "Python Code Example 💻"
     ],
     actionLink: { label: "Explore Programmes 🎓", url: "#programmes" },
     isOfflineMatch: false

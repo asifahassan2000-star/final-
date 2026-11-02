@@ -21,7 +21,7 @@ interface NavbarProps {
   onSelectFaculty: (facultyId: string) => void;
   onScrollTo: (sectionId: string) => void;
   onOpenFacultyPage?: () => void;
-  onOpenProgrammesPage?: (progId?: string) => void;
+  onOpenProgrammesPage?: (progId?: string, category?: string) => void;
   onOpenLegacyPage?: () => void;
   onOpenCampusLifePage?: () => void;
   onOpenScholarshipsPage?: (sectionId?: string) => void;
@@ -965,43 +965,43 @@ export const Navbar: React.FC<NavbarProps> = ({
                       type="button"
                       onClick={() => {
                         setMobileMenuOpen(false);
-                        if (onOpenProgrammesPage) onOpenProgrammesPage('bs-business-analytics');
+                        if (onOpenProgrammesPage) {
+                          onOpenProgrammesPage(undefined, 'Undergraduate');
+                        } else {
+                          handleNavClick('bs-programmes');
+                        }
                       }}
-                      className="w-full text-left text-[13.5px] font-medium text-slate-600 dark:text-slate-300 py-3 pl-8 pr-4 hover:text-[#0B1A3A] dark:hover:text-amber-300 hover:bg-slate-100/70 dark:hover:bg-white/5 transition-colors cursor-pointer block border-b border-[#f3f4f6]/60 dark:border-white/5"
+                      className="w-full text-left text-[14px] font-medium text-slate-700 dark:text-slate-200 py-3 pl-8 pr-4 hover:text-[#0B1A3A] dark:hover:text-amber-300 hover:bg-slate-100/70 dark:hover:bg-white/5 transition-colors cursor-pointer block border-b border-[#f3f4f6]/60 dark:border-white/5"
                     >
-                      BS Programmes (4-Year Degrees)
+                      BS Programmes
                     </button>
                     <button
                       type="button"
                       onClick={() => {
                         setMobileMenuOpen(false);
-                        if (onOpenProgrammesPage) onOpenProgrammesPage('adp-psychology');
+                        if (onOpenProgrammesPage) {
+                          onOpenProgrammesPage(undefined, 'Associate Degree');
+                        } else {
+                          handleNavClick('adp-programmes');
+                        }
                       }}
-                      className="w-full text-left text-[13.5px] font-medium text-slate-600 dark:text-slate-300 py-3 pl-8 pr-4 hover:text-[#0B1A3A] dark:hover:text-amber-300 hover:bg-slate-100/70 dark:hover:bg-white/5 transition-colors cursor-pointer block border-b border-[#f3f4f6]/60 dark:border-white/5"
+                      className="w-full text-left text-[14px] font-medium text-slate-700 dark:text-slate-200 py-3 pl-8 pr-4 hover:text-[#0B1A3A] dark:hover:text-amber-300 hover:bg-slate-100/70 dark:hover:bg-white/5 transition-colors cursor-pointer block border-b border-[#f3f4f6]/60 dark:border-white/5"
                     >
-                      ADP / ADS Programmes (2-Year Degrees)
+                      ADP Programmes
                     </button>
                     <button
                       type="button"
                       onClick={() => {
                         setMobileMenuOpen(false);
-                        if (onOpenProgrammesPage) onOpenProgrammesPage();
-                        else handleNavClick('finder-section');
+                        if (onOpenScholarshipsPage) {
+                          onOpenScholarshipsPage();
+                        } else {
+                          handleNavClick('scholarships-section');
+                        }
                       }}
-                      className="w-full text-left text-[13.5px] font-medium text-slate-600 dark:text-slate-300 py-3 pl-8 pr-4 hover:text-[#0B1A3A] dark:hover:text-amber-300 hover:bg-slate-100/70 dark:hover:bg-white/5 transition-colors cursor-pointer block border-b border-[#f3f4f6]/60 dark:border-white/5"
+                      className="w-full text-left text-[14px] font-medium text-slate-700 dark:text-slate-200 py-3 pl-8 pr-4 hover:text-[#0B1A3A] dark:hover:text-amber-300 hover:bg-slate-100/70 dark:hover:bg-white/5 transition-colors cursor-pointer block border-b border-[#f3f4f6]/60 dark:border-white/5"
                     >
-                      Curriculum &amp; Program Roadmaps
-                    </button>
-                    <button
-                      type="button"
-                      onClick={() => {
-                        setMobileMenuOpen(false);
-                        if (onOpenScholarshipsPage) onOpenScholarshipsPage();
-                        else window.open('https://ucpcolleges.pgc.edu/scholarship/', '_blank', 'noopener,noreferrer');
-                      }}
-                      className="w-full text-left text-[13.5px] font-medium text-slate-600 dark:text-slate-300 py-3 pl-8 pr-4 hover:text-[#0B1A3A] dark:hover:text-amber-300 hover:bg-slate-100/70 dark:hover:bg-white/5 transition-colors cursor-pointer block border-b border-[#f3f4f6]/60 dark:border-white/5"
-                    >
-                      Scholarships &amp; Concessions (1.3B PKR)
+                      Scholarships
                     </button>
                     <button
                       type="button"
@@ -1009,20 +1009,23 @@ export const Navbar: React.FC<NavbarProps> = ({
                         setMobileMenuOpen(false);
                         onOpenFee();
                       }}
-                      className="w-full text-left text-[13.5px] font-medium text-slate-600 dark:text-slate-300 py-3 pl-8 pr-4 hover:text-[#0B1A3A] dark:hover:text-amber-300 hover:bg-slate-100/70 dark:hover:bg-white/5 transition-colors cursor-pointer block border-b border-[#f3f4f6]/60 dark:border-white/5"
+                      className="w-full text-left text-[14px] font-medium text-slate-700 dark:text-slate-200 py-3 pl-8 pr-4 hover:text-[#0B1A3A] dark:hover:text-amber-300 hover:bg-slate-100/70 dark:hover:bg-white/5 transition-colors cursor-pointer block border-b border-[#f3f4f6]/60 dark:border-white/5"
                     >
-                      Fee Structure &amp; Tuition Schedules
+                      Fee Structure
                     </button>
                     <button
                       type="button"
                       onClick={() => {
                         setMobileMenuOpen(false);
-                        if (onOpenProgrammesPage) onOpenProgrammesPage();
-                        else onOpenInfo('merit-list');
+                        if (onOpenProgrammesPage) {
+                          onOpenProgrammesPage(undefined, 'All');
+                        } else {
+                          handleNavClick('finder-section');
+                        }
                       }}
-                      className="w-full text-left text-[13.5px] font-medium text-slate-600 dark:text-slate-300 py-3 pl-8 pr-4 hover:text-[#0B1A3A] dark:hover:text-amber-300 hover:bg-slate-100/70 dark:hover:bg-white/5 transition-colors cursor-pointer block"
+                      className="w-full text-left text-[14px] font-medium text-slate-700 dark:text-slate-200 py-3 pl-8 pr-4 hover:text-[#0B1A3A] dark:hover:text-amber-300 hover:bg-slate-100/70 dark:hover:bg-white/5 transition-colors cursor-pointer block"
                     >
-                      Academic Programs Directory
+                      All Academic Programmes
                     </button>
                   </div>
                 )}

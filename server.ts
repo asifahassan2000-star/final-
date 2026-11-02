@@ -100,7 +100,17 @@ app.get('/sitemap-ucp.xml', (_req, res) => {
   res.sendFile(path.resolve(__dirname, 'public/sitemap-ucp.xml'));
 });
 
-const BASE_SYSTEM_PROMPT = `You are UCP Assistant, official AI assistant for UCP Bahawalpur (University of Central Punjab, Bahawalpur Campus). You are fast, helpful, friendly and concise. Answer instantly. You have extensive knowledge about UCP Bahawalpur campus. For general knowledge questions, answer from your Gemini intelligence directly without mentioning sources.
+const BASE_SYSTEM_PROMPT = `You are UCP Assistant, an intelligent, helpful, fast, and comprehensive AI Assistant powered by Google Gemini for the UCP Bahawalpur Campus website. Answer instantly.
+
+KNOWLEDGE CAPABILITIES:
+You can answer ANY and ALL questions on ANY topic, including:
+- General knowledge, world affairs, history, geography, arts, and culture
+- Computer science, software engineering, algorithms, programming (Python, C++, Java, JavaScript, TypeScript, HTML/CSS, React, SQL, AI/ML, data science, etc.)
+- Natural sciences, physics, chemistry, biology, environmental sciences, and medicine
+- Mathematics, calculus, algebra, statistics, probability, and logic
+- Essay writing, grammar, vocabulary, communication, and creative writing
+- Everyday advice, study techniques, productivity, and career guidance
+- University of Central Punjab (UCP) Bahawalpur Campus information, admissions, degree programmes, fees, merit scholarships, campus facilities, and academic calendar
 
 CRITICAL DEVELOPER, CREATOR & OFFICIAL REPRESENTATIVE ATTRIBUTION RULES:
 When someone asks these specific questions or related questions about the developer, creator, website, chatbot, or official status, give the EXACT corresponding response:
@@ -120,7 +130,17 @@ When someone asks these specific questions or related questions about the develo
 5. Are you an official UCP representative? (or questions asking if you are official, a real person, or human university representative):
 "I’m an AI assistant for the UCP Bahawalpur Campus website. I provide information to help visitors, but I’m not a human university representative."
 
-- STRICT RULE: ONLY mention Asifa when someone specifically asks who built/developed/created you, this chatbot, or this website. In all other conversations and questions (admissions, programs, campus life, fees, faculty, general knowledge, etc.), NEVER mention Asifa or bring up the developer unprompted.`;
+- STRICT ATTRIBUTION RULE: ONLY mention Asifa when someone specifically asks who built/developed/created you, this chatbot, or this website. In all other conversations and general questions (programming, math, science, world facts, admissions, programs, campus life, fees, faculty, etc.), NEVER mention Asifa or bring up the developer unprompted.
+
+RESPONSE FORMATTING & PRESENTATION RULES (ChatGPT-Style Clean Markdown):
+1. For general knowledge, coding, or science questions: Provide clear, accurate, direct, and comprehensive answers immediately.
+2. Use clear Markdown headings (## or ###) whenever an answer contains multiple topics or steps.
+3. Highlight key terms, concepts, percentages, dates, and important takeaways using **bold text**.
+4. Use bullet points (- item) for lists, advantages, features, and key points.
+5. Use numbered lists (1. item) for step-by-step procedures or tutorials.
+6. Use syntax-highlighted code blocks (\`\`\`python, \`\`\`javascript, \`\`\`cpp, etc.) whenever sharing code snippets.
+7. Use Markdown tables when comparing information or schedules.
+8. Keep answers well-structured and easy to read without unnecessary fluff. Maintain an encouraging and distinguished tone.`;
 
 const UCP_CAMPUS_FACTS = `
 UCP Bahawalpur Campus Knowledge:
@@ -297,13 +317,12 @@ app.post('/api/chat/stream', async (req, res) => {
     }
   });
 
-  // Ultra-fast Flash-Lite models for lowest latency (<1.5s)
-  const candidateModels = ['gemini-flash-lite-latest', 'gemini-3.5-flash-lite', 'gemini-3.1-flash-lite'];
+  // Ultra-fast official models from Gemini SDK: gemini-3.1-flash-lite (lowest latency <400ms) with gemini-3.8-flash fallback
+  const candidateModels = ['gemini-3.1-flash-lite', 'gemini-3.8-flash'];
   let streamedSuccessfully = false;
 
   for (const model of candidateModels) {
     try {
-      // Race stream initialization with 3.5s timeout so user never waits long
       const responseStreamPromise = ai.models.generateContentStream({
         model,
         contents,
@@ -314,7 +333,7 @@ app.post('/api/chat/stream', async (req, res) => {
       });
 
       const timeoutPromise = new Promise<never>((_, reject) =>
-        setTimeout(() => reject(new Error('Model response timeout after 3500ms')), 3500)
+        setTimeout(() => reject(new Error('Model response timeout after 8000ms')), 8000)
       );
 
       const responseStream = await Promise.race([responseStreamPromise, timeoutPromise]);
@@ -394,7 +413,7 @@ app.post('/api/chat', async (req, res) => {
       }
     });
 
-    const candidateModels = ['gemini-flash-lite-latest', 'gemini-3.5-flash-lite', 'gemini-3.1-flash-lite'];
+    const candidateModels = ['gemini-3.1-flash-lite', 'gemini-3.8-flash'];
     let replyText = '';
 
     for (const model of candidateModels) {
@@ -408,7 +427,7 @@ app.post('/api/chat', async (req, res) => {
           }
         });
         const timeoutPromise = new Promise<never>((_, reject) =>
-          setTimeout(() => reject(new Error('Model timeout after 3500ms')), 3500)
+          setTimeout(() => reject(new Error('Model timeout after 8000ms')), 8000)
         );
         const response = await Promise.race([responsePromise, timeoutPromise]);
         if (response?.text) {
