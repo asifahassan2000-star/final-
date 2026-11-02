@@ -5,6 +5,7 @@ import {
   Maximize2, Minimize2, ChevronLeft, ChevronRight
 } from 'lucide-react';
 import { getInstantBotResponse, getAttributionResponse, QUICK_ACTION_RESPONSES, BotResponse } from '../utils/ucpBotKnowledge';
+import { getStudyAssignmentGuidance } from '../utils/academicStudyHelper';
 import { UcpRobotMascot, RobotAnimationState } from './UcpRobotMascot';
 import { ChatMessageMarkdown } from './ChatMessageMarkdown';
 
@@ -479,105 +480,168 @@ export const UcpChatbot: React.FC<UcpChatbotProps> = ({ onNavigate }) => {
     let actionLink: { label: string; url: string } | undefined;
     let suggestions: string[] | undefined;
 
-    const controller = new AbortController();
-    const abortTimeout = setTimeout(() => {
-      controller.abort();
-    }, 15000);
+    // Detect environment (GitHub Pages vs Local/Vercel)
+    const isGitHubPages = typeof window !== 'undefined' && (
+      window.location.hostname.includes('github.io') || 
+      window.location.pathname.startsWith('/final')
+    );
+    const LIVE_VERCEL_ORIGIN = 'https://ucp-bahawalpur-campus.vercel.app';
 
-    try {
-      const response = await fetch('/api/chat/stream', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        signal: controller.signal,
-        body: JSON.stringify({
-          message: query,
-          history: conversationHistory
-        })
-      });
+    // Prioritize working live Vercel backend when deployed on GitHub Pages
+    const candidateEndpoints = isGitHubPages
+      ? [
+          `${LIVE_VERCEL_ORIGIN}/api/chat?stream=true`,
+          `${LIVE_VERCEL_ORIGIN}/api/chat`,
+          '/api/chat/stream',
+          '/api/chat'
+        ]
+      : [
+          '/api/chat/stream',
+          '/api/chat?stream=true',
+          '/api/chat',
+          `${LIVE_VERCEL_ORIGIN}/api/chat`
+        ];
 
-      clearTimeout(abortTimeout);
+    // Try candidate endpoints sequentially until one successfully streams or returns JSON
+    for (const endpoint of candidateEndpoints) {
+      if (streamedText.trim().length > 0) break;
 
-      if (response.ok && response.body) {
-        const reader = response.body.getReader();
-        const decoder = new TextDecoder();
-        let buffer = '';
+      const isStreamEndpoint = endpoint.includes('stream');
+      const controller = new AbortController();
+      const abortTimer = setTimeout(() => controller.abort(), isStreamEndpoint ? 14000 : 9000);
 
-        while (true) {
-          const { done, value } = await reader.read();
-          if (done) break;
-
-          buffer += decoder.decode(value, { stream: true });
-          const lines = buffer.split('\n\n');
-          buffer = lines.pop() || '';
-
-          for (const line of lines) {
-            const trimmed = line.trim();
-            if (trimmed.startsWith('data: ')) {
-              const dataStr = trimmed.slice(6).trim();
-              if (dataStr === '[DONE]') {
-                break;
-              }
-              try {
-                const parsed = JSON.parse(dataStr);
-                if (parsed.text) {
-                  streamedText += parsed.text;
-                  setIsLoading(false); // First token arrived, stop thinking
-                  setIsStreamingActive(true); // Now actively responding
-                }
-                if (parsed.suggestions) suggestions = parsed.suggestions;
-                if (parsed.actionLink) actionLink = parsed.actionLink;
-              } catch {
-                if (dataStr && dataStr !== '[DONE]') {
-                  streamedText += dataStr;
-                  setIsLoading(false);
-                  setIsStreamingActive(true);
-                }
-              }
-
-              // Update the streaming message in real-time
-              setMessages((prev) =>
-                prev.map((m) =>
-                  m.id === botMsgId
-                    ? { ...m, text: streamedText, isStreaming: true }
-                    : m
-                )
-              );
-            }
-          }
-        }
-      }
-    } catch (err) {
-      console.warn('Streaming notice or abort timeout:', err);
-    } finally {
-      clearTimeout(abortTimeout);
-      setIsStreamingActive(false);
-    }
-
-    // Step 7: Fallback to standard JSON endpoint if no streamed tokens were received
-    if (!streamedText.trim()) {
       try {
-        const jsonRes = await fetch('/api/chat', {
+        const response = await fetch(endpoint, {
           method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
+          headers: {
+            'Content-Type': 'application/json',
+            ...(isStreamEndpoint ? { 'Accept': 'text/event-stream' } : {})
+          },
+          signal: controller.signal,
           body: JSON.stringify({
             message: query,
             history: conversationHistory
           })
         });
-        if (jsonRes.ok) {
-          const data = await jsonRes.json();
+
+        clearTimeout(abortTimer);
+
+        if (!response.ok) {
+          continue;
+        }
+
+        const contentType = response.headers.get('content-type') || '';
+        
+        // Handle Server-Sent Events (SSE) Streaming
+        if (contentType.includes('text/event-stream') && response.body) {
+          const reader = response.body.getReader();
+          const decoder = new TextDecoder();
+          let buffer = '';
+
+          while (true) {
+            const { done, value } = await reader.read();
+            if (done) break;
+
+            buffer += decoder.decode(value, { stream: true });
+            const lines = buffer.split('\n\n');
+            buffer = lines.pop() || '';
+
+            for (const line of lines) {
+              const trimmed = line.trim();
+              if (trimmed.startsWith('data: ')) {
+                const dataStr = trimmed.slice(6).trim();
+                if (dataStr === '[DONE]') break;
+
+                try {
+                  const parsed = JSON.parse(dataStr);
+                  if (parsed.text) {
+                    streamedText += parsed.text;
+                    setIsLoading(false);
+                    setIsStreamingActive(true);
+                  }
+                  if (parsed.suggestions) suggestions = parsed.suggestions;
+                  if (parsed.actionLink) actionLink = parsed.actionLink;
+                } catch {
+                  if (dataStr && dataStr !== '[DONE]') {
+                    streamedText += dataStr;
+                    setIsLoading(false);
+                    setIsStreamingActive(true);
+                  }
+                }
+
+                setMessages((prev) =>
+                  prev.map((m) =>
+                    m.id === botMsgId
+                      ? { ...m, text: streamedText, isStreaming: true }
+                      : m
+                  )
+                );
+              }
+            }
+          }
+          if (streamedText.trim().length > 0) {
+            break;
+          }
+        } 
+        // Handle Standard JSON Response
+        else if (contentType.includes('application/json')) {
+          const data = await response.json();
           if (data?.reply) {
             streamedText = data.reply;
             if (data.suggestions) suggestions = data.suggestions;
             if (data.actionLink) actionLink = data.actionLink;
+            break;
           }
         }
-      } catch (err) {
-        console.warn('JSON fallback error:', err);
+      } catch (fetchErr) {
+        clearTimeout(abortTimer);
+        // Silently continue to next fallback endpoint
       }
     }
 
-    // Step 8: Offline campus fallback if still empty
+    setIsStreamingActive(false);
+
+    // Direct Gemini API fallback if Vercel server was unreachable and client env has key
+    if (!streamedText.trim()) {
+      const clientApiKey = (import.meta as any).env?.VITE_GEMINI_API_KEY;
+      if (clientApiKey) {
+        try {
+          const geminiDirectRes = await fetch(
+            `https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash-lite:generateContent?key=${clientApiKey}`,
+            {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({
+                contents: [
+                  ...conversationHistory.map(h => ({ role: h.role, parts: [{ text: h.text }] })),
+                  { role: 'user', parts: [{ text: query }] }
+                ]
+              })
+            }
+          );
+          if (geminiDirectRes.ok) {
+            const data = await geminiDirectRes.json();
+            const text = data?.candidates?.[0]?.content?.parts?.[0]?.text;
+            if (text) {
+              streamedText = text;
+            }
+          }
+        } catch {
+          // Continue to local academic helper
+        }
+      }
+    }
+
+    // Comprehensive Academic Study & Assignment Helper (if still empty, e.g. offline student)
+    if (!streamedText.trim()) {
+      const studyGuidance = getStudyAssignmentGuidance(query);
+      if (studyGuidance) {
+        streamedText = studyGuidance;
+        suggestions = ["Calculate Fee 💰", "Degree Programmes 🎓", "Academic Calendar 📅"];
+      }
+    }
+
+    // Offline Campus Knowledge Fallback if still empty
     if (!streamedText.trim()) {
       const fallback = getInstantBotResponse(query);
       streamedText = fallback.reply;

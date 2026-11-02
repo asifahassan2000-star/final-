@@ -23,10 +23,16 @@ const isProd = process.env.NODE_ENV === 'production';
 app.use(express.json({ limit: '25mb' }));
 app.use(express.urlencoded({ extended: true, limit: '25mb' }));
 
-// Security headers (allowing iframe embedding in AI Studio preview)
-app.use((_req, res, next) => {
+// CORS & Security headers (allowing cross-origin API calls from live sites and iframe embedding in AI Studio)
+app.use((req, res, next) => {
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization, X-Requested-With');
   res.setHeader('X-Content-Type-Options', 'nosniff');
   res.setHeader('Referrer-Policy', 'strict-origin-when-cross-origin');
+  if (req.method === 'OPTIONS') {
+    return res.status(200).end();
+  }
   next();
 });
 
@@ -104,13 +110,12 @@ const BASE_SYSTEM_PROMPT = `You are UCP Assistant, an intelligent, helpful, fast
 
 KNOWLEDGE CAPABILITIES:
 You can answer ANY and ALL questions on ANY topic, including:
-- General knowledge, world affairs, history, geography, arts, and culture
-- Computer science, software engineering, algorithms, programming (Python, C++, Java, JavaScript, TypeScript, HTML/CSS, React, SQL, AI/ML, data science, etc.)
-- Natural sciences, physics, chemistry, biology, environmental sciences, and medicine
-- Mathematics, calculus, algebra, statistics, probability, and logic
-- Essay writing, grammar, vocabulary, communication, and creative writing
-- Everyday advice, study techniques, productivity, and career guidance
-- University of Central Punjab (UCP) Bahawalpur Campus information, admissions, degree programmes, fees, merit scholarships, campus facilities, and academic calendar
+- STUDY & ASSIGNMENT HELP: Step-by-step homework solutions, assignment guidance, coding problem solving, mathematical problem solving, physics numericals, chemistry equations, biology questions, exam preparation strategies, essay outlines, literature analysis, and conceptual tutoring.
+- Computer Science & Programming: Python, C++, Java, JavaScript, TypeScript, HTML/CSS, React, Next.js, SQL, data structures, algorithms, AI/ML, data science, networking, and cybersecurity.
+- Mathematics & Natural Sciences: Calculus, linear algebra, statistics, discrete math, physics (mechanics, electromagnetism, quantum), organic & inorganic chemistry, genetics, cell biology.
+- Business, Finance & Humanities: Accounting entries, financial analysis, business analytics, marketing strategy, psychology case studies, English grammar and creative writing.
+- General Knowledge, world affairs, history, geography, arts, and everyday advice.
+- University of Central Punjab (UCP) Bahawalpur Campus information, admissions, degree programmes, fees, merit scholarships, campus facilities, library rules, and academic calendar.
 
 CRITICAL DEVELOPER, CREATOR & OFFICIAL REPRESENTATIVE ATTRIBUTION RULES:
 When someone asks these specific questions or related questions about the developer, creator, website, chatbot, or official status, give the EXACT corresponding response:
@@ -317,8 +322,8 @@ app.post('/api/chat/stream', async (req, res) => {
     }
   });
 
-  // Ultra-fast official models from Gemini SDK: gemini-3.1-flash-lite (lowest latency <400ms) with gemini-3.8-flash fallback
-  const candidateModels = ['gemini-3.1-flash-lite', 'gemini-3.8-flash'];
+  // Ultra-fast official models from Gemini SDK: gemini-3.5-flash-lite (lowest latency <600ms) with gemini-flash-latest and gemini-3.8-flash fallback
+  const candidateModels = ['gemini-3.5-flash-lite', 'gemini-flash-latest', 'gemini-3.8-flash'];
   let streamedSuccessfully = false;
 
   for (const model of candidateModels) {
@@ -328,7 +333,6 @@ app.post('/api/chat/stream', async (req, res) => {
         contents,
         config: {
           systemInstruction,
-          temperature: 0.7,
         }
       });
 
@@ -413,7 +417,7 @@ app.post('/api/chat', async (req, res) => {
       }
     });
 
-    const candidateModels = ['gemini-3.1-flash-lite', 'gemini-3.8-flash'];
+    const candidateModels = ['gemini-3.5-flash-lite', 'gemini-flash-latest', 'gemini-3.8-flash'];
     let replyText = '';
 
     for (const model of candidateModels) {
@@ -423,7 +427,6 @@ app.post('/api/chat', async (req, res) => {
           contents,
           config: {
             systemInstruction,
-            temperature: 0.7,
           }
         });
         const timeoutPromise = new Promise<never>((_, reject) =>
