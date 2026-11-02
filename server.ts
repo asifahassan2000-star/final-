@@ -23,13 +23,18 @@ const isProd = process.env.NODE_ENV === 'production';
 app.use(express.json({ limit: '25mb' }));
 app.use(express.urlencoded({ extended: true, limit: '25mb' }));
 
-// CORS & Security headers (allowing cross-origin API calls from live sites and iframe embedding in AI Studio)
+// CORS & Security headers (allowing cross-origin API calls from live sites, CSP protection, and iframe embedding in AI Studio)
 app.use((req, res, next) => {
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization, X-Requested-With');
   res.setHeader('X-Content-Type-Options', 'nosniff');
   res.setHeader('Referrer-Policy', 'strict-origin-when-cross-origin');
+  res.setHeader('Permissions-Policy', 'camera=(), microphone=(), geolocation=()');
+  res.setHeader(
+    'Content-Security-Policy',
+    "default-src 'self'; script-src 'self' 'unsafe-inline' https:; style-src 'self' 'unsafe-inline' https: https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: blob: https: https://ik.imagekit.io https://images.unsplash.com https://i.ibb.co https://ibb.co https://upload.wikimedia.org https://tile.openstreetmap.org https://*.tile.openstreetmap.org https://www.openstreetmap.org https://ucp.edu.pk; connect-src 'self' https: wss: https://generativelanguage.googleapis.com https://*.googleapis.com https://ucp-bahawalpur-campus.vercel.app https://tile.openstreetmap.org https://*.tile.openstreetmap.org https://www.openstreetmap.org https://vitals.vercel-insights.com; frame-src 'self' https: https://*.google.com https://*.openstreetmap.org https://www.openstreetmap.org https://maps.google.com; media-src 'self' data: blob: https://ik.imagekit.io; object-src 'none'; base-uri 'self'; form-action 'self' https://admissions.ucpcolleges.pgc.edu https://mcom.pgc.edu.pk"
+  );
   if (req.method === 'OPTIONS') {
     return res.status(200).end();
   }
