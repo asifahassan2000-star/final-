@@ -108,10 +108,10 @@ export const ALL_FACULTY_MEMBERS: FacultyMemberData[] = [
     department: 'Department of Social Sciences',
     highestDegree: 'Ph.D. in History',
     experienceYears: '8 Years',
-    specialization: 'scholarly research in History, Political Science, Philosophy, Sociology, Anthropology and Mass Communication.',
-    academicPillarBullet: 'scholarly research in History, Political Science, Philosophy, Sociology, Anthropology and Mass Communication.',
+    specialization: 'scholarly research in History, Political Science, Philosophy, Sociology, Anthropology, international relations and Mass Communication.',
+    academicPillarBullet: 'scholarly research in History, Political Science, Philosophy, Sociology, Anthropology, international relations and Mass Communication.',
     researchArea: 'Historical research on democracy in pakistan and globalized world',
-    intro: 'Assistant Professor in Social Science with 8 years of university teaching and scholarly research in History, Political Science, Philosophy, Sociology, Anthropology and Mass Communication.',
+    intro: 'Assistant Professor in Social Science with 8 years of university teaching and scholarly research in History, Political Science, Philosophy, Sociology, Anthropology, International Relations and Mass Communication.',
     photoUrl: 'https://ik.imagekit.io/Muffins/image%20-%202026-11-01T191154.246.png',
     fallbackPhotoUrl: 'https://ik.imagekit.io/Muffins/image%20-%202026-11-01T191154.246.png',
     objectPosition: 'object-top',
@@ -122,12 +122,13 @@ export const ALL_FACULTY_MEMBERS: FacultyMemberData[] = [
     ],
     experienceDetails: [
       '8 Years of University Teaching and Scholarly Research in Social Sciences',
-      'Academic Instruction in History, Political Science, Philosophy'
+      'Academic Instruction in History, Political Science, Philosophy, and International Relations'
     ],
     coreTechnicalSkills: [
       'Scholarly Research & University Pedagogy in Social Sciences',
       'History, Historiography & Archival Research',
       'Political Science & Sociological Inquiry',
+      'International Relations & Global Affairs',
       'Philosophy & Anthropological Studies',
       'Mass Communication & Media Discourse'
     ]
