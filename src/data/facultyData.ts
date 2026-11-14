@@ -813,7 +813,7 @@ export const ALL_FACULTY_MEMBERS: FacultyMemberData[] = [
     ],
     achievements: [
       'Long Service Award',
-      'Best Teaching Award'
+      "Best Teacher's Award"
     ],
     researchPublications: [
       'Research Work on Problem of Early Education in Pakistan'
