@@ -68,7 +68,11 @@ const MobileFacultyCarousel: React.FC<{
             >
               <img decoding="async" src={optimizeImageUrl(faculty.photoUrl, { format: 'webp', quality: 80, width: 360 })}
                 alt={faculty.name}
-                style={{ objectFit: 'cover', objectPosition: 'top center', background: '#f1f5f9' }}
+                style={
+                  faculty.id === 'prof-akkasha-latif'
+                    ? { width: '100%', height: '100%', minHeight: '100%', objectFit: 'cover', objectPosition: 'top center', background: '#f1f5f9' }
+                    : { objectFit: 'cover', objectPosition: 'top center', background: '#f1f5f9' }
+                }
                 className={`absolute inset-0 w-full h-full object-cover block m-0 p-0 ${faculty.objectPosition || 'object-top'} ${faculty.imageTransform || ''}`}
                 loading="lazy"
                 onError={(e) => {

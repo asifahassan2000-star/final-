@@ -6,6 +6,7 @@ import {
   Cpu, FileText, Check, ChevronRight, UserCheck
 } from 'lucide-react';
 import { FacultyMemberData } from '../data/facultyData';
+import { optimizeImageUrl } from '../utils/mediaOptimizer';
 
 export type FacultyProfileModalData = FacultyMemberData;
 
@@ -75,7 +76,7 @@ export const FacultyProfileModal: React.FC<FacultyProfileModalProps> = ({
   // Derive concise 3 right bullets (Experience & Research)
   const expString = faculty.experienceYears || '10+ Years Academic Leadership';
 
-  const hasQualifications = faculty.qualifications && faculty.qualifications.length > 0;
+  const hasQualifications = (faculty.qualifications && faculty.qualifications.length > 0) || (faculty.certificationsTraining && faculty.certificationsTraining.length > 0);
   const hasExperience = (faculty.experienceDetails && faculty.experienceDetails.length > 0) || (faculty.academicAdministration && faculty.academicAdministration.length > 0);
   const hasSkills = (faculty.coreTechnicalSkills && faculty.coreTechnicalSkills.length > 0) || (faculty.programmingSkills && faculty.programmingSkills.length > 0) || (faculty.managementLeadershipSkills && faculty.managementLeadershipSkills.length > 0);
   const hasAchievements = (faculty.achievements && faculty.achievements.length > 0) || (faculty.researchPublications && faculty.researchPublications.length > 0);
@@ -171,10 +172,18 @@ export const FacultyProfileModal: React.FC<FacultyProfileModalProps> = ({
               {/* CENTER COLUMN: Portrait, Name, Designation */}
               <div className="flex flex-col items-center text-center order-1 md:order-2 px-1">
                 <div className="w-[140px] h-[140px] sm:w-[155px] sm:h-[155px] rounded-2xl overflow-hidden shadow-lg ring-3 ring-[#C5A059]/40 ring-offset-4 ring-offset-white bg-slate-100 shrink-0">
-                  <img decoding="async" src={faculty.photoUrl}
+                  <img
+                    decoding={faculty.id === 'mr-ikram-ul-haq-aarbi' || faculty.id === 'admin-miss-alisha-tariq' || faculty.id === 'prof-akkasha-latif' ? 'sync' : 'async'}
+                    src={
+                      faculty.id === 'mr-ikram-ul-haq-aarbi' || faculty.id === 'admin-miss-alisha-tariq' || faculty.id === 'prof-akkasha-latif'
+                        ? optimizeImageUrl(faculty.photoUrl, { format: 'webp', quality: 82, width: 640 })
+                        : faculty.photoUrl
+                    }
                     alt={faculty.name}
+                    style={{ width: '100%', height: '100%', objectFit: 'cover' }}
                     className={`w-full h-full object-cover ${faculty.objectPosition || 'object-top'} ${faculty.imageTransform || ''}`}
                     loading="eager"
+                    fetchPriority={faculty.id === 'mr-ikram-ul-haq-aarbi' || faculty.id === 'admin-miss-alisha-tariq' || faculty.id === 'prof-akkasha-latif' ? 'high' : undefined}
                     onError={(e) => {
                       (e.target as HTMLImageElement).src = faculty.fallbackPhotoUrl;
                     }}
@@ -397,30 +406,56 @@ export const FacultyProfileModal: React.FC<FacultyProfileModalProps> = ({
                   transition={{ duration: 0.25 }}
                   className="space-y-4"
                 >
-                  <div className="flex items-center gap-2 mb-2">
-                    <GraduationCap size={16} className="text-[#0F2C61]" />
-                    <h4 className="text-xs font-mono font-bold uppercase tracking-wider text-[#0F2C61]">
-                      Academic Qualifications & Educational History
-                    </h4>
-                  </div>
-
-                  <div className="space-y-2.5">
-                    {faculty.qualifications?.map((qual, idx) => (
-                      <div 
-                        key={idx}
-                        className="flex items-start gap-3 p-3.5 rounded-xl border border-slate-200/80 bg-white hover:bg-slate-50 transition-colors"
-                      >
-                        <div className="w-6 h-6 rounded-lg bg-[#0F2C61]/10 text-[#0F2C61] flex items-center justify-center shrink-0 mt-0.5 font-mono text-[11px] font-bold">
-                          {idx + 1}
-                        </div>
-                        <div className="flex-1">
-                          <p className="text-xs sm:text-sm font-medium text-slate-800 leading-snug">
-                            {qual}
-                          </p>
-                        </div>
+                  {faculty.qualifications && faculty.qualifications.length > 0 && (
+                    <>
+                      <div className="flex items-center gap-2 mb-2">
+                        <GraduationCap size={16} className="text-[#0F2C61]" />
+                        <h4 className="text-xs font-mono font-bold uppercase tracking-wider text-[#0F2C61]">
+                          Academic Qualifications & Educational History
+                        </h4>
                       </div>
-                    ))}
-                  </div>
+
+                      <div className="space-y-2.5">
+                        {faculty.qualifications.map((qual, idx) => (
+                          <div 
+                            key={idx}
+                            className="flex items-start gap-3 p-3.5 rounded-xl border border-slate-200/80 bg-white hover:bg-slate-50 transition-colors"
+                          >
+                            <div className="w-6 h-6 rounded-lg bg-[#0F2C61]/10 text-[#0F2C61] flex items-center justify-center shrink-0 mt-0.5 font-mono text-[11px] font-bold">
+                              {idx + 1}
+                            </div>
+                            <div className="flex-1">
+                              <p className="text-xs sm:text-sm font-medium text-slate-800 leading-snug">
+                                {qual}
+                              </p>
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    </>
+                  )}
+
+                  {faculty.certificationsTraining && faculty.certificationsTraining.length > 0 && (
+                    <div className="pt-3">
+                      <div className="flex items-center gap-2 mb-2.5">
+                        <Award size={16} className="text-[#C5A059]" />
+                        <h4 className="text-xs font-mono font-bold uppercase tracking-wider text-[#0F2C61]">
+                          Professional Certificates & Training
+                        </h4>
+                      </div>
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                        {faculty.certificationsTraining.map((cert, idx) => (
+                          <div
+                            key={idx}
+                            className="flex items-start gap-2.5 p-3 rounded-xl border border-slate-200/80 bg-slate-50/70 text-xs text-slate-700"
+                          >
+                            <CheckCircle2 size={14} className="text-emerald-600 shrink-0 mt-0.5" />
+                            <span className="font-medium text-slate-800 leading-snug">{cert}</span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  )}
                 </motion.div>
               )}
 
@@ -618,11 +653,24 @@ export const FacultyProfileModal: React.FC<FacultyProfileModalProps> = ({
                   {/* Research & Publications */}
                   {faculty.researchPublications && faculty.researchPublications.length > 0 && (
                     <div className="pt-2">
-                      <div className="flex items-center gap-2 mb-3">
-                        <FileText size={16} className="text-[#0F2C61]" />
-                        <h4 className="text-xs font-mono font-bold uppercase tracking-wider text-[#0F2C61]">
-                          Research & Academic Publications
-                        </h4>
+                      <div className="flex flex-wrap items-center justify-between gap-2 mb-3">
+                        <div className="flex items-center gap-2">
+                          <FileText size={16} className="text-[#0F2C61]" />
+                          <h4 className="text-xs font-mono font-bold uppercase tracking-wider text-[#0F2C61]">
+                            Research & Academic Publications
+                          </h4>
+                        </div>
+                        {faculty.googleScholarUrl && (
+                          <a
+                            href={faculty.googleScholarUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center gap-1 text-[11px] font-semibold text-[#a30f16] hover:underline"
+                          >
+                            <span>Google Scholar Profile</span>
+                            <ChevronRight size={13} />
+                          </a>
+                        )}
                       </div>
 
                       <div className="space-y-2">

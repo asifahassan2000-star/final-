@@ -27,6 +27,7 @@ export interface FacultyMemberData {
   areaOfInterest?: string[];
   programmingSkills?: string[];
   networkingSecuritySkills?: string[];
+  googleScholarUrl?: string;
 }
 
 /**
@@ -839,7 +840,6 @@ export const ALL_FACULTY_MEMBERS: FacultyMemberData[] = [
     photoUrl: 'https://ik.imagekit.io/Muffins/image%20-%202026-10-28T114145.181.png',
     fallbackPhotoUrl: 'https://ik.imagekit.io/Muffins/image%20-%202026-10-28T114145.181.png',
     objectPosition: 'object-top',
-    imageTransform: 'scale-[1.25] origin-top',
     qualifications: [
       'M.A (English) IUB',
       'M.A (TEFL) AIOU ISLAMABAD',
@@ -863,6 +863,138 @@ export const ALL_FACULTY_MEMBERS: FacultyMemberData[] = [
       'Grammar, Syntax & Phonetics Training',
       'French Language Competency',
       'Academic Evaluation & Student Mentorship'
+    ]
+  },
+  {
+    id: 'prof-alina-asif',
+    numericId: 20,
+    name: 'Alina Asif',
+    designation: 'Lecturer',
+    cardDesignation: 'Lecturer',
+    department: 'Department of Computer Science & Information Technology',
+    highestDegree: 'MBA (Finance) • BSIT (Honours)',
+    experienceYears: '8 Years',
+    specialization: 'Computer Science & IT Education, Object-Oriented Analysis & Design (OOAD), Web Designing & Academic Leadership',
+    intro: 'Accomplished Computer Science & IT Lecturer at UCP Bahawalpur with 8 years of teaching, faculty training, and academic leadership experience. Holds an MBA (Finance) and BSIT (Honours), with expertise in Object-Oriented Analysis and Design (OOAD), Web Designing, examination administration, and computer laboratory management.',
+    photoUrl: 'https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-11-21%20at%2011.22.15%20PM.png',
+    fallbackPhotoUrl: 'https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-11-21%20at%2011.22.15%20PM.png',
+    objectPosition: 'object-top',
+    qualifications: [
+      'MBA (Finance) — Master of Business Administration',
+      'BSIT (Honours) — Bachelor of Science in Information Technology'
+    ],
+    achievements: [
+      'Successfully completed a two-day professional workshop on Object-Oriented Analysis and Design (OOAD) at The Islamia University of Bahawalpur.',
+      'Completed specialized training in Web Designing through the Computer Science Department.',
+      'Represented Punjab College for Women as a teacher at the South Punjab Science Fair 2014, securing a Good Position.',
+      'Participated in the Bahawalpur Science Fair 2013, representing Punjab College for Women.',
+      'Completed professional development training in Active Learning and Effective Teaching Strategies at Beaconhouse School System.'
+    ],
+    experienceDetails: [
+      '8 Years of Teaching, Academic Administration, and Institutional Leadership Experience',
+      'Lecturer, University of Central Punjab (UCP) Bahawalpur Campus',
+      'Delivered IT and Computer Science instruction to students from Grade III to Grade IX at Beaconhouse School System.',
+      "Taught Computer Science and related subjects at Intermediate, Commerce, and Bachelor's levels at Punjab College for Women.",
+      'Designed and implemented effective teaching strategies to enhance student engagement and learning outcomes.',
+      'Supervised student IT projects and encouraged participation in academic and extracurricular competitions.',
+      'Conducted IT skills development and training sessions for fellow teachers.'
+    ],
+    academicAdministration: [
+      'Served as Head of Discipline, overseeing student discipline and institutional responsibilities.',
+      'Served as Controller of Examinations, managing examination-related activities and coordination.',
+      'Worked as Project Manager of Extracurricular Activities, planning and supervising student events and activities.',
+      'Managed computer laboratory operations, equipment maintenance, and laboratory resources.',
+      'Coordinated academic activities and supported institutional functions and student development initiatives.'
+    ],
+    coreTechnicalSkills: [
+      'Computer Science & IT Education',
+      'Object-Oriented Analysis & Design',
+      'Web Designing',
+      'Teaching & Learning Methodologies',
+      'Faculty Training & Professional Development',
+      'Academic Administration & Coordination',
+      'Examination Management',
+      'Student Project Supervision',
+      'Computer Laboratory Management',
+      'Educational Leadership & Institutional Management',
+      'Student Engagement & Activity Coordination'
+    ]
+  },
+  {
+    id: 'prof-akkasha-latif',
+    numericId: 21,
+    name: 'Akkasha Latif',
+    designation: 'Lecturer',
+    cardDesignation: 'Lecturer',
+    department: 'Department of Computer Science & Artificial Intelligence',
+    highestDegree: 'Ph.D. Scholar (Artificial Intelligence) • MSAI',
+    experienceYears: '3+ Years',
+    specialization: 'Artificial Intelligence, Machine Learning, Deep Learning, LLMs, Data Science & Web Development',
+    researchArea: 'Forensic Radiology, Medical Image Processing, Deep Learning, Computer Vision & Explainable Edge AI',
+    intro: 'Dedicated Lecturer and Artificial Intelligence researcher pursuing a Ph.D. in Artificial Intelligence after completing her MS in Artificial Intelligence (MSAI). Combines higher education teaching experience at The Islamia University of Bahawalpur (IUB) and The Government Sadiq College Women University (GSCWU) with 19 peer-reviewed journal and conference publications in Deep Learning, Forensic Radiology, Medical Imaging, Explainable AI, and Large Language Models.',
+    photoUrl: 'https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-11-21%20at%2011.24.08%20PM.png',
+    fallbackPhotoUrl: 'https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-11-21%20at%2011.24.08%20PM.png',
+    objectPosition: 'object-top',
+    googleScholarUrl: 'https://scholar.google.com/citations?user=cXRyNvgAAAAJ&hl=en',
+    qualifications: [
+      'Ph.D. in Artificial Intelligence (Continuing)',
+      'MS in Artificial Intelligence (MSAI)'
+    ],
+    certificationsTraining: [
+      'Office Automation — Aptech, 2018',
+      'Web Development with PHP — Aptech, 2018',
+      'Artificial Intelligence for IT and Non-IT Professionals',
+      'SEO (Search Engine Optimization)',
+      'Creative Writing',
+      'Forensic Psychology (GPA 3.7/4.0)',
+      'English Proficiency Certificate',
+      'Python Development',
+      'Generative AI',
+      'Academic Writing'
+    ],
+    experienceDetails: [
+      'Visiting Lecturer — The Islamia University of Bahawalpur (Mar 2023 – Spring 2026): Taught undergraduate and graduate computer science courses; supervised student projects and conducted practical lab sessions.',
+      'Visiting Lecturer — The Government Sadiq College Women University, Bahawalpur (2023 – Present): Delivered lectures and hands-on sessions in computer science; mentored undergraduate students and assisted with final year projects.'
+    ],
+    programmingSkills: [
+      'Python',
+      'C',
+      'C++',
+      'SQL',
+      'PostgreSQL',
+      'Flask',
+      'Django'
+    ],
+    coreTechnicalSkills: [
+      'Programming: Python, C, C++',
+      'Machine Learning / AI: Scikit-learn, TensorFlow, PyTorch, Deep Learning, LLMs',
+      'Web Development: Flask, Django, Front-end Integration',
+      'Data Science: Pandas, NumPy, Matplotlib, SQL, PostgreSQL, EDA'
+    ],
+    achievements: [
+      '1st Position — Robotics Project, AI Expo, The Islamia University of Bahawalpur (2023)',
+      'Participant, AI Expo, The Islamia University of Bahawalpur — 2022, 2023, 2024'
+    ],
+    researchPublications: [
+      '1. Forensic Radiology: A Robust Approach to Biological Profile Estimation from Bone Image Analysis Using Deep Learning. Biomedical Signal Processing and Control, Vol. 105, Article 107661, 2025.',
+      '2. Forensic Radiology: An Intelligent Method of Age and Gender Estimation from X-Ray Scanned Bones Images Using Convolutional Neural Networks. Spectrum of Engineering Sciences, pp. 440–487, 2025.',
+      '3. A Robust Method of Bipolar Mental Illness Detection from Facial Micro-Expressions Using Machine Learning Methods. Intelligent Automation & Soft Computing, Vol. 39, No. 1, pp. 57–71, 2024.',
+      '4. A Deep Learning-Based Automated Approach of Schizophrenia Detection from Facial Micro-Expressions. Intelligent Automation & Soft Computing, Vol. 39, No. 6, pp. 1053–1071, 2024.',
+      '5. A Robust Convolutional Neural Network-Based Approach for Human Emotion Classification: Cross-Dataset Validation and Generalization. Spectrum of Engineering Sciences, pp. 782–798, 2025.',
+      '6. Digital Image Processing for Ultrasound Images: A Comprehensive Review. Digital Image Processing, Vol. 15, No. 3, 2024.',
+      '7. Steganographic Secret Communication Using RGB Pixel Encoding and Cryptographic Security. Spectrum of Engineering Sciences, pp. 323–336, 2025.',
+      '8. Bit Pattern Selection-Based Novel Method of Steganography in RGB Encoding Scheme-Based Digital Images. Spectrum of Engineering Sciences, 2025.',
+      '9. Readable Text Retrieval from Noise-Influenced Documents Using Image Restoration Methods. Spectrum of Engineering Sciences, pp. 337–360, 2025.',
+      '10. Deep Learning-Based Approach for Estimating the Age of Pakistani-Grown Rice Seeds. Spectrum of Engineering Sciences, pp. 557–572, 2025.',
+      '11. RiceAgeNet: Age Estimation of Pakistani-Grown Rice Seeds Using Convolutional Neural Networks. International Journal of Computational Intelligence in Control, Vol. 13, No. 2, pp. 831–843, 2021.',
+      '12. Parameter Optimization of Autoencoder for Image Classification Using Genetic Algorithm. Spectrum of Engineering Sciences, pp. 201–213, 2025.',
+      '13. A Robust Artificial Neural Network Approach for Early Detection of Cardiac Diseases. Spectrum of Engineering Sciences, pp. 499–511, 2025.',
+      '14. A Vision-Free Obstacle Detection and Alert System Using Smart Knee Gloves. Spectrum of Engineering Sciences, 2024.',
+      '15. An Overview on X-Ray Images Processing: Methods, Challenges & Issues, and Future Work. International Journal of Computational Intelligence in Control, 2021.',
+      '16. Performance Evaluation to Estimate the Dropout of IUB Students Using Data Mining Techniques. International Journal of Applied Engineering Research, 2021.',
+      '17. Explainable Edge AI for Early Detection of Plant Diseases in Smart Agriculture Using Lightweight MobileNetV2 with Gradient Saliency. Spectrum of Engineering Sciences, Vol. 4, No. 4, pp. 167–192, 2026.',
+      '18. Predictive Heart Health Analysis: Machine Learning with the Cardiovascular Disease Dataset. Spectrum of Engineering Sciences, Vol. 4, No. 5, pp. 163–176, 2026.',
+      '19. FGAN-AD-U: Unsupervised Multi-Scale Graph-Transformer Reconstruction for Industrial Anomaly Detection. Proceedings of the International Conference on Agents and Artificial Intelligence (ICAART), Vol. 3, pp. 2073–2081, 2026.'
     ]
   }
 ];
@@ -923,7 +1055,6 @@ export const ADMINISTRATION_MEMBERS: FacultyMemberData[] = [
     photoUrl: 'https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-17%20at%203.27.42%20AM.jpeg',
     fallbackPhotoUrl: 'https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-10-17%20at%203.27.42%20AM.jpeg',
     objectPosition: 'object-top',
-    imageTransform: 'scale-[1.25] origin-top',
     qualifications: [
       'Masters in Computer Science (MCS)',
       'Advanced Visual Communication & Graphic Arts',

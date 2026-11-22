@@ -182,12 +182,14 @@ export const FacultyPage: React.FC<FacultyPageProps> = ({
               </div>
             ) : (
               <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-5 sm:gap-6 lg:gap-8">
-                {filteredFaculty.map((faculty, index) => (
+                {filteredFaculty.map((faculty, index) => {
+                  const isInstantImage = faculty.id === 'mr-ikram-ul-haq-aarbi' || faculty.id === 'prof-akkasha-latif';
+                  return (
                   <motion.div
                     key={faculty.id}
-                    initial={{ opacity: 0, y: 20 }}
+                    initial={isInstantImage ? false : { opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
-                    transition={{
+                    transition={isInstantImage ? { duration: 0 } : {
                       duration: 0.5,
                       delay: (index % 4) * 0.06,
                       ease: [0.22, 1, 0.36, 1],
@@ -203,10 +205,19 @@ export const FacultyPage: React.FC<FacultyPageProps> = ({
                     >
                       <img src={optimizeImageUrl(faculty.photoUrl, { format: 'webp', quality: 82, width: 640 })}
                         alt={faculty.name}
-                        style={{ objectFit: 'cover', objectPosition: 'top center', background: '#f1f5f9' }}
-                        className={`absolute inset-0 w-full h-full object-cover block m-0 p-0 ${faculty.objectPosition || 'object-top'} ${faculty.imageTransform || ''} transition-transform duration-500 ease-out ${faculty.imageTransform ? 'group-hover:scale-[1.34]' : 'group-hover:scale-105'}`}
-                        loading="lazy"
-                        decoding="async"
+                        style={
+                          isInstantImage
+                            ? { width: '100%', height: '100%', minHeight: '100%', objectFit: 'cover', objectPosition: 'top center', background: '#f1f5f9' }
+                            : { objectFit: 'cover', objectPosition: 'top center', background: '#f1f5f9' }
+                        }
+                        className={`absolute inset-0 w-full h-full object-cover block m-0 p-0 ${faculty.objectPosition || 'object-top'} ${
+                          isInstantImage
+                            ? 'scale-[1.08] origin-top transition-transform duration-500 ease-out group-hover:scale-[1.14]'
+                            : `${faculty.imageTransform || ''} transition-transform duration-500 ease-out ${faculty.imageTransform ? 'group-hover:scale-[1.34]' : 'group-hover:scale-105'}`
+                        }`}
+                        loading={isInstantImage ? 'eager' : 'lazy'}
+                        decoding={isInstantImage ? 'sync' : 'async'}
+                        fetchPriority={isInstantImage ? 'high' : undefined}
                         onError={(e) => {
                           (e.target as HTMLImageElement).src = faculty.fallbackPhotoUrl;
                         }}
@@ -215,16 +226,17 @@ export const FacultyPage: React.FC<FacultyPageProps> = ({
                     </div>
 
                     {/* Name & Designation: Crisp, official university typography */}
-                    <div className="mt-3 px-1 w-full text-center">
-                      <h3 className="font-['Playfair_Display',serif] text-sm sm:text-base lg:text-lg font-bold text-[#0F2C61] group-hover:text-[#b8121a] transition-colors leading-snug">
-                        {faculty.name}
-                      </h3>
-                      <p className="text-[11px] sm:text-xs text-slate-500 font-sans mt-0.5 font-medium">
-                        {faculty.cardDesignation || faculty.designation}
-                      </p>
-                    </div>
-                  </motion.div>
-                ))}
+                      <div className="mt-3 px-1 w-full text-center">
+                        <h3 className="font-['Playfair_Display',serif] text-sm sm:text-base lg:text-lg font-bold text-[#0F2C61] group-hover:text-[#b8121a] transition-colors leading-snug">
+                          {faculty.name}
+                        </h3>
+                        <p className="text-[11px] sm:text-xs text-slate-500 font-sans mt-0.5 font-medium">
+                          {faculty.cardDesignation || faculty.designation}
+                        </p>
+                      </div>
+                    </motion.div>
+                  );
+                })}
               </div>
             )}
 
@@ -274,12 +286,14 @@ export const FacultyPage: React.FC<FacultyPageProps> = ({
               </div>
             ) : (
               <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-5 sm:gap-6 lg:gap-8 items-stretch">
-                {filteredAdmins.map((admin, idx) => (
+                {filteredAdmins.map((admin, idx) => {
+                  const isInstantImage = admin.id === 'admin-miss-alisha-tariq';
+                  return (
                   <motion.div
                     key={admin.id}
-                    initial={{ opacity: 0, y: 20 }}
+                    initial={isInstantImage ? false : { opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
-                    transition={{
+                    transition={isInstantImage ? { duration: 0 } : {
                       duration: 0.5,
                       delay: idx * 0.08,
                       ease: [0.22, 1, 0.36, 1],
@@ -296,10 +310,19 @@ export const FacultyPage: React.FC<FacultyPageProps> = ({
                       >
                         <img src={optimizeImageUrl(admin.photoUrl, { format: 'webp', quality: 82, width: 640 })}
                           alt={admin.name}
-                          loading="lazy"
-                          decoding="async"
-                          style={{ objectFit: 'cover', objectPosition: 'top center', background: '#f1f5f9' }}
-                          className={`absolute inset-0 w-full h-full object-cover block m-0 p-0 ${admin.objectPosition || 'object-top'} ${admin.imageTransform || ''} transition-transform duration-500 ease-out ${admin.imageTransform ? 'group-hover:scale-[1.19]' : 'group-hover:scale-105'}`}
+                          loading={isInstantImage ? 'eager' : 'lazy'}
+                          decoding={isInstantImage ? 'sync' : 'async'}
+                          fetchPriority={isInstantImage ? 'high' : undefined}
+                          style={
+                            isInstantImage
+                              ? { width: '100%', height: '100%', minHeight: '100%', objectFit: 'cover', objectPosition: 'top center', background: '#f1f5f9' }
+                              : { objectFit: 'cover', objectPosition: 'top center', background: '#f1f5f9' }
+                          }
+                          className={`absolute inset-0 w-full h-full object-cover block m-0 p-0 ${admin.objectPosition || 'object-top'} ${
+                            isInstantImage
+                              ? 'scale-[1.08] origin-top transition-transform duration-500 ease-out group-hover:scale-[1.14]'
+                              : `${admin.imageTransform || ''} transition-transform duration-500 ease-out ${admin.imageTransform ? 'group-hover:scale-[1.19]' : 'group-hover:scale-105'}`
+                          }`}
                           onError={(e) => {
                             (e.target as HTMLImageElement).src = admin.fallbackPhotoUrl;
                           }}
@@ -327,7 +350,8 @@ export const FacultyPage: React.FC<FacultyPageProps> = ({
                       <ChevronRight size={13} className="group-hover:translate-x-1 transition-transform" />
                     </div>
                   </motion.div>
-                ))}
+                  );
+                })}
               </div>
             )}
 
