@@ -173,9 +173,9 @@ export const FacultyProfileModal: React.FC<FacultyProfileModalProps> = ({
               <div className="flex flex-col items-center text-center order-1 md:order-2 px-1">
                 <div className="w-[140px] h-[140px] sm:w-[155px] sm:h-[155px] rounded-2xl overflow-hidden shadow-lg ring-3 ring-[#C5A059]/40 ring-offset-4 ring-offset-white bg-slate-100 shrink-0">
                   <img
-                    decoding={faculty.id === 'mr-ikram-ul-haq-aarbi' || faculty.id === 'admin-miss-alisha-tariq' || faculty.id === 'prof-akkasha-latif' ? 'sync' : 'async'}
+                    decoding={faculty.id === 'mr-ikram-ul-haq-aarbi' || faculty.id === 'admin-miss-alisha-tariq' || faculty.id === 'prof-akkasha-latif' || faculty.id === 'prof-sana-cheema' || faculty.id === 'prof-math-fluid-mechanics' ? 'sync' : 'async'}
                     src={
-                      faculty.id === 'mr-ikram-ul-haq-aarbi' || faculty.id === 'admin-miss-alisha-tariq' || faculty.id === 'prof-akkasha-latif'
+                      faculty.id === 'mr-ikram-ul-haq-aarbi' || faculty.id === 'admin-miss-alisha-tariq' || faculty.id === 'prof-akkasha-latif' || faculty.id === 'prof-sana-cheema' || faculty.id === 'prof-math-fluid-mechanics'
                         ? optimizeImageUrl(faculty.photoUrl, { format: 'webp', quality: 82, width: 640 })
                         : faculty.photoUrl
                     }
@@ -183,7 +183,7 @@ export const FacultyProfileModal: React.FC<FacultyProfileModalProps> = ({
                     style={{ width: '100%', height: '100%', objectFit: 'cover' }}
                     className={`w-full h-full object-cover ${faculty.objectPosition || 'object-top'} ${faculty.imageTransform || ''}`}
                     loading="eager"
-                    fetchPriority={faculty.id === 'mr-ikram-ul-haq-aarbi' || faculty.id === 'admin-miss-alisha-tariq' || faculty.id === 'prof-akkasha-latif' ? 'high' : undefined}
+                    fetchPriority={faculty.id === 'mr-ikram-ul-haq-aarbi' || faculty.id === 'admin-miss-alisha-tariq' || faculty.id === 'prof-akkasha-latif' || faculty.id === 'prof-sana-cheema' || faculty.id === 'prof-math-fluid-mechanics' ? 'high' : undefined}
                     onError={(e) => {
                       (e.target as HTMLImageElement).src = faculty.fallbackPhotoUrl;
                     }}

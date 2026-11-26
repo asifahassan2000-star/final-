@@ -183,7 +183,11 @@ export const FacultyPage: React.FC<FacultyPageProps> = ({
             ) : (
               <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-5 sm:gap-6 lg:gap-8">
                 {filteredFaculty.map((faculty, index) => {
-                  const isInstantImage = faculty.id === 'mr-ikram-ul-haq-aarbi' || faculty.id === 'prof-akkasha-latif';
+                  const isInstantImage =
+                    faculty.id === 'mr-ikram-ul-haq-aarbi' ||
+                    faculty.id === 'prof-akkasha-latif' ||
+                    faculty.id === 'prof-sana-cheema' ||
+                    faculty.id === 'prof-math-fluid-mechanics';
                   return (
                   <motion.div
                     key={faculty.id}

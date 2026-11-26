@@ -465,6 +465,46 @@ export const ALL_FACULTY_MEMBERS: FacultyMemberData[] = [
       'Supervision of Senior Capstone Engineering and Deep Learning Systems Projects'
     ]
   },
+  {
+    id: 'prof-sana-cheema',
+    numericId: 22,
+    name: 'Sana Cheema',
+    designation: 'Assistant Professor',
+    cardDesignation: 'Assistant Professor',
+    department: 'Department of Computer Science & Artificial Intelligence',
+    highestDegree: 'Ph.D. in Computer Science',
+    experienceYears: '6+ Years (Teaching, R&D & Senior Machine Learning)',
+    specialization: 'Machine Learning, Deep Learning, Computer Vision, Generative AI & AI Automation',
+    researchArea: 'Machine Learning, Deep Learning, Computer Vision & Generative AI',
+    intro: 'Assistant Professor holding a Ph.D. in Computer Science with 6+ years of experience in Teaching, Research & Development (R&D), and Senior Machine Learning. Specializes in Python, Machine Learning, Deep Learning, Computer Vision, Generative AI, AI Automation, Power BI analytics, and digital technologies.',
+    photoUrl: 'https://ik.imagekit.io/Muffins/image%20-%202026-11-26T072835.985.png',
+    fallbackPhotoUrl: 'https://ik.imagekit.io/Muffins/image%20-%202026-11-26T072835.985.png',
+    objectPosition: 'object-top',
+    qualifications: [
+      'Ph.D. in Computer Science'
+    ],
+    experienceDetails: [
+      '6+ Years in Teaching, Research and Development (R&D), and Senior Machine Learning',
+      'Assistant Professor in Computer Science, University of Central Punjab (UCP) Bahawalpur Campus',
+      'Senior Machine Learning engineering, AI automation workflows, and applied computer vision research'
+    ],
+    programmingSkills: [
+      'Python',
+      'WordPress'
+    ],
+    coreTechnicalSkills: [
+      'Python',
+      'Machine Learning',
+      'AI Automation',
+      'Computer Vision',
+      'Generative AI',
+      'Deep Learning',
+      'Research & Development (R&D)',
+      'SEO and WordPress',
+      'Office Automation',
+      'Power BI'
+    ]
+  },
 
   // =========================================================================
   // 4. LECTURERS
@@ -995,6 +1035,49 @@ export const ALL_FACULTY_MEMBERS: FacultyMemberData[] = [
       '17. Explainable Edge AI for Early Detection of Plant Diseases in Smart Agriculture Using Lightweight MobileNetV2 with Gradient Saliency. Spectrum of Engineering Sciences, Vol. 4, No. 4, pp. 167–192, 2026.',
       '18. Predictive Heart Health Analysis: Machine Learning with the Cardiovascular Disease Dataset. Spectrum of Engineering Sciences, Vol. 4, No. 5, pp. 163–176, 2026.',
       '19. FGAN-AD-U: Unsupervised Multi-Scale Graph-Transformer Reconstruction for Industrial Anomaly Detection. Proceedings of the International Conference on Agents and Artificial Intelligence (ICAART), Vol. 3, pp. 2073–2081, 2026.'
+    ]
+  },
+  {
+    id: 'prof-math-fluid-mechanics',
+    numericId: 23,
+    name: 'Arshad Ali',
+    designation: 'Lecturer',
+    cardDesignation: 'Lecturer',
+    department: 'Faculty of Science & Technology • Department of Mathematics',
+    highestDegree: 'M.Phil. in Mathematics (Fluid Mechanics)',
+    experienceYears: '17 Years',
+    specialization: 'Fluid Mechanics, Mathematical Modelling, Differential Equations & Numerical Analysis',
+    researchArea: 'Fluid Mechanics, Fluid Dynamics, Differential Equations & Computational Mathematics',
+    intro: 'Arshad Ali is a Senior Mathematics Lecturer with 17 years of teaching experience at dynamic academic and educational institutions. Holds an M.Phil. in Mathematics with specialization in Fluid Mechanics and advanced mathematical analysis, with expertise in applied mathematics, scientific computing, MATLAB, Mathematica, and LaTeX.',
+    photoUrl: 'https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-11-26%20at%206.35.23%20AM.jpeg',
+    fallbackPhotoUrl: 'https://ik.imagekit.io/Muffins/WhatsApp%20Image%202026-11-26%20at%206.35.23%20AM.jpeg',
+    objectPosition: 'object-top',
+    qualifications: [
+      'M.Phil. in Mathematics, with specialization in Fluid Mechanics and advanced mathematical analysis.',
+      'Strong academic background in applied mathematics, mathematical modelling, differential equations, and fluid dynamics.',
+      'Proficient in scientific computing, mathematical analysis, and computational techniques for solving complex mathematical problems.'
+    ],
+    experienceDetails: [
+      '17 Years of Teaching Experience in mathematics at dynamic academic and educational institutions.',
+      'Extensive experience in teaching undergraduate and graduate-level mathematics, fostering analytical thinking, problem-solving abilities, and conceptual understanding among students.',
+      'Expertise in mathematical research, computational modelling, numerical methods, and the application of mathematics to scientific and engineering problems.',
+      'Experienced in academic assessment, examination duties, paper setting, evaluation, invigilation, and academic administration.'
+    ],
+    academicAdministration: [
+      'Academic assessment, examination duties, paper setting, evaluation, invigilation, and academic administration.'
+    ],
+    programmingSkills: [
+      'MATLAB',
+      'Mathematica',
+      'LaTeX'
+    ],
+    coreTechnicalSkills: [
+      'MATLAB Programming: Proficient in MATLAB programming, numerical computation, mathematical simulation, computational modelling, and solving complex mathematical problems.',
+      'Mathematica Programming: Skilled in Mathematica for symbolic computation, mathematical analysis, visualization, differential equations, and advanced mathematical calculations.',
+      'LaTeX: Experienced in LaTeX for professionally formatting mathematical documents, research papers, academic reports, presentations, equations, and thesis manuscripts.',
+      'Fluid Mechanics: Strong expertise in mathematical modelling of fluid flow, fluid dynamics, differential equations, and analytical and numerical approaches to fluid mechanics problems.',
+      'Mathematical Analysis: Competent in applied mathematics, numerical analysis, differential equations, mathematical modelling, and computational mathematics.',
+      'Research & Academic Writing: Capable of preparing research manuscripts, mathematical reports, scholarly documents, and technical presentations using modern computational and typesetting tools.'
     ]
   }
 ];
